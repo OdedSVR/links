@@ -13,12 +13,12 @@
     body {
       font-family: 'Heebo', sans-serif;
       background:
-        radial-gradient(circle at top, #1f2933, #020617 70%);
+        radial-gradient(circle at top, #1a202a, #01030d 70%); /* Slightly darker background */
       min-height: 100vh;
     }
 
     .card {
-      background: linear-gradient(145deg, #0f172a, #020617);
+      background: linear-gradient(145deg, #0c1426, #01030d); /* Slightly darker cards */
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow:
         0 0 0 rgba(0,0,0,0),
@@ -29,7 +29,7 @@
     .card:hover {
       transform: translateY(-6px) scale(1.01);
       box-shadow:
-        0 0 25px rgba(59,130,246,.35),
+        0 0 25px rgba(59,130,246,.6),
         0 20px 50px rgba(0,0,0,.8);
     }
 
@@ -39,49 +39,49 @@
 
     #kick-link:hover {
       box-shadow:
-        0 0 25px rgba(34,197,94,.35), /* Green glow */
+        0 0 25px rgba(34,197,94,.6), /* Green glow */
         0 20px 50px rgba(0,0,0,.8);
     }
 
     #awards-link:hover {
       box-shadow:
-        0 0 25px rgba(249,115,22,.35), /* Orange glow (Streamer of the Year) */
+        0 0 25px rgba(249,115,22,.6), /* Orange glow (Streamer of the Year) */
         0 20px 50px rgba(0,0,0,.8);
     }
 
     #ban-link:hover {
       box-shadow:
-        0 0 25px rgba(220,38,38,.35), /* Red glow (Ban Appeal) */
+        0 0 25px rgba(220,38,38,.6), /* Red glow (Ban Appeal) */
         0 20px 50px rgba(0,0,0,.8);
     }
 
     #discord-link:hover {
       box-shadow:
-        0 0 25px rgba(99,102,241,.35), /* Blue/Indigo glow (Discord) */
+        0 0 25px rgba(99,102,241,.6), /* Blue/Indigo glow (Discord) */
         0 20px 50px rgba(0,0,0,.8);
     }
 
     #libero-link:hover {
       box-shadow:
-        0 0 25px rgba(168,85,247,.35), /* Purple glow (Libero) */
+        0 0 25px rgba(168,85,247,.6), /* Purple glow (Libero) */
         0 20px 50px rgba(0,0,0,.8);
     }
 
     #youtube-link:hover {
       box-shadow:
-        0 0 25px rgba(239,68,68,.35), /* Red glow (YouTube) */
+        0 0 25px rgba(239,68,68,.6), /* Red glow (YouTube) */
         0 20px 50px rgba(0,0,0,.8);
     }
 
     #rgg-link:hover {
       box-shadow:
-        0 0 25px rgba(59,130,246,.35), /* Blue glow (RGG) */
+        0 0 25px rgba(59,130,246,.6), /* Blue glow (RGG) */
         0 20px 50px rgba(0,0,0,.8);
     }
 
     #instagram-link:hover {
       box-shadow:
-        0 0 25px rgba(255,0,128,.35), /* Vibrant Pink/Fuchsia glow (Instagram) */
+        0 0 25px rgba(255,0,128,.6), /* Vibrant Pink/Fuchsia glow (Instagram) */
         0 20px 50px rgba(0,0,0,.8);
     }
   </style>
@@ -95,7 +95,7 @@
       src="https://github.com/OdedSVR/images/blob/main/ODEDSVR.jpeg?raw=true"
       class="w-36 h-36 rounded-full mx-auto border-4 border-white/20 shadow-2xl mb-5 object-cover">
 
-    <h1 class="text-5xl font-black text-white neon tracking-tight uppercase">
+    <h1 class="text-4xl font-black text-white neon tracking-tight uppercase">
       ODED SVR
     </h1>
 
@@ -134,7 +134,7 @@
     </a>
 
     <a href="https://libero-il.co.il/" target="_blank" id="libero-link" class="card block rounded-2xl p-5 text-center">
-      <div class="text-xl font-black text-purple-400">💎 Libero </div>
+      <div class="text-xl font-black text-purple-400">💎 LIBERO – בשמים</div>
       <div class="mt-2 flex justify-center">
         <span class="bg-white/10 text-purple-200 text-[10px] font-bold px-1 py-0.5 rounded-full">OSVR10 - 10% הנחה על כלל האתר</span>
         <span class="bg-white/10 text-purple-200 text-[10px] font-bold px-1 py-0.5 rounded-full">OSVR - שתיים עשרה פרפיום + נויה מתנה</span>
@@ -145,19 +145,16 @@
     <a href="https://www.youtube.com/@odedsvr95" target="_blank" id="youtube-link" class="card block rounded-2xl p-5 text-center">
       <div class="text-xl font-black text-red-400"><img src="https://github.com/OdedSVR/images/blob/main/YTLOGO.png?raw=true" alt="YouTube Logo" class="inline-block h-8 w-8 align-middle mr-2"> YouTube – הערוץ הרשמי</div>
     </a>
-    
+
+    <a href="https://rggplay.com/?ref=RGG-8764e9784" target="_blank" id="rgg-link" class="card block rounded-2xl p-5 text-center">
+      <div class="text-xl font-black text-blue-400">🎮 RGG PLAY</div>
+      <p class="mt-1 text-xs text-blue-300 font-bold">קוד: ODEDSVR</p>
+    </a>
+
     <a href="https://www.instagram.com/odedsvr/" target="_blank" id="instagram-link" class="card block rounded-2xl p-5 text-center">
       <div class="text-xl font-black text-pink-400"><img src="https://github.com/OdedSVR/images/blob/main/instlogo.png?raw=true" alt="Instagram Logo" class="inline-block h-6 w-6 align-middle mr-2"> עדכונים בסטורי</div>
     </a>
 
-    <a href="https://rggplay.com/?ref=RGG-8764e9784" target="_blank" id="rgg-link" class="card block rounded-2xl p-5 text-center">
-      <div class="text-xl font-black text-blue-400">🎮 RGG Play</div>
-      <p class="mt-1 text-xs text-blue-300 font-bold">קוד: ODEDSVR</p>
-    </a>
-    
   </div>
 </body>
 </html>
-
-
-
