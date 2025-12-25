@@ -109,7 +109,7 @@
       align-items: center;
       z-index: 99999;
       opacity: 1;
-      animation: fadeOutSplash 4s forwards; /* Increased duration for smoother fade out */
+      animation: fadeOutSplash 2.5s forwards;
     }
 
     .splash-logo {
@@ -143,22 +143,12 @@
 
     @keyframes fadeOutSplash {
       0% { opacity: 1; }
-      60% { opacity: 1; } /* Hold full opacity for a longer duration (60% of 4s = 2.4s) */
-      100% { opacity: 0; visibility: hidden; } /* Fade out over the remaining time */
+      80% { opacity: 1; } /* Hold full opacity for a duration */
+      100% { opacity: 0; visibility: hidden; } /* Fade out and hide completely */
     }
 
-    /* Main content styling */
-    .main-content-fade {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.7s ease-in; /* Only opacity transitions */
-    }
-
-    .main-content-fade.visible {
-      opacity: 1;
-      visibility: visible;
-      /* transition-delay: 0s; is not needed here as visibility is not transitioned */
-    }
+    /* Ensure main content is hidden until splash screen is done */
+    body:not(.loaded) > .flex.flex-col.items-center { display: none; } /* Added for Colab compatibility */
   </style>
 </head>
 
@@ -171,7 +161,7 @@
       class="splash-logo">
   </div>
 
-  <div id="main-page-content" class="flex flex-col items-center px-6 py-14 main-content-fade">
+  <div class="flex flex-col items-center px-6 py-14">
 
     <!-- PROFILE -->
     <div class="text-center mb-12">
@@ -246,14 +236,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const splashScreen = document.getElementById('splash-screen');
-      const mainPageContent = document.getElementById('main-page-content');
-
-      // Listen for the end of the fadeOutSplash animation on the splash screen
+      // Listen for the end of the fadeOutSplash animation
       splashScreen.addEventListener('animationend', function() {
+        document.body.classList.add('loaded'); // Add 'loaded' class to body
         splashScreen.style.display = 'none'; // Hide splash screen completely after fade
-        mainPageContent.classList.add('visible'); // Make main content visible and trigger its fade-in
       });
     });
   </script>
 </body>
 </html>
+
