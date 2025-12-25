@@ -109,7 +109,7 @@
       align-items: center;
       z-index: 99999;
       opacity: 1;
-      animation: fadeOutSplash 2.5s forwards;
+      animation: fadeOutSplash 3.5s forwards; /* Increased duration */
     }
 
     .splash-logo {
@@ -117,7 +117,7 @@
       height: auto;
       border-radius: 50%; /* Make the image circular */
       box-shadow: 0 0 0 0 rgba(99,102,241, 0.7); /* Initial glow */
-      animation: logoPulse 1s infinite, fadeInElement 0.5s ease-out forwards;
+      animation: logoPulse 1s 2, fadeInElement 0.5s ease-out forwards; /* 2 iterations */
       opacity: 0;
     }
 
@@ -143,8 +143,8 @@
 
     @keyframes fadeOutSplash {
       0% { opacity: 1; }
-      80% { opacity: 1; } /* Hold full opacity for a duration */
-      100% { opacity: 0; visibility: hidden; } /* Fade out and hide completely */
+      70% { opacity: 1; } /* Hold full opacity for 70% of 3.5s = 2.45s, allowing logo to finish 2 pulses (2.5s total) */
+      100% { opacity: 0; visibility: hidden; } /* Fade out over the remaining 30% */
     }
 
     /* Ensure main content is hidden until splash screen is done */
