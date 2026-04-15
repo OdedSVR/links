@@ -13,10 +13,10 @@
 
     body {
       font-family: 'Heebo', sans-serif;
-      background: 
+      background:
         radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 20%),
         radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 20%),
-        #0f172a; 
+        #0f172a;
       background-color: #0f172a;
       min-height: 100vh;
       margin: 0;
@@ -119,9 +119,28 @@
 
     <div class="w-full max-w-md space-y-4 mx-auto relative z-10">
 
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-2xl p-5 text-center border-yellow-500/10 hover:border-yellow-500/40">
-        <div class="text-xl font-black text-yellow-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div>
-        <p class="text-[10px] text-yellow-200/50 font-bold mt-1 uppercase">לחצו כאן להרשמה</p>
+      <a href="https://www.animanga-israel.com/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-yellow-500/40">
+        <div class="text-xl font-black text-yellow-400 flex items-center justify-center">
+          <img src="https://github.com/OdedSVR/images/blob/main/%D7%90%D7%A0%D7%99%D7%9E%D7%A0%D7%92%D7%94.png?raw=true" class="h-7 w-7 ml-3"> ANIMANGA ISRAEL
+        </div>
+        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1">
+          <span class="text-[10px] text-yellow-200 font-bold uppercase tracking-wider">קוד: OSVR10</span>
+        </div>
+        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-2">
+          <span class="text-[10px] text-green-300 font-bold uppercase tracking-wider">מעל 400 ש"ח: חפיסה רנדומלית מתנה (סיכוי לחבילה יקרה 1 ל-7)</span>
+        </div>
+      </a>
+
+      <a href="https://libero-il.co.il/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-purple-500/40">
+        <div class="text-xl font-black text-purple-400">💎 LIBERO</div>
+        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1">
+          <span class="text-[10px] text-purple-200 font-bold uppercase tracking-wider">קוד: OSVR10</span>
+        </div>
+      </a>
+
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-2xl p-5 text-center border-yellow-500/10 hover:border-red-500/40">
+        <div class="text-xl font-black text-red-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div>
+        <p class="text-[10px] text-red-200/50 font-bold mt-1 uppercase">לחצו כאן להרשמה</p>
       </a>
 
       <a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-indigo-500/40">
@@ -136,23 +155,16 @@
           Kick
         </div>
       </a>
-      
+
       <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-red-500/40">
         <div class="text-xl font-black text-red-400">📝 ערעור על באן</div>
         <p class="text-[10px] text-red-300/60 font-bold mt-1">לא יכולים לכתוב בצ'אט? פנו אלינו</p>
       </a>
-      
+
       <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-orange-500/40">
         <div class="text-xl font-black text-orange-400 flex items-center justify-center">
           <img src="https://github.com/OdedSVR/images/blob/main/Reddit%20(1).png?raw=true" class="h-7 w-7 ml-3">
           Reddit
-        </div>
-      </a>
-
-      <a href="https://libero-il.co.il/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-purple-500/40">
-        <div class="text-xl font-black text-purple-400">💎 LIBERO</div>
-        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1">
-          <span class="text-[10px] text-purple-200 font-bold uppercase tracking-wider">קוד: OSVR10</span>
         </div>
       </a>
 
@@ -194,7 +206,7 @@
           if (spotlight) spotlight.style.display = 'block';
         }, 500);
       }
-    }
+    };
 
     document.addEventListener('mousemove', (e) => {
       if (spotlight) {
