@@ -1,3 +1,4 @@
+%%html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -13,15 +14,49 @@
 
     body {
       font-family: 'Heebo', sans-serif;
-      background:
-        radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 20%),
-        radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 20%),
-        #0f172a;
       background-color: #0f172a;
       min-height: 100vh;
       margin: 0;
+      padding: 0;
       overflow-x: hidden;
       color: white;
+      position: relative;
+    }
+
+    /* שכבת רקע לתמונה הימנית - הטיה ימינה */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 45%;
+      right: -12%;
+      width: 750px;
+      height: 1050px;
+      background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%A8%D7%A7%D7%A2%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%9C%D7%91%D7%93.png?raw=true');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: translateY(-50%) rotate(20deg);
+      opacity: 0.35;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* שכבת רקע לתמונה השמאלית (דולפין) - הטיה שמאלה */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 45%;
+      left: -12%;
+      width: 750px;
+      height: 1050px;
+      background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%9C%D7%91%D7%93%20%D7%A8%D7%A7%D7%A2%20%D7%A9%D7%A7%D7%95%D7%A3.png?raw=true');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: translateY(-50%) rotate(-20deg);
+      opacity: 0.35;
+      z-index: 1;
+      pointer-events: none;
     }
 
     #spotlight {
@@ -45,7 +80,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      z-index: 2;
+      z-index: 10;
     }
 
     .card:hover {
@@ -92,6 +127,8 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.6s ease-in;
+      position: relative;
+      z-index: 20;
     }
 
     #main-page-content.visible {
@@ -130,7 +167,7 @@
 
       <a href="https://github.com/OdedSVR/images/blob/main/giveaways.png?raw=true" target="_blank" class="card block rounded-2xl p-3 text-center hover:border-green-500/40">
         <div class="text-sm font-bold text-green-300 uppercase tracking-widest">
-          🎁 לפירוט על הגרלות נוספות אצל אנימנגה לחצו
+          🎁 לפירוט על הגרלות נוספות
         </div>
       </a>
 
