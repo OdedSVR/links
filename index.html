@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Heebo', sans-serif;
-      background: 
+      background:
         radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 20%),
         radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 20%),
         #0f172a;
@@ -25,7 +25,7 @@
       position: relative;
     }
 
-    /* שכבת רקע לתמונה הימנית - הוזזה פנימה למרכז */
+    /* שכבת רקע לתמונה הימנית - החזרה ל-24% */
     body::before {
       content: "";
       position: fixed;
@@ -43,7 +43,7 @@
       pointer-events: none;
     }
 
-    /* שכבת רקע לתמונה השמאלית (דולפין) - הוזזה פנימה למרכז */
+    /* שכבת רקע לתמונה השמאלית (דולפין) - החזרה ל-24% */
     body::after {
       content: "";
       position: fixed;
