@@ -13,7 +13,6 @@
 
     body {
       font-family: 'Heebo', sans-serif;
-      /* החלפת האורות הלבנים בגרדיאנטים צבעוניים (סגול וכחול) */
       background:
         radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%),
         radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%),
@@ -28,7 +27,6 @@
       position: relative;
     }
 
-    /* שכבת רקע לתמונה הימנית - הוספת הילה כחולה */
     body::before {
       content: "";
       position: fixed;
@@ -44,10 +42,9 @@
       opacity: 0.4; /* הגדלה קלה של האטימות */
       z-index: 1;
       pointer-events: none;
-      filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.25)); /* הילה מאחורי הדמות */
+      filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.25)); 
     }
 
-    /* שכבת רקע לתמונה השמאלית (דולפין) - הוספת הילה טורקיז */
     body::after {
       content: "";
       position: fixed;
@@ -63,7 +60,7 @@
       opacity: 0.4; /* הגדלה קלה של האטימות */
       z-index: 1;
       pointer-events: none;
-      filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.25)); /* הילה מאחורי הדולפין */
+      filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.25)); 
     }
 
     #spotlight {
