@@ -13,9 +13,12 @@
 
     body {
       font-family: 'Heebo', sans-serif;
+      /* החלפת האורות הלבנים בגרדיאנטים צבעוניים (סגול וכחול) */
       background:
-        radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 20%),
-        radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%),
+        radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%),
         #0f172a;
       min-height: 100vh;
       margin: 0;
@@ -25,7 +28,7 @@
       position: relative;
     }
 
-    /* שכבת רקע לתמונה הימנית - החזרה ל-24% */
+    /* שכבת רקע לתמונה הימנית - הוספת הילה כחולה */
     body::before {
       content: "";
       position: fixed;
@@ -38,12 +41,13 @@
       background-repeat: no-repeat;
       background-position: center;
       transform: translateY(-50%) rotate(20deg);
-      opacity: 0.35;
+      opacity: 0.4; /* הגדלה קלה של האטימות */
       z-index: 1;
       pointer-events: none;
+      filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.25)); /* הילה מאחורי הדמות */
     }
 
-    /* שכבת רקע לתמונה השמאלית (דולפין) - החזרה ל-24% */
+    /* שכבת רקע לתמונה השמאלית (דולפין) - הוספת הילה טורקיז */
     body::after {
       content: "";
       position: fixed;
@@ -56,9 +60,10 @@
       background-repeat: no-repeat;
       background-position: center;
       transform: translateY(-50%) rotate(-20deg);
-      opacity: 0.35;
+      opacity: 0.4; /* הגדלה קלה של האטימות */
       z-index: 1;
       pointer-events: none;
+      filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.25)); /* הילה מאחורי הדולפין */
     }
 
     #spotlight {
@@ -169,7 +174,7 @@
 
       <a href="https://github.com/OdedSVR/images/blob/main/giveaways.png?raw=true" target="_blank" class="card block rounded-2xl p-3 text-center hover:border-green-500/40">
         <div class="text-sm font-bold text-green-300 uppercase tracking-widest">
-          🎁 לפירוט על הגרלות נוספות
+          🎁לפרטים נוספים על הגרלות אצל אנימנגה לחצו 🎁
         </div>
       </a>
 
@@ -258,7 +263,7 @@
     });
 
     window.addEventListener('load', activateSite);
-    setTimeout(activateSite, 1800); // גיבוי פתיחה
+    setTimeout(activateSite, 1800); 
   </script>
 </body>
 </html>
