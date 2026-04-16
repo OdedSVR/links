@@ -31,62 +31,51 @@
     @keyframes swayCharacter {
       0%, 100% {
         transform: translate(0, -50%) rotate(20deg) scale(1);
-        filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.3));
+        filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2));
       }
       50% {
-        transform: translate(-10px, -53%) rotate(21deg) scale(1.03);
-        filter: drop-shadow(0 0 50px rgba(59, 130, 246, 0.5));
+        transform: translate(-10px, -52%) rotate(21deg) scale(1.02);
+        filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.4));
       }
     }
 
-    /* אנימציית "שחייה" ופעימה לדולפין */
+    /* אנימציית שחייה ופעימה לדולפין */
     @keyframes swimDolphin {
       0%, 100% {
         transform: translate(0, -50%) rotate(-20deg) scale(1);
-        filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.3));
+        filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2));
       }
       50% {
-        transform: translate(15px, -47%) rotate(-18deg) scale(1.05);
-        filter: drop-shadow(0 0 50px rgba(6, 182, 212, 0.5));
+        transform: translate(10px, -48%) rotate(-19deg) scale(1.03);
+        filter: drop-shadow(0 0 40px rgba(6, 182, 212, 0.4));
       }
     }
 
-    /* דמות ימנית */
-    #char-right {
-      content: "";
+    /* אלמנטים לדמויות הרקע */
+    #char-right, #char-left {
       position: fixed;
       top: 45%;
-      right: 14%;
       width: 750px;
       height: 1050px;
-      background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%A8%D7%A7%D7%A2%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%9C%D7%91%D7%93.png?raw=true');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      opacity: 0.4;
+      opacity: 0.35;
       z-index: 1;
       pointer-events: none;
-      animation: swayCharacter 8s ease-in-out infinite;
-      transition: transform 0.2s ease-out; /* לחלקות ה-Parallax */
+      transition: transform 0.2s ease-out;
     }
 
-    /* דמות שמאלית */
+    #char-right {
+      right: 14%;
+      background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%A8%D7%A7%D7%A2%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%9C%D7%91%D7%93.png?raw=true');
+      animation: swayCharacter 10s ease-in-out infinite;
+    }
+
     #char-left {
-      content: "";
-      position: fixed;
-      top: 45%;
       left: 14%;
-      width: 750px;
-      height: 1050px;
       background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%9C%D7%91%D7%93%20%D7%A8%D7%A7%D7%A2%20%D7%A9%D7%A7%D7%95%D7%A3.png?raw=true');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0.4;
-      z-index: 1;
-      pointer-events: none;
-      animation: swimDolphin 12s ease-in-out infinite;
-      transition: transform 0.2s ease-out; /* לחלקות ה-Parallax */
+      animation: swimDolphin 14s ease-in-out infinite;
     }
 
     #spotlight {
@@ -131,6 +120,7 @@
       justify-content: center;
       align-items: center;
       z-index: 99999;
+      transition: opacity 0.5s ease-out;
     }
 
     .splash-logo {
@@ -160,7 +150,6 @@
 <body>
   <div id="char-right"></div>
   <div id="char-left"></div>
-
   <div id="spotlight"></div>
 
   <div id="splash-screen">
@@ -177,6 +166,7 @@
     </div>
 
     <div class="w-full max-w-md space-y-4 mx-auto relative z-10">
+      
       <a href="https://www.animanga-israel.com/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-yellow-500/40">
         <div class="text-xl font-black text-yellow-400 flex items-center justify-center">
           <img src="https://github.com/OdedSVR/images/blob/main/%D7%90%D7%A0%D7%99%D7%9E%D7%A0%D7%92%D7%94.png?raw=true" class="h-7 w-7 ml-3"> ANIMANGA ISRAEL
@@ -199,6 +189,11 @@
         </div>
       </a>
 
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-red-500/40">
+        <div class="text-xl font-black text-red-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div>
+        <p class="text-[10px] text-red-200/50 font-bold mt-1 uppercase">לחצו כאן להרשמה</p>
+      </a>
+
       <a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-indigo-500/40">
         <div class="text-xl font-black text-indigo-300 flex items-center justify-center">
           <img src="https://github.com/OdedSVR/images/blob/main/discor%20logo.png?raw=true" class="h-8 w-8 ml-3">Discord
@@ -211,11 +206,34 @@
         </div>
       </a>
 
+      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-red-500/40">
+        <div class="text-xl font-black text-red-400">📝 ערעור על באן</div>
+        <p class="text-[10px] text-red-300/60 font-bold mt-1">לא יכולים לכתוב בצ'אט? פנו אלינו</p>
+      </a>
+
+      <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-orange-500/40">
+        <div class="text-xl font-black text-orange-400 flex items-center justify-center">
+          <img src="https://github.com/OdedSVR/images/blob/main/Reddit%20(1).png?raw=true" class="h-7 w-7 ml-3"> Reddit
+        </div>
+      </a>
+
       <a href="https://www.youtube.com/@odedsvr95" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-red-500/40">
         <div class="text-xl font-black text-red-500 flex items-center justify-center">
           <img src="https://github.com/OdedSVR/images/blob/main/YTLOGO.png?raw=true" class="h-7 w-7 ml-3"> YouTube
         </div>
       </a>
+
+      <a href="https://www.instagram.com/odedsvr/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-pink-500/40">
+        <div class="text-xl font-black text-pink-300 flex items-center justify-center">
+          <img src="https://github.com/OdedSVR/images/blob/main/instlogo.png?raw=true" class="h-6 w-6 ml-3"> Instagram
+        </div>
+      </a>
+
+      <a href="https://rggplay.com/?ref=RGG-8764e9784" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-blue-500/40">
+        <div class="text-xl font-black text-blue-400">🎮 RGG PLAY</div>
+        <p class="text-[10px] text-blue-200/60 font-bold mt-1 uppercase">קוד: ODEDSVR</p>
+      </a>
+
     </div>
 
     <footer class="mt-16 text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">
@@ -242,18 +260,18 @@
     };
 
     document.addEventListener('mousemove', (e) => {
-      // עדכון הזרקור
+      // Spotlight movement
       if (spotlight) {
         spotlight.style.left = e.clientX + 'px';
         spotlight.style.top = e.clientY + 'px';
       }
 
-      // אפקט Parallax לדמויות
-      const x = (window.innerWidth - e.pageX * 2) / 100;
-      const y = (window.innerHeight - e.pageY * 2) / 100;
+      // Parallax effect for characters
+      const x = (window.innerWidth - e.pageX * 2) / 80;
+      const y = (window.innerHeight - e.pageY * 2) / 80;
 
-      if (charLeft) charLeft.style.marginLeft = `${x}px`;
-      if (charRight) charRight.style.marginRight = `${-x}px`;
+      if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
+      if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
     });
 
     window.addEventListener('load', activateSite);
