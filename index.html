@@ -1,266 +1,222 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OdedSVR | Official Links</title>
-  <link rel="icon" type="image/png" href="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OdedSVR | Official Links</title>
+  <link rel="icon" type="image/png" href="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
 
-    body {
-      font-family: 'Heebo', sans-serif;
-      background:
-        radial-gradient(circle at 15% 5%, rgba(255, 255, 255, 0.15) 0%, transparent 15%),
-        radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.1) 0%, transparent 15%),
-        radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%),
-        radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%),
-        #0f172a;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      color: white;
-      position: relative;
-    }
+    body {
+      font-family: 'Heebo', sans-serif;
+      background:
+        radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 20%),
+        radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 20%),
+        #0f172a;
+      background-color: #0f172a;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      color: white;
+    }
 
-    /* שכבת רקע לתמונה הימנית - החזרה ל-24% */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 45%;
-      right: 14%;
-      width: 750px;
-      height: 1050px;
-      background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%A8%D7%A7%D7%A2%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%9C%D7%91%D7%93.png?raw=true');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      transform: translateY(-50%) rotate(20deg);
-      opacity: 0.35;
-      z-index: 1;
-      pointer-events: none;
-    }
+    #spotlight {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      display: none;
+    }
 
-    /* שכבת רקע לתמונה השמאלית (דולפין) - החזרה ל-24% */
-    body::after {
-      content: "";
-      position: fixed;
-      top: 45%;
-      left: 14%;
-      width: 750px;
-      height: 1050px;
-      background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%9C%D7%91%D7%93%20%D7%A8%D7%A7%D7%A2%20%D7%A9%D7%A7%D7%95%D7%A3.png?raw=true');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      transform: translateY(-50%) rotate(-20deg);
-      opacity: 0.35;
-      z-index: 1;
-      pointer-events: none;
-    }
+    .card {
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      z-index: 2;
+    }
 
-    #spotlight {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      display: none;
-    }
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(30, 41, 59, 0.85);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+    }
 
-    .card {
-      background: rgba(30, 41, 59, 0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      z-index: 10;
-    }
+    #profile-image {
+      transition: all 0.4s ease;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+    }
 
-    .card:hover {
-      transform: translateY(-5px);
-      background: rgba(30, 41, 59, 0.85);
-      border-color: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
-    }
+    #profile-image:hover {
+      transform: scale(1.05) rotate(1deg);
+      border-color: #3b82f6;
+      box-shadow: 0 0 35px rgba(59, 130, 246, 0.4);
+    }
 
-    #profile-image {
-      transition: all 0.4s ease;
-      border: 3px solid rgba(255, 255, 255, 0.1);
-    }
+    #splash-screen {
+      position: fixed;
+      inset: 0;
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease-out;
+    }
 
-    #profile-image:hover {
-      transform: scale(1.05) rotate(1deg);
-      border-color: #3b82f6;
-      box-shadow: 0 0 35px rgba(59, 130, 246, 0.4);
-    }
+    .splash-logo {
+      max-width: 130px;
+      border-radius: 50%;
+      animation: logoFade 1.2s infinite ease-in-out;
+    }
 
-    #splash-screen {
-      position: fixed;
-      inset: 0;
-      background: #0f172a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 99999;
-      transition: opacity 0.5s ease-out;
-    }
+    @keyframes logoFade {
+      0%, 100% { opacity: 0.6; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
 
-    .splash-logo {
-      max-width: 130px;
-      border-radius: 50%;
-      animation: logoFade 1.2s infinite ease-in-out;
-    }
+    #main-page-content {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease-in;
+    }
 
-    @keyframes logoFade {
-      0%, 100% { opacity: 0.6; transform: scale(0.95); }
-      50% { opacity: 1; transform: scale(1.05); }
-    }
-
-    #main-page-content {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.6s ease-in;
-      position: relative;
-      z-index: 20;
-    }
-
-    #main-page-content.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-  </style>
+    #main-page-content.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="spotlight"></div>
+  <div id="spotlight"></div>
 
-  <div id="splash-screen">
-    <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo">
-  </div>
+  <div id="splash-screen">
+    <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo">
+  </div>
 
-  <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
-    <div class="text-center mb-10 relative z-10">
-      <a href="https://github.com/OdedSVR/images/blob/main/image.png?raw=true" target="_blank">
-        <img src="https://github.com/OdedSVR/images/blob/main/ODEDSVR.jpeg?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover cursor-pointer">
-      </a>
-      <h1 class="text-4xl font-black text-white tracking-tight">Oded SVR</h1>
-      <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Official Links</p>
-    </div>
+  <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
+    <div class="text-center mb-10 relative z-10">
+      <a href="https://github.com/OdedSVR/images/blob/main/image.png?raw=true" target="_blank">
+        <img src="https://github.com/OdedSVR/images/blob/main/ODEDSVR.jpeg?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover cursor-pointer">
+      </a>
+      <h1 class="text-4xl font-black text-white tracking-tight">Oded SVR</h1>
+      <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Official Links</p>
+    </div>
 
-    <div class="w-full max-w-md space-y-4 mx-auto relative z-10">
+    <div class="w-full max-w-md space-y-4 mx-auto relative z-10">
 
-      <a href="https://www.animanga-israel.com/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-yellow-500/40">
-        <div class="text-xl font-black text-yellow-400 flex items-center justify-center">
-          <img src="https://github.com/OdedSVR/images/blob/main/%D7%90%D7%A0%D7%99%D7%9E%D7%A0%D7%92%D7%94.png?raw=true" class="h-7 w-7 ml-3"> ANIMANGA ISRAEL
-        </div>
-        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1">
-          <span class="text-[10px] text-yellow-200 font-bold uppercase tracking-wider">קוד: OSVR10</span>
-        </div>
-      </a>
+      <a href="https://www.animanga-israel.com/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-yellow-500/40">
+        <div class="text-xl font-black text-yellow-400 flex items-center justify-center">
+          <img src="https://github.com/OdedSVR/images/blob/main/%D7%90%D7%A0%D7%99%D7%9E%D7%A0%D7%92%D7%94.png?raw=true" class="h-7 w-7 ml-3"> ANIMANGA ISRAEL
+        </div>
+        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1">
+          <span class="text-[10px] text-yellow-200 font-bold uppercase tracking-wider">קוד: OSVR10</span>
+        </div>
+        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-2">
+          <span class="text-[10px] text-green-300 font-bold uppercase tracking-wider">מעל 400 ש"ח: חפיסה רנדומלית מתנה (סיכוי לחבילה יקרה 1 ל-7)</span>
+        </div>
+      </a>
 
-      <a href="https://github.com/OdedSVR/images/blob/main/giveaways.png?raw=true" target="_blank" class="card block rounded-2xl p-3 text-center hover:border-green-500/40">
-        <div class="text-sm font-bold text-green-300 uppercase tracking-widest">
-          🎁לפרטים נוספים על הגרלות אצל אנימנגה לחצו 🎁
-        </div>
-      </a>
+      <a href="https://libero-il.co.il/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-purple-500/40">
+        <div class="text-xl font-black text-purple-400">💎 LIBERO</div>
+        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1">
+          <span class="text-[10px] text-purple-200 font-bold uppercase tracking-wider">קוד: OSVR10</span>
+        </div>
+      </a>
 
-      <a href="https://libero-il.co.il/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-purple-500/40">
-        <div class="text-xl font-black text-purple-400">💎 LIBERO</div>
-        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1">
-          <span class="text-[10px] text-purple-200 font-bold uppercase tracking-wider">קוד: OSVR10</span>
-        </div>
-      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-2xl p-5 text-center border-yellow-500/10 hover:border-red-500/40">
+        <div class="text-xl font-black text-red-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div>
+        <p class="text-[10px] text-red-200/50 font-bold mt-1 uppercase">לחצו כאן להרשמה</p>
+      </a>
 
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-2xl p-5 text-center border-yellow-500/10 hover:border-red-500/40">
-        <div class="text-xl font-black text-red-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div>
-        <p class="text-[10px] text-red-200/50 font-bold mt-1 uppercase">לחצו כאן להרשמה</p>
-      </a>
+      <a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-indigo-500/40">
+        <div class="text-xl font-black text-indigo-300 flex items-center justify-center">
+          <img src="https://github.com/OdedSVR/images/blob/main/discor%20logo.png?raw=true" class="h-8 w-8 ml-3">Discord
+        </div>
+      </a>
 
-      <a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-indigo-500/40">
-        <div class="text-xl font-black text-indigo-300 flex items-center justify-center">
-          <img src="https://github.com/OdedSVR/images/blob/main/discor%20logo.png?raw=true" class="h-8 w-8 ml-3">Discord
-        </div>
-      </a>
+      <a href="https://kick.com/odedsvr" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-green-500/40">
+        <div class="text-xl font-black text-green-400 flex items-center justify-center">
+          <img src="https://github.com/OdedSVR/images/blob/main/kick%20logo.png?raw=true" class="h-7 w-7 ml-3">
+          Kick
+        </div>
+      </a>
 
-      <a href="https://kick.com/odedsvr" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-green-500/40">
-        <div class="text-xl font-black text-green-400 flex items-center justify-center">
-          <img src="https://github.com/OdedSVR/images/blob/main/kick%20logo.png?raw=true" class="h-7 w-7 ml-3">
-          Kick
-        </div>
-      </a>
+      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-red-500/40">
+        <div class="text-xl font-black text-red-400">📝 ערעור על באן</div>
+        <p class="text-[10px] text-red-300/60 font-bold mt-1">לא יכולים לכתוב בצ'אט? פנו אלינו</p>
+      </a>
 
-      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-red-500/40">
-        <div class="text-xl font-black text-red-400">📝 ערעור על באן</div>
-        <p class="text-[10px] text-red-300/60 font-bold mt-1">לא יכולים לכתוב בצ'אט? פנו אלינו</p>
-      </a>
+      <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-orange-500/40">
+        <div class="text-xl font-black text-orange-400 flex items-center justify-center">
+          <img src="https://github.com/OdedSVR/images/blob/main/Reddit%20(1).png?raw=true" class="h-7 w-7 ml-3">
+          Reddit
+        </div>
+      </a>
 
-      <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-orange-500/40">
-        <div class="text-xl font-black text-orange-400 flex items-center justify-center">
-          <img src="https://github.com/OdedSVR/images/blob/main/Reddit%20(1).png?raw=true" class="h-7 w-7 ml-3">
-          Reddit
-        </div>
-      </a>
+      <a href="https://www.youtube.com/@odedsvr95" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-red-500/40">
+        <div class="text-xl font-black text-red-500 flex items-center justify-center">
+          <img src="https://github.com/OdedSVR/images/blob/main/YTLOGO.png?raw=true" class="h-7 w-7 ml-3">
+          YouTube
+        </div>
+      </a>
 
-      <a href="https://www.youtube.com/@odedsvr95" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-red-500/40">
-        <div class="text-xl font-black text-red-500 flex items-center justify-center">
-          <img src="https://github.com/OdedSVR/images/blob/main/YTLOGO.png?raw=true" class="h-7 w-7 ml-3">
-          YouTube
-        </div>
-      </a>
+      <a href="https://www.instagram.com/odedsvr/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-pink-500/40">
+        <div class="text-xl font-black text-pink-300 flex items-center justify-center">
+          <img src="https://github.com/OdedSVR/images/blob/main/instlogo.png?raw=true" class="h-6 w-6 ml-3">Instagram</div>
+      </a>
 
-      <a href="https://www.instagram.com/odedsvr/" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-pink-500/40">
-        <div class="text-xl font-black text-pink-300 flex items-center justify-center">
-          <img src="https://github.com/OdedSVR/images/blob/main/instlogo.png?raw=true" class="h-6 w-6 ml-3">Instagram</div>
-      </a>
+      <a href="https://rggplay.com/?ref=RGG-8764e9784" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-blue-500/40">
+        <div class="text-xl font-black text-blue-400">🎮 RGG PLAY</div>
+        <p class="text-[10px] text-blue-200/60 font-bold mt-1 uppercase">קוד: ODEDSVR</p>
+      </a>
 
-      <a href="https://rggplay.com/?ref=RGG-8764e9784" target="_blank" class="card block rounded-2xl p-5 text-center hover:border-blue-500/40">
-        <div class="text-xl font-black text-blue-400">🎮 RGG PLAY</div>
-        <p class="text-[10px] text-blue-200/60 font-bold mt-1 uppercase">קוד: ODEDSVR</p>
-      </a>
+    </div>
 
-    </div>
+    <footer class="mt-16 text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">
+      © 2026 ODEDSVR | CREATED BY PIKER_R
+    </footer>
+  </div>
 
-    <footer class="mt-16 text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">
-      © 2026 ODEDSVR | CREATED BY PIKER_R
-    </footer>
-  </div>
+  <script>
+    const spotlight = document.getElementById('spotlight');
+    const mainContent = document.getElementById('main-page-content');
+    const splash = document.getElementById('splash-screen');
 
-  <script>
-    const spotlight = document.getElementById('spotlight');
-    const mainContent = document.getElementById('main-page-content');
-    const splash = document.getElementById('splash-screen');
+    function activateSite() {
+      if (splash && splash.style.display !== 'none') {
+        splash.style.opacity = '0';
+        setTimeout(() => {
+          splash.style.display = 'none';
+          mainContent.classList.add('visible');
+          if (spotlight) spotlight.style.display = 'block';
+        }, 500);
+      }
+    };
 
-    function activateSite() {
-      if (splash && splash.style.display !== 'none') {
-        splash.style.opacity = '0';
-        setTimeout(() => {
-          splash.style.display = 'none';
-          mainContent.classList.add('visible');
-          if (spotlight) spotlight.style.display = 'block';
-        }, 500);
-      }
-    };
+    document.addEventListener('mousemove', (e) => {
+      if (spotlight) {
+        spotlight.style.left = e.clientX + 'px';
+        spotlight.style.top = e.clientY + 'px';
+      }
+    });
 
-    document.addEventListener('mousemove', (e) => {
-      if (spotlight) {
-        spotlight.style.left = e.clientX + 'px';
-        spotlight.style.top = e.clientY + 'px';
-      }
-    });
-
-    window.addEventListener('load', activateSite);
-    setTimeout(activateSite, 1800); // גיבוי פתיחה
-  </script>
+    window.addEventListener('load', activateSite);
+    setTimeout(activateSite, 1800); // גיבוי פתיחה
+  </script>
 </body>
 </html>
