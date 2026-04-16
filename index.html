@@ -13,12 +13,13 @@
 
     body {
       font-family: 'Heebo', sans-serif;
-      background:
-        radial-gradient(circle at 15% 5%, rgba(255, 255, 255, 0.15) 0%, transparent 15%),
-        radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.1) 0%, transparent 15%),
-        radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%),
-        radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%),
-        #0f172a;
+      background-color: var(--bg-dark);
+      /* החלפת האורות הלבנים בגרדיאנט צבעוני וחי */
+      background-image: 
+        radial-gradient(circle at 20% 20%, var(--accent-blue) 0%, transparent 40%),
+        radial-gradient(circle at 80% 15%, var(--accent-purple) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+      background-attachment: fixed;
       min-height: 100vh;
       margin: 0;
       padding: 0;
