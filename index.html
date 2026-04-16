@@ -14,14 +14,55 @@
     body {
       font-family: 'Heebo', sans-serif;
       background:
-        radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 20%),
-        radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 20%),
-        #0f172a;
-      background-color: #0f172a;
+        radial-gradient(circle at 15% 5%, rgba(255, 255, 255, 0.15) 0%, transparent 20%),
+        radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 25% 15%, rgba(100, 150, 200, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 75% 20%, rgba(200, 180, 100, 0.15) 0%, transparent 55%),
+        radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.4) 0%, transparent 35%),
+        radial-gradient(circle at 90% 90%, rgba(34, 197, 94, 0.3) 0%, transparent 35%),
+        rgb(20, 27, 40);
       min-height: 100vh;
       margin: 0;
+      padding: 0;
       overflow-x: hidden;
       color: white;
+      position: relative;
+    }
+
+    /* שכבת רקע לתמונה הימנית */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 45%;
+      right: 14%;
+      width: 750px;
+      height: 1050px;
+      background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%A8%D7%A7%D7%A2%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%9C%D7%91%D7%93.png?raw=true');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: translateY(-50%) rotate(20deg);
+      opacity: 0.25;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* שכבת רקע לתמונה השמאלית (דולפין) */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 45%;
+      left: 14%;
+      width: 750px;
+      height: 1050px;
+      background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%9C%D7%91%D7%93%20%D7%A8%D7%A7%D7%A2%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%9C%D7%91%D7%93.png?raw=true');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: translateY(-50%) rotate(-20deg);
+      opacity: 0.25;
+      z-index: 1;
+      pointer-events: none;
     }
 
     #spotlight {
@@ -30,7 +71,7 @@
       left: 0;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
       transform: translate(-50%, -50%);
@@ -45,7 +86,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      z-index: 2;
+      z-index: 10;
     }
 
     .card:hover {
@@ -69,7 +110,7 @@
     #splash-screen {
       position: fixed;
       inset: 0;
-      background: #0f172a;
+      background: rgb(20, 27, 40);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -92,6 +133,8 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.6s ease-in;
+      position: relative;
+      z-index: 20;
     }
 
     #main-page-content.visible {
@@ -126,8 +169,11 @@
         <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1">
           <span class="text-[10px] text-yellow-200 font-bold uppercase tracking-wider">קוד: OSVR10</span>
         </div>
-        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-2">
-          <span class="text-[10px] text-green-300 font-bold uppercase tracking-wider">מעל 400 ש"ח: חפיסה רנדומלית מתנה (סיכוי לחבילה יקרה 1 ל-7)</span>
+      </a>
+
+      <a href="https://github.com/OdedSVR/images/blob/main/giveaways.png?raw=true" target="_blank" class="card block rounded-2xl p-3 text-center hover:border-green-500/40">
+        <div class="text-sm font-bold text-green-300 uppercase tracking-widest">
+          🎁לפרטים נוספים על הגרלות אצל אנימנגה לחצו 🎁
         </div>
       </a>
 
