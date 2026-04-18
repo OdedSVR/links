@@ -24,7 +24,7 @@
       text-align: right;
       position: relative;
       z-index: 10;
-      padding: 1.5rem; /* Increased padding */
+      padding: 1rem; /* Decreased padding */
       height: 100%; /* Ensure it fills the grid cell vertically */
     }
     .video-row:hover {
@@ -94,8 +94,8 @@
 
                     const videoRow = `
                         <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-row rounded-xl">
-                            <img src="${thumbnail}" class="w-36 h-24 object-cover rounded-lg ml-6">
-                            <div class="flex-1 text-base font-bold text-white hover:text-blue-400 transition-colors text-right">${title}</div>
+                            <img src="${thumbnail}" class="w-32 h-20 object-cover rounded-lg ml-6"> <!-- Decreased image size -->
+                            <div class="flex-1 text-sm font-bold text-white hover:text-blue-400 transition-colors text-right">${title}</div> <!-- Decreased text size -->
                         </a>
                     `;
                     videoContainer.innerHTML += videoRow;
