@@ -54,39 +54,82 @@
       <h1 class="text-4xl font-black text-white tracking-tight">Recent YouTube Videos</h1>
       <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">הסרטונים האחרונים בערוץ</p>
     </div>
-    <div class="w-full flex flex-col items-center space-y-4">
-        <a href="https://www.youtube.com/watch?v=Ul8b-eyH6-E" target="_blank" class="video-row p-4 rounded-xl">
-            <img src="https://img.youtube.com/vi/Ul8b-eyH6-E/hqdefault.jpg" class="h-16 w-28 object-cover rounded-lg ml-6">
-            <div class="flex-1 text-lg font-bold text-white hover:text-blue-400 transition-colors text-right">לא מאמין שאני מספר את זה.. (סיפורי עודד)</div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=8Ue8VOPFzCk" target="_blank" class="video-row p-4 rounded-xl">
-            <img src="https://img.youtube.com/vi/8Ue8VOPFzCk/hqdefault.jpg" class="h-16 w-28 object-cover rounded-lg ml-6">
-            <div class="flex-1 text-lg font-bold text-white hover:text-blue-400 transition-colors text-right">✨אני לא מאמין✨</div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=NM2V65fMpSE" target="_blank" class="video-row p-4 rounded-xl">
-            <img src="https://img.youtube.com/vi/NM2V65fMpSE/hqdefault.jpg" class="h-16 w-28 object-cover rounded-lg ml-6">
-            <div class="flex-1 text-lg font-bold text-white hover:text-blue-400 transition-colors text-right">בתחילת הסאבתון😭</div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=EgHyfkondOk" target="_blank" class="video-row p-4 rounded-xl">
-            <img src="https://img.youtube.com/vi/EgHyfkondOk/hqdefault.jpg" class="h-16 w-28 object-cover rounded-lg ml-6">
-            <div class="flex-1 text-lg font-bold text-white hover:text-blue-400 transition-colors text-right">מי היוטיובר הכי יפה בישראל?</div>
-        </a>
-        <a href="https://www.youtube.com/watch?v=kc_aX_o_Cg0" target="_blank" class="video-row p-4 rounded-xl">
-            <img src="https://img.youtube.com/vi/kc_aX_o_Cg0/hqdefault.jpg" class="h-16 w-28 object-cover rounded-lg ml-6">
-            <div class="flex-1 text-lg font-bold text-white hover:text-blue-400 transition-colors text-right">פתחתי מתנות שהצופים שלי שלחו לי!</div>
-        </a>
+
+    <div id="video-container" class="w-full flex flex-col items-center space-y-4">
+        <p class="text-white/30 animate-pulse">טוען סרטונים...</p>
     </div>
+
     <footer class="mt-16 text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
   </div>
+
   <script>
     const spotlight = document.getElementById('spotlight');
     const mainContent = document.getElementById('main-page-content');
     const splash = document.getElementById('splash-screen');
-    function activateSite() { if (splash) { splash.style.opacity = '0'; setTimeout(() => { splash.style.display = 'none'; mainContent.classList.add('visible'); if (spotlight) spotlight.style.display = 'block'; }, 500); } };
+    const videoContainer = document.getElementById('video-container');
+
+    // --- הגדרות ה-API ---
+    // כאן אתה חייב להדביק את המפתח שקיבלת מגוגל!
+    const API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI'; 
+    const CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
+
+    async function fetchVideos() {
+        // המרת מזהה ערוץ למזהה פלייליסט העלאות
+        const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
+        const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if (data.items && data.items.length > 0) {
+                // מנקה את הודעת הטעינה
+                videoContainer.innerHTML = '';
+                
+                data.items.forEach(item => {
+                    const videoId = item.snippet.resourceId.videoId;
+                    const title = item.snippet.title;
+                    const thumbnail = item.snippet.thumbnails.high.url;
+                    
+                    const videoRow = `
+                        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-row p-4 rounded-xl">
+                            <img src="${thumbnail}" class="h-16 w-28 object-cover rounded-lg ml-6">
+                            <div class="flex-1 text-lg font-bold text-white hover:text-blue-400 transition-colors text-right">${title}</div>
+                        </a>
+                    `;
+                    videoContainer.innerHTML += videoRow;
+                });
+            } else {
+                videoContainer.innerHTML = '<p class="text-white/50">לא נמצאו סרטונים.</p>';
+            }
+        } catch (error) {
+            console.error("API Error:", error);
+            videoContainer.innerHTML = '<p class="text-red-400/50">שגיאה בחיבור ליוטיוב.</p>';
+        }
+    }
+
+    function activateSite() { 
+        if (splash) { 
+            splash.style.opacity = '0'; 
+            setTimeout(() => { 
+                splash.style.display = 'none'; 
+                mainContent.classList.add('visible'); 
+                if (spotlight) spotlight.style.display = 'block'; 
+            }, 500); 
+        } 
+    }
+
     document.addEventListener('mousemove', (e) => {
       if (spotlight) { spotlight.style.left = e.clientX + 'px'; spotlight.style.top = e.clientY + 'px'; }
     });
-    window.addEventListener('load', activateSite); setTimeout(activateSite, 1000);
+
+    // הפעלה ברגע שהדף נטען
+    window.addEventListener('load', () => {
+        activateSite();
+        fetchVideos(); 
+    });
+
+    setTimeout(activateSite, 1000);
   </script>
 </body>
 </html>
