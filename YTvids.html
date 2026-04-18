@@ -19,7 +19,6 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       width: 100%;
-      max-width: 600px;
       display: flex;
       align-items: center;
       text-align: right;
@@ -55,8 +54,8 @@
       <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">הסרטונים האחרונים בערוץ</p>
     </div>
 
-    <div id="video-container" class="w-full flex flex-col items-center space-y-4">
-        <p class="text-white/30 animate-pulse">טוען סרטונים...</p>
+    <div id="video-container" class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+        <p class="text-white/30 animate-pulse col-span-full text-center">טוען סרטונים...</p>
     </div>
 
     <footer class="mt-16 text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
@@ -70,27 +69,27 @@
 
     // --- הגדרות ה-API ---
     // כאן אתה חייב להדביק את המפתח שקיבלת מגוגל!
-    const API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI'; 
+    const API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
     const CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
 
     async function fetchVideos() {
         // המרת מזהה ערוץ למזהה פלייליסט העלאות
         const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
-        const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
+        const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=15&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
 
         try {
             const response = await fetch(url);
             const data = await response.json();
-            
+
             if (data.items && data.items.length > 0) {
                 // מנקה את הודעת הטעינה
                 videoContainer.innerHTML = '';
-                
+
                 data.items.forEach(item => {
                     const videoId = item.snippet.resourceId.videoId;
                     const title = item.snippet.title;
                     const thumbnail = item.snippet.thumbnails.high.url;
-                    
+
                     const videoRow = `
                         <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-row p-4 rounded-xl">
                             <img src="${thumbnail}" class="h-16 w-28 object-cover rounded-lg ml-6">
@@ -100,23 +99,23 @@
                     videoContainer.innerHTML += videoRow;
                 });
             } else {
-                videoContainer.innerHTML = '<p class="text-white/50">לא נמצאו סרטונים.</p>';
+                videoContainer.innerHTML = '<p class="text-white/50 col-span-full text-center">לא נמצאו סרטונים.</p>';
             }
         } catch (error) {
             console.error("API Error:", error);
-            videoContainer.innerHTML = '<p class="text-red-400/50">שגיאה בחיבור ליוטיוב.</p>';
+            videoContainer.innerHTML = '<p class="text-red-400/50 col-span-full text-center">שגיאה בחיבור ליוטיוב.</p>';
         }
     }
 
-    function activateSite() { 
-        if (splash) { 
-            splash.style.opacity = '0'; 
-            setTimeout(() => { 
-                splash.style.display = 'none'; 
-                mainContent.classList.add('visible'); 
-                if (spotlight) spotlight.style.display = 'block'; 
-            }, 500); 
-        } 
+    function activateSite() {
+        if (splash) {
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+                mainContent.classList.add('visible');
+                if (spotlight) spotlight.style.display = 'block';
+            }, 500);
+        }
     }
 
     document.addEventListener('mousemove', (e) => {
@@ -126,7 +125,7 @@
     // הפעלה ברגע שהדף נטען
     window.addEventListener('load', () => {
         activateSite();
-        fetchVideos(); 
+        fetchVideos();
     });
 
     setTimeout(activateSite, 1000);
