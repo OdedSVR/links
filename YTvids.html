@@ -18,12 +18,14 @@
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.05);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      width: 100%;
+      /* Removed width: 100%; as grid will handle it. */
       display: flex;
       align-items: center;
       text-align: right;
       position: relative;
       z-index: 10;
+      padding: 1.5rem; /* Increased padding */
+      height: 100%; /* Ensure it fills the grid cell vertically */
     }
     .video-row:hover {
       background: rgba(30, 41, 59, 0.85);
@@ -43,7 +45,7 @@
 <body>
   <div id="spotlight"></div>
   <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/odedsvrlivelogo.jpg?raw=true" alt="Logo" class="splash-logo"></div>
-  <div id="main-page-content" class="flex flex-col items-center py-12 px-6">
+  <div id="main-page-content" class="flex flex-col items-center py-12 px-6" style="max-width: 1920px; min-height: 1080px; margin: 0 auto; box-sizing: border-box;">
     <nav class="w-full max-w-2xl bg-blue-900/30 backdrop-filter backdrop-blur-lg rounded-full p-2 mb-8 flex justify-center mx-auto z-20">
           <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-lg font-bold text-white hover:text-blue-300 transition duration-300 text-center">Home</a>
           <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-lg font-bold text-white hover:text-blue-300 transition duration-300 text-center">Recent YT Videos</a>
@@ -54,11 +56,11 @@
       <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">הסרטונים האחרונים בערוץ</p>
     </div>
 
-    <div id="video-container" class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div id="video-container" class="w-full grid grid-cols-1 md:grid-cols-4 gap-6" style="flex-grow: 1; display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); padding-bottom: 20px;">
         <p class="text-white/30 animate-pulse col-span-full text-center">טוען סרטונים...</p>
     </div>
 
-    <footer class="mt-16 text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
+    <footer class="mt-auto text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
   </div>
 
   <script>
@@ -75,7 +77,7 @@
     async function fetchVideos() {
         // המרת מזהה ערוץ למזהה פלייליסט העלאות
         const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
-        const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=15&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
+        const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=12&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
 
         try {
             const response = await fetch(url);
@@ -91,9 +93,9 @@
                     const thumbnail = item.snippet.thumbnails.high.url;
 
                     const videoRow = `
-                        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-row p-4 rounded-xl">
-                            <img src="${thumbnail}" class="h-16 w-28 object-cover rounded-lg ml-6">
-                            <div class="flex-1 text-lg font-bold text-white hover:text-blue-400 transition-colors text-right">${title}</div>
+                        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-row rounded-xl">
+                            <img src="${thumbnail}" class="w-36 h-24 object-cover rounded-lg ml-6">
+                            <div class="flex-1 text-base font-bold text-white hover:text-blue-400 transition-colors text-right">${title}</div>
                         </a>
                     `;
                     videoContainer.innerHTML += videoRow;
