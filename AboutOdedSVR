@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OdedSVR | About Me</title>
+  <link rel="icon" type="image/png" href="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: #0a0f1e;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+      color: white; min-height: 100vh; margin: 0; overflow-x: hidden; position: relative;
+    }
+    #spotlight { position: fixed; top: 0; left: 0; width: 400px; height: 400px; background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; }
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-4px) scale(1.01);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px -10px var(--shadow);
+    }
+    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.8s ease; }
+    #main-page-content.visible { opacity: 1; visibility: visible; }
+    .grid-container {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+      width: 100%; max-width: 950px; margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } }
+    #splash-screen { position: fixed; inset: 0; background: #0a0f1e; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease; }
+    .stat-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 8px 0; }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-label { color: rgba(255,255,255,0.5); font-size: 0.75rem; font-weight: 700; }
+    .stat-value { color: white; font-weight: 800; font-size: 0.85rem; text-align: left; }
+  </style>
+</head>
+<body>
+  <div id="spotlight"></div>
+  <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" class="w-20 animate-pulse"></div>
+
+  <div id="main-page-content" class="flex flex-col items-center px-6 py-8">
+    <nav class="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-1 mb-8 flex z-20">
+        <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-xs font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
+        <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-xs font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Recent YT Videos</a>
+    </nav>
+
+    <div class="text-center mb-10">
+      <div class="relative inline-block">
+        <img src="https://github.com/OdedSVR/images/blob/main/ODEDSVR.jpeg?raw=true" class="w-20 h-20 rounded-2xl mx-auto border border-white/20 shadow-2xl mb-4 rotate-3">
+        <div class="absolute bottom-3 right-0 w-4 h-4 bg-emerald-500 border-4 border-[#0a0f1e] rounded-full animate-pulse"></div>
+      </div>
+      <h1 class="text-4xl font-black tracking-tighter text-white">About Me</h1>
+      <p class="text-sm text-cyan-400 font-bold tracking-[0.3em] uppercase mt-2">Get to know OdedSVR</p>
+    </div>
+
+    <div class="grid-container">
+      <!-- Kick Stats -->
+      <div class="card rounded-2xl p-6" style="--accent: #06b6d4; --shadow: rgba(6, 182, 212, 0.3);">
+        <h2 class="text-cyan-400 font-black text-xs uppercase tracking-widest mb-4">• ביצועי שידור (Kick)</h2>
+        <div class="space-y-1">
+          <div class="stat-row"><span class="stat-label">דירוג עולמי</span><span class="stat-value">מקום #56 בפלטפורמה</span></div>
+          <div class="stat-row"><span class="stat-label">נתוני צפייה</span><span class="stat-value">2,200 ממוצע (שיא 3,200+)</span></div>
+          <div class="stat-row"><span class="stat-label">זמן חשיפה</span><span class="stat-value">11+ שעות בממוצע</span></div>
+          <div class="stat-row"><span class="stat-label">קהילה</span><span class="stat-value">4,400 חברי מועדון (שיא ישראלי)</span></div>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="card rounded-2xl p-6" style="--accent: #8b5cf6; --shadow: rgba(139, 92, 246, 0.3);">
+        <h2 class="text-purple-400 font-black text-xs uppercase tracking-widest mb-4">• הישגים ושיתופי פעולה</h2>
+        <div class="space-y-1">
+          <div class="stat-row"><span class="stat-label">תארים</span><span class="stat-value">סטרימר השנה '25 (מועמד '26)</span></div>
+          <div class="stat-row"><span class="stat-label">הכרה בינלאומית</span><span class="stat-value">Top 100 MMO (נציג יחיד)</span></div>
+          <div class="stat-row"><span class="stat-label">שותפויות</span><span class="stat-value">Epic, Libero, Animanga</span></div>
+          <div class="stat-row"><span class="stat-label">ביצועים עסקיים</span><span class="stat-value">כ-580,000₪ (Libero)</span></div>
+        </div>
+      </div>
+
+      <!-- Multi-Platform -->
+      <div class="card rounded-2xl p-6" style="--accent: #3b82f6; --shadow: rgba(59, 130, 246, 0.3);">
+        <h2 class="text-blue-400 font-black text-xs uppercase tracking-widest mb-4">• Multi-Platform</h2>
+        <div class="space-y-1">
+          <div class="stat-row"><span class="stat-label">סה"כ עוקבים</span><span class="stat-value">150,000+ בכל הרשתות</span></div>
+          <div class="stat-row"><span class="stat-label">YouTube חודשי</span><span class="stat-value">1.1M צפיות / 224K שעות</span></div>
+          <div class="stat-row"><span class="stat-label">Engagement</span><span class="stat-value">12:43 דק' / 71% חוזרים</span></div>
+          <div class="stat-row"><span class="stat-label">ויראליות</span><span class="stat-value">ערוץ הקליפים המוביל בישראל</span></div>
+        </div>
+      </div>
+
+      <!-- Demographics -->
+      <div class="card rounded-2xl p-6" style="--accent: #10b981; --shadow: rgba(16, 185, 129, 0.3);">
+        <h2 class="text-emerald-400 font-black text-xs uppercase tracking-widest mb-4">• קהל יעד ודמוגרפיה</h2>
+        <div class="space-y-1">
+          <div class="stat-row"><span class="stat-label">לוקאליות</span><span class="stat-value">95.9% ישראל</span></div>
+          <div class="stat-row"><span class="stat-label">חתך גילאים</span><span class="stat-value">25–34 (38.6%) / 18–24 (17.9%)</span></div>
+          <div class="stat-row"><span class="stat-label">תחומי עניין</span><span class="stat-value">גיימינג, טכנולוגיה, אספנות</span></div>
+          <div class="stat-row"><span class="stat-label">סטטוס קהל</span><span class="stat-value">בוגר בעל כוח קנייה</span></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-auto pb-8 text-[10px] text-white/10 tracking-[0.5em] font-black uppercase">Project: OdedSVR © 2026 | PIKER_R</footer>
+  </div>
+
+  <script>
+    const spotlight = document.getElementById('spotlight');
+    const mainContent = document.getElementById('main-page-content');
+    const splash = document.getElementById('splash-screen');
+    function showPage() {
+      if (splash) splash.style.opacity = '0';
+      setTimeout(() => {
+        if (splash) splash.style.display = 'none';
+        if (mainContent) mainContent.classList.add('visible');
+      }, 500);
+    }
+    window.addEventListener('load', showPage);
+    setTimeout(showPage, 1500);
+    document.addEventListener('mousemove', (e) => {
+      if (spotlight) { spotlight.style.left = e.clientX + 'px'; spotlight.style.top = e.clientY + 'px'; }
+    });
+  </script>
+</body>
+</html>
