@@ -1,3 +1,4 @@
+%%html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -51,9 +52,7 @@
         <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-[10px] font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">VIDEOS</a>
     </nav>
     <div class="text-center mb-10 relative z-10">
-      <a href="https://www.youtube.com/@OdedSVRLive" target="_blank">
-        <img src="https://github.com/OdedSVR/images/blob/main/odedsvrlive%20logo.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover">
-      </a>
+      <img src="https://github.com/OdedSVR/images/blob/main/odedsvrlive%20logo.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover">
       <h1 class="text-4xl font-black text-white tracking-tight">Recent YouTube Videos</h1>
       <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">הסרטונים האחרונים בערוץ</p>
     </div>
@@ -71,7 +70,7 @@
     const CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
     async function fetchVideos() {
         const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
-        const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;_{
+        const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
         try {
             const response = await fetch(url); const data = await response.json();
             if (data.items && data.items.length > 0) {
