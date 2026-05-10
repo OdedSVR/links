@@ -1,0 +1,90 @@
+%%html
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OdedSVR | Info & Specs</title>
+  <link rel="icon" type="image/png" href="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%), radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%), radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%), #0f172a;
+      min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden; color: white; position: relative;
+    }
+    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; }
+    .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); }
+    #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
+    #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; }
+  </style>
+</head>
+<body>
+  <div id="spotlight"></div>
+  <div class="flex flex-col items-center px-6 py-12">
+    <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto">
+        <a href="#" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
+        <a href="#" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
+    </nav>
+
+    <div class="text-center mb-10 relative z-10">
+      <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
+      <h1 class="text-4xl font-black text-white tracking-tight">Oded SVR</h1>
+      <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Specs & Commands</p>
+    </div>
+
+    <div class="w-full max-w-4xl space-y-6 relative z-10">
+      <a href="https://botrix.live/k/odedsvr/leaderboard" target="_blank" class="card block rounded-xl text-center hover:border-cyan-500/40">
+        <div class="text-2xl font-black text-cyan-400">🏆 LEADERBOARD 🏆</div>
+        <p class="text-xs text-cyan-200/60 font-bold mt-1 uppercase">צפו במובילים של הערוץ</p>
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card rounded-xl">
+          <h2 class="text-xl font-black text-purple-400 mb-4 border-b border-purple-400/20 pb-2">🖥️ My Setup</h2>
+          <ul class="text-sm space-y-2 text-gray-300 font-bold">
+            <li>• Intel Core i7 14700KF</li>
+            <li>• NVIDIA GeForce RTX 5070Ti</li>
+            <li>• Corsair 32GB DDR5 Ram</li>
+            <li>• B760 Motherboard</li>
+            <li>• Steelseries Apex7 Keyboard</li>
+            <li>• RAZER Basilisk X Mouse</li>
+            <li>• Elgato Wave 3 Microphone</li>
+            <li>• HyperX Cloud Stinger 2 Wireless</li>
+          </ul>
+        </div>
+
+        <div class="card rounded-xl">
+          <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2">💬 Chat Commands (Kick)</h2>
+          <div class="space-y-4">
+            <div>
+              <div class="text-green-300 font-black text-lg">!watchtime</div>
+              <div class="text-xs text-gray-400">זמן צפייה כולל בלייבים</div>
+            </div>
+            <div>
+              <div class="text-green-300 font-black text-lg">!followage</div>
+              <div class="text-xs text-gray-400">כמה זמן את/ה עוקבים אחרי עודד בקיק</div>
+            </div>
+            <div>
+              <div class="text-green-300 font-black text-lg">!clip</div>
+              <div class="text-xs text-gray-400">לעשות קליפ לחצי דקה אחרונה בלייב</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="mt-12 text-[9px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
+  </div>
+
+  <script>
+    const spotlight = document.getElementById('spotlight');
+    document.addEventListener('mousemove', (e) => {
+      if (spotlight) {
+        spotlight.style.left = e.clientX + 'px';
+        spotlight.style.top = e.clientY + 'px';
+      }
+    });
+  </script>
+</body>
+</html>
