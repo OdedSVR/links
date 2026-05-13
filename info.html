@@ -29,6 +29,11 @@
     #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; } 
     #main-page-content.visible { opacity: 1; visibility: visible; }
     .text-glow { text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); }
+    
+    .copy-btn { opacity: 0.5; transition: all 0.2s; cursor: pointer; }
+    .copy-btn:hover { opacity: 1; transform: scale(1.1); }
+    .copy-btn:active { transform: scale(0.9); }
+    .copy-success { filter: hue-rotate(90deg) brightness(1.5) !important; }
   </style>
 </head>
 <body>
@@ -62,19 +67,31 @@
           <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2 font-mono">💬 Chat Commands (Kick)</h2>
           <div class="space-y-4">
             <div>
-              <div class="text-white font-black text-lg text-glow font-mono">watchtime!</div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">watchtime!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('watchtime!', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
               <div class="text-sm text-gray-400 font-mono">Total Watchtime On LiveStreams</div>
             </div>
             <div>
-              <div class="text-white font-black text-lg text-glow font-mono">followage!</div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">followage!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('followage!', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
               <div class="text-sm text-gray-400 font-mono">Total Follow Time On Kick</div>
             </div>
             <div>
-              <div class="text-white font-black text-lg text-glow font-mono">clip!</div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">clip!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('clip!', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
               <div class="text-sm text-gray-400 font-mono">Clip The Last 30 Seconds</div>
             </div>
-           <div>
-              <div class="text-white font-black text-lg text-glow font-mono">discord!</div>
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">discord!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('discord!', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
               <div class="text-sm text-gray-400 font-mono">Get a Link For The Discord Server</div>
             </div>
           </div>
@@ -99,6 +116,13 @@
   </div>
 
   <script>
+    function copyCmd(text, el) {
+      navigator.clipboard.writeText(text).then(() => {
+        el.classList.add('copy-success');
+        setTimeout(() => el.classList.remove('copy-success'), 1000);
+      });
+    }
+
     const spotlight = document.getElementById('spotlight');
     const mainContent = document.getElementById('main-page-content');
     const splash = document.getElementById('splash-screen');
