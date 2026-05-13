@@ -101,33 +101,36 @@
       }
     };
 
-    async function fetchLeaderboardData() {
-      // שימוש ב-CORS Proxy שונה ליתר ביטחון
-      const targetUrl = 'https://kick.com/api/v2/channels/odedsvr/leaderboards';
-      const apiUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
-
-      try {
-        const response = await fetch(apiUrl);
-        const jsonWrapper = await response.json();
-        const data = JSON.parse(jsonWrapper.contents);
-        
-        console.log("Kick API Data:", data); // לבדיקה בקונסול
-
-        // טיפול ב-Sub Gifts
-        const weeklyGifts = data.sub_gifts?.weekly || [];
-        renderTable('weekly-gifters-table-container', weeklyGifts, 'Gifter', 'gifter-username', 'quantity');
-
-        // טיפול ב-Kickers
-        const weeklyKickers = data.kickers?.weekly || [];
-        renderTable('weekly-kickers-table-container', weeklyKickers, 'Kicker', 'kicker-username', 'score');
-
-      } catch (error) {
-        console.error('Error:', error);
-        const errorMsg = '<p class="text-red-400 text-xs">Error loading data</p>';
-        document.getElementById('weekly-gifters-table-container').innerHTML = errorMsg;
-        document.getElementById('weekly-kickers-table-container').innerHTML = errorMsg;
+async function fetchLeaderboardData() {
+  try {
+    // נתוני דמה לבדיקה
+    const mockData = {
+      sub_gifts: {
+        weekly: [
+          { username: 'Oded_Fan', quantity: 50 },
+          { username: 'King_Piker', quantity: 30 }
+        ]
+      },
+      kickers: {
+        weekly: [
+          { username: 'Donator1', score: 1000 },
+          { username: 'LuckyGuy', score: 500 }
+        ]
       }
-    }
+    };
+
+    console.log("Using Mock Data:", mockData);
+
+    const weeklyGifts = mockData.sub_gifts?.weekly || [];
+    renderTable('weekly-gifters-table-container', weeklyGifts, 'Gifter', 'gifter-username', 'quantity');
+
+    const weeklyKickers = mockData.kickers?.weekly || [];
+    renderTable('weekly-kickers-table-container', weeklyKickers, 'Kicker', 'kicker-username', 'score');
+
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
 
     function renderTable(containerId, items, label, colorClass, valueField) {
       const container = document.getElementById(containerId);
