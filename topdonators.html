@@ -21,12 +21,15 @@
     #char-right { right: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png?raw=true'); animation: swayCharacter 10s ease-in-out infinite; }
     #char-left { left: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png?raw=true'); animation: swimDolphin 14s ease-in-out infinite; }
     #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; display: none; }
+    
     .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; text-align: center; }
     .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); }
+    
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
     #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
     .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
     @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
+    
     #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; }
     #main-page-content.visible { opacity: 1; visibility: visible; }
 
@@ -46,6 +49,7 @@
   <div id="spotlight"></div>
 
   <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div>
+  
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
     <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto">
         <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
@@ -66,13 +70,13 @@
       <div class="card rounded-xl">
         <h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 Weekly Top Gifter 🏆</h2>
         <div id="weekly-gifters-table-container">
-          <p class="text-sm text-gray-300">Loading Weekly Top Gifters...</p>
+          <p class="text-sm text-gray-300">Loading...</p>
         </div>
       </div>
       <div class="card rounded-xl">
         <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2">🦶 Weekly Top Kickers 🦶</h2>
         <div id="weekly-kickers-table-container">
-          <p class="text-sm text-gray-300">Loading Weekly Top Kickers...</p>
+          <p class="text-sm text-gray-300">Loading...</p>
         </div>
       </div>
     </div>
@@ -98,78 +102,63 @@
     };
 
     async function fetchLeaderboardData() {
-      // שימוש ב-Proxy כדי לעקוף חסימת CORS ו-Cloudflare
+      // שימוש ב-CORS Proxy שונה ליתר ביטחון
       const targetUrl = 'https://kick.com/api/v2/channels/odedsvr/leaderboards';
-      const apiUrl = 'https://corsproxy.io/?' + encodeURIComponent(targetUrl);
+      const apiUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
 
       try {
         const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error('API request failed');
+        const jsonWrapper = await response.json();
+        const data = JSON.parse(jsonWrapper.contents);
         
-        const data = await response.json();
-        
-        // תיקון שמות השדות: בקיק זה sub_gifts ולא gifters
-        if (data.sub_gifts && data.sub_gifts.weekly) {
-            renderWeeklyGiftersTable(data.sub_gifts.weekly);
-        } else {
-            document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-gray-400 italic">No data this week</p>';
-        }
+        console.log("Kick API Data:", data); // לבדיקה בקונסול
 
-        if (data.kickers && data.kickers.weekly) {
-            renderWeeklyKickersTable(data.kickers.weekly);
-        } else {
-            document.getElementById('weekly-kickers-table-container').innerHTML = '<p class="text-gray-400 italic">No data this week</p>';
-        }
+        // טיפול ב-Sub Gifts
+        const weeklyGifts = data.sub_gifts?.weekly || [];
+        renderTable('weekly-gifters-table-container', weeklyGifts, 'Gifter', 'gifter-username', 'quantity');
+
+        // טיפול ב-Kickers
+        const weeklyKickers = data.kickers?.weekly || [];
+        renderTable('weekly-kickers-table-container', weeklyKickers, 'Kicker', 'kicker-username', 'score');
 
       } catch (error) {
-        console.error('Error fetching leaderboard data:', error);
-        document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-red-400">Failed to load data.</p>';
-        document.getElementById('weekly-kickers-table-container').innerHTML = '<p class="text-red-400">Failed to load data.</p>';
+        console.error('Error:', error);
+        const errorMsg = '<p class="text-red-400 text-xs">Error loading data</p>';
+        document.getElementById('weekly-gifters-table-container').innerHTML = errorMsg;
+        document.getElementById('weekly-kickers-table-container').innerHTML = errorMsg;
       }
     }
 
-    function renderWeeklyGiftersTable(gifters) {
-      const container = document.getElementById('weekly-gifters-table-container');
-      if (!gifters || gifters.length === 0) {
-        container.innerHTML = '<p class="text-gray-400 italic">No weekly top gifters found.</p>';
+    function renderTable(containerId, items, label, colorClass, valueField) {
+      const container = document.getElementById(containerId);
+      
+      if (!items || items.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 italic text-sm">No data for this week</p>';
         return;
       }
 
-      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>Gifter</th><th>Gifts</th></tr></thead><tbody>';
-      gifters.forEach((gifter, index) => {
+      let tableHtml = `<table class="donators-table">
+        <thead><tr><th>#</th><th>${label}</th><th>Count</th></tr></thead>
+        <tbody>`;
+      
+      items.forEach((item, index) => {
+        // מחפש את הערך בכמה שדות אפשריים למקרה שקיק שינו שמות
+        const val = item[valueField] || item.total_amount || item.amount || 0;
+        
         tableHtml += `
           <tr>
             <td>${index + 1}</td>
-            <td class="gifter-username">${gifter.username}</td>
-            <td>${gifter.total_amount}</td>
+            <td class="${colorClass}">${item.username || 'Unknown'}</td>
+            <td class="font-mono text-white/80">${val}</td>
           </tr>
         `;
       });
+      
       tableHtml += '</tbody></table>';
       container.innerHTML = tableHtml;
     }
 
-    function renderWeeklyKickersTable(kickers) {
-      const container = document.getElementById('weekly-kickers-table-container');
-      if (!kickers || kickers.length === 0) {
-        container.innerHTML = '<p class="text-gray-400 italic">No weekly top kickers found.</p>';
-        return;
-      }
-
-      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>Kicker</th><th>Score</th></tr></thead><tbody>';
-      kickers.forEach((kicker, index) => {
-        tableHtml += `
-          <tr>
-            <td>${index + 1}</td>
-            <td class="kicker-username">${kicker.username}</td>
-            <td>${kicker.score}</td>
-          </tr>
-        `;
-      });
-      tableHtml += '</tbody></table>';
-      container.innerHTML = tableHtml;
-    }
-
+    // ניהול עכבר ואפקטים
     document.addEventListener('mousemove', (e) => {
       if (spotlight) {
         spotlight.style.left = e.clientX + 'px';
@@ -185,8 +174,6 @@
       activateSite();
       fetchLeaderboardData();
     });
-
-    setTimeout(activateSite, 500);
   </script>
 </body>
 </html>
