@@ -98,40 +98,40 @@
     };
 
     async function fetchLeaderboardData() {
-      const apiUrl = 'https://kick.com/api/v2/channels/odedsvr/leaderboards';
+      // שימוש ב-Proxy כדי לעקוף חסימת CORS ו-Cloudflare
+      const targetUrl = 'https://kick.com/api/v2/channels/odedsvr/leaderboards';
+      const apiUrl = 'https://corsproxy.io/?' + encodeURIComponent(targetUrl);
+
       try {
         const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status} ${response.statusText}`);
-        }
+        if (!response.ok) throw new Error('API request failed');
+        
         const data = await response.json();
-        console.log('API Response Data:', data); // Log the data to inspect its structure
-
-        if (data && data.gifters && data.gifters.weekly) {
-          renderWeeklyGiftersTable(data.gifters.weekly);
+        
+        // תיקון שמות השדות: בקיק זה sub_gifts ולא gifters
+        if (data.sub_gifts && data.sub_gifts.weekly) {
+            renderWeeklyGiftersTable(data.sub_gifts.weekly);
         } else {
-          document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-gray-400">No weekly top gifters data available.</p>';
-          console.warn('Weekly gifters data not found or malformed in API response.');
+            document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-gray-400 italic">No data this week</p>';
         }
 
-        if (data && data.kickers && data.kickers.weekly) {
-          renderWeeklyKickersTable(data.kickers.weekly);
+        if (data.kickers && data.kickers.weekly) {
+            renderWeeklyKickersTable(data.kickers.weekly);
         } else {
-          document.getElementById('weekly-kickers-table-container').innerHTML = '<p class="text-gray-400">No weekly top kickers data available.</p>';
-          console.warn('Weekly kickers data not found or malformed in API response.');
+            document.getElementById('weekly-kickers-table-container').innerHTML = '<p class="text-gray-400 italic">No data this week</p>';
         }
 
       } catch (error) {
         console.error('Error fetching leaderboard data:', error);
-        document.getElementById('weekly-gifters-table-container').innerHTML = `<p class="text-red-400">Failed to load gifters: ${error.message}</p>`;
-        document.getElementById('weekly-kickers-table-container').innerHTML = `<p class="text-red-400">Failed to load kickers: ${error.message}</p>`;
+        document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-red-400">Failed to load data.</p>';
+        document.getElementById('weekly-kickers-table-container').innerHTML = '<p class="text-red-400">Failed to load data.</p>';
       }
     }
 
     function renderWeeklyGiftersTable(gifters) {
       const container = document.getElementById('weekly-gifters-table-container');
       if (!gifters || gifters.length === 0) {
-        container.innerHTML = '<p class="text-gray-400">No weekly top gifters found.</p>';
+        container.innerHTML = '<p class="text-gray-400 italic">No weekly top gifters found.</p>';
         return;
       }
 
@@ -141,7 +141,7 @@
           <tr>
             <td>${index + 1}</td>
             <td class="gifter-username">${gifter.username}</td>
-            <td>${gifter.total_amount_display}</td>
+            <td>${gifter.total_amount}</td>
           </tr>
         `;
       });
@@ -152,17 +152,17 @@
     function renderWeeklyKickersTable(kickers) {
       const container = document.getElementById('weekly-kickers-table-container');
       if (!kickers || kickers.length === 0) {
-        container.innerHTML = '<p class="text-gray-400">No weekly top kickers found.</p>';
+        container.innerHTML = '<p class="text-gray-400 italic">No weekly top kickers found.</p>';
         return;
       }
 
-      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>Kicker</th><th>Kicks</th></tr></thead><tbody>';
+      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>Kicker</th><th>Score</th></tr></thead><tbody>';
       kickers.forEach((kicker, index) => {
         tableHtml += `
           <tr>
             <td>${index + 1}</td>
             <td class="kicker-username">${kicker.username}</td>
-            <td>${kicker.total_amount_display}</td>
+            <td>${kicker.score}</td>
           </tr>
         `;
       });
@@ -180,10 +180,12 @@
       if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
       if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
     });
+
     window.addEventListener('load', () => {
       activateSite();
-      fetchLeaderboardData(); // Fetch data when the page loads
+      fetchLeaderboardData();
     });
+
     setTimeout(activateSite, 500);
   </script>
 </body>
