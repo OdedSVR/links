@@ -14,11 +14,9 @@
       min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden; color: white; position: relative;
     }
     
-    /* אנימציות קיימות */
     @keyframes swayCharacter { 0%, 100% { transform: translate(0, -50%) rotate(20deg) scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2)); } 50% { transform: translate(-10px, -52%) rotate(21deg) scale(1.02); filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.4)); } }
     @keyframes swimDolphin { 0%, 100% { transform: translate(0, -50%) rotate(-20deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 50% { transform: translate(10px, -48%) rotate(-19deg) scale(1.03); filter: drop-shadow(0 0 40px rgba(6, 182, 212, 0.4)); } }
     
-    /* אנימציית חץ משופרת */
     @keyframes bounceArrow {
       0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
       40% {transform: translateX(-50%) translateY(-12px);}
@@ -31,9 +29,9 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 100;
-      pointer-events: none;
+      cursor: pointer; 
+      pointer-events: auto; 
       animation: bounceArrow 2s infinite;
-      /* עיצוב בולט יותר */
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.2);
@@ -43,7 +41,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: opacity 0.4s ease, visibility 0.4s;
+      transition: opacity 0.4s ease, visibility 0.4s, transform 0.2s ease;
+    }
+
+    .scroll-indicator:hover {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
     }
 
     #char-right, #char-left { position: fixed; top: 60%; width: 800px; height: 1120px; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.35; z-index: 1; pointer-events: none; transition: transform 0.2s ease-out; }
@@ -65,7 +68,6 @@
   <div id="char-left"></div>
   <div id="spotlight"></div>
   
-  <!-- חץ בולט יותר -->
   <div class="scroll-indicator" id="scrollIndicator">
     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 256 256" style="filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));">
       <path d="M128,180a8,8,0,0,1-5.66-2.34l-80-80a8,8,0,0,1,11.32-11.32L128,160.69l74.34-74.35a8,8,0,0,1,11.32,11.32l-80,80A8,8,0,0,1,128,180Z"></path>
@@ -87,7 +89,7 @@
       <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Official Links</p>
     </div>
     
-    <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto relative z-10" dir="ltr">
+    <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto relative z-10" id="links-grid" dir="ltr">
       <a href="https://www.animanga-israel.com/" target="_blank" class="card block rounded-xl p-6 text-center hover:border-yellow-500/40" dir="rtl">
         <div class="text-xl font-black text-yellow-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/%D7%90%D7%A0%D7%99%D7%9E%D7%A0%D7%92%D7%94.png?raw=true" class="h-8 w-8 ml-2"> ANIMANGA ISRAEL</div>
         <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1"><span class="text-xs text-yellow-200 font-bold uppercase tracking-wider">קוד: OSVR10</span></div>
@@ -134,6 +136,13 @@
       const x = (window.innerWidth - e.pageX * 2) / 100; const y = (window.innerHeight - e.pageY * 2) / 100;
       if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
       if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
+    });
+
+    scrollIndicator.addEventListener('click', () => {
+      window.scrollTo({
+        top: 450,
+        behavior: 'smooth'
+      });
     });
 
     window.addEventListener('scroll', () => {
