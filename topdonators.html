@@ -101,36 +101,34 @@
       }
     };
 
-async function fetchLeaderboardData() {
-  try {
-    // נתוני דמה לבדיקה
-    const mockData = {
-      sub_gifts: {
-        weekly: [
-          { username: 'Oded_Fan', quantity: 50 },
-          { username: 'King_Piker', quantity: 30 }
-        ]
-      },
-      kickers: {
-        weekly: [
-          { username: 'Donator1', score: 1000 },
-          { username: 'LuckyGuy', score: 500 }
-        ]
+    async function fetchLeaderboardData() {
+      // שימוש ב-Proxy שונה (corsproxy.io) שלפעמים עוקף את Cloudflare טוב יותר
+      const targetUrl = 'https://kick.com/api/v2/channels/odedsvr/leaderboards';
+      const apiUrl = 'https://corsproxy.io/?' + encodeURIComponent(targetUrl);
+
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        const data = await response.json();
+        console.log("Kick API Data Success:", data);
+
+        // טיפול ב-Sub Gifts
+        const weeklyGifts = data.sub_gifts?.weekly || [];
+        renderTable('weekly-gifters-table-container', weeklyGifts, 'Gifter', 'gifter-username', 'quantity');
+
+        // טיפול ב-Kickers
+        const weeklyKickers = data.kickers?.weekly || [];
+        renderTable('weekly-kickers-table-container', weeklyKickers, 'Kicker', 'kicker-username', 'score');
+
+      } catch (error) {
+        console.error('Fetch Error:', error);
+        // הצגת הודעה ידידותית למשתמש במקום שגיאה גולמית
+        const errorMsg = '<p class="text-gray-400 text-xs italic">Leaderboard temporarily unavailable due to Kick.com API restrictions.</p>';
+        document.getElementById('weekly-gifters-table-container').innerHTML = errorMsg;
+        document.getElementById('weekly-kickers-table-container').innerHTML = errorMsg;
       }
-    };
-
-    console.log("Using Mock Data:", mockData);
-
-    const weeklyGifts = mockData.sub_gifts?.weekly || [];
-    renderTable('weekly-gifters-table-container', weeklyGifts, 'Gifter', 'gifter-username', 'quantity');
-
-    const weeklyKickers = mockData.kickers?.weekly || [];
-    renderTable('weekly-kickers-table-container', weeklyKickers, 'Kicker', 'kicker-username', 'score');
-
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
+    }
 
     function renderTable(containerId, items, label, colorClass, valueField) {
       const container = document.getElementById(containerId);
@@ -145,9 +143,7 @@ async function fetchLeaderboardData() {
         <tbody>`;
       
       items.forEach((item, index) => {
-        // מחפש את הערך בכמה שדות אפשריים למקרה שקיק שינו שמות
         const val = item[valueField] || item.total_amount || item.amount || 0;
-        
         tableHtml += `
           <tr>
             <td>${index + 1}</td>
