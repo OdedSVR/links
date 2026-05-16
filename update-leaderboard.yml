@@ -1,0 +1,41 @@
+name: Update Kick Leaderboard
+
+on:
+  schedule:
+    # מריץ את הסקריפט אוטומטית בכל שעה עגולה (לפי שעון UTC)
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    # מאפשר לך להריץ את העדכון גם ידנית בלחיצת כפתור מתוך גיטהאב
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. מוריד את הקוד של האתר מהמאגר לשרת של גיטהאב
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. מתקין את Node.js על השרת הווירטואלי
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    # 3. מתקין את הספריות הדרושות (Puppeteer)
+    - name: Install dependencies
+      run: npm install
+
+    # 4. מריץ את קובץ ה-JS שמושך את הנתונים ומעדכן את data.json
+    - name: Run Kick Scraper
+      run: node INDEX.js
+
+    # 5. לוקח את קובץ ה-data.json החדש שנוצר ודוחף אותו בחזרה לאתר שלך (Push)
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add data.json
+        git diff-index --quiet HEAD || git commit -m "השגת נתונים עדכניים מ-Kick [אוטומטי]"
+        git push
