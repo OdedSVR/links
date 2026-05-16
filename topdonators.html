@@ -84,4 +84,100 @@
     const mainContent = document.getElementById('main-page-content');
     const splash = document.getElementById('splash-screen');
     const charLeft = document.getElementById('char-left');
-    const char
+    const charRight = document.getElementById('char-right');
+
+    function activateSite() {
+      if (splash && splash.style.display !== 'none') {
+        splash.style.opacity = '0';
+        setTimeout(() => {
+          splash.style.display = 'none';
+          if (mainContent) mainContent.classList.add('visible');
+          if (spotlight) spotlight.style.display = 'block';
+        }, 300);
+      }
+    }
+
+    async function fetchLeaderboardData() {
+      const apiUrl = 'https://odedsvr.github.io/links/data.json';
+
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+
+        // טעינת הנתונים השבועיים (gifts_week)
+        if (data && data.gifts_week && data.gifts_week_enabled) {
+          renderTable('weekly-gifters-table-container', data.gifts_week, 'weekly-username');
+        } else {
+          document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-gray-400">Weekly data is currently disabled.</p>';
+        }
+
+        // טעינת נתוני כל הזמנים (gifts)
+        if (data && data.gifts && data.gifts_enabled) {
+          renderTable('alltime-gifters-table-container', data.gifts, 'alltime-username');
+        } else {
+          document.getElementById('alltime-gifters-table-container').innerHTML = '<p class="text-gray-400">All-time data is currently disabled.</p>';
+        }
+
+      } catch (error) {
+        console.error('Error fetching leaderboard data:', error);
+        if(document.getElementById('weekly-gifters-table-container')) {
+            document.getElementById('weekly-gifters-table-container').innerHTML = `<p class="text-red-400">שגיאה בטעינת הנתונים</p>`;
+        }
+        if(document.getElementById('alltime-gifters-table-container')) {
+            document.getElementById('alltime-gifters-table-container').innerHTML = `<p class="text-red-400">שגיאה בטעינת הנתונים</p>`;
+        }
+      }
+    }
+
+    function renderTable(containerId, users, usernameClass) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      if (!users || users.length === 0) {
+        container.innerHTML = '<p class="text-gray-400">No data found.</p>';
+        return;
+      }
+
+      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>שם משתמש</th><th>כמות</th></tr></thead><tbody>';
+      users.forEach((user, index) => {
+        tableHtml += `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="${usernameClass}">${user.username}</td>
+            <td>${user.quantity || 0}</td>
+          </tr>
+        `;
+      });
+      tableHtml += '</tbody></table>';
+      container.innerHTML = tableHtml;
+    }
+
+    // מעקב עכבר לאפקטים
+    document.addEventListener('mousemove', (e) => {
+      if (spotlight) {
+        spotlight.style.left = e.clientX + 'px';
+        spotlight.style.top = e.clientY + 'px';
+      }
+      const x = (window.innerWidth - e.pageX * 2) / 100;
+      const y = (window.innerHeight - e.pageY * 2) / 100;
+      if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
+      if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
+    });
+    
+    // הפעלה מיידית ברגע שהקוד הבסיסי מוכן
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchLeaderboardData();
+      setTimeout(activateSite, 400); // פותח את האתר תוך 400 מילישניות בכל מקרה
+    });
+
+    // גיבוי למקרה שהאתר נטען סופר מהר
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      fetchLeaderboardData();
+      activateSite();
+    }
+  </script>
+</body>
+</html>
