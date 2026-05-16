@@ -98,20 +98,18 @@
     };
 
     async function fetchLeaderboardData() {
-      // שימוש בשרת פרוקסי חופשי כדי לעקוף חסימת CORS והגדרות בסיסיות של דפדפן
-      const targetUrl = 'https://kick.com/api/v2/channels/odedsvr/leaderboards';
-      const apiUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
+      // כאן הגדרנו את הכתובת הציבורית של קובץ ה-JSON שלך ב-GitHub Pages
+      const apiUrl = 'https://odedsvr.github.io/links/data.json';
 
       try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const proxyData = await response.json();
         
-        // אול-אוריג'ינס מחזיר את התשובה המקורית כמחרוזת בתוך שדה contents
-        const data = JSON.parse(proxyData.contents);
-        console.log('API Response Data:', data);
+        // שליפת הנתונים ישירות כ-JSON נקי (בלי צורך בפרוקסי)
+        const data = await response.json();
+        console.log('GitHub File Data:', data);
 
         if (data && data.gifters && data.gifters.weekly) {
           renderWeeklyGiftersTable(data.gifters.weekly);
@@ -127,8 +125,8 @@
 
       } catch (error) {
         console.error('Error fetching leaderboard data:', error);
-        document.getElementById('weekly-gifters-table-container').innerHTML = `<p class="text-red-400">Failed to load gifters: קצה פנימי חסום</p>`;
-        document.getElementById('weekly-kickers-table-container').innerHTML = `<p class="text-red-400">Failed to load kickers: קצה פנימי חסום</p>`;
+        document.getElementById('weekly-gifters-table-container').innerHTML = `<p class="text-red-400">Failed to load gifters: שגיאה בטעינת הנתונים</p>`;
+        document.getElementById('weekly-kickers-table-container').innerHTML = `<p class="text-red-400">Failed to load kickers: שגיאה בטעינת הנתונים</p>`;
       }
     }
 
@@ -184,6 +182,7 @@
       if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
       if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
     });
+    
     window.addEventListener('load', () => {
       activateSite();
       fetchLeaderboardData();
