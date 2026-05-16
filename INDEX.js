@@ -3,7 +3,10 @@ const fs = require('fs');
 
 (async () => {
   console.log("מפעיל דפדפן ומנסה למשוך נתונים...");
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ 
+    headless: true, // חייב להיות true בשרתים כמו GitHub Actions שאין להם מסך
+    args: ['--no-sandbox', '--disable-setuid-sandbox'] // פותר את השגיאה שקיבלת מקודם
+  });
   const page = await browser.newPage();
 
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
