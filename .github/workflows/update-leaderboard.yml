@@ -3,7 +3,7 @@ name: Update Kick Leaderboard
 on:
   schedule:
 # ⏱️ מריץ את האוטומציה בכל שעה עגולה (בדיוק בדקה ה-0)
-    - cron: '0 * * * *'
+    - cron: '2 * * * *'
   workflow_dispatch: # הבורג החסר שפותח את הכפתור הידני!
 
 permissions:
