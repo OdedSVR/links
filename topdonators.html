@@ -36,8 +36,8 @@
     .donators-table td { color: #ccc; }
     .donators-table tr:last-child td { border-bottom: none; }
     .donators-table tr:hover { background: rgba(255, 255, 255, 0.02); }
-    .gifter-username { color: #f97316; font-weight: bold; }
-    .kicker-username { color: #22c55e; font-weight: bold; }
+    .weekly-username { color: #f97316; font-weight: bold; }
+    .alltime-username { color: #22d3ee; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -64,15 +64,15 @@
 
     <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
       <div class="card rounded-xl">
-        <h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 Weekly Top Gifter 🏆</h2>
+        <h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 Weekly Top Gifters 🏆</h2>
         <div id="weekly-gifters-table-container">
           <p class="text-sm text-gray-300">Loading Weekly Top Gifters...</p>
         </div>
       </div>
       <div class="card rounded-xl">
-        <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2">🦶 Weekly Top Kickers 🦶</h2>
-        <div id="weekly-kickers-table-container">
-          <p class="text-sm text-gray-300">Loading Weekly Top Kickers...</p>
+        <h2 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2">👑 All-Time Top Gifters 👑</h2>
+        <div id="alltime-gifters-table-container">
+          <p class="text-sm text-gray-300">Loading All-Time Top Gifters...</p>
         </div>
       </div>
     </div>
@@ -84,110 +84,4 @@
     const mainContent = document.getElementById('main-page-content');
     const splash = document.getElementById('splash-screen');
     const charLeft = document.getElementById('char-left');
-    const charRight = document.getElementById('char-right');
-
-    function activateSite() {
-      if (splash) {
-        splash.style.opacity = '0';
-        setTimeout(() => {
-          splash.style.display = 'none';
-          mainContent.classList.add('visible');
-          if (spotlight) spotlight.style.display = 'block';
-        }, 300);
-      }
-    };
-
-    async function fetchLeaderboardData() {
-      // כאן הגדרנו את הכתובת הציבורית של קובץ ה-JSON שלך ב-GitHub Pages
-      const apiUrl = 'https://odedsvr.github.io/links/data.json';
-
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        // שליפת הנתונים ישירות כ-JSON נקי (בלי צורך בפרוקסי)
-        const data = await response.json();
-        console.log('GitHub File Data:', data);
-
-        if (data && data.gifters && data.gifters.weekly) {
-          renderWeeklyGiftersTable(data.gifters.weekly);
-        } else {
-          document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-gray-400">No weekly top gifters data available.</p>';
-        }
-
-        if (data && data.kickers && data.kickers.weekly) {
-          renderWeeklyKickersTable(data.kickers.weekly);
-        } else {
-          document.getElementById('weekly-kickers-table-container').innerHTML = '<p class="text-gray-400">No weekly top kickers data available.</p>';
-        }
-
-      } catch (error) {
-        console.error('Error fetching leaderboard data:', error);
-        document.getElementById('weekly-gifters-table-container').innerHTML = `<p class="text-red-400">Failed to load gifters: שגיאה בטעינת הנתונים</p>`;
-        document.getElementById('weekly-kickers-table-container').innerHTML = `<p class="text-red-400">Failed to load kickers: שגיאה בטעינת הנתונים</p>`;
-      }
-    }
-
-    function renderWeeklyGiftersTable(gifters) {
-      const container = document.getElementById('weekly-gifters-table-container');
-      if (!gifters || gifters.length === 0) {
-        container.innerHTML = '<p class="text-gray-400">No weekly top gifters found.</p>';
-        return;
-      }
-
-      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>Gifter</th><th>Gifts</th></tr></thead><tbody>';
-      gifters.forEach((gifter, index) => {
-        tableHtml += `
-          <tr>
-            <td>${index + 1}</td>
-            <td class="gifter-username">${gifter.username}</td>
-            <td>${gifter.total_amount_display || gifter.count || 0}</td>
-          </tr>
-        `;
-      });
-      tableHtml += '</tbody></table>';
-      container.innerHTML = tableHtml;
-    }
-
-    function renderWeeklyKickersTable(kickers) {
-      const container = document.getElementById('weekly-kickers-table-container');
-      if (!kickers || kickers.length === 0) {
-        container.innerHTML = '<p class="text-gray-400">No weekly top kickers found.</p>';
-        return;
-      }
-
-      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>Kicker</th><th>Kicks</th></tr></thead><tbody>';
-      kickers.forEach((kicker, index) => {
-        tableHtml += `
-          <tr>
-            <td>${index + 1}</td>
-            <td class="kicker-username">${kicker.username}</td>
-            <td>${kicker.total_amount_display || kicker.count || 0}</td>
-          </tr>
-        `;
-      });
-      tableHtml += '</tbody></table>';
-      container.innerHTML = tableHtml;
-    }
-
-    document.addEventListener('mousemove', (e) => {
-      if (spotlight) {
-        spotlight.style.left = e.clientX + 'px';
-        spotlight.style.top = e.clientY + 'px';
-      }
-      const x = (window.innerWidth - e.pageX * 2) / 100;
-      const y = (window.innerHeight - e.pageY * 2) / 100;
-      if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
-      if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
-    });
-    
-    window.addEventListener('load', () => {
-      activateSite();
-      fetchLeaderboardData();
-    });
-    setTimeout(activateSite, 500);
-  </script>
-</body>
-</html>
+    const char
