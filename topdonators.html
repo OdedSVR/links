@@ -37,7 +37,7 @@
     .donators-table tr:last-child td { border-bottom: none; }
     .donators-table tr:hover { background: rgba(255, 255, 255, 0.02); }
     .weekly-username { color: #f97316; font-weight: bold; }
-    .kicker-username { color: #22c55e; font-weight: bold; }
+    .alltime-username { color: #22d3ee; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -70,9 +70,9 @@
         </div>
       </div>
       <div class="card rounded-xl">
-        <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2">🦶 Weekly Top Kickers 🦶</h2>
-        <div id="weekly-kickers-table-container">
-          <p class="text-sm text-gray-300">Loading Weekly Top Kickers...</p>
+        <h2 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2">👑 All-Time Top Gifters 👑</h2>
+        <div id="alltime-gifters-table-container">
+          <p class="text-sm text-gray-300">Loading All-Time Top Gifters...</p>
         </div>
       </div>
     </div>
@@ -108,19 +108,18 @@
         
         const data = await response.json();
 
-        // 1. טעינת תורמים שבועיים (מתוך gifts_week)
+        // טעינת הנתונים השבועיים (gifts_week)
         if (data && data.gifts_week && data.gifts_week_enabled) {
-          renderTable('weekly-gifters-table-container', data.gifts_week, 'weekly-username', 'מתנות');
+          renderTable('weekly-gifters-table-container', data.gifts_week, 'weekly-username');
         } else {
           document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-gray-400">Weekly data is currently disabled.</p>';
         }
 
-        // 2. טעינת בועטים שבועיים (מוכן לקרוא מתוך kickers_week או kickers ברגע שתגדיר בסקריפט)
-        const kickersData = data.kickers_week || data.kickers;
-        if (data && kickersData) {
-          renderTable('weekly-kickers-table-container', kickersData, 'kicker-username', 'בעיטות');
+        // טעינת נתוני כל הזמנים (gifts)
+        if (data && data.gifts && data.gifts_enabled) {
+          renderTable('alltime-gifters-table-container', data.gifts, 'alltime-username');
         } else {
-          document.getElementById('weekly-kickers-table-container').innerHTML = '<p class="text-gray-400/60 text-sm">הנתונים לא נמצאו ב-data.json<br><span class="text-[11px] text-gray-500">יש לעדכן את הבוט שיוסיף את השדה kickers_week</span></p>';
+          document.getElementById('alltime-gifters-table-container').innerHTML = '<p class="text-gray-400">All-time data is currently disabled.</p>';
         }
 
       } catch (error) {
@@ -128,13 +127,13 @@
         if(document.getElementById('weekly-gifters-table-container')) {
             document.getElementById('weekly-gifters-table-container').innerHTML = `<p class="text-red-400">שגיאה בטעינת הנתונים</p>`;
         }
-        if(document.getElementById('weekly-kickers-table-container')) {
-            document.getElementById('weekly-kickers-table-container').innerHTML = `<p class="text-red-400">שגיאה בטעינת הנתונים</p>`;
+        if(document.getElementById('alltime-gifters-table-container')) {
+            document.getElementById('alltime-gifters-table-container').innerHTML = `<p class="text-red-400">שגיאה בטעינת הנתונים</p>`;
         }
       }
     }
 
-    function renderTable(containerId, users, usernameClass, valueName) {
+    function renderTable(containerId, users, usernameClass) {
       const container = document.getElementById(containerId);
       if (!container) return;
       if (!users || users.length === 0) {
@@ -142,13 +141,13 @@
         return;
       }
 
-      let tableHtml = `<table class="donators-table"><thead><tr><th>#</th><th>שם משתמש</th><th>${valueName}</th></tr></thead><tbody>`;
+      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>שם משתמש</th><th>כמות</th></tr></thead><tbody>';
       users.forEach((user, index) => {
         tableHtml += `
           <tr>
             <td>${index + 1}</td>
             <td class="${usernameClass}">${user.username}</td>
-            <td>${user.quantity || user.count || 0}</td>
+            <td>${user.quantity || 0}</td>
           </tr>
         `;
       });
@@ -156,7 +155,7 @@
       container.innerHTML = tableHtml;
     }
 
-    // אפקטים של תנועת עכבר ודמויות
+    // מעקב עכבר לאפקטים
     document.addEventListener('mousemove', (e) => {
       if (spotlight) {
         spotlight.style.left = e.clientX + 'px';
@@ -168,12 +167,13 @@
       if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
     });
     
-    // טעינה מהירה מבוססת תוכן הדף
+    // הפעלה מיידית ברגע שהקוד הבסיסי מוכן
     document.addEventListener('DOMContentLoaded', () => {
       fetchLeaderboardData();
-      setTimeout(activateSite, 400);
+      setTimeout(activateSite, 400); // פותח את האתר תוך 400 מילישניות בכל מקרה
     });
 
+    // גיבוי למקרה שהאתר נטען סופר מהר
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       fetchLeaderboardData();
       activateSite();
