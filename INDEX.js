@@ -1,4 +1,4 @@
-const puppeteer = await import('puppeteer');
+const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 (async () => {
