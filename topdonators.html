@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OdedSVR | Top Donators</title>
+  <link rel="icon" type="image/png" href="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%), radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%), radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%), #0f172a;
+      min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden; color: white; position: relative;
+    }
+
+    @keyframes swayCharacter { 0%, 100% { transform: translate(0, -50%) rotate(20deg) scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2)); } 50% { transform: translate(-10px, -52%) rotate(21deg) scale(1.02); filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.4)); } }
+    @keyframes swimDolphin { 0%, 100% { transform: translate(0, -50%) rotate(-20deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 50% { transform: translate(10px, -48%) rotate(-19deg) scale(1.03); filter: drop-shadow(0 0 40px rgba(6, 182, 212, 0.4)); } }
+
+    #char-right, #char-left { position: fixed; top: 60%; width: 800px; height: 1120px; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.35; z-index: 1; pointer-events: none; transition: transform 0.2s ease-out; }
+    #char-right { right: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png?raw=true'); animation: swayCharacter 10s ease-in-out infinite; }
+    #char-left { left: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png?raw=true'); animation: swimDolphin 14s ease-in-out infinite; }
+    #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; display: none; }
+    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; text-align: center; }
+    .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); }
+    #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
+    #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
+    .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
+    @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
+    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; }
+    #main-page-content.visible { opacity: 1; visibility: visible; }
+
+    .donators-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .donators-table th, .donators-table td { padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
+    .donators-table th { background: rgba(255, 255, 255, 0.05); font-weight: bold; color: white; }
+    .donators-table td { color: #ccc; }
+    .donators-table tr:last-child td { border-bottom: none; }
+    .donators-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+    .gifter-username { color: #f97316; font-weight: bold; }
+    .kicker-username { color: #22c55e; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div id="char-right"></div>
+  <div id="char-left"></div>
+  <div id="spotlight"></div>
+
+  <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div>
+  <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
+    <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto">
+        <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
+        <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Videos</a>
+        <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
+        <a href="#" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a>
+    </nav>
+
+    <div class="text-center mb-10 relative z-10">
+      <a href="https://www.youtube.com/@odedsvr95" target="_blank">
+        <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
+      </a>
+      <h1 class="text-4xl font-black text-white tracking-tight">Oded SVR</h1>
+      <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Top Donators</p>
+    </div>
+
+    <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+      <div class="card rounded-xl">
+        <h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 Weekly Top Gifter 🏆</h2>
+        <div id="weekly-gifters-table-container">
+          <p class="text-sm text-gray-300">Loading Weekly Top Gifters...</p>
+        </div>
+      </div>
+      <div class="card rounded-xl">
+        <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2">🦶 Weekly Top Kickers 🦶</h2>
+        <div id="weekly-kickers-table-container">
+          <p class="text-sm text-gray-300">Loading Weekly Top Kickers...</p>
+        </div>
+      </div>
+    </div>
+    <footer class="mt-12 text-[9px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
+  </div>
+
+  <script>
+    const spotlight = document.getElementById('spotlight');
+    const mainContent = document.getElementById('main-page-content');
+    const splash = document.getElementById('splash-screen');
+    const charLeft = document.getElementById('char-left');
+    const charRight = document.getElementById('char-right');
+
+    function activateSite() {
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(() => {
+          splash.style.display = 'none';
+          mainContent.classList.add('visible');
+          if (spotlight) spotlight.style.display = 'block';
+        }, 300);
+      }
+    };
+
+    async function fetchLeaderboardData() {
+      // שימוש בשרת פרוקסי חופשי כדי לעקוף חסימת CORS והגדרות בסיסיות של דפדפן
+      const targetUrl = 'https://kick.com/api/v2/channels/odedsvr/leaderboards';
+      const apiUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
+
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const proxyData = await response.json();
+        
+        // אול-אוריג'ינס מחזיר את התשובה המקורית כמחרוזת בתוך שדה contents
+        const data = JSON.parse(proxyData.contents);
+        console.log('API Response Data:', data);
+
+        if (data && data.gifters && data.gifters.weekly) {
+          renderWeeklyGiftersTable(data.gifters.weekly);
+        } else {
+          document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-gray-400">No weekly top gifters data available.</p>';
+        }
+
+        if (data && data.kickers && data.kickers.weekly) {
+          renderWeeklyKickersTable(data.kickers.weekly);
+        } else {
+          document.getElementById('weekly-kickers-table-container').innerHTML = '<p class="text-gray-400">No weekly top kickers data available.</p>';
+        }
+
+      } catch (error) {
+        console.error('Error fetching leaderboard data:', error);
+        document.getElementById('weekly-gifters-table-container').innerHTML = `<p class="text-red-400">Failed to load gifters: קצה פנימי חסום</p>`;
+        document.getElementById('weekly-kickers-table-container').innerHTML = `<p class="text-red-400">Failed to load kickers: קצה פנימי חסום</p>`;
+      }
+    }
+
+    function renderWeeklyGiftersTable(gifters) {
+      const container = document.getElementById('weekly-gifters-table-container');
+      if (!gifters || gifters.length === 0) {
+        container.innerHTML = '<p class="text-gray-400">No weekly top gifters found.</p>';
+        return;
+      }
+
+      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>Gifter</th><th>Gifts</th></tr></thead><tbody>';
+      gifters.forEach((gifter, index) => {
+        tableHtml += `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="gifter-username">${gifter.username}</td>
+            <td>${gifter.total_amount_display || gifter.count || 0}</td>
+          </tr>
+        `;
+      });
+      tableHtml += '</tbody></table>';
+      container.innerHTML = tableHtml;
+    }
+
+    function renderWeeklyKickersTable(kickers) {
+      const container = document.getElementById('weekly-kickers-table-container');
+      if (!kickers || kickers.length === 0) {
+        container.innerHTML = '<p class="text-gray-400">No weekly top kickers found.</p>';
+        return;
+      }
+
+      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>Kicker</th><th>Kicks</th></tr></thead><tbody>';
+      kickers.forEach((kicker, index) => {
+        tableHtml += `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="kicker-username">${kicker.username}</td>
+            <td>${kicker.total_amount_display || kicker.count || 0}</td>
+          </tr>
+        `;
+      });
+      tableHtml += '</tbody></table>';
+      container.innerHTML = tableHtml;
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      if (spotlight) {
+        spotlight.style.left = e.clientX + 'px';
+        spotlight.style.top = e.clientY + 'px';
+      }
+      const x = (window.innerWidth - e.pageX * 2) / 100;
+      const y = (window.innerHeight - e.pageY * 2) / 100;
+      if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
+      if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
+    });
+    window.addEventListener('load', () => {
+      activateSite();
+      fetchLeaderboardData();
+    });
+    setTimeout(activateSite, 500);
+  </script>
+</body>
+</html>
