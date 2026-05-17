@@ -18,7 +18,7 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 291
+      "quantity": 296
     },
     {
       "user_id": 79649658,
@@ -52,7 +52,13 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 67453019,
+      "username": "natanelf",
+      "quantity": 5
+    }
+  ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
@@ -63,7 +69,7 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 201
+      "quantity": 206
     },
     {
       "user_id": 81432977,
