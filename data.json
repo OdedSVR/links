@@ -3,22 +3,22 @@
     {
       "user_id": 8755992,
       "username": "Krav0n",
-      "quantity": 4051
+      "quantity": 4100
     },
     {
       "user_id": 81432977,
       "username": "TheFl1k",
-      "quantity": 1035
+      "quantity": 1061
+    },
+    {
+      "user_id": 67453019,
+      "username": "natanelf",
+      "quantity": 421
     },
     {
       "user_id": 56982139,
       "username": "yohay32",
       "quantity": 413
-    },
-    {
-      "user_id": 67453019,
-      "username": "natanelf",
-      "quantity": 386
     },
     {
       "user_id": 79152945,
@@ -52,23 +52,49 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 8755992,
+      "username": "Krav0n",
+      "quantity": 49
+    },
+    {
+      "user_id": 67453019,
+      "username": "natanelf",
+      "quantity": 35
+    },
+    {
+      "user_id": 81432977,
+      "username": "TheFl1k",
+      "quantity": 26
+    },
+    {
+      "user_id": 90040352,
+      "username": "AmitLux",
+      "quantity": 1
+    },
+    {
+      "user_id": 77336925,
+      "username": "DanShprukh",
+      "quantity": 1
+    }
+  ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
       "user_id": 8755992,
       "username": "Krav0n",
-      "quantity": 535
-    },
-    {
-      "user_id": 81432977,
-      "username": "TheFl1k",
-      "quantity": 303
+      "quantity": 584
     },
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 296
+      "quantity": 331
+    },
+    {
+      "user_id": 81432977,
+      "username": "TheFl1k",
+      "quantity": 329
     },
     {
       "user_id": 83913673,
@@ -96,13 +122,13 @@
       "quantity": 52
     },
     {
-      "user_id": 79152945,
-      "username": "mrdavid465",
+      "user_id": 101140607,
+      "username": "AllenBlyat",
       "quantity": 50
     },
     {
-      "user_id": 101140607,
-      "username": "AllenBlyat",
+      "user_id": 79152945,
+      "username": "mrdavid465",
       "quantity": 50
     }
   ],
