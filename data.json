@@ -89,6 +89,11 @@
       "quantity": 11
     },
     {
+      "user_id": 8402653,
+      "username": "Survivor5",
+      "quantity": 10
+    },
+    {
       "user_id": 71841512,
       "username": "BenLavi90",
       "quantity": 10
@@ -97,11 +102,6 @@
       "user_id": 76334394,
       "username": "PostB",
       "quantity": 6
-    },
-    {
-      "user_id": 106102641,
-      "username": "odedloaomed",
-      "quantity": 5
     }
   ],
   "gifts_week_enabled": true,
