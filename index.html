@@ -22,7 +22,16 @@
       40% {transform: translateX(-50%) translateY(-12px);}
       60% {transform: translateX(-50%) translateY(-6px);}
     }
+
+    @keyframes pulseRing {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
     
+    .live-ring {
+      animation: pulseRing 1.5s ease-out infinite;
+    }
+
     .scroll-indicator {
       position: fixed;
       bottom: 30px;
@@ -82,12 +91,26 @@
         <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
         <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a>
     </nav>
+
     <div class="text-center mb-10 relative z-10">
       <a href="https://kick.com/odedsvr" target="_blank">
-        <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
+        <div class="relative inline-block">
+          <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
+          <!-- Live dot + pulse ring -->
+          <span id="live-dot" class="hidden">
+            <span class="absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]" style="box-shadow: 0 0 8px rgba(239,68,68,0.9);"></span>
+            <span class="live-ring absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]"></span>
+          </span>
+        </div>
       </a>
       <h1 class="text-4xl font-black text-white tracking-tight">Oded SVR</h1>
-      <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Official Links</p>
+      <div class="flex items-center justify-center gap-2 mt-1">
+        <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase">Official Links</p>
+        <span id="live-badge" class="hidden items-center gap-1 bg-red-500/20 border border-red-500/40 text-red-400 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+          <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse inline-block"></span>
+          Live
+        </span>
+      </div>
     </div>
     
     <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto relative z-10" id="links-grid" dir="ltr">
@@ -103,8 +126,8 @@
         <div>10% הנחה בכל האתר - OSVR10</div>
         <a href="https://libero-il.co.il/?s=%D7%9E%D7%A8%D7%A7%D7%99%D7%96%D7%94&jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&post_type=product&jet_ajax_search_categories=0" target="_blank">
         <div>אחד פלוס אחד על המרקיזות - OSVR</div>
-        <div class= "text-sm">( לחצו על הקוד כדי לראות פרטים על המריקזות)</div>
-    </a>
+        <div class="text-sm">( לחצו על הקוד כדי לראות פרטים על המריקזות)</div>
+        </a>
       </div>
       <!--
       <a href="https://delulustream.com/presets/odedsvr" target="_blank" class="card block rounded-xl p-6 text-center hover:border-pink-500/40" dir="rtl">
@@ -116,7 +139,7 @@
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40" dir="rtl"><div class="text-xl font-black text-red-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div><p class="text-xs text-red-200/50 font-bold mt-1 uppercase">להרשמה</p></a>
       <a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-xl p-6 text-center hover:border-indigo-500/40 flex flex-col items-center justify-center" dir="rtl"><div class="text-xl font-black text-indigo-300 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/discor%20logo.png?raw=true" class="h-10 w-10 mr-2">Discord</div></a>
       <a href="https://kick.com/odedsvr" target="_blank" class="card block rounded-xl p-6 text-center hover:border-green-500/40" dir="rtl"><div class="text-xl font-black text-green-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/kick%20logo.png?raw=true" class="h-8 w-8 ml-2"> Kick</div></a>
-      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40" dir="rtl"><div class="text-xl font-black text-red-400 "> ערעור על באן 📝</div><p class="text-[10px] text-red-300/60 font-bold">פנו אלינו לערעורים</p></a>
+      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40" dir="rtl"><div class="text-xl font-black text-red-400"> ערעור על באן 📝</div><p class="text-[10px] text-red-300/60 font-bold">פנו אלינו לערעורים</p></a>
       <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" class="card block rounded-xl p-6 text-center hover:border-orange-500/40" dir="rtl"><div class="text-xl font-black text-orange-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/Reddit%20(1).png?raw=true" class="h-8 w-8 ml-2">Reddit</div></a>
       <a href="https://www.youtube.com/@odedsvr95" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40 flex flex-col items-center justify-center" dir="rtl"><div class="text-xl font-black text-red-500 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/YTLOGO.png?raw=true" class="h-8 w-8 mr-2">YouTube</div></a>
       <a href="https://www.instagram.com/odedsvr/" target="_blank" class="card block rounded-xl p-6 text-center hover:border-pink-500/40 flex flex-col items-center justify-center" dir="rtl"><div class="text-xl font-black text-pink-300 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/instlogo.png?raw=true" class="h-6 w-6 ml-2">Instagram</div></a>
@@ -143,10 +166,7 @@
     });
 
     scrollIndicator.addEventListener('click', () => {
-      window.scrollTo({
-        top: 450,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 450, behavior: 'smooth' });
     });
 
     window.addEventListener('scroll', () => {
@@ -159,7 +179,30 @@
       }
     });
 
-    window.addEventListener('load', activateSite); setTimeout(activateSite, 300);
+    window.addEventListener('load', activateSite);
+    setTimeout(activateSite, 300);
+
+    // Live status checker
+    async function checkLiveStatus() {
+      try {
+        const res = await fetch('https://kick.com/api/v2/channels/odedsvr');
+        const data = await res.json();
+        const dot = document.getElementById('live-dot');
+        const badge = document.getElementById('live-badge');
+        if (data?.livestream) {
+          dot.classList.remove('hidden');
+          badge.classList.remove('hidden');
+          badge.classList.add('flex');
+        } else {
+          dot.classList.add('hidden');
+          badge.classList.remove('flex');
+          badge.classList.add('hidden');
+        }
+      } catch (e) {}
+    }
+
+    checkLiveStatus();
+    setInterval(checkLiveStatus, 60000);
   </script>
 </body>
 </html>
