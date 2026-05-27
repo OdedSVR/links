@@ -13,51 +13,28 @@
       background: radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%), radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%), radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%), #0f172a;
       min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden; color: white; position: relative;
     }
-    
     @keyframes swayCharacter { 0%, 100% { transform: translate(0, -50%) rotate(20deg) scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2)); } 50% { transform: translate(-10px, -52%) rotate(21deg) scale(1.02); filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.4)); } }
     @keyframes swimDolphin { 0%, 100% { transform: translate(0, -50%) rotate(-20deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 50% { transform: translate(10px, -48%) rotate(-19deg) scale(1.03); filter: drop-shadow(0 0 40px rgba(6, 182, 212, 0.4)); } }
-    
     @keyframes bounceArrow {
       0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
       40% {transform: translateX(-50%) translateY(-12px);}
       60% {transform: translateX(-50%) translateY(-6px);}
     }
-
     @keyframes pulseRing {
       0% { transform: scale(1); opacity: 0.8; }
       100% { transform: scale(2.2); opacity: 0; }
     }
-    
-    .live-ring {
-      animation: pulseRing 1.5s ease-out infinite;
-    }
-
+    .live-ring { animation: pulseRing 1.5s ease-out infinite; }
     .scroll-indicator {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      cursor: pointer; 
-      pointer-events: auto; 
-      animation: bounceArrow 2s infinite;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 12px;
-      border-radius: 50%;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100;
+      cursor: pointer; pointer-events: auto; animation: bounceArrow 2s infinite;
+      background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px; border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); display: flex;
+      justify-content: center; align-items: center;
       transition: opacity 0.4s ease, visibility 0.4s, transform 0.2s ease;
     }
-
-    .scroll-indicator:hover {
-      background: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-    }
-
+    .scroll-indicator:hover { background: rgba(255, 255, 255, 0.2); box-shadow: 0 0 30px rgba(255, 255, 255, 0.3); }
     #char-right, #char-left { position: fixed; top: 60%; width: 800px; height: 1120px; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.35; z-index: 1; pointer-events: none; transition: transform 0.2s ease-out; }
     #char-right { right: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png?raw=true'); animation: swayCharacter 10s ease-in-out infinite; }
     #char-left { left: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png?raw=true'); animation: swimDolphin 14s ease-in-out infinite; }
@@ -96,7 +73,6 @@
       <a href="https://kick.com/odedsvr" target="_blank">
         <div class="relative inline-block">
           <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
-          <!-- Live dot + pulse ring -->
           <span id="live-dot" class="hidden">
             <span class="absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]" style="box-shadow: 0 0 8px rgba(239,68,68,0.9);"></span>
             <span class="live-ring absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]"></span>
@@ -109,6 +85,10 @@
         <span id="live-badge" class="hidden items-center gap-1 bg-red-500/20 border border-red-500/40 text-red-400 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
           <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse inline-block"></span>
           Live
+        </span>
+        <span id="offline-badge" class="hidden items-center gap-1 bg-white/5 border border-white/20 text-white/40 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+          <span class="w-1.5 h-1.5 bg-white/30 rounded-full inline-block"></span>
+          Offline
         </span>
       </div>
     </div>
@@ -182,21 +162,25 @@
     window.addEventListener('load', activateSite);
     setTimeout(activateSite, 300);
 
-    // Live status checker
     async function checkLiveStatus() {
       try {
         const res = await fetch('https://kick.com/api/v2/channels/odedsvr');
         const data = await res.json();
         const dot = document.getElementById('live-dot');
         const badge = document.getElementById('live-badge');
+        const offlineBadge = document.getElementById('offline-badge');
         if (data?.livestream) {
           dot.classList.remove('hidden');
           badge.classList.remove('hidden');
           badge.classList.add('flex');
+          offlineBadge.classList.add('hidden');
+          offlineBadge.classList.remove('flex');
         } else {
           dot.classList.add('hidden');
           badge.classList.remove('flex');
           badge.classList.add('hidden');
+          offlineBadge.classList.remove('hidden');
+          offlineBadge.classList.add('flex');
         }
       } catch (e) {}
     }
