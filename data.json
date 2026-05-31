@@ -52,58 +52,7 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [
-    {
-      "user_id": 8755992,
-      "username": "Krav0n",
-      "quantity": 109
-    },
-    {
-      "user_id": 67453019,
-      "username": "natanelf",
-      "quantity": 45
-    },
-    {
-      "user_id": 81432977,
-      "username": "TheFl1k",
-      "quantity": 26
-    },
-    {
-      "user_id": 79152945,
-      "username": "mrdavid465",
-      "quantity": 25
-    },
-    {
-      "user_id": 79649658,
-      "username": "SchweppeS_9",
-      "quantity": 25
-    },
-    {
-      "user_id": 104398609,
-      "username": "SUPERGAMINGIL",
-      "quantity": 20
-    },
-    {
-      "user_id": 87740863,
-      "username": "Divine245",
-      "quantity": 11
-    },
-    {
-      "user_id": 8402653,
-      "username": "Survivor5",
-      "quantity": 10
-    },
-    {
-      "user_id": 71841512,
-      "username": "BenLavi90",
-      "quantity": 10
-    },
-    {
-      "user_id": 76334394,
-      "username": "PostB",
-      "quantity": 6
-    }
-  ],
+  "gifts_week": [],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
