@@ -79,6 +79,11 @@
       "quantity": 5
     },
     {
+      "user_id": 80712093,
+      "username": "IlaySharabi07",
+      "quantity": 3
+    },
+    {
       "user_id": 77336925,
       "username": "DanShprukh",
       "quantity": 2
@@ -96,11 +101,6 @@
     {
       "user_id": 101733569,
       "username": "Yarinov",
-      "quantity": 1
-    },
-    {
-      "user_id": 77090568,
-      "username": "itayshalam10",
       "quantity": 1
     }
   ],
