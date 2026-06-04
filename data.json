@@ -31,24 +31,24 @@
       "quantity": 308
     },
     {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 304
+    },
+    {
       "user_id": 9091427,
       "username": "kulamshmenim",
       "quantity": 275
     },
     {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 264
+      "user_id": 83913673,
+      "username": "Oliverremez",
+      "quantity": 272
     },
     {
       "user_id": 78045547,
       "username": "elad_123",
       "quantity": 249
-    },
-    {
-      "user_id": 83593751,
-      "username": "ezra2032",
-      "quantity": 243
     }
   ],
   "gifts_enabled": true,
@@ -56,7 +56,12 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 135
+      "quantity": 175
+    },
+    {
+      "user_id": 83913673,
+      "username": "Oliverremez",
+      "quantity": 98
     },
     {
       "user_id": 67453019,
@@ -69,14 +74,14 @@
       "quantity": 40
     },
     {
+      "user_id": 36321413,
+      "username": "absolute_alamo",
+      "quantity": 30
+    },
+    {
       "user_id": 101733569,
       "username": "Yarinov",
       "quantity": 21
-    },
-    {
-      "user_id": 36321413,
-      "username": "absolute_alamo",
-      "quantity": 20
     },
     {
       "user_id": 17214702,
@@ -84,14 +89,9 @@
       "quantity": 14
     },
     {
-      "user_id": 83913673,
-      "username": "Oliverremez",
-      "quantity": 13
-    },
-    {
       "user_id": 78013935,
       "username": "bobo92929",
-      "quantity": 12
+      "quantity": 14
     },
     {
       "user_id": 80766767,
@@ -109,7 +109,12 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 135
+      "quantity": 175
+    },
+    {
+      "user_id": 83913673,
+      "username": "Oliverremez",
+      "quantity": 93
     },
     {
       "user_id": 67453019,
@@ -119,7 +124,7 @@
     {
       "user_id": 36321413,
       "username": "absolute_alamo",
-      "quantity": 20
+      "quantity": 30
     },
     {
       "user_id": 101733569,
@@ -134,17 +139,12 @@
     {
       "user_id": 78013935,
       "username": "bobo92929",
-      "quantity": 11
+      "quantity": 13
     },
     {
       "user_id": 29939300,
       "username": "farukilmao",
       "quantity": 10
-    },
-    {
-      "user_id": 83913673,
-      "username": "Oliverremez",
-      "quantity": 8
     },
     {
       "user_id": 32602400,
