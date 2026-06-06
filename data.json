@@ -26,6 +26,11 @@
       "quantity": 430
     },
     {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 359
+    },
+    {
       "user_id": 83913673,
       "username": "Oliverremez",
       "quantity": 353
@@ -34,11 +39,6 @@
       "user_id": 71841512,
       "username": "BenLavi90",
       "quantity": 326
-    },
-    {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 314
     },
     {
       "user_id": 79649658,
@@ -56,7 +56,7 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 185
+      "quantity": 230
     },
     {
       "user_id": 2757848,
@@ -109,7 +109,7 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 185
+      "quantity": 230
     },
     {
       "user_id": 2757848,
