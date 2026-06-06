@@ -11,14 +11,14 @@
       "quantity": 1061
     },
     {
+      "user_id": 79152945,
+      "username": "mrdavid465",
+      "quantity": 515
+    },
+    {
       "user_id": 67453019,
       "username": "natanelf",
       "quantity": 501
-    },
-    {
-      "user_id": 79152945,
-      "username": "mrdavid465",
-      "quantity": 485
     },
     {
       "user_id": 56982139,
@@ -28,7 +28,7 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 359
+      "quantity": 364
     },
     {
       "user_id": 83913673,
@@ -56,7 +56,12 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 230
+      "quantity": 235
+    },
+    {
+      "user_id": 79152945,
+      "username": "mrdavid465",
+      "quantity": 205
     },
     {
       "user_id": 2757848,
@@ -67,11 +72,6 @@
       "user_id": 83913673,
       "username": "Oliverremez",
       "quantity": 179
-    },
-    {
-      "user_id": 79152945,
-      "username": "mrdavid465",
-      "quantity": 175
     },
     {
       "user_id": 71841512,
@@ -109,17 +109,17 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 230
+      "quantity": 235
+    },
+    {
+      "user_id": 79152945,
+      "username": "mrdavid465",
+      "quantity": 205
     },
     {
       "user_id": 2757848,
       "username": "thebigSheshMan",
       "quantity": 181
-    },
-    {
-      "user_id": 79152945,
-      "username": "mrdavid465",
-      "quantity": 175
     },
     {
       "user_id": 83913673,
