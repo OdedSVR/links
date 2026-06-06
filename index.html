@@ -867,6 +867,7 @@
         ttsPaused = false;
         ttsBar.style.display = 'block';
         setTTSPausedUI(false);
+        startTTSKeepAlive();
       };
 
       ttsUtterance.onend = () => {
@@ -875,6 +876,7 @@
         ttsBar.style.display = 'none';
         hideWordHighlight();
         ttsProgressText.textContent = '';
+        stopTTSKeepAlive();
         const btn = document.querySelector('[data-feature="tts-read"]');
         if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
       };
@@ -883,6 +885,7 @@
         console.error('TTS error:', e.error);
         ttsBar.style.display = 'none';
         hideWordHighlight();
+        stopTTSKeepAlive();
         if (e.error !== 'interrupted' && e.error !== 'canceled') {
           showTTSNotice(`
             <div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">⚠️</span></div>
@@ -983,6 +986,21 @@
         <p style="font-size:14px;color:#444;line-height:1.7;margin:0;">הפיצ'ר ישתמש בקולות המותקנים במכשיר שלך.<br>לקול עברי מומלץ להשתמש ב-<strong>Chrome</strong> עם שפה עברית מותקנת במערכת ההפעלה.</p>`;
     }
 
+    // Chrome keepalive — פותר באג ידוע שבו Chrome מפסיק הקראה אחרי ~15 שניות
+    let ttsKeepAlive = null;
+    function startTTSKeepAlive() {
+      stopTTSKeepAlive();
+      ttsKeepAlive = setInterval(() => {
+        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+          window.speechSynthesis.pause();
+          window.speechSynthesis.resume();
+        }
+      }, 10000);
+    }
+    function stopTTSKeepAlive() {
+      if (ttsKeepAlive) { clearInterval(ttsKeepAlive); ttsKeepAlive = null; }
+    }
+
     // Feature map entry - מתחיל הקראה מיד ללא חלון אישור
     featureMap['tts-read'] = () => {
       if (!('speechSynthesis' in window)) {
@@ -994,14 +1012,12 @@
         ttsActive = false;
         ttsBar.style.display = 'none';
         hideWordHighlight();
+        stopTTSKeepAlive();
         return;
       }
+      // טען קולות סינכרונית — ללא setTimeout כדי לשמור על user gesture
       loadTTSVoices();
-      if (ttsVoices.length > 0) {
-        startTTS();
-      } else {
-        setTimeout(() => { loadTTSVoices(); startTTS(); }, 300);
-      }
+      startTTS();
     };
 
     // Play/pause button in bar
@@ -1026,6 +1042,7 @@
       ttsPaused = false;
       ttsBar.style.display = 'none';
       hideWordHighlight();
+      stopTTSKeepAlive();
       ttsProgressText.textContent = '';
       const btn = document.querySelector('[data-feature="tts-read"]');
       if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
