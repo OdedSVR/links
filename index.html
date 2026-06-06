@@ -983,16 +983,10 @@
         <p style="font-size:14px;color:#444;line-height:1.7;margin:0;">הפיצ'ר ישתמש בקולות המותקנים במכשיר שלך.<br>לקול עברי מומלץ להשתמש ב-<strong>Chrome</strong> עם שפה עברית מותקנת במערכת ההפעלה.</p>`;
     }
 
-    // Feature map entry
+    // Feature map entry - מתחיל הקראה מיד ללא חלון אישור
     featureMap['tts-read'] = () => {
       if (!('speechSynthesis' in window)) {
-        showTTSNotice(`
-          <div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">❌</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#c00;">הדפדפן לא תומך בהקראה</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;">הדפדפן שלך אינו תומך בהקראת טקסט.<br>אנא השתמש ב-<strong>Google Chrome</strong> או <strong>Microsoft Edge</strong>.</p>
-        `, null);
-        // Remove the confirm button since there's nothing to do
-        setTimeout(() => { const b = document.getElementById('tts-notice-confirm'); if(b) b.style.display='none'; }, 50);
+        alert('הדפדפן שלך אינו תומך בהקראת טקסט.\nאנא השתמש ב-Google Chrome או Microsoft Edge.');
         return;
       }
       if (ttsActive && !ttsPaused) {
@@ -1002,36 +996,11 @@
         hideWordHighlight();
         return;
       }
-
-      // ✅ תיקון: ריענון הקולות בזמן הלחיצה לפני הבדיקה
-      function checkVoicesAndStart() {
-        loadTTSVoices();
-        const heVoicesNow = ttsVoices.filter(v => v.lang.startsWith('he') || v.lang.startsWith('iw'));
-        const instructions = getTTSSetupInstructions();
-
-        if (heVoicesNow.length === 0) {
-          // No Hebrew voice — show warning + instructions but still allow to proceed
-          showTTSNotice(`
-            ${instructions}
-            <div style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;padding:10px 14px;margin-top:14px;">
-              <p style="font-size:12px;color:#9a3412;margin:0;font-weight:700;">⚠️ לא נמצא קול עברי — ההקראה תהיה בשפה אחרת. עקוב אחר ההוראות למעלה לקול עברי.</p>
-            </div>
-          `, () => startTTS());
-        } else {
-          // Hebrew voice found — show quick confirmation
-          showTTSNotice(`
-            <div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">✅</span></div>
-            <h3 style="font-size:18px;font-weight:900;margin:0 0 8px;color:#111;">קול עברי נמצא!</h3>
-            <p style="font-size:14px;color:#444;line-height:1.7;margin:0;">נמצא קול עברי: <strong style="color:#e02020;">${heVoicesNow[0].name}</strong><br>לחץ אישור להתחלת ההקראה 🔊</p>
-          `, () => startTTS());
-        }
-      }
-
-      // אם הקולות כבר נטענו — טוב. אחרת — חכה 300ms ונסה שוב (Chrome טוען קולות אסינכרונית)
-      if (window.speechSynthesis.getVoices().length > 0) {
-        checkVoicesAndStart();
+      loadTTSVoices();
+      if (ttsVoices.length > 0) {
+        startTTS();
       } else {
-        setTimeout(checkVoicesAndStart, 300);
+        setTimeout(() => { loadTTSVoices(); startTTS(); }, 300);
       }
     };
 
