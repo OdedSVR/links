@@ -617,8 +617,9 @@
       'keyboard-nav': () => { document.querySelectorAll('a,button').forEach(el => { el.style.outline = el.style.outline ? '' : '2px solid #e02020'; el.style.outlineOffset = '3px'; }); },
       'image-desc': () => {
         let count = 0;
+
+        // --- תמונות רגילות (<img>) ---
         document.querySelectorAll('img').forEach(img => {
-          // Get best available description: alt, aria-label on img, or aria-label on parent link
           let desc = img.alt && img.alt.trim() ? img.alt.trim() : '';
           if (!desc) {
             const parentLink = img.closest('a[aria-label]');
@@ -634,7 +635,26 @@
           img.dataset.tooltipAdded = '1';
           count++;
         });
-        alert('תיאורי תמונות הופעלו ל-' + count + ' תמונות. רחף מעל תמונה לקריאת התיאור.');
+
+        // --- תמונות רקע (background-image) ---
+        const bgDescriptions = {
+          'char-right': 'תמונת רקע ימין — דמות עודד SVR',
+          'char-left':  'תמונת רקע שמאל — דולפין'
+        };
+        Object.entries(bgDescriptions).forEach(([id, desc]) => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.title = desc;
+            el.setAttribute('role', 'img');
+            el.setAttribute('aria-label', desc);
+            el.removeAttribute('aria-hidden');
+            el.style.pointerEvents = 'auto';
+            el.style.cursor = 'help';
+            count++;
+          }
+        });
+
+        alert('תיאורי תמונות הופעלו ל-' + count + ' תמונות (כולל תמונות רקע). רחף מעל תמונה לקריאת התיאור.');
       },
       'page-structure': () => { const headings = Array.from(document.querySelectorAll('h1,h2,h3,nav,footer')).map(el => `${el.tagName}: ${el.textContent.substring(0,40).trim()}`).join('\n'); alert('מבנה העמוד:\n\n' + headings); },
       'page-summary': () => alert('סיכום עמוד: דף קישורים רשמיים של OdedSVR - סטרימר ישראלי. הדף מכיל קישורים ל-Kick, YouTube, Instagram, Discord, Reddit וקישורי נותני חסות.'),
