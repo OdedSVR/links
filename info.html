@@ -1,43 +1,40 @@
+INFO
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OdedSVR | Top Donators</title>
+  <title>OdedSVR | Info & Specs</title>
   <link rel="icon" type="image/png" href="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap');
     body {
       font-family: 'Heebo', sans-serif;
       background: radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%), radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%), radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%), #0f172a;
       min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden; color: white; position: relative;
     }
-
-    @keyframes swayCharacter { 0%, 100% { transform: translate(0, -50%) rotate(20deg) scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2)); } 50% { transform: translate(-10px, -52%) rotate(21deg) scale(1.02); filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.4)); } }
-    @keyframes swimDolphin { 0%, 100% { transform: translate(0, -50%) rotate(-20deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 50% { transform: translate(10px, -48%) rotate(-19deg) scale(1.03); filter: drop-shadow(0 0 40px rgba(6, 182, 212, 0.4)); } }
-
+    @keyframes swayCharacter { 0%, 100% { transform: translate(0, -50%) rotate(20deg) scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2)); } 50% { transform: translate(-10px, -52%) rotate(21deg) scale(1.02); filter: drop_shadow(0 0 40px rgba(59, 130, 246, 0.4)); } } 
+    @keyframes swimDolphin { 0%, 100% { transform: translate(0, -50%) rotate(-20deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 50% { transform: translate(10px, -48%) rotate(-19deg) scale(1.03); filter: drop_shadow(0 0 40px rgba(6, 182, 212, 0.4)); } } 
     #char-right, #char-left { position: fixed; top: 60%; width: 800px; height: 1120px; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.35; z-index: 1; pointer-events: none; transition: transform 0.2s ease-out; }
-    #char-right { right: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png?raw=true'); animation: swayCharacter 10s ease-in-out infinite; }
-    #char-left { left: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png?raw=true'); animation: swimDolphin 14s ease-in-out infinite; }
-    #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; display: none; }
-    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; text-align: center; }
+    #char-right { right: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png?raw=true'); animation: swayCharacter 10s ease-in-out infinite; } 
+    #char-left { left: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png?raw=true'); animation: swimDolphin 14s ease-in-out infinite; } 
+    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; }
     .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); }
+    #profile-image { border: 2px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
+    #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; }
     #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
     .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
-    @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
-    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; }
+    @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } } 
+    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; } 
     #main-page-content.visible { opacity: 1; visibility: visible; }
-
-    .donators-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    .donators-table th, .donators-table td { padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
-    .donators-table th { background: rgba(255, 255, 255, 0.05); font-weight: bold; color: white; }
-    .donators-table td { color: #ccc; }
-    .donators-table tr:last-child td { border-bottom: none; }
-    .donators-table tr:hover { background: rgba(255, 255, 255, 0.02); }
-    .weekly-username { color: #f97316; font-weight: bold; }
-    .alltime-username { color: #22d3ee; font-weight: bold; }
+    .text-glow { text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); }
+    
+    .copy-btn { opacity: 0.5; transition: all 0.2s; cursor: pointer; }
+    .copy-btn:hover { opacity: 1; transform: scale(1.1); }
+    .copy-btn:active { transform: scale(0.9); }
+    .copy-success { filter: hue-rotate(90deg) brightness(1.5) !important; }
 /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
     #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
     #a11y-fab { width: 52px; height: 52px; background: #e02020; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
@@ -127,17 +124,16 @@
 </head>
 <body>
   <div id="char-right"></div>
-  <div id="reading-guide-bar" aria-hidden="true"></div>
-  <div id="char-left"></div>
+  <div id="reading-guide-bar" aria-hidden="true"></div> 
+  <div id="char-left"></div> 
   <div id="spotlight"></div>
-
-  <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div>
-  <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
+  <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div> 
+  <div id="main-page-content" class="flex flex-col items-center px-6 py-12"> 
     <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto">
-        <a href="./index.html" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
-        <a href="./YTvids.html" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Videos</a>
-        <a href="./info.html" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
-        <a href="./topdonators.html" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a>
+        <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
+        <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Videos</a>
+        <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
+        <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a> 
     </nav>
 
     <div class="text-center mb-10 relative z-10">
@@ -145,20 +141,62 @@
         <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
       </a>
       <h1 class="text-4xl font-black text-white tracking-tight">Oded SVR</h1>
-      <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Top Donators</p>
+      <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Specs & Commands</p>
     </div>
 
-    <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-      <div class="card rounded-xl">
-        <h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 Weekly Top Gifters 🏆</h2>
-        <div id="weekly-gifters-table-container">
-          <p class="text-sm text-gray-300">Loading Weekly Top Gifters...</p>
+    <div class="w-full max-w-4xl space-y-6 relative z-10">
+      <a href="https://botrix.live/k/odedsvr/leaderboard" target="_blank" class="card block rounded-xl text-center hover:border-cyan-500/40">
+        <div class="text-2xl font-black text-cyan-400 text-glow">🏆 LEADERBOARD 🏆</div>
+        <p class="text-sm text-cyan-200/60 font-bold mt-1 uppercase">צפו במובילים של הערוץ</p>
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+        <div class="card rounded-xl">
+          <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2 font-mono">💬 Chat Commands (Kick)</h2>
+          <div class="space-y-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">watchtime!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('!watchtime', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
+              <div class="text-sm text-gray-400 font-mono">Total Watchtime On LiveStreams</div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">followage!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('!followage', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
+              <div class="text-sm text-gray-400 font-mono">Total Follow Time On Kick</div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">clip!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('!clip', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
+              <div class="text-sm text-gray-400 font-mono">Clip The Last 30 Seconds</div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">discord!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('!discord', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
+              <div class="text-sm text-gray-400 font-mono">Get a Link For The Discord Server</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="card rounded-xl">
-        <h2 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2">👑 All-Time Top Gifters 👑</h2>
-        <div id="alltime-gifters-table-container">
-          <p class="text-sm text-gray-300">Loading All-Time Top Gifters...</p>
+
+        <div class="card rounded-xl text-left" dir="ltr">
+          <h2 class="text-xl font-black text-purple-400 mb-4 border-b border-purple-400/20 pb-2 font-mono">My Setup 🖥️</h2>
+          <ul class="text-base space-y-2 text-gray-300 font-bold text-glow font-mono">
+            <li>CPU - Intel Core i7 14700KF</li>
+            <li>GPU - NVIDIA GeForce RTX 5070Ti</li>
+            <li>MEMORY - Corsair 32GB DDR5 Ram</li>
+            <li>MB - B760 Motherboard</li>
+            <li>KEYBOARD - Steelseries Apex7</li>
+            <li>MOUSE - RAZER Basilisk X</li>
+            <li>MIC - Elgato Wave 3</li>
+            <li>HEADPHONES - HyperX Cloud Stinger 2 Wireless</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -442,6 +480,13 @@
       <div class="vkey">ק</div>
 
   <script>
+    function copyCmd(text, el) {
+      navigator.clipboard.writeText(text).then(() => {
+        el.classList.add('copy-success');
+        setTimeout(() => el.classList.remove('copy-success'), 1000);
+      });
+    }
+
     const spotlight = document.getElementById('spotlight');
     const mainContent = document.getElementById('main-page-content');
     const splash = document.getElementById('splash-screen');
@@ -449,69 +494,16 @@
     const charRight = document.getElementById('char-right');
 
     function activateSite() {
-      if (splash && splash.style.display !== 'none') {
+      if (splash) {
         splash.style.opacity = '0';
         setTimeout(() => {
           splash.style.display = 'none';
-          if (mainContent) mainContent.classList.add('visible');
+          mainContent.classList.add('visible');
           if (spotlight) spotlight.style.display = 'block';
         }, 300);
       }
-    }
+    };
 
-    async function fetchLeaderboardData() {
-      const apiUrl = './data.json?t=' + new Date().getTime();
-
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-
-        // טעינת הנתונים השבועיים (gifts_week)
-        if (data && data.gifts_week && data.gifts_week_enabled) {
-          renderTable('weekly-gifters-table-container', data.gifts_week, 'weekly-username');
-        } else {
-          document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-gray-400">Weekly data is currently disabled.</p>';
-        }
-
-        // טעינת נתוני כל הזמנים (gifts)
-        if (data && data.gifts && data.gifts_enabled) {
-          renderTable('alltime-gifters-table-container', data.gifts, 'alltime-username');
-        } else {
-          document.getElementById('alltime-gifters-table-container').innerHTML = '<p class="text-gray-400">All-time data is currently disabled.</p>';
-        }
-
-      } catch (error) {
-        console.error('Error fetching leaderboard data:', error);
-      }
-    }
-
-    function renderTable(containerId, users, usernameClass) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      if (!users || users.length === 0) {
-        container.innerHTML = '<p class="text-gray-400">No data found.</p>';
-        return;
-      }
-
-      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>שם משתמש</th><th>כמות</th></tr></thead><tbody>';
-      users.forEach((user, index) => {
-        tableHtml += `
-          <tr>
-            <td>${index + 1}</td>
-            <td class="${usernameClass}">${user.username}</td>
-            <td>${user.quantity || 0}</td>
-          </tr>
-        `;
-      });
-      tableHtml += '</tbody></table>';
-      container.innerHTML = tableHtml;
-    }
-
-    // מעקב עכבר לאפקטים ויזואליים
     document.addEventListener('mousemove', (e) => {
       if (spotlight) {
         spotlight.style.left = e.clientX + 'px';
@@ -522,19 +514,7 @@
       if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
       if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
     });
-    
-    // הפעלה ברגע שהאתר נטען
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchLeaderboardData();
-      setTimeout(activateSite, 400);
-
-      setInterval(fetchLeaderboardData, 300000);
-    });
-
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      fetchLeaderboardData();
-      activateSite();
-    }
+    window.addEventListener('load', activateSite); setTimeout(activateSite, 500);
 
     // ============ ACCESSIBILITY WIDGET ============
     const fab = document.getElementById('a11y-fab');
@@ -616,7 +596,7 @@
         alert('תיאורי תמונות הופעלו ל-' + count + ' תמונות (כולל תמונות רקע). רחף מעל תמונה לקריאת התיאור.');
       },
       'page-structure': () => { const headings = Array.from(document.querySelectorAll('h1,h2,h3,nav,footer')).map(el => `${el.tagName}: ${el.textContent.substring(0,40).trim()}`).join('\n'); alert('מבנה העמוד:\n\n' + headings); },
-      'page-summary': () => alert('סיכום עמוד: דף התורמים של OdedSVR - רשימת התורמים השבועיים וכל הזמנים לערוץ.'),
+      'page-summary': () => alert('סיכום עמוד: דף מידע ומפרטים של OdedSVR - סטרימר ישראלי. הדף מכיל פקודות צ\'אט לערוץ Kick ומפרט ציוד המחשב.'),
       'dictionary': () => { const word = window.getSelection().toString().trim(); if (word) { window.open('https://he.wiktionary.org/wiki/' + encodeURIComponent(word), '_blank'); } else { alert('סמן מילה בטקסט ואז לחץ שוב על מילון.'); } },
       'contrast-gauge': () => { document.documentElement.style.filter = document.documentElement.style.filter ? '' : 'contrast(1.4)'; },
     };
@@ -802,8 +782,11 @@
 
       // Get main content text nodes
       const titleEl = document.querySelector('#main-page-content h1');
+
+      // Build plain text from page content
       const lines = [];
       if (titleEl) lines.push(titleEl.textContent.trim());
+      // Read all visible text from cards
       document.querySelectorAll('.card').forEach(card => {
         const text = card.textContent.trim().replace(/\s+/g, ' ');
         if (text) lines.push(text);
@@ -1102,7 +1085,7 @@
     // Get all focusable links for "next/prev" navigation
     let voiceFocusIndex = -1;
     function getNavLinks() {
-      return Array.from(document.querySelectorAll('nav a'));
+      return Array.from(document.querySelectorAll('.card a, nav a, a.card'));
     }
 
     function createVoiceStatusBar() {
@@ -1127,7 +1110,7 @@
           <div style="font-size:11px;color:#94a3b8;margin-top:2px;" id="voice-last-cmd"></div>
         </div>
         <div style="font-size:11px;color:#7c3aed;font-weight:700;text-align:left;line-height:1.8;">
-          גלול למטה / למעלה<br>סרטונים / מידע / בית<br>עצור
+          גלול למטה / למעלה<br>סרטונים / בית / תורמים<br>עצור
         </div>
         <button id="voice-nav-close" aria-label="סגור פקודות קוליות" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:20px;padding:4px 8px;">✕</button>
       `;
@@ -1183,13 +1166,13 @@
       } else if (t.includes('סרטונים')) {
         setVoiceStatus('🎬 פותח סרטונים...', '');
         setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/YTvids'; }, 400);
-      } else if (t.includes('מידע')) {
-        setVoiceStatus('ℹ️ פותח מידע...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/info'; }, 400);
       } else if (t.includes('בית') || t.includes('דף הבית') || t.includes('home')) {
         setVoiceStatus('🏠 חוזר לדף הבית...', '');
         setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/'; }, 400);
-      
+      } else if (t.includes('תורמים')) {
+        setVoiceStatus('🏆 פותח תורמים...', '');
+        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/topdonators'; }, 400);
+
       // Stop
       } else if (t.includes('עצור') || t.includes('סגור') || t.includes('stop') || t.includes('כבה')) {
         stopVoiceNav();
@@ -1219,7 +1202,7 @@
       voiceRecognition.interimResults = false;
 
       voiceRecognition.onstart = () => {
-        setVoiceStatus('🎙️ מאזין לפקודות...', 'אמור: גלול למטה / סרטונים / מידע / בית / עצור');
+        setVoiceStatus('🎙️ מאזין לפקודות...', 'אמור: גלול למטה / סרטונים / בית / תורמים / עצור');
         voiceStatusEl && voiceStatusEl.classList.remove('error');
         voiceStatusEl && voiceStatusEl.classList.add('listening');
       };
