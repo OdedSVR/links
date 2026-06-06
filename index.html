@@ -3,1277 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OdedSVR | Official Links</title>
+  <title>OdedSVR | Info & Specs</title>
   <link rel="icon" type="image/png" href="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap');
     body {
       font-family: 'Heebo', sans-serif;
       background: radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%), radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%), radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%), #0f172a;
       min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden; color: white; position: relative;
     }
-    @keyframes swayCharacter { 0%, 100% { transform: translate(0, -50%) rotate(20deg) scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2)); } 50% { transform: translate(-10px, -52%) rotate(21deg) scale(1.02); filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.4)); } }
-    @keyframes swimDolphin { 0%, 100% { transform: translate(0, -50%) rotate(-20deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 50% { transform: translate(10px, -48%) rotate(-19deg) scale(1.03); filter: drop-shadow(0 0 40px rgba(6, 182, 212, 0.4)); } }
-    @keyframes bounceArrow {
-      0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
-      40% {transform: translateX(-50%) translateY(-12px);}
-      60% {transform: translateX(-50%) translateY(-6px);}
-    }
-    @keyframes pulseRing {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(2.2); opacity: 0; }
-    }
-    .live-ring { animation: pulseRing 1.5s ease-out infinite; }
-    .scroll-indicator {
-      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100;
-      cursor: pointer; pointer-events: auto; animation: bounceArrow 2s infinite;
-      background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px; border-radius: 50%;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); display: flex;
-      justify-content: center; align-items: center;
-      transition: opacity 0.4s ease, visibility 0.4s, transform 0.2s ease;
-    }
-    .scroll-indicator:hover { background: rgba(255, 255, 255, 0.2); box-shadow: 0 0 30px rgba(255, 255, 255, 0.3); }
+    @keyframes swayCharacter { 0%, 100% { transform: translate(0, -50%) rotate(20deg) scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2)); } 50% { transform: translate(-10px, -52%) rotate(21deg) scale(1.02); filter: drop_shadow(0 0 40px rgba(59, 130, 246, 0.4)); } } 
+    @keyframes swimDolphin { 0%, 100% { transform: translate(0, -50%) rotate(-20deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 50% { transform: translate(10px, -48%) rotate(-19deg) scale(1.03); filter: drop_shadow(0 0 40px rgba(6, 182, 212, 0.4)); } } 
     #char-right, #char-left { position: fixed; top: 60%; width: 800px; height: 1120px; background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0.35; z-index: 1; pointer-events: none; transition: transform 0.2s ease-out; }
-    #char-right { right: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png?raw=true'); animation: swayCharacter 10s ease-in-out infinite; }
-    #char-left { left: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png?raw=true'); animation: swimDolphin 14s ease-in-out infinite; }
-    #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; display: none; }
-    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; text-align: center; }
-    .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); } 
+    #char-right { right: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png?raw=true'); animation: swayCharacter 10s ease-in-out infinite; } 
+    #char-left { left: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png?raw=true'); animation: swimDolphin 14s ease-in-out infinite; } 
+    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; }
+    .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); }
+    #profile-image { border: 2px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
+    #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; }
     #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
     .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
-    @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
-    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; }
+    @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } } 
+    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; } 
     #main-page-content.visible { opacity: 1; visibility: visible; }
-
-    /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
-    #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
-    #a11y-fab { width: 52px; height: 52px; background: #e02020; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
-    #a11y-fab:hover { background: #c01010; width: 58px; }
-    #a11y-fab svg { flex-shrink: 0; }
-
-    #a11y-panel {
-      position: fixed; bottom: 0; left: -420px; top: 0; width: 420px; max-width: 95vw;
-      background: #fff; color: #222; z-index: 99999; transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
-      overflow-y: auto; box-shadow: 5px 0 30px rgba(0,0,0,0.5); display: flex; flex-direction: column;
-    }
-    #a11y-panel.open { left: 0; }
-    #a11y-panel-header {
-      background: #e02020; color: white; padding: 16px 20px; display: flex; align-items: center;
-      justify-content: space-between; position: sticky; top: 0; z-index: 2; flex-shrink: 0;
-    }
-    #a11y-panel-header h2 { font-size: 17px; font-weight: 900; margin: 0; direction: rtl; }
-    #a11y-close { background: none; border: none; color: white; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; }
-    #a11y-close:hover { background: rgba(255,255,255,0.2); }
-
-    .a11y-section { padding: 14px 16px 8px; }
-    .a11y-section-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 6px 0; }
-    .a11y-section-header h3 { font-size: 14px; font-weight: 800; color: #222; margin: 0; direction: rtl; }
-    .a11y-section-toggle { width: 22px; height: 22px; background: #e02020; color: white; border: none; border-radius: 50%; font-size: 16px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .a11y-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
-    .a11y-btn {
-      background: #fff; border: 1.5px solid #ddd; border-radius: 10px; padding: 12px 6px 8px;
-      display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer;
-      font-size: 11px; color: #333; font-weight: 700; text-align: center; transition: all 0.15s;
-      font-family: 'Heebo', sans-serif; line-height: 1.3; min-height: 80px; justify-content: center;
-    }
-    .a11y-btn:hover { border-color: #e02020; color: #e02020; background: #fff5f5; }
-    .a11y-btn.active { border-color: #e02020; background: #fff0f0; color: #e02020; box-shadow: 0 0 0 2px #e0202033; }
-    .a11y-btn svg { flex-shrink: 0; }
-    .a11y-divider { height: 1px; background: #eee; margin: 4px 16px; }
-
-
-    /* Color picker section */
-    .a11y-color-section { padding: 10px 16px 14px; direction: rtl; }
-    .a11y-color-label { font-size: 12px; font-weight: 700; color: #555; margin-bottom: 6px; display: block; }
-    .a11y-color-bar { display: flex; gap: 6px; margin-bottom: 8px; }
-    .a11y-color-swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; cursor: pointer; transition: transform 0.1s; }
-    .a11y-color-swatch:hover { transform: scale(1.2); border-color: #333; }
-    .a11y-color-swatch.active { border-color: #e02020; transform: scale(1.2); }
-    .color-preset-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-
-    /* Font size slider */
-    .a11y-slider-row { display: flex; align-items: center; gap: 10px; direction: rtl; padding: 8px 0; }
-    .a11y-slider-row input[type=range] { flex: 1; accent-color: #e02020; }
-    .a11y-slider-label { font-size: 12px; font-weight: 700; color: #555; white-space: nowrap; }
-
-    /* Cursor color buttons */
-    .cursor-btn { padding: 6px 14px; border: 2px solid #ddd; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700; background: #fff; transition: all 0.15s; }
-    .cursor-btn:hover { border-color: #e02020; }
-    .cursor-btn.active { border-color: #e02020; background: #fff0f0; color: #e02020; }
-
-    /* Reading guide */
-    #reading-guide-bar { position: fixed; top: 0; left: 0; right: 0; height: 40px; background: rgba(0,0,0,0.3); pointer-events: none; z-index: 99990; display: none; border-top: 2px solid #e02020; border-bottom: 2px solid #e02020; }
-
-    /* Virtual keyboard placeholder */
-    #vkeyboard { position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; border-top: 2px solid #e02020; z-index: 99995; display: none; padding: 12px; }
-    .vkey-row { display: flex; justify-content: center; gap: 4px; margin-bottom: 4px; }
-    .vkey { background: #334155; color: white; border: 1px solid #475569; border-radius: 6px; padding: 8px 12px; font-size: 13px; cursor: pointer; min-width: 36px; text-align: center; }
-    .vkey:hover { background: #e02020; }
-
-    /* Accessible classes */
-    body.a11y-stop-anim * { animation: none !important; transition: none !important; }
-    body.a11y-large-text { font-size: 120% !important; }
-    body.a11y-large-text h1 { font-size: 3rem !important; }
-    body.a11y-high-contrast { filter: contrast(150%) brightness(1.1); }
-    body.a11y-dark-contrast { filter: invert(1) hue-rotate(180deg); }
-    body.a11y-mono { filter: grayscale(1); }
-    body.a11y-highlight-links a { background: yellow !important; color: #000 !important; padding: 0 2px !important; outline: 2px solid orange !important; }
-    body.a11y-readable-font * { font-family: 'Arial', sans-serif !important; letter-spacing: 0.05em !important; }
-    body.a11y-big-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 0 L8 24 L14 18 L20 32 L23 31 L17 17 L26 17 Z' fill='black' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 8 0, auto !important; }
-    body.a11y-big-cursor-white * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 0 L8 24 L14 18 L20 32 L23 31 L17 17 L26 17 Z' fill='white' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 8 0, auto !important; }
-    body.a11y-hide-images img { visibility: hidden !important; }
-    body.a11y-letter-spacing * { letter-spacing: 0.12em !important; }
-    body.a11y-word-spacing * { word-spacing: 0.25em !important; }
-    body.a11y-line-height * { line-height: 2 !important; }
-    body.a11y-saturation-high { filter: saturate(2.5); }
-    body.a11y-saturation-low { filter: saturate(0.3); }
-    .a11y-focus-visible :focus { outline: 3px solid #e02020 !important; outline-offset: 3px !important; }
-    body.a11y-big-text-cursor * { font-size: calc(1em * var(--a11y-font-scale, 1)) !important; }
+    .text-glow { text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); }
+    
+    .copy-btn { opacity: 0.5; transition: all 0.2s; cursor: pointer; }
+    .copy-btn:hover { opacity: 1; transform: scale(1.1); }
+    .copy-btn:active { transform: scale(0.9); }
+    .copy-success { filter: hue-rotate(90deg) brightness(1.5) !important; }
   </style>
 </head>
 <body>
-  <div id="char-right" aria-hidden="true"></div>
-  <div id="char-left" aria-hidden="true"></div>
-  <div id="spotlight" aria-hidden="true"></div>
-  <div id="reading-guide-bar" aria-hidden="true"></div>
-  
-  <button class="scroll-indicator" id="scrollIndicator" aria-label="גלול למטה לקישורים">
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 256 256" aria-hidden="true">
-      <path d="M128,180a8,8,0,0,1-5.66-2.34l-80-80a8,8,0,0,1,11.32-11.32L128,160.69l74.34-74.35a8,8,0,0,1,11.32,11.32l-80,80A8,8,0,0,1,128,180Z"></path>
-    </svg>
-  </button>
-
-  <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="לוגו טעינה עודד סבר" class="splash-logo"></div>
-  
-  <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
-    <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto" aria-label="ניווט ראשי">
-        <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
+  <div id="char-right"></div> 
+  <div id="char-left"></div> 
+  <div id="spotlight"></div>
+  <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div> 
+  <div id="main-page-content" class="flex flex-col items-center px-6 py-12"> 
+    <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto">
+        <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
         <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Videos</a>
-        <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
-        <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a>
+        <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
+        <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a> 
     </nav>
 
     <div class="text-center mb-10 relative z-10">
-      <a href="https://kick.com/odedsvr" target="_blank" aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)">
-        <div class="relative inline-block">
-          <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" alt="תמונת הפרופיל של עודד סבר" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
-          <span id="live-dot" class="hidden">
-            <span class="absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]" style="box-shadow: 0 0 8px rgba(239,68,68,0.9);"></span>
-            <span class="live-ring absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]"></span>
-          </span>
-        </div>
+      <a href="https://www.youtube.com/@odedsvr95" target="_blank">
+        <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
       </a>
       <h1 class="text-4xl font-black text-white tracking-tight">Oded SVR</h1>
-      <div class="flex items-center justify-center gap-2 mt-1">
-        <span id="live-badge" class="hidden items-center gap-1 bg-red-500/20 border border-red-500/40 text-red-400 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
-          <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse inline-block"></span>
-          Live
-        </span>
-        <span id="offline-badge" class="hidden items-center gap-1 bg-white/5 border border-white/20 text-white/40 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
-          <span class="w-1.5 h-1.5 bg-white/30 rounded-full inline-block"></span>
-          Offline
-        </span>
-        <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase">Official Links</p>
+      <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Specs & Commands</p>
+    </div>
+
+    <div class="w-full max-w-4xl space-y-6 relative z-10">
+      <a href="https://botrix.live/k/odedsvr/leaderboard" target="_blank" class="card block rounded-xl text-center hover:border-cyan-500/40">
+        <div class="text-2xl font-black text-cyan-400 text-glow">🏆 LEADERBOARD 🏆</div>
+        <p class="text-sm text-cyan-200/60 font-bold mt-1 uppercase">צפו במובילים של הערוץ</p>
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+        <div class="card rounded-xl">
+          <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2 font-mono">💬 Chat Commands (Kick)</h2>
+          <div class="space-y-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">watchtime!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('!watchtime', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
+              <div class="text-sm text-gray-400 font-mono">Total Watchtime On LiveStreams</div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">followage!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('!followage', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
+              <div class="text-sm text-gray-400 font-mono">Total Follow Time On Kick</div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">clip!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('!clip', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
+              <div class="text-sm text-gray-400 font-mono">Clip The Last 30 Seconds</div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <div class="text-white font-black text-lg text-glow font-mono">discord!</div>
+                <img src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" onclick="copyCmd('!discord', this)" class="w-5 h-5 invert copy-btn" title="העתק פקודה">
+              </div>
+              <div class="text-sm text-gray-400 font-mono">Get a Link For The Discord Server</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rounded-xl text-left" dir="ltr">
+          <h2 class="text-xl font-black text-purple-400 mb-4 border-b border-purple-400/20 pb-2 font-mono">My Setup 🖥️</h2>
+          <ul class="text-base space-y-2 text-gray-300 font-bold text-glow font-mono">
+            <li>CPU - Intel Core i7 14700KF</li>
+            <li>GPU - NVIDIA GeForce RTX 5070Ti</li>
+            <li>MEMORY - Corsair 32GB DDR5 Ram</li>
+            <li>MB - B760 Motherboard</li>
+            <li>KEYBOARD - Steelseries Apex7</li>
+            <li>MOUSE - RAZER Basilisk X</li>
+            <li>MIC - Elgato Wave 3</li>
+            <li>HEADPHONES - HyperX Cloud Stinger 2 Wireless</li>
+          </ul>
+        </div>
       </div>
     </div>
-    
-    <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto relative z-10" id="links-grid" dir="ltr">
-      <a href="https://www.animanga-israel.com/" target="_blank" class="card block rounded-xl p-6 text-center hover:border-yellow-500/40" dir="rtl" aria-label="אתר אנימנגה ישראל, השתמש בקוד OSVR10 לקבלת הנחה (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-yellow-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/%D7%90%D7%A0%D7%99%D7%9E%D7%A0%D7%92%D7%94.png?raw=true" alt="" class="h-8 w-8 ml-2" aria-hidden="true"> ANIMANGA ISRAEL</div>
-        <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1"><span class="text-xs text-yellow-200 font-bold uppercase tracking-wider">קוד: OSVR10</span></div>
-      </a>
-      <a href="https://github.com/OdedSVR/images/blob/main/giveaways.png?raw=true" target="_blank" class="card block rounded-xl p-6 text-center hover:border-green-500/40 flex flex-col items-center justify-center" dir="rtl" aria-label="לפרטים נוספים על הגרלות אצל אנימנגה לחצו כאן (נפתח בטאב חדש)">
-        <div class="text-xl font-bold text-green-300 uppercase tracking-widest text-center">🎁 לפרטים נוספים על הגרלות אצל אנימנגה לחצו 🎁</div>
-      </a>
-      <a href="https://libero-il.co.il/" target="_blank" class="card bg-cyan-900/20 block rounded-xl p-6 hover:border-cyan-500/40 flex flex-col items-center justify-center space-y-1" dir="rtl" aria-label="אתר ליברו (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-cyan-400">💎 LIBERO</div>
-      </a>
-      <a href="https://github.com/OdedSVR/images/blob/main/Pierre%20Precieuse1.png?raw=true" target="_blank" class="card bg-cyan-900/20 block rounded-xl p-6 text-center hover:border-cyan-500/40 text-cyan-300 text-base font-bold uppercase space-y-1" dir="rtl" aria-label="מבצע מיוחד בליברו, עשרה אחוז הנחה בכל האתר עם הקוד OSVR10, לחצו לפרטים (נפתח בטאב חדש)">
-        <div>10% הנחה בכל האתר - OSVR10</div>
-        <div class="text-sky-300 underline">מבצע מיוחד! (לחצו לפרטים)</div>
-      </a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40" dir="rtl" aria-label="טופס הרשמה לכוכב הבא של פיצה הפקות (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-red-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div>
-        <p class="text-xs text-red-200/50 font-bold mt-1 uppercase">להרשמה</p>
-      </a>
-      <a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-xl p-6 text-center hover:border-indigo-500/40 flex flex-col items-center justify-center" dir="rtl" aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-indigo-300 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/discor%20logo.png?raw=true" alt="" class="h-10 w-10 mr-2" aria-hidden="true">Discord</div>
-      </a>
-      <a href="https://kick.com/odedsvr" target="_blank" class="card block rounded-xl p-6 text-center hover:border-green-500/40" dir="rtl" aria-label="ערוץ הקיק הרשמי של עודד (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-green-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/kick%20logo.png?raw=true" alt="" class="h-8 w-8 ml-2" aria-hidden="true"> Kick</div>
-      </a>
-      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40" dir="rtl" aria-label="טופס הגשת ערעור על באן (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-red-400"> ערעור על באן 📝</div>
-        <p class="text-[10px] text-red-300/60 font-bold">פנו אלינו לערעורים</p>
-      </a>
-      <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" class="card block rounded-xl p-6 text-center hover:border-orange-500/40" dir="rtl" aria-label="קהילת הרדיט של עודד (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-orange-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/Reddit%20(1).png?raw=true" alt="" class="h-8 w-8 ml-2" aria-hidden="true">Reddit</div>
-      </a>
-      <a href="https://www.youtube.com/@odedsvr95" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40 flex flex-col items-center justify-center" dir="rtl" aria-label="ערוץ היוטיוב של עודד (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-red-500 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/YTLOGO.png?raw=true" alt="" class="h-8 w-8 mr-2" aria-hidden="true">YouTube</div>
-      </a>
-      <a href="https://www.instagram.com/odedsvr/" target="_blank" class="card block rounded-xl p-6 text-center hover:border-pink-500/40 flex flex-col items-center justify-center" dir="rtl" aria-label="פרופיל האינסטגרם של עודד (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-pink-300 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/instlogo.png?raw=true" alt="" class="h-6 w-6 ml-2" aria-hidden="true">Instagram</div>
-      </a>
-      <a href="https://rggplay.com/?ref=RGG-8764e9784" target="_blank" class="card block rounded-xl p-6 text-center hover:border-blue-500/40" dir="rtl" aria-label="אתר אר ג'י ג'י פליי, השמש בקוד פנו אלינו לקבלת הנחה ODEDSVR (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-blue-400">🎮 RGG PLAY 🎮</div>
-        <p class="text-xs text-blue-200/60 font-bold mt-1 uppercase">קוד: ODEDSVR</p>
-      </a>
-    </div>
-    
     <footer class="mt-12 text-[9px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
-    <footer class="mt-12 text-[6px] text-white/15 font-bold text-center tracking-[0.2em] uppercase">*ליברו ואנימנגה - שת"פ בין עודד לחברות</footer>
-  </div>
-
-  <!-- ==================== ACCESSIBILITY WIDGET ==================== -->
-  <div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
-    <button id="a11y-fab" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 256 256" aria-hidden="true">
-        <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM128,56a16,16,0,1,0,16,16A16,16,0,0,0,128,56Zm40,56a8,8,0,0,1-8,8H136v40h16a8,8,0,0,1,0,16H104a8,8,0,0,1,0-16h16V120H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Z"/>
-      </svg>
-    </button>
-  </div>
-
-  <!-- Panel -->
-  <div id="a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" tabindex="-1">
-    <div id="a11y-panel-header">
-      <button id="a11y-close" aria-label="סגור תפריט נגישות">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
-      </button>
-      <h2>תפריט נגישות</h2>
-    </div>
-
-    <!-- Section: Navigation -->
-    <div class="a11y-section">
-      <div class="a11y-section-header" id="nav-section-header" aria-expanded="true" aria-controls="nav-section-body">
-        <button class="a11y-section-toggle" aria-label="כווץ התאמות ניווט">−</button>
-        <h3>התאמות ניווט</h3>
-      </div>
-      <div id="nav-section-body" class="a11y-grid">
-        <button class="a11y-btn" data-feature="keyboard-nav" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><rect x="24" y="56" width="208" height="144" rx="16" fill="none" stroke="#e02020" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="72" y1="152" x2="184" y2="152" fill="none" stroke="#e02020" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="72" y1="112" x2="72" y2="112" stroke="#e02020" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/><line x1="128" y1="112" x2="128" y2="112" stroke="#e02020" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/><line x1="184" y1="112" x2="184" y2="112" stroke="#e02020" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
-          ניווט מקלדת
-        </button>
-        <button class="a11y-btn" data-feature="regions" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><rect x="24" y="24" width="208" height="208" rx="8" stroke="#e02020" stroke-width="16" fill="none"/><line x1="24" y1="88" x2="232" y2="88" stroke="#e02020" stroke-width="14"/><line x1="24" y1="168" x2="232" y2="168" stroke="#e02020" stroke-width="14"/><line x1="128" y1="88" x2="128" y2="168" stroke="#e02020" stroke-width="14"/></svg>
-          ניווט אזורים
-        </button>
-        <button class="a11y-btn" data-feature="screen-reader" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M80,56a48,48,0,1,1,48,48A48.05,48.05,0,0,1,80,56Zm128,96H48a24,24,0,0,0-24,24v8a8,8,0,0,0,16,0v-8a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8v8a8,8,0,0,0,16,0v-8A24,24,0,0,0,208,152Z"/></svg>
-          התאמה לקורא מסך
-        </button>
-        <button class="a11y-btn" data-feature="voice-nav" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V80a48,48,0,0,0-96,0v48A48.05,48.05,0,0,0,128,176ZM96,80a32,32,0,0,1,64,0v48a32,32,0,0,1-64,0Zm40,143.6V200a8,8,0,0,0-16,0v23.6A80.11,80.11,0,0,1,48,144a8,8,0,0,0-16,0,96.11,96.11,0,0,0,88,95.6V240a8,8,0,0,0,16,0v-.4A96.11,96.11,0,0,0,224,144a8,8,0,0,0-16,0A80.11,80.11,0,0,1,136,223.6Z"/></svg>
-          פקודות קוליות
-        </button>
-
-        <button class="a11y-btn" data-feature="smart-nav" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>
-          ניווט חכם
-        </button>
-      </div>
-    </div>
-
-    <div class="a11y-divider"></div>
-
-    <!-- Section: Contrast -->
-    <div class="a11y-section">
-      <div class="a11y-section-header" id="contrast-section-header">
-        <button class="a11y-section-toggle" aria-label="כווץ התאמות ניגודיות">−</button>
-        <h3>התאמות ניגודיות</h3>
-      </div>
-      <div id="contrast-section-body" class="a11y-grid">
-        <button class="a11y-btn" data-feature="contrast-bright" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm8,24a64,64,0,1,0,64,64A64.07,64.07,0,0,0,128,64ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM40,128a8,8,0,0,0-8-8H8a8,8,0,0,0,0,16H32A8,8,0,0,0,40,128Zm88,88a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,216Zm112-96H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
-          ניגודיות בהירה
-        </button>
-        <button class="a11y-btn" data-feature="contrast-dark" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,240a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23Z"/></svg>
-          ניגודיות כהה
-        </button>
-        <button class="a11y-btn" data-feature="mono" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><circle cx="128" cy="128" r="96" stroke="#e02020" stroke-width="16" fill="none"/><path d="M128 32 Q128 128 128 224" stroke="#e02020" stroke-width="16" fill="#e02020"/></svg>
-          מונוכרום
-        </button>
-        <button class="a11y-btn" data-feature="contrast-gauge" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z" fill="#e02020"/><path d="M128 128 L80 80" stroke="#e02020" stroke-width="14" stroke-linecap="round"/></svg>
-          מד ניגודיות
-        </button>
-        <button class="a11y-btn" data-feature="saturation-high" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,16a88,88,0,0,1,85.48,108H42.52A88.09,88.09,0,0,1,128,40Z" fill="#e02020"/></svg>
-          רוויה גבוהה
-        </button>
-        <button class="a11y-btn" data-feature="saturation-low" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><circle cx="128" cy="128" r="96" stroke="#ccc" stroke-width="16" fill="none"/><path d="M80 176 Q128 80 176 176" stroke="#ccc" stroke-width="14" stroke-linecap="round" fill="none"/></svg>
-          רוויה נמוכה
-        </button>
-      </div>
-
-      <!-- Color picker -->
-      <div class="a11y-color-section">
-        <span class="a11y-color-label">התאמת צבעים — שינוי צבעי האתר</span>
-        <div class="color-preset-row">
-          <div class="a11y-color-swatch active" style="background:#e02020" data-color="default" title="ברירת מחדל"></div>
-          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" data-color="warm" title="חם"></div>
-          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)" data-color="cool" title="קר"></div>
-          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#22c55e,#10b981)" data-color="green" title="ירוק"></div>
-          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)" data-color="purple" title="סגול"></div>
-          <button style="font-size:11px;color:#e02020;background:none;border:none;cursor:pointer;font-weight:700;padding:4px 8px;border:1px solid #e02020;border-radius:6px;" id="reset-color-btn">תכנים</button>
-          <button style="font-size:11px;color:#666;background:none;border:1px solid #ddd;cursor:pointer;font-weight:700;padding:4px 8px;border-radius:6px;" id="custom-color-btn">מותרות <span style="font-size:10px;">▼</span></button>
-          <button style="font-size:11px;font-weight:900;color:white;background:#e02020;border:none;cursor:pointer;padding:4px 10px;border-radius:6px;" id="apply-color-btn">רקעים</button>
-        </div>
-        <div style="margin-top:10px;">
-          <input type="range" min="0" max="360" value="0" id="hue-slider" style="width:100%;accent-color:#e02020;">
-          <div style="height:12px;border-radius:6px;background:linear-gradient(to left,hsl(0,80%,55%),hsl(45,80%,55%),hsl(90,80%,55%),hsl(135,80%,55%),hsl(180,80%,55%),hsl(225,80%,55%),hsl(270,80%,55%),hsl(315,80%,55%),hsl(360,80%,55%));margin-top:4px;"></div>
-          <button style="font-size:11px;color:#e02020;font-weight:700;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;margin-top:6px;padding:0;" id="reset-hue-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#e02020" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.07A88,88,0,0,0,128,40a88.4,88.4,0,0,0-36.07,7.65l-35.77-35.77A8,8,0,0,0,44.84,23.2L23.2,44.84a8,8,0,0,0,0,11.32L216.69,229.66a8,8,0,0,0,11.32-11.32ZM128,56a72,72,0,0,1,55.68,26.55L58.55,183.68A71.51,71.51,0,0,1,56,164,72.08,72.08,0,0,1,128,56Z"/></svg>
-            איפוס צבעים
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="a11y-divider"></div>
-
-    <!-- Section: Font -->
-    <div class="a11y-section">
-      <div class="a11y-section-header">
-        <button class="a11y-section-toggle">−</button>
-        <h3>הגדלת הטקסט והקטנת הגופן</h3>
-      </div>
-      <div id="font-section-body">
-        <!-- Font size slider -->
-        <div class="a11y-slider-row">
-          <span class="a11y-slider-label">גודל גופן</span>
-          <input type="range" min="80" max="160" value="100" id="font-size-slider">
-          <span class="a11y-slider-label" id="font-size-display">100%</span>
-        </div>
-        <div class="a11y-slider-row">
-          <span class="a11y-slider-label">ריווח אותיות</span>
-          <input type="range" min="0" max="10" value="0" id="letter-spacing-slider">
-        </div>
-        <div class="a11y-slider-row">
-          <span class="a11y-slider-label">ריווח בין מילים</span>
-          <input type="range" min="0" max="20" value="0" id="word-spacing-slider">
-        </div>
-        <div class="a11y-slider-row">
-          <span class="a11y-slider-label">ריווח בין שורות</span>
-          <input type="range" min="0" max="20" value="0" id="line-height-slider">
-        </div>
-        <div style="display:flex;gap:6px;margin-top:4px;">
-          <button class="a11y-btn" data-feature="readable-font" aria-pressed="false" style="flex:1;min-height:60px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#e02020" viewBox="0 0 256 256"><path d="M216,56H40A16,16,0,0,0,24,72V184a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,152H80V104H64a8,8,0,0,1,0-16h48a8,8,0,0,1,0,16H96Zm80,0H144a8,8,0,0,1-6.4-3.2l-24-32,6.4-4.8L144,140.67V104a8,8,0,0,1,16,0v48Z"/></svg>
-            גופן קריאה
-          </button>
-          <button class="a11y-btn" data-feature="highlight-links" aria-pressed="false" style="flex:1;min-height:60px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#e02020" viewBox="0 0 256 256"><path d="M137.54,186.36a8,8,0,0,1,0,11.31l-9.94,10A56,56,0,0,1,48.38,128.4L72.5,104.28A56,56,0,0,1,149,102.08a8,8,0,1,1-10.63,11.93,40,40,0,0,0-54.61,1.57L59.7,139.7a40,40,0,0,0,56.58,56.58l9.94-9.94A8,8,0,0,1,137.54,186.36Zm70.08-138a56.08,56.08,0,0,0-79.22,0l-9.94,9.95a8,8,0,0,0,11.32,11.31l9.94-9.94a40,40,0,0,1,56.58,56.58L172.18,140.4A40,40,0,0,1,117.57,142a8,8,0,1,0-10.63,11.92,56,56,0,0,0,76.48-2.19l24.12-24.12A56.08,56.08,0,0,0,207.62,48.38Z"/></svg>
-            הדגשת קישורים
-          </button>
-          <button class="a11y-btn" data-feature="image-desc" aria-pressed="false" style="flex:1;min-height:60px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#e02020" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194l-36-36,20-20,38,38V200Z"/></svg>
-            תיאור לתמונות
-          </button>
-        </div>
-        <div style="display:flex;gap:6px;margin-top:6px;">
-          <button class="a11y-btn" data-feature="big-titles" aria-pressed="false" style="flex:1;min-height:60px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#e02020" viewBox="0 0 256 256"><path d="M208,56H48A16,16,0,0,0,32,72V184a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V72A16,16,0,0,0,208,56ZM48,72H208V184H48ZM88,152H72V104H56a8,8,0,0,1,0-16H104a8,8,0,0,1,0,16H88Zm120,0H192V128H168v24H152V96h16v16h24V96h16Z"/></svg>
-            הגדלת כותרות
-          </button>
-          <button class="a11y-btn" data-feature="page-structure" aria-pressed="false" style="flex:1;min-height:60px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#e02020" viewBox="0 0 256 256"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,176H48V48H208V208ZM80,96a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H88A8,8,0,0,1,80,96Zm0,40a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H88A8,8,0,0,1,80,136Zm0,40a8,8,0,0,1,8-8H136a8,8,0,0,1,0,16H88A8,8,0,0,1,80,176Z"/></svg>
-            מבנה עמוד
-          </button>
-          <button class="a11y-btn" data-feature="zoom-content" aria-pressed="false" style="flex:1;min-height:60px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#e02020" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Zm104,0a8,8,0,0,1-8,8H120v16a8,8,0,0,1-16,0V120H88a8,8,0,0,1,0-16h16V88a8,8,0,0,1,16,0v16h16A8,8,0,0,1,144,112Z"/></svg>
-            הגדלת תצוגה
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="a11y-divider"></div>
-
-    <!-- Section: Cursor -->
-    <div class="a11y-section">
-      <div class="a11y-section-header">
-        <button class="a11y-section-toggle">−</button>
-        <h3>סמן העכבר</h3>
-      </div>
-      <div id="cursor-section-body" style="margin-top:10px;">
-        <span style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:8px;">הגדל סמן העכבר ושינוי צבע</span>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button class="cursor-btn" data-cursor="default">ברירת מחדל</button>
-          <button class="cursor-btn" data-cursor="black">שחור</button>
-          <button class="cursor-btn" data-cursor="white">לבן</button>
-        </div>
-        <div style="margin-top:10px;">
-          <button class="a11y-btn" data-feature="big-cursor" aria-pressed="false" style="width:100%;flex-direction:row;gap:12px;padding:10px 14px;min-height:52px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#e02020" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145l-26.51,65.79A12,12,0,0,1,90.28,218a12.27,12.27,0,0,1-4.37-.82,12,12,0,0,1-7-15.47L128,48,177.07,169.07l31.42-31.42a12,12,0,0,1,17,17Z"/></svg>
-            הגדלת סמן מחוון
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="a11y-divider"></div>
-
-    <!-- Section: Tools -->
-    <div class="a11y-section" style="padding-bottom:16px;">
-      <div class="a11y-section-header">
-        <button class="a11y-section-toggle">−</button>
-        <h3>כלים נוספים</h3>
-      </div>
-      <div id="tools-section-body" class="a11y-grid" style="margin-top:10px;">
-        <button class="a11y-btn" data-feature="focus-mode" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M200,52H56A4,4,0,0,0,52,56V200a4,4,0,0,0,4,4H200a4,4,0,0,0,4-4V56A4,4,0,0,0,200,52ZM128,152a24,24,0,1,1,24-24A24,24,0,0,1,128,152Z"/></svg>
-          מיקוד קריאה
-        </button>
-        <button class="a11y-btn" data-feature="reading-guide" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><rect x="24" y="96" width="208" height="64" rx="8" stroke="#e02020" stroke-width="14" fill="none"/><line x1="24" y1="128" x2="232" y2="128" stroke="#e02020" stroke-width="8"/></svg>
-          מדריך קריאה
-        </button>
-        <button class="a11y-btn" data-feature="mute-media" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.85V91.15l56-43.51Zm70-80L201.66,115.3a8,8,0,0,1-11.32-11.32L204.69,90,190.34,75.65A8,8,0,0,1,201.66,64.35L216,78.69l14.34-14.34a8,8,0,0,1,11.32,11.32L227.31,90l14.35,14.34A8,8,0,0,1,214,115.3Z"/></svg>
-          השתק מדיה
-        </button>
-        <button class="a11y-btn" data-feature="page-summary" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></svg>
-          סיכום עמוד
-        </button>
-        <button class="a11y-btn" data-feature="virtual-keyboard" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><rect x="16" y="72" width="224" height="144" rx="16" stroke="#e02020" stroke-width="14" fill="none"/><line x1="56" y1="128" x2="56" y2="128" stroke="#e02020" stroke-width="20" stroke-linecap="round"/><line x1="96" y1="128" x2="96" y2="128" stroke="#e02020" stroke-width="20" stroke-linecap="round"/><line x1="136" y1="128" x2="136" y2="128" stroke="#e02020" stroke-width="20" stroke-linecap="round"/><line x1="176" y1="128" x2="176" y2="128" stroke="#e02020" stroke-width="20" stroke-linecap="round"/><line x1="76" y1="168" x2="180" y2="168" stroke="#e02020" stroke-width="14" stroke-linecap="round"/></svg>
-          מקלדת וירטואלית
-        </button>
-        <button class="a11y-btn" data-feature="dictionary" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M231.65,194.53,198.29,62.27a16,16,0,0,0-19.29-11.53L152,57.24V48a16,16,0,0,0-16-16H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16h80a16,16,0,0,0,16-16v-17.48l43.07-10.28A16,16,0,0,0,231.65,194.53ZM136,208H56V48h80V208Z"/></svg>
-          מילון
-        </button>
-        <button class="a11y-btn" data-feature="tts-read" aria-pressed="false" id="tts-main-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.85V91.15l56-43.51Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58Zm27.14-9.22a72,72,0,0,1,0,71.52,8,8,0,1,1-13.85-8,56,56,0,0,0,0-55.52,8,8,0,1,1,13.85-8Z"/></svg>
-          הקראת טקסט
-        </button>
-        <button class="a11y-btn" data-feature="stop-anim" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-16-104v48a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm48,0v48a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Z"/></svg>
-          עצירת אנימציות
-        </button>
-        <button class="a11y-btn" data-feature="hide-distractions" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M228.92,49.69a8,8,0,0,0-6.86-1.45L160.93,63.52,99.58,32.84a8,8,0,0,0-6.37-.39L29.14,53.71A8,8,0,0,0,24,61.22V200a8,8,0,0,0,9.94,7.76l61.13-15.28,61.35,30.68A8.15,8.15,0,0,0,160,224a8,8,0,0,0,2.06-.27l64.86-16.23A8,8,0,0,0,232,200V56A8,8,0,0,0,228.92,49.69ZM104,55.74l48,24V200.26l-48-24ZM40,69.45l48-17.94V187.45L40,202.42ZM216,186.55l-48,12V63.45l48-11.88Z"/></svg>
-          הסתרת הסחות דעת
-        </button>
-        <button class="a11y-btn" data-feature="highlight-elements" aria-pressed="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M237.66,86.34l-60-60a8,8,0,0,0-11.32,0L36.69,155.31a16,16,0,0,0,0,22.63L78.06,219.31A16,16,0,0,0,89.37,224H216a8,8,0,0,0,0-16H159.32l78.34-78.34A8,8,0,0,0,237.66,86.34ZM82.06,208,40.69,166.63l96-96L178.63,112ZM192,128l-9.37-9.37,9.37-9.38Z"/></svg>
-          הדגשת אלמנטים
-        </button>
-      </div>
-
-      <!-- Reset all -->
-      <button id="a11y-reset-all" style="width:100%;margin-top:14px;padding:10px;background:#fff5f5;border:1.5px solid #fca5a5;border-radius:10px;color:#e02020;font-weight:900;font-size:13px;cursor:pointer;font-family:'Heebo',sans-serif;direction:rtl;">
-        ← איפוס כל הגדרות הנגישות
-      </button>
-    </div>
-  </div>
-
-  <!-- TTS Control Bar -->
-  <div id="tts-bar" role="region" aria-label="שליטה בהקראה" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1e293b;border-top:2px solid #e02020;z-index:99994;padding:10px 16px;direction:rtl;">
-    <div style="max-width:700px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-      <button id="tts-play-pause" aria-label="עצור הקראה" style="background:#e02020;color:white;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:900;cursor:pointer;font-family:'Heebo',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap;">
-        <svg id="tts-icon-pause" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 256 256"><path d="M200,32H160a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm0,176H160V48h40ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Zm0,176H56V48H96Z"/></svg>
-        <svg id="tts-icon-play" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 256 256" style="display:none;"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.12,16.12,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27Z"/></svg>
-        <span id="tts-btn-label">השהה</span>
-      </button>
-      <button id="tts-stop" aria-label="סיום הקראה" style="background:#334155;color:white;border:none;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;">⏹ עצור</button>
-      <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:140px;">
-        <label for="tts-speed" style="color:#94a3b8;font-size:12px;font-weight:700;white-space:nowrap;">מהירות:</label>
-        <input type="range" id="tts-speed" min="0.5" max="2" step="0.1" value="1" style="flex:1;accent-color:#e02020;">
-        <span id="tts-speed-label" style="color:white;font-size:12px;font-weight:700;min-width:28px;">×1</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:6px;">
-        <label for="tts-voice-select" style="color:#94a3b8;font-size:12px;font-weight:700;white-space:nowrap;">קול:</label>
-        <select id="tts-voice-select" style="background:#334155;color:white;border:1px solid #475569;border-radius:6px;padding:4px 8px;font-size:12px;font-family:'Heebo',sans-serif;max-width:140px;"></select>
-      </div>
-      <div id="tts-progress-text" style="color:#64748b;font-size:11px;font-weight:700;white-space:nowrap;"></div>
-    </div>
-  </div>
-
-  <!-- Virtual Keyboard -->
-  <div id="vkeyboard" role="complementary" aria-label="מקלדת וירטואלית">
-    <div class="vkey-row">
-      <div class="vkey">ק</div><div class="vkey">ר</div><div class="vkey">א</div><div class="vkey">ט</div><div class="vkey">ו</div><div class="vkey">ן</div><div class="vkey">ם</div><div class="vkey">פ</div><div class="vkey">⌫</div>
-    </div>
-    <div class="vkey-row">
-      <div class="vkey">ש</div><div class="vkey">ד</div><div class="vkey">ג</div><div class="vkey">כ</div><div class="vkey">ע</div><div class="vkey">י</div><div class="vkey">ח</div><div class="vkey">ל</div><div class="vkey">ך</div><div class="vkey">ף</div>
-    </div>
-    <div class="vkey-row">
-      <div class="vkey">ז</div><div class="vkey">ס</div><div class="vkey">ב</div><div class="vkey">ה</div><div class="vkey">נ</div><div class="vkey">מ</div><div class="vkey">צ</div><div class="vkey">ת</div><div class="vkey">ץ</div>
-    </div>
-    <div class="vkey-row">
-      <div class="vkey" style="min-width:120px;">רווח</div>
-      <div class="vkey">↵</div>
-      <button onclick="document.getElementById('vkeyboard').style.display='none'" style="background:#e02020;color:white;border:none;border-radius:6px;padding:8px 14px;font-size:13px;cursor:pointer;">סגור</button>
-    </div>
   </div>
 
   <script>
-    // ============ ORIGINAL SCRIPTS ============
+    function copyCmd(text, el) {
+      navigator.clipboard.writeText(text).then(() => {
+        el.classList.add('copy-success');
+        setTimeout(() => el.classList.remove('copy-success'), 1000);
+      });
+    }
+
     const spotlight = document.getElementById('spotlight');
     const mainContent = document.getElementById('main-page-content');
     const splash = document.getElementById('splash-screen');
     const charLeft = document.getElementById('char-left');
     const charRight = document.getElementById('char-right');
-    const scrollIndicator = document.getElementById('scrollIndicator');
 
     function activateSite() {
-      if (splash) { splash.style.opacity = '0'; setTimeout(() => { splash.style.display = 'none'; mainContent.classList.add('visible'); if (spotlight) spotlight.style.display = 'block'; }, 300); }
-    }
-    
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(() => {
+          splash.style.display = 'none';
+          mainContent.classList.add('visible');
+          if (spotlight) spotlight.style.display = 'block';
+        }, 300);
+      }
+    };
+
     document.addEventListener('mousemove', (e) => {
-      if (spotlight) { spotlight.style.left = e.clientX + 'px'; spotlight.style.top = e.clientY + 'px'; }
-      const x = (window.innerWidth - e.pageX * 2) / 100; const y = (window.innerHeight - e.pageY * 2) / 100;
+      if (spotlight) {
+        spotlight.style.left = e.clientX + 'px';
+        spotlight.style.top = e.clientY + 'px';
+      }
+      const x = (window.innerWidth - e.pageX * 2) / 100;
+      const y = (window.innerHeight - e.pageY * 2) / 100;
       if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
       if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
     });
-
-    scrollIndicator.addEventListener('click', () => { window.scrollTo({ top: 450, behavior: 'smooth' }); });
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) { scrollIndicator.style.opacity = '0'; scrollIndicator.style.visibility = 'hidden'; }
-      else { scrollIndicator.style.opacity = '1'; scrollIndicator.style.visibility = 'visible'; }
-    });
-
-    window.addEventListener('load', activateSite);
-    setTimeout(activateSite, 300);
-
-    async function checkLiveStatus() {
-      try {
-        const res = await fetch('https://kick.com/api/v2/channels/odedsvr');
-        const data = await res.json();
-        const dot = document.getElementById('live-dot');
-        const badge = document.getElementById('live-badge');
-        const offlineBadge = document.getElementById('offline-badge');
-        if (data?.livestream) {
-          dot.classList.remove('hidden'); badge.classList.remove('hidden'); badge.classList.add('flex');
-          offlineBadge.classList.add('hidden'); offlineBadge.classList.remove('flex');
-        } else {
-          dot.classList.add('hidden'); badge.classList.remove('flex'); badge.classList.add('hidden');
-          offlineBadge.classList.remove('hidden'); offlineBadge.classList.add('flex');
-        }
-      } catch (e) {}
-    }
-    checkLiveStatus();
-    setInterval(checkLiveStatus, 60000);
-
-    // ============ ACCESSIBILITY WIDGET ============
-    const fab = document.getElementById('a11y-fab');
-    const panel = document.getElementById('a11y-panel');
-    const closeBtn = document.getElementById('a11y-close');
-    const body = document.body;
-
-    fab.addEventListener('click', () => {
-      const isOpen = panel.classList.toggle('open');
-      fab.setAttribute('aria-expanded', isOpen);
-      if (isOpen) { panel.focus(); }
-    });
-    closeBtn.addEventListener('click', () => { panel.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); fab.focus(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panel.classList.contains('open')) { panel.classList.remove('open'); fab.setAttribute('aria-expanded','false'); fab.focus(); } });
-
-    // Toggle feature buttons
-    const featureMap = {
-      'contrast-bright': () => { body.classList.toggle('a11y-high-contrast'); body.classList.remove('a11y-dark-contrast','a11y-mono'); updateBtn('contrast-dark',false); updateBtn('mono',false); },
-      'contrast-dark': () => { body.classList.toggle('a11y-dark-contrast'); body.classList.remove('a11y-high-contrast','a11y-mono'); updateBtn('contrast-bright',false); updateBtn('mono',false); },
-      'mono': () => { body.classList.toggle('a11y-mono'); body.classList.remove('a11y-high-contrast','a11y-dark-contrast'); updateBtn('contrast-bright',false); updateBtn('contrast-dark',false); },
-      'saturation-high': () => { body.classList.toggle('a11y-saturation-high'); body.classList.remove('a11y-saturation-low'); updateBtn('saturation-low',false); },
-      'saturation-low': () => { body.classList.toggle('a11y-saturation-low'); body.classList.remove('a11y-saturation-high'); updateBtn('saturation-high',false); },
-      'readable-font': () => body.classList.toggle('a11y-readable-font'),
-      'highlight-links': () => body.classList.toggle('a11y-highlight-links'),
-      'stop-anim': () => body.classList.toggle('a11y-stop-anim'),
-      'big-cursor': () => { body.classList.toggle('a11y-big-cursor'); body.classList.remove('a11y-big-cursor-white'); updateBtn('cursor-white',false); },
-      'reading-guide': toggleReadingGuide,
-      'virtual-keyboard': toggleVirtualKeyboard,
-      'mute-media': () => { document.querySelectorAll('video, audio').forEach(m => { m.muted = !m.muted; }); },
-      'hide-distractions': () => { charLeft && charLeft.classList.toggle('hidden'); charRight && charRight.classList.toggle('hidden'); },
-      'highlight-elements': () => body.classList.toggle('a11y-focus-visible'),
-      'zoom-content': () => body.classList.toggle('a11y-large-text'),
-      'big-titles': () => { document.querySelectorAll('h1,h2,h3,h4').forEach(h => h.style.fontSize = h.style.fontSize ? '' : '2em'); },
-      'focus-mode': () => body.classList.toggle('a11y-readable-font'),
-      'screen-reader': () => alert('לשימוש עם קורא מסך, אנא הפעל את NVDA, JAWS, או VoiceOver. האתר תומך ב-ARIA ומבנה סמנטי מלא.'),
-      'voice-nav': () => toggleVoiceNav(),
-      'smart-nav': () => alert('ניווט חכם פעיל - השתמש ב-Tab לניווט בין אלמנטים, Enter לאישור.'),
-      'regions': () => { const skip = document.getElementById('skip-link') || (() => { const s = document.createElement('a'); s.id='skip-link'; s.href='#links-grid'; s.textContent='דלג לתוכן'; s.style.cssText='position:fixed;top:10px;right:10px;background:#e02020;color:white;padding:8px 16px;border-radius:8px;font-weight:900;z-index:99999;text-decoration:none;'; document.body.prepend(s); return s; })(); skip.style.display = skip.style.display === 'none' ? '' : 'none'; },
-      'keyboard-nav': () => { document.querySelectorAll('a,button').forEach(el => { el.style.outline = el.style.outline ? '' : '2px solid #e02020'; el.style.outlineOffset = '3px'; }); },
-      'image-desc': () => { document.querySelectorAll('img:not([alt=""])').forEach(img => { if (!img.dataset.tooltipAdded) { img.title = img.alt || 'תמונה'; img.dataset.tooltipAdded = '1'; } }); alert('תיאורי תמונות הופעלו. רחף מעל תמונה לקריאת התיאור.'); },
-      'page-structure': () => { const headings = Array.from(document.querySelectorAll('h1,h2,h3,nav,footer')).map(el => `${el.tagName}: ${el.textContent.substring(0,40).trim()}`).join('\n'); alert('מבנה העמוד:\n\n' + headings); },
-      'page-summary': () => alert('סיכום עמוד: דף קישורים רשמיים של OdedSVR - סטרימר ישראלי. הדף מכיל קישורים ל-Kick, YouTube, Instagram, Discord, Reddit וקישורי נותני חסות.'),
-      'dictionary': () => { const word = window.getSelection().toString().trim(); if (word) { window.open('https://he.wiktionary.org/wiki/' + encodeURIComponent(word), '_blank'); } else { alert('סמן מילה בטקסט ואז לחץ שוב על מילון.'); } },
-      'contrast-gauge': () => { document.documentElement.style.filter = document.documentElement.style.filter ? '' : 'contrast(1.4)'; },
-    };
-
-    function updateBtn(feature, state) {
-      const btn = document.querySelector(`[data-feature="${feature}"]`);
-      if (btn) { btn.classList.toggle('active', state); btn.setAttribute('aria-pressed', state); }
-    }
-
-    document.querySelectorAll('.a11y-btn[data-feature]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const f = btn.dataset.feature;
-        if (featureMap[f]) { featureMap[f](); }
-        if (!['screen-reader','voice-nav','smart-nav','regions','keyboard-nav','image-desc','page-structure','page-summary','dictionary','mute-media'].includes(f)) {
-          btn.classList.toggle('active');
-          btn.setAttribute('aria-pressed', btn.classList.contains('active'));
-        }
-      });
-    });
-
-    // Reading guide
-    function toggleReadingGuide() {
-      const guide = document.getElementById('reading-guide-bar');
-      const active = guide.style.display === 'block';
-      guide.style.display = active ? 'none' : 'block';
-      if (!active) {
-        document.addEventListener('mousemove', moveGuide);
-      } else {
-        document.removeEventListener('mousemove', moveGuide);
-      }
-    }
-    function moveGuide(e) {
-      const g = document.getElementById('reading-guide-bar');
-      if (g) g.style.top = (e.clientY - 20) + 'px';
-    }
-
-    // Virtual keyboard
-    function toggleVirtualKeyboard() {
-      const vk = document.getElementById('vkeyboard');
-      vk.style.display = vk.style.display === 'block' ? 'none' : 'block';
-    }
-
-    // Cursor buttons
-    document.querySelectorAll('.cursor-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.cursor-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const c = btn.dataset.cursor;
-        body.classList.remove('a11y-big-cursor','a11y-big-cursor-white');
-        if (c === 'black') body.classList.add('a11y-big-cursor');
-        if (c === 'white') body.classList.add('a11y-big-cursor-white');
-      });
-    });
-
-    // Section collapse
-    document.querySelectorAll('.a11y-section-header').forEach(header => {
-      header.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
-          const toggle = header.querySelector('.a11y-section-toggle');
-          const body = header.nextElementSibling;
-          if (!body) return;
-          const isCollapsed = body.style.display === 'none';
-          body.style.display = isCollapsed ? '' : 'none';
-          toggle.textContent = isCollapsed ? '−' : '+';
-        }
-      });
-    });
-
-    // Font size slider
-    const fontSlider = document.getElementById('font-size-slider');
-    const fontDisplay = document.getElementById('font-size-display');
-    fontSlider && fontSlider.addEventListener('input', () => {
-      const pct = fontSlider.value;
-      document.documentElement.style.fontSize = pct + '%';
-      fontDisplay.textContent = pct + '%';
-    });
-
-    // Letter spacing
-    document.getElementById('letter-spacing-slider') && document.getElementById('letter-spacing-slider').addEventListener('input', (e) => {
-      document.documentElement.style.setProperty('--a11y-letter-spacing', e.target.value / 10 + 'em');
-      document.querySelectorAll('p,span,a,button,div').forEach(el => el.style.letterSpacing = e.target.value / 10 + 'em');
-    });
-
-    // Word spacing
-    document.getElementById('word-spacing-slider') && document.getElementById('word-spacing-slider').addEventListener('input', (e) => {
-      document.querySelectorAll('p,span,a,button,div').forEach(el => el.style.wordSpacing = e.target.value / 10 + 'em');
-    });
-
-    // Line height
-    document.getElementById('line-height-slider') && document.getElementById('line-height-slider').addEventListener('input', (e) => {
-      document.querySelectorAll('p,span,a,button,div,h1,h2,h3').forEach(el => el.style.lineHeight = 1 + e.target.value / 10);
-    });
-
-    // Hue slider
-    document.getElementById('hue-slider') && document.getElementById('hue-slider').addEventListener('input', (e) => {
-      document.documentElement.style.filter = `hue-rotate(${e.target.value}deg)`;
-    });
-    document.getElementById('reset-hue-btn') && document.getElementById('reset-hue-btn').addEventListener('click', () => {
-      document.documentElement.style.filter = '';
-      document.getElementById('hue-slider').value = 0;
-    });
-
-    // Reset all
-    document.getElementById('a11y-reset-all') && document.getElementById('a11y-reset-all').addEventListener('click', () => {
-      ['a11y-high-contrast','a11y-dark-contrast','a11y-mono','a11y-saturation-high','a11y-saturation-low',
-       'a11y-readable-font','a11y-highlight-links','a11y-stop-anim','a11y-big-cursor','a11y-big-cursor-white',
-       'a11y-large-text','a11y-focus-visible'].forEach(c => body.classList.remove(c));
-      charLeft && charLeft.classList.remove('hidden');
-      charRight && charRight.classList.remove('hidden');
-      document.documentElement.style.fontSize = '';
-      document.documentElement.style.filter = '';
-      document.getElementById('vkeyboard').style.display = 'none';
-      document.getElementById('reading-guide-bar').style.display = 'none';
-      document.removeEventListener('mousemove', moveGuide);
-      document.querySelectorAll('.a11y-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-      document.querySelectorAll('.cursor-btn').forEach(b => b.classList.remove('active'));
-      ['letter-spacing-slider','word-spacing-slider','line-height-slider','hue-slider'].forEach(id => {
-        const el = document.getElementById(id); if(el) el.value = 0;
-      });
-      fontSlider && (fontSlider.value = 100);
-      fontDisplay && (fontDisplay.textContent = '100%');
-      document.querySelectorAll('p,span,a,button,div,h1,h2,h3').forEach(el => {
-        el.style.letterSpacing = ''; el.style.wordSpacing = ''; el.style.lineHeight = '';
-      });
-    });
-
-    // ============ TTS - FULL TEXT-TO-SPEECH ENGINE ============
-    const ttsBar = document.getElementById('tts-bar');
-    const ttsPlayPause = document.getElementById('tts-play-pause');
-    const ttsStopBtn = document.getElementById('tts-stop');
-    const ttsSpeedSlider = document.getElementById('tts-speed');
-    const ttsSpeedLabel = document.getElementById('tts-speed-label');
-    const ttsVoiceSelect = document.getElementById('tts-voice-select');
-    const ttsProgressText = document.getElementById('tts-progress-text');
-    const ttsIconPause = document.getElementById('tts-icon-pause');
-    const ttsIconPlay = document.getElementById('tts-icon-play');
-    const ttsBtnLabel = document.getElementById('tts-btn-label');
-
-    let ttsUtterance = null;
-    let ttsPaused = false;
-    let ttsActive = false;
-    let ttsHighlightEl = null;
-    let ttsAllWords = [];
-    let ttsWordIndex = 0;
-    let ttsVoices = [];
-
-    // Load voices
-    function loadTTSVoices() {
-      ttsVoices = window.speechSynthesis.getVoices();
-      ttsVoiceSelect.innerHTML = '';
-      // Prefer Hebrew voices, then all voices
-      const heVoices = ttsVoices.filter(v => v.lang.startsWith('he') || v.lang.startsWith('iw'));
-      const otherVoices = ttsVoices.filter(v => !v.lang.startsWith('he') && !v.lang.startsWith('iw'));
-      if (heVoices.length) {
-        const grp = document.createElement('optgroup');
-        grp.label = '🇮🇱 עברית';
-        heVoices.forEach((v, i) => {
-          const opt = document.createElement('option');
-          opt.value = ttsVoices.indexOf(v);
-          opt.textContent = v.name;
-          grp.appendChild(opt);
-        });
-        ttsVoiceSelect.appendChild(grp);
-      }
-      const grp2 = document.createElement('optgroup');
-      grp2.label = 'שפות אחרות';
-      otherVoices.slice(0, 20).forEach(v => {
-        const opt = document.createElement('option');
-        opt.value = ttsVoices.indexOf(v);
-        opt.textContent = v.name + ' (' + v.lang + ')';
-        grp2.appendChild(opt);
-      });
-      ttsVoiceSelect.appendChild(grp2);
-    }
-    window.speechSynthesis.onvoiceschanged = loadTTSVoices;
-    loadTTSVoices();
-
-    // Collect readable text from page and wrap words in spans
-    function prepareTTSContent() {
-      // Remove old highlight wrapper if exists
-      const old = document.getElementById('tts-content-wrapper');
-      if (old) old.replaceWith(...old.childNodes);
-
-      // Get main content text nodes
-      const mainEl = document.getElementById('links-grid');
-      const titleEl = document.querySelector('#main-page-content h1');
-
-      // Build plain text from all link labels
-      const lines = [];
-      if (titleEl) lines.push(titleEl.textContent.trim());
-      document.querySelectorAll('#links-grid a[aria-label]').forEach(a => {
-        const label = a.getAttribute('aria-label');
-        if (label) lines.push(label);
-      });
-      return lines.join('. ');
-    }
-
-    // Highlight current word visually
-    let ttsHighlightOverlay = null;
-    function showWordHighlight(word) {
-      if (!ttsHighlightOverlay) {
-        ttsHighlightOverlay = document.createElement('div');
-        ttsHighlightOverlay.style.cssText = 'position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:#e02020;color:white;padding:8px 24px;border-radius:30px;font-size:20px;font-weight:900;z-index:99993;pointer-events:none;letter-spacing:0.05em;transition:opacity 0.15s;box-shadow:0 4px 20px rgba(224,32,32,0.5);font-family:"Heebo",sans-serif;';
-        document.body.appendChild(ttsHighlightOverlay);
-      }
-      ttsHighlightOverlay.textContent = word;
-      ttsHighlightOverlay.style.opacity = '1';
-    }
-    function hideWordHighlight() {
-      if (ttsHighlightOverlay) ttsHighlightOverlay.style.opacity = '0';
-    }
-
-    // Main TTS start function
-    function startTTS() {
-      window.speechSynthesis.cancel();
-      const text = prepareTTSContent();
-      if (!text) { alert('לא נמצא טקסט לקריאה בדף.'); return; }
-
-      // בחר קול — עדיפות לעברי, אחרת כל קול זמין
-      const allVoices = window.speechSynthesis.getVoices();
-      let chosenVoice = null;
-
-      // 1. בדוק אם המשתמש בחר קול ידנית
-      const voiceIdx = parseInt(ttsVoiceSelect.value);
-      if (!isNaN(voiceIdx) && ttsVoices[voiceIdx]) {
-        chosenVoice = ttsVoices[voiceIdx];
-      }
-      // 2. נסה למצוא קול עברי
-      if (!chosenVoice) {
-        chosenVoice = allVoices.find(v => v.lang.startsWith('he') || v.lang.startsWith('iw')) || null;
-      }
-      // 3. כל קול זמין — אפילו אנגלי
-      if (!chosenVoice && allVoices.length > 0) {
-        chosenVoice = allVoices[0];
-      }
-
-      ttsUtterance = new SpeechSynthesisUtterance(text);
-      // אם יש קול עברי — השתמש בו עם lang עברי, אחרת אל תגביל
-      if (chosenVoice) {
-        ttsUtterance.voice = chosenVoice;
-        ttsUtterance.lang = chosenVoice.lang;
-      }
-      // אם בכלל אין קולות — תן לדפדפן לבחור לבד (בלי lang)
-      ttsUtterance.rate = parseFloat(ttsSpeedSlider.value) || 1;
-      ttsUtterance.volume = 1;
-
-      ttsUtterance.onboundary = (e) => {
-        if (e.name === 'word') {
-          const word = text.substring(e.charIndex, e.charIndex + e.charLength).trim();
-          if (word) {
-            showWordHighlight(word);
-            const progress = Math.round((e.charIndex / text.length) * 100);
-            ttsProgressText.textContent = progress + '%';
-          }
-        }
-      };
-
-      ttsUtterance.onstart = () => {
-        ttsActive = true;
-        ttsPaused = false;
-        ttsBar.style.display = 'block';
-        setTTSPausedUI(false);
-        startTTSKeepAlive();
-      };
-
-      ttsUtterance.onend = () => {
-        ttsActive = false;
-        ttsPaused = false;
-        ttsBar.style.display = 'none';
-        hideWordHighlight();
-        ttsProgressText.textContent = '';
-        stopTTSKeepAlive();
-        const btn = document.querySelector('[data-feature="tts-read"]');
-        if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
-      };
-
-      ttsUtterance.onerror = (e) => {
-        console.error('TTS error:', e.error);
-        stopTTSKeepAlive();
-        ttsActive = false;
-        ttsBar.style.display = 'none';
-        hideWordHighlight();
-        if (e.error !== 'interrupted' && e.error !== 'canceled') {
-          alert('שגיאה בהקראה: ' + (e.error || 'לא ידועה') + '\nנסה לרענן את הדף ולנסות שוב.');
-        }
-      };
-
-      window.speechSynthesis.speak(ttsUtterance);
-    }
-
-    function setTTSPausedUI(paused) {
-      ttsIconPause.style.display = paused ? 'none' : '';
-      ttsIconPlay.style.display = paused ? '' : 'none';
-      ttsBtnLabel.textContent = paused ? 'המשך' : 'השהה';
-    }
-
-    // Show styled TTS notice modal
-    function showTTSNotice(html, onConfirm) {
-      const overlay = document.createElement('div');
-      overlay.id = 'tts-notice-overlay';
-      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;direction:rtl;';
-      overlay.innerHTML = `
-        <div style="background:#fff;border-radius:18px;max-width:420px;width:100%;padding:28px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative;font-family:'Heebo',sans-serif;">
-          <button id="tts-notice-close" style="position:absolute;left:14px;top:14px;background:#f1f5f9;border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#64748b;">✕</button>
-          ${html}
-          <button id="tts-notice-confirm" style="margin-top:18px;width:100%;background:#e02020;color:white;border:none;border-radius:10px;padding:12px;font-size:15px;font-weight:900;cursor:pointer;font-family:'Heebo',sans-serif;">אישור — התחל הקראה</button>
-        </div>`;
-      document.body.appendChild(overlay);
-      document.getElementById('tts-notice-close').onclick = () => overlay.remove();
-      document.getElementById('tts-notice-confirm').onclick = () => { overlay.remove(); if (onConfirm) onConfirm(); };
-      overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
-    }
-
-    // Detect OS / browser for instructions
-    function getTTSSetupInstructions() {
-      const ua = navigator.userAgent;
-      const isWindows = /Windows/i.test(ua);
-      const isMac = /Mac OS X/i.test(ua) && !/iPhone|iPad/i.test(ua);
-      const isIOS = /iPhone|iPad/i.test(ua);
-      const isAndroid = /Android/i.test(ua);
-      const isChrome = /Chrome/i.test(ua) && !/Edge/i.test(ua);
-      const isFirefox = /Firefox/i.test(ua);
-      const isSafari = /Safari/i.test(ua) && !/Chrome/i.test(ua);
-
-      if (isIOS || isSafari) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🍎</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">iPhone / Mac — Safari</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 12px;">מעולה! ב-Safari יש קול עברי <strong>"Carmit"</strong> מובנה.<br>ההקראה תתחיל ישר בעברית ✅</p>`;
-      }
-      if (isAndroid) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🤖</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">Android — Chrome</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 8px;">ב-Android תצטרך לוודא שמותקן <strong>Google Text-to-Speech</strong>.</p>
-          <ol style="font-size:13px;color:#555;padding-right:20px;margin:0;line-height:2;">
-            <li>פתח <strong>הגדרות</strong> → <strong>נגישות</strong> → <strong>טקסט לדיבור</strong></li>
-            <li>בחר <strong>Google Text-to-Speech</strong> כמנוע</li>
-            <li>לחץ על ⚙️ ← <strong>שפות</strong> ← הוסף <strong>עברית</strong></li>
-          </ol>`;
-      }
-      if (isWindows && isChrome) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🪟</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">Windows — Chrome</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 8px;">כדי לקבל קול עברי ב-Chrome:</p>
-          <ol style="font-size:13px;color:#555;padding-right:20px;margin:0;line-height:2;">
-            <li>פתח <strong>הגדרות Windows</strong> → <strong>זמן ושפה</strong> → <strong>שפה ואזור</strong></li>
-            <li>לחץ <strong>הוסף שפה</strong> ← חפש <strong>עברית</strong> ← התקן</li>
-            <li>ודא שמסומן ✅ <strong>Text-to-speech</strong></li>
-            <li><strong>הפעל מחדש את Chrome</strong> ואז בחר את הקול "Microsoft Ayelet"</li>
-          </ol>`;
-      }
-      if (isWindows && isFirefox) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🦊</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">Firefox — Windows</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 8px;">Firefox משתמש בקולות Windows. כדי להוסיף עברית:</p>
-          <ol style="font-size:13px;color:#555;padding-right:20px;margin:0;line-height:2;">
-            <li>פתח <strong>הגדרות Windows</strong> → <strong>זמן ושפה</strong> → <strong>שפה ואזור</strong></li>
-            <li>הוסף שפה <strong>עברית</strong> עם <strong>Text-to-speech</strong></li>
-            <li>הפעל מחדש את Firefox</li>
-          </ol>
-          <p style="font-size:12px;color:#e02020;margin:10px 0 0;font-weight:700;">💡 לתוצאה טובה יותר מומלץ להשתמש ב-Chrome</p>`;
-      }
-      if (isMac && isChrome) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🍎</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">Mac — Chrome</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 8px;">ב-Mac יש קול עברי מובנה. אם הוא לא מופיע:</p>
-          <ol style="font-size:13px;color:#555;padding-right:20px;margin:0;line-height:2;">
-            <li>פתח <strong>העדפות מערכת</strong> → <strong>נגישות</strong> → <strong>תוכן מדובר</strong></li>
-            <li>לחץ <strong>ניהול קולות</strong> ← חפש <strong>Carmit</strong> ← הורד</li>
-            <li>הפעל מחדש את Chrome</li>
-          </ol>`;
-      }
-      // Default fallback
-      return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🔊</span></div>
-        <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">הקראת טקסט</h3>
-        <p style="font-size:14px;color:#444;line-height:1.7;margin:0;">הפיצ'ר ישתמש בקולות המותקנים במכשיר שלך.<br>לקול עברי מומלץ להשתמש ב-<strong>Chrome</strong> עם שפה עברית מותקנת במערכת ההפעלה.</p>`;
-    }
-
-    // Chrome keepalive — פותר באג ידוע שבו Chrome מפסיק הקראה אחרי ~15 שניות
-    let ttsKeepAlive = null;
-    function startTTSKeepAlive() {
-      stopTTSKeepAlive();
-      ttsKeepAlive = setInterval(() => {
-        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-          window.speechSynthesis.pause();
-          window.speechSynthesis.resume();
-        }
-      }, 10000);
-    }
-    function stopTTSKeepAlive() {
-      if (ttsKeepAlive) { clearInterval(ttsKeepAlive); ttsKeepAlive = null; }
-    }
-
-    // Feature map entry - מתחיל הקראה מיד ללא חלון אישור
-    featureMap['tts-read'] = () => {
-      if (!('speechSynthesis' in window)) {
-        alert('הדפדפן שלך אינו תומך בהקראת טקסט.\nאנא השתמש ב-Google Chrome או Microsoft Edge.');
-        return;
-      }
-      if (ttsActive && !ttsPaused) {
-        window.speechSynthesis.cancel();
-        ttsActive = false;
-        ttsBar.style.display = 'none';
-        hideWordHighlight();
-        stopTTSKeepAlive();
-        return;
-      }
-      // רענן קולות + הצג כמה קולות זמינים (לדיבאג)
-      loadTTSVoices();
-      const available = window.speechSynthesis.getVoices();
-      console.log('TTS: קולות זמינים:', available.length, available.map(v => v.name + ' (' + v.lang + ')'));
-      startTTS();
-    };
-
-    // Play/pause button in bar
-    ttsPlayPause.addEventListener('click', () => {
-      if (!ttsActive) return;
-      if (ttsPaused) {
-        window.speechSynthesis.resume();
-        ttsPaused = false;
-        setTTSPausedUI(false);
-      } else {
-        window.speechSynthesis.pause();
-        ttsPaused = true;
-        setTTSPausedUI(true);
-        hideWordHighlight();
-      }
-    });
-
-    // Stop button in bar
-    ttsStopBtn.addEventListener('click', () => {
-      window.speechSynthesis.cancel();
-      ttsActive = false;
-      ttsPaused = false;
-      ttsBar.style.display = 'none';
-      hideWordHighlight();
-      stopTTSKeepAlive();
-      ttsProgressText.textContent = '';
-      const btn = document.querySelector('[data-feature="tts-read"]');
-      if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
-    });
-
-    // Speed slider
-    ttsSpeedSlider.addEventListener('input', () => {
-      const rate = parseFloat(ttsSpeedSlider.value);
-      ttsSpeedLabel.textContent = '×' + rate.toFixed(1).replace('.0','');
-      if (ttsActive && ttsUtterance) {
-        // Restart with new speed (Web Speech API doesn't allow mid-speech rate change)
-        window.speechSynthesis.cancel();
-        setTimeout(startTTS, 100);
-      }
-    });
-
-    // Voice select
-    ttsVoiceSelect.addEventListener('change', () => {
-      if (ttsActive) {
-        window.speechSynthesis.cancel();
-        setTimeout(startTTS, 100);
-      }
-    });
-
-    // Also allow clicking any element to read it aloud
-    document.addEventListener('click', (e) => {
-      if (!ttsActive) return;
-      const card = e.target.closest('a[aria-label]');
-      if (card) {
-        e.preventDefault();
-        const label = card.getAttribute('aria-label');
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(label);
-        u.lang = 'he-IL';
-        u.rate = parseFloat(ttsSpeedSlider.value);
-        const voiceIdx = parseInt(ttsVoiceSelect.value);
-        if (ttsVoices[voiceIdx]) u.voice = ttsVoices[voiceIdx];
-        u.onboundary = (ev) => { if (ev.name === 'word') { showWordHighlight(label.substring(ev.charIndex, ev.charIndex + ev.charLength)); } };
-        u.onend = () => { hideWordHighlight(); };
-        window.speechSynthesis.speak(u);
-        showWordHighlight(label.substring(0,15) + '...');
-      }
-    });
-
-    // ============ VOICE NAVIGATION ============
-    let voiceNavActive = false;
-    let voiceRecognition = null;
-    let voiceStatusEl = null;
-
-    // Get all focusable links for "next/prev" navigation
-    let voiceFocusIndex = -1;
-    function getNavLinks() {
-      return Array.from(document.querySelectorAll('#links-grid a, nav a'));
-    }
-
-    function createVoiceStatusBar() {
-      if (document.getElementById('voice-nav-bar')) return;
-      const bar = document.createElement('div');
-      bar.id = 'voice-nav-bar';
-      bar.setAttribute('role', 'status');
-      bar.setAttribute('aria-live', 'polite');
-      bar.style.cssText = `
-        position:fixed; bottom:0; left:0; right:0; z-index:99993;
-        background:#1e293b; border-top:2px solid #7c3aed;
-        padding:10px 20px; display:flex; align-items:center; gap:12px;
-        font-family:'Heebo',sans-serif; direction:rtl;
-        box-shadow:0 -4px 20px rgba(124,58,237,0.3);
-      `;
-      bar.innerHTML = `
-        <div id="voice-mic-icon" style="width:36px;height:36px;background:#7c3aed;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:voicePulse 1.5s ease-in-out infinite;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V80a48,48,0,0,0-96,0v48A48.05,48.05,0,0,0,128,176ZM96,80a32,32,0,0,1,64,0v48a32,32,0,0,1-64,0Zm40,143.6V200a8,8,0,0,0-16,0v23.6A80.11,80.11,0,0,1,48,144a8,8,0,0,0-16,0,96.11,96.11,0,0,0,88,95.6V240a8,8,0,0,0,16,0v-.4A96.11,96.11,0,0,0,224,144a8,8,0,0,0-16,0A80.11,80.11,0,0,1,136,223.6Z"/></svg>
-        </div>
-        <div style="flex:1;">
-          <div style="font-size:13px;font-weight:900;color:white;" id="voice-status-text">🎙️ מאזין לפקודות...</div>
-          <div style="font-size:11px;color:#94a3b8;margin-top:2px;" id="voice-last-cmd"></div>
-        </div>
-        <div style="font-size:11px;color:#7c3aed;font-weight:700;text-align:left;line-height:1.8;">
-          גלול למטה / למעלה<br>סרטונים / מידע / תורמים<br>עצור
-        </div>
-        <button id="voice-nav-close" aria-label="סגור פקודות קוליות" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:20px;padding:4px 8px;">✕</button>
-      `;
-      // Pulse animation
-      const style = document.createElement('style');
-      style.textContent = `@keyframes voicePulse { 0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,0.5)} 50%{box-shadow:0 0 0 10px rgba(124,58,237,0)} }
-      #voice-nav-bar.listening #voice-mic-icon { background:#7c3aed; }
-      #voice-nav-bar.error #voice-mic-icon { background:#e02020; animation:none; }`;
-      document.head.appendChild(style);
-      document.body.appendChild(bar);
-      document.getElementById('voice-nav-close').addEventListener('click', () => stopVoiceNav());
-      voiceStatusEl = bar;
-    }
-
-    function setVoiceStatus(text, sub) {
-      const t = document.getElementById('voice-status-text');
-      const s = document.getElementById('voice-last-cmd');
-      if (t) t.textContent = text;
-      if (s && sub !== undefined) s.textContent = sub;
-    }
-
-    function highlightVoiceFocus() {
-      const links = getNavLinks();
-      links.forEach((l, i) => {
-        l.style.outline = i === voiceFocusIndex ? '3px solid #7c3aed' : '';
-        l.style.outlineOffset = '4px';
-      });
-      if (links[voiceFocusIndex]) {
-        links[voiceFocusIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        links[voiceFocusIndex].focus();
-      }
-    }
-
-    function handleVoiceCommand(transcript) {
-      const t = transcript.trim().toLowerCase();
-      setVoiceStatus('🎙️ מאזין לפקודות...', '⬅️ שמעתי: "' + transcript.trim() + '"');
-
-      // Scroll commands
-      if (t.includes('למטה') || t.includes('גלול מטה') || t.includes('scroll down')) {
-        window.scrollBy({ top: 300, behavior: 'smooth' });
-        setVoiceStatus('⬇️ גולל למטה', '');
-      } else if (t.includes('למעלה') || t.includes('גלול מעלה') || t.includes('scroll up')) {
-        window.scrollBy({ top: -300, behavior: 'smooth' });
-        setVoiceStatus('⬆️ גולל למעלה', '');
-      } else if (t.includes('לראש') || t.includes('תחילת') || t.includes('top')) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setVoiceStatus('⬆️ חזרה לראש', '');
-      } else if (t.includes('לסוף') || t.includes('סוף') || t.includes('bottom')) {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        setVoiceStatus('⬇️ ירידה לסוף', '');
-
-      // Page navigation
-      } else if (t.includes('סרטונים')) {
-        setVoiceStatus('🎬 פותח סרטונים...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/YTvids'; }, 400);
-      } else if (t.includes('מידע')) {
-        setVoiceStatus('ℹ️ פותח מידע...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/info'; }, 400);
-      } else if (t.includes('תורמים')) {
-        setVoiceStatus('🏆 פותח תורמים...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/topdonators'; }, 400);
-      } else if (t.includes('בית') || t.includes('דף הבית')) {
-        setVoiceStatus('🏠 חוזר לדף הבית...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/'; }, 400);
-
-      // Stop
-      } else if (t.includes('עצור') || t.includes('סגור') || t.includes('stop') || t.includes('כבה')) {
-        stopVoiceNav();
-
-      } else {
-        setVoiceStatus('🎙️ מאזין לפקודות...', '❓ לא הבנתי: "' + transcript.trim() + '"');
-      }
-    }
-
-    function startVoiceNav() {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) {
-        alert('הדפדפן שלך לא תומך בזיהוי קול.\nאנא השתמש ב-Google Chrome.');
-        updateBtn('voice-nav', false);
-        const btn = document.querySelector('[data-feature="voice-nav"]');
-        if (btn) btn.classList.remove('active');
-        return;
-      }
-
-      createVoiceStatusBar();
-      voiceNavActive = true;
-      voiceFocusIndex = -1;
-
-      voiceRecognition = new SpeechRecognition();
-      voiceRecognition.lang = 'he-IL';
-      voiceRecognition.continuous = true;
-      voiceRecognition.interimResults = false;
-
-      voiceRecognition.onstart = () => {
-        setVoiceStatus('🎙️ מאזין לפקודות...', 'אמור: גלול למטה / סרטונים / מידע / תורמים / עצור');
-        voiceStatusEl && voiceStatusEl.classList.remove('error');
-        voiceStatusEl && voiceStatusEl.classList.add('listening');
-      };
-
-      voiceRecognition.onresult = (e) => {
-        const last = e.results[e.results.length - 1];
-        if (last.isFinal) handleVoiceCommand(last[0].transcript);
-      };
-
-      voiceRecognition.onerror = (e) => {
-        if (e.error === 'not-allowed') {
-          setVoiceStatus('🚫 אין גישה למיקרופון', 'אפשר גישה בהגדרות הדפדפן ונסה שוב');
-          voiceStatusEl && voiceStatusEl.classList.add('error');
-        } else if (e.error !== 'no-speech') {
-          setVoiceStatus('⚠️ שגיאה: ' + e.error, '');
-        }
-      };
-
-      voiceRecognition.onend = () => {
-        // Auto-restart unless manually stopped
-        if (voiceNavActive) {
-          try { voiceRecognition.start(); } catch(err) {}
-        }
-      };
-
-      voiceRecognition.start();
-    }
-
-    function stopVoiceNav() {
-      voiceNavActive = false;
-      if (voiceRecognition) { voiceRecognition.abort(); voiceRecognition = null; }
-      const bar = document.getElementById('voice-nav-bar');
-      if (bar) bar.remove();
-      // Remove focus outlines
-      getNavLinks().forEach(l => { l.style.outline = ''; l.style.outlineOffset = ''; });
-      voiceFocusIndex = -1;
-      const btn = document.querySelector('[data-feature="voice-nav"]');
-      if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
-    }
-
-    function toggleVoiceNav() {
-      if (voiceNavActive) {
-        stopVoiceNav();
-      } else {
-        startVoiceNav();
-      }
-    }
-
-    // Reset: also stop voice nav
-    // Reset: also stop TTS
-    const origReset = document.getElementById('a11y-reset-all').onclick;
-    document.getElementById('a11y-reset-all').addEventListener('click', () => {
-      window.speechSynthesis.cancel();
-      ttsActive = false; ttsPaused = false;
-      ttsBar.style.display = 'none';
-      hideWordHighlight();
-      if (voiceNavActive) stopVoiceNav();
-    });
-
+    window.addEventListener('load', activateSite); setTimeout(activateSite, 500);
   </script>
-  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7391dcaa1e7a4422ac7cad0e57536d22"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
