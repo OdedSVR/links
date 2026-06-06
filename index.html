@@ -50,19 +50,22 @@
   </style>
 </head>
 <body>
-  <div id="char-right"></div>
-  <div id="char-left"></div>
-  <div id="spotlight"></div>
+  <!-- דמויות רקע קישוטיות - מוסתרות מקוראי מסך -->
+  <div id="char-right" aria-hidden="true"></div>
+  <div id="char-left" aria-hidden="true"></div>
+  <div id="spotlight" aria-hidden="true"></div>
   
-  <div class="scroll-indicator" id="scrollIndicator">
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 256 256" style="filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));">
+  <button class="scroll-indicator" id="scrollIndicator" aria-label="גלול למטה לקישורים">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 256 256" style="filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));" aria-hidden="true">
       <path d="M128,180a8,8,0,0,1-5.66-2.34l-80-80a8,8,0,0,1,11.32-11.32L128,160.69l74.34-74.35a8,8,0,0,1,11.32,11.32l-80,80A8,8,0,0,1,128,180Z"></path>
     </svg>
-  </div>
+  </button>
 
-  <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div>
+  <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="לוגו טעינה עודד סבר" class="splash-logo"></div>
+  
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
-    <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto">
+    <!-- תפריט ניווט נגיש -->
+    <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto" aria-label="ניווט ראשי">
         <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
         <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Videos</a>
         <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
@@ -70,9 +73,9 @@
     </nav>
 
     <div class="text-center mb-10 relative z-10">
-      <a href="https://kick.com/odedsvr" target="_blank">
+      <a href="https://kick.com/odedsvr" target="_blank" aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)">
         <div class="relative inline-block">
-          <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
+          <img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" id="profile-image" alt="תמונת הפרופיל של עודד סבר" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
           <span id="live-dot" class="hidden">
             <span class="absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]" style="box-shadow: 0 0 8px rgba(239,68,68,0.9);"></span>
             <span class="live-ring absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]"></span>
@@ -93,46 +96,68 @@
       </div>
     </div>
     
+    <!-- גריד כרטיסיות -->
     <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto relative z-10" id="links-grid" dir="ltr">
-      <a href="https://www.animanga-israel.com/" target="_blank" class="card block rounded-xl p-6 text-center hover:border-yellow-500/40" dir="rtl">
-        <div class="text-xl font-black text-yellow-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/%D7%90%D7%A0%D7%99%D7%9E%D7%A0%D7%92%D7%94.png?raw=true" class="h-8 w-8 ml-2"> ANIMANGA ISRAEL</div>
+      
+      <a href="https://www.animanga-israel.com/" target="_blank" class="card block rounded-xl p-6 text-center hover:border-yellow-500/40" dir="rtl" aria-label="אתר אנימנגה ישראל, השתמש בקוד OSVR10 לקבלת הנחה (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-yellow-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/%D7%90%D7%A0%D7%99%D7%9E%D7%A0%D7%92%D7%94.png?raw=true" alt="" class="h-8 w-8 ml-2" aria-hidden="true"> ANIMANGA ISRAEL</div>
         <div class="bg-white/5 inline-block px-3 py-1 rounded-full mt-1"><span class="text-xs text-yellow-200 font-bold uppercase tracking-wider">קוד: OSVR10</span></div>
       </a>
-      <a href="https://github.com/OdedSVR/images/blob/main/giveaways.png?raw=true" target="_blank" class="card block rounded-xl p-6 text-center hover:border-green-500/40 flex flex-col items-center justify-center" dir="rtl"><div class="text-xl font-bold text-green-300 uppercase tracking-widest text-center">🎁 לפרטים נוספים על הגרלות אצל אנימנגה לחצו 🎁</div></a>
       
-      <a href="https://libero-il.co.il/" target="_blank" class="card bg-cyan-900/20 block rounded-xl p-6 hover:border-cyan-500/40 flex flex-col items-center justify-center space-y-1" dir="rtl">
+      <a href="https://github.com/OdedSVR/images/blob/main/giveaways.png?raw=true" target="_blank" class="card block rounded-xl p-6 text-center hover:border-green-500/40 flex flex-col items-center justify-center" dir="rtl" aria-label="לפרטים נוספים על הגרלות אצל אנימנגה לחצו כאן (נפתח בטאב חדש)">
+        <div class="text-xl font-bold text-green-300 uppercase tracking-widest text-center">🎁 לפרטים נוספים על הגרלות אצל אנימנגה לחצו 🎁</div>
+      </a>
+      
+      <a href="https://libero-il.co.il/" target="_blank" class="card bg-cyan-900/20 block rounded-xl p-6 hover:border-cyan-500/40 flex flex-col items-center justify-center space-y-1" dir="rtl" aria-label="אתר ליברו (נפתח בטאב חדש)">
         <div class="text-xl font-black text-cyan-400">💎 LIBERO</div>
       </a>
-      <a href= "https://github.com/OdedSVR/images/blob/main/Pierre%20Precieuse1.png?raw=true" class="card bg-cyan-900/20 block rounded-xl p-6 text-center hover:border-cyan-500/40 text-cyan-300 text-base font-bold uppercase space-y-1" dir="rtl">
+      
+      <a href="https://github.com/OdedSVR/images/blob/main/Pierre%20Precieuse1.png?raw=true" target="_blank" class="card bg-cyan-900/20 block rounded-xl p-6 text-center hover:border-cyan-500/40 text-cyan-300 text-base font-bold uppercase space-y-1" dir="rtl" aria-label="מבצע מיוחד בליברו, עשרה אחוז הנחה בכל האתר עם הקוד OSVR10, לחצו לפרטים (נפתח בטאב חדש)">
         <div>10% הנחה בכל האתר - OSVR10</div>
         <div class="text-sky-300 underline">מבצע מיוחד! (לחצו לפרטים)</div>
       </a>
-      <!--
-      <a href="https://libero-il.co.il/?s=%D7%9E%D7%A8%D7%A7%D7%99%D7%96%D7%94&jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&post_type=product&jet_ajax_search_categories=0" target="_blank" class="card bg-cyan-900/20 block rounded-xl p-6 text-center hover:border-cyan-500/40 text-cyan-300 text-base font-bold uppercase space-y-1" dir="rtl">
-        <div>אחד פלוס אחד על המרקיזות - OSVR</div>
-      <!--  <div class="text-sm">( לחצו על הקוד כדי לראות פרטים על המריקזות)</div>
-      </a> 
-      -->
 
-      <!--
-      <a href="https://delulustream.com/presets/odedsvr" target="_blank" class="card block rounded-xl p-6 text-center hover:border-pink-500/40" dir="rtl">
-        <div class="text-xl font-black text-pink-400">🔗 Delulu Stream</div><p class="text-[10px] text-pink-200/60 font-bold mt-1 uppercase">Custom Character - 1000 kicks , for a preset - 500 kicks</p></a>
-      <div class="card block rounded-xl p-6 text-center hover:border-pink-500/40 text-pink-300 text-sm font-bold uppercase" dir="rtl">
-        <div>הקישור משמאל נועד כדי לשנות את דמותו של עודד בפייסקאם 👈</div>
-      </div>
-      -->
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40" dir="rtl"><div class="text-xl font-black text-red-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div><p class="text-xs text-red-200/50 font-bold mt-1 uppercase">להרשמה</p></a>
-      <a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-xl p-6 text-center hover:border-indigo-500/40 flex flex-col items-center justify-center" dir="rtl"><div class="text-xl font-black text-indigo-300 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/discor%20logo.png?raw=true" class="h-10 w-10 mr-2">Discord</div></a>
-      <a href="https://kick.com/odedsvr" target="_blank" class="card block rounded-xl p-6 text-center hover:border-green-500/40" dir="rtl"><div class="text-xl font-black text-green-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/kick%20logo.png?raw=true" class="h-8 w-8 ml-2"> Kick</div></a>
-      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40" dir="rtl"><div class="text-xl font-black text-red-400"> ערעור על באן 📝</div><p class="text-[10px] text-red-300/60 font-bold">פנו אלינו לערעורים</p></a>
-      <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" class="card block rounded-xl p-6 text-center hover:border-orange-500/40" dir="rtl"><div class="text-xl font-black text-orange-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/Reddit%20(1).png?raw=true" class="h-8 w-8 ml-2">Reddit</div></a>
-      <a href="https://www.youtube.com/@odedsvr95" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40 flex flex-col items-center justify-center" dir="rtl"><div class="text-xl font-black text-red-500 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/YTLOGO.png?raw=true" class="h-8 w-8 mr-2">YouTube</div></a>
-      <a href="https://www.instagram.com/odedsvr/" target="_blank" class="card block rounded-xl p-6 text-center hover:border-pink-500/40 flex flex-col items-center justify-center" dir="rtl"><div class="text-xl font-black text-pink-300 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/instlogo.png?raw=true" class="h-6 w-6 ml-2">Instagram</div></a>
-      <a href="https://rggplay.com/?ref=RGG-8764e9784" target="_blank" class="card block rounded-xl p-6 text-center hover:border-blue-500/40" dir="rtl"><div class="text-xl font-black text-blue-400">🎮 RGG PLAY 🎮</div><p class="text-xs text-blue-200/60 font-bold mt-1 uppercase">קוד: ODEDSVR</p></a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40" dir="rtl" aria-label="טופס הרשמה לכוכב הבא של פיצה הפקות (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-red-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div>
+        <p class="text-xs text-red-200/50 font-bold mt-1 uppercase">להרשמה</p>
+      </a>
+      
+      <a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-xl p-6 text-center hover:border-indigo-500/40 flex flex-col items-center justify-center" dir="rtl" aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-indigo-300 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/discor%20logo.png?raw=true" alt="" class="h-10 w-10 mr-2" aria-hidden="true">Discord</div>
+      </a>
+      
+      <a href="https://kick.com/odedsvr" target="_blank" class="card block rounded-xl p-6 text-center hover:border-green-500/40" dir="rtl" aria-label="ערוץ הקיק הרשמי של עודד (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-green-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/kick%20logo.png?raw=true" alt="" class="h-8 w-8 ml-2" aria-hidden="true"> Kick</div>
+      </a>
+      
+      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40" dir="rtl" aria-label="טופס הגשת ערעור על באן (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-red-400"> ערעור על באן 📝</div>
+        <p class="text-[10px] text-red-300/60 font-bold">פנו אלינו לערעורים</p>
+      </a>
+      
+      <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" class="card block rounded-xl p-6 text-center hover:border-orange-500/40" dir="rtl" aria-label="קהילת הרדיט של עודד (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-orange-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/Reddit%20(1).png?raw=true" alt="" class="h-8 w-8 ml-2" aria-hidden="true">Reddit</div>
+      </a>
+      
+      <a href="https://www.youtube.com/@odedsvr95" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40 flex flex-col items-center justify-center" dir="rtl" aria-label="ערוץ היוטיוב של עודד (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-red-500 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/YTLOGO.png?raw=true" alt="" class="h-8 w-8 mr-2" aria-hidden="true">YouTube</div>
+      </a>
+      
+      <a href="https://www.instagram.com/odedsvr/" target="_blank" class="card block rounded-xl p-6 text-center hover:border-pink-500/40 flex flex-col items-center justify-center" dir="rtl" aria-label="פרופיל האינסטגרם של עודד (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-pink-300 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/instlogo.png?raw=true" alt="" class="h-6 w-6 ml-2" aria-hidden="true">Instagram</div>
+      </a>
+      
+      <a href="https://rggplay.com/?ref=RGG-8764e9784" target="_blank" class="card block rounded-xl p-6 text-center hover:border-blue-500/40" dir="rtl" aria-label="אתר אר ג'י ג'י פליי, השמש בקוד פנו אלינו לקבלת הנחה ODEDSVR (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-blue-400">🎮 RGG PLAY 🎮</div>
+        <p class="text-xs text-blue-200/60 font-bold mt-1 uppercase">קוד: ODEDSVR</p>
+      </a>
+      
     </div>
+    
     <footer class="mt-12 text-[9px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
     <footer class="mt-12 text-[6px] text-white/15 font-bold text-center tracking-[0.2em] uppercase">*ליברו ואנימנגה - שת"פ בין עודד לחברות</footer>
   </div>
+
   <script>
     const spotlight = document.getElementById('spotlight');
     const mainContent = document.getElementById('main-page-content');
@@ -193,5 +218,6 @@
     checkLiveStatus();
     setInterval(checkLiveStatus, 60000);
   </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7391dcaa1e7a4422ac7cad0e57536d22"}'></script><!-- End Cloudflare Web Analytics --></body>
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7391dcaa1e7a4422ac7cad0e57536d22"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
 </html>
