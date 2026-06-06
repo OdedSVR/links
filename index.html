@@ -1103,7 +1103,7 @@
           <div style="font-size:11px;color:#94a3b8;margin-top:2px;" id="voice-last-cmd"></div>
         </div>
         <div style="font-size:11px;color:#7c3aed;font-weight:700;text-align:left;line-height:1.8;">
-          גלול למטה / למעלה<br>הבא / קודם / לחץ<br>עצור
+          גלול למטה / למעלה<br>סרטונים / מידע / תורמים<br>עצור
         </div>
         <button id="voice-nav-close" aria-label="סגור פקודות קוליות" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:20px;padding:4px 8px;">✕</button>
       `;
@@ -1155,27 +1155,19 @@
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         setVoiceStatus('⬇️ ירידה לסוף', '');
 
-      // Next / Prev link
-      } else if (t.includes('הבא') || t.includes('next') || t.includes('קדימה')) {
-        const links = getNavLinks();
-        voiceFocusIndex = Math.min(voiceFocusIndex + 1, links.length - 1);
-        highlightVoiceFocus();
-        setVoiceStatus('➡️ קישור הבא: ' + (links[voiceFocusIndex]?.getAttribute('aria-label') || ''), '');
-      } else if (t.includes('קודם') || t.includes('prev') || t.includes('אחורה')) {
-        const links = getNavLinks();
-        voiceFocusIndex = Math.max(voiceFocusIndex - 1, 0);
-        highlightVoiceFocus();
-        setVoiceStatus('⬅️ קישור קודם: ' + (links[voiceFocusIndex]?.getAttribute('aria-label') || ''), '');
-
-      // Click / Enter
-      } else if (t.includes('לחץ') || t.includes('פתח') || t.includes('enter') || t.includes('כנס')) {
-        const links = getNavLinks();
-        if (links[voiceFocusIndex]) {
-          setVoiceStatus('✅ פותח קישור...', '');
-          setTimeout(() => links[voiceFocusIndex].click(), 300);
-        } else {
-          setVoiceStatus('⚠️ לא נבחר קישור', 'אמור "הבא" קודם לבחירת קישור');
-        }
+      // Page navigation
+      } else if (t.includes('סרטונים')) {
+        setVoiceStatus('🎬 פותח סרטונים...', '');
+        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/YTvids'; }, 400);
+      } else if (t.includes('מידע')) {
+        setVoiceStatus('ℹ️ פותח מידע...', '');
+        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/info'; }, 400);
+      } else if (t.includes('תורמים')) {
+        setVoiceStatus('🏆 פותח תורמים...', '');
+        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/topdonators'; }, 400);
+      } else if (t.includes('בית') || t.includes('דף הבית')) {
+        setVoiceStatus('🏠 חוזר לדף הבית...', '');
+        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/'; }, 400);
 
       // Stop
       } else if (t.includes('עצור') || t.includes('סגור') || t.includes('stop') || t.includes('כבה')) {
@@ -1206,7 +1198,7 @@
       voiceRecognition.interimResults = false;
 
       voiceRecognition.onstart = () => {
-        setVoiceStatus('🎙️ מאזין לפקודות...', 'אמור: גלול למטה / הבא / לחץ / עצור');
+        setVoiceStatus('🎙️ מאזין לפקודות...', 'אמור: גלול למטה / סרטונים / מידע / תורמים / עצור');
         voiceStatusEl && voiceStatusEl.classList.remove('error');
         voiceStatusEl && voiceStatusEl.classList.add('listening');
       };
