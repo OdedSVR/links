@@ -48,10 +48,10 @@
   <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div>
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
     <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto">
-        <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
-        <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Videos</a>
-        <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
-        <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a>
+        <a href="./index.html" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
+        <a href="./YTvids.html" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Videos</a>
+        <a href="./info.html" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Info</a>
+        <a href="./topdonators.html" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a>
     </nav>
 
     <div class="text-center mb-10 relative z-10">
@@ -98,8 +98,7 @@
     }
 
     async function fetchLeaderboardData() {
-      // ⏱️ שינוי הקישור אוטומטית לפי הזמן המדויק למניעת שמירת נתונים ישנים בזיכרון (Cache)
-      const apiUrl = 'https://odedsvr.github.io/links/data.json?t=' + new Date().getTime();
+      const apiUrl = './data.json?t=' + new Date().getTime();
 
       try {
         const response = await fetch(apiUrl);
@@ -167,7 +166,6 @@
       fetchLeaderboardData();
       setTimeout(activateSite, 400);
 
-      // 🔄 הבורג החסר שהיה חסר לך: האתר ירענן את הנתונים מהשרת כל 5 דקות ברקע באופן אוטומטי!
       setInterval(fetchLeaderboardData, 300000);
     });
 
