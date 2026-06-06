@@ -1,4 +1,3 @@
-YT
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -41,10 +40,102 @@ YT
     @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
     #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.6s ease-in; }
     #main-page-content.visible { opacity: 1; visibility: visible; }
+     /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
+    #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
+    #a11y-fab { width: 52px; height: 52px; background: #e02020; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
+    #a11y-fab:hover { background: #c01010; width: 58px; }
+    #a11y-fab svg { flex-shrink: 0; }
+
+    #a11y-panel {
+      position: fixed; bottom: 0; left: -420px; top: 0; width: 420px; max-width: 95vw;
+      background: #fff; color: #222; z-index: 99999; transition: left 0.35s cubic-bezier(0.4,0,0.2,1);
+      overflow-y: auto; box-shadow: 5px 0 30px rgba(0,0,0,0.5); display: flex; flex-direction: column;
+    }
+    #a11y-panel.open { left: 0; }
+    #a11y-panel-header {
+      background: #e02020; color: white; padding: 16px 20px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 2; flex-shrink: 0;
+    }
+    #a11y-panel-header h2 { font-size: 17px; font-weight: 900; margin: 0; direction: rtl; }
+    #a11y-close { background: none; border: none; color: white; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; }
+    #a11y-close:hover { background: rgba(255,255,255,0.2); }
+
+    .a11y-section { padding: 14px 16px 8px; }
+    .a11y-section-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 6px 0; }
+    .a11y-section-header h3 { font-size: 14px; font-weight: 800; color: #222; margin: 0; direction: rtl; }
+    .a11y-section-toggle { width: 22px; height: 22px; background: #e02020; color: white; border: none; border-radius: 50%; font-size: 16px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .a11y-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+    .a11y-btn {
+      background: #fff; border: 1.5px solid #ddd; border-radius: 10px; padding: 12px 6px 8px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer;
+      font-size: 11px; color: #333; font-weight: 700; text-align: center; transition: all 0.15s;
+      font-family: 'Heebo', sans-serif; line-height: 1.3; min-height: 80px; justify-content: center;
+    }
+    .a11y-btn:hover { border-color: #e02020; color: #e02020; background: #fff5f5; }
+    .a11y-btn.active { border-color: #e02020; background: #fff0f0; color: #e02020; box-shadow: 0 0 0 2px #e0202033; }
+    .a11y-btn svg { flex-shrink: 0; }
+    .a11y-divider { height: 1px; background: #eee; margin: 4px 16px; }
+
+
+    /* Color picker section */
+    .a11y-color-section { padding: 10px 16px 14px; direction: rtl; }
+    .a11y-color-label { font-size: 12px; font-weight: 700; color: #555; margin-bottom: 6px; display: block; }
+    .a11y-color-bar { display: flex; gap: 6px; margin-bottom: 8px; }
+    .a11y-color-swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; cursor: pointer; transition: transform 0.1s; }
+    .a11y-color-swatch:hover { transform: scale(1.2); border-color: #333; }
+    .a11y-color-swatch.active { border-color: #e02020; transform: scale(1.2); }
+    .color-preset-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+
+    /* Font size slider */
+    .a11y-slider-row { display: flex; align-items: center; gap: 10px; direction: rtl; padding: 8px 0; }
+    .a11y-slider-row input[type=range] { flex: 1; accent-color: #e02020; }
+    .a11y-slider-label { font-size: 12px; font-weight: 700; color: #555; white-space: nowrap; }
+
+    /* Cursor color buttons */
+    .cursor-btn { padding: 6px 14px; border: 2px solid #ddd; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700; background: #fff; transition: all 0.15s; }
+    .cursor-btn:hover { border-color: #e02020; }
+    .cursor-btn.active { border-color: #e02020; background: #fff0f0; color: #e02020; }
+
+    /* Reading guide */
+    #reading-guide-bar { position: fixed; top: 0; left: 0; right: 0; height: 40px; background: rgba(0,0,0,0.3); pointer-events: none; z-index: 99990; display: none; border-top: 2px solid #e02020; border-bottom: 2px solid #e02020; }
+
+    /* Virtual keyboard placeholder */
+    #vkeyboard { position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; border-top: 2px solid #e02020; z-index: 99995; display: none; padding: 12px; }
+    .vkey-row { display: flex; justify-content: center; gap: 4px; margin-bottom: 4px; }
+    .vkey { background: #334155; color: white; border: 1px solid #475569; border-radius: 6px; padding: 8px 12px; font-size: 13px; cursor: pointer; min-width: 36px; text-align: center; }
+    .vkey:hover { background: #e02020; }
+
+    /* Accessible classes */
+    body.a11y-stop-anim * { animation: none !important; transition: none !important; }
+    body.a11y-large-text { font-size: 120% !important; }
+    body.a11y-large-text h1 { font-size: 3rem !important; }
+    body.a11y-high-contrast { filter: contrast(150%) brightness(1.1); }
+    body.a11y-dark-contrast { filter: invert(1) hue-rotate(180deg); }
+    body.a11y-mono { filter: grayscale(1); }
+    body.a11y-highlight-links a { background: yellow !important; color: #000 !important; padding: 0 2px !important; outline: 2px solid orange !important; }
+    body.a11y-readable-font * { font-family: 'Arial', sans-serif !important; letter-spacing: 0.05em !important; }
+    body.a11y-big-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 0 L8 24 L14 18 L20 32 L23 31 L17 17 L26 17 Z' fill='black' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 8 0, auto !important; }
+    body.a11y-big-cursor-white * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 0 L8 24 L14 18 L20 32 L23 31 L17 17 L26 17 Z' fill='white' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 8 0, auto !important; }
+    body.a11y-hide-images img { visibility: hidden !important; }
+    body.a11y-letter-spacing * { letter-spacing: 0.12em !important; }
+    body.a11y-word-spacing * { word-spacing: 0.25em !important; }
+    body.a11y-line-height * { line-height: 2 !important; }
+    body.a11y-saturation-high { filter: saturate(2.5); }
+    body.a11y-saturation-low { filter: saturate(0.3); }
+    .a11y-focus-visible :focus { outline: 3px solid #e02020 !important; outline-offset: 3px !important; }
+    body.a11y-big-text-cursor * { font-size: calc(1em * var(--a11y-font-scale, 1)) !important; }
   </style>
 </head>
 <body>
   <div id="spotlight"></div>
+  <div id="reading-guide-bar" aria-hidden="true"></div>
+    
+  <button class="scroll-indicator" id="scrollIndicator" aria-label="גלול למטה לקישורים">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 256 256" aria-hidden="true">
+      <path d="M128,180a8,8,0,0,1-5.66-2.34l-80-80a8,8,0,0,1,11.32-11.32L128,160.69l74.34-74.35a8,8,0,0,1,11.32,11.32l-80,80A8,8,0,0,1,128,180Z"></path>
+    </svg>
+  </button>
+  
   <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/odedsvrlive%20logo.png?raw=true" alt="Logo" class="splash-logo"></div>
   <div id="main-page-content" class="flex flex-col items-center py-12 px-6" style="max-width: 700px; min-height: 1080px; margin: 0 auto; box-sizing: border-box;">
     <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto">
