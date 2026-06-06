@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -616,7 +617,7 @@
       'big-titles': () => { document.querySelectorAll('h1,h2,h3,h4').forEach(h => h.style.fontSize = h.style.fontSize ? '' : '2em'); },
       'focus-mode': () => body.classList.toggle('a11y-readable-font'),
       'screen-reader': () => alert('לשימוש עם קורא מסך, אנא הפעל את NVDA, JAWS, או VoiceOver. האתר תומך ב-ARIA ומבנה סמנטי מלא.'),
-      'voice-nav': () => alert('פקודות קוליות: אמר "גלול למטה", "גלול למעלה", "לחץ על [שם קישור]". דורש דפדפן Chrome.'),
+      'voice-nav': () => toggleVoiceNav(),
       'smart-nav': () => alert('ניווט חכם פעיל - השתמש ב-Tab לניווט בין אלמנטים, Enter לאישור.'),
       'regions': () => { const skip = document.getElementById('skip-link') || (() => { const s = document.createElement('a'); s.id='skip-link'; s.href='#links-grid'; s.textContent='דלג לתוכן'; s.style.cssText='position:fixed;top:10px;right:10px;background:#e02020;color:white;padding:8px 16px;border-radius:8px;font-weight:900;z-index:99999;text-decoration:none;'; document.body.prepend(s); return s; })(); skip.style.display = skip.style.display === 'none' ? '' : 'none'; },
       'keyboard-nav': () => { document.querySelectorAll('a,button').forEach(el => { el.style.outline = el.style.outline ? '' : '2px solid #e02020'; el.style.outlineOffset = '3px'; }); },
@@ -1100,6 +1101,192 @@
       }
     });
 
+    // ============ VOICE NAVIGATION ============
+    let voiceNavActive = false;
+    let voiceRecognition = null;
+    let voiceStatusEl = null;
+
+    // Get all focusable links for "next/prev" navigation
+    let voiceFocusIndex = -1;
+    function getNavLinks() {
+      return Array.from(document.querySelectorAll('#links-grid a, nav a'));
+    }
+
+    function createVoiceStatusBar() {
+      if (document.getElementById('voice-nav-bar')) return;
+      const bar = document.createElement('div');
+      bar.id = 'voice-nav-bar';
+      bar.setAttribute('role', 'status');
+      bar.setAttribute('aria-live', 'polite');
+      bar.style.cssText = `
+        position:fixed; bottom:0; left:0; right:0; z-index:99993;
+        background:#1e293b; border-top:2px solid #7c3aed;
+        padding:10px 20px; display:flex; align-items:center; gap:12px;
+        font-family:'Heebo',sans-serif; direction:rtl;
+        box-shadow:0 -4px 20px rgba(124,58,237,0.3);
+      `;
+      bar.innerHTML = `
+        <div id="voice-mic-icon" style="width:36px;height:36px;background:#7c3aed;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:voicePulse 1.5s ease-in-out infinite;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V80a48,48,0,0,0-96,0v48A48.05,48.05,0,0,0,128,176ZM96,80a32,32,0,0,1,64,0v48a32,32,0,0,1-64,0Zm40,143.6V200a8,8,0,0,0-16,0v23.6A80.11,80.11,0,0,1,48,144a8,8,0,0,0-16,0,96.11,96.11,0,0,0,88,95.6V240a8,8,0,0,0,16,0v-.4A96.11,96.11,0,0,0,224,144a8,8,0,0,0-16,0A80.11,80.11,0,0,1,136,223.6Z"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:900;color:white;" id="voice-status-text">🎙️ מאזין לפקודות...</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:2px;" id="voice-last-cmd"></div>
+        </div>
+        <div style="font-size:11px;color:#7c3aed;font-weight:700;text-align:left;line-height:1.8;">
+          גלול למטה / למעלה<br>הבא / קודם / לחץ<br>עצור
+        </div>
+        <button id="voice-nav-close" aria-label="סגור פקודות קוליות" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:20px;padding:4px 8px;">✕</button>
+      `;
+      // Pulse animation
+      const style = document.createElement('style');
+      style.textContent = `@keyframes voicePulse { 0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,0.5)} 50%{box-shadow:0 0 0 10px rgba(124,58,237,0)} }
+      #voice-nav-bar.listening #voice-mic-icon { background:#7c3aed; }
+      #voice-nav-bar.error #voice-mic-icon { background:#e02020; animation:none; }`;
+      document.head.appendChild(style);
+      document.body.appendChild(bar);
+      document.getElementById('voice-nav-close').addEventListener('click', () => stopVoiceNav());
+      voiceStatusEl = bar;
+    }
+
+    function setVoiceStatus(text, sub) {
+      const t = document.getElementById('voice-status-text');
+      const s = document.getElementById('voice-last-cmd');
+      if (t) t.textContent = text;
+      if (s && sub !== undefined) s.textContent = sub;
+    }
+
+    function highlightVoiceFocus() {
+      const links = getNavLinks();
+      links.forEach((l, i) => {
+        l.style.outline = i === voiceFocusIndex ? '3px solid #7c3aed' : '';
+        l.style.outlineOffset = '4px';
+      });
+      if (links[voiceFocusIndex]) {
+        links[voiceFocusIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        links[voiceFocusIndex].focus();
+      }
+    }
+
+    function handleVoiceCommand(transcript) {
+      const t = transcript.trim().toLowerCase();
+      setVoiceStatus('🎙️ מאזין לפקודות...', '⬅️ שמעתי: "' + transcript.trim() + '"');
+
+      // Scroll commands
+      if (t.includes('למטה') || t.includes('גלול מטה') || t.includes('scroll down')) {
+        window.scrollBy({ top: 300, behavior: 'smooth' });
+        setVoiceStatus('⬇️ גולל למטה', '');
+      } else if (t.includes('למעלה') || t.includes('גלול מעלה') || t.includes('scroll up')) {
+        window.scrollBy({ top: -300, behavior: 'smooth' });
+        setVoiceStatus('⬆️ גולל למעלה', '');
+      } else if (t.includes('לראש') || t.includes('תחילת') || t.includes('top')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setVoiceStatus('⬆️ חזרה לראש', '');
+      } else if (t.includes('לסוף') || t.includes('סוף') || t.includes('bottom')) {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        setVoiceStatus('⬇️ ירידה לסוף', '');
+
+      // Next / Prev link
+      } else if (t.includes('הבא') || t.includes('next') || t.includes('קדימה')) {
+        const links = getNavLinks();
+        voiceFocusIndex = Math.min(voiceFocusIndex + 1, links.length - 1);
+        highlightVoiceFocus();
+        setVoiceStatus('➡️ קישור הבא: ' + (links[voiceFocusIndex]?.getAttribute('aria-label') || ''), '');
+      } else if (t.includes('קודם') || t.includes('prev') || t.includes('אחורה')) {
+        const links = getNavLinks();
+        voiceFocusIndex = Math.max(voiceFocusIndex - 1, 0);
+        highlightVoiceFocus();
+        setVoiceStatus('⬅️ קישור קודם: ' + (links[voiceFocusIndex]?.getAttribute('aria-label') || ''), '');
+
+      // Click / Enter
+      } else if (t.includes('לחץ') || t.includes('פתח') || t.includes('enter') || t.includes('כנס')) {
+        const links = getNavLinks();
+        if (links[voiceFocusIndex]) {
+          setVoiceStatus('✅ פותח קישור...', '');
+          setTimeout(() => links[voiceFocusIndex].click(), 300);
+        } else {
+          setVoiceStatus('⚠️ לא נבחר קישור', 'אמור "הבא" קודם לבחירת קישור');
+        }
+
+      // Stop
+      } else if (t.includes('עצור') || t.includes('סגור') || t.includes('stop') || t.includes('כבה')) {
+        stopVoiceNav();
+
+      } else {
+        setVoiceStatus('🎙️ מאזין לפקודות...', '❓ לא הבנתי: "' + transcript.trim() + '"');
+      }
+    }
+
+    function startVoiceNav() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert('הדפדפן שלך לא תומך בזיהוי קול.\nאנא השתמש ב-Google Chrome.');
+        updateBtn('voice-nav', false);
+        const btn = document.querySelector('[data-feature="voice-nav"]');
+        if (btn) btn.classList.remove('active');
+        return;
+      }
+
+      createVoiceStatusBar();
+      voiceNavActive = true;
+      voiceFocusIndex = -1;
+
+      voiceRecognition = new SpeechRecognition();
+      voiceRecognition.lang = 'he-IL';
+      voiceRecognition.continuous = true;
+      voiceRecognition.interimResults = false;
+
+      voiceRecognition.onstart = () => {
+        setVoiceStatus('🎙️ מאזין לפקודות...', 'אמור: גלול למטה / הבא / לחץ / עצור');
+        voiceStatusEl && voiceStatusEl.classList.remove('error');
+        voiceStatusEl && voiceStatusEl.classList.add('listening');
+      };
+
+      voiceRecognition.onresult = (e) => {
+        const last = e.results[e.results.length - 1];
+        if (last.isFinal) handleVoiceCommand(last[0].transcript);
+      };
+
+      voiceRecognition.onerror = (e) => {
+        if (e.error === 'not-allowed') {
+          setVoiceStatus('🚫 אין גישה למיקרופון', 'אפשר גישה בהגדרות הדפדפן ונסה שוב');
+          voiceStatusEl && voiceStatusEl.classList.add('error');
+        } else if (e.error !== 'no-speech') {
+          setVoiceStatus('⚠️ שגיאה: ' + e.error, '');
+        }
+      };
+
+      voiceRecognition.onend = () => {
+        // Auto-restart unless manually stopped
+        if (voiceNavActive) {
+          try { voiceRecognition.start(); } catch(err) {}
+        }
+      };
+
+      voiceRecognition.start();
+    }
+
+    function stopVoiceNav() {
+      voiceNavActive = false;
+      if (voiceRecognition) { voiceRecognition.abort(); voiceRecognition = null; }
+      const bar = document.getElementById('voice-nav-bar');
+      if (bar) bar.remove();
+      // Remove focus outlines
+      getNavLinks().forEach(l => { l.style.outline = ''; l.style.outlineOffset = ''; });
+      voiceFocusIndex = -1;
+      const btn = document.querySelector('[data-feature="voice-nav"]');
+      if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
+    }
+
+    function toggleVoiceNav() {
+      if (voiceNavActive) {
+        stopVoiceNav();
+      } else {
+        startVoiceNav();
+      }
+    }
+
+    // Reset: also stop voice nav
     // Reset: also stop TTS
     const origReset = document.getElementById('a11y-reset-all').onclick;
     document.getElementById('a11y-reset-all').addEventListener('click', () => {
@@ -1107,6 +1294,7 @@
       ttsActive = false; ttsPaused = false;
       ttsBar.style.display = 'none';
       hideWordHighlight();
+      if (voiceNavActive) stopVoiceNav();
     });
 
   </script>
