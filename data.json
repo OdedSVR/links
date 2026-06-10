@@ -21,19 +21,19 @@
       "quantity": 531
     },
     {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 444
+    },
+    {
       "user_id": 56982139,
       "username": "yohay32",
       "quantity": 430
     },
     {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 399
-    },
-    {
       "user_id": 83913673,
       "username": "Oliverremez",
-      "quantity": 357
+      "quantity": 360
     },
     {
       "user_id": 71841512,
@@ -59,14 +59,24 @@
       "quantity": 200
     },
     {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 65
+    },
+    {
       "user_id": 67453019,
       "username": "natanelf",
       "quantity": 30
     },
     {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 20
+      "user_id": 77248326,
+      "username": "Speedynoam",
+      "quantity": 6
+    },
+    {
+      "user_id": 77247239,
+      "username": "essverland",
+      "quantity": 6
     },
     {
       "user_id": 8755992,
@@ -74,29 +84,19 @@
       "quantity": 5
     },
     {
-      "user_id": 77081529,
-      "username": "Sukar23",
-      "quantity": 1
-    },
-    {
-      "user_id": 2757848,
-      "username": "thebigSheshMan",
-      "quantity": 1
-    },
-    {
-      "user_id": 85849766,
-      "username": "avishay13",
-      "quantity": 1
-    },
-    {
       "user_id": 83913673,
       "username": "Oliverremez",
-      "quantity": 1
+      "quantity": 4
     },
     {
-      "user_id": 80766767,
-      "username": "EladTen",
-      "quantity": 1
+      "user_id": 1093581,
+      "username": "wvooq",
+      "quantity": 4
+    },
+    {
+      "user_id": 76947358,
+      "username": "Sololo_1",
+      "quantity": 3
     },
     {
       "user_id": 77090568,
@@ -114,7 +114,7 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 270
+      "quantity": 315
     },
     {
       "user_id": 2757848,
@@ -124,7 +124,7 @@
     {
       "user_id": 83913673,
       "username": "Oliverremez",
-      "quantity": 178
+      "quantity": 181
     },
     {
       "user_id": 71841512,
