@@ -18,12 +18,12 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 531
+      "quantity": 541
     },
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 444
+      "quantity": 489
     },
     {
       "user_id": 56982139,
@@ -61,22 +61,27 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 65
+      "quantity": 110
     },
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 30
-    },
-    {
-      "user_id": 77248326,
-      "username": "Speedynoam",
-      "quantity": 6
+      "quantity": 40
     },
     {
       "user_id": 77247239,
       "username": "essverland",
-      "quantity": 6
+      "quantity": 25
+    },
+    {
+      "user_id": 77248326,
+      "username": "Speedynoam",
+      "quantity": 20
+    },
+    {
+      "user_id": 67361501,
+      "username": "Coraximus_Liron",
+      "quantity": 10
     },
     {
       "user_id": 8755992,
@@ -97,11 +102,6 @@
       "user_id": 76947358,
       "username": "Sololo_1",
       "quantity": 3
-    },
-    {
-      "user_id": 77090568,
-      "username": "itayshalam10",
-      "quantity": 1
     }
   ],
   "gifts_week_enabled": true,
@@ -114,7 +114,7 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 315
+      "quantity": 360
     },
     {
       "user_id": 2757848,
@@ -132,14 +132,14 @@
       "quantity": 85
     },
     {
+      "user_id": 67453019,
+      "username": "natanelf",
+      "quantity": 75
+    },
+    {
       "user_id": 91822319,
       "username": "arthurit0Z",
       "quantity": 67
-    },
-    {
-      "user_id": 67453019,
-      "username": "natanelf",
-      "quantity": 65
     },
     {
       "user_id": 36321413,
@@ -147,9 +147,9 @@
       "quantity": 30
     },
     {
-      "user_id": 66260675,
-      "username": "FrenzyFishy",
-      "quantity": 20
+      "user_id": 77247239,
+      "username": "essverland",
+      "quantity": 25
     },
     {
       "user_id": 101733569,
