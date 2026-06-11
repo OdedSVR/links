@@ -69,6 +69,11 @@
       "quantity": 40
     },
     {
+      "user_id": 77248326,
+      "username": "Speedynoam",
+      "quantity": 26
+    },
+    {
       "user_id": 77247239,
       "username": "essverland",
       "quantity": 25
@@ -77,11 +82,6 @@
       "user_id": 103689796,
       "username": "ohadlevi",
       "quantity": 21
-    },
-    {
-      "user_id": 77248326,
-      "username": "Speedynoam",
-      "quantity": 20
     },
     {
       "user_id": 77249287,
@@ -147,14 +147,14 @@
       "quantity": 30
     },
     {
+      "user_id": 77248326,
+      "username": "Speedynoam",
+      "quantity": 26
+    },
+    {
       "user_id": 77247239,
       "username": "essverland",
       "quantity": 25
-    },
-    {
-      "user_id": 103689796,
-      "username": "ohadlevi",
-      "quantity": 21
     }
   ],
   "gifts_month_enabled": true
