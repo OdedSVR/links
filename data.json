@@ -52,7 +52,18 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 6956950,
+      "username": "NaTsUuU1",
+      "quantity": 5
+    },
+    {
+      "user_id": 98967455,
+      "username": "ohadbolbol",
+      "quantity": 1
+    }
+  ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
