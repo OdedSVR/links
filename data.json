@@ -13,12 +13,12 @@
     {
       "user_id": 79152945,
       "username": "mrdavid465",
-      "quantity": 770
+      "quantity": 820
     },
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 630
+      "quantity": 681
     },
     {
       "user_id": 67453019,
@@ -54,9 +54,29 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 51
+    },
+    {
+      "user_id": 79152945,
+      "username": "mrdavid465",
+      "quantity": 50
+    },
+    {
+      "user_id": 32602400,
+      "username": "Thekoa1a",
+      "quantity": 25
+    },
+    {
       "user_id": 103689796,
       "username": "ohadlevi",
-      "quantity": 6
+      "quantity": 21
+    },
+    {
+      "user_id": 91822319,
+      "username": "arthurit0Z",
+      "quantity": 10
     },
     {
       "user_id": 6956950,
@@ -64,33 +84,23 @@
       "quantity": 5
     },
     {
+      "user_id": 67361501,
+      "username": "Coraximus_Liron",
+      "quantity": 5
+    },
+    {
       "user_id": 97625392,
       "username": "berkoy4",
-      "quantity": 2
+      "quantity": 3
     },
     {
-      "user_id": 98967455,
-      "username": "ohadbolbol",
-      "quantity": 1
+      "user_id": 101733569,
+      "username": "Yarinov",
+      "quantity": 3
     },
     {
-      "user_id": 77081529,
-      "username": "Sukar23",
-      "quantity": 1
-    },
-    {
-      "user_id": 78027298,
-      "username": "UNDER1208M",
-      "quantity": 1
-    },
-    {
-      "user_id": 78013935,
-      "username": "bobo92929",
-      "quantity": 1
-    },
-    {
-      "user_id": 90040352,
-      "username": "AmitLux",
+      "user_id": 79596427,
+      "username": "SafsalGaming",
       "quantity": 1
     }
   ],
@@ -99,12 +109,12 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 501
+      "quantity": 552
     },
     {
       "user_id": 79152945,
       "username": "mrdavid465",
-      "quantity": 460
+      "quantity": 510
     },
     {
       "user_id": 2757848,
@@ -119,7 +129,7 @@
     {
       "user_id": 91822319,
       "username": "arthurit0Z",
-      "quantity": 122
+      "quantity": 132
     },
     {
       "user_id": 71841512,
@@ -134,17 +144,17 @@
     {
       "user_id": 103689796,
       "username": "ohadlevi",
-      "quantity": 34
+      "quantity": 49
+    },
+    {
+      "user_id": 32602400,
+      "username": "Thekoa1a",
+      "quantity": 40
     },
     {
       "user_id": 36321413,
       "username": "absolute_alamo",
       "quantity": 30
-    },
-    {
-      "user_id": 77248326,
-      "username": "Speedynoam",
-      "quantity": 26
     }
   ],
   "gifts_month_enabled": true
