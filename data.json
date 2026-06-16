@@ -54,6 +54,11 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
+      "user_id": 103689796,
+      "username": "ohadlevi",
+      "quantity": 52
+    },
+    {
       "user_id": 89935315,
       "username": "eylon1",
       "quantity": 51
@@ -66,12 +71,7 @@
     {
       "user_id": 32602400,
       "username": "Thekoa1a",
-      "quantity": 25
-    },
-    {
-      "user_id": 103689796,
-      "username": "ohadlevi",
-      "quantity": 21
+      "quantity": 30
     },
     {
       "user_id": 91822319,
@@ -79,13 +79,18 @@
       "quantity": 10
     },
     {
-      "user_id": 6956950,
-      "username": "NaTsUuU1",
+      "user_id": 81619162,
+      "username": "Beneiny99",
       "quantity": 5
     },
     {
       "user_id": 67361501,
       "username": "Coraximus_Liron",
+      "quantity": 5
+    },
+    {
+      "user_id": 6956950,
+      "username": "NaTsUuU1",
       "quantity": 5
     },
     {
@@ -97,11 +102,6 @@
       "user_id": 101733569,
       "username": "Yarinov",
       "quantity": 3
-    },
-    {
-      "user_id": 79596427,
-      "username": "SafsalGaming",
-      "quantity": 1
     }
   ],
   "gifts_week_enabled": true,
@@ -137,19 +137,19 @@
       "quantity": 85
     },
     {
+      "user_id": 103689796,
+      "username": "ohadlevi",
+      "quantity": 80
+    },
+    {
       "user_id": 67453019,
       "username": "natanelf",
       "quantity": 75
     },
     {
-      "user_id": 103689796,
-      "username": "ohadlevi",
-      "quantity": 49
-    },
-    {
       "user_id": 32602400,
       "username": "Thekoa1a",
-      "quantity": 40
+      "quantity": 45
     },
     {
       "user_id": 36321413,
