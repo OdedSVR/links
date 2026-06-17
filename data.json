@@ -74,6 +74,11 @@
       "quantity": 30
     },
     {
+      "user_id": 67361501,
+      "username": "Coraximus_Liron",
+      "quantity": 11
+    },
+    {
       "user_id": 5713832,
       "username": "Ofekkino",
       "quantity": 10
@@ -89,19 +94,14 @@
       "quantity": 5
     },
     {
+      "user_id": 77097135,
+      "username": "orad1122",
+      "quantity": 5
+    },
+    {
       "user_id": 81619162,
       "username": "Beneiny99",
       "quantity": 5
-    },
-    {
-      "user_id": 67361501,
-      "username": "Coraximus_Liron",
-      "quantity": 5
-    },
-    {
-      "user_id": 97625392,
-      "username": "berkoy4",
-      "quantity": 3
     }
   ],
   "gifts_week_enabled": true,
