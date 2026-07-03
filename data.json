@@ -28,7 +28,7 @@
     {
       "user_id": 56982139,
       "username": "yohay32",
-      "quantity": 430
+      "quantity": 435
     },
     {
       "user_id": 83913673,
@@ -69,6 +69,11 @@
       "quantity": 10
     },
     {
+      "user_id": 56982139,
+      "username": "yohay32",
+      "quantity": 5
+    },
+    {
       "user_id": 77248326,
       "username": "Speedynoam",
       "quantity": 5
@@ -96,11 +101,6 @@
     {
       "user_id": 103671748,
       "username": "jaimito2004m",
-      "quantity": 1
-    },
-    {
-      "user_id": 80766767,
-      "username": "EladTen",
       "quantity": 1
     }
   ],
@@ -122,6 +122,11 @@
       "quantity": 10
     },
     {
+      "user_id": 56982139,
+      "username": "yohay32",
+      "quantity": 5
+    },
+    {
       "user_id": 77248326,
       "username": "Speedynoam",
       "quantity": 5
@@ -149,11 +154,6 @@
     {
       "user_id": 103671748,
       "username": "jaimito2004m",
-      "quantity": 1
-    },
-    {
-      "user_id": 80766767,
-      "username": "EladTen",
       "quantity": 1
     }
   ],
