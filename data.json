@@ -38,7 +38,7 @@
     {
       "user_id": 71841512,
       "username": "OfficialBenLavi",
-      "quantity": 326
+      "quantity": 327
     },
     {
       "user_id": 79649658,
@@ -54,9 +54,9 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
-      "user_id": 79152945,
-      "username": "mrdavid465",
-      "quantity": 25
+      "user_id": 32602400,
+      "username": "Thekoa1a",
+      "quantity": 35
     },
     {
       "user_id": 67453019,
@@ -64,9 +64,14 @@
       "quantity": 25
     },
     {
-      "user_id": 32602400,
-      "username": "Thekoa1a",
-      "quantity": 10
+      "user_id": 79152945,
+      "username": "mrdavid465",
+      "quantity": 25
+    },
+    {
+      "user_id": 95434714,
+      "username": "Royan555",
+      "quantity": 5
     },
     {
       "user_id": 56982139,
@@ -76,11 +81,6 @@
     {
       "user_id": 77248326,
       "username": "Speedynoam",
-      "quantity": 5
-    },
-    {
-      "user_id": 95434714,
-      "username": "Royan555",
       "quantity": 5
     },
     {
@@ -99,17 +99,17 @@
       "quantity": 2
     },
     {
-      "user_id": 103671748,
-      "username": "jaimito2004m",
+      "user_id": 78242489,
+      "username": "lior1605",
       "quantity": 1
     }
   ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
-      "user_id": 79152945,
-      "username": "mrdavid465",
-      "quantity": 25
+      "user_id": 32602400,
+      "username": "Thekoa1a",
+      "quantity": 35
     },
     {
       "user_id": 67453019,
@@ -117,9 +117,14 @@
       "quantity": 25
     },
     {
-      "user_id": 32602400,
-      "username": "Thekoa1a",
-      "quantity": 10
+      "user_id": 79152945,
+      "username": "mrdavid465",
+      "quantity": 25
+    },
+    {
+      "user_id": 95434714,
+      "username": "Royan555",
+      "quantity": 5
     },
     {
       "user_id": 56982139,
@@ -129,11 +134,6 @@
     {
       "user_id": 77248326,
       "username": "Speedynoam",
-      "quantity": 5
-    },
-    {
-      "user_id": 95434714,
-      "username": "Royan555",
       "quantity": 5
     },
     {
@@ -152,8 +152,8 @@
       "quantity": 2
     },
     {
-      "user_id": 103671748,
-      "username": "jaimito2004m",
+      "user_id": 78242489,
+      "username": "lior1605",
       "quantity": 1
     }
   ],
