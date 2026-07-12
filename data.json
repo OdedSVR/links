@@ -52,7 +52,28 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 81937117,
+      "username": "kgsx",
+      "quantity": 10
+    },
+    {
+      "user_id": 66744330,
+      "username": "omri274",
+      "quantity": 1
+    },
+    {
+      "user_id": 92472291,
+      "username": "Ken0sV12",
+      "quantity": 1
+    },
+    {
+      "user_id": 97625392,
+      "username": "berkoy4",
+      "quantity": 1
+    }
+  ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
@@ -68,7 +89,7 @@
     {
       "user_id": 81937117,
       "username": "kgsx",
-      "quantity": 97
+      "quantity": 107
     },
     {
       "user_id": 67453019,
