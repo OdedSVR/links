@@ -35,12 +35,12 @@
     }
     #profile-image { border: 2px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
-    #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease-out; }
+ /*   #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease-out; }
     .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
     @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
     #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.6s ease-in; }
     #main-page-content.visible { opacity: 1; visibility: visible; }
-
+*/
     /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
     #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
     #a11y-fab { width: 52px; height: 52px; background: #e02020; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
@@ -124,7 +124,8 @@
   <div id="spotlight"></div>
   <div id="reading-guide-bar" aria-hidden="true"></div>
 
-  <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/odedsvrlive%20logo.png?raw=true" alt="Logo" class="splash-logo"></div>
+ <!-- <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/odedsvrlive%20logo.png?raw=true" alt="Logo" class="splash-logo"></div>
+ -->
   <div id="main-page-content" class="flex flex-col items-center py-12 px-6" style="max-width: 700px; min-height: 1080px; margin: 0 auto; box-sizing: border-box;">
     <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto" aria-label="ניווט ראשי">
         <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">HOME</a>
