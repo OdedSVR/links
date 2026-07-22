@@ -259,6 +259,11 @@
   </div>
 
   <script>
+    // העלמת הכפתור בלחיצה
+  const btn = document.getElementById('scroll-down-btn');
+  btn.style.opacity = '0';
+  btn.style.pointerEvents = 'none';
+    
     function scrollToBottom() {
       window.scrollTo({
         top: document.body.scrollHeight,
