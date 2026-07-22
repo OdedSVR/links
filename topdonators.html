@@ -257,20 +257,20 @@
     </div>
     <footer class="mt-12 text-[9px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
   </div>
-
-  <script>
-    // העלמת הכפתור בלחיצה
+<script>
+function scrollToBottom() {
+  // העלמת הכפתור בלחיצה
   const btn = document.getElementById('scroll-down-btn');
   btn.style.opacity = '0';
   btn.style.pointerEvents = 'none';
-    
-    function scrollToBottom() {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-      });
-    }
-  </script>
+
+  // גלילה לתחתית הדף
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth'
+  });
+}
+</script>
   <!-- ==================== ACCESSIBILITY WIDGET ==================== -->
   <div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
     <button id="a11y-fab" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
