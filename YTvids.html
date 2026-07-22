@@ -509,7 +509,8 @@
     const videoContainer = document.getElementById('video-container');
     const API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
     const CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
-    
+    const scrollIndicator = document.getElementById('scrollIndicator');
+
     async function fetchVideos() {
       const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
       const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
@@ -548,7 +549,6 @@
         }, 500);
       }
     }
-    const scrollIndicator = document.getElementById('scrollIndicator');
 
     document.addEventListener('mousemove', (e) => {
       if (spotlight) { spotlight.style.left = e.clientX + 'px'; spotlight.style.top = e.clientY + 'px'; }
