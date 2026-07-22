@@ -459,17 +459,26 @@
       </div>
     </footer>
   </div>
-  <script>
-    // העלמת הכפתור בלחיצה
-  const btn = document.getElementById('scroll-down-btn');
-  btn.style.opacity = '0';
-  btn.style.pointerEvents = 'none';
+<script>
     function scrollToBottom() {
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: 'smooth'
       });
     }
+
+    // העלמה/הופעה של הכפתור לפי גלילה
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('scroll-down-btn');
+      
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        btn.style.opacity = '0';
+        btn.style.pointerEvents = 'none';
+      } else {
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }
+    });
   </script>
   <!-- ==================== ACCESSIBILITY WIDGET ==================== -->
   <div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
