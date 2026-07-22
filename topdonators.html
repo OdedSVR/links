@@ -24,6 +24,17 @@
     .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; text-align: center; }
     .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); }
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
+        .hero-title {
+  background: linear-gradient(90deg, #22d3ee, #a855f7, #3b82f6, #22d3ee);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleShine 10s linear infinite;
+}
+@keyframes titleShine {
+  to { background-position: 300% center; }
+}
   /*  #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
     .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
     @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
@@ -145,7 +156,7 @@
       <a href="https://www.youtube.com/@odedsvr95" target="_blank">
         <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" id="profile-image" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
       </a>
-      <h1 class="text-4xl font-black text-white tracking-tight">Oded SVR</h1>
+      <h1 class=" hero-title text-4xl font-black text-white tracking-tight">Oded SVR</h1>
       <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">Top Donators</p>
     </div>
 
