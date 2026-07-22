@@ -22,12 +22,14 @@
     .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); }
     #profile-image { border: 2px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
-        .hero-title {
+.hero-title {
+  display: inline-block;
   background: linear-gradient(90deg, #22d3ee, #a855f7, #3b82f6, #22d3ee);
   background-size: 300% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: titleShine 10s linear infinite;
 }
 @keyframes titleShine {
