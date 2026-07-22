@@ -65,12 +65,12 @@
       transition: transform 0.3s cubic-bezier(0.1, 1, 0.1, 1); 
     }
     #char-right { 
-      right: -2%; 
+      right: 0%; 
       background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png'); 
       animation: swayCharacter 12s ease-in-out infinite; 
     }
     #char-left { 
-      left: -2%; 
+      left: 0%; 
       background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png'); 
       animation: swimDolphin 15s ease-in-out infinite; 
     }
@@ -160,20 +160,17 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* כותרת מנצנצת */
     .hero-title {
-      background: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #3b82f6 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: titleShine 6s linear infinite;
-    }
-
-    @keyframes titleShine {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
-    }
+  background: linear-gradient(90deg, #22d3ee, #a855f7, #3b82f6, #22d3ee);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleShine 10s linear infinite;
+}
+@keyframes titleShine {
+  to { background-position: 300% center; }
+}
 
     @keyframes pulseRing {
       0% { transform: scale(1); opacity: 0.8; }
@@ -292,21 +289,20 @@
   </style>
 </head>
 <body>
-  
+ <!-- Glowing Ambient Background Effects -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+  <div class="bg-glow-3"></div>
+
   <div id="char-right" aria-hidden="true"></div>
   <div id="char-left" aria-hidden="true"></div>
   <div id="spotlight" aria-hidden="true"></div>
   <div id="reading-guide-bar" aria-hidden="true"></div>
-<!-- רק הלחצן של החץ כאן בתוך הערה והיא נסגרת מיד 
-  
-  <button class="scroll-indicator" id="scrollIndicator" aria-label="גלול למטה לקישורים">
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 256 256" aria-hidden="true">
-      <path d="M128,180a8,8,0,0,1-5.66-2.34l-80-80a8,8,0,0,1,11.32-11.32L128,160.69l74.34-74.35a8,8,0,0,1,11.32,11.32l-80,80A8,8,0,0,1,128,180Z"></path>
-    </svg>
-  </button>
-  -->
-  <div id="splash-screen"><img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="לוגו טעינה עודד סבר" class="splash-logo"></div>
-  
+
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="לוגו טעינה עודד סבר" class="splash-logo">
+  </div>
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
     <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto" aria-label="ניווט ראשי">
         <a href="https://odedsvr.com/index.html" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
@@ -315,16 +311,19 @@
         <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a>
     </nav>
 
-    <div class="text-center mb-10 relative z-10">
-      <a href="https://kick.com/odedsvr" target="_blank" aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)">
-        <div class="relative inline-block">
-          <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" id="profile-image" alt="תמונת הפרופיל של עודד סבר" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
-          <span id="live-dot" class="hidden">
-            <span class="absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]" style="box-shadow: 0 0 8px rgba(239,68,68,0.9);"></span>
-            <span class="live-ring absolute bottom-5 right-0 w-4 h-4 rounded-full bg-red-500 border-2 border-[#0f172a]"></span>
-          </span>
-        </div>
-      </a>
+      <!-- Profile Header -->
+      <div class="text-center mb-10 relative z-10">
+        <a href="https://kick.com/odedsvr" target="_blank" class="group inline-block" aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)">
+          <div class="relative inline-block">
+            <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
+            <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" id="profile-image" alt="תמונת הפרופיל של עודד סבר" class="relative w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto shadow-2xl object-cover border-2 border-white/20 transition-all duration-300 transform group-hover:scale-105">
+            <span id="live-dot" class="hidden">
+              <span class="absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]" style="box-shadow: 0 0 12px rgba(239,68,68,1);"></span>
+              <span class="live-ring absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]"></span>
+            </span>
+          </div>
+        </a>
+
      <h1 class="hero-title text-4xl font-black tracking-tight">Oded SVR</h1>
       <div class= " flex items-center justify-center gap-2 mt-1">
         <span id="live-badge" class="hidden items-center gap-1 bg-red-500/20 border border-red-500/40 text-red-400 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
@@ -345,7 +344,7 @@
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" style="--glow-rgb: 239, 68, 68;" target="_blank" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" aria-label="טופס הרשמה לכוכב הבא של פיצה הפקות (נפתח בטאב חדש)">
           <div class="card-glow-bg"></div>
           <div class="text-lg md:text-xl font-black text-red-400 group-hover:scale-105 transition-transform duration-200">⭐ הכוכב הבא של פיצה הפקות ⭐</div>
-          <p class="text-xs text-red-200/50 font-bold mt-1 uppercase tracking-wider">לחץ להרשמה לטורניר</p>
+          <p class="text-xs text-red-200/50 font-bold mt-1 uppercase tracking-wider">לחץ להרשמה</p>
         </a>
 
         <!-- Link Item 2 -->
@@ -362,7 +361,7 @@
           <div class="card-glow-bg"></div>
           <div class="text-lg md:text-xl font-black text-green-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
             <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/kick%20logo.png" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
-            <span>Kick Stream</span>
+            <span>Kick</span>
           </div>
         </a>
 
@@ -378,7 +377,7 @@
           <div class="card-glow-bg"></div>
           <div class="text-lg md:text-xl font-black text-orange-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
             <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/Reddit%20(1).png" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
-            <span>Reddit Community</span>
+            <span>Reddit</span>
           </div>
         </a>
 
