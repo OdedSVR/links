@@ -511,6 +511,22 @@
     const CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
     const scrollIndicator = document.getElementById('scrollIndicator');
 
+// לחיצה על החץ גוללת לחלק הבא
+scrollIndicator.addEventListener('click', () => {
+  window.scrollTo({
+    top: window.innerHeight,
+    behavior: 'smooth'
+  });
+});
+
+// העלמת החץ כשהמשתמש כבר מתחיל לגלול
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    scrollIndicator.style.opacity = '0';
+  } else {
+    scrollIndicator.style.opacity = '1';
+  }
+});
     async function fetchVideos() {
       const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
       const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
