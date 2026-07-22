@@ -1,3 +1,4 @@
+%%html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -23,11 +24,12 @@
     #profile-image { border: 2px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
     #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; }
-    #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
+   /* #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
     .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
     @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } } 
     #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; } 
     #main-page-content.visible { opacity: 1; visibility: visible; }
+    */
     .text-glow { text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); }
     
     .copy-btn { opacity: 0.5; transition: all 0.2s; cursor: pointer; }
@@ -126,7 +128,8 @@
   <div id="reading-guide-bar" aria-hidden="true"></div> 
   <div id="char-left"></div> 
   <div id="spotlight"></div>
- <div id="splash-screen"><img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div> -
+  <!-- <div id="splash-screen"><img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div> -
+  -->
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12"> 
     <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto">
         <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Home</a>
@@ -491,7 +494,7 @@
     const splash = document.getElementById('splash-screen');
     const charLeft = document.getElementById('char-left');
     const charRight = document.getElementById('char-right');
-
+/*
     function activateSite() {
       if (splash) {
         splash.style.opacity = '0';
@@ -514,7 +517,7 @@
       if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
     });
     window.addEventListener('load', activateSite); setTimeout(activateSite, 500);
-
+*/
     // ============ ACCESSIBILITY WIDGET ============
     const fab = document.getElementById('a11y-fab');
     const panel = document.getElementById('a11y-panel');
