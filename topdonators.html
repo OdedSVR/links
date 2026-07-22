@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OdedSVR | Top Donators</title>
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
+  <title>OdedSVR | Recent Videos</title>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/odedsvrlive%20logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
     body {
       font-family: 'Heebo', sans-serif;
       background: radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%), radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%), radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%), #0f172a;
-      min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden; color: white; position: relative;
+      color: white; min-height: 100vh; margin: 0; position: relative; overflow-x: hidden;
     }
-    /* כפתור חץ למטה  */
+    /* כפתור חץ למטה */
     #scroll-down-btn {
       position: fixed;
       bottom: 25px;
@@ -48,42 +48,27 @@
       40% { transform: translateX(-50%) translateY(6px); }
       60% { transform: translateX(-50%) translateY(3px); }
     }
-     /* דמויות צדדיות */
-    #char-right, #char-left { 
-      position: fixed; 
-      top: 50%; 
-      width: 600px; 
-      height: 900px; 
-      background-size: contain; 
-      background-repeat: no-repeat; 
-      background-position: center; 
-      opacity: 0.25; 
-      z-index: 1; 
-      pointer-events: none; 
-      transition: transform 0.3s cubic-bezier(0.1, 1, 0.1, 1); 
-    }
-    #char-right { 
-      right: -2%; 
-      background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png'); 
-      animation: swayCharacter 12s ease-in-out infinite; 
-    }
-    #char-left { 
-      left: -2%; 
-      background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png'); 
-      animation: swimDolphin 15s ease-in-out infinite; 
-    }
-
-    @keyframes swayCharacter { 
-      0%, 100% { transform: translateY(-50%) rotate(12deg) scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2)); } 
-      50% { transform: translateY(-52%) rotate(14deg) scale(1.02); filter: drop-shadow(0 0 35px rgba(59, 130, 246, 0.4)); } 
-    }
-    @keyframes swimDolphin { 
-      0%, 100% { transform: translateY(-50%) rotate(-12deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 
-      50% { transform: translateY(-48%) rotate(-10deg) scale(1.03); filter: drop-shadow(0 0 35px rgba(6, 182, 212, 0.4)); } 
-    }
     #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; display: none; }
-    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; text-align: center; }
-    .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); }
+    .video-row {
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      text-align: right;
+      position: relative;
+      z-index: 10;
+      padding: 0.75rem;
+      height: 100%;
+    }
+    .video-row:hover {
+      background: rgba(30, 41, 59, 0.85);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    #profile-image { border: 2px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
 .hero-title {
   display: inline-block;
@@ -98,21 +83,13 @@
 @keyframes titleShine {
   to { background-position: 300% center; }
 }
-  /*  #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
+ /*   #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease-out; }
     .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
     @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
-    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; }
+    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.6s ease-in; }
     #main-page-content.visible { opacity: 1; visibility: visible; }
 */
-    .donators-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    .donators-table th, .donators-table td { padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
-    .donators-table th { background: rgba(255, 255, 255, 0.05); font-weight: bold; color: white; }
-    .donators-table td { color: #ccc; }
-    .donators-table tr:last-child td { border-bottom: none; }
-    .donators-table tr:hover { background: rgba(255, 255, 255, 0.02); }
-    .weekly-username { color: #f97316; font-weight: bold; }
-    .alltime-username { color: #22d3ee; font-weight: bold; }
-/* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
+    /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
     #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
     #a11y-fab { width: 52px; height: 52px; background: #e02020; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
     #a11y-fab:hover { background: #c01010; width: 58px; }
@@ -148,8 +125,6 @@
     .a11y-btn svg { flex-shrink: 0; }
     .a11y-divider { height: 1px; background: #eee; margin: 4px 16px; }
 
-
-    /* Color picker section */
     .a11y-color-section { padding: 10px 16px 14px; direction: rtl; }
     .a11y-color-label { font-size: 12px; font-weight: 700; color: #555; margin-bottom: 6px; display: block; }
     .a11y-color-bar { display: flex; gap: 6px; margin-bottom: 8px; }
@@ -158,26 +133,21 @@
     .a11y-color-swatch.active { border-color: #e02020; transform: scale(1.2); }
     .color-preset-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
 
-    /* Font size slider */
     .a11y-slider-row { display: flex; align-items: center; gap: 10px; direction: rtl; padding: 8px 0; }
     .a11y-slider-row input[type=range] { flex: 1; accent-color: #e02020; }
     .a11y-slider-label { font-size: 12px; font-weight: 700; color: #555; white-space: nowrap; }
 
-    /* Cursor color buttons */
     .cursor-btn { padding: 6px 14px; border: 2px solid #ddd; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700; background: #fff; transition: all 0.15s; }
     .cursor-btn:hover { border-color: #e02020; }
     .cursor-btn.active { border-color: #e02020; background: #fff0f0; color: #e02020; }
 
-    /* Reading guide */
     #reading-guide-bar { position: fixed; top: 0; left: 0; right: 0; height: 40px; background: rgba(0,0,0,0.3); pointer-events: none; z-index: 99990; display: none; border-top: 2px solid #e02020; border-bottom: 2px solid #e02020; }
 
-    /* Virtual keyboard placeholder */
     #vkeyboard { position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; border-top: 2px solid #e02020; z-index: 99995; display: none; padding: 12px; }
     .vkey-row { display: flex; justify-content: center; gap: 4px; margin-bottom: 4px; }
     .vkey { background: #334155; color: white; border: 1px solid #475569; border-radius: 6px; padding: 8px 12px; font-size: 13px; cursor: pointer; min-width: 36px; text-align: center; }
     .vkey:hover { background: #e02020; }
 
-    /* Accessible classes */
     body.a11y-stop-anim * { animation: none !important; transition: none !important; }
     body.a11y-large-text { font-size: 120% !important; }
     body.a11y-large-text h1 { font-size: 3rem !important; }
@@ -196,37 +166,33 @@
     body.a11y-saturation-low { filter: saturate(0.3); }
     .a11y-focus-visible :focus { outline: 3px solid #e02020 !important; outline-offset: 3px !important; }
     body.a11y-big-text-cursor * { font-size: calc(1em * var(--a11y-font-scale, 1)) !important; }
-  
   </style>
 </head>
 <body>
-  <div id="char-right"></div>
-  <div id="reading-guide-bar" aria-hidden="true"></div>
-  <div id="char-left"></div>
   <div id="spotlight"></div>
+  <div id="reading-guide-bar" aria-hidden="true"></div>
 <!-- כפתור חץ למטה -->
   <button id="scroll-down-btn" aria-label="רד לתחתית העמוד" onclick="scrollToBottom()">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
       <path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path>
     </svg>
   </button>
- <!-- <div id="splash-screen"><img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div>
+ <!-- <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/odedsvrlive%20logo.png?raw=true" alt="Logo" class="splash-logo"></div>
  -->
-  <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
-      <!-- Top Navigation -->
-      <nav class="w-full max-w-md bg-slate-900/60 backdrop-blur-2xl border border-white/10 rounded-full p-1.5 mb-10 flex shadow-2xl relative z-20" aria-label="ניווט ראשי">
-        <a href="https://odedsvr.com/index.html" class="flex-1 py-2 text-xs md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-wider">Home</a>
-        <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-xs md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-wider">Videos</a>
-        <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-xs md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-wider">Info</a>
-        <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-xs md:text-sm font-bold text-white hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-wider">Donators</a>
-      </nav>
-
+  <!-- Top Navigation -->
+  <div id="main-page-content" class="flex flex-col items-center py-12 px-6" style="max-width: 700px; min-height: 1080px; margin: 0 auto; box-sizing: border-box;">
+    <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto" aria-label="ניווט ראשי">
+        <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">HOME</a>
+        <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">VIDEOS</a>
+        <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">INFO</a>
+        <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a>
+    </nav>
       <!-- Profile Header -->
       <div class=" flex flex-col items-center text-center mb-10 relative z-10">
-        <a href="https://kick.com/odedsvr" target="_blank" class="group inline-block" aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)">
+        <a href="https://www.youtube.com/@OdedSVRLive" target="_blank" class="group inline-block" aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)">
           <div class="relative inline-block">
             <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
-            <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" id="profile-image" alt="תמונת הפרופיל של עודד סבר" class="relative w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto shadow-2xl object-cover border-2 border-white/20 transition-all duration-300 transform group-hover:scale-105">
+            <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/odedsvrlive%20logo.png" id="profile-image" alt="תמונת הפרופיל של עודד סבר" class="relative w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto shadow-2xl object-cover border-2 border-white/20 transition-all duration-300 transform group-hover:scale-105">
             <span id="live-dot" class="hidden">
               <span class="absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]" style="box-shadow: 0 0 12px rgba(239,68,68,1);"></span>
               <span class="live-ring absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]"></span>
@@ -234,56 +200,40 @@
           </div>
         </a>
 
-        <h1 class="hero-title text-4xl md:text-5xl font-black tracking-tight mt-4 mb-2">Oded SVR</h1>
+        <h1 class="hero-title text-4xl md:text-5xl font-black tracking-tight mt-4 mb-2">OdedSVR Live</h1>
         
         <div class="flex items-center justify-center gap-2">
-          <span class="text-[11px] text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full">Top Donators</span>
+          <span class="text-[11px] text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full">Recent YouTube Videos
+</span>
         </div>
       </div>
 
-    <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-      <div class="card rounded-xl">
-        <h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 Weekly Top Gifters 🏆</h2>
-        <div id="weekly-gifters-table-container">
-          <p class="text-sm text-gray-300">Loading Weekly Top Gifters...</p>
-        </div>
-      </div>
-      <div class="card rounded-xl">
-        <h2 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2">👑 All-Time Top Gifters 👑</h2>
-        <div id="alltime-gifters-table-container">
-          <p class="text-sm text-gray-300">Loading All-Time Top Gifters...</p>
-        </div>
-      </div>
+    <div id="video-container" class="w-full grid grid-cols-1 md:grid-cols-1 gap-6" style="flex-grow: 1; display: grid; grid-template-rows: repeat(5, minmax(0, 1fr)); padding-bottom: 20px;" aria-label="רשימת סרטונים אחרונים">
+        <p class="text-white/30 animate-pulse col-span-full text-center">טוען סרטונים...</p>
     </div>
-    <footer class="mt-12 text-[9px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
+    <footer class="mt-auto text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
   </div>
 <script>
-  function scrollToBottom() {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth'
-    });
-  }
-
-  // העלמה/הופעה של הכפתור לפי גלילה
-  window.addEventListener('scroll', () => {
-    const btn = document.getElementById('scroll-down-btn');
-    
-    // גובה החלון + כמה שנגלל
-    const scrolledTo = window.innerHeight + window.scrollY;
-    // גובה העמוד הכולל
-    const totalHeight = document.documentElement.scrollHeight;
-
-    // ברגע שנגיע כמעט לסוף העמוד (עד 20px מהקצה), החץ ייעלם
-    if (scrolledTo >= totalHeight - 20) {
-      btn.style.opacity = '0';
-      btn.style.pointerEvents = 'none';
-    } else {
-      btn.style.opacity = '1';
-      btn.style.pointerEvents = 'auto';
+    function scrollToBottom() {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
     }
-  });
-</script>
+
+    // העלמה/הופעה של הכפתור לפי גלילה
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('scroll-down-btn');
+      
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        btn.style.opacity = '0';
+        btn.style.pointerEvents = 'none';
+      } else {
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }
+    });
+  </script>
   <!-- ==================== ACCESSIBILITY WIDGET ==================== -->
   <div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
     <button id="a11y-fab" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
@@ -325,7 +275,6 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V80a48,48,0,0,0-96,0v48A48.05,48.05,0,0,0,128,176ZM96,80a32,32,0,0,1,64,0v48a32,32,0,0,1-64,0Zm40,143.6V200a8,8,0,0,0-16,0v23.6A80.11,80.11,0,0,1,48,144a8,8,0,0,0-16,0,96.11,96.11,0,0,0,88,95.6V240a8,8,0,0,0,16,0v-.4A96.11,96.11,0,0,0,224,144a8,8,0,0,0-16,0A80.11,80.11,0,0,1,136,223.6Z"/></svg>
           פקודות קוליות
         </button>
-
         <button class="a11y-btn" data-feature="smart-nav" aria-pressed="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#e02020" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>
           ניווט חכם
@@ -401,7 +350,6 @@
         <h3>הגדלת הטקסט והקטנת הגופן</h3>
       </div>
       <div id="font-section-body">
-        <!-- Font size slider -->
         <div class="a11y-slider-row">
           <span class="a11y-slider-label">גודל גופן</span>
           <input type="range" min="80" max="160" value="100" id="font-size-slider">
@@ -557,102 +505,75 @@
   <!-- Virtual Keyboard -->
   <div id="vkeyboard" role="complementary" aria-label="מקלדת וירטואלית">
     <div class="vkey-row">
-      <div class="vkey">ק</div>
+      <div class="vkey">ק</div><div class="vkey">ר</div><div class="vkey">א</div><div class="vkey">ט</div><div class="vkey">ו</div><div class="vkey">ן</div><div class="vkey">ם</div><div class="vkey">פ</div><div class="vkey">⌫</div>
+    </div>
+    <div class="vkey-row">
+      <div class="vkey">ש</div><div class="vkey">ד</div><div class="vkey">ג</div><div class="vkey">כ</div><div class="vkey">ע</div><div class="vkey">י</div><div class="vkey">ח</div><div class="vkey">ל</div><div class="vkey">ך</div><div class="vkey">ף</div>
+    </div>
+    <div class="vkey-row">
+      <div class="vkey">ז</div><div class="vkey">ס</div><div class="vkey">ב</div><div class="vkey">ה</div><div class="vkey">נ</div><div class="vkey">מ</div><div class="vkey">צ</div><div class="vkey">ת</div><div class="vkey">ץ</div>
+    </div>
+    <div class="vkey-row">
+      <div class="vkey" style="min-width:120px;">רווח</div>
+      <div class="vkey">↵</div>
+      <button onclick="document.getElementById('vkeyboard').style.display='none'" style="background:#e02020;color:white;border:none;border-radius:6px;padding:8px 14px;font-size:13px;cursor:pointer;">סגור</button>
+    </div>
+  </div>
 
   <script>
+    // ============ ORIGINAL SCRIPTS ============
     const spotlight = document.getElementById('spotlight');
     const mainContent = document.getElementById('main-page-content');
     const splash = document.getElementById('splash-screen');
-    const charLeft = document.getElementById('char-left');
-    const charRight = document.getElementById('char-right');
+    const videoContainer = document.getElementById('video-container');
+    const API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
+    const CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
+
+    async function fetchVideos() {
+      const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
+      const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.items && data.items.length > 0) {
+          videoContainer.innerHTML = '';
+          data.items.forEach(item => {
+            const videoId = item.snippet.resourceId.videoId;
+            const title = item.snippet.title;
+            const thumbnail = item.snippet.thumbnails.high.url;
+            const videoRow = `
+              <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-row rounded-xl" aria-label="${title} (נפתח בטאב חדש)">
+                <img src="${thumbnail}" alt="${title}" class="w-32 h-20 object-cover rounded-lg ml-6">
+                <div class="flex-1 text-xl font-bold text-white hover:text-blue-400 transition-colors text-right">${title}</div>
+              </a>`;
+            videoContainer.innerHTML += videoRow;
+          });
+        } else {
+          videoContainer.innerHTML = '<p class="text-white/50 col-span-full text-center">לא נמצאו סרטונים.</p>';
+        }
+      } catch (error) {
+        console.error("API Error:", error);
+        videoContainer.innerHTML = '<p class="text-red-400/50 col-span-full text-center">שגיאה בחיבור ליוטיוב.</p>';
+      }
+    }
 
     function activateSite() {
-      if (splash && splash.style.display !== 'none') {
+      if (splash) {
         splash.style.opacity = '0';
         setTimeout(() => {
           splash.style.display = 'none';
-          if (mainContent) mainContent.classList.add('visible');
+          mainContent.classList.add('visible');
           if (spotlight) spotlight.style.display = 'block';
-        }, 300);
+        }, 500);
       }
     }
 
-    async function fetchLeaderboardData() {
-      const apiUrl = './data.json?t=' + new Date().getTime();
-
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-
-        // טעינת הנתונים השבועיים (gifts_week)
-        if (data && data.gifts_week && data.gifts_week_enabled) {
-          renderTable('weekly-gifters-table-container', data.gifts_week, 'weekly-username');
-        } else {
-          document.getElementById('weekly-gifters-table-container').innerHTML = '<p class="text-gray-400">Weekly data is currently disabled.</p>';
-        }
-
-        // טעינת נתוני כל הזמנים (gifts)
-        if (data && data.gifts && data.gifts_enabled) {
-          renderTable('alltime-gifters-table-container', data.gifts, 'alltime-username');
-        } else {
-          document.getElementById('alltime-gifters-table-container').innerHTML = '<p class="text-gray-400">All-time data is currently disabled.</p>';
-        }
-
-      } catch (error) {
-        console.error('Error fetching leaderboard data:', error);
-      }
-    }
-
-    function renderTable(containerId, users, usernameClass) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      if (!users || users.length === 0) {
-        container.innerHTML = '<p class="text-gray-400">No data found.</p>';
-        return;
-      }
-
-      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>שם משתמש</th><th>כמות</th></tr></thead><tbody>';
-      users.forEach((user, index) => {
-        tableHtml += `
-          <tr>
-            <td>${index + 1}</td>
-            <td class="${usernameClass}">${user.username}</td>
-            <td>${user.quantity || 0}</td>
-          </tr>
-        `;
-      });
-      tableHtml += '</tbody></table>';
-      container.innerHTML = tableHtml;
-    }
-
-    // מעקב עכבר לאפקטים ויזואליים
     document.addEventListener('mousemove', (e) => {
-      if (spotlight) {
-        spotlight.style.left = e.clientX + 'px';
-        spotlight.style.top = e.clientY + 'px';
-      }
-      const x = (window.innerWidth - e.pageX * 2) / 100;
-      const y = (window.innerHeight - e.pageY * 2) / 100;
-      if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
-      if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
-    });
-    
-    // הפעלה ברגע שהאתר נטען
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchLeaderboardData();
-      setTimeout(activateSite, 400);
-
-      setInterval(fetchLeaderboardData, 300000);
+      if (spotlight) { spotlight.style.left = e.clientX + 'px'; spotlight.style.top = e.clientY + 'px'; }
     });
 
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      fetchLeaderboardData();
-      activateSite();
-    }
+    window.addEventListener('load', () => { activateSite(); fetchVideos(); });
+    setTimeout(activateSite, 500);
 
     // ============ ACCESSIBILITY WIDGET ============
     const fab = document.getElementById('a11y-fab');
@@ -668,7 +589,6 @@
     closeBtn.addEventListener('click', () => { panel.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); fab.focus(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panel.classList.contains('open')) { panel.classList.remove('open'); fab.setAttribute('aria-expanded','false'); fab.focus(); } });
 
-    // Toggle feature buttons
     const featureMap = {
       'contrast-bright': () => { body.classList.toggle('a11y-high-contrast'); body.classList.remove('a11y-dark-contrast','a11y-mono'); updateBtn('contrast-dark',false); updateBtn('mono',false); },
       'contrast-dark': () => { body.classList.toggle('a11y-dark-contrast'); body.classList.remove('a11y-high-contrast','a11y-mono'); updateBtn('contrast-bright',false); updateBtn('mono',false); },
@@ -682,7 +602,7 @@
       'reading-guide': toggleReadingGuide,
       'virtual-keyboard': toggleVirtualKeyboard,
       'mute-media': () => { document.querySelectorAll('video, audio').forEach(m => { m.muted = !m.muted; }); },
-      'hide-distractions': () => { charLeft && charLeft.classList.toggle('hidden'); charRight && charRight.classList.toggle('hidden'); },
+      'hide-distractions': () => { /* no decorative characters on this page */ },
       'highlight-elements': () => body.classList.toggle('a11y-focus-visible'),
       'zoom-content': () => body.classList.toggle('a11y-large-text'),
       'big-titles': () => { document.querySelectorAll('h1,h2,h3,h4').forEach(h => h.style.fontSize = h.style.fontSize ? '' : '2em'); },
@@ -690,11 +610,11 @@
       'screen-reader': () => alert('לשימוש עם קורא מסך, אנא הפעל את NVDA, JAWS, או VoiceOver. האתר תומך ב-ARIA ומבנה סמנטי מלא.'),
       'voice-nav': () => toggleVoiceNav(),
       'smart-nav': () => alert('ניווט חכם פעיל - השתמש ב-Tab לניווט בין אלמנטים, Enter לאישור.'),
-      'regions': () => { const skip = document.getElementById('skip-link') || (() => { const s = document.createElement('a'); s.id='skip-link'; s.href='#main-page-content'; s.textContent='דלג לתוכן'; s.style.cssText='position:fixed;top:10px;right:10px;background:#e02020;color:white;padding:8px 16px;border-radius:8px;font-weight:900;z-index:99999;text-decoration:none;'; document.body.prepend(s); return s; })(); skip.style.display = skip.style.display === 'none' ? '' : 'none'; },
+      'regions': () => { const skip = document.getElementById('skip-link') || (() => { const s = document.createElement('a'); s.id='skip-link'; s.href='#video-container'; s.textContent='דלג לתוכן'; s.style.cssText='position:fixed;top:10px;right:10px;background:#e02020;color:white;padding:8px 16px;border-radius:8px;font-weight:900;z-index:99999;text-decoration:none;'; document.body.prepend(s); return s; })(); skip.style.display = skip.style.display === 'none' ? '' : 'none'; },
       'keyboard-nav': () => { document.querySelectorAll('a,button').forEach(el => { el.style.outline = el.style.outline ? '' : '2px solid #e02020'; el.style.outlineOffset = '3px'; }); },
-      'image-desc': () => { document.querySelectorAll('img:not([alt=""])').forEach(img => { if (!img.dataset.tooltipAdded) { img.title = img.alt || 'תמונת הפרופיל של עודד סבר'; img.dataset.tooltipAdded = '1'; } }); alert('תיאורי תמונות הופעלו. רחף מעל תמונה לקריאת התיאור.'); },
+      'image-desc': () => { document.querySelectorAll('img:not([alt=""])').forEach(img => { if (!img.dataset.tooltipAdded) { img.title = img.alt || 'תמונה'; img.dataset.tooltipAdded = '1'; } }); alert('תיאורי תמונות הופעלו. רחף מעל תמונה לקריאת התיאור.'); },
       'page-structure': () => { const headings = Array.from(document.querySelectorAll('h1,h2,h3,nav,footer')).map(el => `${el.tagName}: ${el.textContent.substring(0,40).trim()}`).join('\n'); alert('מבנה העמוד:\n\n' + headings); },
-      'page-summary': () => alert('סיכום עמוד: דף התורמים של OdedSVR - רשימת התורמים השבועיים וכל הזמנים לערוץ.'),
+      'page-summary': () => alert('סיכום עמוד: דף הסרטונים האחרונים של OdedSVR - סטרימר ישראלי. הדף מציג את 5 הסרטונים האחרונים מערוץ היוטיוב.'),
       'dictionary': () => { const word = window.getSelection().toString().trim(); if (word) { window.open('https://he.wiktionary.org/wiki/' + encodeURIComponent(word), '_blank'); } else { alert('סמן מילה בטקסט ואז לחץ שוב על מילון.'); } },
       'contrast-gauge': () => { document.documentElement.style.filter = document.documentElement.style.filter ? '' : 'contrast(1.4)'; },
     };
@@ -715,29 +635,23 @@
       });
     });
 
-    // Reading guide
     function toggleReadingGuide() {
       const guide = document.getElementById('reading-guide-bar');
       const active = guide.style.display === 'block';
       guide.style.display = active ? 'none' : 'block';
-      if (!active) {
-        document.addEventListener('mousemove', moveGuide);
-      } else {
-        document.removeEventListener('mousemove', moveGuide);
-      }
+      if (!active) { document.addEventListener('mousemove', moveGuide); }
+      else { document.removeEventListener('mousemove', moveGuide); }
     }
     function moveGuide(e) {
       const g = document.getElementById('reading-guide-bar');
       if (g) g.style.top = (e.clientY - 20) + 'px';
     }
 
-    // Virtual keyboard
     function toggleVirtualKeyboard() {
       const vk = document.getElementById('vkeyboard');
       vk.style.display = vk.style.display === 'block' ? 'none' : 'block';
     }
 
-    // Cursor buttons
     document.querySelectorAll('.cursor-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.cursor-btn').forEach(b => b.classList.remove('active'));
@@ -749,46 +663,36 @@
       });
     });
 
-    // Section collapse
     document.querySelectorAll('.a11y-section-header').forEach(header => {
       header.addEventListener('click', (e) => {
         if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
           const toggle = header.querySelector('.a11y-section-toggle');
-          const body = header.nextElementSibling;
-          if (!body) return;
-          const isCollapsed = body.style.display === 'none';
-          body.style.display = isCollapsed ? '' : 'none';
+          const sectionBody = header.nextElementSibling;
+          if (!sectionBody) return;
+          const isCollapsed = sectionBody.style.display === 'none';
+          sectionBody.style.display = isCollapsed ? '' : 'none';
           toggle.textContent = isCollapsed ? '−' : '+';
         }
       });
     });
 
-    // Font size slider
     const fontSlider = document.getElementById('font-size-slider');
     const fontDisplay = document.getElementById('font-size-display');
     fontSlider && fontSlider.addEventListener('input', () => {
-      const pct = fontSlider.value;
-      document.documentElement.style.fontSize = pct + '%';
-      fontDisplay.textContent = pct + '%';
+      document.documentElement.style.fontSize = fontSlider.value + '%';
+      fontDisplay.textContent = fontSlider.value + '%';
     });
 
-    // Letter spacing
     document.getElementById('letter-spacing-slider') && document.getElementById('letter-spacing-slider').addEventListener('input', (e) => {
-      document.documentElement.style.setProperty('--a11y-letter-spacing', e.target.value / 10 + 'em');
       document.querySelectorAll('p,span,a,button,div').forEach(el => el.style.letterSpacing = e.target.value / 10 + 'em');
     });
-
-    // Word spacing
     document.getElementById('word-spacing-slider') && document.getElementById('word-spacing-slider').addEventListener('input', (e) => {
       document.querySelectorAll('p,span,a,button,div').forEach(el => el.style.wordSpacing = e.target.value / 10 + 'em');
     });
-
-    // Line height
     document.getElementById('line-height-slider') && document.getElementById('line-height-slider').addEventListener('input', (e) => {
       document.querySelectorAll('p,span,a,button,div,h1,h2,h3').forEach(el => el.style.lineHeight = 1 + e.target.value / 10);
     });
 
-    // Hue slider
     document.getElementById('hue-slider') && document.getElementById('hue-slider').addEventListener('input', (e) => {
       document.documentElement.style.filter = `hue-rotate(${e.target.value}deg)`;
     });
@@ -797,13 +701,10 @@
       document.getElementById('hue-slider').value = 0;
     });
 
-    // Reset all
     document.getElementById('a11y-reset-all') && document.getElementById('a11y-reset-all').addEventListener('click', () => {
       ['a11y-high-contrast','a11y-dark-contrast','a11y-mono','a11y-saturation-high','a11y-saturation-low',
        'a11y-readable-font','a11y-highlight-links','a11y-stop-anim','a11y-big-cursor','a11y-big-cursor-white',
        'a11y-large-text','a11y-focus-visible'].forEach(c => body.classList.remove(c));
-      charLeft && charLeft.classList.remove('hidden');
-      charRight && charRight.classList.remove('hidden');
       document.documentElement.style.fontSize = '';
       document.documentElement.style.filter = '';
       document.getElementById('vkeyboard').style.display = 'none';
@@ -819,9 +720,14 @@
       document.querySelectorAll('p,span,a,button,div,h1,h2,h3').forEach(el => {
         el.style.letterSpacing = ''; el.style.wordSpacing = ''; el.style.lineHeight = '';
       });
+      window.speechSynthesis.cancel();
+      ttsActive = false; ttsPaused = false;
+      ttsBar.style.display = 'none';
+      hideWordHighlight();
+      if (voiceNavActive) stopVoiceNav();
     });
 
-    // ============ TTS - FULL TEXT-TO-SPEECH ENGINE ============
+    // ============ TTS ============
     const ttsBar = document.getElementById('tts-bar');
     const ttsPlayPause = document.getElementById('tts-play-pause');
     const ttsStopBtn = document.getElementById('tts-stop');
@@ -836,60 +742,42 @@
     let ttsUtterance = null;
     let ttsPaused = false;
     let ttsActive = false;
-    let ttsHighlightEl = null;
-    let ttsAllWords = [];
-    let ttsWordIndex = 0;
     let ttsVoices = [];
 
-    // Load voices
     function loadTTSVoices() {
       ttsVoices = window.speechSynthesis.getVoices();
       ttsVoiceSelect.innerHTML = '';
-      // Prefer Hebrew voices, then all voices
       const heVoices = ttsVoices.filter(v => v.lang.startsWith('he') || v.lang.startsWith('iw'));
       const otherVoices = ttsVoices.filter(v => !v.lang.startsWith('he') && !v.lang.startsWith('iw'));
       if (heVoices.length) {
-        const grp = document.createElement('optgroup');
-        grp.label = '🇮🇱 עברית';
-        heVoices.forEach((v, i) => {
-          const opt = document.createElement('option');
-          opt.value = ttsVoices.indexOf(v);
-          opt.textContent = v.name;
-          grp.appendChild(opt);
-        });
+        const grp = document.createElement('optgroup'); grp.label = '🇮🇱 עברית';
+        heVoices.forEach(v => { const opt = document.createElement('option'); opt.value = ttsVoices.indexOf(v); opt.textContent = v.name; grp.appendChild(opt); });
         ttsVoiceSelect.appendChild(grp);
       }
-      const grp2 = document.createElement('optgroup');
-      grp2.label = 'שפות אחרות';
-      otherVoices.slice(0, 20).forEach(v => {
-        const opt = document.createElement('option');
-        opt.value = ttsVoices.indexOf(v);
-        opt.textContent = v.name + ' (' + v.lang + ')';
-        grp2.appendChild(opt);
-      });
+      const grp2 = document.createElement('optgroup'); grp2.label = 'שפות אחרות';
+      otherVoices.slice(0, 20).forEach(v => { const opt = document.createElement('option'); opt.value = ttsVoices.indexOf(v); opt.textContent = v.name + ' (' + v.lang + ')'; grp2.appendChild(opt); });
       ttsVoiceSelect.appendChild(grp2);
     }
     window.speechSynthesis.onvoiceschanged = loadTTSVoices;
     loadTTSVoices();
 
-    // Collect readable text from page and wrap words in spans
     function prepareTTSContent() {
-      // Remove old highlight wrapper if exists
-      const old = document.getElementById('tts-content-wrapper');
-      if (old) old.replaceWith(...old.childNodes);
-
-      // Get main content text nodes
-      const titleEl = document.querySelector('#main-page-content h1');
       const lines = [];
+      const titleEl = document.querySelector('#main-page-content h1');
       if (titleEl) lines.push(titleEl.textContent.trim());
-      document.querySelectorAll('.card').forEach(card => {
-        const text = card.textContent.trim().replace(/\s+/g, ' ');
-        if (text) lines.push(text);
+      document.querySelectorAll('#video-container a[aria-label]').forEach(a => {
+        const label = a.getAttribute('aria-label');
+        if (label) lines.push(label);
       });
+      // fallback: video titles
+      if (lines.length <= 1) {
+        document.querySelectorAll('#video-container a div').forEach(d => {
+          if (d.textContent.trim()) lines.push(d.textContent.trim());
+        });
+      }
       return lines.join('. ');
     }
 
-    // Highlight current word visually
     let ttsHighlightOverlay = null;
     function showWordHighlight(word) {
       if (!ttsHighlightOverlay) {
@@ -904,81 +792,32 @@
       if (ttsHighlightOverlay) ttsHighlightOverlay.style.opacity = '0';
     }
 
-    // Main TTS start function
     function startTTS() {
       window.speechSynthesis.cancel();
       const text = prepareTTSContent();
       if (!text) { alert('לא נמצא טקסט לקריאה בדף.'); return; }
 
-      // בחר קול — עדיפות לעברי, אחרת כל קול זמין
       const allVoices = window.speechSynthesis.getVoices();
       let chosenVoice = null;
-
-      // 1. בדוק אם המשתמש בחר קול ידנית
       const voiceIdx = parseInt(ttsVoiceSelect.value);
-      if (!isNaN(voiceIdx) && ttsVoices[voiceIdx]) {
-        chosenVoice = ttsVoices[voiceIdx];
-      }
-      // 2. נסה למצוא קול עברי
-      if (!chosenVoice) {
-        chosenVoice = allVoices.find(v => v.lang.startsWith('he') || v.lang.startsWith('iw')) || null;
-      }
-      // 3. כל קול זמין — אפילו אנגלי
-      if (!chosenVoice && allVoices.length > 0) {
-        chosenVoice = allVoices[0];
-      }
+      if (!isNaN(voiceIdx) && ttsVoices[voiceIdx]) chosenVoice = ttsVoices[voiceIdx];
+      if (!chosenVoice) chosenVoice = allVoices.find(v => v.lang.startsWith('he') || v.lang.startsWith('iw')) || null;
+      if (!chosenVoice && allVoices.length > 0) chosenVoice = allVoices[0];
 
       ttsUtterance = new SpeechSynthesisUtterance(text);
-      // אם יש קול עברי — השתמש בו עם lang עברי, אחרת אל תגביל
-      if (chosenVoice) {
-        ttsUtterance.voice = chosenVoice;
-        ttsUtterance.lang = chosenVoice.lang;
-      }
-      // אם בכלל אין קולות — תן לדפדפן לבחור לבד (בלי lang)
+      if (chosenVoice) { ttsUtterance.voice = chosenVoice; ttsUtterance.lang = chosenVoice.lang; }
       ttsUtterance.rate = parseFloat(ttsSpeedSlider.value) || 1;
       ttsUtterance.volume = 1;
 
       ttsUtterance.onboundary = (e) => {
         if (e.name === 'word') {
           const word = text.substring(e.charIndex, e.charIndex + e.charLength).trim();
-          if (word) {
-            showWordHighlight(word);
-            const progress = Math.round((e.charIndex / text.length) * 100);
-            ttsProgressText.textContent = progress + '%';
-          }
+          if (word) { showWordHighlight(word); ttsProgressText.textContent = Math.round((e.charIndex / text.length) * 100) + '%'; }
         }
       };
-
-      ttsUtterance.onstart = () => {
-        ttsActive = true;
-        ttsPaused = false;
-        ttsBar.style.display = 'block';
-        setTTSPausedUI(false);
-        startTTSKeepAlive();
-      };
-
-      ttsUtterance.onend = () => {
-        ttsActive = false;
-        ttsPaused = false;
-        ttsBar.style.display = 'none';
-        hideWordHighlight();
-        ttsProgressText.textContent = '';
-        stopTTSKeepAlive();
-        const btn = document.querySelector('[data-feature="tts-read"]');
-        if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
-      };
-
-      ttsUtterance.onerror = (e) => {
-        console.error('TTS error:', e.error);
-        stopTTSKeepAlive();
-        ttsActive = false;
-        ttsBar.style.display = 'none';
-        hideWordHighlight();
-        if (e.error !== 'interrupted' && e.error !== 'canceled') {
-          alert('שגיאה בהקראה: ' + (e.error || 'לא ידועה') + '\nנסה לרענן את הדף ולנסות שוב.');
-        }
-      };
-
+      ttsUtterance.onstart = () => { ttsActive = true; ttsPaused = false; ttsBar.style.display = 'block'; setTTSPausedUI(false); startTTSKeepAlive(); };
+      ttsUtterance.onend = () => { ttsActive = false; ttsPaused = false; ttsBar.style.display = 'none'; hideWordHighlight(); ttsProgressText.textContent = ''; stopTTSKeepAlive(); const btn = document.querySelector('[data-feature="tts-read"]'); if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); } };
+      ttsUtterance.onerror = (e) => { console.error('TTS error:', e.error); stopTTSKeepAlive(); ttsActive = false; ttsBar.style.display = 'none'; hideWordHighlight(); if (e.error !== 'interrupted' && e.error !== 'canceled') alert('שגיאה בהקראה: ' + (e.error || 'לא ידועה')); };
       window.speechSynthesis.speak(ttsUtterance);
     }
 
@@ -988,171 +827,34 @@
       ttsBtnLabel.textContent = paused ? 'המשך' : 'השהה';
     }
 
-    // Show styled TTS notice modal
-    function showTTSNotice(html, onConfirm) {
-      const overlay = document.createElement('div');
-      overlay.id = 'tts-notice-overlay';
-      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;direction:rtl;';
-      overlay.innerHTML = `
-        <div style="background:#fff;border-radius:18px;max-width:420px;width:100%;padding:28px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative;font-family:'Heebo',sans-serif;">
-          <button id="tts-notice-close" style="position:absolute;left:14px;top:14px;background:#f1f5f9;border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#64748b;">✕</button>
-          ${html}
-          <button id="tts-notice-confirm" style="margin-top:18px;width:100%;background:#e02020;color:white;border:none;border-radius:10px;padding:12px;font-size:15px;font-weight:900;cursor:pointer;font-family:'Heebo',sans-serif;">אישור — התחל הקראה</button>
-        </div>`;
-      document.body.appendChild(overlay);
-      document.getElementById('tts-notice-close').onclick = () => overlay.remove();
-      document.getElementById('tts-notice-confirm').onclick = () => { overlay.remove(); if (onConfirm) onConfirm(); };
-      overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
-    }
-
-    // Detect OS / browser for instructions
-    function getTTSSetupInstructions() {
-      const ua = navigator.userAgent;
-      const isWindows = /Windows/i.test(ua);
-      const isMac = /Mac OS X/i.test(ua) && !/iPhone|iPad/i.test(ua);
-      const isIOS = /iPhone|iPad/i.test(ua);
-      const isAndroid = /Android/i.test(ua);
-      const isChrome = /Chrome/i.test(ua) && !/Edge/i.test(ua);
-      const isFirefox = /Firefox/i.test(ua);
-      const isSafari = /Safari/i.test(ua) && !/Chrome/i.test(ua);
-
-      if (isIOS || isSafari) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🍎</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">iPhone / Mac — Safari</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 12px;">מעולה! ב-Safari יש קול עברי <strong>"Carmit"</strong> מובנה.<br>ההקראה תתחיל ישר בעברית ✅</p>`;
-      }
-      if (isAndroid) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🤖</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">Android — Chrome</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 8px;">ב-Android תצטרך לוודא שמותקן <strong>Google Text-to-Speech</strong>.</p>
-          <ol style="font-size:13px;color:#555;padding-right:20px;margin:0;line-height:2;">
-            <li>פתח <strong>הגדרות</strong> → <strong>נגישות</strong> → <strong>טקסט לדיבור</strong></li>
-            <li>בחר <strong>Google Text-to-Speech</strong> כמנוע</li>
-            <li>לחץ על ⚙️ ← <strong>שפות</strong> ← הוסף <strong>עברית</strong></li>
-          </ol>`;
-      }
-      if (isWindows && isChrome) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🪟</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">Windows — Chrome</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 8px;">כדי לקבל קול עברי ב-Chrome:</p>
-          <ol style="font-size:13px;color:#555;padding-right:20px;margin:0;line-height:2;">
-            <li>פתח <strong>הגדרות Windows</strong> → <strong>זמן ושפה</strong> → <strong>שפה ואזור</strong></li>
-            <li>לחץ <strong>הוסף שפה</strong> ← חפש <strong>עברית</strong> ← התקן</li>
-            <li>ודא שמסומן ✅ <strong>Text-to-speech</strong></li>
-            <li><strong>הפעל מחדש את Chrome</strong> ואז בחר את הקול "Microsoft Ayelet"</li>
-          </ol>`;
-      }
-      if (isWindows && isFirefox) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🦊</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">Firefox — Windows</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 8px;">Firefox משתמש בקולות Windows. כדי להוסיף עברית:</p>
-          <ol style="font-size:13px;color:#555;padding-right:20px;margin:0;line-height:2;">
-            <li>פתח <strong>הגדרות Windows</strong> → <strong>זמן ושפה</strong> → <strong>שפה ואזור</strong></li>
-            <li>הוסף שפה <strong>עברית</strong> עם <strong>Text-to-speech</strong></li>
-            <li>הפעל מחדש את Firefox</li>
-          </ol>
-          <p style="font-size:12px;color:#e02020;margin:10px 0 0;font-weight:700;">💡 לתוצאה טובה יותר מומלץ להשתמש ב-Chrome</p>`;
-      }
-      if (isMac && isChrome) {
-        return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🍎</span></div>
-          <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">Mac — Chrome</h3>
-          <p style="font-size:14px;color:#444;line-height:1.7;margin:0 0 8px;">ב-Mac יש קול עברי מובנה. אם הוא לא מופיע:</p>
-          <ol style="font-size:13px;color:#555;padding-right:20px;margin:0;line-height:2;">
-            <li>פתח <strong>העדפות מערכת</strong> → <strong>נגישות</strong> → <strong>תוכן מדובר</strong></li>
-            <li>לחץ <strong>ניהול קולות</strong> ← חפש <strong>Carmit</strong> ← הורד</li>
-            <li>הפעל מחדש את Chrome</li>
-          </ol>`;
-      }
-      // Default fallback
-      return `<div style="text-align:center;margin-bottom:10px;"><span style="font-size:40px;">🔊</span></div>
-        <h3 style="font-size:18px;font-weight:900;margin:0 0 10px;color:#111;">הקראת טקסט</h3>
-        <p style="font-size:14px;color:#444;line-height:1.7;margin:0;">הפיצ'ר ישתמש בקולות המותקנים במכשיר שלך.<br>לקול עברי מומלץ להשתמש ב-<strong>Chrome</strong> עם שפה עברית מותקנת במערכת ההפעלה.</p>`;
-    }
-
-    // Chrome keepalive — פותר באג ידוע שבו Chrome מפסיק הקראה אחרי ~15 שניות
     let ttsKeepAlive = null;
-    function startTTSKeepAlive() {
-      stopTTSKeepAlive();
-      ttsKeepAlive = setInterval(() => {
-        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-          window.speechSynthesis.pause();
-          window.speechSynthesis.resume();
-        }
-      }, 10000);
-    }
-    function stopTTSKeepAlive() {
-      if (ttsKeepAlive) { clearInterval(ttsKeepAlive); ttsKeepAlive = null; }
-    }
+    function startTTSKeepAlive() { stopTTSKeepAlive(); ttsKeepAlive = setInterval(() => { if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) { window.speechSynthesis.pause(); window.speechSynthesis.resume(); } }, 10000); }
+    function stopTTSKeepAlive() { if (ttsKeepAlive) { clearInterval(ttsKeepAlive); ttsKeepAlive = null; } }
 
-    // Feature map entry - מתחיל הקראה מיד ללא חלון אישור
     featureMap['tts-read'] = () => {
-      if (!('speechSynthesis' in window)) {
-        alert('הדפדפן שלך אינו תומך בהקראת טקסט.\nאנא השתמש ב-Google Chrome או Microsoft Edge.');
-        return;
-      }
-      if (ttsActive && !ttsPaused) {
-        window.speechSynthesis.cancel();
-        ttsActive = false;
-        ttsBar.style.display = 'none';
-        hideWordHighlight();
-        stopTTSKeepAlive();
-        return;
-      }
-      // רענן קולות + הצג כמה קולות זמינים (לדיבאג)
+      if (!('speechSynthesis' in window)) { alert('הדפדפן שלך אינו תומך בהקראת טקסט.\nאנא השתמש ב-Google Chrome או Microsoft Edge.'); return; }
+      if (ttsActive && !ttsPaused) { window.speechSynthesis.cancel(); ttsActive = false; ttsBar.style.display = 'none'; hideWordHighlight(); stopTTSKeepAlive(); return; }
       loadTTSVoices();
-      const available = window.speechSynthesis.getVoices();
-      console.log('TTS: קולות זמינים:', available.length, available.map(v => v.name + ' (' + v.lang + ')'));
       startTTS();
     };
 
-    // Play/pause button in bar
     ttsPlayPause.addEventListener('click', () => {
       if (!ttsActive) return;
-      if (ttsPaused) {
-        window.speechSynthesis.resume();
-        ttsPaused = false;
-        setTTSPausedUI(false);
-      } else {
-        window.speechSynthesis.pause();
-        ttsPaused = true;
-        setTTSPausedUI(true);
-        hideWordHighlight();
-      }
+      if (ttsPaused) { window.speechSynthesis.resume(); ttsPaused = false; setTTSPausedUI(false); }
+      else { window.speechSynthesis.pause(); ttsPaused = true; setTTSPausedUI(true); hideWordHighlight(); }
     });
 
-    // Stop button in bar
     ttsStopBtn.addEventListener('click', () => {
-      window.speechSynthesis.cancel();
-      ttsActive = false;
-      ttsPaused = false;
-      ttsBar.style.display = 'none';
-      hideWordHighlight();
-      stopTTSKeepAlive();
-      ttsProgressText.textContent = '';
-      const btn = document.querySelector('[data-feature="tts-read"]');
-      if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
+      window.speechSynthesis.cancel(); ttsActive = false; ttsPaused = false; ttsBar.style.display = 'none'; hideWordHighlight(); stopTTSKeepAlive(); ttsProgressText.textContent = '';
+      const btn = document.querySelector('[data-feature="tts-read"]'); if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
     });
 
-    // Speed slider
     ttsSpeedSlider.addEventListener('input', () => {
-      const rate = parseFloat(ttsSpeedSlider.value);
-      ttsSpeedLabel.textContent = '×' + rate.toFixed(1).replace('.0','');
-      if (ttsActive && ttsUtterance) {
-        // Restart with new speed (Web Speech API doesn't allow mid-speech rate change)
-        window.speechSynthesis.cancel();
-        setTimeout(startTTS, 100);
-      }
+      ttsSpeedLabel.textContent = '×' + parseFloat(ttsSpeedSlider.value).toFixed(1).replace('.0','');
+      if (ttsActive && ttsUtterance) { window.speechSynthesis.cancel(); setTimeout(startTTS, 100); }
     });
+    ttsVoiceSelect.addEventListener('change', () => { if (ttsActive) { window.speechSynthesis.cancel(); setTimeout(startTTS, 100); } });
 
-    // Voice select
-    ttsVoiceSelect.addEventListener('change', () => {
-      if (ttsActive) {
-        window.speechSynthesis.cancel();
-        setTimeout(startTTS, 100);
-      }
-    });
-
-    // Also allow clicking any element to read it aloud
     document.addEventListener('click', (e) => {
       if (!ttsActive) return;
       const card = e.target.closest('a[aria-label]');
@@ -1165,8 +867,8 @@
         u.rate = parseFloat(ttsSpeedSlider.value);
         const voiceIdx = parseInt(ttsVoiceSelect.value);
         if (ttsVoices[voiceIdx]) u.voice = ttsVoices[voiceIdx];
-        u.onboundary = (ev) => { if (ev.name === 'word') { showWordHighlight(label.substring(ev.charIndex, ev.charIndex + ev.charLength)); } };
-        u.onend = () => { hideWordHighlight(); };
+        u.onboundary = (ev) => { if (ev.name === 'word') showWordHighlight(label.substring(ev.charIndex, ev.charIndex + ev.charLength)); };
+        u.onend = () => hideWordHighlight();
         window.speechSynthesis.speak(u);
         showWordHighlight(label.substring(0,15) + '...');
       }
@@ -1176,12 +878,9 @@
     let voiceNavActive = false;
     let voiceRecognition = null;
     let voiceStatusEl = null;
-
-    // Get all focusable links for "next/prev" navigation
     let voiceFocusIndex = -1;
-    function getNavLinks() {
-      return Array.from(document.querySelectorAll('nav a'));
-    }
+
+    function getNavLinks() { return Array.from(document.querySelectorAll('#video-container a, nav a')); }
 
     function createVoiceStatusBar() {
       if (document.getElementById('voice-nav-bar')) return;
@@ -1189,13 +888,7 @@
       bar.id = 'voice-nav-bar';
       bar.setAttribute('role', 'status');
       bar.setAttribute('aria-live', 'polite');
-      bar.style.cssText = `
-        position:fixed; bottom:0; left:0; right:0; z-index:99993;
-        background:#1e293b; border-top:2px solid #7c3aed;
-        padding:10px 20px; display:flex; align-items:center; gap:12px;
-        font-family:'Heebo',sans-serif; direction:rtl;
-        box-shadow:0 -4px 20px rgba(124,58,237,0.3);
-      `;
+      bar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:99993;background:#1e293b;border-top:2px solid #7c3aed;padding:10px 20px;display:flex;align-items:center;gap:12px;font-family:"Heebo",sans-serif;direction:rtl;box-shadow:0 -4px 20px rgba(124,58,237,0.3);';
       bar.innerHTML = `
         <div id="voice-mic-icon" style="width:36px;height:36px;background:#7c3aed;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:voicePulse 1.5s ease-in-out infinite;">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V80a48,48,0,0,0-96,0v48A48.05,48.05,0,0,0,128,176ZM96,80a32,32,0,0,1,64,0v48a32,32,0,0,1-64,0Zm40,143.6V200a8,8,0,0,0-16,0v23.6A80.11,80.11,0,0,1,48,144a8,8,0,0,0-16,0,96.11,96.11,0,0,0,88,95.6V240a8,8,0,0,0,16,0v-.4A96.11,96.11,0,0,0,224,144a8,8,0,0,0-16,0A80.11,80.11,0,0,1,136,223.6Z"/></svg>
@@ -1204,16 +897,10 @@
           <div style="font-size:13px;font-weight:900;color:white;" id="voice-status-text">🎙️ מאזין לפקודות...</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:2px;" id="voice-last-cmd"></div>
         </div>
-        <div style="font-size:11px;color:#7c3aed;font-weight:700;text-align:left;line-height:1.8;">
-          גלול למטה / למעלה<br>סרטונים / מידע / בית<br>עצור
-        </div>
-        <button id="voice-nav-close" aria-label="סגור פקודות קוליות" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:20px;padding:4px 8px;">✕</button>
-      `;
-      // Pulse animation
+        <div style="font-size:11px;color:#7c3aed;font-weight:700;text-align:left;line-height:1.8;">גלול למטה / למעלה<br>בית / מידע / תורמים<br>עצור</div>
+        <button id="voice-nav-close" aria-label="סגור פקודות קוליות" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:20px;padding:4px 8px;">✕</button>`;
       const style = document.createElement('style');
-      style.textContent = `@keyframes voicePulse { 0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,0.5)} 50%{box-shadow:0 0 0 10px rgba(124,58,237,0)} }
-      #voice-nav-bar.listening #voice-mic-icon { background:#7c3aed; }
-      #voice-nav-bar.error #voice-mic-icon { background:#e02020; animation:none; }`;
+      style.textContent = `@keyframes voicePulse { 0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,0.5)} 50%{box-shadow:0 0 0 10px rgba(124,58,237,0)} }`;
       document.head.appendChild(style);
       document.body.appendChild(bar);
       document.getElementById('voice-nav-close').addEventListener('click', () => stopVoiceNav());
@@ -1227,135 +914,49 @@
       if (s && sub !== undefined) s.textContent = sub;
     }
 
-    function highlightVoiceFocus() {
-      const links = getNavLinks();
-      links.forEach((l, i) => {
-        l.style.outline = i === voiceFocusIndex ? '3px solid #7c3aed' : '';
-        l.style.outlineOffset = '4px';
-      });
-      if (links[voiceFocusIndex]) {
-        links[voiceFocusIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        links[voiceFocusIndex].focus();
-      }
-    }
-
     function handleVoiceCommand(transcript) {
       const t = transcript.trim().toLowerCase();
       setVoiceStatus('🎙️ מאזין לפקודות...', '⬅️ שמעתי: "' + transcript.trim() + '"');
-
-      // Scroll commands
-      if (t.includes('למטה') || t.includes('גלול מטה') || t.includes('scroll down')) {
-        window.scrollBy({ top: 300, behavior: 'smooth' });
-        setVoiceStatus('⬇️ גולל למטה', '');
-      } else if (t.includes('למעלה') || t.includes('גלול מעלה') || t.includes('scroll up')) {
-        window.scrollBy({ top: -300, behavior: 'smooth' });
-        setVoiceStatus('⬆️ גולל למעלה', '');
-      } else if (t.includes('לראש') || t.includes('תחילת') || t.includes('top')) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setVoiceStatus('⬆️ חזרה לראש', '');
-      } else if (t.includes('לסוף') || t.includes('סוף') || t.includes('bottom')) {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        setVoiceStatus('⬇️ ירידה לסוף', '');
-
-      // Page navigation
-      } else if (t.includes('סרטונים')) {
-        setVoiceStatus('🎬 פותח סרטונים...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/YTvids'; }, 400);
-      } else if (t.includes('מידע')) {
-        setVoiceStatus('ℹ️ פותח מידע...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/info'; }, 400);
-      } else if (t.includes('בית') || t.includes('דף הבית') || t.includes('home')) {
-        setVoiceStatus('🏠 חוזר לדף הבית...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/'; }, 400);
-      
-      // Stop
-      } else if (t.includes('עצור') || t.includes('סגור') || t.includes('stop') || t.includes('כבה')) {
-        stopVoiceNav();
-
-      } else {
-        setVoiceStatus('🎙️ מאזין לפקודות...', '❓ לא הבנתי: "' + transcript.trim() + '"');
-      }
+      if (t.includes('למטה') || t.includes('גלול מטה')) { window.scrollBy({ top: 300, behavior: 'smooth' }); setVoiceStatus('⬇️ גולל למטה', ''); }
+      else if (t.includes('למעלה') || t.includes('גלול מעלה')) { window.scrollBy({ top: -300, behavior: 'smooth' }); setVoiceStatus('⬆️ גולל למעלה', ''); }
+      else if (t.includes('לראש') || t.includes('תחילת')) { window.scrollTo({ top: 0, behavior: 'smooth' }); setVoiceStatus('⬆️ חזרה לראש', ''); }
+      else if (t.includes('לסוף') || t.includes('סוף')) { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); setVoiceStatus('⬇️ ירידה לסוף', ''); }
+      else if (t.includes('סרטונים') || t.includes('בית') || t.includes('דף הבית')) { setVoiceStatus('🏠 חוזר לדף הבית...', ''); setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/'; }, 400); }
+      else if (t.includes('מידע')) { setVoiceStatus('ℹ️ פותח מידע...', ''); setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/info'; }, 400); }
+      else if (t.includes('תורמים')) { setVoiceStatus('🏆 פותח תורמים...', ''); setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/topdonators'; }, 400); }
+      else if (t.includes('בית') || t.includes('דף הבית')) { setVoiceStatus('🏠 חוזר לדף הבית...', ''); setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/'; }, 400); }
+      else if (t.includes('עצור') || t.includes('סגור') || t.includes('כבה')) { stopVoiceNav(); }
+      else { setVoiceStatus('🎙️ מאזין לפקודות...', '❓ לא הבנתי: "' + transcript.trim() + '"'); }
     }
 
     function startVoiceNav() {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) {
-        alert('הדפדפן שלך לא תומך בזיהוי קול.\nאנא השתמש ב-Google Chrome.');
-        updateBtn('voice-nav', false);
-        const btn = document.querySelector('[data-feature="voice-nav"]');
-        if (btn) btn.classList.remove('active');
-        return;
-      }
-
+      if (!SpeechRecognition) { alert('הדפדפן שלך לא תומך בזיהוי קול.\nאנא השתמש ב-Google Chrome.'); updateBtn('voice-nav', false); const btn = document.querySelector('[data-feature="voice-nav"]'); if (btn) btn.classList.remove('active'); return; }
       createVoiceStatusBar();
       voiceNavActive = true;
-      voiceFocusIndex = -1;
-
       voiceRecognition = new SpeechRecognition();
       voiceRecognition.lang = 'he-IL';
       voiceRecognition.continuous = true;
       voiceRecognition.interimResults = false;
-
-      voiceRecognition.onstart = () => {
-        setVoiceStatus('🎙️ מאזין לפקודות...', 'אמור: גלול למטה / סרטונים / מידע / בית / עצור');
-        voiceStatusEl && voiceStatusEl.classList.remove('error');
-        voiceStatusEl && voiceStatusEl.classList.add('listening');
-      };
-
-      voiceRecognition.onresult = (e) => {
-        const last = e.results[e.results.length - 1];
-        if (last.isFinal) handleVoiceCommand(last[0].transcript);
-      };
-
-      voiceRecognition.onerror = (e) => {
-        if (e.error === 'not-allowed') {
-          setVoiceStatus('🚫 אין גישה למיקרופון', 'אפשר גישה בהגדרות הדפדפן ונסה שוב');
-          voiceStatusEl && voiceStatusEl.classList.add('error');
-        } else if (e.error !== 'no-speech') {
-          setVoiceStatus('⚠️ שגיאה: ' + e.error, '');
-        }
-      };
-
-      voiceRecognition.onend = () => {
-        // Auto-restart unless manually stopped
-        if (voiceNavActive) {
-          try { voiceRecognition.start(); } catch(err) {}
-        }
-      };
-
+      voiceRecognition.onstart = () => setVoiceStatus('🎙️ מאזין לפקודות...', 'אמור: גלול למטה / בית / מידע / תורמים / עצור');
+      voiceRecognition.onresult = (e) => { const last = e.results[e.results.length - 1]; if (last.isFinal) handleVoiceCommand(last[0].transcript); };
+      voiceRecognition.onerror = (e) => { if (e.error === 'not-allowed') setVoiceStatus('🚫 אין גישה למיקרופון', 'אפשר גישה בהגדרות הדפדפן ונסה שוב'); else if (e.error !== 'no-speech') setVoiceStatus('⚠️ שגיאה: ' + e.error, ''); };
+      voiceRecognition.onend = () => { if (voiceNavActive) { try { voiceRecognition.start(); } catch(err) {} } };
       voiceRecognition.start();
     }
 
     function stopVoiceNav() {
       voiceNavActive = false;
       if (voiceRecognition) { voiceRecognition.abort(); voiceRecognition = null; }
-      const bar = document.getElementById('voice-nav-bar');
-      if (bar) bar.remove();
-      // Remove focus outlines
+      const bar = document.getElementById('voice-nav-bar'); if (bar) bar.remove();
       getNavLinks().forEach(l => { l.style.outline = ''; l.style.outlineOffset = ''; });
       voiceFocusIndex = -1;
       const btn = document.querySelector('[data-feature="voice-nav"]');
       if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed','false'); }
     }
 
-    function toggleVoiceNav() {
-      if (voiceNavActive) {
-        stopVoiceNav();
-      } else {
-        startVoiceNav();
-      }
-    }
-
-    // Reset: also stop voice nav
-    // Reset: also stop TTS
-    const origReset = document.getElementById('a11y-reset-all').onclick;
-    document.getElementById('a11y-reset-all').addEventListener('click', () => {
-      window.speechSynthesis.cancel();
-      ttsActive = false; ttsPaused = false;
-      ttsBar.style.display = 'none';
-      hideWordHighlight();
-      if (voiceNavActive) stopVoiceNav();
-    });
+    function toggleVoiceNav() { if (voiceNavActive) stopVoiceNav(); else startVoiceNav(); }
   </script>
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7391dcaa1e7a4422ac7cad0e57536d22"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
