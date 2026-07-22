@@ -200,6 +200,11 @@
     <footer class="mt-auto text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
   </div>
 <script>
+  // העלמת הכפתור בלחיצה
+  const btn = document.getElementById('scroll-down-btn');
+  btn.style.opacity = '0';
+  btn.style.pointerEvents = 'none';
+  
     function scrollToBottom() {
       window.scrollTo({
         top: document.body.scrollHeight,
