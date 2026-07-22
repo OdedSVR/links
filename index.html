@@ -71,6 +71,17 @@
   box-shadow: 0 0 30px 4px rgba(var(--glow-color), 0.5), 0 12px 35px rgba(0, 0, 0, 0.4);
 }
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
+    .hero-title {
+  background: linear-gradient(90deg, #22d3ee, #a855f7, #3b82f6, #22d3ee);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleShine 10s linear infinite;
+}
+@keyframes titleShine {
+  to { background-position: 300% center; }
+}
     #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
     .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
     @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
@@ -195,7 +206,7 @@
           </span>
         </div>
       </a>
-      <h1 class="text-4xl font-black text-white tracking-tight">Oded SVR</h1>
+     <h1 class="hero-title text-4xl font-black tracking-tight">Oded SVR</h1>
       <div class="flex items-center justify-center gap-2 mt-1">
         <span id="live-badge" class="hidden items-center gap-1 bg-red-500/20 border border-red-500/40 text-red-400 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
           <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse inline-block"></span>
