@@ -1,3 +1,4 @@
+%%html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -40,8 +41,23 @@
     #char-right { right: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png?raw=true'); animation: swayCharacter 10s ease-in-out infinite; }
     #char-left { left: 4%; background-image: url('https://github.com/OdedSVR/images/blob/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png?raw=true'); animation: swimDolphin 14s ease-in-out infinite; }
     #spotlight { position: fixed; top: 0; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 5; display: none; }
-    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; text-align: center; }
-    .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4); } 
+.card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 10;
+  padding: 1.5rem;
+  text-align: center;
+  --glow-color: 59, 130, 246; /* ברירת מחדל */
+}
+.card:hover {
+  transform: translateY(-4px);
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(var(--glow-color), 0.5);
+  box-shadow: 0 0 30px 4px rgba(var(--glow-color), 0.5), 0 12px 35px rgba(0, 0, 0, 0.4);
+}
     #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
     #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
     .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
@@ -183,34 +199,32 @@
     
 <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto relative z-10" id="links-grid" dir="ltr">
       
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="טופס הרשמה לכוכב הבא של פיצה הפקות (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-red-400">⭐ הכוכב הבא של פיצה הפקות ⭐</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdRcPF_XTMREqr4ZuN7zVvqfHLHuaf3Rebu5fH6SiY6lpuCpg/viewform" style="--glow-color: 239, 68, 68;" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="טופס הרשמה לכוכב הבא של פיצה הפקות (נפתח בטאב חדש)">
+        <div class="text-xl font-black text-red-400" > ⭐ הכוכב הבא של פיצה הפקות ⭐</div>
         <p class="text-xs text-red-200/50 font-bold mt-1 uppercase">להרשמה</p>
       </a>
 
-      <a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-xl p-6 text-center hover:border-indigo-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-indigo-300 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/discor%20logo.png?raw=true" alt="" class="h-10 w-10 mr-2" aria-hidden="true">Discord</div>
+<a href="https://discord.gg/4T83uTNaju" target="_blank" class="card block rounded-xl p-6 text-center hover:border-indigo-500/40 h-[88px] flex flex-col items-center justify-center" style="--glow-color: 99, 102, 241;" dir="rtl" aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)">        <div class="text-xl font-black text-indigo-300 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/discor%20logo.png?raw=true" alt="" class="h-10 w-10 mr-2" aria-hidden="true">Discord</div>
       </a>
 
-      <a href="https://kick.com/odedsvr" target="_blank" class="card block rounded-xl p-6 text-center hover:border-green-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="ערוץ הקיק הרשמי של עודד (נפתח בטאב חדש)">
+      <a href="https://kick.com/odedsvr" target="_blank" style="--glow-color: 34, 197, 94;" class="card block rounded-xl p-6 text-center hover:border-green-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="ערוץ הקיק הרשמי של עודד (נפתח בטאב חדש)">
         <div class="text-xl font-black text-green-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/kick%20logo.png?raw=true" alt="" class="h-8 w-8 ml-2" aria-hidden="true"> Kick</div>
       </a>
 
-      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="טופס הגשת ערעור על באן (נפתח בטאב חדש)">
-        <div class="text-xl font-black text-red-400"> ערעור על באן 📝</div>
+      <a href="https://forms.gle/uRaRfwD6EmEeJv887" target="_blank" class="card block rounded-xl p-6 text-center h-[88px] flex flex-col items-center justify-center" style="--glow-color: 109, 15, 42;" dir="rtl" aria-label="טופס הגשת ערעור על באן (נפתח בטאב חדש)">        <div class="text-xl font-black text-red-400"> ערעור על באן 📝</div>
         <p class="text-[10px] text-red-300/60 font-bold">פנו אלינו לערעורים</p>
       </a>
 
-      <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" class="card block rounded-xl p-6 text-center hover:border-orange-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="קהילת הרדיט של עודד (נפתח בטאב חדש)">
+      <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" style="--glow-color: 249, 115, 22;" class="card block rounded-xl p-6 text-center hover:border-orange-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="קהילת הרדיט של עודד (נפתח בטאב חדש)">
         <div class="text-xl font-black text-orange-400 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/Reddit%20(1).png?raw=true" alt="" class="h-8 w-8 ml-2" aria-hidden="true">Reddit</div>
       </a>
 
-      <a href="https://www.youtube.com/@odedsvr95" target="_blank" class="card block rounded-xl p-6 text-center hover:border-red-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="ערוץ היוטיוב של עודד (נפתח בטאב חדש)">
+      <a href="https://www.youtube.com/@odedsvr95" target="_blank" style="--glow-color: 239, 68, 68;" class="card block rounded-xl p-6 text-center hover:border-red-500/40 h-[88px] flex flex-col items-center justify-center" dir="rtl" aria-label="ערוץ היוטיוב של עודד (נפתח בטאב חדש)">
         <div class="text-xl font-black text-red-500 flex flex-row-reverse items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/YTLOGO.png?raw=true" alt="" class="h-8 w-8 mr-2" aria-hidden="true">YouTube</div>
       </a>
       
      <div class="md:col-span-2 flex justify-center w-full mt-3">
-        <a href="https://www.instagram.com/odedsvr/" target="_blank" class="card block rounded-xl p-6 text-center hover:border-pink-500/40 h-[88px] flex flex-col items-center justify-center w-full max-w-md" dir="rtl" aria-label="פרופיל האינסטגרם של עודד (נפתח בטאב חדש)">
+        <a href="https://www.instagram.com/odedsvr/" target="_blank" style="--glow-color: 236, 72, 153;" class="card block rounded-xl p-6 text-center hover:border-pink-500/40 h-[88px] flex flex-col items-center justify-center w-full max-w-md" dir="rtl" aria-label="פרופיל האינסטגרם של עודד (נפתח בטאב חדש)">
           <div class="text-xl font-black text-pink-300 flex items-center justify-center"><img src="https://github.com/OdedSVR/images/blob/main/instlogo.png?raw=true" alt="" class="h-6 w-6 ml-2" aria-hidden="true">Instagram</div>
         </a>
       </div>
