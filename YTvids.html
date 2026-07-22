@@ -54,36 +54,6 @@
     #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.6s ease-in; }
     #main-page-content.visible { opacity: 1; visibility: visible; }
 */
-        /* Scroll Indicator Arrow Styles */
-    .scroll-indicator {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 30;
-      backdrop-filter: blur(8px);
-      transition: all 0.3s ease;
-      animation: bounceArrow 2s infinite;
-    }
-    .scroll-indicator:hover {
-      background: rgba(30, 41, 59, 0.9);
-      border-color: rgba(34, 211, 238, 0.6);
-      box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
-    }
-    @keyframes bounceArrow {
-      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-      40% { transform: translate(-50%, -10px); }
-      60% { transform: translate(-50%, -5px); }
-    }
     /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
     #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
     #a11y-fab { width: 52px; height: 52px; background: #e02020; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
@@ -166,55 +136,29 @@
 <body>
   <div id="spotlight"></div>
   <div id="reading-guide-bar" aria-hidden="true"></div>
-  
-  <button class="scroll-indicator" id="scrollIndicator" aria-label="גלול למטה לקישורים">
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 256 256" aria-hidden="true">
-      <path d="M128,180a8,8,0,0,1-5.66-2.34l-80-80a8,8,0,0,1,11.32-11.32L128,160.69l74.34-74.35a8,8,0,0,1,11.32,11.32l-80,80A8,8,0,0,1,128,180Z"></path>
-    </svg>
-  </button>
 
  <!-- <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/odedsvrlive%20logo.png?raw=true" alt="Logo" class="splash-logo"></div>
  -->
   <div id="main-page-content" class="flex flex-col items-center py-12 px-6" style="max-width: 700px; min-height: 1080px; margin: 0 auto; box-sizing: border-box;">
-      <!-- Top Navigation -->
-      <nav class="w-full max-w-md bg-slate-900/60 backdrop-blur-2xl border border-white/10 rounded-full p-1.5 mb-10 flex shadow-2xl relative z-20" aria-label="ניווט ראשי">
-        <a href="https://odedsvr.com/index.html" class="flex-1 py-2 text-xs md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-wider">Home</a>
-        <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-xs md:text-sm font-bold text-white hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-wider">Videos</a>
-        <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-xs md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-wider">Info</a>
-        <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-xs md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-wider">Donators</a>
-      </nav>
-    
-      <!-- Profile Header -->
-      <div class=" flex flex-col items-center text-center mb-10 relative z-10">
-        <a href="https://www.youtube.com/@OdedSVRLive" target="_blank" class="group inline-block" aria-label="מעבר לערוץ היוטיוב של עודד סבר (נפתח בטאב חדש)">
-          <div class="relative inline-block">
-            <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
-            <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/odedsvrlive%20logo.png" id="profile-image" alt="תמונת הפרופיל של עודד סבר" class="relative w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto shadow-2xl object-cover border-2 border-white/20 transition-all duration-300 transform group-hover:scale-105">
-            <span id="live-dot" class="hidden">
-              <span class="absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]" style="box-shadow: 0 0 12px rgba(239,68,68,1);"></span>
-              <span class="live-ring absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]"></span>
-            </span>
-          </div>
-        </a>
-
-        <h1 class="hero-title text-4xl md:text-5xl font-black tracking-tight mt-4 mb-2">Oded SVR</h1>
-        
-        <div class="flex items-center justify-center gap-2">
-          <span class="text-[11px] text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full">הסרטונים האחרונים בערוץ</span>
-        </div>
-      </div>
-    
+    <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto" aria-label="ניווט ראשי">
+        <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">HOME</a>
+        <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 text-sm font-black text-white hover:text-cyan-400 text-center transition uppercase tracking-widest">VIDEOS</a>
+        <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">INFO</a>
+        <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 text-sm font-black text-white/50 hover:text-cyan-400 text-center transition uppercase tracking-widest">Donators</a>
+    </nav>
+    <div class="text-center mb-10 relative z-10">
+      <a href="https://www.youtube.com/@OdedSVRLive" target="_blank" aria-label="מעבר לערוץ היוטיוב של עודד סבר (נפתח בטאב חדש)">
+        <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/odedsvrlive%20logo.png" id="profile-image" alt="תמונת הפרופיל של עודד סבר" class="w-32 h-32 rounded-full mx-auto shadow-2xl mb-4 object-cover border-2 border-white/10 transition-all duration-400">
+      </a>
+      <h1 class=" hero-title text-4xl font-black tracking-tight">Recent YouTube Videos</h1>
+      <p class="text-[10px] text-blue-400 font-bold tracking-[0.4em] uppercase mt-1">הסרטונים האחרונים בערוץ</p>
+    </div>
     <div id="video-container" class="w-full grid grid-cols-1 md:grid-cols-1 gap-6" style="flex-grow: 1; display: grid; grid-template-rows: repeat(5, minmax(0, 1fr)); padding-bottom: 20px;" aria-label="רשימת סרטונים אחרונים">
         <p class="text-white/30 animate-pulse col-span-full text-center">טוען סרטונים...</p>
     </div>
     <footer class="mt-auto text-[10px] text-white/20 font-bold text-center tracking-[0.2em] uppercase">© 2026 ODEDSVR | CREATED BY PIKER_R</footer>
   </div>
-  <!-- Scroll Indicator Arrow Button -->
-  <button class="scroll-indicator" id="scrollIndicator" aria-label="גלול למטה לקישורים">
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="white" viewBox="0 0 256 256" aria-hidden="true">
-      <path d="M128,180a8,8,0,0,1-5.66-2.34l-80-80a8,8,0,0,1,11.32-11.32L128,160.69l74.34-74.35a8,8,0,0,1,11.32,11.32l-80,80A8,8,0,0,1,128,180Z"></path>
-    </svg>
-  </button>
+
   <!-- ==================== ACCESSIBILITY WIDGET ==================== -->
   <div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
     <button id="a11y-fab" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
@@ -509,24 +453,7 @@
     const videoContainer = document.getElementById('video-container');
     const API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
     const CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
-    const scrollIndicator = document.getElementById('scrollIndicator');
 
-// לחיצה על החץ גוללת לחלק הבא
-scrollIndicator.addEventListener('click', () => {
-  window.scrollTo({
-    top: window.innerHeight,
-    behavior: 'smooth'
-  });
-});
-
-// העלמת החץ כשהמשתמש כבר מתחיל לגלול
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) {
-    scrollIndicator.style.opacity = '0';
-  } else {
-    scrollIndicator.style.opacity = '1';
-  }
-});
     async function fetchVideos() {
       const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
       const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
@@ -569,12 +496,7 @@ window.addEventListener('scroll', () => {
     document.addEventListener('mousemove', (e) => {
       if (spotlight) { spotlight.style.left = e.clientX + 'px'; spotlight.style.top = e.clientY + 'px'; }
     });
-    scrollIndicator.addEventListener('click', () => { window.scrollTo({ top: 450, behavior: 'smooth' }); });
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) { scrollIndicator.style.opacity = '0'; scrollIndicator.style.visibility = 'hidden'; }
-      else { scrollIndicator.style.opacity = '1'; scrollIndicator.style.visibility = 'visible'; }
-    });
-    
+
     window.addEventListener('load', () => { activateSite(); fetchVideos(); });
     setTimeout(activateSite, 500);
 
