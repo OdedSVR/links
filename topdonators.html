@@ -582,20 +582,7 @@
     const charLeft = document.getElementById('char-left');
     const charRight = document.getElementById('char-right');
     const particleLayer = document.getElementById('particle-layer');
-const particleColors = ['#22d3ee', '#a855f7', '#3b82f6'];
-function spawnParticle() {
-  const p = document.createElement('div');
-  const size = 1.5 + Math.random() * 2.5;
-  const left = Math.random() * 100;
-  const dur = 8 + Math.random() * 8;
-  const color = particleColors[Math.floor(Math.random() * particleColors.length)];
-  p.className = 'ambient-particle';
-  p.style.left = left + 'vw';
-  p.style.width = size + 'px';
-  p.style.height = size + 'px';
-  p.style.background = color;
-  p.style.animation = 'floatParticle ' + dur + 's ease-in-out forwards';
-  particleLayer.appendChild(p);
+    
   setTimeout(() => p.remove(), dur * 1000);
 }
 setInterval(spawnParticle, 900);
@@ -690,7 +677,27 @@ for (let i = 0; i < 10; i++) {
       fetchLeaderboardData();
       activateSite();
     }
-
+const particleLayer = document.getElementById('particle-layer');
+const particleColors = ['#22d3ee', '#a855f7', '#3b82f6'];
+function spawnParticle() {
+  const p = document.createElement('div');
+  const size = 1.5 + Math.random() * 2.5;
+  const left = Math.random() * 100;
+  const dur = 8 + Math.random() * 8;
+  const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+  p.className = 'ambient-particle';
+  p.style.left = left + 'vw';
+  p.style.width = size + 'px';
+  p.style.height = size + 'px';
+  p.style.background = color;
+  p.style.animation = 'floatParticle ' + dur + 's linear forwards';
+  particleLayer.appendChild(p);
+  setTimeout(() => p.remove(), dur * 1000);
+}
+setInterval(spawnParticle, 900);
+for (let i = 0; i < 10; i++) {
+  setTimeout(spawnParticle, i * 300);
+}
     // ============ ACCESSIBILITY WIDGET ============
     const fab = document.getElementById('a11y-fab');
     const panel = document.getElementById('a11y-panel');
