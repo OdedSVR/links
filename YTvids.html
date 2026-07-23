@@ -62,6 +62,22 @@
       padding: 0.75rem;
       height: 100%;
     }
+        /* נצנוצים ברקע */
+    .ambient-particle {
+  position: fixed;
+  bottom: -10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
+@keyframes floatParticle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  15% { opacity: 0.7; }
+  70% { transform: translateY(-60vh) translateX(15px); opacity: 0.5; }
+  100% { transform: translateY(-100vh) translateX(-10px); opacity: 0; }
+}
+
     .video-row:hover {
       background: rgba(30, 41, 59, 0.85);
       border-color: rgba(255, 255, 255, 0.15);
@@ -171,6 +187,7 @@
 <body>
   <div id="spotlight"></div>
   <div id="reading-guide-bar" aria-hidden="true"></div>
+  <div id="particle-layer" aria-hidden="true"></div>
 <!-- כפתור חץ למטה -->
   <button id="scroll-down-btn" aria-label="רד לתחתית העמוד" onclick="scrollToBottom()">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
@@ -528,6 +545,27 @@
     const videoContainer = document.getElementById('video-container');
     const API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
     const CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
+    const particleLayer = document.getElementById('particle-layer');
+const particleColors = ['#22d3ee', '#a855f7', '#3b82f6'];
+function spawnParticle() {
+  const p = document.createElement('div');
+  const size = 1.5 + Math.random() * 2.5;
+  const left = Math.random() * 100;
+  const dur = 8 + Math.random() * 8;
+  const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+  p.className = 'ambient-particle';
+  p.style.left = left + 'vw';
+  p.style.width = size + 'px';
+  p.style.height = size + 'px';
+  p.style.background = color;
+  p.style.animation = 'floatParticle ' + dur + 's linear forwards';
+  particleLayer.appendChild(p);
+  setTimeout(() => p.remove(), dur * 1000);
+}
+setInterval(spawnParticle, 900);
+for (let i = 0; i < 10; i++) {
+  setTimeout(spawnParticle, i * 300);
+}
 
     async function fetchVideos() {
       const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
