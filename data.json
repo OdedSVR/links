@@ -23,7 +23,7 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 676
+      "quantity": 701
     },
     {
       "user_id": 56982139,
@@ -71,7 +71,7 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 20
+      "quantity": 45
     },
     {
       "user_id": 77248326,
@@ -117,6 +117,11 @@
       "quantity": 205
     },
     {
+      "user_id": 67453019,
+      "username": "natanelf",
+      "quantity": 130
+    },
+    {
       "user_id": 36321413,
       "username": "absolute_alamo",
       "quantity": 115
@@ -125,11 +130,6 @@
       "user_id": 81937117,
       "username": "kgsx",
       "quantity": 112
-    },
-    {
-      "user_id": 67453019,
-      "username": "natanelf",
-      "quantity": 105
     },
     {
       "user_id": 102379880,
