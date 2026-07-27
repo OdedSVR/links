@@ -56,7 +56,7 @@
     {
       "user_id": 77248326,
       "username": "Speedynoam",
-      "quantity": 8
+      "quantity": 40
     },
     {
       "user_id": 89935315,
@@ -132,6 +132,11 @@
       "quantity": 112
     },
     {
+      "user_id": 77248326,
+      "username": "Speedynoam",
+      "quantity": 58
+    },
+    {
       "user_id": 89935315,
       "username": "eylon1",
       "quantity": 53
@@ -149,11 +154,6 @@
     {
       "user_id": 56982139,
       "username": "yohay32",
-      "quantity": 30
-    },
-    {
-      "user_id": 2757848,
-      "username": "thebigSheshMan",
       "quantity": 30
     }
   ],
