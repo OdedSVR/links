@@ -52,7 +52,18 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 4585186,
+      "username": "SKIRMISH",
+      "quantity": 6
+    },
+    {
+      "user_id": 3691093,
+      "username": "IGZ_",
+      "quantity": 2
+    }
+  ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
