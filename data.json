@@ -48,7 +48,7 @@
     {
       "user_id": 2757848,
       "username": "thebigSheshMan",
-      "quantity": 318
+      "quantity": 323
     }
   ],
   "gifts_enabled": true,
@@ -69,6 +69,11 @@
       "quantity": 6
     },
     {
+      "user_id": 2757848,
+      "username": "thebigSheshMan",
+      "quantity": 5
+    },
+    {
       "user_id": 3691093,
       "username": "IGZ_",
       "quantity": 2
@@ -81,6 +86,21 @@
     {
       "user_id": 81198262,
       "username": "21NOAM",
+      "quantity": 1
+    },
+    {
+      "user_id": 101613912,
+      "username": "SHAULMV3",
+      "quantity": 1
+    },
+    {
+      "user_id": 9153248,
+      "username": "PutiTP",
+      "quantity": 1
+    },
+    {
+      "user_id": 121238708,
+      "username": "SVR1QQ",
       "quantity": 1
     }
   ],
@@ -132,9 +152,9 @@
       "quantity": 30
     },
     {
-      "user_id": 77248326,
-      "username": "Speedynoam",
-      "quantity": 26
+      "user_id": 2757848,
+      "username": "thebigSheshMan",
+      "quantity": 30
     }
   ],
   "gifts_month_enabled": true
