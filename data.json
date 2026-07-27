@@ -18,7 +18,7 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 866
+      "quantity": 873
     },
     {
       "user_id": 67453019,
@@ -53,6 +53,11 @@
   ],
   "gifts_enabled": true,
   "gifts_week": [
+    {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 7
+    },
     {
       "user_id": 4585186,
       "username": "SKIRMISH",
@@ -92,14 +97,14 @@
       "quantity": 112
     },
     {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 53
+    },
+    {
       "user_id": 102379880,
       "username": "MAOR_IL",
       "quantity": 51
-    },
-    {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 46
     },
     {
       "user_id": 95434714,
