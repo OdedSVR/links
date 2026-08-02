@@ -54,6 +54,11 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
+      "user_id": 80486215,
+      "username": "nba_unael",
+      "quantity": 2
+    },
+    {
       "user_id": 87681561,
       "username": "bachar_555",
       "quantity": 1
@@ -102,13 +107,13 @@
       "quantity": 4
     },
     {
-      "user_id": 46497786,
-      "username": "Holotap",
-      "quantity": 1
+      "user_id": 80486215,
+      "username": "nba_unael",
+      "quantity": 2
     },
     {
-      "user_id": 78742229,
-      "username": "Chgijhhh",
+      "user_id": 46497786,
+      "username": "Holotap",
       "quantity": 1
     }
   ],
