@@ -79,13 +79,13 @@
       "quantity": 10
     },
     {
-      "user_id": 77756704,
-      "username": "Nadavbenyair",
+      "user_id": 66989402,
+      "username": "liav_penta",
       "quantity": 5
     },
     {
-      "user_id": 76944712,
-      "username": "mizrachi2",
+      "user_id": 77756704,
+      "username": "Nadavbenyair",
       "quantity": 5
     },
     {
@@ -94,14 +94,14 @@
       "quantity": 5
     },
     {
+      "user_id": 76944712,
+      "username": "mizrachi2",
+      "quantity": 5
+    },
+    {
       "user_id": 77248326,
       "username": "Speedynoam",
       "quantity": 3
-    },
-    {
-      "user_id": 80486215,
-      "username": "nba_unael",
-      "quantity": 2
     }
   ],
   "gifts_week_enabled": true,
