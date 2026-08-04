@@ -84,6 +84,11 @@
       "quantity": 10
     },
     {
+      "user_id": 35368206,
+      "username": "Lofi_CBD",
+      "quantity": 6
+    },
+    {
       "user_id": 2757848,
       "username": "thebigSheshMan",
       "quantity": 5
@@ -96,11 +101,6 @@
     {
       "user_id": 66989402,
       "username": "liav_penta",
-      "quantity": 5
-    },
-    {
-      "user_id": 77756704,
-      "username": "Nadavbenyair",
       "quantity": 5
     }
   ],
