@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -323,6 +324,8 @@
     body.a11y-large-text h1 { font-size: 3rem !important; }
     body.a11y-high-contrast { filter: contrast(150%) brightness(1.1); }
     body.a11y-dark-contrast { filter: invert(1) hue-rotate(180deg); }
+    body.a11y-dark-contrast img, body.a11y-dark-contrast video,
+    body.a11y-dark-contrast #char-right, body.a11y-dark-contrast #char-left { filter: invert(1) hue-rotate(180deg); }
     body.a11y-mono { filter: grayscale(1); }
     body.a11y-highlight-links a { background: yellow !important; color: #000 !important; padding: 0 2px !important; outline: 2px solid orange !important; }
     body.a11y-readable-font * { font-family: 'Arial', sans-serif !important; letter-spacing: 0.05em !important; }
@@ -336,9 +339,18 @@
     body.a11y-saturation-low { filter: saturate(0.3); }
     .a11y-focus-visible :focus { outline: 3px solid #e02020 !important; outline-offset: 3px !important; }
     body.a11y-big-text-cursor * { font-size: calc(1em * var(--a11y-font-scale, 1)) !important; }
+
+    /* Skip link - visually hidden until focused, always in the DOM */
+    #skip-link {
+      position: fixed; top: -60px; right: 10px; z-index: 999999;
+      background: #e02020; color: white; padding: 10px 18px; border-radius: 8px;
+      font-weight: 900; text-decoration: none; transition: top 0.2s ease;
+    }
+    #skip-link:focus { top: 10px; }
   </style>
 </head>
 <body>
+  <a href="#links-grid" id="skip-link">דלג לתוכן</a>
  <!-- Glowing Ambient Background Effects -->
   <div class="bg-glow-1"></div>
   <div class="bg-glow-2"></div>
@@ -403,7 +415,7 @@
           <a href="https://www.tiktok.com/@odedsvrlive" target="_blank" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" style="--glow-rgb: 255, 255, 241;" dir="rtl" aria-label="הטיקטוק של עודד (נפתח בטארב חדש))">
           <div class="card-glow-bg"></div>
           <div class="text-lg md:text-xl font-black text-white-300 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
-          <img src = "https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/tiktoklogo.png" alt="" class="7-30 w-7 object-contain" aria-hidden="true">
+          <img src = "https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/tiktoklogo.png" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
            <span>TikTok</span>
           </div>
         </a>
@@ -583,16 +595,14 @@
 
       <!-- Color picker -->
       <div class="a11y-color-section">
-        <span class="a11y-color-label">התאמת צבעים — שינוי צבעי האתר</span>
+        <span class="a11y-color-label">התאמת צבעים — שינוי גוון האתר</span>
         <div class="color-preset-row">
-          <div class="a11y-color-swatch active" style="background:#e02020" data-color="default" title="ברירת מחדל"></div>
-          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" data-color="warm" title="חם"></div>
-          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)" data-color="cool" title="קר"></div>
-          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#22c55e,#10b981)" data-color="green" title="ירוק"></div>
-          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)" data-color="purple" title="סגול"></div>
-          <button style="font-size:11px;color:#e02020;background:none;border:none;cursor:pointer;font-weight:700;padding:4px 8px;border:1px solid #e02020;border-radius:6px;" id="reset-color-btn">תכנים</button>
-          <button style="font-size:11px;color:#666;background:none;border:1px solid #ddd;cursor:pointer;font-weight:700;padding:4px 8px;border-radius:6px;" id="custom-color-btn">מותרות <span style="font-size:10px;">▼</span></button>
-          <button style="font-size:11px;font-weight:900;color:white;background:#e02020;border:none;cursor:pointer;padding:4px 10px;border-radius:6px;" id="apply-color-btn">רקעים</button>
+          <div class="a11y-color-swatch active" style="background:#e02020" data-hue="0" title="ברירת מחדל"></div>
+          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" data-hue="330" title="חם"></div>
+          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)" data-hue="200" title="קר"></div>
+          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#22c55e,#10b981)" data-hue="120" title="ירוק"></div>
+          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)" data-hue="270" title="סגול"></div>
+          <button style="font-size:11px;color:#e02020;background:none;cursor:pointer;font-weight:700;padding:4px 8px;border:1px solid #e02020;border-radius:6px;" id="reset-color-btn">איפוס</button>
         </div>
         <div style="margin-top:10px;">
           <input type="range" min="0" max="360" value="0" id="hue-slider" style="width:100%;accent-color:#e02020;">
@@ -792,9 +802,11 @@
     const splash = document.getElementById('splash-screen');
     const charLeft = document.getElementById('char-left');
     const charRight = document.getElementById('char-right');
-    const scrollIndicator = document.getElementById('scrollIndicator');
 
+    let siteActivated = false;
     function activateSite() {
+      if (siteActivated) return;
+      siteActivated = true;
       if (splash) { splash.style.opacity = '0'; setTimeout(() => { splash.style.display = 'none'; mainContent.classList.add('visible'); if (spotlight) spotlight.style.display = 'block'; }, 300); }
     }
     
@@ -804,13 +816,7 @@
       if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
       if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
     });
-/*
-    scrollIndicator.addEventListener('click', () => { window.scrollTo({ top: 450, behavior: 'smooth' }); });
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) { scrollIndicator.style.opacity = '0'; scrollIndicator.style.visibility = 'hidden'; }
-      else { scrollIndicator.style.opacity = '1'; scrollIndicator.style.visibility = 'visible'; }
-    });
-*/
+
     window.addEventListener('load', activateSite);
     setTimeout(activateSite, 300);
 
@@ -828,7 +834,9 @@
           dot.classList.add('hidden'); badge.classList.remove('flex'); badge.classList.add('hidden');
           offlineBadge.classList.remove('hidden'); offlineBadge.classList.add('flex');
         }
-      } catch (e) {}
+      } catch (e) {
+        console.warn('Live status check failed:', e);
+      }
     }
     const particleLayer = document.getElementById('particle-layer');
 const particleColors = ['#22d3ee', '#a855f7', '#3b82f6'];
@@ -885,12 +893,12 @@ for (let i = 0; i < 10; i++) {
       'hide-distractions': () => { charLeft && charLeft.classList.toggle('hidden'); charRight && charRight.classList.toggle('hidden'); },
       'highlight-elements': () => body.classList.toggle('a11y-focus-visible'),
       'zoom-content': () => body.classList.toggle('a11y-large-text'),
-      'big-titles': () => { document.querySelectorAll('h1,h2,h3,h4').forEach(h => h.style.fontSize = h.style.fontSize ? '' : '2em'); },
+      'big-titles': () => { body.classList.toggle('a11y-big-titles-active'); document.querySelectorAll('h1,h2,h3,h4').forEach(h => h.style.fontSize = h.style.fontSize ? '' : '2em'); },
       'focus-mode': () => body.classList.toggle('a11y-readable-font'),
       'screen-reader': () => alert('לשימוש עם קורא מסך, אנא הפעל את NVDA, JAWS, או VoiceOver. האתר תומך ב-ARIA ומבנה סמנטי מלא.'),
       'voice-nav': () => toggleVoiceNav(),
       'smart-nav': () => alert('ניווט חכם פעיל - השתמש ב-Tab לניווט בין אלמנטים, Enter לאישור.'),
-      'regions': () => { const skip = document.getElementById('skip-link') || (() => { const s = document.createElement('a'); s.id='skip-link'; s.href='#links-grid'; s.textContent='דלג לתוכן'; s.style.cssText='position:fixed;top:10px;right:10px;background:#e02020;color:white;padding:8px 16px;border-radius:8px;font-weight:900;z-index:99999;text-decoration:none;'; document.body.prepend(s); return s; })(); skip.style.display = skip.style.display === 'none' ? '' : 'none'; },
+      'regions': () => { const skip = document.getElementById('skip-link'); if (skip) skip.focus(); },
       'keyboard-nav': () => { document.querySelectorAll('a,button').forEach(el => { el.style.outline = el.style.outline ? '' : '2px solid #e02020'; el.style.outlineOffset = '3px'; }); },
       'image-desc': () => {
         let count = 0;
@@ -1012,36 +1020,58 @@ for (let i = 0; i < 10; i++) {
       fontDisplay.textContent = pct + '%';
     });
 
-    // Letter spacing
+    // Letter spacing / word spacing / line height — use body classes + CSS vars instead of touching every element
     document.getElementById('letter-spacing-slider') && document.getElementById('letter-spacing-slider').addEventListener('input', (e) => {
-      document.documentElement.style.setProperty('--a11y-letter-spacing', e.target.value / 10 + 'em');
-      document.querySelectorAll('p,span,a,button,div').forEach(el => el.style.letterSpacing = e.target.value / 10 + 'em');
+      document.documentElement.style.setProperty('--a11y-letter-spacing-value', e.target.value / 10 + 'em');
+      document.body.style.setProperty('--a11y-ls', e.target.value / 10 + 'em');
+      document.body.classList.toggle('a11y-letter-spacing', e.target.value > 0);
     });
 
-    // Word spacing
     document.getElementById('word-spacing-slider') && document.getElementById('word-spacing-slider').addEventListener('input', (e) => {
-      document.querySelectorAll('p,span,a,button,div').forEach(el => el.style.wordSpacing = e.target.value / 10 + 'em');
+      document.body.classList.toggle('a11y-word-spacing', e.target.value > 0);
     });
 
-    // Line height
     document.getElementById('line-height-slider') && document.getElementById('line-height-slider').addEventListener('input', (e) => {
-      document.querySelectorAll('p,span,a,button,div,h1,h2,h3').forEach(el => el.style.lineHeight = 1 + e.target.value / 10);
+      document.body.classList.toggle('a11y-line-height', e.target.value > 0);
+    });
+
+    // Color swatches (hue presets)
+    document.querySelectorAll('.a11y-color-swatch[data-hue]').forEach(sw => {
+      sw.addEventListener('click', () => {
+        document.querySelectorAll('.a11y-color-swatch').forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+        const hue = sw.dataset.hue || 0;
+        document.documentElement.style.filter = hue == 0 ? '' : `hue-rotate(${hue}deg)`;
+        const hueSlider = document.getElementById('hue-slider');
+        if (hueSlider) hueSlider.value = hue;
+      });
+    });
+    document.getElementById('reset-color-btn') && document.getElementById('reset-color-btn').addEventListener('click', () => {
+      document.documentElement.style.filter = '';
+      document.querySelectorAll('.a11y-color-swatch').forEach(s => s.classList.remove('active'));
+      document.querySelector('.a11y-color-swatch[data-hue="0"]').classList.add('active');
+      const hueSlider = document.getElementById('hue-slider');
+      if (hueSlider) hueSlider.value = 0;
     });
 
     // Hue slider
     document.getElementById('hue-slider') && document.getElementById('hue-slider').addEventListener('input', (e) => {
       document.documentElement.style.filter = `hue-rotate(${e.target.value}deg)`;
+      document.querySelectorAll('.a11y-color-swatch').forEach(s => s.classList.remove('active'));
     });
     document.getElementById('reset-hue-btn') && document.getElementById('reset-hue-btn').addEventListener('click', () => {
       document.documentElement.style.filter = '';
       document.getElementById('hue-slider').value = 0;
+      document.querySelectorAll('.a11y-color-swatch').forEach(s => s.classList.remove('active'));
+      document.querySelector('.a11y-color-swatch[data-hue="0"]').classList.add('active');
     });
 
-    // Reset all
+    // Reset all (single handler, covers everything including TTS + voice nav)
     document.getElementById('a11y-reset-all') && document.getElementById('a11y-reset-all').addEventListener('click', () => {
       ['a11y-high-contrast','a11y-dark-contrast','a11y-mono','a11y-saturation-high','a11y-saturation-low',
        'a11y-readable-font','a11y-highlight-links','a11y-stop-anim','a11y-big-cursor','a11y-big-cursor-white',
-       'a11y-large-text','a11y-focus-visible'].forEach(c => body.classList.remove(c));
+       'a11y-large-text','a11y-focus-visible','a11y-letter-spacing','a11y-word-spacing','a11y-line-height',
+       'a11y-big-titles-active'].forEach(c => body.classList.remove(c));
       charLeft && charLeft.classList.remove('hidden');
       charRight && charRight.classList.remove('hidden');
       document.documentElement.style.fontSize = '';
@@ -1051,14 +1081,22 @@ for (let i = 0; i < 10; i++) {
       document.removeEventListener('mousemove', moveGuide);
       document.querySelectorAll('.a11y-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
       document.querySelectorAll('.cursor-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.a11y-color-swatch').forEach(s => s.classList.remove('active'));
+      const defaultSwatch = document.querySelector('.a11y-color-swatch[data-hue="0"]');
+      if (defaultSwatch) defaultSwatch.classList.add('active');
       ['letter-spacing-slider','word-spacing-slider','line-height-slider','hue-slider'].forEach(id => {
         const el = document.getElementById(id); if(el) el.value = 0;
       });
       fontSlider && (fontSlider.value = 100);
       fontDisplay && (fontDisplay.textContent = '100%');
-      document.querySelectorAll('p,span,a,button,div,h1,h2,h3').forEach(el => {
-        el.style.letterSpacing = ''; el.style.wordSpacing = ''; el.style.lineHeight = '';
-      });
+      document.querySelectorAll('h1,h2,h3,h4').forEach(h => { h.style.fontSize = ''; });
+
+      // Also stop TTS and voice nav
+      window.speechSynthesis.cancel();
+      ttsActive = false; ttsPaused = false;
+      ttsBar.style.display = 'none';
+      hideWordHighlight();
+      if (voiceNavActive) stopVoiceNav();
     });
 
     // ============ TTS - FULL TEXT-TO-SPEECH ENGINE ============
@@ -1231,23 +1269,6 @@ for (let i = 0; i < 10; i++) {
       ttsBtnLabel.textContent = paused ? 'המשך' : 'השהה';
     }
 
-    // Show styled TTS notice modal
-    function showTTSNotice(html, onConfirm) {
-      const overlay = document.createElement('div');
-      overlay.id = 'tts-notice-overlay';
-      overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;direction:rtl;';
-      overlay.innerHTML = `
-        <div style="background:#fff;border-radius:18px;max-width:420px;width:100%;padding:28px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative;font-family:'Heebo',sans-serif;">
-          <button id="tts-notice-close" style="position:absolute;left:14px;top:14px;background:#f1f5f9;border:none;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#64748b;">✕</button>
-          ${html}
-          <button id="tts-notice-confirm" style="margin-top:18px;width:100%;background:#e02020;color:white;border:none;border-radius:10px;padding:12px;font-size:15px;font-weight:900;cursor:pointer;font-family:'Heebo',sans-serif;">אישור — התחל הקראה</button>
-        </div>`;
-      document.body.appendChild(overlay);
-      document.getElementById('tts-notice-close').onclick = () => overlay.remove();
-      document.getElementById('tts-notice-confirm').onclick = () => { overlay.remove(); if (onConfirm) onConfirm(); };
-      overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
-    }
-
     // Detect OS / browser for instructions
     function getTTSSetupInstructions() {
       const ua = navigator.userAgent;
@@ -1341,10 +1362,8 @@ for (let i = 0; i < 10; i++) {
         stopTTSKeepAlive();
         return;
       }
-      // רענן קולות + הצג כמה קולות זמינים (לדיבאג)
+      // רענן קולות
       loadTTSVoices();
-      const available = window.speechSynthesis.getVoices();
-      console.log('TTS: קולות זמינים:', available.length, available.map(v => v.name + ' (' + v.lang + ')'));
       startTTS();
     };
 
@@ -1591,18 +1610,6 @@ for (let i = 0; i < 10; i++) {
         startVoiceNav();
       }
     }
-
-    // Reset: also stop voice nav
-    // Reset: also stop TTS
-    const origReset = document.getElementById('a11y-reset-all').onclick;
-    document.getElementById('a11y-reset-all').addEventListener('click', () => {
-      window.speechSynthesis.cancel();
-      ttsActive = false; ttsPaused = false;
-      ttsBar.style.display = 'none';
-      hideWordHighlight();
-      if (voiceNavActive) stopVoiceNav();
-    });
-
   </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1}' crossorigin="anonymous"></script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1fa55d6df7f35c6',t:'MTc4NDgwNjA0MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
