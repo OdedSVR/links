@@ -18,12 +18,12 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 883
+      "quantity": 913
     },
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 811
+      "quantity": 836
     },
     {
       "user_id": 32602400,
@@ -59,14 +59,24 @@
       "quantity": 110
     },
     {
-      "user_id": 79152945,
-      "username": "mrdavid465",
+      "user_id": 1093581,
+      "username": "wvooq",
+      "quantity": 80
+    },
+    {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 40
+    },
+    {
+      "user_id": 67453019,
+      "username": "natanelf",
       "quantity": 35
     },
     {
-      "user_id": 1093581,
-      "username": "wvooq",
-      "quantity": 20
+      "user_id": 79152945,
+      "username": "mrdavid465",
+      "quantity": 35
     },
     {
       "user_id": 101613912,
@@ -76,16 +86,6 @@
     {
       "user_id": 80710252,
       "username": "sheriff_drakes",
-      "quantity": 10
-    },
-    {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 10
-    },
-    {
-      "user_id": 67453019,
-      "username": "natanelf",
       "quantity": 10
     },
     {
@@ -112,14 +112,24 @@
       "quantity": 135
     },
     {
+      "user_id": 1093581,
+      "username": "wvooq",
+      "quantity": 90
+    },
+    {
       "user_id": 79152945,
       "username": "mrdavid465",
       "quantity": 85
     },
     {
-      "user_id": 1093581,
-      "username": "wvooq",
-      "quantity": 30
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 40
+    },
+    {
+      "user_id": 67453019,
+      "username": "natanelf",
+      "quantity": 35
     },
     {
       "user_id": 102379880,
@@ -137,23 +147,13 @@
       "quantity": 11
     },
     {
-      "user_id": 67453019,
-      "username": "natanelf",
+      "user_id": 80710252,
+      "username": "sheriff_drakes",
       "quantity": 10
     },
     {
       "user_id": 2757848,
       "username": "thebigSheshMan",
-      "quantity": 10
-    },
-    {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 10
-    },
-    {
-      "user_id": 80710252,
-      "username": "sheriff_drakes",
       "quantity": 10
     }
   ],
