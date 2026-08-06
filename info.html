@@ -114,12 +114,23 @@
   70% { transform: translateY(-60vh) translateX(15px); opacity: 0.5; }
   100% { transform: translateY(-100vh) translateX(-10px); opacity: 0; }
 }
-   /* #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
-    .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
-    @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } } 
-    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; } 
-    #main-page-content.visible { opacity: 1; visibility: visible; }
-    */
+/* בועות זוהרות גדולות ומטושטשות */
+.glow-bubble {
+  position: fixed;
+  bottom: -80px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  filter: blur(6px);
+}
+@keyframes floatBubble {
+  0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+  12% { opacity: 0.35; }
+  55% { transform: translateY(-55vh) translateX(20px) scale(1.05); opacity: 0.25; }
+  100% { transform: translateY(-110vh) translateX(-15px) scale(0.9); opacity: 0; }
+}
+
     .text-glow { text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); }
     
     .copy-btn { opacity: 0.5; transition: all 0.2s; cursor: pointer; }
@@ -648,30 +659,27 @@ setInterval(spawnParticle, 900);
 for (let i = 0; i < 10; i++) {
   setTimeout(spawnParticle, i * 300);
 }
-/*
-    function activateSite() {
-      if (splash) {
-        splash.style.opacity = '0';
-        setTimeout(() => {
-          splash.style.display = 'none';
-          mainContent.classList.add('visible');
-          if (spotlight) spotlight.style.display = 'block';
-        }, 300);
-      }
-    };
 
-    document.addEventListener('mousemove', (e) => {
-      if (spotlight) {
-        spotlight.style.left = e.clientX + 'px';
-        spotlight.style.top = e.clientY + 'px';
-      }
-      const x = (window.innerWidth - e.pageX * 2) / 100;
-      const y = (window.innerHeight - e.pageY * 2) / 100;
-      if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
-      if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
-    });
-    window.addEventListener('load', activateSite); setTimeout(activateSite, 500);
-*/
+// בועות זוהרות גדולות
+function spawnBubble() {
+  const b = document.createElement('div');
+  const size = 40 + Math.random() * 90;
+  const left = Math.random() * 100;
+  const dur = 14 + Math.random() * 10;
+  const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+  b.className = 'glow-bubble';
+  b.style.left = left + 'vw';
+  b.style.width = size + 'px';
+  b.style.height = size + 'px';
+  b.style.background = `radial-gradient(circle, ${color}55 0%, transparent 70%)`;
+  b.style.animation = 'floatBubble ' + dur + 's ease-in-out forwards';
+  particleLayer.appendChild(b);
+  setTimeout(() => b.remove(), dur * 1000);
+}
+setInterval(spawnBubble, 2600);
+for (let i = 0; i < 4; i++) {
+  setTimeout(spawnBubble, i * 1200);
+}
     // ============ ACCESSIBILITY WIDGET ============
     const fab = document.getElementById('a11y-fab');
     const panel = document.getElementById('a11y-panel');
@@ -1420,3 +1428,4 @@ for (let i = 0; i < 10; i++) {
   </script>
 </body>
 </html>
+                              
