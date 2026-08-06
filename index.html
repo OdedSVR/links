@@ -888,27 +888,30 @@
     setTimeout(activateSite, 150);
 
     // ============ SHARE / COPY LINK BUTTON ============
-    function shareOdedLink() {
-      const url = 'https://odedsvr.github.io/links/';      
-      const label = document.getElementById('share-label');
-      const btn = document.getElementById('share-link-btn');
-      const finish = () => {
-        const original = 'שתף קישור';
-        label.textContent = 'הועתק! ✅';
-        btn.classList.add('border-green-400/50', 'text-green-300');
-        setTimeout(() => {
-          label.textContent = original;
-          btn.classList.remove('border-green-400/50', 'text-green-300');
-        }, 1800);
-      };
-      if (navigator.share) {
-        navigator.share({ title: 'Oded SVR - Official Links', url }).catch(() => {
-          navigator.clipboard?.writeText(url).then(finish).catch(() => {});
-        });
-      } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(url).then(finish).catch(() => {});
-      }
-    }
+   function shareOdedLink() {
+  const url = 'https://odedsvr.com/';
+  const label = document.getElementById('share-label');
+  const btn = document.getElementById('share-link-btn');
+  const finish = () => {
+    const original = 'שתף קישור';
+    label.textContent = 'הועתק! ✅';
+    btn.classList.add('border-green-400/50', 'text-green-300');
+    setTimeout(() => {
+      label.textContent = original;
+      btn.classList.remove('border-green-400/50', 'text-green-300');
+    }, 1800);
+  };
+
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (isMobile && navigator.share) {
+    navigator.share({ title: 'Oded SVR - Official Links', url }).catch(() => {
+      navigator.clipboard?.writeText(url).then(finish).catch(() => {});
+    });
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(finish).catch(() => {});
+  }
+}
 
     // ============ 3D TILT FOR LINK CARDS ============
     document.querySelectorAll('.link-card').forEach(card => {
