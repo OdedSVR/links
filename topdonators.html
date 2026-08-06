@@ -115,12 +115,22 @@
 @keyframes titleShine {
   to { background-position: 300% center; }
 }
-  /*  #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.3s ease-out; }
-    .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
-    @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
-    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in; }
-    #main-page-content.visible { opacity: 1; visibility: visible; }
-*/
+/* בועות זוהרות גדולות ומטושטשות */
+.glow-bubble {
+  position: fixed;
+  bottom: -80px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  filter: blur(6px);
+}
+@keyframes floatBubble {
+  0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+  12% { opacity: 0.35; }
+  55% { transform: translateY(-55vh) translateX(20px) scale(1.05); opacity: 0.25; }
+  100% { transform: translateY(-110vh) translateX(-15px) scale(0.9); opacity: 0; }
+}
     .donators-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
     .donators-table th, .donators-table td { padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
     .donators-table th { background: rgba(255, 255, 255, 0.05); font-weight: bold; color: white; }
@@ -228,8 +238,7 @@
       <path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path>
     </svg>
   </button>
- <!-- <div id="splash-screen"><img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="Logo" class="splash-logo"></div>
- -->
+
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
       <!-- Top Navigation -->
       <nav class="w-full max-w-md bg-slate-900/60 backdrop-blur-2xl border border-white/10 rounded-full p-1.5 mb-10 flex shadow-2xl relative z-20" aria-label="ניווט ראשי">
@@ -671,6 +680,7 @@
       fetchLeaderboardData();
       activateSite();
     }
+    //Particles
      const particleLayer = document.getElementById('particle-layer');
 const particleColors = ['#22d3ee', '#a855f7', '#3b82f6'];
 function spawnParticle() {
@@ -691,6 +701,26 @@ function spawnParticle() {
 setInterval(spawnParticle, 900);
 for (let i = 0; i < 10; i++) {
   setTimeout(spawnParticle, i * 300);
+}
+    // בועות זוהרות גדולות
+function spawnBubble() {
+  const b = document.createElement('div');
+  const size = 40 + Math.random() * 90;
+  const left = Math.random() * 100;
+  const dur = 14 + Math.random() * 10;
+  const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+  b.className = 'glow-bubble';
+  b.style.left = left + 'vw';
+  b.style.width = size + 'px';
+  b.style.height = size + 'px';
+  b.style.background = `radial-gradient(circle, ${color}55 0%, transparent 70%)`;
+  b.style.animation = 'floatBubble ' + dur + 's ease-in-out forwards';
+  particleLayer.appendChild(b);
+  setTimeout(() => b.remove(), dur * 1000);
+}
+setInterval(spawnBubble, 2600);
+for (let i = 0; i < 4; i++) {
+  setTimeout(spawnBubble, i * 1200);
 }
 
     // ============ ACCESSIBILITY WIDGET ============
