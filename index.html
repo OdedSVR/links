@@ -4,7 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OdedSVR | Official Links</title>
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
+  <link rel="icon" id="favicon" type="image/png" href="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
+
+  <!-- Open Graph / שיתוף בוואטסאפ, דיסקורד, טוויטר וכו' -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Oded SVR - Official Links">
+  <meta property="og:description" content="קישורים רשמיים ל-Kick, YouTube, Instagram, Discord, Reddit ועוד">
+  <meta property="og:image" content="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
+  <meta property="og:url" content="https://odedsvr.com/">
+  <meta property="og:site_name" content="OdedSVR">
+  <meta property="og:locale" content="he_IL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Oded SVR - Official Links">
+  <meta name="twitter:description" content="קישורים רשמיים ל-Kick, YouTube, Instagram, Discord, Reddit ועוד">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
@@ -926,6 +941,35 @@
       });
     });
 
+    // ============ DYNAMIC FAVICON (נקודה אדומה כשבשידור) ============
+    let faviconLiveState = null; // מונע ציור מיותר אם המצב לא השתנה
+    function setFaviconLive(isLive) {
+      if (faviconLiveState === isLive) return;
+      faviconLiveState = isLive;
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 64; canvas.height = 64;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, 64, 64);
+        if (isLive) {
+          ctx.beginPath();
+          ctx.arc(50, 14, 11, 0, Math.PI * 2);
+          ctx.fillStyle = '#0f172a';
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(50, 14, 8, 0, Math.PI * 2);
+          ctx.fillStyle = '#ef4444';
+          ctx.fill();
+        }
+        const favicon = document.getElementById('favicon');
+        if (favicon) favicon.href = canvas.toDataURL('image/png');
+      };
+      img.onerror = () => { faviconLiveState = null; };
+      img.src = 'https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true';
+    }
+
     async function checkLiveStatus() {
       try {
         const res = await fetch('https://kick.com/api/v2/channels/odedsvr');
@@ -938,6 +982,7 @@
         if (data?.livestream) {
           dot.classList.remove('hidden'); badge.classList.remove('hidden'); badge.classList.add('flex');
           offlineBadge.classList.add('hidden'); offlineBadge.classList.remove('flex');
+          setFaviconLive(true);
           if (typeof data.livestream.viewer_count === 'number') {
             viewerNum.textContent = data.livestream.viewer_count.toLocaleString('he-IL');
             viewerBadge.classList.remove('hidden'); viewerBadge.classList.add('flex');
@@ -948,6 +993,7 @@
           dot.classList.add('hidden'); badge.classList.remove('flex'); badge.classList.add('hidden');
           offlineBadge.classList.remove('hidden'); offlineBadge.classList.add('flex');
           viewerBadge.classList.add('hidden'); viewerBadge.classList.remove('flex');
+          setFaviconLive(false);
         }
       } catch (e) {
         console.warn('Live status check failed:', e);
