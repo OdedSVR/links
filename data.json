@@ -79,6 +79,11 @@
       "quantity": 35
     },
     {
+      "user_id": 76944712,
+      "username": "mizrachi2",
+      "quantity": 15
+    },
+    {
       "user_id": 101613912,
       "username": "SHAULMV3",
       "quantity": 11
@@ -97,11 +102,6 @@
       "user_id": 35368206,
       "username": "Lofi_CBD",
       "quantity": 6
-    },
-    {
-      "user_id": 2757848,
-      "username": "thebigSheshMan",
-      "quantity": 5
     }
   ],
   "gifts_week_enabled": true,
@@ -142,6 +142,11 @@
       "quantity": 22
     },
     {
+      "user_id": 76944712,
+      "username": "mizrachi2",
+      "quantity": 16
+    },
+    {
       "user_id": 101613912,
       "username": "SHAULMV3",
       "quantity": 11
@@ -149,11 +154,6 @@
     {
       "user_id": 80710252,
       "username": "sheriff_drakes",
-      "quantity": 10
-    },
-    {
-      "user_id": 2757848,
-      "username": "thebigSheshMan",
       "quantity": 10
     }
   ],
