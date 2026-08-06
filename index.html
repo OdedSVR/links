@@ -148,6 +148,23 @@
   100% { transform: translateY(-100vh) translateX(-10px); opacity: 0; }
 }
 
+/* בועות זוהרות גדולות ומטושטשות */
+.glow-bubble {
+  position: fixed;
+  bottom: -80px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  filter: blur(6px);
+}
+@keyframes floatBubble {
+  0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+  12% { opacity: 0.35; }
+  55% { transform: translateY(-55vh) translateX(20px) scale(1.05); opacity: 0.25; }
+  100% { transform: translateY(-110vh) translateX(-15px) scale(0.9); opacity: 0; }
+}
+
     /* כרטיסיות קישור מודרניות */
     .link-card {
       background: rgba(15, 23, 42, 0.65);
@@ -155,12 +172,14 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 1rem;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.15s ease-out, background 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       z-index: 10;
       opacity: 0;
       animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       overflow: hidden;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
 
     .link-card::before {
@@ -177,11 +196,14 @@
     }
 
     .link-card:hover {
-      transform: translateY(-4px) scale(1.01);
       background: rgba(26, 38, 66, 0.85);
       border-color: rgba(var(--glow-rgb, 59, 130, 246), 0.5);
       box-shadow: 0 10px 30px -10px rgba(var(--glow-rgb, 59, 130, 246), 0.4),
                   0 0 20px 0px rgba(var(--glow-rgb, 59, 130, 246), 0.2);
+    }
+    /* Fallback tilt for touch devices without mousemove */
+    @media (hover: none) {
+      .link-card:active { transform: scale(0.98); }
     }
 
     .card-glow-bg {
@@ -236,7 +258,7 @@
       justify-content: center; 
       align-items: center; 
       z-index: 99999; 
-      transition: opacity 0.4s ease-out; 
+      transition: opacity 0.22s ease-out; 
     }
     .splash-logo { 
       max-width: 120px; 
@@ -248,9 +270,30 @@
       0%, 100% { opacity: 0.5; transform: scale(0.95); } 
       50% { opacity: 1; transform: scale(1.05); } 
     }
+    #splash-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    #splash-loader-track {
+      width: 140px; height: 4px; border-radius: 4px;
+      background: rgba(255,255,255,0.08); overflow: hidden;
+    }
+    #splash-loader-fill {
+      height: 100%; width: 0%; border-radius: 4px;
+      background: linear-gradient(90deg, #22d3ee, #a855f7);
+      transition: width 0.12s ease-out;
+    }
 
     #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.5s ease-in; }
     #main-page-content.visible { opacity: 1; visibility: visible; }
+
+    /* פס גלילה מותאם אישית */
+    html { scrollbar-color: #22d3ee rgba(255,255,255,0.06); scrollbar-width: thin; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #22d3ee, #a855f7);
+      border-radius: 10px;
+      border: 2px solid #0f172a;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #67e8f9, #c084fc); }
 
     /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
     #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
@@ -264,6 +307,10 @@
       overflow-y: auto; box-shadow: 5px 0 30px rgba(0,0,0,0.5); display: flex; flex-direction: column;
     }
     #a11y-panel.open { left: 0; }
+    #a11y-panel { scrollbar-color: #e02020 #f1f1f1; }
+    #a11y-panel::-webkit-scrollbar-track { background: #f1f1f1; }
+    #a11y-panel::-webkit-scrollbar-thumb { background: #e02020; border: 2px solid #fff; }
+    #a11y-panel::-webkit-scrollbar-thumb:hover { background: #c01010; }
     #a11y-panel-header {
       background: #e02020; color: white; padding: 16px 20px; display: flex; align-items: center;
       justify-content: space-between; position: sticky; top: 0; z-index: 2; flex-shrink: 0;
@@ -368,7 +415,10 @@
   </button>
   <!-- Splash Screen -->
   <div id="splash-screen">
-    <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="לוגו טעינה עודד סבר" class="splash-logo">
+    <div id="splash-inner">
+      <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="לוגו טעינה עודד סבר" class="splash-logo">
+      <div id="splash-loader-track"><div id="splash-loader-fill"></div></div>
+    </div>
   </div>
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
       <!-- Top Navigation -->
@@ -399,12 +449,20 @@
             <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse inline-block"></span>
             LIVE NOW
           </span>
+          <span id="viewer-count-badge" class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/70 text-[11px] font-black tracking-widest px-3 py-1 rounded-full backdrop-blur-md">
+            👁️ <span id="viewer-count-num">0</span>
+          </span>
           <span id="offline-badge" class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/50 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md">
             <span class="w-2 h-2 bg-white/30 rounded-full inline-block"></span>
             OFFLINE
           </span>
           <span class="text-[11px] text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full">Official Links</span>
         </div>
+
+        <button id="share-link-btn" onclick="shareOdedLink()" class="mt-4 inline-flex items-center gap-2 bg-white/5 hover:bg-cyan-500/10 border border-white/10 hover:border-cyan-400/40 text-white/70 hover:text-cyan-300 text-xs font-bold px-4 py-2 rounded-full backdrop-blur-md transition-all duration-200">
+          <svg id="share-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg>
+          <span id="share-label">שתף קישור</span>
+        </button>
       </div>
 
       <!-- Links Grid -->
@@ -799,12 +857,26 @@
     const charRight = document.getElementById('char-right');
 
     let siteActivated = false;
+    const splashFill = document.getElementById('splash-loader-fill');
     function activateSite() {
       if (siteActivated) return;
       siteActivated = true;
-      if (splash) { splash.style.opacity = '0'; setTimeout(() => { splash.style.display = 'none'; mainContent.classList.add('visible'); if (spotlight) spotlight.style.display = 'block'; }, 300); }
+      if (splashFill) splashFill.style.width = '100%';
+      if (splash) { splash.style.opacity = '0'; setTimeout(() => { splash.style.display = 'none'; mainContent.classList.add('visible'); if (spotlight) spotlight.style.display = 'block'; }, 180); }
     }
-    
+
+    // ממלא את פס הטעינה מהר (אסימפטוטי) כדי לתת תחושת מהירות אמיתית,
+    // ומגיע ל-100% ברגע שהדף באמת נטען או שפג הזמן הקצר של ה-fallback
+    if (splashFill) {
+      let pct = 0;
+      const rampInterval = setInterval(() => {
+        if (siteActivated) { clearInterval(rampInterval); return; }
+        pct += (90 - pct) * 0.18 + 1;
+        if (pct > 92) pct = 92;
+        splashFill.style.width = pct + '%';
+      }, 16);
+    }
+
     document.addEventListener('mousemove', (e) => {
       if (spotlight) { spotlight.style.left = e.clientX + 'px'; spotlight.style.top = e.clientY + 'px'; }
       const x = (window.innerWidth - e.pageX * 2) / 100; const y = (window.innerHeight - e.pageY * 2) / 100;
@@ -813,7 +885,43 @@
     });
 
     window.addEventListener('load', activateSite);
-    setTimeout(activateSite, 300);
+    setTimeout(activateSite, 150);
+
+    // ============ SHARE / COPY LINK BUTTON ============
+    function shareOdedLink() {
+      const url = window.location.href;
+      const label = document.getElementById('share-label');
+      const btn = document.getElementById('share-link-btn');
+      const finish = () => {
+        const original = 'שתף קישור';
+        label.textContent = 'הועתק! ✅';
+        btn.classList.add('border-green-400/50', 'text-green-300');
+        setTimeout(() => {
+          label.textContent = original;
+          btn.classList.remove('border-green-400/50', 'text-green-300');
+        }, 1800);
+      };
+      if (navigator.share) {
+        navigator.share({ title: 'Oded SVR - Official Links', url }).catch(() => {
+          navigator.clipboard?.writeText(url).then(finish).catch(() => {});
+        });
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(finish).catch(() => {});
+      }
+    }
+
+    // ============ 3D TILT FOR LINK CARDS ============
+    document.querySelectorAll('.link-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `translateY(-4px) scale(1.015) rotateY(${px * 10}deg) rotateX(${-py * 10}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
 
     async function checkLiveStatus() {
       try {
@@ -822,12 +930,21 @@
         const dot = document.getElementById('live-dot');
         const badge = document.getElementById('live-badge');
         const offlineBadge = document.getElementById('offline-badge');
+        const viewerBadge = document.getElementById('viewer-count-badge');
+        const viewerNum = document.getElementById('viewer-count-num');
         if (data?.livestream) {
           dot.classList.remove('hidden'); badge.classList.remove('hidden'); badge.classList.add('flex');
           offlineBadge.classList.add('hidden'); offlineBadge.classList.remove('flex');
+          if (typeof data.livestream.viewer_count === 'number') {
+            viewerNum.textContent = data.livestream.viewer_count.toLocaleString('he-IL');
+            viewerBadge.classList.remove('hidden'); viewerBadge.classList.add('flex');
+          } else {
+            viewerBadge.classList.add('hidden'); viewerBadge.classList.remove('flex');
+          }
         } else {
           dot.classList.add('hidden'); badge.classList.remove('flex'); badge.classList.add('hidden');
           offlineBadge.classList.remove('hidden'); offlineBadge.classList.add('flex');
+          viewerBadge.classList.add('hidden'); viewerBadge.classList.remove('flex');
         }
       } catch (e) {
         console.warn('Live status check failed:', e);
@@ -853,6 +970,27 @@ function spawnParticle() {
 setInterval(spawnParticle, 900);
 for (let i = 0; i < 10; i++) {
   setTimeout(spawnParticle, i * 300);
+}
+
+// בועות זוהרות גדולות
+function spawnBubble() {
+  const b = document.createElement('div');
+  const size = 40 + Math.random() * 90;
+  const left = Math.random() * 100;
+  const dur = 14 + Math.random() * 10;
+  const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+  b.className = 'glow-bubble';
+  b.style.left = left + 'vw';
+  b.style.width = size + 'px';
+  b.style.height = size + 'px';
+  b.style.background = `radial-gradient(circle, ${color}55 0%, transparent 70%)`;
+  b.style.animation = 'floatBubble ' + dur + 's ease-in-out forwards';
+  particleLayer.appendChild(b);
+  setTimeout(() => b.remove(), dur * 1000);
+}
+setInterval(spawnBubble, 2600);
+for (let i = 0; i < 4; i++) {
+  setTimeout(spawnBubble, i * 1200);
 }
     checkLiveStatus();
     setInterval(checkLiveStatus, 60000);
