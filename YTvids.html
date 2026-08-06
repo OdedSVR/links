@@ -77,6 +77,22 @@
   70% { transform: translateY(-60vh) translateX(15px); opacity: 0.5; }
   100% { transform: translateY(-100vh) translateX(-10px); opacity: 0; }
 }
+    /* בועות זוהרות גדולות ומטושטשות */
+.glow-bubble {
+  position: fixed;
+  bottom: -80px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  filter: blur(6px);
+}
+@keyframes floatBubble {
+  0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+  12% { opacity: 0.35; }
+  55% { transform: translateY(-55vh) translateX(20px) scale(1.05); opacity: 0.25; }
+  100% { transform: translateY(-110vh) translateX(-15px) scale(0.9); opacity: 0; }
+}
 
     .video-row:hover {
       background: rgba(30, 41, 59, 0.85);
@@ -99,12 +115,7 @@
 @keyframes titleShine {
   to { background-position: 300% center; }
 }
- /*   #splash-screen { position: fixed; inset: 0; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease-out; }
-    .splash-logo { max-width: 130px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; }
-    @keyframes logoFade { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
-    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.6s ease-in; }
-    #main-page-content.visible { opacity: 1; visibility: visible; }
-*/
+    
     /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
     #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
     #a11y-fab { width: 52px; height: 52px; background: #e02020; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
@@ -194,8 +205,7 @@
       <path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path>
     </svg>
   </button>
- <!-- <div id="splash-screen"><img src="https://github.com/OdedSVR/images/blob/main/odedsvrlive%20logo.png?raw=true" alt="Logo" class="splash-logo"></div>
- -->
+
   <!-- Top Navigation -->
   <div id="main-page-content" class="flex flex-col items-center py-12 px-6" style="max-width: 700px; min-height: 1080px; margin: 0 auto; box-sizing: border-box;">
     <nav class="w-full max-w-lg bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-2 mb-8 flex z-20 mx-auto" aria-label="ניווט ראשי">
@@ -545,7 +555,8 @@
     const videoContainer = document.getElementById('video-container');
     const API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
     const CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
-    const particleLayer = document.getElementById('particle-layer');
+    //Particles
+const particleLayer = document.getElementById('particle-layer');
 const particleColors = ['#22d3ee', '#a855f7', '#3b82f6'];
 function spawnParticle() {
   const p = document.createElement('div');
@@ -566,7 +577,26 @@ setInterval(spawnParticle, 900);
 for (let i = 0; i < 10; i++) {
   setTimeout(spawnParticle, i * 300);
 }
-
+// בועות זוהרות גדולות
+function spawnBubble() {
+  const b = document.createElement('div');
+  const size = 40 + Math.random() * 90;
+  const left = Math.random() * 100;
+  const dur = 14 + Math.random() * 10;
+  const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+  b.className = 'glow-bubble';
+  b.style.left = left + 'vw';
+  b.style.width = size + 'px';
+  b.style.height = size + 'px';
+  b.style.background = `radial-gradient(circle, ${color}55 0%, transparent 70%)`;
+  b.style.animation = 'floatBubble ' + dur + 's ease-in-out forwards';
+  particleLayer.appendChild(b);
+  setTimeout(() => b.remove(), dur * 1000);
+}
+setInterval(spawnBubble, 2600);
+for (let i = 0; i < 4; i++) {
+  setTimeout(spawnBubble, i * 1200);
+}
     async function fetchVideos() {
       const uploadsPlaylistId = CHANNEL_ID.replace('UC', 'UU');
       const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${API_KEY}`;
