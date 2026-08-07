@@ -38,7 +38,7 @@
     {
       "user_id": 2757848,
       "username": "thebigSheshMan",
-      "quantity": 368
+      "quantity": 373
     },
     {
       "user_id": 83913673,
@@ -99,9 +99,9 @@
       "quantity": 10
     },
     {
-      "user_id": 6956950,
-      "username": "NaTsUuU1",
-      "quantity": 9
+      "user_id": 2757848,
+      "username": "thebigSheshMan",
+      "quantity": 10
     }
   ],
   "gifts_week_enabled": true,
@@ -147,14 +147,14 @@
       "quantity": 16
     },
     {
+      "user_id": 2757848,
+      "username": "thebigSheshMan",
+      "quantity": 15
+    },
+    {
       "user_id": 101613912,
       "username": "SHAULMV3",
       "quantity": 11
-    },
-    {
-      "user_id": 80710252,
-      "username": "sheriff_drakes",
-      "quantity": 10
     }
   ],
   "gifts_month_enabled": true
