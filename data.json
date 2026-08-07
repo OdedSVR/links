@@ -8,7 +8,7 @@
     {
       "user_id": 79152945,
       "username": "mrdavid465",
-      "quantity": 1435
+      "quantity": 1445
     },
     {
       "user_id": 81432977,
@@ -18,7 +18,7 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 933
+      "quantity": 963
     },
     {
       "user_id": 67453019,
@@ -28,7 +28,7 @@
     {
       "user_id": 32602400,
       "username": "Thekoa1a",
-      "quantity": 560
+      "quantity": 570
     },
     {
       "user_id": 56982139,
@@ -56,26 +56,26 @@
     {
       "user_id": 32602400,
       "username": "Thekoa1a",
-      "quantity": 110
+      "quantity": 120
     },
     {
       "user_id": 1093581,
       "username": "wvooq",
-      "quantity": 80
+      "quantity": 110
     },
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 60
-    },
-    {
-      "user_id": 67453019,
-      "username": "natanelf",
-      "quantity": 35
+      "quantity": 90
     },
     {
       "user_id": 79152945,
       "username": "mrdavid465",
+      "quantity": 45
+    },
+    {
+      "user_id": 67453019,
+      "username": "natanelf",
       "quantity": 35
     },
     {
@@ -94,14 +94,14 @@
       "quantity": 10
     },
     {
+      "user_id": 91811042,
+      "username": "orikonorti",
+      "quantity": 10
+    },
+    {
       "user_id": 6956950,
       "username": "NaTsUuU1",
       "quantity": 9
-    },
-    {
-      "user_id": 35368206,
-      "username": "Lofi_CBD",
-      "quantity": 6
     }
   ],
   "gifts_week_enabled": true,
@@ -109,22 +109,22 @@
     {
       "user_id": 32602400,
       "username": "Thekoa1a",
-      "quantity": 135
+      "quantity": 145
     },
     {
       "user_id": 1093581,
       "username": "wvooq",
-      "quantity": 90
+      "quantity": 120
     },
     {
       "user_id": 79152945,
       "username": "mrdavid465",
-      "quantity": 85
+      "quantity": 95
     },
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 60
+      "quantity": 90
     },
     {
       "user_id": 67453019,
