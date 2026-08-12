@@ -234,6 +234,77 @@
       opacity: 1;
     }
 
+    /* כרטיסיית Velocity RP - עיצוב מודגש */
+    .velocity-card {
+      background: linear-gradient(160deg, rgba(236, 72, 153, 0.10), rgba(15, 23, 42, 0.75) 55%);
+      border: 1px solid rgba(236, 72, 153, 0.28);
+    }
+    .velocity-card .card-glow-bg {
+      inset: -20%;
+    }
+    .velocity-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 1rem 1rem 0 0;
+      background: linear-gradient(90deg, transparent, #ec4899, #f9a8d4, #ec4899, transparent);
+      background-size: 200% 100%;
+      animation: velocitySheen 4s linear infinite;
+    }
+    @keyframes velocitySheen {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+    .velocity-card:hover {
+      border-color: rgba(236, 72, 153, 0.55);
+      box-shadow: 0 12px 34px -12px rgba(236, 72, 153, 0.45), 0 0 24px 0px rgba(236, 72, 153, 0.2);
+    }
+    .velocity-badge {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: #f9a8d4;
+      background: rgba(236, 72, 153, 0.12);
+      border: 1px solid rgba(236, 72, 153, 0.35);
+      padding: 3px 10px;
+      border-radius: 999px;
+      z-index: 10;
+    }
+    .velocity-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.28), rgba(236, 72, 153, 0.04));
+      border: 1px solid rgba(236, 72, 153, 0.35);
+      box-shadow: 0 0 22px rgba(236, 72, 153, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .velocity-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(236, 72, 153, 0.06);
+      border: 1px solid rgba(236, 72, 153, 0.18);
+      border-radius: 0.85rem;
+      padding: 0.9rem 0.75rem;
+      color: #f9a8d4;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .velocity-btn:hover {
+      background: rgba(236, 72, 153, 0.16);
+      border-color: rgba(236, 72, 153, 0.55);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px -6px rgba(236, 72, 153, 0.4);
+    }
+
     .link-card:nth-child(1){animation-delay:.05s}
     .link-card:nth-child(2){animation-delay:.10s}
     .link-card:nth-child(3){animation-delay:.15s}
@@ -483,16 +554,44 @@
       <!-- Links Grid -->
       <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto relative z-10" id="links-grid" dir="ltr">
         
-       <!-- Link Discord (Full width on md) -->
-        <div class="md:col-span-2 flex justify-center w-full">
-      <a href="https://discord.gg/w45jJD2eHU" target="_blank" style="--glow-rgb: 99, 102, 241;" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)">
+                <!-- Velocity RP Group Card (Full width on md) -->
+        <div class="md:col-span-2 w-full link-card velocity-card p-6 group" style="--glow-rgb: 236, 72, 153;" dir="rtl">
+          <div class="card-glow-bg"></div>
+          <span class="velocity-badge">RP SERVER</span>
+          <div class="relative z-10">
+            <div class="flex items-center justify-center gap-3 mb-5">
+              <div class="velocity-icon-wrap">
+                <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/velocity.webp" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
+              </div>
+              <div class="text-center">
+                <div class="text-xl md:text-2xl font-black text-pink-400 flex items-center gap-2">
+                  <span>Velocity RP</span>
+                  <span>🔥</span>
+                </div>
+                <div class="text-[11px] text-pink-300/60 font-bold tracking-widest uppercase mt-0.5">קהילת רולפליי</div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <a href="https://discord.gg/eMnwHvXFrP" target="_blank" class="velocity-btn" aria-label="שרת הדיסקורד של Velocity RP (נפתח בטאב חדש)">
+                <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/discordpink.png" alt="" class="h-10 w-10 object-contain" aria-hidden="true" >
+                <span class="font-bold text-sm md:text-base">דיסקורד</span>
+              </a>
+              <a href="https://www.youtube.com/watch?v=c1Y6vPGLqIw" target="_blank" class="velocity-btn" aria-label="סרטון על Velocity RP (נפתח בטאב חדש)">
+                <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/youtubepink.png" alt="" class="h-9 w-9 object-contain" aria-hidden="true">
+                <span class="font-bold text-sm md:text-base">סרטון</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+       <!-- Link Discord  -->
+      <a href="https://discord.gg/4T83uTNaju" target="_blank" style="--glow-rgb: 99, 102, 241;" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)">
           <div class="card-glow-bg"></div>
           <div class="text-lg md:text-xl font-black text-indigo-300 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
             <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/discor%20logo.png" alt="" class="h-12 w-12 object-contain" aria-hidden="true">
             <span>Discord</span>
           </div>
         </a>  
-        </div>
 
         <!-- Link TikTok -->
           <a href="https://www.tiktok.com/@odedsvrlive" target="_blank" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" style="--glow-rgb: 255, 255, 241;" dir="rtl" aria-label="הטיקטוק של עודד (נפתח בטארב חדש))">
@@ -531,7 +630,6 @@
         </a>
 
         <!-- Link INSTAGRAM (Full width on md) -->
-        <div class="md:col-span-2 flex justify-center w-full">
           <a href="https://www.instagram.com/odedsvr/" target="_blank" style="--glow-rgb: 236, 72, 153;" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" aria-label="פרופיל האינסטגרם של עודד (נפתח בטאב חדש)">
             <div class="card-glow-bg"></div>
             <div class="text-lg md:text-xl font-black text-pink-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
@@ -539,7 +637,6 @@
               <span>Instagram</span>
             </div>
           </a>
-        </div>
 
       </div>
     </div>
@@ -1797,4 +1894,3 @@ for (let i = 0; i < 4; i++) {
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1fa55d6df7f35c6',t:'MTc4NDgwNjA0MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1}' crossorigin="anonymous"></script>
 </body>
 </html>
-
