@@ -23,7 +23,7 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 870
+      "quantity": 900
     },
     {
       "user_id": 32602400,
@@ -54,6 +54,11 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
+      "user_id": 67453019,
+      "username": "natanelf",
+      "quantity": 30
+    },
+    {
       "user_id": 32602400,
       "username": "Thekoa1a",
       "quantity": 25
@@ -67,6 +72,11 @@
       "user_id": 89787819,
       "username": "rom26g",
       "quantity": 6
+    },
+    {
+      "user_id": 78045547,
+      "username": "elad_123",
+      "quantity": 5
     },
     {
       "user_id": 67726613,
@@ -119,7 +129,7 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 69
+      "quantity": 99
     },
     {
       "user_id": 76944712,
