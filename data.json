@@ -52,7 +52,18 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 119023182,
+      "username": "OfficialBOBO",
+      "quantity": 1
+    },
+    {
+      "user_id": 78708116,
+      "username": "eitanSchneider",
+      "quantity": 1
+    }
+  ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
