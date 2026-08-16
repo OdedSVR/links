@@ -69,6 +69,11 @@
       "quantity": 6
     },
     {
+      "user_id": 67726613,
+      "username": "Pilpeli",
+      "quantity": 2
+    },
+    {
       "user_id": 119023182,
       "username": "OfficialBOBO",
       "quantity": 1
@@ -76,6 +81,11 @@
     {
       "user_id": 78708116,
       "username": "eitanSchneider",
+      "quantity": 1
+    },
+    {
+      "user_id": 79715443,
+      "username": "idonave",
       "quantity": 1
     }
   ],
