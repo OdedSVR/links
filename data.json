@@ -69,6 +69,11 @@
       "quantity": 32
     },
     {
+      "user_id": 77248326,
+      "username": "Speedynoam",
+      "quantity": 11
+    },
+    {
       "user_id": 76944712,
       "username": "mizrachi2",
       "quantity": 10
@@ -97,11 +102,6 @@
       "user_id": 83580050,
       "username": "rotev",
       "quantity": 5
-    },
-    {
-      "user_id": 79035263,
-      "username": "Adameyx",
-      "quantity": 3
     }
   ],
   "gifts_week_enabled": true,
