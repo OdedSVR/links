@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -132,6 +133,9 @@
     @keyframes swimDolphin { 
       0%, 100% { transform: translateY(-50%) rotate(-12deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 
       50% { transform: translateY(-48%) rotate(-10deg) scale(1.03); filter: drop-shadow(0 0 35px rgba(6, 182, 212, 0.4)); } 
+    }
+    @media (max-width: 768px) {
+      #char-right, #char-left { display: none; }
     }
     #spotlight { 
       position: fixed; 
@@ -320,8 +324,8 @@
     }
     /* ========================מחסני חשמל ===============================*/
 .power-card {
-  background: linear-gradient(160deg, rgba(255, 255, 46, 0.10), rgba(15, 23, 42, 0.75) 55%);
-  border: 1px solid rgba(255, 255, 46, 0.28);
+  background: linear-gradient(160deg, rgba(245, 158, 11, 0.10), rgba(15, 23, 42, 0.75) 55%);
+  border: 1px solid rgba(245, 158, 11, 0.28);
 }
 .power-card .card-glow-bg {
   inset: -20%;
@@ -335,9 +339,9 @@
   background: conic-gradient(from var(--sheen-angle, 0deg),
     transparent 0deg,
     transparent 260deg,
-    #ffff2e 300deg,
-    #ffffa0 330deg,
-    #ffff2e 0deg,
+    #f59e0b 300deg,
+    #fcd34d 330deg,
+    #f59e0b 0deg,
     transparent 40deg);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -346,25 +350,20 @@
   pointer-events: none;
   z-index: 1;
 }
-    @property --sheen-angle {
-      syntax: '<angle>';
-      inherits: false;
-      initial-value: 0deg;
-    }
-        @keyframes PowerSheenBorder {
+    @keyframes PowerSheenBorder {
       to { --sheen-angle: 360deg; }
     }
 .power-card:hover {
-  border-color: rgba(255, 255, 46, 0.55);
-  box-shadow: 0 12px 34px -12px rgba(255, 255, 46, 0.45), 0 0 24px 0px rgba(255, 255, 46, 0.2);
+  border-color: rgba(245, 158, 11, 0.55);
+  box-shadow: 0 12px 34px -12px rgba(245, 158, 11, 0.45), 0 0 24px 0px rgba(245, 158, 11, 0.2);
 }
 .power-icon-wrap {
   width: 52px;
   height: 52px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255, 255, 46, 0.28), rgba(255, 255, 46, 0.04));
-  border: 1px solid rgba(255, 255, 46, 0.35);
-  box-shadow: 0 0 22px rgba(255, 255, 46, 0.18);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.28), rgba(245, 158, 11, 0.04));
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 0 22px rgba(245, 158, 11, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -377,17 +376,17 @@
   font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.15em;
-  color: #e8e83f;
-  background: rgba(255, 255, 46, 0.15);
-  border: 1px solid rgba(255, 255, 46, 0.4);
+  color: #fcd34d;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
   padding: 3px 10px;
   border-radius: 999px;
   z-index: 10;
 }
     /* ========================ליברו ===============================*/
 .libero-card {
-  background: linear-gradient(160deg, rgba(128, 0, 128, 0.10), rgba(15, 23, 42, 0.75) 55%);
-  border: 1px solid rgba(128, 0, 128, 0.28);
+  background: linear-gradient(160deg, rgba(168, 85, 247, 0.10), rgba(15, 23, 42, 0.75) 55%);
+  border: 1px solid rgba(168, 85, 247, 0.28);
 }
 .libero-card .card-glow-bg {
   inset: -20%;
@@ -401,9 +400,9 @@
   background: conic-gradient(from var(--sheen-angle, 0deg),
     transparent 0deg,
     transparent 260deg,
-    #800080 300deg,
-    #c77dc7 330deg,
-    #800080 0deg,
+    #a855f7 300deg,
+    #d8b4fe 330deg,
+    #a855f7 0deg,
     transparent 40deg);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -412,25 +411,20 @@
   pointer-events: none;
   z-index: 1;
 }
-    @property --sheen-angle {
-      syntax: '<angle>';
-      inherits: false;
-      initial-value: 0deg;
-    }
-        @keyframes LiberoSheenBorder {
+    @keyframes LiberoSheenBorder {
       to { --sheen-angle: 360deg; }
     }
 .libero-card:hover {
-  border-color: rgba(128, 0, 128, 0.55);
-  box-shadow: 0 12px 34px -12px rgba(128, 0, 128, 0.45), 0 0 24px 0px rgba(128, 0, 128, 0.2);
+  border-color: rgba(168, 85, 247, 0.55);
+  box-shadow: 0 12px 34px -12px rgba(168, 85, 247, 0.45), 0 0 24px 0px rgba(168, 85, 247, 0.2);
 }
 .libero-icon-wrap {
   width: 52px;
   height: 52px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(128, 0, 128, 0.28), rgba(128, 0, 128, 0.04));
-  border: 1px solid rgba(128, 0, 128, 0.35);
-  box-shadow: 0 0 22px rgba(128, 0, 128, 0.18);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.28), rgba(168, 85, 247, 0.04));
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 0 22px rgba(168, 85, 247, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -443,20 +437,22 @@
   font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.15em;
-  color: #e9b3e9;
-  background: rgba(128, 0, 128, 0.12);
-  border: 1px solid rgba(128, 0, 128, 0.35);
+  color: #d8b4fe;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.35);
   padding: 3px 10px;
   border-radius: 999px;
   z-index: 10;
 }
-    .link-card:nth-child(1){animation-delay:.05s}
-    .link-card:nth-child(2){animation-delay:.10s}
-    .link-card:nth-child(3){animation-delay:.15s}
-    .link-card:nth-child(4){animation-delay:.20s}
-    .link-card:nth-child(5){animation-delay:.25s}
-    .link-card:nth-child(6){animation-delay:.30s}
-    .link-card:nth-child(7){animation-delay:.35s}
+    .link-card:nth-child(2){animation-delay:.05s}
+    .link-card:nth-child(3){animation-delay:.10s}
+    .link-card:nth-child(4){animation-delay:.15s}
+    .link-card:nth-child(6){animation-delay:.20s}
+    .link-card:nth-child(7){animation-delay:.25s}
+    .link-card:nth-child(8){animation-delay:.30s}
+    .link-card:nth-child(9){animation-delay:.35s}
+    .link-card:nth-child(10){animation-delay:.40s}
+    .link-card:nth-child(11){animation-delay:.45s}
 
     @keyframes cardIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -699,7 +695,12 @@
       <!-- ===============================================================================Links Grid================================================= -->
       <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto relative z-10" id="links-grid" dir="ltr">
         
-                <!-- Velocity RP Group Card (Full width on md) -->
+                <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-2" dir="rtl">
+          <span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">שיתופי פעולה</span>
+          <span class="flex-1 h-px bg-white/10"></span>
+        </div>
+
+        <!-- Velocity RP Group Card (Full width on md) -->
         <div class="md:col-span-2 w-full link-card velocity-card p-6 group" style="--glow-rgb: 236, 72, 153;" dir="rtl">
           <div class="card-glow-bg"></div>
           <span class="velocity-badge">RP SERVER</span>
@@ -729,26 +730,26 @@
           </div>
         </div>
 <!-- מחסני חשמל Card (Full width on md) -->
-<div class="md:col-span-2 w-full link-card power-card p-6 group" style="--glow-rgb: 255, 255, 46;" dir="rtl">
+<div class="md:col-span-2 w-full link-card power-card p-6 group" style="--glow-rgb: 245, 158, 11;" dir="rtl">
   <a href="https://www.payngo.co.il/" target="_blank" class="absolute inset-0 z-20" aria-label="מחסני חשמל (נפתח בטאב חדש)"></a>
   <div class="card-glow-bg"></div>
-  <span class="power-badge">בתוקף עד 20.08</span>
+  <span class="power-badge">עד ה20.08!</span>
   <div class="relative z-10">
     <div class="flex items-center justify-center gap-3">
       <div class="power-icon-wrap text-2xl">⚡</div>
       <div class="text-center">
-        <div class="text-xl md:text-2xl font-black text-yellow-400 flex items-center gap-2">
+        <div class="text-xl md:text-2xl font-black text-amber-400 flex items-center gap-2">
           <span>מחסני חשמל</span>
           <span>⚡</span>
         </div>
-        <div class="text-[11px] text-yellow-300/60 font-bold tracking-widest uppercase mt-0.5">בלעדי! חגיגות יומולדת למחסני חשמל</div>
+        <div class="text-[11px] text-amber-300/60 font-bold tracking-widest uppercase mt-0.5">בלעדי! חגיגות יומולדת למחסני חשמל</div>
       </div>
     </div>
   </div>
 </a>
 </div>
 <!-- ליברו Card (Full width on md) -->
-<div class="md:col-span-2 w-full link-card libero-card p-6 group" style="--glow-rgb: 128, 0, 128;" dir="rtl">
+<div class="md:col-span-2 w-full link-card libero-card p-6 group" style="--glow-rgb: 168, 85, 247;" dir="rtl">
   <a href="https://libero-il.co.il/" target="_blank" class="absolute inset-0 z-20" aria-label="ליברו (נפתח בטאב חדש)"></a>
   <div class="card-glow-bg"></div>
   <span class="libero-badge">קוד: OSVR10</span>
@@ -756,7 +757,7 @@
     <div class="flex items-center justify-center gap-3">
       <div class="libero-icon-wrap text-2xl">💎</div>
       <div class="text-center">
-        <div class="text-xl md:text-2xl font-black text-purple-400 flex items-center gap-2">
+        <div class="text-xl md:text-2xl font-black text-purple-300 flex items-center gap-2">
           <span>ליברו</span>
           <span>💎</span>
         </div>
@@ -767,7 +768,12 @@
 </a>
 </div>
 
-       <!-- Link Discord  -->
+       <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-3" dir="rtl">
+          <span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">עקבו אחרינו</span>
+          <span class="flex-1 h-px bg-white/10"></span>
+        </div>
+
+        <!-- Link Discord  -->
       <a href="https://discord.gg/75dSkgFKkr" target="_blank" style="--glow-rgb: 99, 102, 241;" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)">
           <div class="card-glow-bg"></div>
           <div class="text-lg md:text-xl font-black text-indigo-300 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
@@ -777,10 +783,10 @@
         </a>  
 
         <!-- Link TikTok -->
-          <a href="https://www.tiktok.com/@odedsvrlive" target="_blank" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" style="--glow-rgb: 255, 255, 241;" dir="rtl" aria-label="הטיקטוק של עודד (נפתח בטארב חדש))">
+          <a href="https://www.tiktok.com/@odedsvrlive" target="_blank" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" style="--glow-rgb: 45, 212, 191;" dir="rtl" aria-label="הטיקטוק של עודד (נפתח בטאב חדש)">
           <div class="card-glow-bg"></div>
-          <div class="text-lg md:text-xl font-black text-white-300 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
-          <img src = "https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/tiktoklogo.png" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
+          <div class="text-lg md:text-xl font-black text-slate-100 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+          <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/tiktoklogo.png" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
            <span>TikTok</span>
           </div>
         </a>      
@@ -1217,7 +1223,7 @@
         const r = card.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - 0.5;
         const py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = `translateY(-4px) scale(1.015) rotateY(${px * 10}deg) rotateX(${-py * 10}deg)`;
+        card.style.transform = `translateY(-4px) scale(1.015) rotateY(${px * 6}deg) rotateX(${-py * 6}deg)`;
       });
       card.addEventListener('mouseleave', () => {
         card.style.transform = '';
@@ -1299,9 +1305,9 @@ function spawnParticle() {
   particleLayer.appendChild(p);
   setTimeout(() => p.remove(), dur * 1000);
 }
-setInterval(spawnParticle, 900);
-for (let i = 0; i < 10; i++) {
-  setTimeout(spawnParticle, i * 300);
+setInterval(spawnParticle, 1600);
+for (let i = 0; i < 6; i++) {
+  setTimeout(spawnParticle, i * 400);
 }
 
 // בועות זוהרות גדולות
@@ -1320,9 +1326,9 @@ function spawnBubble() {
   particleLayer.appendChild(b);
   setTimeout(() => b.remove(), dur * 1000);
 }
-setInterval(spawnBubble, 2600);
-for (let i = 0; i < 4; i++) {
-  setTimeout(spawnBubble, i * 1200);
+setInterval(spawnBubble, 4200);
+for (let i = 0; i < 2; i++) {
+  setTimeout(spawnBubble, i * 1500);
 }
     checkLiveStatus();
     setInterval(checkLiveStatus, 60000);
@@ -2077,8 +2083,5 @@ for (let i = 0; i < 4; i++) {
     }
   </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1fa55d6df7f35c6',t:'MTc4NDgwNjA0MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1}' crossorigin="anonymous"></script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1}' crossorigin="anonymous"></script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1}' crossorigin="anonymous"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2dd3ad5ac41f60d',t:'MTc4NzE4NTIwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
