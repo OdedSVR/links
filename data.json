@@ -52,7 +52,13 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 86314821,
+      "username": "1the_lord",
+      "quantity": 1
+    }
+  ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
