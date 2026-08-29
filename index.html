@@ -873,7 +873,22 @@
       </svg>
     </button>
   </div>
+  <!-- F12 -->
+  <script>
+  // חסימת קליק ימני
+  document.addEventListener('contextmenu', event => event.preventDefault());
 
+  // חסימת מקשים נפוצים לפתיחת DevTools
+  document.addEventListener('keydown', event => {
+    if (
+      event.key === 'F12' || 
+      (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i' || event.key === 'J' || event.key === 'j' || event.key === 'C' || event.key === 'c')) ||
+      (event.ctrlKey && (event.key === 'U' || event.key === 'u'))
+    ) {
+      event.preventDefault();
+    }
+  });
+</script>
   <!-- Panel -->
   <div id="a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" tabindex="-1">
     <div id="a11y-panel-header">
