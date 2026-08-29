@@ -137,22 +137,8 @@
     .copy-btn:hover { opacity: 1; transform: scale(1.1); }
     .copy-btn:active { transform: scale(0.9); }
     .copy-success { filter: hue-rotate(90deg) brightness(1.5) !important; }
-    <script>
-  // חסימת קליק ימני
-  document.addEventListener('contextmenu', event => event.preventDefault());
-
-  // חסימת מקשים נפוצים לפתיחת DevTools
-  document.addEventListener('keydown', event => {
-    if (
-      event.key === 'F12' || 
-      (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i' || event.key === 'J' || event.key === 'j' || event.key === 'C' || event.key === 'c')) ||
-      (event.ctrlKey && (event.key === 'U' || event.key === 'u'))
-    ) {
-      event.preventDefault();
-    }
-  });
-</script>
 /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
+    
     #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
     #a11y-fab { width: 52px; height: 52px; background: #e02020; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
     #a11y-fab:hover { background: #c01010; width: 58px; }
@@ -363,7 +349,21 @@
       }
     });
   </script>
+<script>
+  // חסימת קליק ימני
+  document.addEventListener('contextmenu', event => event.preventDefault());
 
+  // חסימת מקשים נפוצים לפתיחת DevTools
+  document.addEventListener('keydown', event => {
+    if (
+      event.key === 'F12' || 
+      (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i' || event.key === 'J' || event.key === 'j' || event.key === 'C' || event.key === 'c')) ||
+      (event.ctrlKey && (event.key === 'U' || event.key === 'u'))
+    ) {
+      event.preventDefault();
+    }
+  });
+</script>
   <!-- ==================== ACCESSIBILITY WIDGET ==================== -->
   <div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
     <button id="a11y-fab" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
