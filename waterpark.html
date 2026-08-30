@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -51,8 +50,9 @@
 
     .section-title { display: flex; align-items: center; gap: 10px; }
     .cmd-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-    .cmd-code { font-family: 'Roboto Mono', monospace; font-weight: 700; }
+    .cmd-code { font-family: 'Roboto Mono', monospace; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
     .cmd-desc { font-size: 0.85rem; color: #94a3b8; }
+    .cmd-copy-icon { width: 18px; height: 18px; flex-shrink: 0; }
 
     #scroll-down-btn {
       position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); z-index: 9999;
@@ -1071,6 +1071,61 @@
     }
 
     function toggleVoiceNav() { if (voiceNavActive) { stopVoiceNav(); } else { startVoiceNav(); } }
+
+    // ============ COPY ICON FOR COMMANDS ============
+    const COPY_ICON_URL = 'https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/copypaste.png';
+
+    function copyCommandText(text, imgEl) {
+      const finish = () => {
+        imgEl.classList.add('copy-success');
+        setTimeout(() => imgEl.classList.remove('copy-success'), 700);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(finish).catch(() => fallbackCopy(text, finish));
+      } else {
+        fallbackCopy(text, finish);
+      }
+    }
+    function fallbackCopy(text, cb) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try { document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(ta);
+      cb();
+    }
+
+    function addCopyIcons() {
+      document.querySelectorAll('.cmd-code').forEach(el => {
+        if (el.dataset.copyReady) return;
+        el.dataset.copyReady = '1';
+        const commandText = el.textContent.trim();
+        const img = document.createElement('img');
+        img.src = COPY_ICON_URL;
+        img.alt = 'העתק פקודה';
+        img.title = 'העתק: ' + commandText;
+        img.className = 'copy-btn cmd-copy-icon';
+        img.onerror = () => {
+          const fallback = document.createElement('span');
+          fallback.textContent = '📋';
+          fallback.className = 'copy-btn cmd-copy-icon';
+          fallback.style.fontSize = '15px';
+          fallback.style.lineHeight = '1';
+          fallback.title = img.title;
+          fallback.addEventListener('click', (e) => { e.stopPropagation(); copyCommandText(commandText, fallback); });
+          img.replaceWith(fallback);
+        };
+        img.addEventListener('click', (e) => {
+          e.stopPropagation();
+          copyCommandText(commandText, img);
+        });
+        el.appendChild(img);
+      });
+    }
+    addCopyIcons();
   </script>
 </body>
 </html>
