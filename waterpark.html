@@ -1078,6 +1078,7 @@
     function copyCommandText(text, imgEl) {
       const finish = () => {
         imgEl.classList.add('copy-success');
+        showCopiedToast(imgEl);
         setTimeout(() => imgEl.classList.remove('copy-success'), 700);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1085,6 +1086,39 @@
       } else {
         fallbackCopy(text, finish);
       }
+    }
+    function showCopiedToast(anchorEl) {
+      const rect = anchorEl.getBoundingClientRect();
+      const toast = document.createElement('div');
+      toast.textContent = 'הועתק בהצלחה!';
+      toast.style.cssText = `
+        position: fixed;
+        top: ${rect.top - 34}px;
+        left: ${rect.left + rect.width / 2}px;
+        transform: translateX(-50%);
+        background: #16a34a;
+        color: white;
+        font-family: 'Heebo', sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 8px;
+        white-space: nowrap;
+        z-index: 100000;
+        pointer-events: none;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+        opacity: 0;
+        transition: opacity 0.15s ease, transform 0.15s ease;
+      `;
+      document.body.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(-50%) translateY(-4px)';
+      });
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 200);
+      }, 1000);
     }
     function fallbackCopy(text, cb) {
       const ta = document.createElement('textarea');
