@@ -1131,12 +1131,16 @@
       document.body.removeChild(ta);
       cb();
     }
-
+function formatCommandForCopy(text) {
+  let t = text.trim();
+  if (t.endsWith('!')) t = t.slice(0, -1).trim(); // מסיר את ה-! מהסוף
+  return '!' + t; // ומוסיף אותו בהתחלה
+}
     function addCopyIcons() {
       document.querySelectorAll('.cmd-code').forEach(el => {
         if (el.dataset.copyReady) return;
         el.dataset.copyReady = '1';
-        const commandText = el.textContent.trim();
+        const commandText = formatCommandForCopy(el.textContent.trim());
         const img = document.createElement('img');
         img.src = COPY_ICON_URL;
         img.alt = 'העתק פקודה';
