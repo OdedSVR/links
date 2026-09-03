@@ -79,13 +79,13 @@
       "quantity": 18
     },
     {
-      "user_id": 36321413,
-      "username": "absolute_alamo",
+      "user_id": 2757848,
+      "username": "thebigSheshMan",
       "quantity": 15
     },
     {
-      "user_id": 2757848,
-      "username": "thebigSheshMan",
+      "user_id": 36321413,
+      "username": "absolute_alamo",
       "quantity": 15
     },
     {
@@ -132,6 +132,11 @@
       "quantity": 2
     },
     {
+      "user_id": 81013574,
+      "username": "IsyItamar",
+      "quantity": 1
+    },
+    {
       "user_id": 81972129,
       "username": "Kaki_Man",
       "quantity": 1
@@ -149,11 +154,6 @@
     {
       "user_id": 100051179,
       "username": "tricky_7",
-      "quantity": 1
-    },
-    {
-      "user_id": 8436488,
-      "username": "OdedSVR",
       "quantity": 1
     }
   ],
