@@ -52,7 +52,13 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 121743544,
+      "username": "Snackpo",
+      "quantity": 2
+    }
+  ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
