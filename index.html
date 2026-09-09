@@ -443,6 +443,26 @@
   border-radius: 999px;
   z-index: 10;
 }
+.libero-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(168, 85, 247, 0.06);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  border-radius: 0.85rem;
+  padding: 0.9rem 0.75rem;
+  color: #d8b4fe;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  flex-direction: column;
+}
+.libero-btn:hover {
+  background: rgba(168, 85, 247, 0.16);
+  border-color: rgba(168, 85, 247, 0.55);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px -6px rgba(168, 85, 247, 0.4);
+}
     .link-card:nth-child(2){animation-delay:.05s}
     .link-card:nth-child(3){animation-delay:.10s}
     .link-card:nth-child(4){animation-delay:.15s}
@@ -750,22 +770,37 @@
         
 <!-- ליברו Card (Full width on md) -->
 <div class="md:col-span-2 w-full link-card libero-card p-6 group" style="--glow-rgb: 168, 85, 247;" dir="rtl">
-  <a href="https://libero-il.co.il/" target="_blank" class="absolute inset-0 z-20" aria-label="ליברו (נפתח בטאב חדש)"></a>
   <div class="card-glow-bg"></div>
   <span class="libero-badge">קוד: OSVR10</span>
   <div class="relative z-10">
-    <div class="flex items-center justify-center gap-3">
+    <div class="flex items-center justify-center gap-3 mb-5">
       <div class="libero-icon-wrap text-2xl">💎</div>
       <div class="text-center">
         <div class="text-xl md:text-2xl font-black text-purple-300 flex items-center gap-2">
           <span>ליברו</span>
           <span>💎</span>
         </div>
-                <div class="text-[11px] text-purple-300/60 font-bold tracking-widest uppercase mt-0.5">קוד הנחה 10% הנחה על כל האתר OSVR10!</div>
+        <div class="text-[11px] text-purple-300/60 font-bold tracking-widest uppercase mt-0.5">קוד הנחה 10% הנחה על כל האתר OSVR10!</div>
       </div>
     </div>
+
+    <a href="https://libero-il.co.il/" target="_blank" class="libero-btn mb-3" style="flex-direction:row;" aria-label="לאתר ליברו (נפתח בטאב חדש)">
+      <span class="font-bold text-sm md:text-base">כל האתר</span>
+    </a>
+
+    <div class="grid grid-cols-2 gap-3">
+      <a href="https://libero-il.co.il/?s=fomowa&jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&post_type=product&jet_ajax_search_categories=0" target="_blank" class="libero-btn" aria-label="בשמי Fomowa - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)">
+        <span class="font-bold text-sm md:text-base">Fomowa</span>
+        <span style="font-size:11px;opacity:0.85;font-weight:700;">50% על השני 🎁</span>
+        <span style="font-size:10px;opacity:0.7;font-weight:900;letter-spacing:0.05em;">קוד: OSVR</span>
+      </a>
+      <a href="https://libero-il.co.il/?s=emper&jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&post_type=product&jet_ajax_search_categories=0" target="_blank" class="libero-btn" aria-label="בשמי Emper - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)">
+        <span class="font-bold text-sm md:text-base">Emper</span>
+        <span style="font-size:11px;opacity:0.85;font-weight:700;">50% על השני 🎁</span>
+        <span style="font-size:10px;opacity:0.7;font-weight:900;letter-spacing:0.05em;">קוד: OSVR</span>
+      </a>
+    </div>
   </div>
-</a>
 </div>
 
        <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-3" dir="rtl">
