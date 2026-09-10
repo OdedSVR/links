@@ -74,11 +74,6 @@
       "quantity": 36
     },
     {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 30
-    },
-    {
       "user_id": 84342458,
       "username": "Because_why_not",
       "quantity": 30
@@ -86,6 +81,11 @@
     {
       "user_id": 1093581,
       "username": "wvooq",
+      "quantity": 30
+    },
+    {
+      "user_id": 89935315,
+      "username": "eylon1",
       "quantity": 30
     },
     {
