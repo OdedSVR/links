@@ -18,12 +18,12 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 1025
+      "quantity": 1040
     },
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 1004
+      "quantity": 1034
     },
     {
       "user_id": 32602400,
@@ -36,6 +36,11 @@
       "quantity": 461
     },
     {
+      "user_id": 36321413,
+      "username": "absolute_alamo",
+      "quantity": 414
+    },
+    {
       "user_id": 2757848,
       "username": "thebigSheshMan",
       "quantity": 393
@@ -44,24 +49,39 @@
       "user_id": 83913673,
       "username": "Oliverremez",
       "quantity": 368
-    },
-    {
-      "user_id": 36321413,
-      "username": "absolute_alamo",
-      "quantity": 364
     }
   ],
   "gifts_enabled": true,
   "gifts_week": [
+    {
+      "user_id": 36321413,
+      "username": "absolute_alamo",
+      "quantity": 50
+    },
     {
       "user_id": 79152945,
       "username": "mrdavid465",
       "quantity": 50
     },
     {
+      "user_id": 67453019,
+      "username": "natanelf",
+      "quantity": 40
+    },
+    {
       "user_id": 116423212,
       "username": "megadodoking",
       "quantity": 36
+    },
+    {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 30
+    },
+    {
+      "user_id": 84342458,
+      "username": "Because_why_not",
+      "quantity": 30
     },
     {
       "user_id": 1093581,
@@ -74,34 +94,14 @@
       "quantity": 25
     },
     {
-      "user_id": 67453019,
-      "username": "natanelf",
-      "quantity": 25
-    },
-    {
       "user_id": 67509399,
       "username": "LRB97",
       "quantity": 20
     },
     {
-      "user_id": 84342458,
-      "username": "Because_why_not",
-      "quantity": 5
-    },
-    {
-      "user_id": 123220539,
-      "username": "devilknight1239",
-      "quantity": 5
-    },
-    {
       "user_id": 113045633,
       "username": "1St3pBr0",
-      "quantity": 5
-    },
-    {
-      "user_id": 121743544,
-      "username": "Snackpo",
-      "quantity": 2
+      "quantity": 15
     }
   ],
   "gifts_week_enabled": true,
@@ -119,16 +119,21 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 75
+      "quantity": 90
     },
     {
-      "user_id": 79152945,
-      "username": "mrdavid465",
+      "user_id": 36321413,
+      "username": "absolute_alamo",
       "quantity": 50
     },
     {
       "user_id": 102379880,
       "username": "MAOR_IL",
+      "quantity": 50
+    },
+    {
+      "user_id": 79152945,
+      "username": "mrdavid465",
       "quantity": 50
     },
     {
@@ -142,19 +147,14 @@
       "quantity": 31
     },
     {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 31
+    },
+    {
       "user_id": 1093581,
       "username": "wvooq",
       "quantity": 30
-    },
-    {
-      "user_id": 21171456,
-      "username": "REALBIGIII",
-      "quantity": 10
-    },
-    {
-      "user_id": 18398290,
-      "username": "Aviel9",
-      "quantity": 5
     }
   ],
   "gifts_month_enabled": true
