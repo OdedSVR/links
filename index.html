@@ -136,6 +136,42 @@
     @media (max-width: 768px) {
       #char-right, #char-left { display: none; }
     }
+
+    /* =============== גרסת מובייל: glow עדין במקום הדמויות =============== */
+    .mobile-char-glow {
+      display: none;
+      position: fixed;
+      width: 70vw;
+      height: 70vw;
+      max-width: 420px;
+      max-height: 420px;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 1;
+    }
+    #mobile-glow-right {
+      top: -10%;
+      right: -25%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, transparent 70%);
+      animation: mobileGlowPulse 8s ease-in-out infinite;
+    }
+    #mobile-glow-left {
+      bottom: -15%;
+      left: -25%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.20) 0%, transparent 70%);
+      animation: mobileGlowPulse 8s ease-in-out infinite 2.5s;
+    }
+    @keyframes mobileGlowPulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+    @media (max-width: 768px) {
+      .mobile-char-glow { display: block; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .mobile-char-glow { animation: none; }
+    }
     #spotlight { 
       position: fixed; 
       top: 0; 
@@ -684,7 +720,8 @@
     body.a11y-high-contrast { filter: contrast(150%) brightness(1.1); }
     body.a11y-dark-contrast { filter: invert(1) hue-rotate(180deg); }
     body.a11y-dark-contrast img, body.a11y-dark-contrast video,
-    body.a11y-dark-contrast #char-right, body.a11y-dark-contrast #char-left { filter: invert(1) hue-rotate(180deg); }
+    body.a11y-dark-contrast #char-right, body.a11y-dark-contrast #char-left,
+    body.a11y-dark-contrast .mobile-char-glow { filter: invert(1) hue-rotate(180deg); }
     body.a11y-mono { filter: grayscale(1); }
     body.a11y-highlight-links a { background: yellow !important; color: #000 !important; padding: 0 2px !important; outline: 2px solid orange !important; }
     body.a11y-readable-font * { font-family: 'Arial', sans-serif !important; letter-spacing: 0.05em !important; }
@@ -769,6 +806,8 @@
 
   <div id="char-right" aria-hidden="true"></div>
   <div id="char-left" aria-hidden="true"></div>
+  <div id="mobile-glow-right" class="mobile-char-glow" aria-hidden="true"></div>
+  <div id="mobile-glow-left" class="mobile-char-glow" aria-hidden="true"></div>
   <div id="spotlight" aria-hidden="true"></div>
   <div id="particle-layer" aria-hidden="true"></div>
   <div id="reading-guide-bar" aria-hidden="true"></div>
@@ -2631,8 +2670,8 @@ for (let i = 0; i < 2; i++) {
       home:        { title: 'Oded SVR',        subtitle: 'Official Links',            logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       info:        { title: 'Oded SVR',        subtitle: 'Specs & Commands',          logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       topdonators: { title: 'Oded SVR',         subtitle: 'Top Donators',             logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
-      YTvids:      { title: 'Oded SVR Live',     subtitle: 'Recent YouTube Videos',    logo: YT_LOGO,   link: 'https://www.youtube.com/@OdedSVRLive', linkLabel: 'מעבר לערוץ היוטיוב של עודד סבר (נפתח בטאב חדש)' },
-      waterpark:   { title: 'Oded SVR', subtitle: 'WaterPark Simulator Commands', logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
+      YTvids:      { title: 'OdedSVR Live',     subtitle: 'Recent YouTube Videos',    logo: YT_LOGO,   link: 'https://www.youtube.com/@OdedSVRLive', linkLabel: 'מעבר לערוץ היוטיוב של עודד סבר (נפתח בטאב חדש)' },
+      waterpark:   { title: 'WaterPark Simulator Commands', subtitle: 'Kick Chat Commands', logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
     };
 
     function switchPage(pageName) {
