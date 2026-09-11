@@ -22,7 +22,7 @@
   <meta name="twitter:image" content="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap');
     body {
       font-family: 'Heebo', sans-serif;
       background: radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%), radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%), radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%), #0f172a;
@@ -706,7 +706,59 @@
       font-weight: 900; text-decoration: none; transition: top 0.2s ease;
     }
     #skip-link:focus { top: 10px; }
-  </style>
+  
+    /* ===================== Shared card / profile / glow styles used by Info, Donators, WaterPark ===================== */
+    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; }
+    .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); }
+    #profile-image { border: 2px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
+    #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
+    .text-glow { text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); }
+
+    /* ===================== SPA Page Sections ===================== */
+    .page-section { display: none; width: 100%; }
+    .page-section.active { display: block; }
+    #main-page-content { width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+    /* ===================== Copy-to-clipboard icon (Info / WaterPark) ===================== */
+    .copy-btn { opacity: 0.5; transition: all 0.2s; cursor: pointer; }
+    .copy-btn:hover { opacity: 1; transform: scale(1.1); }
+    .copy-btn:active { transform: scale(0.9); }
+    .copy-success { filter: hue-rotate(90deg) brightness(1.5) !important; }
+
+    /* ===================== Donators table (TopDonators) ===================== */
+    .donators-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .donators-table th, .donators-table td { padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); text-align: right; }
+    .donators-table th { background: rgba(255, 255, 255, 0.05); font-weight: bold; color: white; }
+    .donators-table td { color: #ccc; }
+    .donators-table tr:last-child td { border-bottom: none; }
+    .donators-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+    .weekly-username { color: #f97316; font-weight: bold; }
+    .alltime-username { color: #22d3ee; font-weight: bold; }
+
+    /* ===================== Video rows (YouTube Videos) ===================== */
+    .video-row {
+      display: flex; align-items: center; gap: 0; border-radius: 0.75rem;
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0.75rem;
+      height: 100%;
+    }
+    .video-row:hover {
+      background: rgba(30, 41, 59, 0.85);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ===================== Command cheat-sheet (WaterPark) ===================== */
+    .section-title { display: flex; align-items: center; gap: 10px; }
+    .cmd-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+    .cmd-code { font-family: 'Roboto Mono', monospace; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+    .cmd-desc { font-size: 0.85rem; color: #94a3b8; }
+    .cmd-copy-icon { width: 18px; height: 18px; flex-shrink: 0; }
+</style>
 </head>
 <body>
   <a href="#links-grid" id="skip-link">דלג לתוכן</a>
@@ -736,209 +788,399 @@
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
       <!-- Top Navigation -->
 <nav class="w-full max-w-2xl bg-slate-900/60 backdrop-blur-2xl border border-white/10 rounded-full p-1.5 mb-10 flex gap-1 shadow-2xl relative z-20" aria-label="ניווט ראשי">
-  <a href="https://odedsvr.github.io/links/" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white text-center transition-all duration-200 rounded-full bg-white/10 hover:bg-white/15 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Home</a>
-  <a href="https://odedsvr.github.io/links/YTvids" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Videos</a>
-  <a href="https://odedsvr.github.io/links/info" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap"> Info</a>
-  <a href="https://odedsvr.github.io/links/topdonators" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Donators</a>
-  <a href="https://odedsvr.github.io/links/waterpark" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">WaterPark</a>
+  <a href="#home" data-page="home" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white text-center transition-all duration-200 rounded-full bg-white/10 hover:bg-white/15 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Home</a>
+  <a href="#YTvids" data-page="YTvids" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Videos</a>
+  <a href="#info" data-page="info" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Info</a>
+  <a href="#topdonators" data-page="topdonators" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Donators</a>
+  <a href="#waterpark" data-page="waterpark" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">WaterPark</a>
 </nav>
 
-      <!-- Profile Header -->
-      <div class="text-center mb-10 relative z-10">
-        <a href="https://kick.com/odedsvr" target="_blank" class="group inline-block" aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)">
-          <div class="relative inline-block">
-            <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
-            <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" id="profile-image" alt="תמונת הפרופיל של עודד סבר" class="relative w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto shadow-2xl object-cover border-2 border-white/20 transition-all duration-300 transform group-hover:scale-105">
-            <span id="live-dot" class="hidden">
-              <span class="absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]" style="box-shadow: 0 0 12px rgba(239,68,68,1);"></span>
-              <span class="live-ring absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]"></span>
-            </span>
-          </div>
-        </a>
-
-        <h1 class="hero-title text-4xl md:text-5xl font-black tracking-tight mt-4 mb-2">Oded SVR</h1>
-        
-        <div class="flex items-center justify-center gap-2">
-          <span id="live-badge" class="hidden items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md">
-            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse inline-block"></span>
+    <div class="text-center mb-10 relative z-10" id="page-header">
+<a aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)" class="group inline-block" href="https://kick.com/odedsvr" id="profile-link" target="_blank">
+<div class="relative inline-block">
+<div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
+<img alt="תמונת הפרופיל של עודד סבר" class="relative w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto shadow-2xl object-cover border-2 border-white/20 transition-all duration-300 transform group-hover:scale-105" id="profile-image" src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true"/>
+<span class="hidden" id="live-dot">
+<span class="absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]" style="box-shadow: 0 0 12px rgba(239,68,68,1);"></span>
+<span class="live-ring absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]"></span>
+</span>
+</div>
+</a>
+<h1 class="hero-title text-4xl md:text-5xl font-black tracking-tight mt-4 mb-2" id="page-title">Oded SVR</h1>
+<div class="flex items-center justify-center gap-2">
+<span class="hidden items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="live-badge">
+<span class="w-2 h-2 bg-red-500 rounded-full animate-pulse inline-block"></span>
             LIVE NOW
           </span>
-          <span id="viewer-count-badge" class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/70 text-[11px] font-black tracking-widest px-3 py-1 rounded-full backdrop-blur-md">
+<span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/70 text-[11px] font-black tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="viewer-count-badge">
             👁️ <span id="viewer-count-num">0</span>
-          </span>
-          <span id="offline-badge" class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/50 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md">
-            <span class="w-2 h-2 bg-white/30 rounded-full inline-block"></span>
+</span>
+<span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/50 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="offline-badge">
+<span class="w-2 h-2 bg-white/30 rounded-full inline-block"></span>
             OFFLINE
           </span>
-          <span class="text-[11px] text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full">Official Links</span>
-        </div>
+<span class="text-[11px] text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full" id="page-subtitle">Official Links</span>
+</div>
+<button class="mt-4 inline-flex items-center gap-2 bg-white/5 hover:bg-cyan-500/10 border border-white/10 hover:border-cyan-400/40 text-white/70 hover:text-cyan-300 text-xs font-bold px-4 py-2 rounded-full backdrop-blur-md transition-all duration-200" id="share-link-btn" onclick="shareOdedLink()">
+<svg fill="currentColor" height="14" id="share-icon" viewbox="0 0 256 256" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"></path></svg>
+<span id="share-label">שתף קישור</span>
+</button>
+</div>
 
-        <button id="share-link-btn" onclick="shareOdedLink()" class="mt-4 inline-flex items-center gap-2 bg-white/5 hover:bg-cyan-500/10 border border-white/10 hover:border-cyan-400/40 text-white/70 hover:text-cyan-300 text-xs font-bold px-4 py-2 rounded-full backdrop-blur-md transition-all duration-200">
-          <svg id="share-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg>
-          <span id="share-label">שתף קישור</span>
-        </button>
-      </div>
-
-      <!-- =================================dasdda==============================================Links Grid========================================================================================================================================================= -->
-      <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto relative z-10" id="links-grid" dir="ltr">
-        
-                <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-2" dir="rtl">
-          <span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">שיתופי פעולה</span>
-          <span class="flex-1 h-px bg-white/10"></span>
-        </div>
-
-        <!-- Velocity RP Group Card (Full width on md) -->
-        <div class="md:col-span-2 w-full link-card velocity-card p-6 group" style="--glow-rgb: 236, 72, 153;" dir="rtl">
-          <div class="card-glow-bg"></div>
-          <span class="velocity-badge">RP SERVER</span>
-          <div class="relative z-10">
-            <div class="flex items-center justify-center gap-3 mb-5">
-              <div class="velocity-icon-wrap">
-                <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/velocity.webp" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
-              </div>
-              <div class="text-center">
-                <div class="text-xl md:text-2xl font-black text-pink-400 flex items-center gap-2">
-                  <span>Velocity RP</span>
-                  <span>🔥</span>
-                </div>
-                <div class="text-[11px] text-pink-300/60 font-bold tracking-widest uppercase mt-0.5">קהילת רולפליי</div>
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-3">
-              <a href="https://discord.gg/eMnwHvXFrP" target="_blank" class="velocity-btn" aria-label="שרת הדיסקורד של Velocity RP (נפתח בטאב חדש)">
-                <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/discordpink.png" alt="" class="h-10 w-10 object-contain" aria-hidden="true" >
-                <span class="font-bold text-sm md:text-base">דיסקורד</span>
-              </a>
-              <a href="https://www.youtube.com/watch?v=c1Y6vPGLqIw" target="_blank" class="velocity-btn" aria-label="סרטון על Velocity RP (נפתח בטאב חדש)">
-                <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/youtubepink.png" alt="" class="h-9 w-9 object-contain" aria-hidden="true">
-                <span class="font-bold text-sm md:text-base">סרטון</span>
-              </a>
-            </div>
-          </div>
-        </div>
-<!-- מחסני חשמל Card (Full width on md) -->
-         
-<div class="md:col-span-2 w-full link-card power-card p-6 group" style="--glow-rgb: 245, 158, 11;" dir="rtl">
-  <a href="https://www.payngo.co.il/" target="_blank" class="absolute inset-0 z-20" aria-label="מחסני חשמל (נפתח בטאב חדש)"></a>
-  <div class="card-glow-bg"></div>
-  <div class="relative z-10">
-    <div class="flex items-center justify-center gap-3">
-      <div class="power-icon-wrap text-2xl">⚡</div>
-      <div class="text-center">
-        <div class="text-xl md:text-2xl font-black text-amber-400 flex items-center gap-2">
-          <span>מחסני חשמל</span>
-          <span>⚡</span>
-        </div>
-      </div>
-    </div>
-  </div>
+    <section id="home-section" class="page-section active">
+<div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto relative z-10" dir="ltr" id="links-grid">
+<div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-2" dir="rtl">
+<span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">שיתופי פעולה</span>
+<span class="flex-1 h-px bg-white/10"></span>
+</div>
+<!-- Velocity RP Group Card (Full width on md) -->
+<div class="md:col-span-2 w-full link-card velocity-card p-6 group" dir="rtl" style="--glow-rgb: 236, 72, 153;">
+<div class="card-glow-bg"></div>
+<span class="velocity-badge">RP SERVER</span>
+<div class="relative z-10">
+<div class="flex items-center justify-center gap-3 mb-5">
+<div class="velocity-icon-wrap">
+<img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/velocity.webp"/>
+</div>
+<div class="text-center">
+<div class="text-xl md:text-2xl font-black text-pink-400 flex items-center gap-2">
+<span>Velocity RP</span>
+<span>🔥</span>
+</div>
+<div class="text-[11px] text-pink-300/60 font-bold tracking-widest uppercase mt-0.5">קהילת רולפליי</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<a aria-label="שרת הדיסקורד של Velocity RP (נפתח בטאב חדש)" class="velocity-btn" href="https://discord.gg/eMnwHvXFrP" target="_blank">
+<img alt="" aria-hidden="true" class="h-10 w-10 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/discordpink.png"/>
+<span class="font-bold text-sm md:text-base">דיסקורד</span>
+</a>
+<a aria-label="סרטון על Velocity RP (נפתח בטאב חדש)" class="velocity-btn" href="https://www.youtube.com/watch?v=c1Y6vPGLqIw" target="_blank">
+<img alt="" aria-hidden="true" class="h-9 w-9 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/youtubepink.png"/>
+<span class="font-bold text-sm md:text-base">סרטון</span>
 </a>
 </div>
-        
-<!-- ליברו Card (Full width on md) -->
-<div class="md:col-span-2 w-full link-card libero-card p-6 group" style="--glow-rgb: 168, 85, 247;" dir="rtl">
-  <div class="card-glow-bg"></div>
-  <span class="libero-badge">קוד: OSVR10</span>
-  <div class="relative z-10">
-    <div class="flex items-center justify-center gap-3 mb-4">
-      <div class="libero-icon-wrap text-2xl">💎</div>
-      <div class="text-center">
-        <div class="text-xl md:text-2xl font-black text-purple-300 flex items-center gap-2">
-          <span>ליברו</span>
-          <span>💎</span>
-        </div>
-        <div class="text-[11px] text-purple-300/60 font-bold tracking-widest uppercase mt-0.5">10% הנחה על כל האתר עם OSVR10</div>
-      </div>
-    </div>
-
-    <a href="https://libero-il.co.il/" target="_blank" class="libero-btn main" aria-label="לאתר ליברו (נפתח בטאב חדש)">
-      <span style="font-size:18px;">🛍️</span>
-      <span class="libero-btn-name">לכל האתר</span>
-    </a>
-
-    <div class="libero-section-label">מבצעי בשמים</div>
-
-    <div class="grid grid-cols-2 gap-3">
-      <a href="https://libero-il.co.il/?s=fomowa&jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&post_type=product&jet_ajax_search_categories=0" target="_blank" class="libero-btn" aria-label="בשמי Fomowa - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)">
-        <span style="font-size:20px;">🌸</span>
-        <span class="libero-btn-name">Fomowa</span>
-        <span class="libero-discount-tag">🎁 50% על השני</span>
-        <span class="libero-code-tag">קוד: OSVR</span>
-      </a>
-      <a href="https://libero-il.co.il/?s=emper&jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&post_type=product&jet_ajax_search_categories=0" target="_blank" class="libero-btn" aria-label="בשמי Emper - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)">
-        <span style="font-size:20px;">🌺</span>
-        <span class="libero-btn-name">Emper</span>
-        <span class="libero-discount-tag">🎁 50% על השני</span>
-        <span class="libero-code-tag">קוד: OSVR</span>
-      </a>
-    </div>
-  </div>
 </div>
+</div>
+<!-- מחסני חשמל Card (Full width on md) -->
+<div class="md:col-span-2 w-full link-card power-card p-6 group" dir="rtl" style="--glow-rgb: 245, 158, 11;">
+<a aria-label="מחסני חשמל (נפתח בטאב חדש)" class="absolute inset-0 z-20" href="https://www.payngo.co.il/" target="_blank"></a>
+<div class="card-glow-bg"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-center gap-3">
+<div class="power-icon-wrap text-2xl">⚡</div>
+<div class="text-center">
+<div class="text-xl md:text-2xl font-black text-amber-400 flex items-center gap-2">
+<span>מחסני חשמל</span>
+<span>⚡</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ליברו Card (Full width on md) -->
+<div class="md:col-span-2 w-full link-card libero-card p-6 group" dir="rtl" style="--glow-rgb: 168, 85, 247;">
+<div class="card-glow-bg"></div>
+<span class="libero-badge">קוד: OSVR10</span>
+<div class="relative z-10">
+<div class="flex items-center justify-center gap-3 mb-4">
+<div class="libero-icon-wrap text-2xl">💎</div>
+<div class="text-center">
+<div class="text-xl md:text-2xl font-black text-purple-300 flex items-center gap-2">
+<span>ליברו</span>
+<span>💎</span>
+</div>
+<div class="text-[11px] text-purple-300/60 font-bold tracking-widest uppercase mt-0.5">10% הנחה על כל האתר עם OSVR10</div>
+</div>
+</div>
+<a aria-label="לאתר ליברו (נפתח בטאב חדש)" class="libero-btn main" href="https://libero-il.co.il/" target="_blank">
+<span style="font-size:18px;">🛍️</span>
+<span class="libero-btn-name">לכל האתר</span>
+</a>
+<div class="libero-section-label">מבצעי בשמים</div>
+<div class="grid grid-cols-2 gap-3">
+<a aria-label="בשמי Fomowa - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)" class="libero-btn" href="https://libero-il.co.il/?s=fomowa&amp;jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&amp;post_type=product&amp;jet_ajax_search_categories=0" target="_blank">
+<span style="font-size:20px;">🌸</span>
+<span class="libero-btn-name">Fomowa</span>
+<span class="libero-discount-tag">🎁 50% על השני</span>
+<span class="libero-code-tag">קוד: OSVR</span>
+</a>
+<a aria-label="בשמי Emper - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)" class="libero-btn" href="https://libero-il.co.il/?s=emper&amp;jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&amp;post_type=product&amp;jet_ajax_search_categories=0" target="_blank">
+<span style="font-size:20px;">🌺</span>
+<span class="libero-btn-name">Emper</span>
+<span class="libero-discount-tag">🎁 50% על השני</span>
+<span class="libero-code-tag">קוד: OSVR</span>
+</a>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-3" dir="rtl">
+<span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">עקבו אחרינו</span>
+<span class="flex-1 h-px bg-white/10"></span>
+</div>
+<!-- Link Discord  -->
+<a aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" href="https://discord.gg/75dSkgFKkr" style="--glow-rgb: 99, 102, 241;" target="_blank">
+<div class="card-glow-bg"></div>
+<div class="text-lg md:text-xl font-black text-indigo-300 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+<img alt="" aria-hidden="true" class="h-12 w-12 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/discor%20logo.png"/>
+<span>Discord</span>
+</div>
+</a>
+<!-- Link TikTok -->
+<a aria-label="הטיקטוק של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" href="https://www.tiktok.com/@odedsvrlive" style="--glow-rgb: 45, 212, 191;" target="_blank">
+<div class="card-glow-bg"></div>
+<div class="text-lg md:text-xl font-black text-slate-100 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+<img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/tiktoklogo.png"/>
+<span>TikTok</span>
+</div>
+</a>
+<!-- Link KICK -->
+<a aria-label="ערוץ הקיק הרשמי של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" href="https://kick.com/odedsvr" style="--glow-rgb: 34, 197, 94;" target="_blank">
+<div class="card-glow-bg"></div>
+<div class="text-lg md:text-xl font-black text-green-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+<img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/kick%20logo.png"/>
+<span>Kick</span>
+</div>
+</a>
+<!-- Link REDDIT -->
+<a aria-label="קהילת הרדיט של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" style="--glow-rgb: 249, 115, 22;" target="_blank">
+<div class="card-glow-bg"></div>
+<div class="text-lg md:text-xl font-black text-orange-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+<img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/Reddit%20(1).png"/>
+<span>Reddit</span>
+</div>
+</a>
+<!-- Link YOUTUBE-->
+<a aria-label="ערוץ היוטיוב של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" href="https://www.youtube.com/@OdedSVRLive" style="--glow-rgb: 239, 68, 68;" target="_blank">
+<div class="card-glow-bg"></div>
+<div class="text-lg md:text-xl font-black text-red-500 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+<img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/YTLOGO.png"/>
+<span>YouTube</span>
+</div>
+</a>
+<!-- Link INSTAGRAM (Full width on md) -->
+<a aria-label="פרופיל האינסטגרם של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" href="https://www.instagram.com/odedsvr/" style="--glow-rgb: 236, 72, 153;" target="_blank">
+<div class="card-glow-bg"></div>
+<div class="text-lg md:text-xl font-black text-pink-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+<img alt="" aria-hidden="true" class="h-6 w-6 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/instlogo.png"/>
+<span>Instagram</span>
+</div>
+</a>
+</div>
+    </section>
 
-       <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-3" dir="rtl">
-          <span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">עקבו אחרינו</span>
-          <span class="flex-1 h-px bg-white/10"></span>
-        </div>
+    <section id="info-section" class="page-section">
+<div class="w-full max-w-4xl mx-auto space-y-6 relative z-10">
+<a class="card block rounded-xl text-center hover:border-cyan-500/40" href="https://botrix.live/k/odedsvr/leaderboard" target="_blank">
+<div class="text-2xl font-black text-cyan-400 text-glow">🏆 LEADERBOARD 🏆</div>
+<p class="text-sm text-cyan-200/60 font-bold mt-1 uppercase">צפו במובילים של הערוץ</p>
+</a>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2 font-mono">💬 Chat Commands (Kick)</h2>
+<div class="space-y-4">
+<div>
+<div class="flex items-center gap-2">
+<div class="text-white font-black text-lg text-glow font-mono">watchtime!</div>
+<img class="w-5 h-5 invert copy-btn" onclick="copyCmd('!watchtime', this)" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה"/>
+</div>
+<div class="text-sm text-gray-400 font-mono">Total Watchtime On LiveStreams</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<div class="text-white font-black text-lg text-glow font-mono">followage!</div>
+<img class="w-5 h-5 invert copy-btn" onclick="copyCmd('!followage', this)" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה"/>
+</div>
+<div class="text-sm text-gray-400 font-mono">Total Follow Time On Kick</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<div class="text-white font-black text-lg text-glow font-mono">clip!</div>
+<img class="w-5 h-5 invert copy-btn" onclick="copyCmd('!clip', this)" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה"/>
+</div>
+<div class="text-sm text-gray-400 font-mono">Clip The Last 30 Seconds</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<div class="text-white font-black text-lg text-glow font-mono">discord!</div>
+<img class="w-5 h-5 invert copy-btn" onclick="copyCmd('!discord', this)" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה"/>
+</div>
+<div class="text-sm text-gray-400 font-mono">Get a Link For The Discord Server</div>
+</div>
+</div>
+</div>
+<div class="card rounded-xl text-left" dir="ltr">
+<h2 class="text-xl font-black text-purple-400 mb-4 border-b border-purple-400/20 pb-2 font-mono">My Setup 🖥️</h2>
+<ul class="text-base space-y-2 text-gray-300 font-bold text-glow font-mono">
+<li>CPU - Intel Core i7 14700KF</li>
+<li>GPU - NVIDIA GeForce RTX 5070Ti</li>
+<li>MEMORY - Corsair 32GB DDR5 Ram</li>
+<li>MB - B760 Motherboard</li>
+<li>KEYBOARD - Steelseries Apex7</li>
+<li>MOUSE - RAZER Basilisk X</li>
+<li>MIC - Elgato Wave 3</li>
+<li>HEADPHONES - HyperX Cloud Stinger 2 Wireless</li>
+</ul>
+</div>
+</div>
+</div>
+    </section>
 
-        <!-- Link Discord  -->
-      <a href="https://discord.gg/75dSkgFKkr" target="_blank" style="--glow-rgb: 99, 102, 241;" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)">
-          <div class="card-glow-bg"></div>
-          <div class="text-lg md:text-xl font-black text-indigo-300 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
-            <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/discor%20logo.png" alt="" class="h-12 w-12 object-contain" aria-hidden="true">
-            <span>Discord</span>
-          </div>
-        </a>  
+    <section id="topdonators-section" class="page-section">
+<div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 Weekly Top Gifters 🏆</h2>
+<div id="weekly-gifters-table-container">
+<p class="text-sm text-gray-300">Loading Weekly Top Gifters...</p>
+</div>
+</div>
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2">👑 All-Time Top Gifters 👑</h2>
+<div id="alltime-gifters-table-container">
+<p class="text-sm text-gray-300">Loading All-Time Top Gifters...</p>
+</div>
+</div>
+</div>
+    </section>
 
-        <!-- Link TikTok -->
-          <a href="https://www.tiktok.com/@odedsvrlive" target="_blank" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" style="--glow-rgb: 45, 212, 191;" dir="rtl" aria-label="הטיקטוק של עודד (נפתח בטאב חדש)">
-          <div class="card-glow-bg"></div>
-          <div class="text-lg md:text-xl font-black text-slate-100 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
-          <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/tiktoklogo.png" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
-           <span>TikTok</span>
-          </div>
-        </a>      
+    <section id="YTvids-section" class="page-section">
+<div aria-label="רשימת סרטונים אחרונים" class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-1 gap-6" id="video-container" style="flex-grow: 1; display: grid; grid-template-rows: repeat(5, minmax(0, 1fr)); padding-bottom: 20px;">
+<p class="text-white/30 animate-pulse col-span-full text-center">טוען סרטונים...</p>
+</div>
+    </section>
 
-        <!-- Link KICK -->
-        <a href="https://kick.com/odedsvr" target="_blank" style="--glow-rgb: 34, 197, 94;" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" aria-label="ערוץ הקיק הרשמי של עודד (נפתח בטאב חדש)">
-          <div class="card-glow-bg"></div>
-          <div class="text-lg md:text-xl font-black text-green-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
-            <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/kick%20logo.png" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
-            <span>Kick</span>
-          </div>
-        </a>
+    <section id="waterpark-section" class="page-section">
+<div class="w-full max-w-4xl mx-auto space-y-6 relative z-10">
+<!-- כניסה ובקרה -->
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2 font-mono section-title">🎫 כניסה ובקרה</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">VISIT!</span></div>
+<div class="cmd-desc">מכניס את הצופה לפארק</div>
+</div>
+<div>
+<div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">s text!</span></div>
+<div class="cmd-desc">מציג הודעה מעל הדמות של הצופה</div>
+</div>
+<div>
+<div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">where!</span></div>
+<div class="cmd-desc">מסמן את מיקום הדמות כדי שיהיה קל למצוא אותה</div>
+</div>
+<div>
+<div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">status!</span></div>
+<div class="cmd-desc">מציג מה הדמות עושה כרגע</div>
+</div>
+<div>
+<div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">leave!</span></div>
+<div class="cmd-desc">הדמות עוזבת את הפארק</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- פעילויות בפארק -->
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2 font-mono section-title">🏄 פעילויות בפארק</h2>
+<div class="space-y-3">
+<div><div class="cmd-code text-white text-glow">slide!</div><div class="cmd-desc">הולך להתגלש במגלשה</div></div>
+<div><div class="cmd-code text-white text-glow">swim!</div><div class="cmd-desc">הולך לשחות</div></div>
+<div><div class="cmd-code text-white text-glow">dive!</div><div class="cmd-desc">הולך לקפוץ למים</div></div>
+<div><div class="cmd-code text-white text-glow">relax!</div><div class="cmd-desc">הולך לנוח בכיסא בריכה</div></div>
+<div><div class="cmd-code text-white text-glow">sauna!</div><div class="cmd-desc">הולך לסאונה</div></div>
+<div><div class="cmd-code text-white text-glow">shower!</div><div class="cmd-desc">הולך להתקלח</div></div>
+<div><div class="cmd-code text-white text-glow">sleep!</div><div class="cmd-desc">הולך לישון</div></div>
+<div><div class="cmd-code text-white text-glow">random!</div><div class="cmd-desc">בוחר פעילות אקראית בפארק</div></div>
+</div>
+</div>
+<!-- אוכל וצרכים -->
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-yellow-400 mb-4 border-b border-yellow-400/20 pb-2 font-mono section-title">🍔 אוכל וצרכים</h2>
+<div class="space-y-3">
+<div><div class="cmd-code text-white text-glow">eat!</div><div class="cmd-desc">הולך לקנות ולאכול</div></div>
+<div><div class="cmd-code text-white text-glow">drink!</div><div class="cmd-desc">הולך לקנות משקה</div></div>
+<div><div class="cmd-code text-white text-glow">poop!</div><div class="cmd-desc">עושה קקי במקום</div></div>
+<div><div class="cmd-code text-white text-glow">pee!</div><div class="cmd-desc">עושה פיפי במקום</div></div>
+<div><div class="cmd-code text-white text-glow">toilet!</div><div class="cmd-desc">הולך לשירותים</div></div>
+<div><div class="cmd-code text-white text-glow">vomit!</div><div class="cmd-desc">מקיא</div></div>
+</div>
+</div>
+<!-- לבוש וחפצים -->
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-purple-400 mb-4 border-b border-purple-400/20 pb-2 font-mono section-title">🎒 לבוש וחפצים</h2>
+<div class="space-y-3">
+<div><div class="cmd-code text-white text-glow">change!</div><div class="cmd-desc">הולך להחליף בגדים</div></div>
+<div><div class="cmd-code text-white text-glow">hat!</div><div class="cmd-desc">הולך לקנות כובע</div></div>
+<div><div class="cmd-code text-white text-glow">float!</div><div class="cmd-desc">הולך לקחת מתנפח</div></div>
+<div><div class="cmd-code text-white text-glow">trash!</div><div class="cmd-desc">הולך לפח</div></div>
+<div><div class="cmd-code text-white text-glow">fall!</div><div class="cmd-desc">גורם לדמות ליפול</div></div>
+</div>
+</div>
+<!-- צבע אישי -->
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-pink-400 mb-4 border-b border-pink-400/20 pb-2 font-mono section-title">🎨 צבע אישי</h2>
+<p class="cmd-desc mb-3">הצבע האישי משמש לשם הצופה ולהודעות שמופיעות מעל הדמות</p>
+<div class="flex flex-wrap gap-2">
+<span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(239,68,68,0.15);color:#f87171;">color red!</span>
+<span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(59,130,246,0.15);color:#60a5fa;">color blue!</span>
+<span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(34,197,94,0.15);color:#4ade80;">color green!</span>
+<span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(234,179,8,0.15);color:#facc15;">color yellow!</span>
+<span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(236,72,153,0.15);color:#f472b6;">color pink!</span>
+<span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(168,85,247,0.15);color:#c084fc;">color purple!</span>
+<span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(249,115,22,0.15);color:#fb923c;">color orange!</span>
+<span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(6,182,212,0.15);color:#22d3ee;">color cyan!</span>
+</div>
+</div>
+</div>
+<!-- אינטראקציות בין צופים -->
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-blue-400 mb-4 border-b border-blue-400/20 pb-2 font-mono section-title">🤝 אינטראקציות בין צופים</h2>
+<p class="cmd-desc mb-3">במקום <span class="cmd-code text-white">username</span> יש לרשום את שם הצופה, עם או בלי <span class="cmd-code text-white">@</span></p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div><div class="cmd-code text-white text-glow">meet username!</div><div class="cmd-desc">הדמות הולכת לפגוש את הצופה</div></div>
+<div><div class="cmd-code text-white text-glow">follow username!</div><div class="cmd-desc">עוקבת אחריו במשך 30 שניות</div></div>
+<div><div class="cmd-code text-white text-glow">fight username!</div><div class="cmd-desc">שתי הדמויות דוחפות זו את זו עד שאחת מפסידה ובורחת מהפארק</div></div>
+</div>
+<div class="mt-3 flex items-center gap-2">
+<span class="cmd-desc">דוגמה:</span>
+<span class="cmd-code text-cyan-300">!fight @oded123</span>
+</div>
+</div>
+<!-- גרפיטי -->
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2 font-mono section-title">🖌️ גרפיטי</h2>
+<div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">graffiti text!</span></div>
+<div class="cmd-desc mb-2">הדמות הולכת לקיר גרפיטי אקראי ופנוי, מבצעת את האנימציה וכותבת את הטקסט שנשלח</div>
+<ul class="text-sm text-gray-400 list-disc pr-5 space-y-1">
+<li>ניתן לכתוב בעברית או באנגלית</li>
+<li>עד 24 תווים</li>
+</ul>
+<div class="mt-3 flex items-center gap-2">
+<span class="cmd-desc">דוגמה:</span>
+<span class="cmd-code text-orange-300">graffiti! הפארק של עודד</span>
+</div>
+</div>
+<!-- פקודות כאוס -->
+<div class="card rounded-xl border-red-500/20">
+<h2 class="text-xl font-black text-red-400 mb-4 border-b border-red-400/20 pb-2 font-mono section-title">🔥 פקודות כאוס</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div><div class="cmd-code text-white text-glow">sabotage!</div><div class="cmd-desc">הולך לבצע חבלה</div></div>
+<div><div class="cmd-code text-white text-glow">fire!</div><div class="cmd-desc">הולך לפח ומצית אותו</div></div>
+<div><div class="cmd-code text-white text-glow">malfunction!</div><div class="cmd-desc">הולך למתקן וגורם לתקלה</div></div>
+<div><div class="cmd-code text-white text-glow">chaos!</div><div class="cmd-desc">בוחר פעולת כאוס אקראית</div></div>
+</div>
+<div class="bg-red-950/30 border border-red-500/20 rounded-lg p-4 mt-2">
+<div class="text-sm font-black text-red-300 mb-2">⏱️ זמני המתנה לכאוס</div>
+<ul class="text-sm text-gray-300 space-y-1">
+<li>צופה רגיל: <span class="font-bold text-white">15 דקות</span></li>
+<li>חבר מועדון/סאב: <span class="font-bold text-white">7 דקות</span></li>
+<li>זמן המתנה כללי בין פעולות כאוס: <span class="font-bold text-white">30 שניות</span></li>
+</ul>
+</div>
+</div>
+</div>
+    </section>
 
-        <!-- Link REDDIT -->
-        <a href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" style="--glow-rgb: 249, 115, 22;" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" aria-label="קהילת הרדיט של עודד (נפתח בטאב חדש)">
-          <div class="card-glow-bg"></div>
-          <div class="text-lg md:text-xl font-black text-orange-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
-            <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/Reddit%20(1).png" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
-            <span>Reddit</span>
-          </div>
-        </a>
-
-        <!-- Link YOUTUBE-->
-        <a href="https://www.youtube.com/@OdedSVRLive" target="_blank" style="--glow-rgb: 239, 68, 68;" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" aria-label="ערוץ היוטיוב של עודד (נפתח בטאב חדש)">
-          <div class="card-glow-bg"></div>
-          <div class="text-lg md:text-xl font-black text-red-500 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
-            <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/YTLOGO.png" alt="" class="h-7 w-7 object-contain" aria-hidden="true">
-            <span>YouTube</span>
-          </div>
-        </a>
-
-        <!-- Link INSTAGRAM (Full width on md) -->
-          <a href="https://www.instagram.com/odedsvr/" target="_blank" style="--glow-rgb: 236, 72, 153;" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" aria-label="פרופיל האינסטגרם של עודד (נפתח בטאב חדש)">
-            <div class="card-glow-bg"></div>
-            <div class="text-lg md:text-xl font-black text-pink-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
-              <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/instlogo.png" alt="" class="h-6 w-6 object-contain" aria-hidden="true">
-              <span>Instagram</span>
-            </div>
-          </a>
-
-      </div>
-    </div>
-<!-- ===========================================================================================================================================-->
-<!-- Footer -->
-<footer class="mt-16 text-center flex flex-col items-center justify-center gap-3 relative z-10 select-none w-full">
+<footer class="mt-16 text-center flex flex-col items-center justify-center gap-3 relative z-10 select-none w-full site-footer">
   <div class="text-[10px] text-white/25 font-normal max-w-md px-6 leading-relaxed" dir="rtl">
     * הקישורים לליברו, מחסני חשמל ו-Velocity RP הם שיתופי פעולה בין עודד לחברות אלו
   </div>
@@ -951,29 +1193,22 @@
     <a href="accessibility.html" class="hover:text-cyan-400 transition-colors duration-200 underline underline-offset-4 decoration-white/10 hover:decoration-cyan-400/40">Accessibility Statement</a>
   </div>
 </footer>
+
   </div>
 <script>
-    function scrollToBottom() {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-      });
+function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
-
-    // העלמה/הופעה של הכפתור לפי גלילה
     window.addEventListener('scroll', () => {
       const btn = document.getElementById('scroll-down-btn');
-      
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-        btn.style.opacity = '0';
-        btn.style.pointerEvents = 'none';
+        btn.style.opacity = '0'; btn.style.pointerEvents = 'none';
       } else {
-        btn.style.opacity = '1';
-        btn.style.pointerEvents = 'auto';
+        btn.style.opacity = '1'; btn.style.pointerEvents = 'auto';
       }
     });
-  </script>
-  <!-- ==================== ACCESSIBILITY WIDGET ==================== -->
+</script>
+<!-- ==================== ACCESSIBILITY WIDGET ==================== -->
   <div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
     <button id="a11y-fab" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 256 256" aria-hidden="true">
@@ -981,22 +1216,6 @@
       </svg>
     </button>
   </div>
-  <!-- F12 -->
-  <script>
-  // חסימת קליק ימני
-  document.addEventListener('contextmenu', event => event.preventDefault());
-
-  // חסימת מקשים נפוצים לפתיחת DevTools
-  document.addEventListener('keydown', event => {
-    if (
-      event.key === 'F12' || 
-      (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i' || event.key === 'J' || event.key === 'j' || event.key === 'C' || event.key === 'c')) ||
-      (event.ctrlKey && (event.key === 'U' || event.key === 'u'))
-    ) {
-      event.preventDefault();
-    }
-  });
-</script>
   <!-- Panel -->
   <div id="a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" tabindex="-1">
     <div id="a11y-panel-header">
@@ -1275,6 +1494,7 @@
   </div>
 
   <script>
+
     // ============ ORIGINAL SCRIPTS ============
     const spotlight = document.getElementById('spotlight');
     const mainContent = document.getElementById('main-page-content');
@@ -2035,7 +2255,7 @@ for (let i = 0; i < 2; i++) {
     // Get all focusable links for "next/prev" navigation
     let voiceFocusIndex = -1;
     function getNavLinks() {
-      return Array.from(document.querySelectorAll('#links-grid a, nav a'));
+      return Array.from(document.querySelectorAll('.page-section.active a, nav a'));
     }
 
     function createVoiceStatusBar() {
@@ -2115,16 +2335,19 @@ for (let i = 0; i < 2; i++) {
       // Page navigation
       } else if (t.includes('סרטונים')) {
         setVoiceStatus('🎬 פותח סרטונים...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/YTvids'; }, 400);
+        setTimeout(() => { switchPage('YTvids'); }, 300);
       } else if (t.includes('מידע')) {
         setVoiceStatus('ℹ️ פותח מידע...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/info'; }, 400);
+        setTimeout(() => { switchPage('info'); }, 300);
       } else if (t.includes('תורמים')) {
         setVoiceStatus('🏆 פותח תורמים...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/topdonators'; }, 400);
+        setTimeout(() => { switchPage('topdonators'); }, 300);
+      } else if (t.includes('ווטרפארק') || t.includes('פארק מים') || t.includes('waterpark')) {
+        setVoiceStatus('🌊 פותח ווטר פארק...', '');
+        setTimeout(() => { switchPage('waterpark'); }, 300);
       } else if (t.includes('בית') || t.includes('דף הבית')) {
         setVoiceStatus('🏠 חוזר לדף הבית...', '');
-        setTimeout(() => { window.location.href = 'https://odedsvr.github.io/links/'; }, 400);
+        setTimeout(() => { switchPage('home'); }, 300);
 
       // Stop
       } else if (t.includes('עצור') || t.includes('סגור') || t.includes('stop') || t.includes('כבה')) {
@@ -2203,7 +2426,274 @@ for (let i = 0; i < 2; i++) {
         startVoiceNav();
       }
     }
-  </script>
+  
+    // ============ INFO PAGE: copy command text ============
+    function copyCmd(text, el) {
+      navigator.clipboard.writeText(text).then(() => {
+        el.classList.add('copy-success');
+        setTimeout(() => el.classList.remove('copy-success'), 1000);
+      });
+    }
+
+    // ============ TOP DONATORS: leaderboard data ============
+    async function fetchLeaderboardData() {
+      const apiUrl = './data.json?t=' + new Date().getTime();
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+
+        if (data && data.gifts_week && data.gifts_week_enabled) {
+          renderTable('weekly-gifters-table-container', data.gifts_week, 'weekly-username');
+        } else {
+          const c = document.getElementById('weekly-gifters-table-container');
+          if (c) c.innerHTML = '<p class="text-gray-400">Weekly data is currently disabled.</p>';
+        }
+
+        if (data && data.gifts && data.gifts_enabled) {
+          renderTable('alltime-gifters-table-container', data.gifts, 'alltime-username');
+        } else {
+          const c = document.getElementById('alltime-gifters-table-container');
+          if (c) c.innerHTML = '<p class="text-gray-400">All-time data is currently disabled.</p>';
+        }
+      } catch (error) {
+        console.error('Error fetching leaderboard data:', error);
+      }
+    }
+
+    function renderTable(containerId, users, usernameClass) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      if (!users || users.length === 0) {
+        container.innerHTML = '<p class="text-gray-400">No data found.</p>';
+        return;
+      }
+      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>שם משתמש</th><th>כמות</th></tr></thead><tbody>';
+      users.forEach((user, index) => {
+        tableHtml += `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="${usernameClass}">${user.username}</td>
+            <td>${user.quantity || 0}</td>
+          </tr>
+        `;
+      });
+      tableHtml += '</tbody></table>';
+      container.innerHTML = tableHtml;
+    }
+
+    let leaderboardLoaded = false;
+    let leaderboardInterval = null;
+    function loadLeaderboardsOnce() {
+      fetchLeaderboardData();
+      if (!leaderboardLoaded) {
+        leaderboardLoaded = true;
+        leaderboardInterval = setInterval(fetchLeaderboardData, 300000);
+      }
+    }
+
+    // ============ YOUTUBE VIDEOS ============
+    const videoContainer = document.getElementById('video-container');
+    const YT_API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
+    const YT_CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
+    let videosLoaded = false;
+    async function fetchVideos() {
+      if (!videoContainer) return;
+      const uploadsPlaylistId = YT_CHANNEL_ID.replace('UC', 'UU');
+      const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${YT_API_KEY}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.items && data.items.length > 0) {
+          videoContainer.innerHTML = '';
+          data.items.forEach(item => {
+            const videoId = item.snippet.resourceId.videoId;
+            const title = item.snippet.title;
+            const thumbnail = item.snippet.thumbnails.high.url;
+            const videoRow = `
+              <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-row rounded-xl" aria-label="${title} (נפתח בטאב חדש)">
+                <img src="${thumbnail}" alt="${title}" class="w-32 h-20 object-cover rounded-lg ml-6">
+                <div class="flex-1 text-xl font-bold text-white hover:text-blue-400 transition-colors text-right">${title}</div>
+              </a>`;
+            videoContainer.innerHTML += videoRow;
+          });
+        } else {
+          videoContainer.innerHTML = '<p class="text-white/50 col-span-full text-center">לא נמצאו סרטונים.</p>';
+        }
+      } catch (error) {
+        console.error('YouTube API Error:', error);
+        videoContainer.innerHTML = '<p class="text-red-400/50 col-span-full text-center">שגיאה בחיבור ליוטיוב.</p>';
+      }
+    }
+    function loadVideosOnce() {
+      if (videosLoaded) return;
+      videosLoaded = true;
+      fetchVideos();
+    }
+
+    // ============ WATERPARK: copy command icons ============
+    const COPY_ICON_URL = 'https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/copypaste.png';
+
+    function copyCommandText(text, imgEl) {
+      const finish = () => {
+        imgEl.classList.add('copy-success');
+        showCopiedToast(imgEl);
+        setTimeout(() => imgEl.classList.remove('copy-success'), 700);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(finish).catch(() => fallbackCopy(text, finish));
+      } else {
+        fallbackCopy(text, finish);
+      }
+    }
+    function showCopiedToast(anchorEl) {
+      const rect = anchorEl.getBoundingClientRect();
+      const toast = document.createElement('div');
+      toast.textContent = 'הועתק בהצלחה!';
+      toast.style.cssText = `
+        position: fixed;
+        top: ${rect.top - 34}px;
+        left: ${rect.left + rect.width / 2}px;
+        transform: translateX(-50%);
+        background: #16a34a;
+        color: white;
+        font-family: 'Heebo', sans-serif;
+        font-weight: 800;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 8px;
+        white-space: nowrap;
+        z-index: 100000;
+        pointer-events: none;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+        opacity: 0;
+        transition: opacity 0.15s ease, transform 0.15s ease;
+      `;
+      document.body.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(-50%) translateY(-4px)';
+      });
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 200);
+      }, 1000);
+    }
+    function fallbackCopy(text, cb) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try { document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(ta);
+      cb();
+    }
+    function formatCommandForCopy(text) {
+      let t = text.trim();
+      if (t.endsWith('!')) t = t.slice(0, -1).trim();
+      return '!' + t;
+    }
+    function addCopyIcons() {
+      document.querySelectorAll('.cmd-code').forEach(el => {
+        if (el.dataset.copyReady) return;
+        el.dataset.copyReady = '1';
+        const commandText = formatCommandForCopy(el.textContent.trim());
+        const img = document.createElement('img');
+        img.src = COPY_ICON_URL;
+        img.alt = 'העתק פקודה';
+        img.title = 'העתק: ' + commandText;
+        img.className = 'copy-btn cmd-copy-icon';
+        img.onerror = () => {
+          const fallback = document.createElement('span');
+          fallback.textContent = '📋';
+          fallback.className = 'copy-btn cmd-copy-icon';
+          fallback.style.fontSize = '15px';
+          fallback.style.lineHeight = '1';
+          fallback.title = img.title;
+          fallback.addEventListener('click', (e) => { e.stopPropagation(); copyCommandText(commandText, fallback); });
+          img.replaceWith(fallback);
+        };
+        img.addEventListener('click', (e) => {
+          e.stopPropagation();
+          copyCommandText(commandText, img);
+        });
+        el.appendChild(img);
+      });
+    }
+
+    // ============ SPA PAGE SWITCHING ============
+    const ODED_LOGO = 'https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true';
+    const YT_LOGO = 'https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/odedsvrlive%20logo.png';
+
+    const PAGE_META = {
+      home:        { title: 'Oded SVR',        subtitle: 'Official Links',            logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
+      info:        { title: 'Oded SVR',        subtitle: 'Specs & Commands',          logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
+      topdonators: { title: 'Oded SVR',         subtitle: 'Top Donators',             logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
+      YTvids:      { title: 'OdedSVR Live',     subtitle: 'Recent YouTube Videos',    logo: YT_LOGO,   link: 'https://www.youtube.com/@OdedSVRLive', linkLabel: 'מעבר לערוץ היוטיוב של עודד סבר (נפתח בטאב חדש)' },
+      waterpark:   { title: 'WaterPark Simulator Commands', subtitle: 'Kick Chat Commands', logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
+    };
+
+    function switchPage(pageName) {
+      if (document.body.dataset.page === pageName) return;
+      if (!PAGE_META[pageName]) return;
+
+      document.body.dataset.page = pageName;
+
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.toggle('active', section.id === pageName + '-section');
+      });
+
+      document.querySelectorAll('nav [data-page]').forEach(link => {
+        const isActive = link.dataset.page === pageName;
+        link.classList.toggle('text-white', isActive);
+        link.classList.toggle('bg-white/10', isActive);
+        link.classList.toggle('hover:bg-white/15', isActive);
+        link.classList.toggle('text-white/60', !isActive);
+        link.classList.toggle('hover:text-cyan-400', !isActive);
+        link.classList.toggle('hover:bg-white/5', !isActive);
+      });
+
+      const meta = PAGE_META[pageName];
+      const titleEl = document.getElementById('page-title');
+      const subtitleEl = document.getElementById('page-subtitle');
+      const logoEl = document.getElementById('profile-image');
+      const logoLinkEl = document.getElementById('profile-link');
+      if (titleEl) titleEl.textContent = meta.title;
+      if (subtitleEl) subtitleEl.textContent = meta.subtitle;
+      if (logoEl && meta.logo) logoEl.src = meta.logo;
+      if (logoLinkEl) {
+        if (meta.link) logoLinkEl.href = meta.link;
+        if (meta.linkLabel) logoLinkEl.setAttribute('aria-label', meta.linkLabel);
+      }
+      document.title = 'OdedSVR | ' + meta.subtitle;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Lazy-load page-specific data the first time each page is opened
+      if (pageName === 'topdonators') loadLeaderboardsOnce();
+      if (pageName === 'YTvids') loadVideosOnce();
+      if (pageName === 'waterpark') addCopyIcons();
+    }
+
+    document.querySelectorAll('nav [data-page]').forEach(button => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        switchPage(button.dataset.page);
+      });
+    });
+
+    // Initial state: show the "home" data + run copy-icon setup for waterpark commands
+    // that may already be in the DOM (in case the URL hash points there).
+    document.addEventListener('DOMContentLoaded', () => {
+      const initialPage = (location.hash || '').replace('#', '') || 'home';
+      switchPage(PAGE_META[initialPage] ? initialPage : 'home');
+    });
+
+</script>
+
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1}' crossorigin="anonymous"></script>
 <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2dd3ad5ac41f60d',t:'MTc4NzE4NTIwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
