@@ -99,6 +99,32 @@
       pointer-events: none;
       z-index: 0;
     }
+    .bg-glow-left-accent {
+  position: fixed;
+  top: 35%;
+  left: -5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-glow-right-accent {
+  position: fixed;
+  top: 35%;
+  right: -5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .bg-glow-left-accent, .bg-glow-right-accent { display: none; }
+}
 
     /* =============================דמויות צדדיות ===================*/
     #char-right, #char-left { 
@@ -822,9 +848,11 @@
 <body>
   <a href="#links-grid" id="skip-link">דלג לתוכן</a>
  <!-- Glowing Ambient Background Effects -->
-  <div class="bg-glow-1"></div>
-  <div class="bg-glow-2"></div>
-  <div class="bg-glow-3"></div>
+<div class="bg-glow-1"></div>
+<div class="bg-glow-2"></div>
+<div class="bg-glow-3"></div>
+<div class="bg-glow-left-accent"></div>
+<div class="bg-glow-right-accent"></div>
 
   <div id="char-right" aria-hidden="true"></div>
   <div id="char-left" aria-hidden="true"></div>
