@@ -121,6 +121,88 @@
   pointer-events: none;
   z-index: 0;
 }
+.tech-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.tech-bg::before, .tech-bg::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 60%;
+  background-repeat: repeat;
+  background-size: 220px 220px;
+  mix-blend-mode: screen;
+  opacity: 0.35;
+}
+.tech-bg::before {
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%2322d3ee' stroke-width='1.5' opacity='0.6'%3E%3Cpath d='M10 10 H80 V60 H140 V10 H210'/%3E%3Cpath d='M10 110 H50 V160 H120 V210'/%3E%3Cpath d='M150 90 H210'/%3E%3Ccircle cx='80' cy='60' r='4' fill='%2322d3ee'/%3E%3Ccircle cx='140' cy='10' r='4' fill='%2322d3ee'/%3E%3Ccircle cx='50' cy='160' r='4' fill='%2322d3ee'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-image: linear-gradient(to right, black 40%, transparent 90%);
+  mask-image: linear-gradient(to right, black 40%, transparent 90%);
+}
+.tech-bg::after {
+  right: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23a855f7' stroke-width='1.5' opacity='0.6'%3E%3Cpath d='M210 10 H140 V60 H80 V10 H10'/%3E%3Cpath d='M210 110 H170 V160 H100 V210'/%3E%3Cpath d='M70 90 H10'/%3E%3Ccircle cx='140' cy='60' r='4' fill='%23a855f7'/%3E%3Ccircle cx='80' cy='10' r='4' fill='%23a855f7'/%3E%3Ccircle cx='170' cy='160' r='4' fill='%23a855f7'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-image: linear-gradient(to left, black 40%, transparent 90%);
+  mask-image: linear-gradient(to left, black 40%, transparent 90%);
+}
+.flow-wave {
+  position: fixed;
+  width: 140%;
+  height: 220px;
+  left: -20%;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
+.flow-wave-1 {
+  top: 15%;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,0.5), transparent);
+  transform: rotate(-8deg);
+  animation: flowDrift1 10s ease-in-out infinite;
+}
+.flow-wave-2 {
+  top: 55%;
+  background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent);
+  transform: rotate(6deg);
+  animation: flowDrift2 12s ease-in-out infinite;
+}
+@keyframes flowDrift1 {
+  0%, 100% { transform: translateX(0) rotate(-8deg); }
+  50% { transform: translateX(30px) rotate(-6deg); }
+}
+@keyframes flowDrift2 {
+  0%, 100% { transform: translateX(0) rotate(6deg); }
+  50% { transform: translateX(-30px) rotate(8deg); }
+}
+.header-droplet {
+  position: absolute;
+  font-size: 22px;
+  pointer-events: none;
+  animation: dropletFloat 4s ease-in-out infinite;
+}
+.header-droplet.blue  { color: #22d3ee; top: -10px; left: 8%;  filter: drop-shadow(0 0 8px #22d3ee); }
+.header-droplet.blue2 { color: #38bdf8; top: 18px;  left: -6%; font-size: 15px; animation-delay: 1.2s; filter: drop-shadow(0 0 6px #38bdf8); }
+.header-droplet.pink  { color: #ec4899; top: -10px; right: 8%; animation-delay: 0.6s; filter: drop-shadow(0 0 8px #ec4899); }
+.header-droplet.pink2 { color: #f472b6; top: 18px;  right: -6%; font-size: 15px; animation-delay: 1.8s; filter: drop-shadow(0 0 6px #f472b6); }
+@keyframes dropletFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(-10px); opacity: 1; }
+}
+.static-bubble {
+  position: fixed;
+  border: 2px solid rgba(147, 197, 253, 0.4);
+  border-radius: 50%;
+  background: rgba(147, 197, 253, 0.08);
+  pointer-events: none;
+  z-index: 1;
+}
 
 @media (max-width: 768px) {
   .bg-glow-left-accent, .bg-glow-right-accent { display: none; }
@@ -853,6 +935,12 @@
 <div class="bg-glow-3"></div>
 <div class="bg-glow-left-accent"></div>
 <div class="bg-glow-right-accent"></div>
+<div class="tech-bg" aria-hidden="true"></div>
+<div class="flow-wave flow-wave-1" aria-hidden="true"></div>
+<div class="flow-wave flow-wave-2" aria-hidden="true"></div>
+<div class="static-bubble" style="left:10%; bottom:15%; width:30px; height:30px; animation: floatBubble 12s ease-in-out infinite;" aria-hidden="true"></div>
+<div class="static-bubble" style="left:16%; bottom:8%; width:18px; height:18px; animation: floatBubble 9s ease-in-out infinite 1.5s;" aria-hidden="true"></div>
+<div class="static-bubble" style="left:6%; bottom:25%; width:14px; height:14px; animation: floatBubble 15s ease-in-out infinite 3s;" aria-hidden="true"></div>
 
   <div id="char-right" aria-hidden="true"></div>
   <div id="char-left" aria-hidden="true"></div>
@@ -885,6 +973,7 @@
 </nav>
 
     <div class="text-center mb-10 relative z-10" id="page-header">
+      
 <a aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)" class="group inline-block" href="https://kick.com/odedsvr" id="profile-link" target="_blank">
 <div class="relative inline-block">
 <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
@@ -2780,5 +2869,6 @@ for (let i = 0; i < 2; i++) {
 </script>
 
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2dd3ad5ac41f60d',t:'MTc4NzE4NTIwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2dd3ad5ac41f60d',t:'MTc4NzE4NTIwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
 </html>
