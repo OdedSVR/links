@@ -307,6 +307,77 @@
       z-index: 2; 
       display: none; 
     }
+    /*================קווים זוהרים יותר=============*/
+    .glow-streak {
+  position: fixed;
+  width: 160%;
+  height: 3px;
+  left: -30%;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+.glow-streak.wide {
+  height: 140px;
+  filter: blur(35px);
+  opacity: 0.18;
+}
+
+/* --- זוג עליון --- */
+.streak-top-left {
+  top: 12%;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,0.9), transparent);
+  transform: rotate(-6deg);
+  animation: streakDriftL 9s ease-in-out infinite;
+}
+.streak-top-right {
+  top: 12%;
+  background: linear-gradient(90deg, transparent, rgba(168,85,247,0.9), transparent);
+  transform: rotate(6deg);
+  animation: streakDriftR 9s ease-in-out infinite;
+}
+
+/* --- זוג אמצעי --- */
+.streak-mid-left {
+  top: 45%;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,0.7), transparent);
+  transform: rotate(4deg);
+  animation: streakDriftR 11s ease-in-out infinite;
+}
+.streak-mid-right {
+  top: 45%;
+  background: linear-gradient(90deg, transparent, rgba(168,85,247,0.7), transparent);
+  transform: rotate(-4deg);
+  animation: streakDriftL 11s ease-in-out infinite;
+}
+
+/* --- זוג תחתון --- */
+.streak-bottom-left {
+  top: 78%;
+  background: linear-gradient(90deg, transparent, rgba(34,211,238,0.8), transparent);
+  transform: rotate(-8deg);
+  animation: streakDriftL 13s ease-in-out infinite;
+}
+.streak-bottom-right {
+  top: 78%;
+  background: linear-gradient(90deg, transparent, rgba(168,85,247,0.8), transparent);
+  transform: rotate(8deg);
+  animation: streakDriftR 13s ease-in-out infinite;
+}
+
+@keyframes streakDriftL {
+  0%, 100% { transform: translateX(0) rotate(var(--r, -6deg)); }
+  50% { transform: translateX(-25px) rotate(var(--r, -6deg)); }
+}
+@keyframes streakDriftR {
+  0%, 100% { transform: translateX(0) rotate(var(--r, 6deg)); }
+  50% { transform: translateX(25px) rotate(var(--r, 6deg)); }
+}
+
+@media (max-width: 768px) {
+  .glow-streak { display: none; }
+}
     /*====================== גיצים===================*/
 .char-circuit {
   position: fixed;
@@ -959,6 +1030,21 @@
 <div class="tech-bg" aria-hidden="true"></div>
 <div class="flow-wave flow-wave-1" aria-hidden="true"></div>
 <div class="flow-wave flow-wave-2" aria-hidden="true"></div>
+
+<div class="glow-streak wide streak-top-left" aria-hidden="true"></div>
+<div class="glow-streak wide streak-top-right" aria-hidden="true"></div>
+<div class="glow-streak streak-top-left" aria-hidden="true"></div>
+<div class="glow-streak streak-top-right" aria-hidden="true"></div>
+
+<div class="glow-streak wide streak-mid-left" aria-hidden="true"></div>
+<div class="glow-streak wide streak-mid-right" aria-hidden="true"></div>
+<div class="glow-streak streak-mid-left" aria-hidden="true"></div>
+<div class="glow-streak streak-mid-right" aria-hidden="true"></div>
+
+<div class="glow-streak wide streak-bottom-left" aria-hidden="true"></div>
+<div class="glow-streak wide streak-bottom-right" aria-hidden="true"></div>
+<div class="glow-streak streak-bottom-left" aria-hidden="true"></div>
+<div class="glow-streak streak-bottom-right" aria-hidden="true"></div>
 <div class="static-bubble" style="left:10%; bottom:15%; width:30px; height:30px; animation: floatBubble 12s ease-in-out infinite;" aria-hidden="true"></div>
 <div class="static-bubble" style="left:16%; bottom:8%; width:18px; height:18px; animation: floatBubble 9s ease-in-out infinite 1.5s;" aria-hidden="true"></div>
 <div class="static-bubble" style="left:6%; bottom:25%; width:14px; height:14px; animation: floatBubble 15s ease-in-out infinite 3s;" aria-hidden="true"></div>
