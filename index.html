@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -63,50 +65,7 @@
       40% { transform: translateX(-50%) translateY(6px); }
       60% { transform: translateX(-50%) translateY(3px); }
     }
-    /* ==================== קווי מעגל זוהרים במרכז ==================== */
-/* ==================== קווי מעגל זוהרים במרכז ==================== */
-.center-circuit-container {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 650px;
-  height: 250px;
-  pointer-events: none;
-  z-index: 0;
-  overflow: visible;
-}
-
-.center-circuit {
-  position: absolute;
-  top: 0;
-  width: 240px;
-  height: 250px;
-  opacity: 0.9;
-  mix-blend-mode: screen;
-}
-
-.center-circuit-left {
-  left: -10px;
-}
-
-.center-circuit-right {
-  right: -10px;
-}
-
-@media (max-width: 768px) {
-  .center-circuit-container {
-    display: none;
-  }
-}
-@media (max-width: 768px) {
-  .center-circuit-container {
-    display: none;
-  }
-}
      /*=================== רקע אורות דינמי ברקע =========================*/
-     
     .bg-glow-1 {
       position: fixed;
       top: -10%;
@@ -908,7 +867,6 @@
     ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #67e8f9, #c084fc); }
 
     /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
-    
     #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
     #a11y-fab { width: 52px; height: 52px; background: #22d3ee; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
     #a11y-fab:hover { background: #0891b2; width: 58px; }
@@ -1153,38 +1111,7 @@
 </nav>
 
     <div class="text-center mb-10 relative z-10" id="page-header">
-      <!-- קווי מעגל זוהרים במרכז (סביב תמונת הפרופיל והכותרת) -->
-<div class="center-circuit-container" aria-hidden="true">
-  <!-- קווים תכלת בצד שמאל -->
-  <svg class="center-circuit center-circuit-left" viewBox="0 0 300 350" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" filter="url(#glowCyan)">
-      <path d="M 280 40 H 200 V 90 H 120 V 160 H 220 V 220 H 150 V 290 H 50" />
-      <path d="M 250 120 H 170 V 180 H 70 V 250 H 20" />
-    </g>
-    <g fill="#22d3ee" filter="url(#glowCyan)">
-      <circle cx="200" cy="40" r="5" />
-      <circle cx="120" cy="90" r="5" />
-      <circle cx="220" cy="160" r="5" />
-      <circle cx="150" cy="220" r="5" />
-      <circle cx="50" cy="290" r="5" />
-    </g>
-  </svg>
-
-  <!-- קווים סגולים בצד ימין -->
-  <svg class="center-circuit center-circuit-right" viewBox="0 0 300 350" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" filter="url(#glowPurple)">
-      <path d="M 20 40 H 100 V 90 H 180 V 160 H 80 V 220 H 150 V 290 H 250" />
-      <path d="M 50 120 H 130 V 180 H 230 V 250 H 280" />
-    </g>
-    <g fill="#a855f7" filter="url(#glowPurple)">
-      <circle cx="100" cy="40" r="5" />
-      <circle cx="180" cy="90" r="5" />
-      <circle cx="80" cy="160" r="5" />
-      <circle cx="150" cy="220" r="5" />
-      <circle cx="250" cy="290" r="5" />
-    </g>
-  </svg>
-</div>
+      
 <a aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)" class="group inline-block" href="https://kick.com/odedsvr" id="profile-link" target="_blank">
 <div class="relative inline-block">
 <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
