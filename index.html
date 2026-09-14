@@ -114,25 +114,39 @@
       pointer-events: none; 
       transition: transform 0.3s cubic-bezier(0.1, 1, 0.1, 1); 
     }
-    #char-right { 
-      right: -2%; 
-      background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png'); 
-      animation: swayCharacter 12s ease-in-out infinite; 
-    }
-    #char-left { 
-      left: -2%; 
-      background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png'); 
-      animation: swimDolphin 15s ease-in-out infinite; 
-    }
+#char-right { 
+  right: -2%; 
+  background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png'); 
+  animation: swayCharacter 12s ease-in-out infinite; 
+  opacity: 0.85; /* הגברת השקיפות להדגשת התאורה */
+}
+#char-left { 
+  left: -2%; 
+  background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png'); 
+  animation: swimDolphin 15s ease-in-out infinite; 
+  opacity: 0.85; /* הגברת השקיפות להדגשת התאורה */
+}
 
-    @keyframes swayCharacter { 
-      0%, 100% { transform: translateY(-50%) rotate(12deg) scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.2)); } 
-      50% { transform: translateY(-52%) rotate(14deg) scale(1.02); filter: drop-shadow(0 0 35px rgba(59, 130, 246, 0.4)); } 
-    }
-    @keyframes swimDolphin { 
-      0%, 100% { transform: translateY(-50%) rotate(-12deg) scale(1); filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.2)); } 
-      50% { transform: translateY(-48%) rotate(-10deg) scale(1.03); filter: drop-shadow(0 0 35px rgba(6, 182, 212, 0.4)); } 
-    }
+@keyframes swayCharacter { 
+  0%, 100% { 
+    transform: translateY(-50%) rotate(12deg) scale(1); 
+    filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.8)) drop-shadow(0 0 50px rgba(192, 132, 252, 0.4)); 
+  } 
+  50% { 
+    transform: translateY(-52%) rotate(14deg) scale(1.02); 
+    filter: drop-shadow(0 0 40px rgba(168, 85, 247, 1)) drop-shadow(0 0 75px rgba(192, 132, 252, 0.6)); 
+  } 
+}
+@keyframes swimDolphin { 
+  0%, 100% { 
+    transform: translateY(-50%) rotate(-12deg) scale(1); 
+    filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.8)) drop-shadow(0 0 50px rgba(34, 211, 238, 0.4)); 
+  } 
+  50% { 
+    transform: translateY(-48%) rotate(-10deg) scale(1.03); 
+    filter: drop-shadow(0 0 40px rgba(6, 182, 212, 1)) drop-shadow(0 0 75px rgba(34, 211, 238, 0.6)); 
+  } 
+}
     @media (max-width: 768px) {
       #char-right, #char-left { display: none; }
     }
