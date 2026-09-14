@@ -307,6 +307,27 @@
       z-index: 2; 
       display: none; 
     }
+    /*====================== גיצים===================*/
+.char-circuit {
+  position: fixed;
+  top: 50%;
+  width: 1000px;   /* היה 700px */
+  height: 900px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;     /* היה 0.55 — קצת יותר בולט */
+  mix-blend-mode: screen;
+}
+.char-circuit-left {
+  left: -25%;   /* היה -8% */
+}
+.char-circuit-right {
+  right: -25%;  /* היה -8% */
+}
+@media (max-width: 768px) {
+  .char-circuit { display: none; }
+}
     /* =====================נצנוצים ברקע =========================*/
     .ambient-particle {
   position: fixed;
@@ -942,8 +963,52 @@
 <div class="static-bubble" style="left:16%; bottom:8%; width:18px; height:18px; animation: floatBubble 9s ease-in-out infinite 1.5s;" aria-hidden="true"></div>
 <div class="static-bubble" style="left:6%; bottom:25%; width:14px; height:14px; animation: floatBubble 15s ease-in-out infinite 3s;" aria-hidden="true"></div>
 
+  <svg class="char-circuit char-circuit-right" viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <filter id="glowPurple" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" filter="url(#glowPurple)">
+      <path d="M650 100 H480 V220 H300 V150 H100"/>
+      <path d="M620 300 H440 V420 H550 V560"/>
+      <path d="M680 500 H520 V650 H380"/>
+      <path d="M300 500 H150 V700"/>
+      <path d="M600 720 H400 V800"/>
+    </g>
+    <g fill="#a855f7" filter="url(#glowPurple)">
+      <circle cx="480" cy="100" r="6"/><circle cx="300" cy="220" r="6"/>
+      <circle cx="440" cy="300" r="6"/><circle cx="550" cy="420" r="6"/>
+      <circle cx="520" cy="500" r="6"/><circle cx="380" cy="650" r="6"/>
+      <circle cx="150" cy="500" r="6"/><circle cx="400" cy="720" r="6"/>
+    </g>
+  </svg>
   <div id="char-right" aria-hidden="true"></div>
+
+  <svg class="char-circuit char-circuit-left" viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" filter="url(#glowCyan)">
+      <path d="M50 100 H220 V220 H400 V150 H600"/>
+      <path d="M80 300 H260 V420 H150 V560"/>
+      <path d="M20 500 H180 V650 H320"/>
+      <path d="M400 500 H550 V700"/>
+      <path d="M100 720 H300 V800"/>
+    </g>
+    <g fill="#22d3ee" filter="url(#glowCyan)">
+      <circle cx="220" cy="100" r="6"/><circle cx="400" cy="220" r="6"/>
+      <circle cx="260" cy="300" r="6"/><circle cx="150" cy="420" r="6"/>
+      <circle cx="180" cy="500" r="6"/><circle cx="320" cy="650" r="6"/>
+      <circle cx="550" cy="500" r="6"/><circle cx="300" cy="720" r="6"/>
+    </g>
+  </svg>
   <div id="char-left" aria-hidden="true"></div>
+
   <div id="mobile-glow-right" class="mobile-char-glow" aria-hidden="true"></div>
   <div id="mobile-glow-left" class="mobile-char-glow" aria-hidden="true"></div>
   <div id="spotlight" aria-hidden="true"></div>
