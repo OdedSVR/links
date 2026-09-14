@@ -59,6 +59,11 @@
       "quantity": 40
     },
     {
+      "user_id": 102379880,
+      "username": "MAOR_IL",
+      "quantity": 26
+    },
+    {
       "user_id": 78243393,
       "username": "Abak1ck",
       "quantity": 16
@@ -67,6 +72,11 @@
       "user_id": 89935315,
       "username": "eylon1",
       "quantity": 16
+    },
+    {
+      "user_id": 123516759,
+      "username": "Itamar15rrr",
+      "quantity": 10
     },
     {
       "user_id": 99952204,
@@ -79,28 +89,18 @@
       "quantity": 5
     },
     {
-      "user_id": 83464747,
-      "username": "ShoolyBrooly",
-      "quantity": 1
+      "user_id": 81163533,
+      "username": "osedkig",
+      "quantity": 5
     },
     {
-      "user_id": 91424658,
-      "username": "Edad123",
-      "quantity": 1
+      "user_id": 98862458,
+      "username": "SAGI11122",
+      "quantity": 2
     },
     {
-      "user_id": 107509508,
-      "username": "DanielBuda26",
-      "quantity": 1
-    },
-    {
-      "user_id": 111814881,
-      "username": "Doxy_12",
-      "quantity": 1
-    },
-    {
-      "user_id": 123857325,
-      "username": "ariebaruch09890",
+      "user_id": 98681446,
+      "username": "Amigo_41112",
       "quantity": 1
     }
   ],
@@ -134,7 +134,7 @@
     {
       "user_id": 102379880,
       "username": "MAOR_IL",
-      "quantity": 50
+      "quantity": 76
     },
     {
       "user_id": 36321413,
