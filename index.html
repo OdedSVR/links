@@ -64,14 +64,15 @@
       60% { transform: translateX(-50%) translateY(3px); }
     }
     /* ==================== קווי מעגל זוהרים במרכז ==================== */
+/* ==================== קווי מעגל זוהרים במרכז ==================== */
 .center-circuit-container {
   position: absolute;
-  top: 70px;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 800px;
-  height: 380px;
+  max-width: 650px;
+  height: 250px;
   pointer-events: none;
   z-index: 0;
   overflow: visible;
@@ -80,20 +81,25 @@
 .center-circuit {
   position: absolute;
   top: 0;
-  width: 320px;
-  height: 350px;
-  opacity: 0.75;
+  width: 240px;
+  height: 250px;
+  opacity: 0.9;
   mix-blend-mode: screen;
 }
 
 .center-circuit-left {
-  left: 0;
+  left: -10px;
 }
 
 .center-circuit-right {
-  right: 0;
+  right: -10px;
 }
 
+@media (max-width: 768px) {
+  .center-circuit-container {
+    display: none;
+  }
+}
 @media (max-width: 768px) {
   .center-circuit-container {
     display: none;
