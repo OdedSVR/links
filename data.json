@@ -8,7 +8,7 @@
     {
       "user_id": 79152945,
       "username": "mrdavid465",
-      "quantity": 1600
+      "quantity": 1610
     },
     {
       "user_id": 81432977,
@@ -56,7 +56,7 @@
     {
       "user_id": 79152945,
       "username": "mrdavid465",
-      "quantity": 40
+      "quantity": 50
     },
     {
       "user_id": 102379880,
@@ -117,6 +117,11 @@
       "quantity": 105
     },
     {
+      "user_id": 79152945,
+      "username": "mrdavid465",
+      "quantity": 100
+    },
+    {
       "user_id": 67453019,
       "username": "natanelf",
       "quantity": 90
@@ -124,11 +129,6 @@
     {
       "user_id": 32602400,
       "username": "Thekoa1a",
-      "quantity": 90
-    },
-    {
-      "user_id": 79152945,
-      "username": "mrdavid465",
       "quantity": 90
     },
     {
