@@ -74,6 +74,11 @@
       "quantity": 16
     },
     {
+      "user_id": 67509399,
+      "username": "LRB97",
+      "quantity": 10
+    },
+    {
       "user_id": 123516759,
       "username": "Itamar15rrr",
       "quantity": 10
@@ -81,11 +86,6 @@
     {
       "user_id": 99952204,
       "username": "beni_cohen",
-      "quantity": 5
-    },
-    {
-      "user_id": 67509399,
-      "username": "LRB97",
       "quantity": 5
     },
     {
@@ -149,7 +149,7 @@
     {
       "user_id": 67509399,
       "username": "LRB97",
-      "quantity": 37
+      "quantity": 42
     },
     {
       "user_id": 116423212,
