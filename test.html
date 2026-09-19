@@ -2565,8 +2565,8 @@ for (let i = 0; i < 2; i++) {
         if (kUsers && kUsers.length > 0) {
           let tableHtml = '<table class="donators-table text-sm"><thead><tr><th>#</th><th>משתמש</th><th>הודעות / פעילות</th></tr></thead><tbody>';
           kUsers.slice(0, 10).forEach((user, index) => {
-            const username = user.username || user.name || user.user || 'Unknown';
-            const value = user.count || user.messages || user.active_score || 0;
+           const username = user.username || user.slug || user.name || user.chatter_username || user.user || 'Unknown';
+           const value = user.messages_count || user.message_count || user.count || user.messages || user.active_score || 0;
             tableHtml += `
               <tr>
                 <td class="stat-rank">${index + 1}</td>
