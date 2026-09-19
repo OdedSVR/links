@@ -2472,8 +2472,29 @@ async function fetchEmotesData() {
   const subContainer = document.getElementById('sub-emotes-container');
 
   try {
-    const response = await fetch("https://links.odedlink26.workers.dev");
+    const response = "https://links.odedlink26.workers.dev";
     const data = await response.json();
+    console.log("Kick API Raw Data:", data); // הדפסה לקונסול כדי לראות את המבנה המדויק
+
+    // פונקציה חכמה שחולצת URL מכל אובייקט או מחרוזת
+    function extractUrl(obj) {
+      if (!obj) return "";
+      if (typeof obj === 'string' && (obj.startsWith('http') || obj.startsWith('//'))) return obj;
+      if (typeof obj === 'object') {
+        // מחפש מאפיינים נפוצים
+        if (obj.src) return obj.src;
+        if (obj.url) return obj.url;
+        if (obj.source) return obj.source;
+        if (obj.original) return obj.original;
+        // סריקה עמוקה של מפתחות באובייקט
+        for (let key in obj) {
+          if (typeof obj[key] === 'string' && (obj[key].startsWith('http') || obj[key].startsWith('//'))) {
+            return obj[key];
+          }
+        }
+      }
+      return "";
+    }
 
     // 1. טיפול באימוג'ים
     let rawEmotes = data.kickChannel?.emotes || data.emotes || [];
@@ -2492,18 +2513,8 @@ async function fetchEmotesData() {
       if (container) container.innerHTML = '<p class="text-gray-400 col-span-full text-center">לא נמצאו אימוג\'ים של הערוץ.</p>';
     } else if (container) {
       container.innerHTML = emotes.map(emote => {
-        let imageUrl = "";
-        // בדיקת כל המבנים האפשריים לקבלת הכתובת של התמונה
-        if (typeof emote.image === 'string') {
-          imageUrl = emote.image;
-        } else if (emote.image && typeof emote.image === 'object') {
-          imageUrl = emote.image.src || emote.image.url || emote.image.source || Object.values(emote.image)[0] || "";
-        }
-        if (!imageUrl) {
-          imageUrl = emote.url || emote.src || "";
-        }
-
-        const emoteName = emote.name || "Emote";
+        let imageUrl = extractUrl(emote.image) || extractUrl(emote.url) || extractUrl(emote.src) || extractUrl(emote);
+        const emoteName = emote.name || emote.code || "Emote";
 
         return `
           <div class="flex flex-col items-center justify-center p-3 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:border-cyan-500/50 transition-all group">
@@ -2520,14 +2531,8 @@ async function fetchEmotesData() {
 
       if (Array.isArray(badges) && badges.length > 0) {
         subContainer.innerHTML = badges.map(b => {
-          let imgUrl = "";
-          if (b.badge_image) {
-            imgUrl = typeof b.badge_image === 'string' ? b.badge_image : (b.badge_image.src || b.badge_image.url || Object.values(b.badge_image)[0] || "");
-          }
-          if (!imgUrl) {
-            imgUrl = b.image_url || b.url || "";
-          }
-          const months = b.months || 0;
+          let imgUrl = extractUrl(b.badge_image) || extractUrl(b.image_url) || extractUrl(b.url) || extractUrl(b);
+          const months = b.months || b.tier || 0;
 
           return `
             <div class="flex flex-col items-center p-2 bg-slate-800/40 rounded-lg border border-slate-700/50 hover:border-purple-500/50 transition-colors w-24">
