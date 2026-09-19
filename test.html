@@ -289,9 +289,6 @@
       0%, 100% { opacity: 0.6; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.15); }
     }
-    @media (max-width: 768px) {
-      .mobile-char-glow { display: block; }
-    }
     @media (prefers-reduced-motion: reduce) {
       .mobile-char-glow { animation: none; }
     }
@@ -1105,8 +1102,7 @@
   <a href="#home" data-page="home" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white text-center transition-all duration-200 rounded-full bg-white/10 hover:bg-white/15 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Home</a>
   <a href="#YTvids" data-page="YTvids" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Videos</a>
   <a href="#info" data-page="info" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Info</a>
-  <a href="#stats" data-page="stats" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Stats</a>
-  <a href="#emotes" data-page="emotes" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Emotes</a>
+  <a href="#stats" data-page="stats" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Kick Stats & Info</a>
   <a href="#waterpark" data-page="waterpark" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">WaterPark</a>
 </nav>
 
@@ -1310,56 +1306,53 @@
 </div>
     </section>
 
-    <!-- NEW STATS & INFO SECTION -->
+    <!-- NEW COMBINED STATS & EMOTES SECTION -->
     <section id="stats-section" class="page-section">
-      <div class="w-full max-w-5xl mx-auto space-y-6 relative z-10">
+      <!-- הגדלנו את רוחב העמוד (max-w-7xl) כדי שארבעתן ייכנסו יפה אחת ליד השנייה -->
+      <div class="w-full max-w-7xl mx-auto space-y-6 relative z-10">
         <h1 class="text-3xl md:text-4xl font-black text-center text-cyan-400 text-glow mb-8 tracking-widest uppercase">Kick Stats & Info</h1>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- הגדרנו כאן את הגריד. במסך גדול (xl) זה מציג 4 עמודות אחת ליד השנייה -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           
-          <!-- Botrix Leaderboard -->
+          <!-- עמודה 1: Botrix Leaderboard -->
           <div class="card rounded-xl">
-            <h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 צופים מובילים (Botrix)</h2>
+            <h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 מובילים (Botrix)</h2>
             <div id="botrix-leaderboard-container" class="overflow-x-auto">
               <p class="text-sm text-gray-300 animate-pulse text-center">טוען נתונים...</p>
             </div>
           </div>
           
-          <!-- Kicklogz Active Users -->
+          <!-- עמודה 2: Kicklogz Active Users -->
           <div class="card rounded-xl">
-            <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2">🔥 משתמשים פעילים (Kicklogz)</h2>
+            <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2">🔥 פעילים (Kicklogz)</h2>
             <div id="kicklogz-active-container" class="overflow-x-auto">
               <p class="text-sm text-gray-300 animate-pulse text-center">טוען נתונים...</p>
             </div>
           </div>
+
+          <!-- עמודה 3: Channel Emotes -->
+          <div class="card rounded-xl">
+            <h2 class="text-xl font-black text-cyan-400 mb-6 border-b border-cyan-400/20 pb-2 flex items-center justify-center gap-2">
+              <span>Channel Emotes</span>
+              <span class="text-2xl">😊</span>
+            </h2>
+            <div id="channel-emotes-container" class="flex flex-wrap gap-4 justify-center">
+               <p class="text-sm text-gray-300 animate-pulse">טוען אימוג'ים מ-Kick...</p>
+            </div>
+          </div>
+
+          <!-- עמודה 4: Sub Emotes / Badges -->
+          <div class="card rounded-xl">
+            <h2 class="text-xl font-black text-purple-400 mb-6 border-b border-purple-400/20 pb-2 flex items-center justify-center gap-2">
+              <span>Sub Badges</span>
+              <span class="text-2xl">⭐</span>
+            </h2>
+            <div id="sub-emotes-container" class="flex flex-wrap gap-4 justify-center">
+               <p class="text-sm text-gray-300 animate-pulse">טוען נתוני סאבים...</p>
+            </div>
+          </div>
           
-        </div>
-      </div>
-    </section>
-
-    <!-- NEW EMOTES SECTION -->
-    <section id="emotes-section" class="page-section">
-      <div class="w-full max-w-4xl mx-auto space-y-6 relative z-10">
-        <h1 class="text-4xl md:text-5xl font-black text-center text-white text-glow mb-8 tracking-widest uppercase" style="font-family:'Heebo',sans-serif;">ODED SVR</h1>
-        
-        <div class="card rounded-xl">
-          <h2 class="text-xl font-black text-cyan-400 mb-6 border-b border-cyan-400/20 pb-2 flex items-center justify-center gap-2">
-            <span>Channel Emotes</span>
-            <span class="text-2xl">😊</span>
-          </h2>
-          <div id="channel-emotes-container" class="flex flex-wrap gap-6 justify-center">
-             <p class="text-sm text-gray-300 animate-pulse">טוען אימוג'ים מ-Kick...</p>
-          </div>
-        </div>
-
-        <div class="card rounded-xl">
-          <h2 class="text-xl font-black text-purple-400 mb-6 border-b border-purple-400/20 pb-2 flex items-center justify-center gap-2">
-            <span>Sub Emotes / Badges</span>
-            <span class="text-2xl">⭐</span>
-          </h2>
-          <div id="sub-emotes-container" class="flex flex-wrap gap-6 justify-center">
-             <p class="text-sm text-gray-300 animate-pulse">טוען נתוני סאבים...</p>
-          </div>
         </div>
       </div>
     </section>
@@ -2603,8 +2596,8 @@ for (let i = 0; i < 2; i++) {
     let statsLoaded = false;
     let statsInterval = null;
     function loadStatsOnce() {
-      fetchStatsAndLeaderboards();
       if (!statsLoaded) {
+        fetchStatsAndLeaderboards();
         statsLoaded = true;
         statsInterval = setInterval(fetchStatsAndLeaderboards, 300000); // 5 minutes
       }
@@ -2757,7 +2750,6 @@ for (let i = 0; i < 2; i++) {
       home:        { title: 'Oded SVR',        subtitle: 'Official Links',            logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       info:        { title: 'Oded SVR',        subtitle: 'Specs & Commands',          logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       stats:       { title: 'Oded SVR',        subtitle: 'Kick Stats & Info',         logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
-      emotes:      { title: 'Oded SVR',        subtitle: 'Channel Emotes',            logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       YTvids:      { title: 'OdedSVR Live',    subtitle: 'Recent YouTube Videos',     logo: YT_LOGO,   link: 'https://www.youtube.com/@OdedSVRLive', linkLabel: 'מעבר לערוץ היוטיוב של עודד סבר (נפתח בטאב חדש)' },
       waterpark:   { title: 'Oded SVR',        subtitle: 'WaterPark Simulator Commands', logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
     };
@@ -2799,8 +2791,10 @@ for (let i = 0; i < 2; i++) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       // Lazy-load page-specific data the first time each page is opened
-      if (pageName === 'stats') loadStatsOnce();
-      if (pageName === 'emotes') loadEmotesOnce();
+      if (pageName === 'stats') {
+        loadStatsOnce();
+        loadEmotesOnce();
+      }
       if (pageName === 'YTvids') loadVideosOnce();
       if (pageName === 'waterpark') addCopyIcons();
     }
