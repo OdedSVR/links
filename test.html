@@ -2518,22 +2518,25 @@ for (let i = 0; i < 2; i++) {
     }
 
     // ============ NEW: FETCH KICK STATS & INFO ============
+ // ============ NEW: FETCH KICK STATS & INFO (VIA CLOUDFLARE WORKER) ============
     async function fetchStatsAndLeaderboards() {
       const botrixContainer = document.getElementById('botrix-leaderboard-container');
       const kicklogzContainer = document.getElementById('kicklogz-active-container');
       
-      // 1. Fetch Botrix Leaderboard
       try {
-        const targetUrl = encodeURIComponent('https://botrix.live/api/k/odedsvr/leaderboard');
-        const res = await fetch(PROXY_URL + targetUrl);
-        const jsonProxy = await res.json();
-        if (!jsonProxy || !jsonProxy.contents) throw new Error("No data returned from proxy");
-        const data = JSON.parse(jsonProxy.contents);
+        // קריאה אחת ל-Worker שמביא את שניהם יחד בלי שגיאות CORS
+        const res = await fetch("https://stats-proxy.odedsvr.workers.dev"); 
         
+        if (!res.ok) throw new Error("Failed to fetch data from Worker");
+        const data = await res.json();
+
+        // --- Botrix Leaderboard ---
+        const botrixData = data.botrix || [];
         let users = [];
-        if (Array.isArray(data)) users = data;
-        else if (data && data.users) users = data.users;
-        
+        if (Array.isArray(botrixData)) users = botrixData;
+        else if (botrixData && botrixData.users) users = botrixData.users;
+        else if (botrixData && botrixData.data) users = botrixData.data;
+
         if (users && users.length > 0) {
           let tableHtml = '<table class="donators-table text-sm"><thead><tr><th>#</th><th>משתמש</th><th>ניקוד / זמן</th></tr></thead><tbody>';
           users.slice(0, 10).forEach((user, index) => {
@@ -2552,26 +2555,16 @@ for (let i = 0; i < 2; i++) {
         } else {
           botrixContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו נתונים.</p>';
         }
-      } catch (error) {
-        console.error('Error fetching Botrix data:', error);
-        botrixContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה במשיכת נתונים (CORS/Cloudflare חוסם).</p>';
-      }
 
-      // 2. Fetch Kicklogz Active Users
-      try {
-        const targetUrl = encodeURIComponent('https://kicklogz.com/api/streamer/odedsvr/active-users');
-        const res = await fetch(PROXY_URL + targetUrl);
-        const jsonProxy = await res.json();
-        if (!jsonProxy || !jsonProxy.contents) throw new Error("No data returned from proxy");
-        const data = JSON.parse(jsonProxy.contents);
+        // --- Kicklogz Active Users ---
+        const kicklogzData = data.kicklogz || [];
+        let kUsers = [];
+        if (Array.isArray(kicklogzData)) kUsers = kicklogzData;
+        else if (kicklogzData && Array.isArray(kicklogzData.data)) kUsers = kicklogzData.data;
         
-        let users = [];
-        if (Array.isArray(data)) users = data;
-        else if (data && Array.isArray(data.data)) users = data.data; // Commonly APIs wrap in 'data'
-        
-        if (users && users.length > 0) {
+        if (kUsers && kUsers.length > 0) {
           let tableHtml = '<table class="donators-table text-sm"><thead><tr><th>#</th><th>משתמש</th><th>הודעות / פעילות</th></tr></thead><tbody>';
-          users.slice(0, 10).forEach((user, index) => {
+          kUsers.slice(0, 10).forEach((user, index) => {
             const username = user.username || user.name || user.user || 'Unknown';
             const value = user.count || user.messages || user.active_score || 0;
             tableHtml += `
@@ -2587,12 +2580,13 @@ for (let i = 0; i < 2; i++) {
         } else {
           kicklogzContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו נתונים.</p>';
         }
+
       } catch (error) {
-        console.error('Error fetching Kicklogz data:', error);
-        kicklogzContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה במשיכת נתונים (CORS/Cloudflare חוסם).</p>';
+        console.error('Error fetching stats via worker:', error);
+        botrixContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה במשיכת הנתונים.</p>';
+        kicklogzContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה במשיכת הנתונים.</p>';
       }
     }
-
     let statsLoaded = false;
     let statsInterval = null;
     function loadStatsOnce() {
