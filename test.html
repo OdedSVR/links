@@ -2525,7 +2525,7 @@ for (let i = 0; i < 2; i++) {
       
       try {
         // קריאה אחת ל-Worker שמביא את שניהם יחד בלי שגיאות CORS
-        const res = await fetch("https://stats-proxy.odedsvr.workers.dev"); 
+        const res = await fetch("https://links.odedlink26.workers.dev"); 
         
         if (!res.ok) throw new Error("Failed to fetch data from Worker");
         const data = await res.json();
