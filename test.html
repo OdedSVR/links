@@ -2482,13 +2482,13 @@ async function fetchEmotesData() {
       if (container) container.innerHTML = '<p class="text-gray-400 col-span-full text-center">לא נמצאו אימוג\'ים.</p>';
     } else if (container) {
       container.innerHTML = emotes.map(emote => {
-        // חילוץ בטוח של הקישור לתמונה
-        const imageUrl = emote.url || emote.image || (emote.data && emote.data.url) || "";
+        // התיקון: חילוץ מדויק של קישור התמונה מהאובייקט של Kick (שימוש ב-src)
+        const imageUrl = emote.image?.src || emote.image?.url || emote.image_url || emote.url || (typeof emote.image === 'string' ? emote.image : "");
         const emoteName = emote.name || "Emote";
 
         return `
-          <div class="flex flex-col items-center justify-center p-3 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:border-purple-500/50 transition-all group">
-            <img src="${imageUrl}" alt="${emoteName}" class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-200" />
+          <div class="flex flex-col items-center justify-center p-3 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:border-cyan-500/50 transition-all group">
+            <img src="${imageUrl}" alt="${emoteName}" class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-200" onerror="this.src='https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true'; this.classList.add('opacity-30')" />
             <span class="text-xs text-slate-400 mt-2 font-mono truncate max-w-full" title="${emoteName}">${emoteName}</span>
           </div>
         `;
@@ -2501,13 +2501,13 @@ async function fetchEmotesData() {
 
       if (Array.isArray(badges) && badges.length > 0) {
         subContainer.innerHTML = badges.map(b => {
-          // חילוץ בטוח של הקישור לבאדג' (ב-Kick ה-URL יושב לעיתים בתוך badge_image.url או url)
-          const imgUrl = b.badge_image?.url || b.badge_image || b.url || (b.image && b.image.url) || "";
+          // התיקון: חילוץ מדויק של קישור הבאדג' מהאובייקט (שימוש ב-src)
+          const imgUrl = b.badge_image?.src || b.badge_image?.url || b.image_url || b.url || (typeof b.badge_image === 'string' ? b.badge_image : "");
           const months = b.months || 0;
 
           return `
             <div class="flex flex-col items-center p-2 bg-slate-800/40 rounded-lg border border-slate-700/50 hover:border-purple-500/50 transition-colors w-24">
-              <img src="${imgUrl}" class="w-12 h-12 object-contain hover:scale-110 transition-transform cursor-pointer" title="${months} Months" alt="${months} Months">
+              <img src="${imgUrl}" class="w-12 h-12 object-contain hover:scale-110 transition-transform cursor-pointer" title="${months} Months" alt="${months} Months" onerror="this.style.opacity='0.2'">
               <span class="text-[10px] text-gray-400 font-bold mt-2 font-mono truncate w-full text-center">${months} Months</span>
             </div>
           `;
