@@ -1,4 +1,3 @@
-%%html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -1337,7 +1336,7 @@
               <span>Channel Emotes</span>
               <span class="text-2xl">😊</span>
             </h2>
-            <div id="channel-emotes-container" class="flex flex-wrap gap-4 justify-center">
+            <div id="emotesContainer" class="flex flex-wrap gap-4 justify-center">
                <p class="text-sm text-gray-300 animate-pulse">טוען אימוג'ים מ-Kick...</p>
             </div>
           </div>
@@ -2468,50 +2467,53 @@ for (let i = 0; i < 2; i++) {
     }
 
 // ============ NEW: FETCH EMOTES ============
-    const PROXY_URL = 'https://api.allorigins.win/get?url='; // שירות Proxy לעקיפת חסימות בקשות מהדפדפן
-    
-   async function fetchEmotesData() {
-  const emotesContainer = document.getElementById('channel-emotes-container');
-  const subContainer = document.getElementById('sub-emotes-container');
-  
-  try {
-    const res = await fetch("https://links.odedlink26.workers.dev");
-    if (!res.ok) throw new Error("Failed to fetch data from Worker");
-    
-    const fullPayload = await res.json();
-    const data = fullPayload.kickChannel || {};
+async function fetchEmotesData() {
+  const container = document.getElementById("emotesContainer");
+  if (!container) return;
 
-    // Emotes
-   const emotes = data.extractedEmotes || data.chatroom?.emotes || data.emotes || [];    if (emotes.length > 0) {
-      const emotesHtml = emotes.map(e => `
-        <div class="flex flex-col items-center p-2 bg-slate-800/40 rounded-lg border border-slate-700/50 hover:border-cyan-500/50 transition-colors w-24">
-          <img src="${e.image_url || e.url}" class="w-12 h-12 object-contain hover:scale-110 transition-transform cursor-pointer" title=":${e.name}:" alt="${e.name}">
-          <span class="text-[10px] text-gray-400 font-bold mt-2 font-mono truncate w-full text-center" title="${e.name}">${e.name}</span>
-        </div>
-      `).join('');
-      emotesContainer.innerHTML = emotesHtml;
+  try {
+    const response = await fetch("https://links.odedlink26.workers.dev");
+    const data = await response.json();
+
+    // מחלץ אימוג'ים
+    const emotes = data.kickChannel?.emotes || data.emotes || [];
+
+    if (!Array.isArray(emotes) || emotes.length === 0) {
+      container.innerHTML = '<p class="text-gray-400 col-span-full text-center">לא נמצאו אימוג\'ים.</p>';
     } else {
-      emotesContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו אימוג\'ים.</p>';
+      container.innerHTML = emotes.map(emote => {
+        const imageUrl = emote.url || emote.image;
+        const emoteName = emote.name || "Emote";
+
+        return `
+          <div class="flex flex-col items-center justify-center p-3 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:border-purple-500/50 transition-all group">
+            <img src="${imageUrl}" alt="${emoteName}" class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-200" />
+            <span class="text-xs text-slate-400 mt-2 font-mono truncate max-w-full" title="${emoteName}">${emoteName}</span>
+          </div>
+        `;
+      }).join("");
     }
 
-    // Sub Badges
-    const badges = data.subscriber_badges || [];
-    if (badges.length > 0) {
-      const badgesHtml = badges.map(b => `
-        <div class="flex flex-col items-center p-2 bg-slate-800/40 rounded-lg border border-slate-700/50 hover:border-purple-500/50 transition-colors w-24">
-          <img src="${b.badge_image?.url || b.url}" class="w-12 h-12 object-contain hover:scale-110 transition-transform cursor-pointer" title="${b.months} Months" alt="${b.months} Months">
-          <span class="text-[10px] text-gray-400 font-bold mt-2 font-mono truncate w-full text-center">${b.months} Months</span>
-        </div>
-      `).join('');
-      subContainer.innerHTML = badgesHtml;
-    } else {
-      subContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו סאב באדג\'ים.</p>';
+    // מחלץ סאב באדג'ים
+    const subContainer = document.getElementById('sub-emotes-container');
+    if (subContainer) {
+      const badges = data.kickChannel?.subscriber_badges || [];
+      if (badges.length > 0) {
+        const badgesHtml = badges.map(b => `
+          <div class="flex flex-col items-center p-2 bg-slate-800/40 rounded-lg border border-slate-700/50 hover:border-purple-500/50 transition-colors w-24">
+            <img src="${b.badge_image?.url || b.url}" class="w-12 h-12 object-contain hover:scale-110 transition-transform cursor-pointer" title="${b.months} Months" alt="${b.months} Months">
+            <span class="text-[10px] text-gray-400 font-bold mt-2 font-mono truncate w-full text-center">${b.months} Months</span>
+          </div>
+        `).join('');
+        subContainer.innerHTML = badgesHtml;
+      } else {
+        subContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו סאב באדג\'ים.</p>';
+      }
     }
 
   } catch (error) {
     console.error('Error fetching emotes via worker:', error);
-    emotesContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה שטוענת אימוג\'ים.</p>';
-    subContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה שטוענת באדג\'ים.</p>';
+    if (container) container.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה בטעינת אימוג\'ים.</p>';
   }
 }
 
@@ -2553,7 +2555,6 @@ for (let i = 0; i < 2; i++) {
           botrixContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו נתונים.</p>';
         }
 
-// --- Kicklogz Active Users ---
 // --- Kicklogz Active Users ---
 const kicklogzData = data.kicklogz || {};
 const labels = kicklogzData.labels || [];
