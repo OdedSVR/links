@@ -2482,8 +2482,7 @@ for (let i = 0; i < 2; i++) {
     const data = fullPayload.kickChannel || {};
 
     // Emotes
-    const emotes = data.chatroom?.emotes || data.emotes || [];
-    if (emotes.length > 0) {
+   const emotes = data.extractedEmotes || data.chatroom?.emotes || data.emotes || [];    if (emotes.length > 0) {
       const emotesHtml = emotes.map(e => `
         <div class="flex flex-col items-center p-2 bg-slate-800/40 rounded-lg border border-slate-700/50 hover:border-cyan-500/50 transition-colors w-24">
           <img src="${e.image_url || e.url}" class="w-12 h-12 object-contain hover:scale-110 transition-transform cursor-pointer" title=":${e.name}:" alt="${e.name}">
