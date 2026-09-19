@@ -2595,12 +2595,13 @@ if (labels.length > 0 && values.length > 0) {
       }
     }
 
-    let emotesLoaded = false;
-    function loadEmotesOnce() {
-      if (!emotesLoaded) {
-        emotesLoaded = true;
-      }
-    }
+let emotesLoaded = false;
+function loadEmotesOnce() {
+  if (!emotesLoaded) {
+    fetchEmotesData();
+    emotesLoaded = true;
+  }
+}
 
     // ============ YOUTUBE VIDEOS ============
     const videoContainer = document.getElementById('video-container');
