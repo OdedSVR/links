@@ -2466,23 +2466,24 @@ for (let i = 0; i < 2; i++) {
       });
     }
 
-// ============ NEW: FETCH EMOTES ============
+// ============ FETCH EMOTES & BADGES ============
 async function fetchEmotesData() {
   const container = document.getElementById("emotesContainer");
-  if (!container) return;
+  const subContainer = document.getElementById('sub-emotes-container');
 
   try {
     const response = await fetch("https://links.odedlink26.workers.dev");
     const data = await response.json();
 
-    // מחלץ אימוג'ים
+    // 1. טיפול באימוג'ים
     const emotes = data.kickChannel?.emotes || data.emotes || [];
 
     if (!Array.isArray(emotes) || emotes.length === 0) {
-      container.innerHTML = '<p class="text-gray-400 col-span-full text-center">לא נמצאו אימוג\'ים.</p>';
-    } else {
+      if (container) container.innerHTML = '<p class="text-gray-400 col-span-full text-center">לא נמצאו אימוג\'ים.</p>';
+    } else if (container) {
       container.innerHTML = emotes.map(emote => {
-        const imageUrl = emote.url || emote.image;
+        // חילוץ בטוח של הקישור לתמונה
+        const imageUrl = emote.url || emote.image || (emote.data && emote.data.url) || "";
         const emoteName = emote.name || "Emote";
 
         return `
@@ -2494,18 +2495,23 @@ async function fetchEmotesData() {
       }).join("");
     }
 
-    // מחלץ סאב באדג'ים
-    const subContainer = document.getElementById('sub-emotes-container');
+    // 2. טיפול בסאב באדג'ים (Sub Badges)
     if (subContainer) {
-      const badges = data.kickChannel?.subscriber_badges || [];
-      if (badges.length > 0) {
-        const badgesHtml = badges.map(b => `
-          <div class="flex flex-col items-center p-2 bg-slate-800/40 rounded-lg border border-slate-700/50 hover:border-purple-500/50 transition-colors w-24">
-            <img src="${b.badge_image?.url || b.url}" class="w-12 h-12 object-contain hover:scale-110 transition-transform cursor-pointer" title="${b.months} Months" alt="${b.months} Months">
-            <span class="text-[10px] text-gray-400 font-bold mt-2 font-mono truncate w-full text-center">${b.months} Months</span>
-          </div>
-        `).join('');
-        subContainer.innerHTML = badgesHtml;
+      const badges = data.kickChannel?.subscriber_badges || data.subscriber_badges || [];
+
+      if (Array.isArray(badges) && badges.length > 0) {
+        subContainer.innerHTML = badges.map(b => {
+          // חילוץ בטוח של הקישור לבאדג' (ב-Kick ה-URL יושב לעיתים בתוך badge_image.url או url)
+          const imgUrl = b.badge_image?.url || b.badge_image || b.url || (b.image && b.image.url) || "";
+          const months = b.months || 0;
+
+          return `
+            <div class="flex flex-col items-center p-2 bg-slate-800/40 rounded-lg border border-slate-700/50 hover:border-purple-500/50 transition-colors w-24">
+              <img src="${imgUrl}" class="w-12 h-12 object-contain hover:scale-110 transition-transform cursor-pointer" title="${months} Months" alt="${months} Months">
+              <span class="text-[10px] text-gray-400 font-bold mt-2 font-mono truncate w-full text-center">${months} Months</span>
+            </div>
+          `;
+        }).join('');
       } else {
         subContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו סאב באדג\'ים.</p>';
       }
