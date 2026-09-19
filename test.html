@@ -1106,7 +1106,7 @@
 </nav>
 
     <div class="text-center mb-10 relative z-10" id="page-header">
-      
+     
 <a aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)" class="group inline-block" href="https://kick.com/odedsvr" id="profile-link" target="_blank">
 <div class="relative inline-block">
 <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
@@ -1122,14 +1122,14 @@
 <span class="hidden items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="live-badge" style="box-shadow:0 0 0 0 rgba(239,68,68,0.5); animation: liveBadgeGlow 2s ease-out infinite;">
 <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse inline-block"></span>
             LIVE NOW
-          </span>
+         </span>
 <span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/70 text-[11px] font-black tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="viewer-count-badge">
             👁️ <span id="viewer-count-num">0</span>
 </span>
 <span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/50 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="offline-badge">
 <span class="w-2 h-2 bg-white/30 rounded-full inline-block"></span>
             OFFLINE
-          </span>
+         </span>
 <span class="text-[11px] text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full" id="page-subtitle">Official Links</span>
 </div>
 </div>
@@ -1753,7 +1753,7 @@ function scrollToBottom() {
         </button>
         <button class="a11y-btn" data-feature="hide-distractions" aria-pressed="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M228.92,49.69a8,8,0,0,0-6.86-1.45L160.93,63.52,99.58,32.84a8,8,0,0,0-6.37-.39L29.14,53.71A8,8,0,0,0,24,61.22V200a8,8,0,0,0,9.94,7.76l61.13-15.28,61.35,30.68A8.15,8.15,0,0,0,160,224a8,8,0,0,0,2.06-.27l64.86-16.23A8,8,0,0,0,232,200V56A8,8,0,0,0,228.92,49.69ZM104,55.74l48,24V200.26l-48-24ZM40,69.45l48-17.94V187.45L40,202.42ZM216,186.55l-48,12V63.45l48-11.88Z"/></svg>
-          הסתרת הסחות דעת
+          הסתרה הסחות דעת
         </button>
         <button class="a11y-btn" data-feature="highlight-elements" aria-pressed="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M237.66,86.34l-60-60a8,8,0,0,0-11.32,0L36.69,155.31a16,16,0,0,0,0,22.63L78.06,219.31A16,16,0,0,0,89.37,224H216a8,8,0,0,0,0-16H159.32l78.34-78.34A8,8,0,0,0,237.66,86.34ZM82.06,208,40.69,166.63l96-96L178.63,112ZM192,128l-9.37-9.37,9.37-9.38Z"/></svg>
@@ -2466,7 +2466,7 @@ for (let i = 0; i < 2; i++) {
       });
     }
 
-// ============ FETCH EMOTES & BADGES ============
+// ============ FETCH EMOTES & BADGES (מתוקן) ============
 async function fetchEmotesData() {
   const container = document.getElementById("emotesContainer");
   const subContainer = document.getElementById('sub-emotes-container');
@@ -2475,7 +2475,7 @@ async function fetchEmotesData() {
     const response = await fetch("https://links.odedlink26.workers.dev");
     const data = await response.json();
 
-// 1. טיפול באימוג'ים
+    // 1. טיפול באימוג'ים
     let rawEmotes = data.kickChannel?.emotes || data.emotes || [];
     let emotes = [];
 
@@ -2492,12 +2492,12 @@ async function fetchEmotesData() {
       if (container) container.innerHTML = '<p class="text-gray-400 col-span-full text-center">לא נמצאו אימוג\'ים של הערוץ.</p>';
     } else if (container) {
       container.innerHTML = emotes.map(emote => {
-        // חילוץ חכם של הכתובת: בדיקת כל האפשרויות האפשריות כולל אובייקטים פנימיים
         let imageUrl = "";
+        // בדיקת כל המבנים האפשריים לקבלת הכתובת של התמונה
         if (typeof emote.image === 'string') {
           imageUrl = emote.image;
         } else if (emote.image && typeof emote.image === 'object') {
-          imageUrl = emote.image.url || emote.image.src || emote.image.source || Object.values(emote.image)[0] || "";
+          imageUrl = emote.image.src || emote.image.url || emote.image.source || Object.values(emote.image)[0] || "";
         }
         if (!imageUrl) {
           imageUrl = emote.url || emote.src || "";
@@ -2513,14 +2513,20 @@ async function fetchEmotesData() {
         `;
       }).join("");
     }
+
     // 2. טיפול בסאב באדג'ים (Sub Badges)
     if (subContainer) {
       const badges = data.kickChannel?.subscriber_badges || data.subscriber_badges || [];
 
       if (Array.isArray(badges) && badges.length > 0) {
         subContainer.innerHTML = badges.map(b => {
-          // התיקון: חילוץ מדויק של קישור הבאדג' מהאובייקט (שימוש ב-src)
-          const imgUrl = b.badge_image?.src || b.badge_image?.url || b.image_url || b.url || (typeof b.badge_image === 'string' ? b.badge_image : "");
+          let imgUrl = "";
+          if (b.badge_image) {
+            imgUrl = typeof b.badge_image === 'string' ? b.badge_image : (b.badge_image.src || b.badge_image.url || Object.values(b.badge_image)[0] || "");
+          }
+          if (!imgUrl) {
+            imgUrl = b.image_url || b.url || "";
+          }
           const months = b.months || 0;
 
           return `
@@ -2541,13 +2547,12 @@ async function fetchEmotesData() {
   }
 }
 
- // ============ NEW: FETCH KICK STATS & INFO (VIA CLOUDFLARE WORKER) ============
+   // ============ NEW: FETCH KICK STATS & INFO (VIA CLOUDFLARE WORKER) ============
     async function fetchStatsAndLeaderboards() {
       const botrixContainer = document.getElementById('botrix-leaderboard-container');
       const kicklogzContainer = document.getElementById('kicklogz-active-container');
       
       try {
-        // קריאה אחת ל-Worker שמביא את שניהם יחד בלי שגיאות CORS
         const res = await fetch("https://links.odedlink26.workers.dev"); 
         
         if (!res.ok) throw new Error("Failed to fetch data from Worker");
@@ -2766,7 +2771,7 @@ function loadEmotesOnce() {
       home:        { title: 'Oded SVR',        subtitle: 'Official Links',            logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       info:        { title: 'Oded SVR',        subtitle: 'Specs & Commands',          logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       stats:       { title: 'Oded SVR',        subtitle: 'Kick Stats & Info',         logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
-      YTvids:      { title: 'OdedSVR Live',    subtitle: 'Recent YouTube Videos',     logo: YT_LOGO,   link: 'https://www.youtube.com/@OdedSVRLive', linkLabel: 'מעבר לערוץ היוטיוב של עודד סבר (נפתח בטאב חדש)' },
+      YTvids:      { title: 'OdedSVR Live',    subtitle: 'Recent YouTube Videos',    logo: YT_LOGO,   link: 'https://www.youtube.com/@OdedSVRLive', linkLabel: 'מעבר לערוץ היוטיוב של עודד סבר (נפתח בטאב חדש)' },
       waterpark:   { title: 'Oded SVR',        subtitle: 'WaterPark Simulator Commands', logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
     };
 
