@@ -2481,7 +2481,7 @@ async function fetchEmotesData() {
 
     if (Array.isArray(rawEmotes) && rawEmotes.length > 0) {
       if (Array.isArray(rawEmotes[0].emotes)) {
-        const channelCategory = rawEmotes.find(cat => cat.name && cat.name.toLowerCase() !== 'global' && cat.name.toLowerCase() !== 'emoji') || rawEmotes[0];
+        const channelCategory = rawEmotes.find(cat => cat.slug) || rawEmotes[0];
         emotes = channelCategory.emotes || [];
       } else {
         emotes = rawEmotes;
@@ -2492,17 +2492,7 @@ async function fetchEmotesData() {
       if (container) container.innerHTML = '<p class="text-gray-400 col-span-full text-center">לא נמצאו אימוג\'ים של הערוץ.</p>';
     } else if (container) {
       container.innerHTML = emotes.map(emote => {
-        let imageUrl = "";
-        // בדיקת כל המבנים האפשריים לקבלת הכתובת של התמונה
-        if (typeof emote.image === 'string') {
-          imageUrl = emote.image;
-        } else if (emote.image && typeof emote.image === 'object') {
-          imageUrl = emote.image.src || emote.image.url || emote.image.source || Object.values(emote.image)[0] || "";
-        }
-        if (!imageUrl) {
-          imageUrl = emote.url || emote.src || "";
-        }
-
+        const imageUrl = `https://files.kick.com/emotes/${emote.id}/fullsize`;
         const emoteName = emote.name || "Emote";
 
         return `
