@@ -2539,8 +2539,8 @@ for (let i = 0; i < 2; i++) {
         if (users && users.length > 0) {
           let tableHtml = '<table class="donators-table text-sm"><thead><tr><th>#</th><th>משתמש</th><th>ניקוד / זמן</th></tr></thead><tbody>';
           users.slice(0, 10).forEach((user, index) => {
-            const username = user.username || user.name || 'Unknown';
-            const points = user.points || user.watchtime || user.amount || 0;
+const username = user.username || user.slug || user.name || user.chatter_username || user.user || 'Unknown';
+const value = user.messages_count || user.message_count || user.count || user.messages || user.active_score || 0;
             tableHtml += `
               <tr>
                 <td class="stat-rank">${index + 1}</td>
