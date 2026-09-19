@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -1036,12 +1035,12 @@
 .emotes-compact,.badges-compact{display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding-top:16px;justify-content:flex-start;}
 .emote-mini{width:58px;height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:10px;background:rgba(30,41,59,.55);border:1px solid rgba(148,163,184,.12);transition:transform .15s,border-color .15s,background .15s;overflow:hidden;}
 .emote-mini:hover{transform:translateY(-2px) scale(1.04);border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.08);}
-.emote-mini img{width:34px;height:34px;object-fit:contain;}
-.emote-mini span{font-size:8px;color:#94a3b8;max-width:52px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:monospace;}
-.badge-mini{width:54px;height:54px;display:flex;align-items:center;justify-content:center;position:relative;border-radius:10px;background:rgba(30,41,59,.55);border:1px solid rgba(148,163,184,.12);}
-.badge-mini img{width:34px;height:34px;object-fit:contain;}
-.badge-mini span{position:absolute;bottom:2px;right:3px;font-size:8px;color:#cbd5e1;background:rgba(0,0,0,.65);padding:1px 3px;border-radius:4px;font-family:monospace;}
-@media(max-width:640px){.stats-panel summary{min-height:58px;padding:12px 15px;font-size:16px}.stats-panel-content{padding:0 12px 14px}.emote-mini{width:52px;height:52px}.emote-mini img{width:30px;height:30px}.badge-mini{width:50px;height:50px}.badge-mini img{width:30px;height:30px}.emotes-compact,.badges-compact{gap:5px;justify-content:center;}}
+.emote-mini img{width:48px;height:48px;object-fit:contain;}
+.emote-mini span{display:none;}
+.badge-mini{width:80px;height:80px;display:flex;align-items:center;justify-content:center;position:relative;border-radius:10px;background:rgba(30,41,59,.55);border:1px solid rgba(148,163,184,.12);}
+.badge-mini img{width:52px;height:52px;object-fit:contain;}
+.badge-mini span{position:absolute;bottom:3px;right:4px;font-size:14px;font-weight:900;color:#cbd5e1;background:rgba(0,0,0,.65);padding:2px 5px;border-radius:4px;font-family:monospace;}
+@media(max-width:640px){.stats-panel summary{min-height:58px;padding:12px 15px;font-size:16px}.stats-panel-content{padding:0 12px 14px}.emote-mini{width:64px;height:64px}.emote-mini img{width:42px;height:42px}.badge-mini{width:64px;height:64px}.badge-mini img{width:42px;height:42px}.emotes-compact,.badges-compact{gap:5px;justify-content:center;}}
 </style>
 </head>
 <body>
@@ -1337,13 +1336,12 @@
     <section id="stats-section" class="page-section">
       <!-- KICK STATS & INFO - ACCORDION -->
       <div class="w-full max-w-5xl mx-auto space-y-3 relative z-10">
-        <h1 class="text-3xl md:text-4xl font-black text-center text-cyan-400 text-glow mb-8 tracking-widest uppercase">Kick Stats & Info</h1>
 
         <div class="stats-accordion space-y-3" id="statsAccordion">
 
           <details class="stats-panel stats-orange" data-panel="botrix">
             <summary>
-              <span class="stats-title"><span class="stats-icon">🏆</span><span>מובילים (Botrix)</span></span>
+              <span class="stats-title"><span class="stats-icon">🏆</span><span>המובילים בצפייה!</span></span>
               <span class="stats-chevron">⌄</span>
             </summary>
             <div class="stats-panel-content">
@@ -1355,7 +1353,7 @@
 
           <details class="stats-panel stats-green" data-panel="kicklogz">
             <summary>
-              <span class="stats-title"><span class="stats-icon">🔥</span><span>פעילים (Kicklogz)</span></span>
+              <span class="stats-title"><span class="stats-icon">🔥</span><span>הפעילים ביותר בצ'אט!</span></span>
               <span class="stats-chevron">⌄</span>
             </summary>
             <div class="stats-panel-content">
@@ -2535,8 +2533,7 @@ async function fetchEmotesData() {
         return `
           <div class="emote-mini" title="${emoteName}">
             <img src="${imageUrl}" alt="${emoteName}" onerror="this.onerror=null; this.src='https://placehold.co/32x32/1e293b/64748b?text=?';" />
-            <span>${emoteName}</span>
-          </div>
+            </div>
         `;
       }).join("");
     }
