@@ -2467,7 +2467,7 @@ for (let i = 0; i < 2; i++) {
       });
     }
 
-    // ============ NEW: FETCH EMOTES ============
+// ============ NEW: FETCH EMOTES ============
     const PROXY_URL = 'https://api.allorigins.win/get?url='; // שירות Proxy לעקיפת חסימות בקשות מהדפדפן
     
    async function fetchEmotesData() {
@@ -2515,26 +2515,6 @@ for (let i = 0; i < 2; i++) {
     subContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה שטוענת באדג\'ים.</p>';
   }
 }
-        // Sub Badges (months/years)
-        if (data.subscriber_badges && data.subscriber_badges.length > 0) {
-          const badges = data.subscriber_badges;
-          const badgesHtml = badges.map(b => `
-            <div class="flex flex-col items-center p-2 bg-slate-800/40 rounded-lg border border-slate-700/50 hover:border-purple-500/50 transition-colors w-24">
-              <img src="${b.badge_image.url}" class="w-12 h-12 object-contain hover:scale-110 transition-transform cursor-pointer" title="${b.months} Months" alt="${b.months} Months">
-              <span class="text-[10px] text-gray-400 font-bold mt-2 font-mono truncate w-full text-center">${b.months} Months</span>
-            </div>
-          `).join('');
-          subContainer.innerHTML = badgesHtml;
-        } else {
-          subContainer.innerHTML = '<p class="text-white/50">לא נמצאו סאב באדג\'ים.</p>';
-        }
-
-      } catch (error) {
-        console.error('Error fetching emotes:', error);
-        emotesContainer.innerHTML = '<p class="text-red-400/80 text-sm max-w-sm text-center">שגיאה במשיכת נתונים מ-Kick (חסימת CORS/Cloudflare). קרא את ההערה בקוד.</p>';
-        subContainer.innerHTML = '<p class="text-red-400/80 text-sm max-w-sm text-center">שגיאה במשיכת נתונים מ-Kick (חסימת CORS/Cloudflare).</p>';
-      }
-    }
 
  // ============ NEW: FETCH KICK STATS & INFO (VIA CLOUDFLARE WORKER) ============
     async function fetchStatsAndLeaderboards() {
@@ -2618,7 +2598,6 @@ if (labels.length > 0 && values.length > 0) {
     let emotesLoaded = false;
     function loadEmotesOnce() {
       if (!emotesLoaded) {
-        fetchEmotesData();
         emotesLoaded = true;
       }
     }
