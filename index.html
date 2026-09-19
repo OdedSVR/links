@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -976,6 +975,16 @@
     .page-section.active { display: block; }
     #main-page-content { width: 100%; display: flex; flex-direction: column; align-items: center; }
 
+    /* ===================== Larger Donators page ===================== */
+    #topdonators-section > .max-w-4xl { max-width: 72rem; }
+    #topdonators-section > .max-w-4xl > .card { min-height: 360px; padding: 2rem; }
+    #topdonators-section > .max-w-4xl > .card h2 { font-size: 1.45rem; }
+    #topdonators-section .donators-table th,
+    #topdonators-section .donators-table td { padding: 1rem 1.1rem; font-size: 1rem; }
+    @media (max-width: 768px) {
+      #topdonators-section > .max-w-4xl > .card { min-height: 0; padding: 1.35rem; }
+    }
+
     /* ===================== Copy-to-clipboard icon (Info / WaterPark) ===================== */
     .copy-btn { opacity: 0.5; transition: all 0.2s; cursor: pointer; }
     .copy-btn:hover { opacity: 1; transform: scale(1.1); }
@@ -1040,8 +1049,8 @@
 .emote-mini span{display:none;}
 .badge-mini{width:80px;height:80px;display:flex;align-items:center;justify-content:center;position:relative;border-radius:10px;background:rgba(30,41,59,.55);border:1px solid rgba(148,163,184,.12);}
 .badge-mini img{width:52px;height:52px;object-fit:contain;}
-.badge-mini span{position:absolute;bottom:3px;right:4px;font-size:14px;font-weight:900;color:#cbd5e1;background:rgba(0,0,0,.65);padding:2px 5px;border-radius:4px;font-family:monospace;}
-@media(max-width:640px){.stats-panel summary{min-height:58px;padding:12px 15px;font-size:16px}.stats-panel-content{padding:0 12px 14px}.emote-mini{width:64px;height:64px}.emote-mini img{width:42px;height:42px}.badge-mini{width:64px;height:64px}.badge-mini img{width:42px;height:42px}.emotes-compact,.badges-compact{gap:5px;justify-content:center;}}
+.badge-mini span{position:absolute;bottom:3px;right:4px;font-size:14px;font-weight:900;color:#cbd5e1;background:rgba(0,0,0,.65);padding:1px 3px;border-radius:4px;font-family:monospace;}
+@media(max-width:640px){.stats-panel summary{min-height:58px;padding:12px 15px;font-size:16px}.stats-panel-content{padding:0 12px 14px}.emote-mini{width:58px;height:58px}.emote-mini img{width:40px;height:40px}.badge-mini{width:68px;height:68px}.badge-mini img{width:44px;height:44px}.emotes-compact,.badges-compact{gap:5px;justify-content:center;}}
 </style>
 </head>
 <body>
@@ -1129,6 +1138,7 @@
   <a href="#home" data-page="home" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white text-center transition-all duration-200 rounded-full bg-white/10 hover:bg-white/15 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Home</a>
   <a href="#YTvids" data-page="YTvids" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Videos</a>
   <a href="#info" data-page="info" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Info</a>
+  <a href="#topdonators" data-page="topdonators" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Donators</a>
   <a href="#stats" data-page="stats" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Kick Stats & Info</a>
   <a href="#waterpark" data-page="waterpark" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">WaterPark</a>
 </nav>
@@ -1278,10 +1288,7 @@
     <!-- INFO SECTION -->
     <section id="info-section" class="page-section">
 <div class="w-full max-w-4xl mx-auto space-y-6 relative z-10">
-<a class="card block rounded-xl text-center hover:border-cyan-500/40" href="https://botrix.live/k/odedsvr/leaderboard" target="_blank">
-<div class="text-2xl font-black text-cyan-400 text-glow">🏆 LEADERBOARD 🏆</div>
-<p class="text-sm text-cyan-200/60 font-bold mt-1 uppercase">צפו במובילים של הערוץ</p>
-</a>
+
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
 <div class="card rounded-xl">
 <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2 font-mono">💬 Chat Commands (Kick)</h2>
@@ -1333,16 +1340,34 @@
 </div>
     </section>
 
+<section class="page-section" id="topdonators-section">
+<div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 Weekly Top Gifters 🏆</h2>
+<div id="weekly-gifters-table-container">
+<p class="text-sm text-gray-300">Loading Weekly Top Gifters...</p>
+</div>
+</div>
+<div class="card rounded-xl">
+<h2 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2">👑 All-Time Top Gifters 👑</h2>
+<div id="alltime-gifters-table-container">
+<p class="text-sm text-gray-300">Loading All-Time Top Gifters...</p>
+</div>
+</div>
+</div>
+</section>
+
     <!-- NEW COMBINED STATS & EMOTES SECTION -->
     <section id="stats-section" class="page-section">
       <!-- KICK STATS & INFO - ACCORDION -->
       <div class="w-full max-w-5xl mx-auto space-y-3 relative z-10">
+        <h1 class="text-3xl md:text-4xl font-black text-center text-cyan-400 text-glow mb-8 tracking-widest uppercase">Kick Stats & Info</h1>
 
         <div class="stats-accordion space-y-3" id="statsAccordion">
 
           <details class="stats-panel stats-orange" data-panel="botrix">
             <summary>
-              <span class="stats-title"><span class="stats-icon">🏆</span><span>המובילים בצפייה!</span></span>
+              <span class="stats-title"><span class="stats-icon">🏆</span><span>מובילים (Botrix)</span></span>
               <span class="stats-chevron">⌄</span>
             </summary>
             <div class="stats-panel-content">
@@ -1354,7 +1379,7 @@
 
           <details class="stats-panel stats-green" data-panel="kicklogz">
             <summary>
-              <span class="stats-title"><span class="stats-icon">🔥</span><span>הפעילים ביותר בצ'אט!</span></span>
+              <span class="stats-title"><span class="stats-icon">🔥</span><span>פעילים (Kicklogz)</span></span>
               <span class="stats-chevron">⌄</span>
             </summary>
             <div class="stats-panel-content">
@@ -2534,7 +2559,7 @@ async function fetchEmotesData() {
         return `
           <div class="emote-mini" title="${emoteName}">
             <img src="${imageUrl}" alt="${emoteName}" onerror="this.onerror=null; this.src='https://placehold.co/32x32/1e293b/64748b?text=?';" />
-            </div>
+          </div>
         `;
       }).join("");
     }
@@ -2656,6 +2681,63 @@ function loadEmotesOnce() {
     emotesLoaded = true;
   }
 }
+
+    // ============ TOP DONATORS: leaderboard data ============
+    async function fetchLeaderboardData() {
+      const apiUrl = './data.json?t=' + new Date().getTime();
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+
+        if (data && data.gifts_week && data.gifts_week_enabled) {
+          renderTable('weekly-gifters-table-container', data.gifts_week, 'weekly-username');
+        } else {
+          const c = document.getElementById('weekly-gifters-table-container');
+          if (c) c.innerHTML = '<p class="text-gray-400">Weekly data is currently disabled.</p>';
+        }
+
+        if (data && data.gifts && data.gifts_enabled) {
+          renderTable('alltime-gifters-table-container', data.gifts, 'alltime-username');
+        } else {
+          const c = document.getElementById('alltime-gifters-table-container');
+          if (c) c.innerHTML = '<p class="text-gray-400">All-time data is currently disabled.</p>';
+        }
+      } catch (error) {
+        console.error('Error fetching leaderboard data:', error);
+      }
+    }
+
+    function renderTable(containerId, users, usernameClass) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      if (!users || users.length === 0) {
+        container.innerHTML = '<p class="text-gray-400">No data found.</p>';
+        return;
+      }
+      let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>שם משתמש</th><th>כמות</th></tr></thead><tbody>';
+      users.forEach((user, index) => {
+        tableHtml += `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="${usernameClass}">${user.username}</td>
+            <td>${user.quantity || 0}</td>
+          </tr>
+        `;
+      });
+      tableHtml += '</tbody></table>';
+      container.innerHTML = tableHtml;
+    }
+
+    let leaderboardLoaded = false;
+    let leaderboardInterval = null;
+    function loadLeaderboardsOnce() {
+      fetchLeaderboardData();
+      if (!leaderboardLoaded) {
+        leaderboardLoaded = true;
+        leaderboardInterval = setInterval(fetchLeaderboardData, 300000);
+      }
+    }
 
     // ============ YOUTUBE VIDEOS ============
     const videoContainer = document.getElementById('video-container');
@@ -2795,6 +2877,7 @@ function loadEmotesOnce() {
     const PAGE_META = {
       home:        { title: 'Oded SVR',        subtitle: 'Official Links',            logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       info:        { title: 'Oded SVR',        subtitle: 'Specs & Commands',          logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
+      topdonators: { title: 'Oded SVR', subtitle: 'Top Donators', logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       stats:       { title: 'Oded SVR',        subtitle: 'Kick Stats & Info',         logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
       YTvids:      { title: 'OdedSVR Live',    subtitle: 'Recent YouTube Videos',    logo: YT_LOGO,   link: 'https://www.youtube.com/@OdedSVRLive', linkLabel: 'מעבר לערוץ היוטיוב של עודד סבר (נפתח בטאב חדש)' },
       waterpark:   { title: 'Oded SVR',        subtitle: 'WaterPark Simulator Commands', logo: ODED_LOGO, link: 'https://kick.com/odedsvr', linkLabel: 'מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)' },
@@ -2837,6 +2920,7 @@ function loadEmotesOnce() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       // Lazy-load page-specific data the first time each page is opened
+      if (pageName === 'topdonators') loadLeaderboardsOnce();
       if (pageName === 'stats') {
         loadStatsOnce();
         loadEmotesOnce();
@@ -2879,6 +2963,5 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 });
 </script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
