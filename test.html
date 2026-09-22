@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -212,7 +213,7 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 .video-wrap{overflow:hidden;position:relative;border-radius:24px}
 .video-track{
   display:flex;direction:ltr;width:max-content;gap:14px;
-  animation:videoLoop 75s linear infinite;will-change:transform
+  animation:videoLoop 32s linear infinite;will-change:transform
 }
 .video-wrap:hover .video-track{animation-play-state:paused}
 .video-card{
@@ -330,6 +331,54 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 }
 .a11y-backdrop.open{display:block}
 
+
+/* SPA privacy page */
+.privacy-overlay{
+  position:fixed;inset:0;z-index:20000;display:none;
+  background:rgba(4,8,18,.78);backdrop-filter:blur(16px);
+  overflow:auto;padding:28px 18px;
+}
+.privacy-overlay.open{display:block}
+.privacy-shell{
+  width:min(920px,100%);margin:0 auto;min-height:calc(100vh - 56px);
+  border:1px solid rgba(126,154,255,.28);border-radius:26px;
+  background:linear-gradient(145deg,rgba(15,24,44,.98),rgba(7,12,24,.98));
+  box-shadow:0 30px 100px rgba(0,0,0,.62);overflow:hidden;
+}
+.privacy-head{
+  position:sticky;top:0;z-index:2;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;padding:18px 22px;
+  background:rgba(8,13,26,.94);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.privacy-kicker{font:700 10px "Roboto Mono",monospace;color:var(--cyan);letter-spacing:.16em}
+.privacy-head h1{margin:2px 0 0;font-size:28px;letter-spacing:-1px}
+.privacy-close{
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);
+  color:#fff;border-radius:12px;width:42px;height:42px;cursor:pointer;font-size:23px;
+}
+.privacy-body{padding:28px 26px 34px}
+.privacy-section{
+  padding:20px 0;border-bottom:1px solid rgba(255,255,255,.07)
+}
+.privacy-section:last-child{border-bottom:0}
+.privacy-section h2{margin:0 0 8px;color:var(--cyan);font-size:19px}
+.privacy-section p{margin:0;color:#c2cbe0;font-size:14px;line-height:1.9}
+.privacy-contact{
+  margin-top:12px;padding:14px 16px;border-radius:14px;
+  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)
+}
+.privacy-contact strong{color:#fff}.privacy-contact span{color:#9fdfff}
+.privacy-updated{margin-top:22px;color:#66748f;font-size:11px;text-align:center}
+body.spa-locked{overflow:hidden}
+@media(max-width:800px){
+  .privacy-overlay{padding:10px}
+  .privacy-shell{min-height:calc(100vh - 20px);border-radius:20px}
+  .privacy-head{padding:15px}
+  .privacy-head h1{font-size:23px}
+  .privacy-body{padding:20px 17px 28px}
+}
+
 @media(max-width:800px){
   .header{padding:9px}.nav{border-radius:16px}.brand{min-width:auto}.brand span{display:none}
   .navlinks{overflow-x:auto;justify-content:flex-start}.navlinks a{padding:8px 6px;font-size:11px}
@@ -385,7 +434,6 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
     <div class="hero-copy">
       <div class="eyebrow">OFFICIAL LINKS · ODED SVR</div>
       <h1 id="hero-title"><span class="gradient-text">ODED<br>SVR</span></h1>
-      <p>כל הקישורים, הסרטונים, המידע, התורמים ונתוני ה-Kick של ODED SVR — עכשיו בתוך העיצוב החדש.</p>
       <div class="cta">
         <a class="btn primary" href="#links">לכל הקישורים ↓</a>
         <a class="btn" href="https://kick.com/odedsvr" target="_blank" rel="noopener">Kick ↗</a>
@@ -406,7 +454,6 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">01 / LINKS</div><h2 id="links-title">הקישורים שלי</h2></div>
-    <p class="sub">כל המקומות המרכזיים במקום אחד.</p>
   </div>
 
   <div class="links-grid">
@@ -466,7 +513,6 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">02 / VIDEOS</div><h2 id="videos-title">הסרטונים האחרונים</h2></div>
-    <p class="sub">10 הסרטונים האחרונים נעים בלופ רציף. מעבר עם העכבר עוצר את התנועה.</p>
   </div>
   <div id="video-container" class="video-wrap" aria-live="polite">
     <div class="loading">טוען 10 סרטונים אחרונים...</div>
@@ -478,7 +524,6 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">03 / INFO</div><h2 id="info-title">Info</h2></div>
-    <p class="sub">הפקודות והמפרט שהיו בעמוד Info המקורי.</p>
   </div>
   <div class="info-grid">
     <article class="info-card">
@@ -511,7 +556,6 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">04 / DONATORS</div><h2 id="donators-title">Top Donators</h2></div>
-    <p class="sub">הנתונים נטענים ישירות מ־data.json.</p>
   </div>
   <div class="donors">
     <article class="donor-card">
@@ -530,7 +574,6 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">05 / KICK STATS & INFO</div><h2 id="stats-title">Kick Stats & Info</h2></div>
-    <p class="sub">הנתונים נטענים מה־Worker ומה־Kick.</p>
   </div>
   <div id="statsAccordion" class="stats-grid">
     <details class="stats-panel stats-orange">
@@ -558,15 +601,69 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 
 <footer class="footer">
   <img class="footer-logo" src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="OdedSVR">
-  <div>© ODED SVR · Official Links</div>
+  <div></div>© 2026 Piker , OdedSVR. All rights reserved.</div>
   <div class="footer-links">
-    <a href="https://odedsvr.com/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-    <a href="https://odedsvr.com/accessibility.html" target="_blank" rel="noopener">Accessibility Statement</a>
+    <a href="#privacy" id="privacy-link">Privacy Policy</a>
+    <a href="#accessibility" id="accessibility-link">Accessibility Statement</a>
   </div>
 </footer>
 
+
+<div id="privacy-overlay" class="privacy-overlay" role="dialog" aria-modal="true"
+     aria-labelledby="privacy-title" aria-hidden="true">
+  <div class="privacy-shell">
+    <div class="privacy-head">
+      <div>
+        <div class="privacy-kicker">ODEDSVR / PRIVACY</div>
+        <h1 id="privacy-title">מדיניות פרטיות</h1>
+      </div>
+      <button id="privacy-close" class="privacy-close" type="button" aria-label="סגור מדיניות פרטיות">×</button>
+    </div>
+
+    <div class="privacy-body">
+      <section class="privacy-section">
+        <h2>1. כללי</h2>
+        <p>ברוכים הבאים לעמוד הקישורים הרשמי של OdedSVR. אנו מכבדים את הפרטיות שלכם ומחויבים להגן על המידע האישי שלכם. עמוד זה מספק מידע על האופן שבו האתר פועל ומציג תוכן.</p>
+      </section>
+
+      <section class="privacy-section">
+        <h2>2. איסוף מידע ושירותי צד שלישי</h2>
+        <p>האתר עצמו אינו דורש הרשמה, אינו שומר מידע אישי מזהה ואינו מנהל מאגר נתונים עצמאי של משתמשים. עם זאת, האתר משתמש בשירותי צד שלישי, כמו GitHub Pages לאירוח והפניות לפלטפורמות כגון Kick, YouTube, Discord וטפסים חיצוניים, אשר עשויים לאסוף נתונים סטטיסטיים או להשתמש בעוגיות בהתאם למדיניות הפרטיות שלהם.</p>
+      </section>
+
+      <section class="privacy-section">
+        <h2>3. קישורים חיצוניים ושותפויות</h2>
+        <p>האתר מכיל קישורים לאתרים חיצוניים. שותפויות עסקיות וקודים להנחה, כגון ליברו, Velocity RP ומחסני חשמל, מפנות לאתרים חיצוניים. לאחר מעבר לאתר חיצוני, השימוש באתר החדש כפוף לתנאי השימוש ולמדיניות הפרטיות של אותו אתר.</p>
+      </section>
+
+      <section class="privacy-section">
+        <h2>4. הצגת נתוני תרומות ומובילי דעה (Leaderboards)</h2>
+        <p>האתר מציג רשימות של תורמים מובילים ("Top Donators") ונתוני מתנות/תרומות על בסיס מידע פומבי ונגיש הזמין בפלטפורמת הסטרימינג Kick. הנתונים, הכוללים שמות משתמש פומביים וכמויות תרומה, נמשכים באופן אוטומטי באמצעות API ציבורי ואינם נשמרים במאגר מידע פרטי שלנו למטרות זיהוי אישי, מעקב או מסחר.</p>
+        <p style="margin-top:10px">מאחר ששמות המשתמש והנתונים המוצגים מנוהלים על ידי פלטפורמת Kick ובאחריות המשתמשים שהגדירו את חשבונם כציבורי שם, אין לאתר זה או לבעליו שליטה על אופן הצגת המידע הראשוני, נכונותו או עדכונו.</p>
+      </section>
+
+      <section class="privacy-section">
+        <h2>5. נגישות וטכנולוגיה</h2>
+        <p>באתר מוטמע רכיב נגישות מותאם אישית על מנת לאפשר חוויית גלישה נוחה ונגישה לכלל המשתמשים. רכיב זה פועל באופן מקומי בדפדפן שלכם ואינו משתף את העדפות הגלישה שלכם עם גורמים חיצוניים.</p>
+      </section>
+
+      <section class="privacy-section">
+        <h2>6. יצירת קשר</h2>
+        <p>לשאלות, בירורים או פניות בנושא האתר, ניתן ליצור קשר דרך ערוצי הדיסקורד הרשמיים או בפרטי הקשר המופיעים בעמוד.</p>
+        <div class="privacy-contact">
+          <div><strong>רכז נגישות:</strong> <span>Piker_r / צוות OdedSVR</span></div>
+          <div style="margin-top:6px"><strong>ליצירת קשר:</strong> <span>discord - amirlif</span></div>
+          <div style="margin-top:6px"><strong>דוא"ל:</strong> <span>ניתן לפנות דרך ערוצי הקשר הרשמיים באתר</span></div>
+        </div>
+      </section>
+
+      <div class="privacy-updated">עודכן לאחרונה: יוני 2026</div>
+    </div>
+  </div>
+</div>
+
 <button id="a11y-fab" type="button" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">♿</button>
-<section id="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11y-title">
+<section id="a11y-panel" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="a11y-title">
   <div class="a11y-head">
     <strong id="a11y-title">תפריט נגישות</strong>
     <button class="a11y-close" type="button" id="a11y-close" aria-label="סגור תפריט נגישות">×</button>
@@ -616,23 +713,51 @@ async function fetchVideos(){
   const c=document.getElementById('video-container');if(!c)return;
   const uploads=YT_CHANNEL_ID.replace('UC','UU');
   const url=`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=${uploads}&key=${YT_API_KEY}`;
+
+  c.innerHTML='<div class="loading">טוען את הסרטונים האחרונים...</div>';
+
   try{
-    const response=await fetch(url);
+    const response=await fetch(url,{cache:'no-store'});
+    if(!response.ok)throw new Error('YouTube API '+response.status);
     const data=await response.json();
-    if(!data.items?.length){c.innerHTML='<div class="error">לא נמצאו סרטונים.</div>';return}
-    const cards=data.items.map(item=>{
-      const id=item.snippet.resourceId.videoId;
-      const title=item.snippet.title;
-      const thumb=item.snippet.thumbnails?.high?.url||item.snippet.thumbnails?.medium?.url||`https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-      const date=new Date(item.snippet.publishedAt).toLocaleDateString('he-IL');
-      return `<a class="video-card" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener" aria-label="${escapeHtml(title)}">
-        <img class="video-thumb" src="${thumb}" alt="">
+
+    if(data.error){
+      throw new Error(data.error.message||'YouTube API error');
+    }
+    if(!data.items?.length){
+      c.innerHTML='<div class="error">לא נמצאו סרטונים.</div>';
+      return;
+    }
+
+    const cards=data.items.map((item,index)=>{
+      const id=item.snippet?.resourceId?.videoId;
+      if(!id)return '';
+      const title=item.snippet?.title||'סרטון OdedSVR';
+      const thumb=item.snippet?.thumbnails?.high?.url||
+                   item.snippet?.thumbnails?.medium?.url||
+                   item.snippet?.thumbnails?.default?.url||
+                   `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+      const date=item.snippet?.publishedAt
+        ? new Date(item.snippet.publishedAt).toLocaleDateString('he-IL')
+        : '';
+
+      return `<a class="video-card" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)}">
+        <img class="video-thumb" src="${escapeHtml(thumb)}" alt="" ${index<4?'fetchpriority="high"':'loading="lazy"'} decoding="async">
         <div class="video-title">${escapeHtml(title)}</div>
         <div class="video-meta">${date} · OdedSVR Live</div>
       </a>`;
     }).join('');
+
+    if(!cards){
+      c.innerHTML='<div class="error">לא נמצאו סרטונים להצגה.</div>';
+      return;
+    }
+
     c.innerHTML=`<div class="video-fade left"></div><div class="video-fade right"></div><div class="video-track">${cards}${cards}</div>`;
-  }catch(e){c.innerHTML='<div class="error">שגיאה בטעינת הסרטונים.</div>'}
+  }catch(e){
+    console.error('Video loading failed:',e);
+    c.innerHTML='<div class="error">לא הצלחנו לטעון את הסרטונים כרגע. נסה לרענן את העמוד.</div>';
+  }
 }
 
 function getNumericValue(u){
@@ -788,16 +913,28 @@ async function updateKickStatus(){
   }catch(e){}
 }
 
+// סרטונים נטענים מיד כדי שלא יהיה עיכוב כשהמשתמש מגיע אליהם.
+if(!videosLoaded){
+  videosLoaded=true;
+  fetchVideos();
+}
+
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(!entry.isIntersecting)return;
     const id=entry.target.id;
-    if(id==='videos'&&!videosLoaded){videosLoaded=true;fetchVideos()}
-    if(id==='stats'&&!statsLoaded){statsLoaded=true;fetchStatsAndLeaderboards();fetchEmotesData()}
-    if(id==='donators'&&!donorsLoaded){donorsLoaded=true;fetchDonators()}
+    if(id==='stats'&&!statsLoaded){
+      statsLoaded=true;
+      fetchStatsAndLeaderboards();
+      fetchEmotesData();
+    }
+    if(id==='donators'&&!donorsLoaded){
+      donorsLoaded=true;
+      fetchDonators();
+    }
   });
-},{rootMargin:'300px'});
-['videos','stats','donators'].forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el)});
+},{rootMargin:'500px'});
+['stats','donators'].forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el)});
 updateKickStatus();
 setInterval(updateKickStatus,60000);
 
@@ -814,6 +951,77 @@ if(accordion){
   });
 }
 
+
+const privacyOverlay=document.getElementById('privacy-overlay');
+const privacyLink=document.getElementById('privacy-link');
+const privacyClose=document.getElementById('privacy-close');
+let privacyReturnFocus=null;
+let privacyScrollY=0;
+
+function openPrivacy(updateHistory=true){
+  if(!privacyOverlay)return;
+  privacyReturnFocus=document.activeElement;
+  privacyScrollY=window.scrollY;
+  privacyOverlay.classList.add('open');
+  privacyOverlay.setAttribute('aria-hidden','false');
+  document.body.classList.add('spa-locked');
+  privacyClose?.focus();
+
+  if(updateHistory && location.hash!=='#privacy'){
+    history.pushState({page:'privacy'},'',location.pathname+location.search+'#privacy');
+  }
+}
+
+function closePrivacy(updateHistory=true){
+  if(!privacyOverlay)return;
+  privacyOverlay.classList.remove('open');
+  privacyOverlay.setAttribute('aria-hidden','true');
+  document.body.classList.remove('spa-locked');
+
+  if(updateHistory && location.hash==='#privacy'){
+    history.pushState({},'',location.pathname+location.search);
+  }
+
+  requestAnimationFrame(()=>{
+    window.scrollTo(0,privacyScrollY);
+    if(privacyReturnFocus && typeof privacyReturnFocus.focus==='function')privacyReturnFocus.focus();
+  });
+}
+
+privacyLink?.addEventListener('click',e=>{
+  e.preventDefault();
+  openPrivacy(true);
+});
+privacyClose?.addEventListener('click',()=>closePrivacy(true));
+privacyOverlay?.addEventListener('click',e=>{
+  if(e.target===privacyOverlay)closePrivacy(true);
+});
+
+window.addEventListener('popstate',()=>{
+  if(location.hash==='#privacy')openPrivacy(false);
+  else if(privacyOverlay?.classList.contains('open'))closePrivacy(false);
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&privacyOverlay?.classList.contains('open'))closePrivacy(true);
+
+  if(e.key==='Tab'&&privacyOverlay?.classList.contains('open')){
+    const focusable=[...privacyOverlay.querySelectorAll('a,button,input,select,textarea,[tabindex]:not([tabindex="-1"])')]
+      .filter(x=>!x.disabled && x.offsetParent!==null);
+    if(!focusable.length)return;
+    const first=focusable[0],last=focusable[focusable.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+  }
+});
+
+if(location.hash==='#privacy')openPrivacy(false);
+
+const accessibilityLink=document.getElementById('accessibility-link');
+accessibilityLink?.addEventListener('click',e=>{
+  e.preventDefault();
+  openA11y();
+});
 const a11yFab=document.getElementById('a11y-fab');
 const a11yPanel=document.getElementById('a11y-panel');
 const a11yClose=document.getElementById('a11y-close');
@@ -822,19 +1030,43 @@ const a11yStatus=document.getElementById('a11y-status');
 let guideActive=false;
 let guideY=0;
 
+let a11yReturnFocus=null;
+
 function openA11y(){
-  a11yPanel.classList.add('open');a11yBackdrop.classList.add('open');
+  a11yReturnFocus=document.activeElement;
+  a11yPanel.classList.add('open');
+  a11yBackdrop.classList.add('open');
   a11yFab.setAttribute('aria-expanded','true');
+  a11yPanel.setAttribute('aria-hidden','false');
+  document.body.classList.add('spa-locked');
   a11yPanel.querySelector('button')?.focus();
 }
+
 function closeA11y(){
-  a11yPanel.classList.remove('open');a11yBackdrop.classList.remove('open');
-  a11yFab.setAttribute('aria-expanded','false');a11yFab.focus();
+  a11yPanel.classList.remove('open');
+  a11yBackdrop.classList.remove('open');
+  a11yFab.setAttribute('aria-expanded','false');
+  a11yPanel.setAttribute('aria-hidden','true');
+  document.body.classList.remove('spa-locked');
+  if(a11yReturnFocus && typeof a11yReturnFocus.focus==='function')a11yReturnFocus.focus();
+  else a11yFab.focus();
 }
+
 a11yFab.addEventListener('click',()=>a11yPanel.classList.contains('open')?closeA11y():openA11y());
 a11yClose.addEventListener('click',closeA11y);
 a11yBackdrop.addEventListener('click',closeA11y);
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&a11yPanel.classList.contains('open'))closeA11y()});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&a11yPanel.classList.contains('open'))closeA11y();
+
+  if(e.key==='Tab'&&a11yPanel.classList.contains('open')){
+    const focusable=[...a11yPanel.querySelectorAll('button')].filter(x=>!x.disabled);
+    if(!focusable.length)return;
+    const first=focusable[0],last=focusable[focusable.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+  }
+});
 
 function updateScale(delta){
   const current=parseFloat(localStorage.getItem('a11yScale')||'1');
