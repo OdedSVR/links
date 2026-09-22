@@ -503,12 +503,13 @@ body.spa-locked{overflow:hidden}
   overflow:hidden;
   position:relative;
   direction:ltr;
-  padding:8px 0 18px;
+  padding:8px 0 22px;
 }
 #video-container .video-grid{
   display:flex;
   flex-direction:row;
   flex-wrap:nowrap;
+  align-items:stretch;
   width:max-content;
   gap:18px;
   animation:videosMarquee 38s linear infinite;
@@ -517,8 +518,65 @@ body.spa-locked{overflow:hidden}
 #video-container .video-card{
   flex:0 0 300px;
   width:300px;
+  min-width:300px;
+  height:245px;
+  box-sizing:border-box;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(11,18,33,.82);
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  overflow:hidden;
   text-decoration:none;
+  direction:rtl;
+  position:relative;
+}
+#video-container .video-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(87,216,255,.40);
+}
+#video-container .video-thumb{
+  position:relative;
+  width:100%;
+  height:162px;
+  flex:0 0 162px;
+  overflow:hidden;
+  border-radius:13px;
+  background:#101827;
   display:block;
+}
+#video-container .video-thumb img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+#video-container .video-play{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(0,0,0,.72);
+  color:#fff;
+  font-size:14px;
+}
+#video-container .video-title{
+  margin-top:10px;
+  font-weight:800;
+  font-size:15px;
+  line-height:1.4;
+  color:#fff;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  overflow:hidden;
 }
 #video-container:hover .video-grid{
   animation-play-state:paused;
@@ -527,8 +585,21 @@ body.spa-locked{overflow:hidden}
   from{transform:translateX(0);}
   to{transform:translateX(-50%);}
 }
+@media (max-width:700px){
+  #video-container .video-card{
+    flex-basis:260px;
+    width:260px;
+    min-width:260px;
+    height:225px;
+  }
+  #video-container .video-thumb{
+    height:142px;
+    flex-basis:142px;
+  }
+}
 @media (prefers-reduced-motion: reduce){
   #video-container .video-grid{animation:none;}
+}
 }
 
 
@@ -997,7 +1068,9 @@ async function fetchVideos({silent=false} = {}){
       <a class="video-card" href="https://www.youtube.com/watch?v=${encodeURIComponent(v.id)}"
          target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(v.title)}">
         <div class="video-thumb">
-          <img src="${escapeHtml(v.thumb)}" alt="" loading="lazy"
+          <img src="${escapeHtml(v.thumb)}"
+               alt=""
+               loading="lazy"
                onerror="this.style.visibility='hidden'">
           <span class="video-play" aria-hidden="true">▶</span>
         </div>
