@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -831,6 +830,29 @@ section[id]{scroll-margin-top:110px;}
 #tts-bar{z-index:100000!important;}
 #vkeyboard{z-index:100001!important;}
 
+
+/* Keep Info command copy buttons compact despite the accessibility button styles */
+.command-top .a11y-btn{
+  display:inline-flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:auto !important;
+  min-width:58px !important;
+  min-height:0 !important;
+  height:32px !important;
+  padding:2px 9px !important;
+  margin:0 !important;
+  gap:4px !important;
+  font-size:11px !important;
+  line-height:1.2 !important;
+  border-radius:8px !important;
+}
+.command-top .a11y-btn svg{
+  width:14px !important;
+  height:14px !important;
+}
+
 </style>
 
 
@@ -1042,10 +1064,10 @@ section[id]{scroll-margin-top:110px;}
     <article class="info-card">
       <h3>💬 Chat Commands (Kick)</h3>
       <div class="command-list">
-        <div class="command"><div class="command-top"><span class="command-name">!watchtime</span><button class="a11y-btn" style="padding:2px 7px;width:auto" onclick="copyCmd('!watchtime')">העתק</button></div><div class="command-desc">Total Watchtime On LiveStreams</div></div>
-        <div class="command"><div class="command-top"><span class="command-name">!followage</span><button class="a11y-btn" style="padding:2px 7px;width:auto" onclick="copyCmd('!followage')">העתק</button></div><div class="command-desc">Total Follow Time On Kick</div></div>
-        <div class="command"><div class="command-top"><span class="command-name">!clip</span><button class="a11y-btn" style="padding:2px 7px;width:auto" onclick="copyCmd('!clip')">העתק</button></div><div class="command-desc">Clip The Last 30 Seconds</div></div>
-        <div class="command"><div class="command-top"><span class="command-name">!discord</span><button class="a11y-btn" style="padding:2px 7px;width:auto" onclick="copyCmd('!discord')">העתק</button></div><div class="command-desc">Get a Link For The Discord Server</div></div>
+        <div class="command"><div class="command-top"><span class="command-name">!watchtime</span><button class="a11y-btn command-copy-btn" style="padding:2px 7px;width:auto;height:32px;min-height:0" onclick="copyCmd('!watchtime')">העתק</button></div><div class="command-desc">Total Watchtime On LiveStreams</div></div>
+        <div class="command"><div class="command-top"><span class="command-name">!followage</span><button class="a11y-btn command-copy-btn" style="padding:2px 7px;width:auto;height:32px;min-height:0" onclick="copyCmd('!followage')">העתק</button></div><div class="command-desc">Total Follow Time On Kick</div></div>
+        <div class="command"><div class="command-top"><span class="command-name">!clip</span><button class="a11y-btn command-copy-btn" style="padding:2px 7px;width:auto;height:32px;min-height:0" onclick="copyCmd('!clip')">העתק</button></div><div class="command-desc">Clip The Last 30 Seconds</div></div>
+        <div class="command"><div class="command-top"><span class="command-name">!discord</span><button class="a11y-btn command-copy-btn" style="padding:2px 7px;width:auto;height:32px;min-height:0" onclick="copyCmd('!discord')">העתק</button></div><div class="command-desc">Get a Link For The Discord Server</div></div>
       </div>
     </article>
     <article class="info-card">
