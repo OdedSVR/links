@@ -496,7 +496,48 @@ body.spa-locked{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
 }
+
+/* ===== Recent videos: right-to-left continuous marquee ===== */
+#video-container{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  direction:ltr;
+  padding:8px 0 18px;
+}
+#video-container .video-grid{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  width:max-content;
+  gap:18px;
+  animation:videosMarquee 38s linear infinite;
+  will-change:transform;
+}
+#video-container .video-card{
+  flex:0 0 300px;
+  width:300px;
+  text-decoration:none;
+  display:block;
+}
+#video-container:hover .video-grid{
+  animation-play-state:paused;
+}
+@keyframes videosMarquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@media (prefers-reduced-motion: reduce){
+  #video-container .video-grid{animation:none;}
+}
+
+
+/* Anchor navigation offset for the fixed header */
+section[id]{scroll-margin-top:110px;}
+
 </style>
+
+
 </head>
 
 <body>
@@ -952,7 +993,7 @@ async function fetchVideos({silent=false} = {}){
       return false;
     }
 
-    const nextHtml=videos.map(v=>`
+    const renderVideoCards = (list) => list.map(v=>`
       <a class="video-card" href="https://www.youtube.com/watch?v=${encodeURIComponent(v.id)}"
          target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(v.title)}">
         <div class="video-thumb">
@@ -963,6 +1004,9 @@ async function fetchVideos({silent=false} = {}){
         <div class="video-title">${escapeHtml(v.title)}</div>
       </a>
     `).join('');
+
+    // Duplicate the row so the marquee can loop continuously without a jump.
+    const nextHtml = renderVideoCards(videos) + renderVideoCards(videos);
 
     // Atomic update: build first, then replace, so a failed refresh never blanks the section.
     const wrap=document.createElement('div');
@@ -1191,6 +1235,48 @@ if(accordion){
   });
 }
 
+
+
+// ============ SMOOTH SECTION NAVIGATION ============
+function scrollToSectionId(id, updateUrl=true){
+  const target=document.getElementById(id);
+  if(!target)return false;
+
+  const header=document.querySelector('.header');
+  const offset=(header?.getBoundingClientRect().height||0)+14;
+  const top=Math.max(0,window.scrollY + target.getBoundingClientRect().top - offset);
+
+  window.scrollTo({top,behavior:'smooth'});
+
+  if(updateUrl && history.replaceState){
+    history.replaceState(null,'',id==='top' ? location.pathname+location.search : '#'+id);
+  }
+  return true;
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  const raw=link.getAttribute('href');
+  const id=raw ? raw.slice(1) : '';
+  if(!id || id==='privacy' || id==='accessibility')return;
+
+  // Only hijack internal section links; external links and special overlays stay untouched.
+  if(!document.getElementById(id))return;
+
+  link.addEventListener('click',e=>{
+    if(e.defaultPrevented)return;
+    e.preventDefault();
+    e.stopPropagation();
+    scrollToSectionId(id,true);
+  });
+});
+
+// Preserve a valid section hash after the page has finished laying out.
+window.addEventListener('load',()=>{
+  const hash=(location.hash||'').slice(1);
+  if(hash && hash!=='privacy' && hash!=='accessibility' && document.getElementById(hash)){
+    requestAnimationFrame(()=>requestAnimationFrame(()=>scrollToSectionId(hash,false)));
+  }
+});
 
 const privacyOverlay=document.getElementById('privacy-overlay');
 const privacyLink=document.getElementById('privacy-link');
