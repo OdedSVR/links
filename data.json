@@ -64,14 +64,29 @@
       "quantity": 20
     },
     {
+      "user_id": 88575794,
+      "username": "Yishaias",
+      "quantity": 18
+    },
+    {
       "user_id": 23453771,
       "username": "eyal1l",
-      "quantity": 6
+      "quantity": 11
+    },
+    {
+      "user_id": 100752060,
+      "username": "CatK1ll3r",
+      "quantity": 5
     },
     {
       "user_id": 83580050,
       "username": "rotev",
       "quantity": 2
+    },
+    {
+      "user_id": 80766767,
+      "username": "EladTen",
+      "quantity": 1
     },
     {
       "user_id": 67029501,
@@ -81,6 +96,11 @@
     {
       "user_id": 78635367,
       "username": "Talgorn",
+      "quantity": 1
+    },
+    {
+      "user_id": 79594558,
+      "username": "tirlax",
       "quantity": 1
     }
   ],
@@ -99,7 +119,7 @@
     {
       "user_id": 88575794,
       "username": "Yishaias",
-      "quantity": 105
+      "quantity": 123
     },
     {
       "user_id": 106428006,
