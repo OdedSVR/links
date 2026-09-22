@@ -211,7 +211,7 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 .video-wrap{overflow:hidden;position:relative;border-radius:24px}
 .video-track{
   display:flex;direction:ltr;width:max-content;gap:14px;
-  animation:videoLoop 32s linear infinite;will-change:transform
+  animation:videoLoop 32s linear infinite;will-change:transform;min-height:250px
 }
 .video-wrap:hover .video-track{animation-play-state:paused}
 .video-card{
@@ -219,6 +219,36 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
   background:rgba(11,18,33,.78);border-radius:18px;transition:.25s;direction:rtl
 }
 .video-card:hover{transform:translateY(-4px);border-color:rgba(87,216,255,.40)}
+
+.video-fallback{
+  padding:18px;
+  border:1px solid rgba(126,154,255,.18);
+  border-radius:24px;
+  background:rgba(8,13,26,.72);
+}
+.video-fallback-head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:18px;
+  margin-bottom:14px;
+}
+.video-fallback-head h3{margin:2px 0 4px;font-size:20px}
+.video-fallback-head p{margin:0;color:#8190aa;font-size:12px;line-height:1.6}
+.video-fallback-head a{
+  flex:0 0 auto;text-decoration:none;color:#dff8ff;
+  border:1px solid rgba(87,216,255,.25);background:rgba(87,216,255,.07);
+  border-radius:10px;padding:9px 12px;font-size:11px;font-weight:900;
+}
+.video-iframe-wrap{
+  position:relative;width:100%;aspect-ratio:16/7;min-height:260px;
+  border-radius:17px;overflow:hidden;background:#080d18;
+  border:1px solid rgba(255,255,255,.07);
+}
+.video-iframe-wrap iframe{width:100%;height:100%;border:0;display:block}
+@media(max-width:700px){
+  .video-fallback-head{display:block}
+  .video-fallback-head a{display:inline-block;margin-top:10px}
+  .video-iframe-wrap{aspect-ratio:16/9;min-height:210px}
+}
+
 .video-thumb{width:100%;height:174px;object-fit:cover;border-radius:13px;background:#101827;display:block}
 .video-title{font-weight:800;font-size:15px;line-height:1.4;margin-top:10px}
 .video-meta{font-family:"Roboto Mono",monospace;color:#72809e;font-size:9px;margin-top:6px}
@@ -377,6 +407,80 @@ body.spa-locked{overflow:hidden}
   .privacy-body{padding:20px 17px 28px}
 }
 
+
+/* ==================== SPA ACCESSIBILITY STATEMENT ==================== */
+.accessibility-overlay{
+  position:fixed;inset:0;z-index:21000;display:none;
+  background:rgba(4,8,18,.80);backdrop-filter:blur(16px);
+  overflow:auto;padding:28px 18px;
+}
+.accessibility-overlay.open{display:block}
+.accessibility-shell{
+  width:min(920px,100%);margin:0 auto;min-height:calc(100vh - 56px);
+  border:1px solid rgba(87,216,255,.25);border-radius:26px;
+  background:linear-gradient(145deg,rgba(15,24,44,.98),rgba(7,12,24,.98));
+  box-shadow:0 30px 100px rgba(0,0,0,.62);overflow:hidden;
+}
+.accessibility-head{
+  position:sticky;top:0;z-index:2;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;padding:18px 22px;
+  background:rgba(8,13,26,.94);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.accessibility-kicker{
+  font:700 10px "Roboto Mono",monospace;color:var(--cyan);letter-spacing:.16em
+}
+.accessibility-head h1{margin:2px 0 0;font-size:28px;letter-spacing:-1px}
+.accessibility-close{
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);
+  color:#fff;border-radius:12px;width:42px;height:42px;cursor:pointer;font-size:23px;
+}
+.accessibility-body{padding:28px 26px 34px}
+.accessibility-intro{
+  display:flex;align-items:center;gap:18px;margin-bottom:26px;
+  padding:20px;border-radius:18px;background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07)
+}
+.accessibility-logo{
+  width:78px;height:78px;border-radius:50%;object-fit:cover;
+  border:2px solid rgba(255,255,255,.10);box-shadow:0 15px 35px rgba(0,0,0,.35)
+}
+.accessibility-intro h2{margin:0;font-size:24px}
+.accessibility-intro p{margin:4px 0 0;color:#72809e;font:700 10px "Roboto Mono",monospace;letter-spacing:.18em}
+.accessibility-section{
+  padding:20px 0;border-bottom:1px solid rgba(255,255,255,.07)
+}
+.accessibility-section:last-child{border-bottom:0}
+.accessibility-section h2{margin:0 0 9px;color:var(--cyan);font-size:19px}
+.accessibility-section p{margin:0;color:#c2cbe0;font-size:14px;line-height:1.9}
+.accessibility-section ul{margin:10px 0 0;padding-right:20px;color:#9eabc1;line-height:1.9}
+.accessibility-contact{
+  margin-top:12px;padding:14px 16px;border-radius:14px;
+  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07)
+}
+.accessibility-contact p{font-size:13px;line-height:1.8}
+.accessibility-contact strong{color:#fff}.accessibility-contact span{color:#9fdfff}
+.accessibility-actions{
+  display:flex;gap:10px;flex-wrap:wrap;margin-top:18px
+}
+.accessibility-action{
+  border:1px solid rgba(87,216,255,.28);background:rgba(87,216,255,.08);
+  color:#dff8ff;border-radius:12px;padding:11px 15px;cursor:pointer;
+  font:800 13px "Heebo",sans-serif
+}
+.accessibility-action:hover{background:rgba(87,216,255,.14);border-color:rgba(87,216,255,.5)}
+.accessibility-updated{margin-top:22px;color:#66748f;font-size:11px;text-align:center}
+@media(max-width:800px){
+  .accessibility-overlay{padding:10px}
+  .accessibility-shell{min-height:calc(100vh - 20px);border-radius:20px}
+  .accessibility-head{padding:15px}
+  .accessibility-head h1{font-size:23px}
+  .accessibility-body{padding:20px 17px 28px}
+  .accessibility-intro{align-items:flex-start}
+  .accessibility-logo{width:60px;height:60px}
+}
+
+
 @media(max-width:800px){
   .header{padding:9px}.nav{border-radius:16px}.brand{min-width:auto}.brand span{display:none}
   .navlinks{overflow-x:auto;justify-content:flex-start}.navlinks a{padding:8px 6px;font-size:11px}
@@ -402,6 +506,71 @@ body.spa-locked{overflow:hidden}
 <div class="glow two"></div>
 <div class="glow three"></div>
 <div id="reading-guide" class="reading-guide"></div>
+
+<!-- ==================== SPA ACCESSIBILITY STATEMENT ==================== -->
+<div id="accessibility-overlay" class="accessibility-overlay" role="dialog" aria-modal="true"
+     aria-labelledby="accessibility-title" aria-hidden="true">
+  <div class="accessibility-shell">
+    <div class="accessibility-head">
+      <div>
+        <div class="accessibility-kicker">ODEDSVR / ACCESSIBILITY</div>
+        <h1 id="accessibility-title">הצהרת נגישות</h1>
+      </div>
+      <button id="accessibility-close" class="accessibility-close" type="button" aria-label="סגור הצהרת נגישות">×</button>
+    </div>
+
+    <div class="accessibility-body">
+      <div class="accessibility-intro">
+        <img class="accessibility-logo"
+             src="https://github.com/OdedSVR/images/blob/main/ODEDLL.png?raw=true"
+             alt="עודד סבר">
+        <div>
+          <h2>נגישות באתר OdedSVR</h2>
+          <p>ACCESSIBILITY STATEMENT</p>
+        </div>
+      </div>
+
+      <section class="accessibility-section">
+        <h2>מבוא</h2>
+        <p>אנו ב-OdedSVR רואים חשיבות עליונה בהנגשת האתר לכלל האוכלוסייה, לרבות אנשים עם מוגבלויות, במטרה לאפשר חוויית גלישה נוחה ועצמאית ככל הניתן. האתר נבנה והותאם בהתאם להנחיות הנגישות לחנות האינטרנט ולתקן הישראלי (ת"י 5568) ברמת הנגישות הנדרשת.</p>
+      </section>
+
+      <section class="accessibility-section">
+        <h2>אמצעי הנגישות באתר</h2>
+        <p>באתר מוטמע תפריט נגישות ייחודי המאפשר התאמות אישיות של ממשק המשתמש. בין היתר, האתר תומך ב:</p>
+        <ul>
+          <li>ניווט מלא באמצעות המקלדת (Keyboard Navigation).</li>
+          <li>ניווט והקראה קולית מתקדמת (TTS / Voice Nav) לנוחות משתמשים עם לקויות ראייה או תנועה.</li>
+          <li>התאמה מלאה למסכים ורזולוציות שונות (רספונסיביות).</li>
+          <li>טקסט אלטרנטיבי (Alt text) לתמונות ולוגואים משמעותיים.</li>
+          <li>מבנה קוד סמנטי התומך בטכנולוגיות מסייעות כגון קוראי מסך.</li>
+        </ul>
+        <div class="accessibility-actions">
+          <button id="open-a11y-from-statement" class="accessibility-action" type="button">פתח את תפריט הנגישות</button>
+        </div>
+      </section>
+
+      <section class="accessibility-section">
+        <h2>סייגים לנגישות ופניות</h2>
+        <p>למרות מאמצינו להנגיש את כלל חלקי האתר, ייתכן שחלקים מסוימים (כגון תכני וידאו המוטמעים מיוטיוב, או ווידג'טים חיצוניים של רשתות חברתיות) אינם נגישים בצורה מלאה, או שטרם נמצא עבורם הפתרון הטכנולוגי המתאים. אם נתקלתם בבעיה או בתקלה בנושא הנגישות, נשמח שתעדכנו אותנו כדי שנוכל לתקן ולשפר.</p>
+      </section>
+
+      <section class="accessibility-section">
+        <h2>פרטי רכז הנגישות</h2>
+        <p>לכל פנייה, דיווח על אי-נגישות או בקשה לעזרה, ניתן ליצור קשר ישיר:</p>
+        <div class="accessibility-contact">
+          <p><strong>רכז נגישות:</strong> <span>אמיר (Piker_R) / צוות OdedSVR</span></p>
+          <p><strong>ליצירת קשר:</strong> <span>discord - amirlif</span></p>
+          <p><strong>דוא"ל:</strong> <span>odedlink26@gmail.com</span></p>
+        </div>
+      </section>
+
+      <div class="accessibility-updated">עודכן לאחרונה: יוני 2026</div>
+    </div>
+  </div>
+</div>
+
+
 <div id="a11y-backdrop" class="a11y-backdrop"></div>
 <div id="toast" class="toast" role="status" aria-live="polite">הועתק!</div>
 
@@ -432,7 +601,7 @@ body.spa-locked{overflow:hidden}
     <div class="hero-copy">
       <div class="eyebrow">OFFICIAL LINKS · ODED SVR</div>
       <h1 id="hero-title"><span class="gradient-text">ODED<br>SVR</span></h1>
-        <p>כל הקישורים, הסרטונים, המידע, התורמים ונתוני ה-Kick של ODED SVR — עכשיו בתוך העיצוב החדש.</p>
+      <p>כל הקישורים, הסרטונים, המידע, התורמים ונתוני ה-Kick של ODED SVR — עכשיו בתוך העיצוב החדש.</p>
       <div class="cta">
         <a class="btn primary" href="#links">לכל הקישורים ↓</a>
         <a class="btn" href="https://kick.com/odedsvr" target="_blank" rel="noopener">Kick ↗</a>
@@ -453,6 +622,7 @@ body.spa-locked{overflow:hidden}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">01 / LINKS</div><h2 id="links-title">הקישורים שלי</h2></div>
+    <p class="sub">כל המקומות המרכזיים במקום אחד.</p>
   </div>
 
   <div class="links-grid">
@@ -512,6 +682,7 @@ body.spa-locked{overflow:hidden}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">02 / VIDEOS</div><h2 id="videos-title">הסרטונים האחרונים</h2></div>
+    <p class="sub">10 הסרטונים האחרונים נעים בלופ רציף. מעבר עם העכבר עוצר את התנועה.</p>
   </div>
   <div id="video-container" class="video-wrap" aria-live="polite">
     <div class="loading">טוען 10 סרטונים אחרונים...</div>
@@ -523,6 +694,7 @@ body.spa-locked{overflow:hidden}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">03 / INFO</div><h2 id="info-title">Info</h2></div>
+    <p class="sub">הפקודות והמפרט שהיו בעמוד Info המקורי.</p>
   </div>
   <div class="info-grid">
     <article class="info-card">
@@ -555,6 +727,7 @@ body.spa-locked{overflow:hidden}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">04 / DONATORS</div><h2 id="donators-title">Top Donators</h2></div>
+    <p class="sub">הנתונים נטענים ישירות מ־data.json.</p>
   </div>
   <div class="donors">
     <article class="donor-card">
@@ -573,6 +746,7 @@ body.spa-locked{overflow:hidden}
 <div class="container">
   <div class="section-head">
     <div><div class="kicker">05 / KICK STATS & INFO</div><h2 id="stats-title">Kick Stats & Info</h2></div>
+    <p class="sub">הנתונים נטענים מה־Worker ומה־Kick.</p>
   </div>
   <div id="statsAccordion" class="stats-grid">
     <details class="stats-panel stats-orange">
@@ -600,7 +774,7 @@ body.spa-locked{overflow:hidden}
 
 <footer class="footer">
   <img class="footer-logo" src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="OdedSVR">
-  <div></div>© 2026 Piker , OdedSVR. All rights reserved.</div>
+  <div>© ODED SVR · Official Links</div>
   <div class="footer-links">
     <a href="#privacy" id="privacy-link">Privacy Policy</a>
     <a href="#accessibility" id="accessibility-link">Accessibility Statement</a>
@@ -709,28 +883,58 @@ function fallbackCopy(text,cb){
 }
 
 async function fetchVideos(){
-  const c=document.getElementById('video-container');if(!c)return;
+  const c=document.getElementById('video-container');
+  if(!c)return;
+
   const uploads=YT_CHANNEL_ID.replace('UC','UU');
   const url=`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=${uploads}&key=${YT_API_KEY}`;
 
   c.innerHTML='<div class="loading">טוען את הסרטונים האחרונים...</div>';
 
+  const showPlaylistFallback=()=>{
+    c.innerHTML=`
+      <div class="video-fallback">
+        <div class="video-fallback-head">
+          <div>
+            <div class="kicker">YOUTUBE / LIVE FEED</div>
+            <h3>הסרטונים האחרונים</h3>
+            <p>הטעינה הישירה של רשימת הסרטונים לא זמינה כרגע, לכן מוצגת כאן רשימת הסרטונים של הערוץ ישירות מ-YouTube.</p>
+          </div>
+          <a href="https://www.youtube.com/channel/${encodeURIComponent(YT_CHANNEL_ID)}" target="_blank" rel="noopener noreferrer">פתח ב-YouTube ↗</a>
+        </div>
+        <div class="video-iframe-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/videoseries?list=${encodeURIComponent(uploads)}"
+            title="הסרטונים האחרונים של OdedSVR"
+            loading="eager"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>`;
+  };
+
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),7000);
+
   try{
-    const response=await fetch(url,{cache:'no-store'});
+    const response=await fetch(url,{cache:'no-store',signal:controller.signal});
+    clearTimeout(timeout);
+
     if(!response.ok)throw new Error('YouTube API '+response.status);
+
     const data=await response.json();
 
-    if(data.error){
-      throw new Error(data.error.message||'YouTube API error');
-    }
-    if(!data.items?.length){
-      c.innerHTML='<div class="error">לא נמצאו סרטונים.</div>';
+    if(data.error)throw new Error(data.error.message||'YouTube API error');
+
+    if(!Array.isArray(data.items)||!data.items.length){
+      showPlaylistFallback();
       return;
     }
 
     const cards=data.items.map((item,index)=>{
       const id=item.snippet?.resourceId?.videoId;
       if(!id)return '';
+
       const title=item.snippet?.title||'סרטון OdedSVR';
       const thumb=item.snippet?.thumbnails?.high?.url||
                    item.snippet?.thumbnails?.medium?.url||
@@ -740,22 +944,26 @@ async function fetchVideos(){
         ? new Date(item.snippet.publishedAt).toLocaleDateString('he-IL')
         : '';
 
-      return `<a class="video-card" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)}">
-        <img class="video-thumb" src="${escapeHtml(thumb)}" alt="" ${index<4?'fetchpriority="high"':'loading="lazy"'} decoding="async">
+      return `<a class="video-card" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}"
+          target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(title)}">
+        <img class="video-thumb" src="${escapeHtml(thumb)}" alt="" ${index<4?'fetchpriority="high"':'loading="lazy"'} decoding="async"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg';">
         <div class="video-title">${escapeHtml(title)}</div>
         <div class="video-meta">${date} · OdedSVR Live</div>
       </a>`;
     }).join('');
 
     if(!cards){
-      c.innerHTML='<div class="error">לא נמצאו סרטונים להצגה.</div>';
+      showPlaylistFallback();
       return;
     }
 
-    c.innerHTML=`<div class="video-fade left"></div><div class="video-fade right"></div><div class="video-track">${cards}${cards}</div>`;
+    c.innerHTML=`<div class="video-fade left"></div><div class="video-fade right"></div>
+      <div class="video-track">${cards}${cards}</div>`;
   }catch(e){
-    console.error('Video loading failed:',e);
-    c.innerHTML='<div class="error">לא הצלחנו לטעון את הסרטונים כרגע. נסה לרענן את העמוד.</div>';
+    clearTimeout(timeout);
+    console.warn('Video API unavailable, using YouTube playlist fallback.',e);
+    showPlaylistFallback();
   }
 }
 
@@ -1016,11 +1224,67 @@ document.addEventListener('keydown',e=>{
 
 if(location.hash==='#privacy')openPrivacy(false);
 
+const accessibilityOverlay=document.getElementById('accessibility-overlay');
 const accessibilityLink=document.getElementById('accessibility-link');
+const accessibilityClose=document.getElementById('accessibility-close');
+const openA11yFromStatement=document.getElementById('open-a11y-from-statement');
+let accessibilityReturnFocus=null;
+let accessibilityScrollY=0;
+
+function openAccessibilityStatement(updateHistory=true){
+  if(!accessibilityOverlay)return;
+  accessibilityReturnFocus=document.activeElement;
+  accessibilityScrollY=window.scrollY;
+  accessibilityOverlay.classList.add('open');
+  accessibilityOverlay.setAttribute('aria-hidden','false');
+  document.body.classList.add('spa-locked');
+  accessibilityClose?.focus();
+
+  if(updateHistory && location.hash!=='#accessibility'){
+    history.pushState({page:'accessibility'},'',location.pathname+location.search+'#accessibility');
+  }
+}
+
+function closeAccessibilityStatement(updateHistory=true){
+  if(!accessibilityOverlay)return;
+  accessibilityOverlay.classList.remove('open');
+  accessibilityOverlay.setAttribute('aria-hidden','true');
+  document.body.classList.remove('spa-locked');
+
+  if(updateHistory && location.hash==='#accessibility'){
+    history.pushState({},'',location.pathname+location.search);
+  }
+
+  requestAnimationFrame(()=>{
+    window.scrollTo(0,accessibilityScrollY);
+    accessibilityReturnFocus?.focus?.();
+  });
+}
+
 accessibilityLink?.addEventListener('click',e=>{
   e.preventDefault();
+  openAccessibilityStatement(true);
+});
+accessibilityClose?.addEventListener('click',()=>closeAccessibilityStatement(true));
+openA11yFromStatement?.addEventListener('click',()=>{
+  closeAccessibilityStatement(false);
   openA11y();
 });
+
+window.addEventListener('popstate',()=>{
+  if(location.hash==='#privacy'){
+    closeAccessibilityStatement(false);
+    openPrivacy(false);
+  }else if(location.hash==='#accessibility'){
+    closePrivacy(false);
+    openAccessibilityStatement(false);
+  }else{
+    closePrivacy(false);
+    closeAccessibilityStatement(false);
+  }
+});
+
+if(location.hash==='#accessibility')openAccessibilityStatement(false);
 const a11yFab=document.getElementById('a11y-fab');
 const a11yPanel=document.getElementById('a11y-panel');
 const a11yClose=document.getElementById('a11y-close');
