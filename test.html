@@ -6,49 +6,119 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OdedSVR | Official Links</title>
 <meta name="description" content="OdedSVR — Official Links, Videos, Info, Donators & Kick Stats">
-<link rel="icon" href="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true](https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true)">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#070b16;--bg2:#0b1120;--panel:rgba(14,22,40,.78);
-  --line:rgba(126,154,255,.20);--text:#f7f9ff;--muted:#99a7c4;
-  --cyan:#57d8ff;--purple:#9b72ff;--blue:#557cff;--green:#70cfa0;
-  --orange:#ff9a55;--pink:#ff6db3;--shadow:0 25px 80px rgba(0,0,0,.42);
+  --bg:#070b16;
+  --bg2:#0b1120;
+  --panel:rgba(14,22,40,.78);
+  --line:rgba(126,154,255,.20);
+  --text:#f7f9ff;
+  --muted:#99a7c4;
+  --cyan:#57d8ff;
+  --purple:#9b72ff;
+  --blue:#557cff;
+  --green:#70cfa0;
+  --orange:#ff9a55;
+  --pink:#ff6db3;
+  --shadow:0 25px 80px rgba(0,0,0,.42);
+  --a11y-scale:1;
+  --a11y-line:1.7;
 }
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Heebo,Arial,sans-serif;overflow-x:hidden}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Heebo,Arial,sans-serif;
+  overflow-x:hidden;
+  font-size:calc(16px * var(--a11y-scale));
+  line-height:var(--a11y-line);
+}
+body.high-contrast{filter:contrast(1.22)}
+body.grayscale{filter:grayscale(1)}
+body.no-animations *,body.no-animations *::before,body.no-animations *::after{
+  animation-duration:.001ms!important;
+  animation-iteration-count:1!important;
+  transition-duration:.001ms!important;
+  scroll-behavior:auto!important;
+}
+body.underline-links a{text-decoration:underline!important;text-decoration-thickness:2px;text-underline-offset:3px}
+body.big-cursor,body.big-cursor *{cursor:zoom-in!important}
+body.big-cursor a,body.big-cursor button{cursor:pointer!important}
 a{color:inherit;text-decoration:none}
 button{font:inherit}
-body:before{content:"";position:fixed;inset:0;z-index:-5;background:
-radial-gradient(circle at 12% 10%,rgba(87,216,255,.15),transparent 27%),
-radial-gradient(circle at 88% 16%,rgba(155,114,255,.16),transparent 30%),
-radial-gradient(circle at 50% 92%,rgba(85,124,255,.11),transparent 36%),
-linear-gradient(180deg,#080b16 0%,#0a1020 50%,#070b16 100%)}
-.tech-bg{position:fixed;inset:0;z-index:-4;opacity:.20;pointer-events:none;background-image:
-linear-gradient(rgba(87,216,255,.045) 1px,transparent 1px),
-linear-gradient(90deg,rgba(155,114,255,.045) 1px,transparent 1px);
-background-size:52px 52px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
-.noise{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+button:focus-visible,a:focus-visible,summary:focus-visible{
+  outline:3px solid #fff;
+  outline-offset:4px;
+  box-shadow:0 0 0 6px rgba(87,216,255,.45);
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  background:
+    radial-gradient(circle at 12% 10%,rgba(87,216,255,.15),transparent 27%),
+    radial-gradient(circle at 88% 16%,rgba(155,114,255,.16),transparent 30%),
+    radial-gradient(circle at 50% 92%,rgba(85,124,255,.11),transparent 36%),
+    linear-gradient(180deg,#080b16 0%,#0a1020 50%,#070b16 100%)
+}
+.tech-bg{
+  position:fixed;inset:0;z-index:-4;opacity:.20;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(87,216,255,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(155,114,255,.045) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%)
+}
+.noise{
+  position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+}
 .glow{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(90px);opacity:.18;pointer-events:none;z-index:-2}
-.glow.one{top:5%;right:-150px;background:var(--purple)}.glow.two{top:45%;left:-180px;background:var(--cyan)}.glow.three{bottom:-180px;right:25%;background:var(--blue)}
+.glow.one{top:5%;right:-150px;background:var(--purple)}
+.glow.two{top:45%;left:-180px;background:var(--cyan)}
+.glow.three{bottom:-180px;right:25%;background:var(--blue)}
+
+.skip-link{
+  position:fixed;top:10px;right:10px;z-index:100000;
+  padding:10px 15px;border-radius:12px;background:#fff;color:#000;
+  transform:translateY(-150%);transition:.2s;font-weight:900
+}
+.skip-link:focus{transform:translateY(0)}
 
 .header{position:fixed;top:0;left:0;right:0;z-index:50;padding:16px 20px}
-.nav{max-width:1180px;margin:auto;padding:10px 13px;border:1px solid var(--line);background:rgba(8,12,25,.72);backdrop-filter:blur(20px);border-radius:22px;box-shadow:0 15px 55px rgba(0,0,0,.25);display:flex;align-items:center;gap:12px}
+.nav{
+  max-width:1180px;margin:auto;padding:10px 13px;
+  border:1px solid var(--line);background:rgba(8,12,25,.72);
+  backdrop-filter:blur(20px);border-radius:22px;
+  box-shadow:0 15px 55px rgba(0,0,0,.25);
+  display:flex;align-items:center;gap:12px
+}
 .brand{display:flex;align-items:center;gap:11px;font-weight:900;min-width:160px}
 .brand img{width:42px;height:42px;object-fit:contain;border-radius:12px}
 .brand span{font-size:16px}
 .navlinks{display:flex;gap:5px;align-items:center;justify-content:center;flex:1}
 .navlinks a{padding:9px 11px;border-radius:12px;color:#c5cee5;font-size:13px;transition:.25s;white-space:nowrap}
-.navlinks a:hover{background:rgba(87,216,255,.08);color:#fff}
-.live-pill{display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);font-size:12px;color:#aab6cf}
-.live-dot{width:8px;height:8px;border-radius:50%;background:#4b5563;box-shadow:none}
+.navlinks a:hover,.navlinks a.active{background:rgba(87,216,255,.10);color:#fff}
+.live-pill{
+  display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;
+  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);
+  font-size:12px;color:#aab6cf
+}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#4b5563}
 .live-pill.live .live-dot{background:#ff4f78;box-shadow:0 0 14px #ff4f78;animation:pulse 1.4s infinite}
 .live-pill.live{color:#fff;border-color:rgba(255,79,120,.28)}
-.viewer{display:none}.live-pill.live .viewer{display:inline}
+.viewer{display:none}
+.live-pill.live .viewer{display:inline}
 @keyframes pulse{50%{opacity:.45;transform:scale(.75)}}
 
 .hero{min-height:820px;display:grid;place-items:center;padding:145px 20px 80px;position:relative}
@@ -58,51 +128,125 @@ h1{font-size:clamp(58px,9vw,116px);line-height:.84;margin:0 0 25px;font-weight:9
 .gradient-text{background:linear-gradient(105deg,#fff 5%,#bdefff 44%,#b99cff 88%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-copy p{font-size:19px;line-height:1.7;color:var(--muted);max-width:590px;margin:0 0 27px}
 .cta{display:flex;gap:10px;flex-wrap:wrap}
-.btn{border:1px solid var(--line);border-radius:15px;padding:11px 17px;background:rgba(255,255,255,.04);font-weight:800;transition:.25s;cursor:pointer}
+.btn{
+  border:1px solid var(--line);border-radius:15px;padding:11px 17px;
+  background:rgba(255,255,255,.04);font-weight:800;transition:.25s;cursor:pointer
+}
 .btn.primary{background:linear-gradient(110deg,rgba(87,216,255,.18),rgba(155,114,255,.18))}
 .btn:hover{transform:translateY(-2px);border-color:rgba(87,216,255,.5)}
 .hero-art{min-height:440px;display:grid;place-items:center;position:relative}
-.orbit{position:absolute;width:410px;height:410px;border:1px solid rgba(87,216,255,.16);border-radius:50%;box-shadow:0 0 100px rgba(87,216,255,.07) inset;animation:spin 20s linear infinite}
+.orbit{
+  position:absolute;width:410px;height:410px;border:1px solid rgba(87,216,255,.16);
+  border-radius:50%;box-shadow:0 0 100px rgba(87,216,255,.07) inset;animation:spin 20s linear infinite
+}
 .orbit:before,.orbit:after{content:"";position:absolute;border-radius:50%;background:var(--cyan);box-shadow:0 0 20px var(--cyan)}
-.orbit:before{width:7px;height:7px;top:22px;left:78px}.orbit:after{width:5px;height:5px;bottom:44px;right:54px;background:var(--purple);box-shadow:0 0 20px var(--purple)}
-.logo-wrap{width:300px;height:300px;border-radius:42px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(87,216,255,.10),rgba(155,114,255,.12));border:1px solid rgba(255,255,255,.12);box-shadow:0 35px 90px rgba(0,0,0,.45),0 0 80px rgba(87,216,255,.08);position:relative;z-index:2}
+.orbit:before{width:7px;height:7px;top:22px;left:78px}
+.orbit:after{width:5px;height:5px;bottom:44px;right:54px;background:var(--purple);box-shadow:0 0 20px var(--purple)}
+.logo-wrap{
+  width:300px;height:300px;border-radius:42px;display:grid;place-items:center;
+  background:linear-gradient(145deg,rgba(87,216,255,.10),rgba(155,114,255,.12));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 35px 90px rgba(0,0,0,.45),0 0 80px rgba(87,216,255,.08);
+  position:relative;z-index:2
+}
 .logo-wrap img{width:78%;height:78%;object-fit:contain;filter:drop-shadow(0 15px 35px rgba(0,0,0,.45))}
+
 .section{padding:90px 20px;position:relative}
 .container{max-width:1100px;margin:auto}
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}
 .kicker{font-family:"Roboto Mono",monospace;color:var(--cyan);font-size:11px;letter-spacing:1.5px}
 h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 .sub{color:var(--muted);max-width:600px;margin:10px 0 0;line-height:1.7}
-.links-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-.link-card,.info-card,.donor-card,.stats-panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(18,27,48,.80),rgba(10,15,29,.76));backdrop-filter:blur(18px);box-shadow:var(--shadow);border-radius:22px}
-.link-card{min-height:105px;padding:19px;display:flex;align-items:center;gap:15px;transition:.28s;position:relative;overflow:hidden}
-.link-card:hover{transform:translateY(-5px);border-color:rgba(87,216,255,.40);box-shadow:0 25px 70px rgba(0,0,0,.45),0 0 40px rgba(87,216,255,.07)}
-.card-icon{width:50px;height:50px;display:grid;place-items:center;border-radius:15px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);font-size:21px;flex:0 0 auto}
-.card-copy{min-width:0;display:flex;flex-direction:column;gap:2px;flex:1}.card-copy strong{font-size:17px}.card-copy small{font-family:"Roboto Mono",monospace;color:#7180a0;font-size:9px;direction:ltr;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.card-arrow{font-size:19px;color:#7785a5;transition:.25s}.link-card:hover .card-arrow{color:var(--cyan);transform:translate(-3px,-3px)}
 
-.video-grid{display:grid;gap:12px}
-.video-row{display:flex;align-items:center;gap:17px;padding:14px;border:1px solid var(--line);background:rgba(11,18,33,.72);border-radius:18px;transition:.25s}
-.video-row:hover{transform:translateY(-2px);border-color:rgba(87,216,255,.40);background:rgba(17,27,47,.88)}
-.video-thumb{width:190px;height:107px;object-fit:cover;border-radius:13px;background:#101827;flex:0 0 auto}
-.video-title{font-weight:800;font-size:17px;line-height:1.35}.video-meta{font-family:"Roboto Mono",monospace;color:#72809e;font-size:10px;margin-top:7px}
-.loading,.error{padding:24px;border:1px dashed rgba(87,216,255,.22);border-radius:17px;color:#8f9bb4;text-align:center;background:rgba(87,216,255,.025)}
+.links-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.link-card,.info-card,.donor-card,.stats-panel{
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(18,27,48,.80),rgba(10,15,29,.76));
+  backdrop-filter:blur(18px);box-shadow:var(--shadow);border-radius:22px
+}
+.link-card{
+  min-height:105px;padding:19px;display:flex;align-items:center;gap:15px;
+  transition:.28s;position:relative;overflow:hidden
+}
+.link-card:after{
+  content:"";position:absolute;inset:-2px;border-radius:24px;padding:1px;
+  background:linear-gradient(120deg,transparent 25%,rgba(87,216,255,.55),transparent 65%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  transform:translateX(-120%);animation:borderSweep 4.8s linear infinite;pointer-events:none
+}
+.link-card:hover{transform:translateY(-5px);border-color:rgba(87,216,255,.40);box-shadow:0 25px 70px rgba(0,0,0,.45),0 0 40px rgba(87,216,255,.07)}
+.card-icon{
+  width:58px;height:58px;display:grid;place-items:center;border-radius:16px;
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);
+  flex:0 0 auto;overflow:hidden
+}
+.card-icon img{width:72%;height:72%;object-fit:contain}
+.card-copy{min-width:0;display:flex;flex-direction:column;gap:2px;flex:1}
+.card-copy strong{font-size:17px}.card-copy small{font-family:"Roboto Mono",monospace;color:#7180a0;font-size:9px;direction:ltr;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-arrow{font-size:19px;color:#7785a5;transition:.25s}
+.link-card:hover .card-arrow{color:var(--cyan);transform:translate(-3px,-3px)}
+
+.sponsor-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}
+.sponsor-card{
+  min-height:150px;padding:20px;border:1px solid var(--line);
+  border-radius:22px;background:linear-gradient(145deg,rgba(18,27,48,.84),rgba(10,15,29,.78));
+  position:relative;overflow:hidden;transition:.28s
+}
+.sponsor-card:hover{transform:translateY(-4px);border-color:rgba(155,114,255,.45)}
+.sponsor-top{display:flex;align-items:center;gap:12px}
+.sponsor-logo{
+  width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
+  background:rgba(255,255,255,.06);font-size:27px
+}
+.sponsor-title{font-size:20px;font-weight:900}
+.sponsor-note{color:#9ca9c3;font-size:12px;margin-top:2px}
+.sponsor-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.sponsor-btn{
+  padding:8px 11px;border-radius:11px;border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);font-size:12px;font-weight:800
+}
+.sponsor-btn:hover{border-color:rgba(87,216,255,.45);background:rgba(87,216,255,.08)}
+.badge-code{display:inline-flex;margin-top:12px;padding:5px 9px;border-radius:9px;background:rgba(155,114,255,.10);border:1px solid rgba(155,114,255,.22);color:#c9b7ff;font-size:11px;font-weight:900}
+
+.video-wrap{overflow:hidden;position:relative;border-radius:24px}
+.video-track{
+  display:flex;direction:ltr;width:max-content;gap:14px;
+  animation:videoLoop 75s linear infinite;will-change:transform
+}
+.video-wrap:hover .video-track{animation-play-state:paused}
+.video-card{
+  width:310px;flex:0 0 310px;padding:12px;border:1px solid var(--line);
+  background:rgba(11,18,33,.78);border-radius:18px;transition:.25s;direction:rtl
+}
+.video-card:hover{transform:translateY(-4px);border-color:rgba(87,216,255,.40)}
+.video-thumb{width:100%;height:174px;object-fit:cover;border-radius:13px;background:#101827;display:block}
+.video-title{font-weight:800;font-size:15px;line-height:1.4;margin-top:10px}
+.video-meta{font-family:"Roboto Mono",monospace;color:#72809e;font-size:9px;margin-top:6px}
+.video-fade{
+  position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none
+}
+.video-fade.left{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.video-fade.right{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+@keyframes videoLoop{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
 .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .info-card{padding:25px}.info-card h3{margin:0 0 15px;font-size:21px}
 .command-list{display:grid;gap:13px}.command{padding-bottom:11px;border-bottom:1px solid rgba(255,255,255,.06)}
 .command:last-child{border-bottom:0;padding-bottom:0}
 .command-top{display:flex;align-items:center;gap:8px}.command-name{font-family:"Roboto Mono",monospace;font-weight:800;font-size:16px}
-.copy-btn{width:18px;height:18px;filter:invert(1);opacity:.75;cursor:pointer}.command-desc{font-size:13px;color:#8d99b2;margin-top:3px}
+.copy-btn{width:18px;height:18px;filter:invert(1);opacity:.75;cursor:pointer}
+.command-desc{font-size:13px;color:#8d99b2;margin-top:3px}
 .specs{display:grid;gap:10px}.spec{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.035);font-family:"Roboto Mono",monospace;font-size:12px;color:#d5dcf0}
 .spec b{color:#70cfa0}
 
-.donors{display:grid;grid-template-columns:1fr;gap:14px}
+.donors{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .donor-card{padding:20px}
 .donor-table{width:100%;border-collapse:separate;border-spacing:0 7px;font-size:14px}
 .donor-table th{color:#74829f;font-size:11px;text-align:right;font-family:"Roboto Mono",monospace;padding:4px 10px}
 .donor-table td{padding:11px 10px;background:rgba(255,255,255,.035)}
-.donor-table tr td:first-child{border-radius:0 10px 10px 0;color:#70cfa0;font-weight:900}.donor-table tr td:last-child{border-radius:10px 0 0 10px}
+.donor-table tr td:first-child{border-radius:0 10px 10px 0;color:#70cfa0;font-weight:900}
+.donor-table tr td:last-child{border-radius:10px 0 0 10px}
 .rank{color:#57d8ff!important;font-family:"Roboto Mono",monospace}
 
 .stats-grid{display:grid;gap:13px}
@@ -116,32 +260,110 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 .stats-green{border-color:rgba(112,207,160,.20)}.stats-green summary{color:#8be5ba}
 .stats-cyan{border-color:rgba(87,216,255,.20)}.stats-cyan summary{color:#83e6ff}
 .stats-purple{border-color:rgba(155,114,255,.22)}.stats-purple summary{color:#bca3ff}
-.stats-table{width:100%;border-collapse:collapse;margin-top:13px}.stats-table th,.stats-table td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.06);text-align:right}.stats-table th{color:#75829b;font-size:11px}.stats-table td{font-size:13px}.stat-rank{color:var(--cyan);font-family:"Roboto Mono",monospace}.stat-highlight{font-weight:900;color:#fff}
-.emotes-grid{display:flex;flex-wrap:wrap;gap:10px;padding-top:15px}.emote{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}.emote img{width:36px;height:36px;object-fit:contain}.emote span{font-family:"Roboto Mono",monospace;font-size:10px;color:#9ba7bd}
-.badges-grid{display:flex;flex-wrap:wrap;gap:13px;padding-top:15px}.badge-mini{width:80px;text-align:center;padding:9px;border-radius:13px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}.badge-mini img{width:45px;height:45px;object-fit:contain}.badge-mini small{display:block;color:#8c98b0;font-size:9px;margin-top:4px}
+.stats-table{width:100%;border-collapse:collapse;margin-top:13px}
+.stats-table th,.stats-table td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.06);text-align:right}
+.stats-table th{color:#75829b;font-size:11px}.stats-table td{font-size:13px}
+.stat-rank{color:var(--cyan);font-family:"Roboto Mono",monospace}.stat-highlight{font-weight:900;color:#fff}
+.emotes-grid{display:flex;flex-wrap:wrap;gap:10px;padding-top:15px}
+.emote{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}
+.emote img{width:36px;height:36px;object-fit:contain}.emote span{font-family:"Roboto Mono",monospace;font-size:10px;color:#9ba7bd}
+.badges-grid{display:flex;flex-wrap:wrap;gap:13px;padding-top:15px}
+.badge-mini{width:80px;text-align:center;padding:9px;border-radius:13px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}
+.badge-mini img{width:45px;height:45px;object-fit:contain}.badge-mini small{display:block;color:#8c98b0;font-size:9px;margin-top:4px}
 
-.wave{height:110px;position:relative;overflow:hidden;opacity:.55}.wave:before,.wave:after{content:"";position:absolute;left:-5%;width:110%;height:90px;border-radius:50%;border-top:1px solid rgba(87,216,255,.24);box-shadow:0 -20px 60px rgba(87,216,255,.06)}.wave:before{top:25px;transform:rotate(-2deg)}.wave:after{top:43px;transform:rotate(2deg);border-color:rgba(155,114,255,.22)}
-.footer{padding:50px 20px 70px;text-align:center;color:#6e7a95}.footer-logo{width:60px;height:60px;object-fit:contain;margin-bottom:10px}
-.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(30px);opacity:0;pointer-events:none;padding:10px 15px;border-radius:12px;background:#111a2d;border:1px solid var(--line);box-shadow:var(--shadow);transition:.25s;z-index:100}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.loading,.error{padding:24px;border:1px dashed rgba(87,216,255,.22);border-radius:17px;color:#8f9bb4;text-align:center;background:rgba(87,216,255,.025)}
+.wave{height:110px;position:relative;overflow:hidden;opacity:.55}
+.wave:before,.wave:after{
+  content:"";position:absolute;left:-5%;width:110%;height:90px;border-radius:50%;
+  border-top:1px solid rgba(87,216,255,.24);box-shadow:0 -20px 60px rgba(87,216,255,.06)
+}
+.wave:before{top:25px;transform:rotate(-2deg)}.wave:after{top:43px;transform:rotate(2deg);border-color:rgba(155,114,255,.22)}
+.footer{padding:50px 20px 70px;text-align:center;color:#6e7a95}
+.footer-logo{width:60px;height:60px;object-fit:contain;margin-bottom:10px}
+.footer-links{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:12px;font-size:12px}
+.footer-links a:hover{color:var(--cyan)}
+.toast{
+  position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(30px);
+  opacity:0;pointer-events:none;padding:10px 15px;border-radius:12px;
+  background:#111a2d;border:1px solid var(--line);box-shadow:var(--shadow);
+  transition:.25s;z-index:100
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @keyframes spin{to{transform:rotate(360deg)}}
+@keyframes borderSweep{to{transform:translateX(120%)}}
+
+#a11y-fab{
+  position:fixed;left:20px;bottom:20px;z-index:10000;
+  width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+  background:linear-gradient(145deg,#17233d,#0d1425);color:#fff;
+  box-shadow:0 15px 45px rgba(0,0,0,.45),0 0 25px rgba(87,216,255,.12);
+  display:grid;place-items:center;cursor:pointer;font-size:27px
+}
+#a11y-panel{
+  position:fixed;left:20px;bottom:88px;z-index:9999;width:min(360px,calc(100vw - 40px));
+  max-height:min(75vh,650px);overflow:auto;padding:18px;border-radius:20px;
+  background:rgba(8,13,26,.96);border:1px solid rgba(126,154,255,.3);
+  box-shadow:0 25px 80px rgba(0,0,0,.55);backdrop-filter:blur(20px);display:none
+}
+#a11y-panel.open{display:block}
+.a11y-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.a11y-head strong{font-size:18px}
+.a11y-close{border:0;background:rgba(255,255,255,.06);color:#fff;border-radius:10px;width:34px;height:34px;cursor:pointer}
+.a11y-group{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.a11y-btn{
+  border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045);
+  color:#fff;border-radius:11px;padding:10px 8px;cursor:pointer;font-size:12px;font-weight:800
+}
+.a11y-btn:hover,.a11y-btn.active{border-color:rgba(87,216,255,.5);background:rgba(87,216,255,.10)}
+.a11y-reset{width:100%;margin-top:10px;background:rgba(255,79,120,.08);border-color:rgba(255,79,120,.25)}
+.a11y-status{font-size:11px;color:#91a0bb;margin-top:10px;text-align:center}
+.reading-guide{
+  position:fixed;left:0;right:0;height:5px;z-index:9998;display:none;
+  background:#ffe66d;box-shadow:0 0 12px rgba(255,230,109,.8);pointer-events:none
+}
+.reading-guide::after{
+  content:"";position:absolute;left:0;right:0;top:-9px;height:23px;
+  border-top:2px solid rgba(255,230,109,.75);border-bottom:2px solid rgba(255,230,109,.75)
+}
+.a11y-backdrop{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:9998
+}
+.a11y-backdrop.open{display:block}
+
 @media(max-width:800px){
- .header{padding:9px}.nav{border-radius:16px}.brand{min-width:auto}.brand span{display:none}.navlinks a{padding:8px 6px;font-size:11px}
- .live-pill{display:none}.hero{min-height:auto;padding-top:125px}.hero-inner{grid-template-columns:1fr;gap:20px;text-align:center}.hero-copy p{margin-left:auto;margin-right:auto}
- .cta{justify-content:center}.hero-art{min-height:350px}.orbit{width:315px;height:315px}.logo-wrap{width:235px;height:235px;border-radius:34px}
- .links-grid,.info-grid{grid-template-columns:1fr}.section{padding:72px 15px}.section-head{display:block}
- h1{letter-spacing:-3px}.video-thumb{width:125px;height:75px}.video-title{font-size:14px}.video-meta{font-size:8px}
+  .header{padding:9px}.nav{border-radius:16px}.brand{min-width:auto}.brand span{display:none}
+  .navlinks{overflow-x:auto;justify-content:flex-start}.navlinks a{padding:8px 6px;font-size:11px}
+  .live-pill{display:none}
+  .hero{min-height:auto;padding-top:125px}.hero-inner{grid-template-columns:1fr;gap:20px;text-align:center}
+  .hero-copy p{margin-left:auto;margin-right:auto}.cta{justify-content:center}
+  .hero-art{min-height:350px}.orbit{width:315px;height:315px}.logo-wrap{width:235px;height:235px;border-radius:34px}
+  .links-grid,.info-grid,.donors,.sponsor-grid{grid-template-columns:1fr}
+  .section{padding:72px 15px}.section-head{display:block}
+  h1{letter-spacing:-3px}.video-card{width:260px;flex-basis:260px}.video-thumb{height:146px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
 }
 </style>
 </head>
 
 <body>
-<div class="tech-bg"></div><div class="noise"></div>
-<div class="glow one"></div><div class="glow two"></div><div class="glow three"></div>
-<div id="toast" class="toast">הועתק!</div>
+<a class="skip-link" href="#main-content">דלג לתוכן הראשי</a>
+<div class="tech-bg"></div>
+<div class="noise"></div>
+<div class="glow one"></div>
+<div class="glow two"></div>
+<div class="glow three"></div>
+<div id="reading-guide" class="reading-guide"></div>
+<div id="a11y-backdrop" class="a11y-backdrop"></div>
+<div id="toast" class="toast" role="status" aria-live="polite">הועתק!</div>
 
 <header class="header">
-<nav class="nav">
-  <a class="brand" href="#top"><img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true](https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true)" alt="OdedSVR"><span>ODED SVR</span></a>
+<nav class="nav" aria-label="ניווט ראשי">
+  <a class="brand" href="#top" aria-label="OdedSVR - תחילת העמוד">
+    <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="OdedSVR">
+    <span>ODED SVR</span>
+  </a>
   <div class="navlinks">
     <a href="#links">קישורים</a>
     <a href="#videos">Videos</a>
@@ -149,270 +371,498 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
     <a href="#donators">Donators</a>
     <a href="#stats">Kick Stats</a>
   </div>
-  <div id="live-pill" class="live-pill"><span class="live-dot"></span><span id="live-text">OFFLINE</span><span class="viewer">· <span id="viewer-num">0</span></span></div>
+  <div id="live-pill" class="live-pill" aria-live="polite">
+    <span class="live-dot"></span>
+    <span id="live-text">OFFLINE</span>
+    <span class="viewer">· <span id="viewer-num">0</span></span>
+  </div>
 </nav>
 </header>
 
-<main id="top">
-<section class="hero">
- <div class="hero-inner">
-  <div class="hero-copy">
-   <div class="eyebrow">OFFICIAL LINKS · ODED SVR</div>
-   <h1><span class="gradient-text">ODED<br>SVR</span></h1>
-   <p>כל הקישורים, הסרטונים, המידע, התורמים ונתוני ה-Kick של ODED SVR — עכשיו בתוך העיצוב החדש.</p>
-   <div class="cta">
-    <a class="btn primary" href="#links">לכל הקישורים ↓</a>
-    <a class="btn" href="https://kick.com/odedsvr" target="_blank" rel="noopener">Kick ↗</a>
-   </div>
+<main id="main-content">
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">OFFICIAL LINKS · ODED SVR</div>
+      <h1 id="hero-title"><span class="gradient-text">ODED<br>SVR</span></h1>
+      <p>כל הקישורים, הסרטונים, המידע, התורמים ונתוני ה-Kick של ODED SVR — עכשיו בתוך העיצוב החדש.</p>
+      <div class="cta">
+        <a class="btn primary" href="#links">לכל הקישורים ↓</a>
+        <a class="btn" href="https://kick.com/odedsvr" target="_blank" rel="noopener">Kick ↗</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="orbit"></div>
+      <div class="logo-wrap">
+        <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="">
+      </div>
+    </div>
   </div>
-  <div class="hero-art"><div class="orbit"></div><div class="logo-wrap"><img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true](https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true)" alt="ODED SVR"></div></div>
- </div>
 </section>
 
-<div class="wave"></div>
+<div class="wave" aria-hidden="true"></div>
 
-<section id="links" class="section">
+<section id="links" class="section" aria-labelledby="links-title">
 <div class="container">
- <div class="section-head"><div><div class="kicker">01 / LINKS</div><h2>הקישורים שלי</h2></div><p class="sub">כל המקומות המרכזיים במקום אחד.</p></div>
- <div class="links-grid">
-  <a class="link-card" href="https://kick.com/odedsvr" target="_blank" rel="noopener"><span class="card-icon">▶</span><span class="card-copy"><strong>Kick</strong><small>kick.com/odedsvr</small></span><span class="card-arrow">↗</span></a>
-  <a class="link-card" href="https://www.youtube.com/@OdedSVRLive" target="_blank" rel="noopener"><span class="card-icon">▶</span><span class="card-copy"><strong>YouTube</strong><small>youtube.com/@OdedSVRLive</small></span><span class="card-arrow">↗</span></a>
-  <a class="link-card" href="https://discord.com/" target="_blank" rel="noopener"><span class="card-icon">💬</span><span class="card-copy"><strong>Discord</strong><small>Discord community</small></span><span class="card-arrow">↗</span></a>
-  <a class="link-card" href="https://www.instagram.com/" target="_blank" rel="noopener"><span class="card-icon">◎</span><span class="card-copy"><strong>Instagram</strong><small>instagram.com</small></span><span class="card-arrow">↗</span></a>
- </div>
+  <div class="section-head">
+    <div><div class="kicker">01 / LINKS</div><h2 id="links-title">הקישורים שלי</h2></div>
+    <p class="sub">כל המקומות המרכזיים במקום אחד.</p>
+  </div>
+
+  <div class="links-grid">
+    <a class="link-card" href="https://discord.gg/75dSkgFKkr" target="_blank" rel="noopener" aria-label="שרת הדיסקורד הרשמי של עודד">
+      <span class="card-icon"><img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/discor%20logo.png" alt=""></span>
+      <span class="card-copy"><strong>Discord</strong><small>discord.gg/75dSkgFKkr</small></span><span class="card-arrow">↗</span>
+    </a>
+    <a class="link-card" href="https://www.tiktok.com/@odedsvrlive" target="_blank" rel="noopener" aria-label="הטיקטוק של עודד">
+      <span class="card-icon"><img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/tiktoklogo.png" alt=""></span>
+      <span class="card-copy"><strong>TikTok</strong><small>tiktok.com/@odedsvrlive</small></span><span class="card-arrow">↗</span>
+    </a>
+    <a class="link-card" href="https://kick.com/odedsvr" target="_blank" rel="noopener" aria-label="ערוץ הקיק הרשמי של עודד">
+      <span class="card-icon"><img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/kick%20logo.png" alt=""></span>
+      <span class="card-copy"><strong>Kick</strong><small>kick.com/odedsvr</small></span><span class="card-arrow">↗</span>
+    </a>
+    <a class="link-card" href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" target="_blank" rel="noopener" aria-label="קהילת הרדיט של עודד">
+      <span class="card-icon"><img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/Reddit%20(1).png" alt=""></span>
+      <span class="card-copy"><strong>Reddit</strong><small>reddit.com/r/OdedSVRR</small></span><span class="card-arrow">↗</span>
+    </a>
+    <a class="link-card" href="https://www.youtube.com/@OdedSVRLive" target="_blank" rel="noopener" aria-label="ערוץ היוטיוב של עודד">
+      <span class="card-icon"><img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/YTLOGO.png" alt=""></span>
+      <span class="card-copy"><strong>YouTube</strong><small>youtube.com/@OdedSVRLive</small></span><span class="card-arrow">↗</span>
+    </a>
+    <a class="link-card" href="https://www.instagram.com/odedsvr/" target="_blank" rel="noopener" aria-label="פרופיל האינסטגרם של עודד">
+      <span class="card-icon"><img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/instlogo.png" alt=""></span>
+      <span class="card-copy"><strong>Instagram</strong><small>instagram.com/odedsvr</small></span><span class="card-arrow">↗</span>
+    </a>
+  </div>
+
+  <div class="sponsor-grid">
+    <article class="sponsor-card" aria-label="מחסני חשמל">
+      <a href="https://www.payngo.co.il/" target="_blank" rel="noopener" aria-label="מחסני חשמל">
+        <div class="sponsor-top">
+          <div class="sponsor-logo">⚡</div>
+          <div><div class="sponsor-title">מחסני חשמל</div><div class="sponsor-note">לעמוד הרשמי</div></div>
+        </div>
+      </a>
+    </article>
+
+    <article class="sponsor-card" aria-label="ליברו">
+      <div class="sponsor-top">
+        <div class="sponsor-logo">💎</div>
+        <div><div class="sponsor-title">ליברו</div><div class="sponsor-note">10% הנחה על כל האתר עם OSVR10</div></div>
+      </div>
+      <div class="badge-code">קוד: OSVR</div>
+      <div class="sponsor-actions">
+        <a class="sponsor-btn" href="https://libero-il.co.il/" target="_blank" rel="noopener">לכל האתר</a>
+        <a class="sponsor-btn" href="https://libero-il.co.il/?s=fomowa&amp;jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&amp;post_type=product&amp;jet_ajax_search_categories=0" target="_blank" rel="noopener">Fomowa · 50% על השני</a>
+        <a class="sponsor-btn" href="https://libero-il.co.il/?s=emper&amp;jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&amp;post_type=product&amp;jet_ajax_search_categories=0" target="_blank" rel="noopener">Emper · 50% על השני</a>
+      </div>
+    </article>
+  </div>
 </div>
 </section>
 
-<section id="videos" class="section">
+<section id="videos" class="section" aria-labelledby="videos-title">
 <div class="container">
- <div class="section-head"><div><div class="kicker">02 / VIDEOS</div><h2>הסרטונים האחרונים</h2></div><p class="sub">נטען אוטומטית דרך אותו YouTube API שהיה בקוד המקורי של ODED SVR.</p></div>
- <div id="video-container" class="video-grid"><div class="loading">טוען סרטונים אחרונים...</div></div>
+  <div class="section-head">
+    <div><div class="kicker">02 / VIDEOS</div><h2 id="videos-title">הסרטונים האחרונים</h2></div>
+    <p class="sub">10 הסרטונים האחרונים נעים בלופ רציף. מעבר עם העכבר עוצר את התנועה.</p>
+  </div>
+  <div id="video-container" class="video-wrap" aria-live="polite">
+    <div class="loading">טוען 10 סרטונים אחרונים...</div>
+  </div>
 </div>
 </section>
 
-<section id="info" class="section">
+<section id="info" class="section" aria-labelledby="info-title">
 <div class="container">
- <div class="section-head"><div><div class="kicker">03 / INFO</div><h2>Info</h2></div><p class="sub">הפקודות והמפרט שהיו בעמוד Info המקורי של ODED SVR.</p></div>
- <div class="info-grid">
-  <article class="info-card">
-   <h3>💬 Chat Commands (Kick)</h3>
-   <div class="command-list">
-    <div class="command"><div class="command-top"><span class="command-name">!watchtime</span><img class="copy-btn" onclick="copyCmd('!watchtime')" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה" alt="copy"></div><div class="command-desc">Total Watchtime On LiveStreams</div></div>
-    <div class="command"><div class="command-top"><span class="command-name">!followage</span><img class="copy-btn" onclick="copyCmd('!followage')" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה" alt="copy"></div><div class="command-desc">Total Follow Time On Kick</div></div>
-    <div class="command"><div class="command-top"><span class="command-name">!clip</span><img class="copy-btn" onclick="copyCmd('!clip')" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה" alt="copy"></div><div class="command-desc">Clip The Last 30 Seconds</div></div>
-    <div class="command"><div class="command-top"><span class="command-name">!discord</span><img class="copy-btn" onclick="copyCmd('!discord')" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה" alt="copy"></div><div class="command-desc">Get a Link For The Discord Server</div></div>
-   </div>
-  </article>
-  <article class="info-card">
-   <h3>🖥️ My Setup</h3>
-   <div class="specs">
-    <div class="spec"><b>CPU</b> — Intel Core i7 14700KF</div>
-    <div class="spec"><b>GPU</b> — NVIDIA GeForce RTX 5070Ti</div>
-    <div class="spec"><b>MEMORY</b> — Corsair 32GB DDR5 Ram</div>
-    <div class="spec"><b>MB</b> — B760 Motherboard</div>
-    <div class="spec"><b>KEYBOARD</b> — Steelseries Apex7</div>
-    <div class="spec"><b>MOUSE</b> — RAZER Basilisk X</div>
-    <div class="spec"><b>MIC</b> — Elgato Wave 3</div>
-    <div class="spec"><b>HEADPHONES</b> — HyperX Cloud Stinger 2 Wireless</div>
-   </div>
-  </article>
- </div>
+  <div class="section-head">
+    <div><div class="kicker">03 / INFO</div><h2 id="info-title">Info</h2></div>
+    <p class="sub">הפקודות והמפרט שהיו בעמוד Info המקורי.</p>
+  </div>
+  <div class="info-grid">
+    <article class="info-card">
+      <h3>💬 Chat Commands (Kick)</h3>
+      <div class="command-list">
+        <div class="command"><div class="command-top"><span class="command-name">!watchtime</span><button class="a11y-btn" style="padding:2px 7px;width:auto" onclick="copyCmd('!watchtime')">העתק</button></div><div class="command-desc">Total Watchtime On LiveStreams</div></div>
+        <div class="command"><div class="command-top"><span class="command-name">!followage</span><button class="a11y-btn" style="padding:2px 7px;width:auto" onclick="copyCmd('!followage')">העתק</button></div><div class="command-desc">Total Follow Time On Kick</div></div>
+        <div class="command"><div class="command-top"><span class="command-name">!clip</span><button class="a11y-btn" style="padding:2px 7px;width:auto" onclick="copyCmd('!clip')">העתק</button></div><div class="command-desc">Clip The Last 30 Seconds</div></div>
+        <div class="command"><div class="command-top"><span class="command-name">!discord</span><button class="a11y-btn" style="padding:2px 7px;width:auto" onclick="copyCmd('!discord')">העתק</button></div><div class="command-desc">Get a Link For The Discord Server</div></div>
+      </div>
+    </article>
+    <article class="info-card">
+      <h3>🖥️ My Setup</h3>
+      <div class="specs">
+        <div class="spec"><b>CPU</b> — Intel Core i7 14700KF</div>
+        <div class="spec"><b>GPU</b> — NVIDIA GeForce RTX 5070Ti</div>
+        <div class="spec"><b>MEMORY</b> — Corsair 32GB DDR5 Ram</div>
+        <div class="spec"><b>MB</b> — B760 Motherboard</div>
+        <div class="spec"><b>KEYBOARD</b> — Steelseries Apex7</div>
+        <div class="spec"><b>MOUSE</b> — RAZER Basilisk X</div>
+        <div class="spec"><b>MIC</b> — Elgato Wave 3</div>
+        <div class="spec"><b>HEADPHONES</b> — HyperX Cloud Stinger 2 Wireless</div>
+      </div>
+    </article>
+  </div>
 </div>
 </section>
 
-<section id="donators" class="section">
+<section id="donators" class="section" aria-labelledby="donators-title">
 <div class="container">
- <div class="section-head"><div><div class="kicker">04 / DONATORS</div><h2>Top Donators</h2></div><p class="sub">אותו מקור נתונים של עמוד התורמים המקורי: <code>./data.json</code>.</p></div>
- <div class="donors">
-  <article class="donor-card">
-   <h3>🏆 Weekly Top Gifters</h3>
-   <div id="weekly-gifters-table-container"><div class="loading">טוען Weekly Top Gifters...</div></div>
-  </article>
-  <article class="donor-card">
-   <h3>👑 All-Time Top Gifters</h3>
-   <div id="alltime-gifters-table-container"><div class="loading">טוען All-Time Top Gifters...</div></div>
-  </article>
- </div>
+  <div class="section-head">
+    <div><div class="kicker">04 / DONATORS</div><h2 id="donators-title">Top Donators</h2></div>
+    <p class="sub">הנתונים נטענים ישירות מ־data.json.</p>
+  </div>
+  <div class="donors">
+    <article class="donor-card">
+      <h3>🏆 Weekly Top Gifters</h3>
+      <div id="weekly-gifters-table-container"><div class="loading">טוען Weekly Top Gifters...</div></div>
+    </article>
+    <article class="donor-card">
+      <h3>👑 All-Time Top Gifters</h3>
+      <div id="alltime-gifters-table-container"><div class="loading">טוען All-Time Top Gifters...</div></div>
+    </article>
+  </div>
 </div>
 </section>
 
-<section id="stats" class="section">
+<section id="stats" class="section" aria-labelledby="stats-title">
 <div class="container">
- <div class="section-head"><div><div class="kicker">05 / KICK STATS & INFO</div><h2>Kick Stats & Info</h2></div><p class="sub">כל ארבעת הפאנלים שהיו בעמוד המקורי, עם טעינה עצלה של הנתונים.</p></div>
- <div class="stats-grid">
-  <details class="stats-panel stats-orange">
-   <summary><span class="stats-title"><span class="stats-icon">🏆</span><span>המובילים בצפייה!</span></span><span class="chevron">⌄</span></summary>
-   <div class="stats-content"><div id="botrix-leaderboard-container"><div class="loading">טוען נתונים...</div></div></div>
-  </details>
-  <details class="stats-panel stats-green">
-   <summary><span class="stats-title"><span class="stats-icon">🔥</span><span>הפעילים בצ'אט! (30 יום אחרונים)</span></span><span class="chevron">⌄</span></summary>
-   <div class="stats-content"><div id="kicklogz-active-container"><div class="loading">טוען נתונים...</div></div></div>
-  </details>
-  <details class="stats-panel stats-cyan">
-   <summary><span class="stats-title"><span class="stats-icon">😊</span><span>Channel Emotes</span></span><span class="chevron">⌄</span></summary>
-   <div class="stats-content"><div id="emotesContainer" class="emotes-grid"><div class="loading">טוען אימוג'ים של Kick...</div></div></div>
-  </details>
-  <details class="stats-panel stats-purple">
-   <summary><span class="stats-title"><span class="stats-icon">⭐</span><span>Sub Badges</span></span><span class="chevron">⌄</span></summary>
-   <div class="stats-content"><div id="sub-emotes-container" class="badges-grid"><div class="loading">טוען נתוני סאבים...</div></div></div>
-  </details>
- </div>
+  <div class="section-head">
+    <div><div class="kicker">05 / KICK STATS & INFO</div><h2 id="stats-title">Kick Stats & Info</h2></div>
+    <p class="sub">הנתונים נטענים מה־Worker ומה־Kick.</p>
+  </div>
+  <div id="statsAccordion" class="stats-grid">
+    <details class="stats-panel stats-orange">
+      <summary><span class="stats-title"><span class="stats-icon">🏆</span><span>המובילים בצפייה!</span></span><span class="chevron">⌄</span></summary>
+      <div class="stats-content"><div id="botrix-leaderboard-container"><div class="loading">טוען נתונים...</div></div></div>
+    </details>
+    <details class="stats-panel stats-green">
+      <summary><span class="stats-title"><span class="stats-icon">🔥</span><span>הפעילים בצ'אט! (30 יום אחרונים)</span></span><span class="chevron">⌄</span></summary>
+      <div class="stats-content"><div id="kicklogz-active-container"><div class="loading">טוען נתונים...</div></div></div>
+    </details>
+    <details class="stats-panel stats-cyan">
+      <summary><span class="stats-title"><span class="stats-icon">😊</span><span>Channel Emotes</span></span><span class="chevron">⌄</span></summary>
+      <div class="stats-content"><div id="emotesContainer" class="emotes-grid"><div class="loading">טוען אימוג'ים של Kick...</div></div></div>
+    </details>
+    <details class="stats-panel stats-purple">
+      <summary><span class="stats-title"><span class="stats-icon">⭐</span><span>Sub Badges</span></span><span class="chevron">⌄</span></summary>
+      <div class="stats-content"><div id="sub-emotes-container" class="badges-grid"><div class="loading">טוען נתוני סאבים...</div></div></div>
+    </details>
+  </div>
 </div>
 </section>
 
-<div class="wave"></div>
+<div class="wave" aria-hidden="true"></div>
 </main>
 
 <footer class="footer">
-<img class="footer-logo" src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true](https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true)" alt="OdedSVR">
-<div>© ODED SVR · Official Links</div>
+  <img class="footer-logo" src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="OdedSVR">
+  <div>© ODED SVR · Official Links</div>
+  <div class="footer-links">
+    <a href="https://odedsvr.com/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+    <a href="https://odedsvr.com/accessibility.html" target="_blank" rel="noopener">Accessibility Statement</a>
+  </div>
 </footer>
 
+<button id="a11y-fab" type="button" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">♿</button>
+<section id="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11y-title">
+  <div class="a11y-head">
+    <strong id="a11y-title">תפריט נגישות</strong>
+    <button class="a11y-close" type="button" id="a11y-close" aria-label="סגור תפריט נגישות">×</button>
+  </div>
+  <div class="a11y-group">
+    <button class="a11y-btn" type="button" data-a11y="font-plus">הגדלת טקסט</button>
+    <button class="a11y-btn" type="button" data-a11y="font-minus">הקטנת טקסט</button>
+    <button class="a11y-btn" type="button" data-a11y="contrast">ניגודיות גבוהה</button>
+    <button class="a11y-btn" type="button" data-a11y="grayscale">גווני אפור</button>
+    <button class="a11y-btn" type="button" data-a11y="underline">הדגשת קישורים</button>
+    <button class="a11y-btn" type="button" data-a11y="animations">עצירת אנימציות</button>
+    <button class="a11y-btn" type="button" data-a11y="cursor">סמן מוגדל</button>
+    <button class="a11y-btn" type="button" data-a11y="guide">סרגל קריאה</button>
+  </div>
+  <button class="a11y-btn a11y-reset" type="button" data-a11y="reset">איפוס נגישות</button>
+  <div class="a11y-status" id="a11y-status" aria-live="polite">אפשרויות הנגישות נשמרות בדפדפן.</div>
+</section>
+
 <script>
-const YT_API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
-const YT_CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
-const WORKER_URL = 'https://links.odedlink26.workers.dev';
-let videosLoaded=false, statsLoaded=false, emotesLoaded=false, donorsLoaded=false;
+const YT_API_KEY='AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
+const YT_CHANNEL_ID='UCufkmjBPLurietiKoj9cG3w';
+const WORKER_URL='https://links.odedlink26.workers.dev';
+let videosLoaded=false,statsLoaded=false,emotesLoaded=false,donorsLoaded=false;
 
 function escapeHtml(v){
- return String(v ?? '').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+  return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 }
 function copyCmd(cmd){
- navigator.clipboard?.writeText(cmd);
- const t=document.getElementById('toast');t.textContent='הועתק: '+cmd;t.classList.add('show');
- setTimeout(()=>t.classList.remove('show'),1300);
+  const finish=()=>{
+    const t=document.getElementById('toast');
+    t.textContent='הועתק: '+cmd;
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),1300);
+  };
+  if(navigator.clipboard?.writeText) navigator.clipboard.writeText(cmd).then(finish).catch(()=>fallbackCopy(cmd,finish));
+  else fallbackCopy(cmd,finish);
+}
+function fallbackCopy(text,cb){
+  const ta=document.createElement('textarea');
+  ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.focus();ta.select();
+  try{document.execCommand('copy')}catch(e){}
+  ta.remove();cb();
 }
 
 async function fetchVideos(){
- const c=document.getElementById('video-container'); if(!c)return;
- const uploads=YT_CHANNEL_ID.replace('UC','UU');
- const url=`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploads}&key=${YT_API_KEY}`;
- try{
-  const response=await fetch(url); const data=await response.json();
-  if(!data.items?.length){c.innerHTML='<div class="error">לא נמצאו סרטונים.</div>';return}
-  c.innerHTML='';
-  data.items.forEach(item=>{
-   const id=item.snippet.resourceId.videoId;
-   const title=item.snippet.title;
-   const thumb=item.snippet.thumbnails?.high?.url||item.snippet.thumbnails?.medium?.url||`https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-   const date=new Date(item.snippet.publishedAt).toLocaleDateString('he-IL');
-   c.insertAdjacentHTML('beforeend',`<a class="video-row" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener" aria-label="${escapeHtml(title)}"><img class="video-thumb" src="${thumb}" alt=""><div><div class="video-title">${escapeHtml(title)}</div><div class="video-meta">${date} · OdedSVR Live</div></div></a>`);
-  });
- }catch(e){c.innerHTML='<div class="error">שגיאה בטעינת הסרטונים.</div>'}
+  const c=document.getElementById('video-container');if(!c)return;
+  const uploads=YT_CHANNEL_ID.replace('UC','UU');
+  const url=`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=${uploads}&key=${YT_API_KEY}`;
+  try{
+    const response=await fetch(url);
+    const data=await response.json();
+    if(!data.items?.length){c.innerHTML='<div class="error">לא נמצאו סרטונים.</div>';return}
+    const cards=data.items.map(item=>{
+      const id=item.snippet.resourceId.videoId;
+      const title=item.snippet.title;
+      const thumb=item.snippet.thumbnails?.high?.url||item.snippet.thumbnails?.medium?.url||`https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+      const date=new Date(item.snippet.publishedAt).toLocaleDateString('he-IL');
+      return `<a class="video-card" href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener" aria-label="${escapeHtml(title)}">
+        <img class="video-thumb" src="${thumb}" alt="">
+        <div class="video-title">${escapeHtml(title)}</div>
+        <div class="video-meta">${date} · OdedSVR Live</div>
+      </a>`;
+    }).join('');
+    c.innerHTML=`<div class="video-fade left"></div><div class="video-fade right"></div><div class="video-track">${cards}${cards}</div>`;
+  }catch(e){c.innerHTML='<div class="error">שגיאה בטעינת הסרטונים.</div>'}
 }
 
-function renderTable(containerId,users,secondLabel){
- const c=document.getElementById(containerId); if(!c)return;
- if(!Array.isArray(users)||!users.length){c.innerHTML='<div class="loading">No data found.</div>';return}
- let h='<table class="stats-table"><thead><tr><th>#</th><th>משתמש</th><th>'+escapeHtml(secondLabel)+'</th></tr></thead><tbody>';
- users.slice(0,10).forEach((u,i)=>{
-  const name=u.username||u.name||'Unknown';
-  const val=u.points??u.watchtime??u.amount??0;
-  h+=`<tr><td class="stat-rank">${i+1}</td><td>${escapeHtml(name)}</td><td class="stat-highlight">${escapeHtml(typeof val==='number'?val.toLocaleString('he-IL'):val)}</td></tr>`;
- });
- c.innerHTML=h+'</tbody></table>';
-}
-
-async function fetchStatsAndLeaderboards(){
- const botrix=document.getElementById('botrix-leaderboard-container');
- const kicklogz=document.getElementById('kicklogz-active-container');
- try{
-  const res=await fetch(WORKER_URL);
-  if(!res.ok)throw new Error('Worker request failed');
-  const data=await res.json();
-
-  const botrixData=data.botrix||{};
-  let users=[];
-  if(Array.isArray(botrixData))users=botrixData;
-  else if(Array.isArray(botrixData.users))users=botrixData.users;
-  else if(Array.isArray(botrixData.data))users=botrixData.data;
-  renderTable('botrix-leaderboard-container',users,'ניקוד / זמן');
-
-  const k=data.kicklogz||{};
-  const labels=k.labels||[], values=k.data||[];
-  if(labels.length&&values.length){
-   let h='<table class="stats-table"><thead><tr><th>#</th><th>משתמש</th><th>פעילות</th></tr></thead><tbody>';
-   labels.slice(0,10).forEach((name,i)=>{
-    const val=values[i]??0;
-    h+=`<tr><td class="stat-rank">${i+1}</td><td>${escapeHtml(name)}</td><td class="stat-highlight">${escapeHtml(typeof val==='number'?val.toLocaleString('he-IL'):val)}</td></tr>`;
-   });
-   kicklogz.innerHTML=h+'</tbody></table>';
-  }else kicklogz.innerHTML='<div class="loading">לא נמצאו נתונים.</div>';
- }catch(e){
-  if(botrix)botrix.innerHTML='<div class="error">שגיאה במשיכת הנתונים.</div>';
-  if(kicklogz)kicklogz.innerHTML='<div class="error">שגיאה במשיכת הנתונים.</div>';
- }
-}
-
-async function fetchEmotesData(){
- const c=document.getElementById('emotesContainer'), sub=document.getElementById('sub-emotes-container');
- try{
-  const response=await fetch(WORKER_URL); const data=await response.json();
-  let raw=data.kickChannel?.emotes||data.emotes||[], emotes=[];
-  if(Array.isArray(raw)&&raw.length){
-   if(Array.isArray(raw[0]?.emotes)){
-    const cat=raw.find(x=>x.slug)||raw[0]; emotes=cat.emotes||[];
-   }else emotes=raw;
+function getNumericValue(u){
+  const candidates=['quantity','amount','total','value','points','gifts','gift_count','count','watchtime'];
+  for(const key of candidates){
+    if(u && u[key]!==undefined && u[key]!==null && u[key]!=='') return u[key];
   }
-  if(!emotes.length)c.innerHTML='<div class="loading">לא נמצאו אימוג׳ים של הערוץ.</div>';
-  else c.innerHTML=emotes.map(e=>{
-   const img=`https://files.kick.com/emotes/${encodeURIComponent(e.id)}/fullsize`;
-   return `<div class="emote" title="${escapeHtml(e.name||'Emote')}"><img src="${img}" alt=""><span>${escapeHtml(e.name||'Emote')}</span></div>`;
-  }).join('');
-
-  const badges=data.kickChannel?.sub_badges||data.sub_badges||data.badges||[];
-  if(Array.isArray(badges)&&badges.length){
-   sub.innerHTML=badges.map(b=>{
-    let img='';
-    if(b.badge_image)img=typeof b.badge_image==='string'?b.badge_image:(b.badge_image.src||b.badge_image.url||Object.values(b.badge_image)[0]||'');
-    img=img||b.image_url||b.url||'';
-    const months=b.months||0;
-    return `<div class="badge-mini" title="${months} Months">${img?`<img src="${img}" alt="">`:'<div>⭐</div>'}<small>${escapeHtml(months)} Months</small></div>`;
-   }).join('');
-  }else sub.innerHTML='<div class="loading">לא נמצאו נתוני סאבים.</div>';
- }catch(e){
-  c.innerHTML='<div class="error">שגיאה בטעינת האימוג׳ים.</div>';
-  sub.innerHTML='<div class="error">שגיאה בטעינת הבאדג׳ים.</div>';
- }
+  return 0;
+}
+function renderDonatorTable(containerId,users){
+  const c=document.getElementById(containerId);if(!c)return;
+  if(!Array.isArray(users)||!users.length){c.innerHTML='<div class="loading">No data found.</div>';return}
+  let h='<table class="donor-table"><thead><tr><th>#</th><th>שם משתמש</th><th>כמות</th></tr></thead><tbody>';
+  users.slice(0,10).forEach((u,i)=>{
+    const name=u.username??u.name??u.user?.username??'Unknown';
+    const val=getNumericValue(u);
+    h+=`<tr><td class="rank">${i+1}</td><td>${escapeHtml(name)}</td><td><strong>${escapeHtml(typeof val==='number'?val.toLocaleString('he-IL'):String(val))}</strong></td></tr>`;
+  });
+  c.innerHTML=h+'</tbody></table>';
 }
 
 async function fetchDonators(){
- const weekly=document.getElementById('weekly-gifters-table-container');
- const alltime=document.getElementById('alltime-gifters-table-container');
- try{
-  const res=await fetch('./data.json?t='+Date.now()); const data=await res.json();
-  if(data?.gifts_week&&data.gifts_week_enabled)renderTable('weekly-gifters-table-container',data.gifts_week,'ניקוד / זמן');
-  else weekly.innerHTML='<div class="loading">Weekly data is currently disabled.</div>';
-  if(data?.gifts&&data.gifts_enabled)renderTable('alltime-gifters-table-container',data.gifts,'ניקוד / זמן');
-  else alltime.innerHTML='<div class="loading">All-time data is currently disabled.</div>';
- }catch(e){
-  weekly.innerHTML='<div class="error">שגיאה בטעינת Weekly Top Gifters.</div>';
-  alltime.innerHTML='<div class="error">שגיאה בטעינת All-Time Top Gifters.</div>';
- }
+  const weekly=document.getElementById('weekly-gifters-table-container');
+  const alltime=document.getElementById('alltime-gifters-table-container');
+  try{
+    const res=await fetch('./data.json?t='+Date.now());
+    if(!res.ok)throw new Error('data.json request failed');
+    const data=await res.json();
+    const weeklyData=Array.isArray(data?.gifts_week)?data.gifts_week:Array.isArray(data?.weekly)?data.weekly:[];
+    const alltimeData=Array.isArray(data?.gifts)?data.gifts:Array.isArray(data?.alltime)?data.alltime:[];
+    if(data?.gifts_week_enabled!==false && weeklyData.length) renderDonatorTable('weekly-gifters-table-container',weeklyData);
+    else weekly.innerHTML='<div class="loading">אין כרגע נתוני Weekly.</div>';
+    if(data?.gifts_enabled!==false && alltimeData.length) renderDonatorTable('alltime-gifters-table-container',alltimeData);
+    else alltime.innerHTML='<div class="loading">אין כרגע נתוני All-Time.</div>';
+  }catch(e){
+    weekly.innerHTML='<div class="error">שגיאה בטעינת Weekly Top Gifters.</div>';
+    alltime.innerHTML='<div class="error">שגיאה בטעינת All-Time Top Gifters.</div>';
+  }
+}
+
+function renderTable(containerId,users,secondLabel){
+  const c=document.getElementById(containerId);if(!c)return;
+  if(!Array.isArray(users)||!users.length){c.innerHTML='<div class="loading">No data found.</div>';return}
+  let h=`<table class="stats-table"><thead><tr><th>#</th><th>משתמש</th><th>${escapeHtml(secondLabel)}</th></tr></thead><tbody>`;
+  users.slice(0,10).forEach((u,i)=>{
+    const name=u.username??u.name??'Unknown';
+    const val=u.points??u.watchtime??u.amount??0;
+    h+=`<tr><td class="stat-rank">${i+1}</td><td>${escapeHtml(name)}</td><td class="stat-highlight">${escapeHtml(typeof val==='number'?val.toLocaleString('he-IL'):String(val))}</td></tr>`;
+  });
+  c.innerHTML=h+'</tbody></table>';
+}
+
+async function fetchStatsAndLeaderboards(){
+  const botrix=document.getElementById('botrix-leaderboard-container');
+  const kicklogz=document.getElementById('kicklogz-active-container');
+  try{
+    const res=await fetch(WORKER_URL);
+    if(!res.ok)throw new Error('Worker request failed');
+    const data=await res.json();
+    const botrixData=data.botrix||{};
+    let users=[];
+    if(Array.isArray(botrixData))users=botrixData;
+    else if(Array.isArray(botrixData.users))users=botrixData.users;
+    else if(Array.isArray(botrixData.data))users=botrixData.data;
+    renderTable('botrix-leaderboard-container',users,'ניקוד / זמן');
+    const k=data.kicklogz||{};
+    const labels=k.labels||[],values=k.data||[];
+    if(labels.length&&values.length){
+      let h='<table class="stats-table"><thead><tr><th>#</th><th>משתמש</th><th>פעילות</th></tr></thead><tbody>';
+      labels.slice(0,10).forEach((name,i)=>{
+        const val=values[i]??0;
+        h+=`<tr><td class="stat-rank">${i+1}</td><td>${escapeHtml(name)}</td><td class="stat-highlight">${escapeHtml(typeof val==='number'?val.toLocaleString('he-IL'):String(val))}</td></tr>`;
+      });
+      kicklogz.innerHTML=h+'</tbody></table>';
+    }else kicklogz.innerHTML='<div class="loading">לא נמצאו נתונים.</div>';
+  }catch(e){
+    if(botrix)botrix.innerHTML='<div class="error">שגיאה במשיכת הנתונים.</div>';
+    if(kicklogz)kicklogz.innerHTML='<div class="error">שגיאה במשיכת הנתונים.</div>';
+  }
+}
+
+async function fetchEmotesData(){
+  const c=document.getElementById('emotesContainer'),sub=document.getElementById('sub-emotes-container');
+  try{
+    const response=await fetch(WORKER_URL);
+    const data=await response.json();
+    let raw=data.kickChannel?.emotes||data.emotes||[],emotes=[];
+    if(Array.isArray(raw)&&raw.length){
+      if(Array.isArray(raw[0]?.emotes)){
+        const cat=raw.find(x=>x.slug)||raw[0];emotes=cat.emotes||[];
+      }else emotes=raw;
+    }
+    if(!emotes.length)c.innerHTML='<div class="loading">לא נמצאו אימוג׳ים של הערוץ.</div>';
+    else c.innerHTML=emotes.map(e=>{
+      const img=`https://files.kick.com/emotes/${encodeURIComponent(e.id)}/fullsize`;
+      return `<div class="emote" title="${escapeHtml(e.name||'Emote')}"><img src="${img}" alt=""><span>${escapeHtml(e.name||'Emote')}</span></div>`;
+    }).join('');
+    const badges=data.kickChannel?.sub_badges||data.sub_badges||data.badges||[];
+    if(Array.isArray(badges)&&badges.length){
+      sub.innerHTML=badges.map(b=>{
+        let img='';
+        if(b.badge_image)img=typeof b.badge_image==='string'?b.badge_image:(b.badge_image.src||b.badge_image.url||Object.values(b.badge_image)[0]||'');
+        img=img||b.image_url||b.url||'';
+        const months=b.months??0;
+        return `<div class="badge-mini" title="${escapeHtml(months)} Months">${img?`<img src="${img}" alt="">`:'<div>⭐</div>'}<small>${escapeHtml(months)} Months</small></div>`;
+      }).join('');
+    }else sub.innerHTML='<div class="loading">לא נמצאו נתוני סאבים.</div>';
+  }catch(e){
+    c.innerHTML='<div class="error">שגיאה בטעינת האימוג׳ים.</div>';
+    sub.innerHTML='<div class="error">שגיאה בטעינת הבאדג׳ים.</div>';
+  }
 }
 
 async function updateKickStatus(){
- try{
-  const res=await fetch('https://kick.com/api/v2/channels/odedsvr');
-  const data=await res.json(); const pill=document.getElementById('live-pill');
-  const live=!!data?.livestream;
-  pill.classList.toggle('live',live);
-  document.getElementById('live-text').textContent=live?'LIVE':'OFFLINE';
-  if(live&&typeof data.livestream.viewer_count==='number')document.getElementById('viewer-num').textContent=data.livestream.viewer_count.toLocaleString('he-IL');
- }catch(e){}
+  try{
+    const res=await fetch('https://kick.com/api/v2/channels/odedsvr');
+    const data=await res.json();
+    const pill=document.getElementById('live-pill');
+    const live=!!data?.livestream;
+    pill.classList.toggle('live',live);
+    document.getElementById('live-text').textContent=live?'LIVE':'OFFLINE';
+    if(live&&typeof data.livestream.viewer_count==='number')document.getElementById('viewer-num').textContent=data.livestream.viewer_count.toLocaleString('he-IL');
+  }catch(e){}
 }
 
-const io=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(!entry.isIntersecting)return;
-  const id=entry.target.id;
-  if(id==='videos'&&!videosLoaded){videosLoaded=true;fetchVideos()}
-  if(id==='stats'&&!statsLoaded){statsLoaded=true;fetchStatsAndLeaderboards();fetchEmotesData()}
-  if(id==='donators'&&!donorsLoaded){donorsLoaded=true;fetchDonators()}
- });
-},{rootMargin:'250px'});
-['videos','stats','donators'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el)});
-updateKickStatus();setInterval(updateKickStatus,60000);
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    const id=entry.target.id;
+    if(id==='videos'&&!videosLoaded){videosLoaded=true;fetchVideos()}
+    if(id==='stats'&&!statsLoaded){statsLoaded=true;fetchStatsAndLeaderboards();fetchEmotesData()}
+    if(id==='donators'&&!donorsLoaded){donorsLoaded=true;fetchDonators()}
+  });
+},{rootMargin:'300px'});
+['videos','stats','donators'].forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el)});
+updateKickStatus();
+setInterval(updateKickStatus,60000);
+
+const accordion=document.getElementById('statsAccordion');
+if(accordion){
+  accordion.querySelectorAll('details.stats-panel').forEach(panel=>{
+    panel.addEventListener('toggle',()=>{
+      if(panel.open){
+        accordion.querySelectorAll('details.stats-panel[open]').forEach(other=>{
+          if(other!==panel)other.removeAttribute('open');
+        });
+      }
+    });
+  });
+}
+
+const a11yFab=document.getElementById('a11y-fab');
+const a11yPanel=document.getElementById('a11y-panel');
+const a11yClose=document.getElementById('a11y-close');
+const a11yBackdrop=document.getElementById('a11y-backdrop');
+const a11yStatus=document.getElementById('a11y-status');
+let guideActive=false;
+let guideY=0;
+
+function openA11y(){
+  a11yPanel.classList.add('open');a11yBackdrop.classList.add('open');
+  a11yFab.setAttribute('aria-expanded','true');
+  a11yPanel.querySelector('button')?.focus();
+}
+function closeA11y(){
+  a11yPanel.classList.remove('open');a11yBackdrop.classList.remove('open');
+  a11yFab.setAttribute('aria-expanded','false');a11yFab.focus();
+}
+a11yFab.addEventListener('click',()=>a11yPanel.classList.contains('open')?closeA11y():openA11y());
+a11yClose.addEventListener('click',closeA11y);
+a11yBackdrop.addEventListener('click',closeA11y);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&a11yPanel.classList.contains('open'))closeA11y()});
+
+function updateScale(delta){
+  const current=parseFloat(localStorage.getItem('a11yScale')||'1');
+  const next=Math.min(1.3,Math.max(.85,+(current+delta).toFixed(2)));
+  localStorage.setItem('a11yScale',next);
+  document.documentElement.style.setProperty('--a11y-scale',next);
+  a11yStatus.textContent=`גודל טקסט: ${Math.round(next*100)}%`;
+}
+function setToggle(key,className,enabled){
+  document.body.classList.toggle(className,enabled);
+  localStorage.setItem(key,enabled?'1':'0');
+  const btn=document.querySelector(`[data-a11y="${key}"]`);
+  if(btn)btn.classList.toggle('active',enabled);
+}
+function loadA11y(){
+  const scale=parseFloat(localStorage.getItem('a11yScale')||'1');
+  document.documentElement.style.setProperty('--a11y-scale',scale);
+  ['contrast','grayscale','underline','animations','cursor'].forEach(k=>{
+    const on=localStorage.getItem(k)==='1';
+    const cls={contrast:'high-contrast',grayscale:'grayscale',underline:'underline-links',animations:'no-animations',cursor:'big-cursor'}[k];
+    document.body.classList.toggle(cls,on);
+    const btn=document.querySelector(`[data-a11y="${k}"]`);
+    if(btn)btn.classList.toggle('active',on);
+  });
+}
+document.querySelectorAll('[data-a11y]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const action=btn.dataset.a11y;
+    if(action==='font-plus')updateScale(.1);
+    else if(action==='font-minus')updateScale(-.1);
+    else if(action==='contrast')setToggle('contrast','high-contrast',!document.body.classList.contains('high-contrast'));
+    else if(action==='grayscale')setToggle('grayscale','grayscale',!document.body.classList.contains('grayscale'));
+    else if(action==='underline')setToggle('underline','underline-links',!document.body.classList.contains('underline-links'));
+    else if(action==='animations')setToggle('animations','no-animations',!document.body.classList.contains('no-animations'));
+    else if(action==='cursor')setToggle('cursor','big-cursor',!document.body.classList.contains('big-cursor'));
+    else if(action==='guide'){
+      guideActive=!guideActive;
+      document.getElementById('reading-guide').style.display=guideActive?'block':'none';
+      btn.classList.toggle('active',guideActive);
+      a11yStatus.textContent=guideActive?'סרגל הקריאה פעיל':'סרגל הקריאה כבוי';
+    }else if(action==='reset'){
+      ['a11yScale','contrast','grayscale','underline','animations','cursor'].forEach(k=>localStorage.removeItem(k));
+      document.documentElement.style.setProperty('--a11y-scale','1');
+      document.body.classList.remove('high-contrast','grayscale','underline-links','no-animations','big-cursor');
+      document.querySelectorAll('.a11y-btn').forEach(b=>b.classList.remove('active'));
+      guideActive=false;
+      document.getElementById('reading-guide').style.display='none';
+      a11yStatus.textContent='הגדרות הנגישות אופסו';
+    }
+  });
+});
+window.addEventListener('mousemove',e=>{
+  if(guideActive){
+    guideY=e.clientY;
+    document.getElementById('reading-guide').style.top=`${guideY}px`;
+  }
+});
+loadA11y();
 </script>
 </body>
 </html>
