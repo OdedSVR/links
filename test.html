@@ -266,7 +266,7 @@ h2{font-size:clamp(34px,5vw,55px);margin:5px 0 0;line-height:1;font-weight:900}
 .stat-rank{color:var(--cyan);font-family:"Roboto Mono",monospace}.stat-highlight{font-weight:900;color:#fff}
 .emotes-grid{display:flex;flex-wrap:wrap;gap:10px;padding-top:15px}
 .emote{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}
-.emote img{width:36px;height:36px;object-fit:contain}.emote span{font-family:"Roboto Mono",monospace;font-size:10px;color:#9ba7bd}
+.emote img{width:58px;height:58px;object-fit:contain;display:block}.emote span{display:none}.emote{min-width:74px;min-height:74px;justify-content:center;padding:7px}
 .badges-grid{display:flex;flex-wrap:wrap;gap:13px;padding-top:15px}
 .badge-mini{width:80px;text-align:center;padding:9px;border-radius:13px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}
 .badge-mini img{width:45px;height:45px;object-fit:contain}.badge-mini small{display:block;color:#8c98b0;font-size:9px;margin-top:4px}
@@ -717,32 +717,62 @@ async function fetchStatsAndLeaderboards(){
 async function fetchEmotesData(){
   const c=document.getElementById('emotesContainer'),sub=document.getElementById('sub-emotes-container');
   try{
-    const response=await fetch(WORKER_URL);
+    const response=await fetch(WORKER_URL+'?t='+Date.now());
+    if(!response.ok)throw new Error('Worker request failed');
     const data=await response.json();
-    let raw=data.kickChannel?.emotes||data.emotes||[],emotes=[];
-    if(Array.isArray(raw)&&raw.length){
-      if(Array.isArray(raw[0]?.emotes)){
-        const cat=raw.find(x=>x.slug)||raw[0];emotes=cat.emotes||[];
-      }else emotes=raw;
+
+    let raw=data.kickChannel?.emotes||data.emotes||[];
+    let emotes=[];
+    if(Array.isArray(raw)){
+      const channelGroups=raw.filter(group=>{
+        const text=[group?.slug,group?.name,group?.title,group?.channel?.slug,group?.channel?.username,group?.channel?.name].filter(Boolean).join(' ').toLowerCase();
+        return text.includes('odedsvr') || text.includes('oded svr');
+      });
+      if(channelGroups.length){
+        channelGroups.forEach(group=>{
+          if(Array.isArray(group?.emotes)) emotes.push(...group.emotes);
+          else if(group?.id||group?.name||group?.slug) emotes.push(group);
+        });
+      }else{
+        emotes=raw.filter(e=>{
+          const channelId=String(e?.channel_id??e?.channelId??e?.channel?.id??'');
+          const channelName=[e?.channel?.slug,e?.channel?.username,e?.channel?.name,e?.channel_slug,e?.channel_username].filter(Boolean).join(' ').toLowerCase();
+          return channelId==='12205235' || channelName.includes('odedsvr') || channelName.includes('oded svr');
+        });
+      }
     }
-    if(!emotes.length)c.innerHTML='<div class="loading">לא נמצאו אימוג׳ים של הערוץ.</div>';
-    else c.innerHTML=emotes.map(e=>{
-      const img=`https://files.kick.com/emotes/${encodeURIComponent(e.id)}/fullsize`;
-      return `<div class="emote" title="${escapeHtml(e.name||'Emote')}"><img src="${img}" alt=""><span>${escapeHtml(e.name||'Emote')}</span></div>`;
-    }).join('');
-    const badges=data.kickChannel?.sub_badges||data.sub_badges||data.badges||[];
+
+    if(!emotes.length){
+      c.innerHTML='<div class="loading">לא נמצאו אימוג׳ים של הערוץ.</div>';
+    }else{
+      c.innerHTML=emotes.map(e=>{
+        const id=e.id||e.emote_id||e.emoteId;
+        const src=e.image_url||e.imageUrl||e.url||e.src||e.image?.url||e.image?.src||(id?`https://files.kick.com/emotes/${encodeURIComponent(id)}/fullsize`:'');
+        if(!src)return '';
+        return `<div class="emote" title="${escapeHtml(e.name||e.slug||'Emote')}"><img src="${escapeHtml(src)}" alt=""></div>`;
+      }).join('')||'<div class="loading">לא נמצאו אימוג׳ים של הערוץ.</div>';
+    }
+
+    let badges=data.kickChannel?.sub_badges||data.kickChannel?.subscriber_badges||data.sub_badges||data.subscriber_badges||data.badges||[];
+    if(!Array.isArray(badges)){
+      badges=badges?.data||badges?.badges||badges?.items||[];
+    }
+
     if(Array.isArray(badges)&&badges.length){
       sub.innerHTML=badges.map(b=>{
-        let img='';
-        if(b.badge_image)img=typeof b.badge_image==='string'?b.badge_image:(b.badge_image.src||b.badge_image.url||Object.values(b.badge_image)[0]||'');
-        img=img||b.image_url||b.url||'';
-        const months=b.months??0;
-        return `<div class="badge-mini" title="${escapeHtml(months)} Months">${img?`<img src="${img}" alt="">`:'<div>⭐</div>'}<small>${escapeHtml(months)} Months</small></div>`;
+        const imageObj=b.badge_image||b.image||b.badgeImage||{};
+        let img=typeof imageObj==='string' ? imageObj : (imageObj.src||imageObj.url||imageObj.large||imageObj.medium||imageObj.small||'');
+        img=img||b.image_url||b.imageUrl||b.url||b.src||'';
+        const months=b.months??b.month??b.required_months??b.duration??0;
+        if(!img && b.id) img=`https://files.kick.com/badges/${encodeURIComponent(b.id)}.png`;
+        return `<div class="badge-mini" title="${escapeHtml(months)} Months">${img?`<img src="${escapeHtml(img)}" alt="${escapeHtml(months)} Months" onerror="this.parentElement.classList.add('badge-failed');this.style.display='none'">`:'<div>⭐</div>'}<small>${escapeHtml(months)} Months</small></div>`;
       }).join('');
-    }else sub.innerHTML='<div class="loading">לא נמצאו נתוני סאבים.</div>';
+    }else{
+      sub.innerHTML='<div class="loading">לא נמצאו נתוני Sub Badges.</div>';
+    }
   }catch(e){
     c.innerHTML='<div class="error">שגיאה בטעינת האימוג׳ים.</div>';
-    sub.innerHTML='<div class="error">שגיאה בטעינת הבאדג׳ים.</div>';
+    sub.innerHTML='<div class="error">שגיאה בטעינת ה־Sub Badges.</div>';
   }
 }
 
