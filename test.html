@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -657,6 +656,110 @@ body.spa-locked{overflow:hidden}
 /* Anchor navigation offset for the fixed header */
 section[id]{scroll-margin-top:110px;}
 
+
+
+/* ===== Sponsor cards: animated glowing border ===== */
+@property --sponsor-sheen-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.sponsor-card{
+  isolation:isolate;
+}
+
+.sponsor-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  padding:2px;
+  pointer-events:none;
+  z-index:2;
+  background:conic-gradient(
+    from var(--sponsor-sheen-angle,0deg),
+    transparent 0deg,
+    transparent 260deg,
+    rgba(255,255,255,.0) 285deg,
+    var(--sponsor-accent,#57d8ff) 305deg,
+    var(--sponsor-highlight,#ffffff) 330deg,
+    var(--sponsor-accent,#57d8ff) 350deg,
+    transparent 40deg
+  );
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  animation:sponsorSheen 5s linear infinite;
+}
+
+.sponsor-card:nth-child(1){
+  --sponsor-accent:#f59e0b;
+  --sponsor-highlight:#fcd34d;
+  border-color:rgba(245,158,11,.28);
+  background:linear-gradient(160deg,rgba(245,158,11,.10),rgba(15,23,42,.75) 55%);
+}
+
+.sponsor-card:nth-child(2){
+  --sponsor-accent:#a855f7;
+  --sponsor-highlight:#d8b4fe;
+  border-color:rgba(168,85,247,.28);
+  background:linear-gradient(160deg,rgba(168,85,247,.10),rgba(15,23,42,.75) 55%);
+}
+
+.sponsor-card:nth-child(1):hover{
+  border-color:rgba(245,158,11,.55);
+  box-shadow:0 12px 34px -12px rgba(245,158,11,.45),0 0 24px rgba(245,158,11,.20);
+}
+
+.sponsor-card:nth-child(2):hover{
+  border-color:rgba(168,85,247,.55);
+  box-shadow:0 12px 34px -12px rgba(168,85,247,.45),0 0 24px rgba(168,85,247,.20);
+}
+
+@keyframes sponsorSheen{
+  to{--sponsor-sheen-angle:360deg;}
+}
+
+/* Make the entire Power/Payngo card behave like one link */
+.sponsor-card.power-clickable{
+  cursor:pointer;
+}
+
+.sponsor-card.power-clickable > a{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  border-radius:22px;
+}
+
+.sponsor-card.power-clickable .sponsor-top{
+  position:relative;
+  z-index:1;
+  pointer-events:none;
+}
+
+
+.sr-only{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+
+
+.sponsor-card .sponsor-top,
+.sponsor-card .sponsor-actions,
+.sponsor-card .badge-code{
+  position:relative;
+  z-index:3;
+}
+
 </style>
 
 
@@ -818,13 +921,17 @@ section[id]{scroll-margin-top:110px;}
   </div>
 
   <div class="sponsor-grid">
-    <article class="sponsor-card" aria-label="מחסני חשמל">
-      <a href="https://www.payngo.co.il/" target="_blank" rel="noopener" aria-label="מחסני חשמל">
-        <div class="sponsor-top">
-          <div class="sponsor-logo">⚡</div>
-          <div><div class="sponsor-title">מחסני חשמל</div><div class="sponsor-note">לעמוד הרשמי</div></div>
-        </div>
+    <article class="sponsor-card power-clickable" aria-label="מחסני חשמל">
+      <a href="https://www.payngo.co.il/" target="_blank" rel="noopener noreferrer" aria-label="מעבר לאתר מחסני חשמל">
+        <span class="sr-only">מחסני חשמל</span>
       </a>
+      <div class="sponsor-top">
+        <div class="sponsor-logo">⚡</div>
+        <div>
+          <div class="sponsor-title">מחסני חשמל</div>
+          <div class="sponsor-note">לעמוד הרשמי</div>
+        </div>
+      </div>
     </article>
 
     <article class="sponsor-card" aria-label="ליברו">
