@@ -29,9 +29,23 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Heebo', sans-serif;
-      background: radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%), radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%), radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%), #0f172a;
-      background-attachment: fixed;
+      background: #070b16;
       min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden; color: white; position: relative;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-5;
+      background:
+        radial-gradient(circle at 12% 10%,rgba(87,216,255,.15),transparent 27%),
+        radial-gradient(circle at 88% 16%,rgba(155,114,255,.16),transparent 30%),
+        radial-gradient(circle at 50% 92%,rgba(85,124,255,.11),transparent 36%),
+        linear-gradient(180deg,#080b16 0%,#0a1020 50%,#070b16 100%)
+    }
+    .noise{
+      position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.04;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
     }
 
     /* ======================== כפתור גלילה: לאזור הבא / חזרה למעלה ======================== */
@@ -52,31 +66,21 @@
       60% { transform: translateX(-50%) translateY(3px); }
     }
 
-    /* ======================== רקע אורות ======================== */
-    .bg-glow-1 { position: fixed; top: -10%; left: 15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%); filter: blur(80px); pointer-events: none; z-index: 0; }
-    .bg-glow-2 { position: fixed; top: 40%; right: 10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%); filter: blur(100px); pointer-events: none; z-index: 0; }
-    .bg-glow-3 { position: fixed; bottom: -10%; left: 30%; width: 550px; height: 550px; background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%); filter: blur(90px); pointer-events: none; z-index: 0; }
-    .bg-glow-left-accent { position: fixed; top: 35%; left: -5%; width: 450px; height: 450px; background: radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, transparent 70%); filter: blur(90px); pointer-events: none; z-index: 0; }
-    .bg-glow-right-accent { position: fixed; top: 35%; right: -5%; width: 450px; height: 450px; background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 70%); filter: blur(90px); pointer-events: none; z-index: 0; }
-    .tech-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .tech-bg::before, .tech-bg::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60%; background-repeat: repeat; background-size: 220px 220px; mix-blend-mode: screen; opacity: 0.35; }
-    .tech-bg::before {
-      left: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%2322d3ee' stroke-width='1.5' opacity='0.6'%3E%3Cpath d='M10 10 H80 V60 H140 V10 H210'/%3E%3Cpath d='M10 110 H50 V160 H120 V210'/%3E%3Cpath d='M150 90 H210'/%3E%3Ccircle cx='80' cy='60' r='4' fill='%2322d3ee'/%3E%3Ccircle cx='140' cy='10' r='4' fill='%2322d3ee'/%3E%3Ccircle cx='50' cy='160' r='4' fill='%2322d3ee'/%3E%3C/g%3E%3C/svg%3E");
-      -webkit-mask-image: linear-gradient(to right, black 40%, transparent 90%); mask-image: linear-gradient(to right, black 40%, transparent 90%);
+    /* ======================== רקע אורות (מיובא מ-test.html) ======================== */
+    .tech-bg{
+      position:fixed;inset:0;z-index:-4;opacity:.20;pointer-events:none;
+      background-image:
+        linear-gradient(rgba(87,216,255,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(155,114,255,.045) 1px,transparent 1px);
+      background-size:52px 52px;
+      -webkit-mask-image:linear-gradient(to bottom,black,transparent 85%);
+      mask-image:linear-gradient(to bottom,black,transparent 85%)
     }
-    .tech-bg::after {
-      right: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23a855f7' stroke-width='1.5' opacity='0.6'%3E%3Cpath d='M210 10 H140 V60 H80 V10 H10'/%3E%3Cpath d='M210 110 H170 V160 H100 V210'/%3E%3Cpath d='M70 90 H10'/%3E%3Ccircle cx='140' cy='60' r='4' fill='%23a855f7'/%3E%3Ccircle cx='80' cy='10' r='4' fill='%23a855f7'/%3E%3Ccircle cx='170' cy='160' r='4' fill='%23a855f7'/%3E%3C/g%3E%3C/svg%3E");
-      -webkit-mask-image: linear-gradient(to left, black 40%, transparent 90%); mask-image: linear-gradient(to left, black 40%, transparent 90%);
-    }
-    .flow-wave { position: fixed; width: 140%; height: 220px; left: -20%; border-radius: 50%; filter: blur(40px); opacity: 0.22; pointer-events: none; z-index: 0; }
-    .flow-wave-1 { top: 15%; background: linear-gradient(90deg, transparent, rgba(34,211,238,0.5), transparent); transform: rotate(-8deg); animation: flowDrift1 10s ease-in-out infinite; }
-    .flow-wave-2 { top: 55%; background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent); transform: rotate(6deg); animation: flowDrift2 12s ease-in-out infinite; }
-    @keyframes flowDrift1 { 0%, 100% { transform: translateX(0) rotate(-8deg); } 50% { transform: translateX(30px) rotate(-6deg); } }
-    @keyframes flowDrift2 { 0%, 100% { transform: translateX(0) rotate(6deg); } 50% { transform: translateX(-30px) rotate(8deg); } }
+    .glow{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(90px);opacity:.18;pointer-events:none;z-index:-2}
+    .glow.one{top:5%;right:-150px;background:#9b72ff}
+    .glow.two{top:45%;left:-180px;background:#57d8ff}
+    .glow.three{bottom:-180px;right:25%;background:#557cff}
     .static-bubble { position: fixed; border: 2px solid rgba(147, 197, 253, 0.4); border-radius: 50%; background: rgba(147, 197, 253, 0.08); pointer-events: none; z-index: 1; }
-    @media (max-width: 768px) { .bg-glow-left-accent, .bg-glow-right-accent { display: none; } }
 
     /* ======================== דמויות צדדיות ======================== */
     #char-right, #char-left { position: fixed; top: 50%; width: 600px; height: 900px; background-size: contain; background-repeat: no-repeat; background-position: center; z-index: 1; pointer-events: none; transition: transform 0.3s cubic-bezier(0.1, 1, 0.1, 1); opacity: 0.85; }
@@ -370,15 +374,12 @@
 <body>
   <a href="#links-grid" id="skip-link">דלג לתוכן</a>
 
-  <!-- Ambient background -->
-  <div class="bg-glow-1"></div>
-  <div class="bg-glow-2"></div>
-  <div class="bg-glow-3"></div>
-  <div class="bg-glow-left-accent"></div>
-  <div class="bg-glow-right-accent"></div>
+  <!-- Ambient background (מיובא מ-test.html) -->
   <div class="tech-bg" aria-hidden="true"></div>
-  <div class="flow-wave flow-wave-1" aria-hidden="true"></div>
-  <div class="flow-wave flow-wave-2" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="glow one" aria-hidden="true"></div>
+  <div class="glow two" aria-hidden="true"></div>
+  <div class="glow three" aria-hidden="true"></div>
   <div class="static-bubble" style="left:10%; bottom:15%; width:30px; height:30px; animation: floatBubble 12s ease-in-out infinite;" aria-hidden="true"></div>
   <div class="static-bubble" style="left:16%; bottom:8%; width:18px; height:18px; animation: floatBubble 9s ease-in-out infinite 1.5s;" aria-hidden="true"></div>
   <div class="static-bubble" style="left:6%; bottom:25%; width:14px; height:14px; animation: floatBubble 15s ease-in-out infinite 3s;" aria-hidden="true"></div>
