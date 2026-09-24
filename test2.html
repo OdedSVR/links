@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OdedSVR | Official Links</title>
+  <link rel="icon" id="favicon" type="image/png" href="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
+
+  <!-- Open Graph / שיתוף בוואטסאפ, דיסקורד, טוויטר וכו' -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Oded SVR - Official Links">
+  <meta property="og:description" content="קישורים רשמיים ל-Kick, YouTube, Instagram, Discord, Reddit ועוד">
+  <meta property="og:image" content="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
+  <meta property="og:url" content="https://odedsvr.com/">
+  <meta property="og:site_name" content="OdedSVR">
+  <meta property="og:locale" content="he_IL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Oded SVR - Official Links">
+  <meta name="twitter:description" content="קישורים רשמיים ל-Kick, YouTube, Instagram, Discord, Reddit ועוד">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: radial-gradient(circle at 15% 5%, rgba(6, 182, 212, 0.2) 0%, transparent 30%), radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.2) 0%, transparent 30%), radial-gradient(circle at 10% 90%, rgba(30, 64, 175, 0.5) 0%, transparent 35%), radial-gradient(circle at 90% 90%, rgba(21, 128, 61, 0.4) 0%, transparent 35%), #0f172a;
+      background-attachment: fixed;
+      min-height: 100vh; margin: 0; padding: 0; overflow-x: hidden; color: white; position: relative;
+    }
+
+    /* ======================== כפתור גלילה: לאזור הבא / חזרה למעלה ======================== */
+    #scroll-down-btn {
+      position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); z-index: 9999;
+      width: 50px; height: 50px; background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: white; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+      animation: bounceCentral 2s infinite;
+    }
+    #scroll-down-btn svg { transition: transform .35s ease; }
+    #scroll-down-btn.is-up svg { transform: rotate(180deg); }
+    #scroll-down-btn:hover { background: rgba(34, 211, 238, 0.2); border-color: #22d3ee; box-shadow: 0 0 15px rgba(34, 211, 238, 0.5); }
+    @keyframes bounceCentral {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(6px); }
+      60% { transform: translateX(-50%) translateY(3px); }
+    }
+
+    /* ======================== רקע אורות ======================== */
+    .bg-glow-1 { position: fixed; top: -10%; left: 15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%); filter: blur(80px); pointer-events: none; z-index: 0; }
+    .bg-glow-2 { position: fixed; top: 40%; right: 10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%); filter: blur(100px); pointer-events: none; z-index: 0; }
+    .bg-glow-3 { position: fixed; bottom: -10%; left: 30%; width: 550px; height: 550px; background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%); filter: blur(90px); pointer-events: none; z-index: 0; }
+    .bg-glow-left-accent { position: fixed; top: 35%; left: -5%; width: 450px; height: 450px; background: radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, transparent 70%); filter: blur(90px); pointer-events: none; z-index: 0; }
+    .bg-glow-right-accent { position: fixed; top: 35%; right: -5%; width: 450px; height: 450px; background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 70%); filter: blur(90px); pointer-events: none; z-index: 0; }
+    .tech-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .tech-bg::before, .tech-bg::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60%; background-repeat: repeat; background-size: 220px 220px; mix-blend-mode: screen; opacity: 0.35; }
+    .tech-bg::before {
+      left: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%2322d3ee' stroke-width='1.5' opacity='0.6'%3E%3Cpath d='M10 10 H80 V60 H140 V10 H210'/%3E%3Cpath d='M10 110 H50 V160 H120 V210'/%3E%3Cpath d='M150 90 H210'/%3E%3Ccircle cx='80' cy='60' r='4' fill='%2322d3ee'/%3E%3Ccircle cx='140' cy='10' r='4' fill='%2322d3ee'/%3E%3Ccircle cx='50' cy='160' r='4' fill='%2322d3ee'/%3E%3C/g%3E%3C/svg%3E");
+      -webkit-mask-image: linear-gradient(to right, black 40%, transparent 90%); mask-image: linear-gradient(to right, black 40%, transparent 90%);
+    }
+    .tech-bg::after {
+      right: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%23a855f7' stroke-width='1.5' opacity='0.6'%3E%3Cpath d='M210 10 H140 V60 H80 V10 H10'/%3E%3Cpath d='M210 110 H170 V160 H100 V210'/%3E%3Cpath d='M70 90 H10'/%3E%3Ccircle cx='140' cy='60' r='4' fill='%23a855f7'/%3E%3Ccircle cx='80' cy='10' r='4' fill='%23a855f7'/%3E%3Ccircle cx='170' cy='160' r='4' fill='%23a855f7'/%3E%3C/g%3E%3C/svg%3E");
+      -webkit-mask-image: linear-gradient(to left, black 40%, transparent 90%); mask-image: linear-gradient(to left, black 40%, transparent 90%);
+    }
+    .flow-wave { position: fixed; width: 140%; height: 220px; left: -20%; border-radius: 50%; filter: blur(40px); opacity: 0.22; pointer-events: none; z-index: 0; }
+    .flow-wave-1 { top: 15%; background: linear-gradient(90deg, transparent, rgba(34,211,238,0.5), transparent); transform: rotate(-8deg); animation: flowDrift1 10s ease-in-out infinite; }
+    .flow-wave-2 { top: 55%; background: linear-gradient(90deg, transparent, rgba(168,85,247,0.5), transparent); transform: rotate(6deg); animation: flowDrift2 12s ease-in-out infinite; }
+    @keyframes flowDrift1 { 0%, 100% { transform: translateX(0) rotate(-8deg); } 50% { transform: translateX(30px) rotate(-6deg); } }
+    @keyframes flowDrift2 { 0%, 100% { transform: translateX(0) rotate(6deg); } 50% { transform: translateX(-30px) rotate(8deg); } }
+    .static-bubble { position: fixed; border: 2px solid rgba(147, 197, 253, 0.4); border-radius: 50%; background: rgba(147, 197, 253, 0.08); pointer-events: none; z-index: 1; }
+    @media (max-width: 768px) { .bg-glow-left-accent, .bg-glow-right-accent { display: none; } }
+
+    /* ======================== דמויות צדדיות ======================== */
+    #char-right, #char-left { position: fixed; top: 50%; width: 600px; height: 900px; background-size: contain; background-repeat: no-repeat; background-position: center; z-index: 1; pointer-events: none; transition: transform 0.3s cubic-bezier(0.1, 1, 0.1, 1); opacity: 0.85; }
+    #char-right { right: -2%; background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%A2%D7%95%D7%93%D7%93%20%D7%97%D7%93%D7%A9%20%D7%A9%D7%A7%D7%95%D7%A3%20%D7%90%D7%99%D7%9B%D7%95%D7%AA.png'); animation: swayCharacter 12s ease-in-out infinite; }
+    #char-left { left: -2%; background-image: url('https://raw.githubusercontent.com/OdedSVR/images/main/%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%20%D7%A1%D7%95%D7%A4%D7%99%20%D7%A1%D7%95%D7%A4%D7%99.png'); animation: swimDolphin 15s ease-in-out infinite; }
+    @keyframes swayCharacter {
+      0%, 100% { transform: translateY(-50%) rotate(12deg) scale(1); filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.8)) drop-shadow(0 0 50px rgba(192, 132, 252, 0.4)); }
+      50% { transform: translateY(-52%) rotate(14deg) scale(1.02); filter: drop-shadow(0 0 40px rgba(168, 85, 247, 1)) drop-shadow(0 0 75px rgba(192, 132, 252, 0.6)); }
+    }
+    @keyframes swimDolphin {
+      0%, 100% { transform: translateY(-50%) rotate(-12deg) scale(1); filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.8)) drop-shadow(0 0 50px rgba(34, 211, 238, 0.4)); }
+      50% { transform: translateY(-48%) rotate(-10deg) scale(1.03); filter: drop-shadow(0 0 40px rgba(6, 182, 212, 1)) drop-shadow(0 0 75px rgba(34, 211, 238, 0.6)); }
+    }
+    @media (max-width: 768px) { #char-right, #char-left { display: none; } }
+
+    /* מובייל: glow עדין במקום הדמויות */
+    .mobile-char-glow { display: none; position: fixed; width: 70vw; height: 70vw; max-width: 420px; max-height: 420px; border-radius: 50%; filter: blur(60px); pointer-events: none; z-index: 1; }
+    #mobile-glow-right { top: -10%; right: -25%; background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, transparent 70%); animation: mobileGlowPulse 8s ease-in-out infinite; }
+    #mobile-glow-left { bottom: -15%; left: -25%; background: radial-gradient(circle, rgba(6, 182, 212, 0.20) 0%, transparent 70%); animation: mobileGlowPulse 8s ease-in-out infinite 2.5s; }
+    @keyframes mobileGlowPulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.15); } }
+    @media (max-width: 768px) { .mobile-char-glow { display: block; } }
+    #spotlight { position: fixed; top: 0; left: 0; width: 450px; height: 450px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 2; display: none; }
+
+    .char-circuit { position: fixed; top: 50%; width: 1000px; height: 900px; transform: translateY(-50%); pointer-events: none; z-index: 0; opacity: 0.7; mix-blend-mode: screen; }
+    .char-circuit-left { left: -25%; }
+    .char-circuit-right { right: -25%; }
+    @media (max-width: 768px) { .char-circuit { display: none; } }
+
+    /* ======================== נצנוצים ובועות ======================== */
+    .ambient-particle { position: fixed; bottom: -10px; border-radius: 50%; pointer-events: none; z-index: 1; opacity: 0; }
+    @keyframes floatParticle {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      15% { opacity: 0.7; }
+      70% { transform: translateY(-60vh) translateX(15px); opacity: 0.5; }
+      100% { transform: translateY(-100vh) translateX(-10px); opacity: 0; }
+    }
+    .glow-bubble { position: fixed; bottom: -80px; border-radius: 50%; pointer-events: none; z-index: 1; opacity: 0; filter: blur(6px); }
+    @keyframes floatBubble {
+      0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+      12% { opacity: 0.35; }
+      55% { transform: translateY(-55vh) translateX(20px) scale(1.05); opacity: 0.25; }
+      100% { transform: translateY(-110vh) translateX(-15px) scale(0.9); opacity: 0; }
+    }
+
+    /* ======================== כרטיסיות קישור ======================== */
+    .link-card {
+      background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 1rem;
+      transition: transform 0.15s ease-out, background 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative; z-index: 10; opacity: 0; animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      overflow: hidden; transform-style: preserve-3d; will-change: transform;
+    }
+    .link-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 1rem; padding: 1px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent 60%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+    }
+    .link-card:hover {
+      background: rgba(26, 38, 66, 0.85); border-color: rgba(var(--glow-rgb, 59, 130, 246), 0.5);
+      box-shadow: 0 10px 30px -10px rgba(var(--glow-rgb, 59, 130, 246), 0.4), 0 0 20px 0px rgba(var(--glow-rgb, 59, 130, 246), 0.2);
+    }
+    @media (hover: none) { .link-card:active { transform: scale(0.98); } }
+    .card-glow-bg { position: absolute; inset: -100%; background: radial-gradient(circle at center, rgba(var(--glow-rgb), 0.15) 0%, transparent 70%); opacity: 0; transition: opacity 0.35s ease; pointer-events: none; }
+    .link-card:hover .card-glow-bg { opacity: 1; }
+    .link-card:nth-child(2){animation-delay:.05s} .link-card:nth-child(3){animation-delay:.10s} .link-card:nth-child(4){animation-delay:.15s}
+    .link-card:nth-child(6){animation-delay:.20s} .link-card:nth-child(7){animation-delay:.25s} .link-card:nth-child(8){animation-delay:.30s}
+    .link-card:nth-child(9){animation-delay:.35s} .link-card:nth-child(10){animation-delay:.40s} .link-card:nth-child(11){animation-delay:.45s}
+    @keyframes cardIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* גבול מסתובב משותף לכרטיסי שיתופי הפעולה */
+    @property --sheen-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+    @keyframes sheenBorder { to { --sheen-angle: 360deg; } }
+
+    /* מחסני חשמל */
+    .power-card { background: linear-gradient(160deg, rgba(245, 158, 11, 0.10), rgba(15, 23, 42, 0.75) 55%); border: 1px solid rgba(245, 158, 11, 0.28); }
+    .power-card .card-glow-bg { inset: -20%; }
+    .power-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: 1rem; padding: 2px;
+      background: conic-gradient(from var(--sheen-angle, 0deg), transparent 0deg, transparent 260deg, #f59e0b 300deg, #fcd34d 330deg, #f59e0b 0deg, transparent 40deg);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+      animation: sheenBorder 5s linear infinite; pointer-events: none; z-index: 1;
+    }
+    .power-card:hover { border-color: rgba(245, 158, 11, 0.55); box-shadow: 0 12px 34px -12px rgba(245, 158, 11, 0.45), 0 0 24px 0px rgba(245, 158, 11, 0.2); }
+    .power-icon-wrap { width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.28), rgba(245, 158, 11, 0.04)); border: 1px solid rgba(245, 158, 11, 0.35); box-shadow: 0 0 22px rgba(245, 158, 11, 0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    /* ליברו */
+    .libero-card { background: linear-gradient(160deg, rgba(168, 85, 247, 0.10), rgba(15, 23, 42, 0.75) 55%); border: 1px solid rgba(168, 85, 247, 0.28); }
+    .libero-card .card-glow-bg { inset: -20%; }
+    .libero-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: 1rem; padding: 2px;
+      background: conic-gradient(from var(--sheen-angle, 0deg), transparent 0deg, transparent 260deg, #a855f7 300deg, #d8b4fe 330deg, #a855f7 0deg, transparent 40deg);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+      animation: sheenBorder 5s linear infinite; pointer-events: none; z-index: 1;
+    }
+    .libero-card:hover { border-color: rgba(168, 85, 247, 0.55); box-shadow: 0 12px 34px -12px rgba(168, 85, 247, 0.45), 0 0 24px 0px rgba(168, 85, 247, 0.2); }
+    .libero-icon-wrap { width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, rgba(168, 85, 247, 0.28), rgba(168, 85, 247, 0.04)); border: 1px solid rgba(168, 85, 247, 0.35); box-shadow: 0 0 22px rgba(168, 85, 247, 0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .libero-badge { position: absolute; top: 14px; right: 16px; font-size: 10px; font-weight: 900; letter-spacing: 0.15em; color: #d8b4fe; background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.35); padding: 3px 10px; border-radius: 999px; z-index: 10; }
+    .libero-section-label { font-size: 10px; font-weight: 900; letter-spacing: 0.15em; color: rgba(216, 180, 254, 0.5); margin: 14px 0 8px; display: flex; align-items: center; gap: 8px; }
+    .libero-section-label::after { content: ''; flex: 1; height: 1px; background: rgba(168, 85, 247, 0.2); }
+    .libero-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: rgba(168, 85, 247, 0.06); border: 1px solid rgba(168, 85, 247, 0.18); border-radius: 0.85rem; padding: 1rem 0.75rem; color: #d8b4fe; text-align: center; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; }
+    .libero-btn:hover { background: rgba(168, 85, 247, 0.16); border-color: rgba(168, 85, 247, 0.55); transform: translateY(-3px); box-shadow: 0 8px 18px -6px rgba(168, 85, 247, 0.4); }
+    .libero-btn.main { flex-direction: row; gap: 10px; background: rgba(168, 85, 247, 0.10); border-color: rgba(168, 85, 247, 0.3); }
+    .libero-btn.main:hover { background: rgba(168, 85, 247, 0.22); }
+    .libero-btn-name { font-weight: 900; font-size: 15px; }
+    .libero-discount-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 900; color: #f0abfc; background: rgba(240, 171, 252, 0.12); border: 1px solid rgba(240, 171, 252, 0.3); padding: 2px 10px; border-radius: 999px; margin-top: 2px; }
+    .libero-code-tag { font-size: 9px; opacity: 0.55; font-weight: 700; letter-spacing: 0.1em; margin-top: 1px; }
+
+    /* ======================== כותרת ראשית, LIVE, Splash ======================== */
+    .hero-title { background: linear-gradient(90deg, #22d3ee, #a855f7, #3b82f6, #22d3ee); background-size: 300% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: titleShine 10s linear infinite; }
+    @keyframes titleShine { to { background-position: 300% center; } }
+    @keyframes pulseRing { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.2); opacity: 0; } }
+    .live-ring { animation: pulseRing 1.5s ease-out infinite; }
+    @keyframes liveBadgeGlow { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.45); } 70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+    #splash-screen { position: fixed; inset: 0; background: #090d16; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.22s ease-out; }
+    .splash-logo { max-width: 120px; border-radius: 50%; animation: logoFade 1.2s infinite ease-in-out; box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
+    @keyframes logoFade { 0%, 100% { opacity: 0.5; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
+    #splash-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    #splash-loader-track { width: 140px; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.08); overflow: hidden; }
+    #splash-loader-fill { height: 100%; width: 0%; border-radius: 4px; background: linear-gradient(90deg, #22d3ee, #a855f7); transition: width 0.12s ease-out; }
+    #main-page-content { opacity: 0; visibility: hidden; transition: opacity 0.5s ease-in; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    #main-page-content.visible { opacity: 1; visibility: visible; }
+
+    /* פס גלילה */
+    html { scrollbar-color: #22d3ee rgba(255,255,255,0.06); scrollbar-width: thin; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #22d3ee, #a855f7); border-radius: 10px; border: 2px solid #0f172a; }
+    ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #67e8f9, #c084fc); }
+
+    /* ======================== ניווט דביק + כותרות אזורים (דף אחד) ======================== */
+    #site-nav {
+      position: sticky; top: 12px; z-index: 40; width: 100%; max-width: 48rem; margin-bottom: 3rem;
+      display: flex; gap: 4px; padding: 6px; border-radius: 999px;
+      background: rgba(15, 23, 42, 0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.10); box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+      overflow-x: auto; scrollbar-width: none;
+    }
+    #site-nav::-webkit-scrollbar { display: none; }
+    .nav-link { flex: 1 0 auto; text-align: center; white-space: nowrap; padding: 0.55rem 0.95rem; border-radius: 999px; font-weight: 700; font-size: 12px; letter-spacing: 0.03em; color: rgba(255,255,255,0.6); transition: color .2s, background .2s; }
+    .nav-link:hover { color: #22d3ee; background: rgba(255,255,255,0.05); }
+    .nav-link.active { color: #fff; background: rgba(255,255,255,0.12); box-shadow: inset 0 -2px 0 #22d3ee; }
+    @media (min-width: 768px) { .nav-link { font-size: 14px; padding: 0.55rem 0.5rem; } }
+
+    .page-section { width: 100%; margin-top: 6rem; scroll-margin-top: 96px; position: relative; z-index: 10; }
+    #home { margin-top: 0; }
+    .section-head { --accent: 34,211,238; display: flex; align-items: center; gap: 1rem; width: 100%; margin: 0 auto 1.75rem; direction: rtl; }
+    .section-head h2 { display: flex; align-items: center; gap: .6rem; margin: 0; font-size: 1.5rem; font-weight: 900; color: #fff; white-space: nowrap; text-shadow: 0 0 20px rgba(var(--accent), .5); }
+    .section-head::before, .section-head::after { content: ''; flex: 1; height: 1px; }
+    .section-head::before { background: linear-gradient(to right, rgba(var(--accent), .6), transparent); }
+    .section-head::after  { background: linear-gradient(to left,  rgba(var(--accent), .6), transparent); }
+    @media (max-width: 640px) { .section-head h2 { font-size: 1.15rem; white-space: normal; text-align: center; } }
+
+    /* ======================== ACCESSIBILITY WIDGET ======================== */
+    #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
+    #a11y-fab { width: 52px; height: 52px; background: #22d3ee; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
+    #a11y-fab:hover { background: #0891b2; width: 58px; }
+    #a11y-fab svg { flex-shrink: 0; }
+    #a11y-panel { position: fixed; bottom: 0; left: -420px; top: 0; width: 420px; max-width: 95vw; background: #0b1220; color: #e5e7eb; z-index: 99999; transition: left 0.35s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; box-shadow: 5px 0 30px rgba(0,0,0,0.6); display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,0.08); scrollbar-color: #22d3ee #131c2f; }
+    #a11y-panel.open { left: 0; }
+    #a11y-panel::-webkit-scrollbar-track { background: #131c2f; }
+    #a11y-panel::-webkit-scrollbar-thumb { background: #22d3ee; border: 2px solid #0b1220; }
+    #a11y-panel::-webkit-scrollbar-thumb:hover { background: #ff4d4d; }
+    #a11y-panel-header { background: #131c2f; color: white; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2; flex-shrink: 0; border-bottom: 1px solid rgba(34,211,238,0.35); }
+    #a11y-panel-header h2 { font-size: 17px; font-weight: 900; margin: 0; direction: rtl; }
+    #a11y-close { background: none; border: none; color: white; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; }
+    #a11y-close:hover { background: rgba(255,255,255,0.12); }
+    .a11y-section { padding: 14px 16px 8px; }
+    .a11y-section-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 6px 0; }
+    .a11y-section-header h3 { font-size: 14px; font-weight: 800; color: #e5e7eb; margin: 0; direction: rtl; }
+    .a11y-section-toggle { width: 22px; height: 22px; background: #22d3ee; color: white; border: none; border-radius: 50%; font-size: 16px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .a11y-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+    .a11y-btn { background: #131c2f; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 12px 6px 8px; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; font-size: 11px; color: #cbd5e1; font-weight: 700; text-align: center; transition: all 0.15s; font-family: 'Heebo', sans-serif; line-height: 1.3; min-height: 80px; justify-content: center; }
+    .a11y-btn:hover { border-color: #22d3ee; color: #67e8f9; background: rgba(34,211,238,0.1); }
+    .a11y-btn.active { border-color: #22d3ee; background: rgba(34,211,238,0.18); color: #67e8f9; box-shadow: 0 0 0 2px rgba(34,211,238,0.25); }
+    .a11y-btn svg { flex-shrink: 0; }
+    .a11y-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 4px 16px; }
+    .a11y-color-section { padding: 10px 16px 14px; direction: rtl; }
+    .a11y-color-label { font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 6px; display: block; }
+    .a11y-color-swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); cursor: pointer; transition: transform 0.1s; }
+    .a11y-color-swatch:hover { transform: scale(1.2); border-color: #e5e7eb; }
+    .a11y-color-swatch.active { border-color: #22d3ee; transform: scale(1.2); }
+    .color-preset-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .a11y-slider-row { display: flex; align-items: center; gap: 10px; direction: rtl; padding: 8px 0; }
+    .a11y-slider-row input[type=range] { flex: 1; accent-color: #22d3ee; }
+    .a11y-slider-label { font-size: 12px; font-weight: 700; color: #94a3b8; white-space: nowrap; }
+    .cursor-btn { padding: 6px 14px; border: 2px solid rgba(255,255,255,0.15); border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700; background: #131c2f; color: #cbd5e1; transition: all 0.15s; }
+    .cursor-btn:hover { border-color: #22d3ee; }
+    .cursor-btn.active { border-color: #22d3ee; background: rgba(34,211,238,0.18); color: #67e8f9; }
+    #reading-guide-bar { position: fixed; top: 0; left: 0; right: 0; height: 40px; background: rgba(0,0,0,0.3); pointer-events: none; z-index: 99990; display: none; border-top: 2px solid #22d3ee; border-bottom: 2px solid #22d3ee; }
+    #vkeyboard { position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; border-top: 2px solid #22d3ee; z-index: 99995; display: none; padding: 12px; }
+    .vkey-row { display: flex; justify-content: center; gap: 4px; margin-bottom: 4px; }
+    .vkey { background: #334155; color: white; border: 1px solid #475569; border-radius: 6px; padding: 8px 12px; font-size: 13px; cursor: pointer; min-width: 36px; text-align: center; }
+    .vkey:hover { background: #22d3ee; }
+
+    body.a11y-stop-anim * { animation: none !important; transition: none !important; }
+    body.a11y-large-text { font-size: 120% !important; }
+    body.a11y-large-text h1 { font-size: 3rem !important; }
+    body.a11y-high-contrast { filter: contrast(150%) brightness(1.1); }
+    body.a11y-dark-contrast { filter: invert(1) hue-rotate(180deg); }
+    body.a11y-dark-contrast img, body.a11y-dark-contrast video, body.a11y-dark-contrast #char-right, body.a11y-dark-contrast #char-left, body.a11y-dark-contrast .mobile-char-glow { filter: invert(1) hue-rotate(180deg); }
+    body.a11y-mono { filter: grayscale(1); }
+    body.a11y-highlight-links a { background: yellow !important; color: #000 !important; padding: 0 2px !important; outline: 2px solid orange !important; }
+    body.a11y-readable-font * { font-family: 'Arial', sans-serif !important; letter-spacing: 0.05em !important; }
+    body.a11y-big-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 0 L8 24 L14 18 L20 32 L23 31 L17 17 L26 17 Z' fill='black' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 8 0, auto !important; }
+    body.a11y-big-cursor-white * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 0 L8 24 L14 18 L20 32 L23 31 L17 17 L26 17 Z' fill='white' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 8 0, auto !important; }
+    body.a11y-hide-images img { visibility: hidden !important; }
+    body.a11y-letter-spacing * { letter-spacing: 0.12em !important; }
+    body.a11y-word-spacing * { word-spacing: 0.25em !important; }
+    body.a11y-line-height * { line-height: 2 !important; }
+    body.a11y-saturation-high { filter: saturate(2.5); }
+    body.a11y-saturation-low { filter: saturate(0.3); }
+    .a11y-focus-visible :focus { outline: 3px solid #22d3ee !important; outline-offset: 3px !important; }
+    #skip-link { position: fixed; top: -60px; right: 10px; z-index: 999999; background: #22d3ee; color: white; padding: 10px 18px; border-radius: 8px; font-weight: 900; text-decoration: none; transition: top 0.2s ease; }
+    #skip-link:focus { top: 10px; }
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #22d3ee; outline-offset: 3px; }
+
+    /* ======================== כרטיסים משותפים (Info / Donators / WaterPark) ======================== */
+    .card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 10; padding: 1.5rem; }
+    .card:hover { transform: translateY(-4px); background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); }
+    #profile-image { border: 2px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
+    #profile-image:hover { transform: scale(1.05) rotate(1deg); border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.4); }
+    .text-glow { text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); }
+
+    .donators-wrap { max-width: 72rem; }
+    .donators-wrap > .card { min-height: 360px; padding: 2rem; }
+    .donators-wrap > .card h3 { font-size: 1.45rem; }
+    .donators-wrap .donators-table th, .donators-wrap .donators-table td { padding: 1rem 1.1rem; font-size: 1rem; }
+    @media (max-width: 768px) { .donators-wrap > .card { min-height: 0; padding: 1.35rem; } }
+
+    .copy-btn { opacity: 0.5; transition: all 0.2s; cursor: pointer; }
+    .copy-btn:hover { opacity: 1; transform: scale(1.1); }
+    .copy-btn:active { transform: scale(0.9); }
+    .copy-success { filter: hue-rotate(90deg) brightness(1.5) !important; }
+
+    .donators-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .donators-table th, .donators-table td { padding: 0.75rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); text-align: right; }
+    .donators-table th { background: rgba(255, 255, 255, 0.05); font-weight: bold; color: white; }
+    .donators-table td { color: #ccc; }
+    .donators-table tr:last-child td { border-bottom: none; }
+    .donators-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+    .stat-highlight { color: #22d3ee; font-weight: bold; }
+    .stat-rank { color: #f97316; font-weight: bold; }
+
+    .video-row { display: flex; align-items: center; gap: 0; border-radius: 0.75rem; background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 0.75rem; height: 100%; }
+    .video-row:hover { background: rgba(30, 41, 59, 0.85); border-color: rgba(255, 255, 255, 0.15); transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
+
+    .section-title { display: flex; align-items: center; gap: 10px; }
+    .cmd-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+    .cmd-code { font-family: 'Roboto Mono', monospace; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+    .cmd-desc { font-size: 0.85rem; color: #94a3b8; }
+    .cmd-copy-icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ======================== Stats accordion ======================== */
+    .stats-accordion { width: 100%; }
+    .stats-panel { border: 1px solid rgba(255,255,255,.10); border-radius: 18px; background: rgba(15,23,42,.68); backdrop-filter: blur(18px); overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,.18); transition: border-color .25s, box-shadow .25s, transform .25s; }
+    .stats-panel:hover { transform: translateY(-1px); }
+    .stats-panel summary { list-style: none; cursor: pointer; min-height: 64px; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; font-size: 18px; font-weight: 900; user-select: none; outline: none; }
+    .stats-panel summary::-webkit-details-marker { display: none; }
+    .stats-title { display: flex; align-items: center; gap: 12px; }
+    .stats-icon { font-size: 24px; line-height: 1; }
+    .stats-chevron { font-size: 25px; line-height: 1; transition: transform .25s ease; opacity: .75; }
+    .stats-panel[open] .stats-chevron { transform: rotate(180deg); }
+    .stats-panel-content { padding: 0 20px 20px; border-top: 1px solid rgba(255,255,255,.07); animation: statsOpen .22s ease; }
+    @keyframes statsOpen { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    .stats-orange summary { color: #fb923c; } .stats-orange[open] { border-color: rgba(251,146,60,.45); box-shadow: 0 0 25px rgba(251,146,60,.08); }
+    .stats-green summary { color: #4ade80; } .stats-green[open] { border-color: rgba(74,222,128,.45); box-shadow: 0 0 25px rgba(74,222,128,.08); }
+    .stats-cyan summary { color: #22d3ee; } .stats-cyan[open] { border-color: rgba(34,211,238,.45); box-shadow: 0 0 25px rgba(34,211,238,.08); }
+    .stats-purple summary { color: #c084fc; } .stats-purple[open] { border-color: rgba(192,132,252,.45); box-shadow: 0 0 25px rgba(192,132,252,.08); }
+    .emotes-compact, .badges-compact { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; padding-top: 16px; justify-content: flex-start; }
+    .emote-mini { width: 58px; height: 58px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 10px; background: rgba(30,41,59,.55); border: 1px solid rgba(148,163,184,.12); transition: transform .15s, border-color .15s, background .15s; overflow: hidden; }
+    .emote-mini:hover { transform: translateY(-2px) scale(1.04); border-color: rgba(34,211,238,.5); background: rgba(34,211,238,.08); }
+    .emote-mini img { width: 48px; height: 48px; object-fit: contain; }
+    .badge-mini { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; position: relative; border-radius: 10px; background: rgba(30,41,59,.55); border: 1px solid rgba(148,163,184,.12); }
+    .badge-mini img { width: 52px; height: 52px; object-fit: contain; }
+    .badge-mini span { position: absolute; bottom: 3px; right: 4px; font-size: 14px; font-weight: 900; color: #cbd5e1; background: rgba(0,0,0,.65); padding: 1px 3px; border-radius: 4px; font-family: monospace; }
+    @media (max-width: 640px) {
+      .stats-panel summary { min-height: 58px; padding: 12px 15px; font-size: 16px; }
+      .stats-panel-content { padding: 0 12px 14px; }
+      .emote-mini img { width: 40px; height: 40px; }
+      .badge-mini { width: 68px; height: 68px; }
+      .badge-mini img { width: 44px; height: 44px; }
+      .emotes-compact, .badges-compact { gap: 5px; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .mobile-char-glow, #scroll-down-btn { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#links-grid" id="skip-link">דלג לתוכן</a>
+
+  <!-- Ambient background -->
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+  <div class="bg-glow-3"></div>
+  <div class="bg-glow-left-accent"></div>
+  <div class="bg-glow-right-accent"></div>
+  <div class="tech-bg" aria-hidden="true"></div>
+  <div class="flow-wave flow-wave-1" aria-hidden="true"></div>
+  <div class="flow-wave flow-wave-2" aria-hidden="true"></div>
+  <div class="static-bubble" style="left:10%; bottom:15%; width:30px; height:30px; animation: floatBubble 12s ease-in-out infinite;" aria-hidden="true"></div>
+  <div class="static-bubble" style="left:16%; bottom:8%; width:18px; height:18px; animation: floatBubble 9s ease-in-out infinite 1.5s;" aria-hidden="true"></div>
+  <div class="static-bubble" style="left:6%; bottom:25%; width:14px; height:14px; animation: floatBubble 15s ease-in-out infinite 3s;" aria-hidden="true"></div>
+
+  <svg class="char-circuit char-circuit-right" viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <filter id="glowPurple" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" filter="url(#glowPurple)">
+      <path d="M650 100 H480 V220 H300 V150 H100"/>
+      <path d="M620 300 H440 V420 H550 V560"/>
+      <path d="M680 500 H520 V650 H380"/>
+      <path d="M300 500 H150 V700"/>
+      <path d="M600 720 H400 V800"/>
+    </g>
+    <g fill="#a855f7" filter="url(#glowPurple)">
+      <circle cx="480" cy="100" r="6"/><circle cx="300" cy="220" r="6"/>
+      <circle cx="440" cy="300" r="6"/><circle cx="550" cy="420" r="6"/>
+      <circle cx="520" cy="500" r="6"/><circle cx="380" cy="650" r="6"/>
+      <circle cx="150" cy="500" r="6"/><circle cx="400" cy="720" r="6"/>
+    </g>
+  </svg>
+  <div id="char-right" aria-hidden="true"></div>
+
+  <svg class="char-circuit char-circuit-left" viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" filter="url(#glowCyan)">
+      <path d="M50 100 H220 V220 H400 V150 H600"/>
+      <path d="M80 300 H260 V420 H150 V560"/>
+      <path d="M20 500 H180 V650 H320"/>
+      <path d="M400 500 H550 V700"/>
+      <path d="M100 720 H300 V800"/>
+    </g>
+    <g fill="#22d3ee" filter="url(#glowCyan)">
+      <circle cx="220" cy="100" r="6"/><circle cx="400" cy="220" r="6"/>
+      <circle cx="260" cy="300" r="6"/><circle cx="150" cy="420" r="6"/>
+      <circle cx="180" cy="500" r="6"/><circle cx="320" cy="650" r="6"/>
+      <circle cx="550" cy="500" r="6"/><circle cx="300" cy="720" r="6"/>
+    </g>
+  </svg>
+  <div id="char-left" aria-hidden="true"></div>
+
+  <div id="mobile-glow-right" class="mobile-char-glow" aria-hidden="true"></div>
+  <div id="mobile-glow-left" class="mobile-char-glow" aria-hidden="true"></div>
+  <div id="spotlight" aria-hidden="true"></div>
+  <div id="particle-layer" aria-hidden="true"></div>
+  <div id="reading-guide-bar" aria-hidden="true"></div>
+
+  <!-- כפתור גלילה: לאזור הבא / חזרה למעלה בתחתית -->
+  <button id="scroll-down-btn" aria-label="לאזור הבא" type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">
+      <path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path>
+    </svg>
+  </button>
+
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <div id="splash-inner">
+      <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="לוגו טעינה עודד סבר" class="splash-logo">
+      <div id="splash-loader-track"><div id="splash-loader-fill"></div></div>
+    </div>
+  </div>
+
+  <div id="main-page-content" class="px-6 py-12">
+
+    <!-- Hero -->
+    <header class="text-center mb-10 relative z-10" id="page-header">
+      <a aria-label="מעבר לערוץ הקיק של עודד סבר (נפתח בטאב חדש)" class="group inline-block" href="https://kick.com/odedsvr" id="profile-link" target="_blank" rel="noopener">
+        <div class="relative inline-block">
+          <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
+          <img alt="תמונת הפרופיל של עודד סבר" class="relative w-32 h-32 md:w-36 md:h-36 rounded-full mx-auto shadow-2xl object-cover border-2 border-white/20 transition-all duration-300 transform group-hover:scale-105" id="profile-image" src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true"/>
+          <span class="hidden" id="live-dot">
+            <span class="absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]" style="box-shadow: 0 0 12px rgba(239,68,68,1);"></span>
+            <span class="live-ring absolute bottom-2 right-2 w-4 h-4 rounded-full bg-red-500 border-2 border-[#090d16]"></span>
+          </span>
+        </div>
+      </a>
+      <h1 class="hero-title text-4xl md:text-5xl font-black tracking-tight mt-4 mb-2" id="page-title">Oded SVR</h1>
+      <div class="flex items-center justify-center gap-2 flex-wrap">
+        <span class="hidden items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="live-badge" style="box-shadow:0 0 0 0 rgba(239,68,68,0.5); animation: liveBadgeGlow 2s ease-out infinite;">
+          <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse inline-block"></span>
+          LIVE NOW
+        </span>
+        <span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/70 text-[11px] font-black tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="viewer-count-badge">
+          👁️ <span id="viewer-count-num">0</span>
+        </span>
+        <span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/50 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="offline-badge">
+          <span class="w-2 h-2 bg-white/30 rounded-full inline-block"></span>
+          OFFLINE
+        </span>
+        <span class="text-[11px] text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full" id="page-subtitle">Official Links</span>
+      </div>
+    </header>
+
+    <!-- ניווט דביק: גולל לאזורים בדף -->
+    <nav id="site-nav" aria-label="ניווט ראשי">
+      <a href="#home" data-page="home" class="nav-link active" aria-current="true">Home</a>
+      <a href="#YTvids" data-page="YTvids" class="nav-link">Videos</a>
+      <a href="#info" data-page="info" class="nav-link">Info</a>
+      <a href="#topdonators" data-page="topdonators" class="nav-link">Donators</a>
+      <a href="#stats" data-page="stats" class="nav-link">Kick Stats &amp; Info</a>
+      <a href="#waterpark" data-page="waterpark" class="nav-link">WaterPark</a>
+    </nav>
+
+    <!-- ========================= HOME ========================= -->
+    <section id="home" class="page-section" aria-label="קישורים רשמיים">
+      <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto relative z-10" dir="ltr" id="links-grid">
+        <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-2" dir="rtl">
+          <span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">שיתופי פעולה</span>
+          <span class="flex-1 h-px bg-white/10"></span>
+        </div>
+
+        <!-- מחסני חשמל -->
+        <div class="md:col-span-2 w-full link-card power-card p-6 group" dir="rtl" style="--glow-rgb: 245, 158, 11;">
+          <a aria-label="מחסני חשמל (נפתח בטאב חדש)" class="absolute inset-0 z-20" href="https://www.payngo.co.il/" target="_blank" rel="noopener"></a>
+          <div class="card-glow-bg"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-center gap-3">
+              <div class="power-icon-wrap text-2xl">⚡</div>
+              <div class="text-center">
+                <div class="text-xl md:text-2xl font-black text-amber-400 flex items-center gap-2">
+                  <span>מחסני חשמל</span>
+                  <span>⚡</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ליברו -->
+        <div class="md:col-span-2 w-full link-card libero-card p-6 group" dir="rtl" style="--glow-rgb: 168, 85, 247;">
+          <div class="card-glow-bg"></div>
+          <span class="libero-badge">קוד: OSVR10</span>
+          <div class="relative z-10">
+            <div class="flex items-center justify-center gap-3 mb-4">
+              <div class="libero-icon-wrap text-2xl">💎</div>
+              <div class="text-center">
+                <div class="text-xl md:text-2xl font-black text-purple-300 flex items-center gap-2">
+                  <span>ליברו</span>
+                  <span>💎</span>
+                </div>
+                <div class="text-[11px] text-purple-300/60 font-bold tracking-widest uppercase mt-0.5">10% הנחה על כל האתר עם OSVR10</div>
+              </div>
+            </div>
+            <a aria-label="לאתר ליברו (נפתח בטאב חדש)" class="libero-btn main" href="https://libero-il.co.il/" target="_blank" rel="noopener">
+              <span style="font-size:18px;">🛍️</span>
+              <span class="libero-btn-name">לכל האתר</span>
+            </a>
+            <div class="libero-section-label">מבצעי בשמים</div>
+            <div class="grid grid-cols-2 gap-3">
+              <a aria-label="בשמי Fomowa - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)" class="libero-btn" href="https://libero-il.co.il/?s=fomowa&amp;jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&amp;post_type=product&amp;jet_ajax_search_categories=0" target="_blank" rel="noopener">
+                <span style="font-size:20px;">🌸</span>
+                <span class="libero-btn-name">Fomowa</span>
+                <span class="libero-discount-tag">🎁 50% על השני</span>
+                <span class="libero-code-tag">קוד: OSVR</span>
+              </a>
+              <a aria-label="בשמי Emper - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)" class="libero-btn" href="https://libero-il.co.il/?s=emper&amp;jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&amp;post_type=product&amp;jet_ajax_search_categories=0" target="_blank" rel="noopener">
+                <span style="font-size:20px;">🌺</span>
+                <span class="libero-btn-name">Emper</span>
+                <span class="libero-discount-tag">🎁 50% על השני</span>
+                <span class="libero-code-tag">קוד: OSVR</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-3" dir="rtl">
+          <span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">עקבו אחרינו</span>
+          <span class="flex-1 h-px bg-white/10"></span>
+        </div>
+
+        <a aria-label="שרת הדיסקורד הרשמי של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" href="https://discord.gg/75dSkgFKkr" style="--glow-rgb: 99, 102, 241;" target="_blank" rel="noopener">
+          <div class="card-glow-bg"></div>
+          <div class="text-lg md:text-xl font-black text-indigo-300 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+            <img alt="" aria-hidden="true" class="h-12 w-12 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/discor%20logo.png"/>
+            <span>Discord</span>
+          </div>
+        </a>
+        <a aria-label="הטיקטוק של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" href="https://www.tiktok.com/@odedsvrlive" style="--glow-rgb: 45, 212, 191;" target="_blank" rel="noopener">
+          <div class="card-glow-bg"></div>
+          <div class="text-lg md:text-xl font-black text-slate-100 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+            <img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/tiktoklogo.png"/>
+            <span>TikTok</span>
+          </div>
+        </a>
+        <a aria-label="ערוץ הקיק הרשמי של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" href="https://kick.com/odedsvr" style="--glow-rgb: 34, 197, 94;" target="_blank" rel="noopener">
+          <div class="card-glow-bg"></div>
+          <div class="text-lg md:text-xl font-black text-green-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+            <img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/kick%20logo.png"/>
+            <span>Kick</span>
+          </div>
+        </a>
+        <a aria-label="קהילת הרדיט של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" href="https://www.reddit.com/r/OdedSVRR/s/FRzRoZEA2i" style="--glow-rgb: 249, 115, 22;" target="_blank" rel="noopener">
+          <div class="card-glow-bg"></div>
+          <div class="text-lg md:text-xl font-black text-orange-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+            <img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/Reddit%20(1).png"/>
+            <span>Reddit</span>
+          </div>
+        </a>
+        <a aria-label="ערוץ היוטיוב של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center group" dir="rtl" href="https://www.youtube.com/@OdedSVRLive" style="--glow-rgb: 239, 68, 68;" target="_blank" rel="noopener">
+          <div class="card-glow-bg"></div>
+          <div class="text-lg md:text-xl font-black text-red-500 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+            <img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/YTLOGO.png"/>
+            <span>YouTube</span>
+          </div>
+        </a>
+        <a aria-label="פרופיל האינסטגרם של עודד (נפתח בטאב חדש)" class="link-card block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" href="https://www.instagram.com/odedsvr/" style="--glow-rgb: 236, 72, 153;" target="_blank" rel="noopener">
+          <div class="card-glow-bg"></div>
+          <div class="text-lg md:text-xl font-black text-pink-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+            <img alt="" aria-hidden="true" class="h-6 w-6 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/instlogo.png"/>
+            <span>Instagram</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================= YOUTUBE ========================= -->
+    <section id="YTvids" class="page-section" aria-labelledby="yt-title">
+      <div class="w-full max-w-4xl mx-auto">
+        <div class="section-head" style="--accent:239,68,68;"><h2 id="yt-title">🎬 Recent YouTube Videos</h2></div>
+        <div aria-label="רשימת סרטונים אחרונים" class="grid grid-cols-1 gap-6" id="video-container">
+          <p class="text-white/30 animate-pulse text-center">טוען סרטונים...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= INFO ========================= -->
+    <section id="info" class="page-section" aria-labelledby="info-title">
+      <div class="w-full max-w-4xl mx-auto">
+        <div class="section-head" style="--accent:168,85,247;"><h2 id="info-title">💻 Specs &amp; Commands</h2></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+          <div class="card rounded-xl">
+            <h3 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2 font-mono">💬 Chat Commands (Kick)</h3>
+            <div class="space-y-4">
+              <div>
+                <div class="flex items-center gap-2">
+                  <div class="text-white font-black text-lg text-glow font-mono">watchtime!</div>
+                  <img class="w-5 h-5 invert copy-btn" alt="העתק פקודה" onclick="copyCmd('!watchtime', this)" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה"/>
+                </div>
+                <div class="text-sm text-gray-400 font-mono">Total Watchtime On LiveStreams</div>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <div class="text-white font-black text-lg text-glow font-mono">followage!</div>
+                  <img class="w-5 h-5 invert copy-btn" alt="העתק פקודה" onclick="copyCmd('!followage', this)" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה"/>
+                </div>
+                <div class="text-sm text-gray-400 font-mono">Total Follow Time On Kick</div>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <div class="text-white font-black text-lg text-glow font-mono">clip!</div>
+                  <img class="w-5 h-5 invert copy-btn" alt="העתק פקודה" onclick="copyCmd('!clip', this)" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה"/>
+                </div>
+                <div class="text-sm text-gray-400 font-mono">Clip The Last 30 Seconds</div>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <div class="text-white font-black text-lg text-glow font-mono">discord!</div>
+                  <img class="w-5 h-5 invert copy-btn" alt="העתק פקודה" onclick="copyCmd('!discord', this)" src="https://github.com/OdedSVR/images/blob/main/copy-paste-icon-symbol-design-illustration-vector-removebg-preview.png?raw=true" title="העתק פקודה"/>
+                </div>
+                <div class="text-sm text-gray-400 font-mono">Get a Link For The Discord Server</div>
+              </div>
+            </div>
+          </div>
+          <div class="card rounded-xl text-left" dir="ltr">
+            <h3 class="text-xl font-black text-purple-400 mb-4 border-b border-purple-400/20 pb-2 font-mono">My Setup 🖥️</h3>
+            <ul class="text-base space-y-2 text-gray-300 font-bold text-glow font-mono">
+              <li>CPU - Intel Core i7 14700KF</li>
+              <li>GPU - NVIDIA GeForce RTX 5070Ti</li>
+              <li>MEMORY - Corsair 32GB DDR5 Ram</li>
+              <li>MB - B760 Motherboard</li>
+              <li>KEYBOARD - Steelseries Apex7</li>
+              <li>MOUSE - RAZER Basilisk X</li>
+              <li>MIC - Elgato Wave 3</li>
+              <li>HEADPHONES - HyperX Cloud Stinger 2 Wireless</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= DONATORS ========================= -->
+    <section id="topdonators" class="page-section" aria-labelledby="donators-title">
+      <div class="w-full donators-wrap mx-auto">
+        <div class="section-head" style="--accent:249,115,22;"><h2 id="donators-title">🎁 Top Donators</h2></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card rounded-xl">
+            <h3 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2">🏆 Weekly Top Gifters 🏆</h3>
+            <div id="weekly-gifters-table-container">
+              <p class="text-sm text-gray-300">Loading Weekly Top Gifters...</p>
+            </div>
+          </div>
+          <div class="card rounded-xl">
+            <h3 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2">👑 All-Time Top Gifters 👑</h3>
+            <div id="alltime-gifters-table-container">
+              <p class="text-sm text-gray-300">Loading All-Time Top Gifters...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= KICK STATS ========================= -->
+    <section id="stats" class="page-section" aria-labelledby="stats-title">
+      <div class="w-full max-w-5xl mx-auto">
+        <div class="section-head" style="--accent:34,197,94;"><h2 id="stats-title">📊 Kick Stats &amp; Info</h2></div>
+        <div class="stats-accordion space-y-3" id="statsAccordion">
+
+          <details class="stats-panel stats-orange" data-panel="botrix" open>
+            <summary>
+              <span class="stats-title"><span class="stats-icon">🏆</span><span>המובילים בצפייה!</span></span>
+              <span class="stats-chevron" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="stats-panel-content">
+              <div id="botrix-leaderboard-container" class="overflow-x-auto">
+                <p class="text-sm text-gray-300 animate-pulse text-center">טוען נתונים...</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="stats-panel stats-green" data-panel="kicklogz">
+            <summary>
+              <span class="stats-title"><span class="stats-icon">🔥</span><span>הפעילים בצ'אט! (30 יום אחרונים)</span></span>
+              <span class="stats-chevron" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="stats-panel-content">
+              <div id="kicklogz-active-container" class="overflow-x-auto">
+                <p class="text-sm text-gray-300 animate-pulse text-center">טוען נתונים...</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="stats-panel stats-cyan" data-panel="emotes">
+            <summary>
+              <span class="stats-title"><span class="stats-icon">😊</span><span>Channel Emotes</span></span>
+              <span class="stats-chevron" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="stats-panel-content">
+              <div id="emotesContainer" class="emotes-compact">
+                <p class="text-sm text-gray-300 animate-pulse">טוען אימוג'ים -Kick...</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="stats-panel stats-purple" data-panel="badges">
+            <summary>
+              <span class="stats-title"><span class="stats-icon">⭐</span><span>Sub Badges</span></span>
+              <span class="stats-chevron" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="stats-panel-content">
+              <div id="sub-emotes-container" class="badges-compact">
+                <p class="text-sm text-gray-300 animate-pulse">טוען נתוני סאבים...</p>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= WATERPARK ========================= -->
+    <section id="waterpark" class="page-section" aria-labelledby="waterpark-title">
+      <div class="w-full max-w-4xl mx-auto space-y-6">
+        <div class="section-head" style="--accent:34,211,238;"><h2 id="waterpark-title">🌊 WaterPark Simulator Commands</h2></div>
+
+        <!-- כניסה ובקרה -->
+        <div class="card rounded-xl">
+          <h3 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2 font-mono section-title">🎫 כניסה ובקרה</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">VISIT!</span></div><div class="cmd-desc">מכניס את הצופה לפארק</div></div>
+            <div><div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">s text!</span></div><div class="cmd-desc">מציג הודעה מעל הדמות של הצופה</div></div>
+            <div><div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">where!</span></div><div class="cmd-desc">מסמן את מיקום הדמות כדי שיהיה קל למצוא אותה</div></div>
+            <div><div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">status!</span></div><div class="cmd-desc">מציג מה הדמות עושה כרגע</div></div>
+            <div><div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">leave!</span></div><div class="cmd-desc">הדמות עוזבת את הפארק</div></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- פעילויות בפארק -->
+          <div class="card rounded-xl">
+            <h3 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2 font-mono section-title">🏄 פעילויות בפארק</h3>
+            <div class="space-y-3">
+              <div><div class="cmd-code text-white text-glow">slide!</div><div class="cmd-desc">הולך להתגלש במגלשה</div></div>
+              <div><div class="cmd-code text-white text-glow">swim!</div><div class="cmd-desc">הולך לשחות</div></div>
+              <div><div class="cmd-code text-white text-glow">dive!</div><div class="cmd-desc">הולך לקפוץ למים</div></div>
+              <div><div class="cmd-code text-white text-glow">relax!</div><div class="cmd-desc">הולך לנוח בכיסא בריכה</div></div>
+              <div><div class="cmd-code text-white text-glow">sauna!</div><div class="cmd-desc">הולך לסאונה</div></div>
+              <div><div class="cmd-code text-white text-glow">shower!</div><div class="cmd-desc">הולך להתקלח</div></div>
+              <div><div class="cmd-code text-white text-glow">sleep!</div><div class="cmd-desc">הולך לישון</div></div>
+              <div><div class="cmd-code text-white text-glow">random!</div><div class="cmd-desc">בוחר פעילות אקראית בפארק</div></div>
+            </div>
+          </div>
+          <!-- אוכל וצרכים -->
+          <div class="card rounded-xl">
+            <h3 class="text-xl font-black text-yellow-400 mb-4 border-b border-yellow-400/20 pb-2 font-mono section-title">🍔 אוכל וצרכים</h3>
+            <div class="space-y-3">
+              <div><div class="cmd-code text-white text-glow">eat!</div><div class="cmd-desc">הולך לקנות ולאכול</div></div>
+              <div><div class="cmd-code text-white text-glow">drink!</div><div class="cmd-desc">הולך לקנות משקה</div></div>
+              <div><div class="cmd-code text-white text-glow">poop!</div><div class="cmd-desc">עושה קקי במקום</div></div>
+              <div><div class="cmd-code text-white text-glow">pee!</div><div class="cmd-desc">עושה פיפי במקום</div></div>
+              <div><div class="cmd-code text-white text-glow">toilet!</div><div class="cmd-desc">הולך לשירותים</div></div>
+              <div><div class="cmd-code text-white text-glow">vomit!</div><div class="cmd-desc">מקיא</div></div>
+            </div>
+          </div>
+          <!-- לבוש וחפצים -->
+          <div class="card rounded-xl">
+            <h3 class="text-xl font-black text-purple-400 mb-4 border-b border-purple-400/20 pb-2 font-mono section-title">🎒 לבוש וחפצים</h3>
+            <div class="space-y-3">
+              <div><div class="cmd-code text-white text-glow">change!</div><div class="cmd-desc">הולך להחליף בגדים</div></div>
+              <div><div class="cmd-code text-white text-glow">hat!</div><div class="cmd-desc">הולך לקנות כובע</div></div>
+              <div><div class="cmd-code text-white text-glow">float!</div><div class="cmd-desc">הולך לקחת מתנפח</div></div>
+              <div><div class="cmd-code text-white text-glow">trash!</div><div class="cmd-desc">הולך לפח</div></div>
+              <div><div class="cmd-code text-white text-glow">fall!</div><div class="cmd-desc">גורם לדמות ליפול</div></div>
+            </div>
+          </div>
+          <!-- צבע אישי -->
+          <div class="card rounded-xl">
+            <h3 class="text-xl font-black text-pink-400 mb-4 border-b border-pink-400/20 pb-2 font-mono section-title">🎨 צבע אישי</h3>
+            <p class="cmd-desc mb-3">הצבע האישי משמש לשם הצופה ולהודעות שמופיעות מעל הדמות</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(239,68,68,0.15);color:#f87171;">color red!</span>
+              <span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(59,130,246,0.15);color:#60a5fa;">color blue!</span>
+              <span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(34,197,94,0.15);color:#4ade80;">color green!</span>
+              <span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(234,179,8,0.15);color:#facc15;">color yellow!</span>
+              <span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(236,72,153,0.15);color:#f472b6;">color pink!</span>
+              <span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(168,85,247,0.15);color:#c084fc;">color purple!</span>
+              <span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(249,115,22,0.15);color:#fb923c;">color orange!</span>
+              <span class="cmd-code text-sm px-2 py-1 rounded-md" style="background:rgba(6,182,212,0.15);color:#22d3ee;">color cyan!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- אינטראקציות בין צופים -->
+        <div class="card rounded-xl">
+          <h3 class="text-xl font-black text-blue-400 mb-4 border-b border-blue-400/20 pb-2 font-mono section-title">🤝 אינטראקציות בין צופים</h3>
+          <p class="cmd-desc mb-3">במקום <span class="cmd-code text-white">username</span> יש לרשום את שם הצופה, עם או בלי <span class="cmd-code text-white">@</span></p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div><div class="cmd-code text-white text-glow">meet username!</div><div class="cmd-desc">הדמות הולכת לפגוש את הצופה</div></div>
+            <div><div class="cmd-code text-white text-glow">follow username!</div><div class="cmd-desc">עוקבת אחריו במשך 30 שניות</div></div>
+            <div><div class="cmd-code text-white text-glow">fight username!</div><div class="cmd-desc">שתי הדמויות דוחפות זו את זו עד שאחת מפסידה ובורחת מהפארק</div></div>
+          </div>
+          <div class="mt-3 flex items-center gap-2">
+            <span class="cmd-desc">דוגמה:</span>
+            <span class="cmd-code text-cyan-300">!fight @oded123</span>
+          </div>
+        </div>
+
+        <!-- גרפיטי -->
+        <div class="card rounded-xl">
+          <h3 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2 font-mono section-title">🖌️ גרפיטי</h3>
+          <div class="cmd-row"><span class="text-white text-lg text-glow cmd-code">graffiti text!</span></div>
+          <div class="cmd-desc mb-2">הדמות הולכת לקיר גרפיטי אקראי ופנוי, מבצעת את האנימציה וכותבת את הטקסט שנשלח</div>
+          <ul class="text-sm text-gray-400 list-disc pr-5 space-y-1">
+            <li>ניתן לכתוב בעברית או באנגלית</li>
+            <li>עד 24 תווים</li>
+          </ul>
+          <div class="mt-3 flex items-center gap-2">
+            <span class="cmd-desc">דוגמה:</span>
+            <span class="cmd-code text-orange-300">graffiti! הפארק של עודד</span>
+          </div>
+        </div>
+
+        <!-- פקודות כאוס -->
+        <div class="card rounded-xl border-red-500/20">
+          <h3 class="text-xl font-black text-red-400 mb-4 border-b border-red-400/20 pb-2 font-mono section-title">🔥 פקודות כאוס</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div><div class="cmd-code text-white text-glow">sabotage!</div><div class="cmd-desc">הולך לבצע חבלה</div></div>
+            <div><div class="cmd-code text-white text-glow">fire!</div><div class="cmd-desc">הולך לפח ומצית אותו</div></div>
+            <div><div class="cmd-code text-white text-glow">malfunction!</div><div class="cmd-desc">הולך למתקן וגורם לתקלה</div></div>
+            <div><div class="cmd-code text-white text-glow">chaos!</div><div class="cmd-desc">בוחר פעולת כאוס אקראית</div></div>
+          </div>
+          <div class="bg-red-950/30 border border-red-500/20 rounded-lg p-4 mt-2">
+            <div class="text-sm font-black text-red-300 mb-2">⏱️ זמני המתנה לכאוס</div>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>צופה רגיל: <span class="font-bold text-white">15 דקות</span></li>
+              <li>חבר מועדון/סאב: <span class="font-bold text-white">7 דקות</span></li>
+              <li>זמן המתנה כללי בין פעולות כאוס: <span class="font-bold text-white">30 שניות</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-24 text-center flex flex-col items-center justify-center gap-3 relative z-10 select-none w-full site-footer">
+      <div class="text-[10px] text-white/25 font-normal max-w-md px-6 leading-relaxed" dir="rtl">
+        * הקישורים לליברו ומחסני חשמל הם שיתופי פעולה בין עודד לחברות אלו
+      </div>
+      <div class="text-[10px] text-white/30 font-bold tracking-[0.2em] uppercase">
+        © 2026 Piker , OdedSVR. All rights reserved.
+      </div>
+      <div class="flex items-center justify-center gap-4 text-xs font-normal text-white/40">
+        <a href="privacy.html" class="hover:text-cyan-400 transition-colors duration-200 underline underline-offset-4 decoration-white/10 hover:decoration-cyan-400/40">Privacy Policy</a>
+        <span class="text-white/10">|</span>
+        <a href="accessibility.html" class="hover:text-cyan-400 transition-colors duration-200 underline underline-offset-4 decoration-white/10 hover:decoration-cyan-400/40">Accessibility Statement</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==================== ACCESSIBILITY WIDGET ==================== -->
+  <div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
+    <button id="a11y-fab" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 256 256" aria-hidden="true">
+        <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM128,56a16,16,0,1,0,16,16A16,16,0,0,0,128,56Zm40,56a8,8,0,0,1-8,8H136v40h16a8,8,0,0,1,0,16H104a8,8,0,0,1,0-16h16V120H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Z"/>
+      </svg>
+    </button>
+  </div>
+  <div id="a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" tabindex="-1">
+    <div id="a11y-panel-header">
+      <button id="a11y-close" aria-label="סגור תפריט נגישות">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
+      </button>
+      <h2>תפריט נגישות</h2>
+    </div>
+
+    <div class="a11y-section">
+      <div class="a11y-section-header" id="nav-section-header" aria-expanded="true" aria-controls="nav-section-body">
+        <button class="a11y-section-toggle" aria-label="כווץ התאמות ניווט">−</button>
+        <h3>התאמות ניווט</h3>
+      </div>
+      <div id="nav-section-body" class="a11y-grid">
+        <button class="a11y-btn" data-feature="keyboard-nav" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><rect x="24" y="56" width="208" height="144" rx="16" fill="none" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="72" y1="152" x2="184" y2="152" fill="none" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="72" y1="112" x2="72" y2="112" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/><line x1="128" y1="112" x2="128" y2="112" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/><line x1="184" y1="112" x2="184" y2="112" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
+          ניווט מקלדת
+        </button>
+        <button class="a11y-btn" data-feature="regions" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><rect x="24" y="24" width="208" height="208" rx="8" stroke="#22d3ee" stroke-width="16" fill="none"/><line x1="24" y1="88" x2="232" y2="88" stroke="#22d3ee" stroke-width="14"/><line x1="24" y1="168" x2="232" y2="168" stroke="#22d3ee" stroke-width="14"/><line x1="128" y1="88" x2="128" y2="168" stroke="#22d3ee" stroke-width="14"/></svg>
+          ניווט אזורים
+        </button>
+        <button class="a11y-btn" data-feature="screen-reader" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M80,56a48,48,0,1,1,48,48A48.05,48.05,0,0,1,80,56Zm128,96H48a24,24,0,0,0-24,24v8a8,8,0,0,0,16,0v-8a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8v8a8,8,0,0,0,16,0v-8A24,24,0,0,0,208,152Z"/></svg>
+          התאמה לקורא מסך
+        </button>
+        <button class="a11y-btn" data-feature="voice-nav" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V80a48,48,0,0,0-96,0v48A48.05,48.05,0,0,0,128,176ZM96,80a32,32,0,0,1,64,0v48a32,32,0,0,1-64,0Zm40,143.6V200a8,8,0,0,0-16,0v23.6A80.11,80.11,0,0,1,48,144a8,8,0,0,0-16,0,96.11,96.11,0,0,0,88,95.6V240a8,8,0,0,0,16,0v-.4A96.11,96.11,0,0,0,224,144a8,8,0,0,0-16,0A80.11,80.11,0,0,1,136,223.6Z"/></svg>
+          פקודות קוליות
+        </button>
+        <button class="a11y-btn" data-feature="smart-nav" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>
+          ניווט חכם
+        </button>
+      </div>
+    </div>
+
+    <div class="a11y-divider"></div>
+
+    <div class="a11y-section">
+      <div class="a11y-section-header" id="contrast-section-header">
+        <button class="a11y-section-toggle" aria-label="כווץ התאמות ניגודיות">−</button>
+        <h3>התאמות ניגודיות</h3>
+      </div>
+      <div id="contrast-section-body" class="a11y-grid">
+        <button class="a11y-btn" data-feature="contrast-bright" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm8,24a64,64,0,1,0,64,64A64.07,64.07,0,0,0,128,64ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM40,128a8,8,0,0,0-8-8H8a8,8,0,0,0,0,16H32A8,8,0,0,0,40,128Zm88,88a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,216Zm112-96H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
+          ניגודיות בהירה
+        </button>
+        <button class="a11y-btn" data-feature="contrast-dark" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,240a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23Z"/></svg>
+          ניגודיות כהה
+        </button>
+        <button class="a11y-btn" data-feature="mono" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><circle cx="128" cy="128" r="96" stroke="#22d3ee" stroke-width="16" fill="none"/><path d="M128 32 Q128 128 128 224" stroke="#22d3ee" stroke-width="16" fill="#22d3ee"/></svg>
+          מונוכרום
+        </button>
+        <button class="a11y-btn" data-feature="contrast-gauge" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z" fill="#22d3ee"/><path d="M128 128 L80 80" stroke="#22d3ee" stroke-width="14" stroke-linecap="round"/></svg>
+          מד ניגודיות
+        </button>
+        <button class="a11y-btn" data-feature="saturation-high" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,16a88,88,0,0,1,85.48,108H42.52A88.09,88.09,0,0,1,128,40Z" fill="#22d3ee"/></svg>
+          רוויה גבוהה
+        </button>
+        <button class="a11y-btn" data-feature="saturation-low" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><circle cx="128" cy="128" r="96" stroke="#ccc" stroke-width="16" fill="none"/><path d="M80 176 Q128 80 176 176" stroke="#ccc" stroke-width="14" stroke-linecap="round" fill="none"/></svg>
+          רוויה נמוכה
+        </button>
+      </div>
+
+      <div class="a11y-color-section">
+        <span class="a11y-color-label">התאמת צבעים — שינוי גוון האתר</span>
+        <div class="color-preset-row">
+          <div class="a11y-color-swatch active" style="background:#22d3ee" data-hue="0" title="ברירת מחדל"></div>
+          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" data-hue="330" title="חם"></div>
+          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)" data-hue="200" title="קר"></div>
+          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#22c55e,#10b981)" data-hue="120" title="ירוק"></div>
+          <div class="a11y-color-swatch" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)" data-hue="270" title="סגול"></div>
+          <button style="font-size:11px;color:#22d3ee;background:none;cursor:pointer;font-weight:700;padding:4px 8px;border:1px solid #22d3ee;border-radius:6px;" id="reset-color-btn">איפוס</button>
+        </div>
+        <div style="margin-top:10px;">
+          <input type="range" min="0" max="360" value="0" id="hue-slider" style="width:100%;accent-color:#22d3ee;" aria-label="גוון">
+          <div style="height:12px;border-radius:6px;background:linear-gradient(to left,hsl(0,80%,55%),hsl(45,80%,55%),hsl(90,80%,55%),hsl(135,80%,55%),hsl(180,80%,55%),hsl(225,80%,55%),hsl(270,80%,55%),hsl(315,80%,55%),hsl(360,80%,55%));margin-top:4px;"></div>
+          <button style="font-size:11px;color:#22d3ee;font-weight:700;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;margin-top:6px;padding:0;" id="reset-hue-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#22d3ee" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.07A88,88,0,0,0,128,40a88.4,88.4,0,0,0-36.07,7.65l-35.77-35.77A8,8,0,0,0,44.84,23.2L23.2,44.84a8,8,0,0,0,0,11.32L216.69,229.66a8,8,0,0,0,11.32-11.32ZM128,56a72,72,0,0,1,55.68,26.55L58.55,183.68A71.51,71.51,0,0,1,56,164,72.08,72.08,0,0,1,128,56Z"/></svg>
+            איפוס צבעים
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="a11y-divider"></div>
+
+    <div class="a11y-section">
+      <div class="a11y-section-header">
+        <button class="a11y-section-toggle">−</button>
+        <h3>הגדלת הטקסט והקטנת הגופן</h3>
+      </div>
+      <div id="font-section-body">
+        <div class="a11y-slider-row">
+          <span class="a11y-slider-label">גודל גופן</span>
+          <input type="range" min="80" max="160" value="100" id="font-size-slider" aria-label="גודל גופן">
+          <span class="a11y-slider-label" id="font-size-display">100%</span>
+        </div>
+        <div class="a11y-slider-row">
+          <span class="a11y-slider-label">ריווח אותיות</span>
+          <input type="range" min="0" max="10" value="0" id="letter-spacing-slider" aria-label="ריווח אותיות">
+        </div>
+        <div class="a11y-slider-row">
+          <span class="a11y-slider-label">ריווח בין מילים</span>
+          <input type="range" min="0" max="20" value="0" id="word-spacing-slider" aria-label="ריווח בין מילים">
+        </div>
+        <div class="a11y-slider-row">
+          <span class="a11y-slider-label">ריווח בין שורות</span>
+          <input type="range" min="0" max="20" value="0" id="line-height-slider" aria-label="ריווח בין שורות">
+        </div>
+        <div style="display:flex;gap:6px;margin-top:4px;">
+          <button class="a11y-btn" data-feature="readable-font" aria-pressed="false" style="flex:1;min-height:60px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M216,56H40A16,16,0,0,0,24,72V184a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,152H80V104H64a8,8,0,0,1,0-16h48a8,8,0,0,1,0,16H96Zm80,0H144a8,8,0,0,1-6.4-3.2l-24-32,6.4-4.8L144,140.67V104a8,8,0,0,1,16,0v48Z"/></svg>
+            גופן קריאה
+          </button>
+          <button class="a11y-btn" data-feature="highlight-links" aria-pressed="false" style="flex:1;min-height:60px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M137.54,186.36a8,8,0,0,1,0,11.31l-9.94,10A56,56,0,0,1,48.38,128.4L72.5,104.28A56,56,0,0,1,149,102.08a8,8,0,1,1-10.63,11.93,40,40,0,0,0-54.61,1.57L59.7,139.7a40,40,0,0,0,56.58,56.58l9.94-9.94A8,8,0,0,1,137.54,186.36Zm70.08-138a56.08,56.08,0,0,0-79.22,0l-9.94,9.95a8,8,0,0,0,11.32,11.31l9.94-9.94a40,40,0,0,1,56.58,56.58L172.18,140.4A40,40,0,0,1,117.57,142a8,8,0,1,0-10.63,11.92,56,56,0,0,0,76.48-2.19l24.12-24.12A56.08,56.08,0,0,0,207.62,48.38Z"/></svg>
+            הדגשת קישורים
+          </button>
+          <button class="a11y-btn" data-feature="image-desc" aria-pressed="false" style="flex:1;min-height:60px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194l-36-36,20-20,38,38V200Z"/></svg>
+            תיאור לתמונות
+          </button>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:6px;">
+          <button class="a11y-btn" data-feature="big-titles" aria-pressed="false" style="flex:1;min-height:60px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M208,56H48A16,16,0,0,0,32,72V184a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V72A16,16,0,0,0,208,56ZM48,72H208V184H48ZM88,152H72V104H56a8,8,0,0,1,0-16H104a8,8,0,0,1,0,16H88Zm120,0H192V128H168v24H152V96h16v16h24V96h16Z"/></svg>
+            הגדלת כותרות
+          </button>
+          <button class="a11y-btn" data-feature="page-structure" aria-pressed="false" style="flex:1;min-height:60px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,176H48V48H208V208ZM80,96a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H88A8,8,0,0,1,80,96Zm0,40a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H88A8,8,0,0,1,80,136Zm0,40a8,8,0,0,1,8-8H136a8,8,0,0,1,0,16H88A8,8,0,0,1,80,176Z"/></svg>
+            מבנה עמוד
+          </button>
+          <button class="a11y-btn" data-feature="zoom-content" aria-pressed="false" style="flex:1;min-height:60px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Zm104,0a8,8,0,0,1-8,8H120v16a8,8,0,0,1-16,0V120H88a8,8,0,0,1,0-16h16V88a8,8,0,0,1,16,0v16h16A8,8,0,0,1,144,112Z"/></svg>
+            הגדלת תצוגה
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="a11y-divider"></div>
+
+    <div class="a11y-section">
+      <div class="a11y-section-header">
+        <button class="a11y-section-toggle">−</button>
+        <h3>סמן העכבר</h3>
+      </div>
+      <div id="cursor-section-body" style="margin-top:10px;">
+        <span style="font-size:12px;font-weight:700;color:#94a3b8;display:block;margin-bottom:8px;">הגדל סמן העכבר ושינוי צבע</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="cursor-btn" data-cursor="default">ברירת מחדל</button>
+          <button class="cursor-btn" data-cursor="black">שחור</button>
+          <button class="cursor-btn" data-cursor="white">לבן</button>
+        </div>
+        <div style="margin-top:10px;">
+          <button class="a11y-btn" data-feature="big-cursor" aria-pressed="false" style="width:100%;flex-direction:row;gap:12px;padding:10px 14px;min-height:52px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145l-26.51,65.79A12,12,0,0,1,90.28,218a12.27,12.27,0,0,1-4.37-.82,12,12,0,0,1-7-15.47L128,48,177.07,169.07l31.42-31.42a12,12,0,0,1,17,17Z"/></svg>
+            הגדלת סמן מחוון
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="a11y-divider"></div>
+
+    <div class="a11y-section" style="padding-bottom:16px;">
+      <div class="a11y-section-header">
+        <button class="a11y-section-toggle">−</button>
+        <h3>כלים נוספים</h3>
+      </div>
+      <div id="tools-section-body" class="a11y-grid" style="margin-top:10px;">
+        <button class="a11y-btn" data-feature="focus-mode" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M200,52H56A4,4,0,0,0,52,56V200a4,4,0,0,0,4,4H200a4,4,0,0,0,4-4V56A4,4,0,0,0,200,52ZM128,152a24,24,0,1,1,24-24A24,24,0,0,1,128,152Z"/></svg>
+          מיקוד קריאה
+        </button>
+        <button class="a11y-btn" data-feature="reading-guide" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><rect x="24" y="96" width="208" height="64" rx="8" stroke="#22d3ee" stroke-width="14" fill="none"/><line x1="24" y1="128" x2="232" y2="128" stroke="#22d3ee" stroke-width="8"/></svg>
+          מדריך קריאה
+        </button>
+        <button class="a11y-btn" data-feature="mute-media" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.85V91.15l56-43.51Zm70-80L201.66,115.3a8,8,0,0,1-11.32-11.32L204.69,90,190.34,75.65A8,8,0,0,1,201.66,64.35L216,78.69l14.34-14.34a8,8,0,0,1,11.32,11.32L227.31,90l14.35,14.34A8,8,0,0,1,214,115.3Z"/></svg>
+          השתק מדיה
+        </button>
+        <button class="a11y-btn" data-feature="page-summary" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></svg>
+          סיכום עמוד
+        </button>
+        <button class="a11y-btn" data-feature="virtual-keyboard" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><rect x="16" y="72" width="224" height="144" rx="16" stroke="#22d3ee" stroke-width="14" fill="none"/><line x1="56" y1="128" x2="56" y2="128" stroke="#22d3ee" stroke-width="20" stroke-linecap="round"/><line x1="96" y1="128" x2="96" y2="128" stroke="#22d3ee" stroke-width="20" stroke-linecap="round"/><line x1="136" y1="128" x2="136" y2="128" stroke="#22d3ee" stroke-width="20" stroke-linecap="round"/><line x1="176" y1="128" x2="176" y2="128" stroke="#22d3ee" stroke-width="20" stroke-linecap="round"/><line x1="76" y1="168" x2="180" y2="168" stroke="#22d3ee" stroke-width="14" stroke-linecap="round"/></svg>
+          מקלדת וירטואלית
+        </button>
+        <button class="a11y-btn" data-feature="dictionary" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M231.65,194.53,198.29,62.27a16,16,0,0,0-19.29-11.53L152,57.24V48a16,16,0,0,0-16-16H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16h80a16,16,0,0,0,16-16v-17.48l43.07-10.28A16,16,0,0,0,231.65,194.53ZM136,208H56V48h80V208Z"/></svg>
+          מילון
+        </button>
+        <button class="a11y-btn" data-feature="tts-read" aria-pressed="false" id="tts-main-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.85V91.15l56-43.51Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58Zm27.14-9.22a72,72,0,0,1,0,71.52,8,8,0,1,1-13.85-8,56,56,0,0,0,0-55.52,8,8,0,1,1,13.85-8Z"/></svg>
+          הקראת טקסט
+        </button>
+        <button class="a11y-btn" data-feature="stop-anim" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-16-104v48a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm48,0v48a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Z"/></svg>
+          עצירת אנימציות
+        </button>
+        <button class="a11y-btn" data-feature="hide-distractions" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M228.92,49.69a8,8,0,0,0-6.86-1.45L160.93,63.52,99.58,32.84a8,8,0,0,0-6.37-.39L29.14,53.71A8,8,0,0,0,24,61.22V200a8,8,0,0,0,9.94,7.76l61.13-15.28,61.35,30.68A8.15,8.15,0,0,0,160,224a8,8,0,0,0,2.06-.27l64.86-16.23A8,8,0,0,0,232,200V56A8,8,0,0,0,228.92,49.69ZM104,55.74l48,24V200.26l-48-24ZM40,69.45l48-17.94V187.45L40,202.42ZM216,186.55l-48,12V63.45l48-11.88Z"/></svg>
+          הסתרה הסחות דעת
+        </button>
+        <button class="a11y-btn" data-feature="highlight-elements" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M237.66,86.34l-60-60a8,8,0,0,0-11.32,0L36.69,155.31a16,16,0,0,0,0,22.63L78.06,219.31A16,16,0,0,0,89.37,224H216a8,8,0,0,0,0-16H159.32l78.34-78.34A8,8,0,0,0,237.66,86.34ZM82.06,208,40.69,166.63l96-96L178.63,112ZM192,128l-9.37-9.37,9.37-9.38Z"/></svg>
+          הדגשת אלמנטים
+        </button>
+      </div>
+
+      <button id="a11y-reset-all" style="width:100%;margin-top:14px;padding:10px;background:rgba(34,211,238,0.12);border:1.5px solid rgba(34,211,238,0.5);border-radius:10px;color:#67e8f9;font-weight:900;font-size:13px;cursor:pointer;font-family:'Heebo',sans-serif;direction:rtl;">
+        ← איפוס כל הגדרות הנגישות
+      </button>
+    </div>
+  </div>
+
+  <!-- TTS Control Bar -->
+  <div id="tts-bar" role="region" aria-label="שליטה בהקראה" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#1e293b;border-top:2px solid #22d3ee;z-index:99994;padding:10px 16px;direction:rtl;">
+    <div style="max-width:700px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <button id="tts-play-pause" aria-label="עצור הקראה" style="background:#22d3ee;color:white;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:900;cursor:pointer;font-family:'Heebo',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap;">
+        <svg id="tts-icon-pause" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 256 256"><path d="M200,32H160a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm0,176H160V48h40ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Zm0,176H56V48H96Z"/></svg>
+        <svg id="tts-icon-play" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 256 256" style="display:none;"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.12,16.12,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27Z"/></svg>
+        <span id="tts-btn-label">השהה</span>
+      </button>
+      <button id="tts-stop" aria-label="סיום הקראה" style="background:#334155;color:white;border:none;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Heebo',sans-serif;">⏹ עצור</button>
+      <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:140px;">
+        <label for="tts-speed" style="color:#94a3b8;font-size:12px;font-weight:700;white-space:nowrap;">מהירות:</label>
+        <input type="range" id="tts-speed" min="0.5" max="2" step="0.1" value="1" style="flex:1;accent-color:#22d3ee;">
+        <span id="tts-speed-label" style="color:white;font-size:12px;font-weight:700;min-width:28px;">×1</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <label for="tts-voice-select" style="color:#94a3b8;font-size:12px;font-weight:700;white-space:nowrap;">קול:</label>
+        <select id="tts-voice-select" style="background:#334155;color:white;border:1px solid #475569;border-radius:6px;padding:4px 8px;font-size:12px;font-family:'Heebo',sans-serif;max-width:140px;"></select>
+      </div>
+      <div id="tts-progress-text" style="color:#64748b;font-size:11px;font-weight:700;white-space:nowrap;"></div>
+    </div>
+  </div>
+
+  <!-- Virtual Keyboard -->
+  <div id="vkeyboard" role="complementary" aria-label="מקלדת וירטואלית">
+    <div class="vkey-row">
+      <div class="vkey">ק</div><div class="vkey">ר</div><div class="vkey">א</div><div class="vkey">ט</div><div class="vkey">ו</div><div class="vkey">ן</div><div class="vkey">ם</div><div class="vkey">פ</div><div class="vkey">⌫</div>
+    </div>
+    <div class="vkey-row">
+      <div class="vkey">ש</div><div class="vkey">ד</div><div class="vkey">ג</div><div class="vkey">כ</div><div class="vkey">ע</div><div class="vkey">י</div><div class="vkey">ח</div><div class="vkey">ל</div><div class="vkey">ך</div><div class="vkey">ף</div>
+    </div>
+    <div class="vkey-row">
+      <div class="vkey">ז</div><div class="vkey">ס</div><div class="vkey">ב</div><div class="vkey">ה</div><div class="vkey">נ</div><div class="vkey">מ</div><div class="vkey">צ</div><div class="vkey">ת</div><div class="vkey">ץ</div>
+    </div>
+    <div class="vkey-row">
+      <div class="vkey" style="min-width:120px;">רווח</div>
+      <div class="vkey">↵</div>
+      <button onclick="document.getElementById('vkeyboard').style.display='none'" style="background:#22d3ee;color:white;border:none;border-radius:6px;padding:8px 14px;font-size:13px;cursor:pointer;">סגור</button>
+    </div>
+  </div>
+
+<script>
+  // ============ HELPERS ============
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // ============ SPLASH / SPOTLIGHT / PARALLAX ============
+  const spotlight = document.getElementById('spotlight');
+  const mainContent = document.getElementById('main-page-content');
+  const splash = document.getElementById('splash-screen');
+  const charLeft = document.getElementById('char-left');
+  const charRight = document.getElementById('char-right');
+  const splashFill = document.getElementById('splash-loader-fill');
+
+  let siteActivated = false;
+  function activateSite() {
+    if (siteActivated) return;
+    siteActivated = true;
+    if (splashFill) splashFill.style.width = '100%';
+    if (splash) {
+      splash.style.opacity = '0';
+      setTimeout(() => {
+        splash.style.display = 'none';
+        mainContent.classList.add('visible');
+        if (spotlight) spotlight.style.display = 'block';
+        // קישור ישיר לאזור (למשל odedsvr.com/#stats)
+        const id = (location.hash || '').slice(1);
+        const target = id && document.getElementById(id);
+        if (target && target.classList.contains('page-section')) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }, 100);
+    }
+  }
+  if (splashFill) {
+    let pct = 0;
+    const rampInterval = setInterval(() => {
+      if (siteActivated) { clearInterval(rampInterval); return; }
+      pct += (90 - pct) * 0.18 + 1;
+      if (pct > 92) pct = 92;
+      splashFill.style.width = pct + '%';
+    }, 16);
+  }
+  document.addEventListener('mousemove', (e) => {
+    if (spotlight) { spotlight.style.left = e.clientX + 'px'; spotlight.style.top = e.clientY + 'px'; }
+    const x = (window.innerWidth - e.pageX * 2) / 100;
+    const y = (window.innerHeight - e.pageY * 2) / 100;
+    if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
+    if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
+  });
+  window.addEventListener('load', activateSite);
+  setTimeout(activateSite, 300);
+
+  // ============ SINGLE PAGE: scroll-spy + next/top button + lazy loading ============
+  const SECTION_IDS = ['home', 'YTvids', 'info', 'topdonators', 'stats', 'waterpark'];
+  const sectionEls = SECTION_IDS.map((id) => document.getElementById(id));
+  const siteNav = document.getElementById('site-nav');
+  const navLinks = [...siteNav.querySelectorAll('[data-page]')];
+  const scrollBtn = document.getElementById('scroll-down-btn');
+  let activeId = 'home';
+
+  function setActive(id) {
+    if (id === activeId) return;
+    activeId = id;
+    navLinks.forEach((link) => {
+      const on = link.dataset.page === id;
+      link.classList.toggle('active', on);
+      if (on) link.setAttribute('aria-current', 'true'); else link.removeAttribute('aria-current');
+      // במובייל הניווט ניתן לגלילה אופקית: מרכז את הלשונית הפעילה
+      if (on && siteNav.scrollWidth > siteNav.clientWidth) {
+        const nr = siteNav.getBoundingClientRect();
+        const lr = link.getBoundingClientRect();
+        siteNav.scrollBy({ left: (lr.left + lr.width / 2) - (nr.left + nr.width / 2), behavior: 'smooth' });
+      }
+    });
+  }
+
+  // האזור שחוצה את אמצע-עליון המסך הוא הפעיל
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  sectionEls.forEach((el) => el && spy.observe(el));
+
+  function atBottom() {
+    return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40;
+  }
+  function updateScrollUI() {
+    const bottom = atBottom();
+    scrollBtn.classList.toggle('is-up', bottom);
+    scrollBtn.setAttribute('aria-label', bottom ? 'חזרה לראש העמוד' : 'לאזור הבא');
+    if (window.scrollY < 80) setActive('home');
+    else if (bottom) setActive('waterpark');
+  }
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(() => { scrollTicking = false; updateScrollUI(); });
+  }, { passive: true });
+  window.addEventListener('resize', updateScrollUI);
+
+  scrollBtn.addEventListener('click', () => {
+    if (atBottom()) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    const y = window.scrollY;
+    const next = sectionEls.find((el) => el && el.getBoundingClientRect().top + y > y + 120);
+    if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+  });
+
+  // טעינה עצלה של נתונים: כל אזור נטען רק כשמתקרבים אליו
+  const lazyLoaders = {
+    YTvids: () => fetchVideos(),
+    topdonators: () => loadLeaderboardsOnce(),
+    stats: () => { loadStatsOnce(); loadEmotesOnce(); }
+  };
+  const lazyObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const run = lazyLoaders[e.target.id];
+      if (run) run();
+      obs.unobserve(e.target);
+    });
+  }, { rootMargin: '400px 0px' });
+  Object.keys(lazyLoaders).forEach((id) => { const el = document.getElementById(id); if (el) lazyObserver.observe(el); });
+
+  // אקורדיון סטטיסטיקות: פאנל אחד פתוח בכל רגע
+  document.addEventListener('DOMContentLoaded', () => {
+    const accordion = document.getElementById('statsAccordion');
+    if (!accordion) return;
+    accordion.querySelectorAll('details.stats-panel').forEach((panel) => {
+      panel.addEventListener('toggle', () => {
+        if (!panel.open) return;
+        accordion.querySelectorAll('details.stats-panel[open]').forEach((other) => { if (other !== panel) other.removeAttribute('open'); });
+      });
+    });
+    addCopyIcons();
+    updateScrollUI();
+  });
+
+  // ============ 3D TILT FOR LINK CARDS ============
+  document.querySelectorAll('.link-card').forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `translateY(-4px) scale(1.015) rotateY(${px * 6}deg) rotateX(${-py * 6}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  // ============ DYNAMIC FAVICON (נקודה אדומה כשבשידור) ============
+  let faviconLiveState = null;
+  function setFaviconLive(isLive) {
+    if (faviconLiveState === isLive) return;
+    faviconLiveState = isLive;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 64; canvas.height = 64;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, 64, 64);
+      if (isLive) {
+        ctx.beginPath(); ctx.arc(50, 14, 11, 0, Math.PI * 2); ctx.fillStyle = '#0f172a'; ctx.fill();
+        ctx.beginPath(); ctx.arc(50, 14, 8, 0, Math.PI * 2); ctx.fillStyle = '#ef4444'; ctx.fill();
+      }
+      const favicon = document.getElementById('favicon');
+      if (favicon) favicon.href = canvas.toDataURL('image/png');
+    };
+    img.onerror = () => { faviconLiveState = null; };
+    img.src = 'https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true';
+  }
+
+  async function checkLiveStatus() {
+    try {
+      const res = await fetch('https://kick.com/api/v2/channels/odedsvr');
+      const data = await res.json();
+      const dot = document.getElementById('live-dot');
+      const badge = document.getElementById('live-badge');
+      const offlineBadge = document.getElementById('offline-badge');
+      const viewerBadge = document.getElementById('viewer-count-badge');
+      const viewerNum = document.getElementById('viewer-count-num');
+      if (data?.livestream) {
+        dot.classList.remove('hidden'); badge.classList.remove('hidden'); badge.classList.add('flex');
+        offlineBadge.classList.add('hidden'); offlineBadge.classList.remove('flex');
+        setFaviconLive(true);
+        if (typeof data.livestream.viewer_count === 'number') {
+          viewerNum.textContent = data.livestream.viewer_count.toLocaleString('he-IL');
+          viewerBadge.classList.remove('hidden'); viewerBadge.classList.add('flex');
+        } else {
+          viewerBadge.classList.add('hidden'); viewerBadge.classList.remove('flex');
+        }
+      } else {
+        dot.classList.add('hidden'); badge.classList.remove('flex'); badge.classList.add('hidden');
+        offlineBadge.classList.remove('hidden'); offlineBadge.classList.add('flex');
+        viewerBadge.classList.add('hidden'); viewerBadge.classList.remove('flex');
+        setFaviconLive(false);
+      }
+    } catch (e) {
+      console.warn('Live status check failed:', e);
+    }
+  }
+  checkLiveStatus();
+  setInterval(checkLiveStatus, 60000);
+
+  // ============ AMBIENT PARTICLES & BUBBLES ============
+  const particleLayer = document.getElementById('particle-layer');
+  const particleColors = ['#22d3ee', '#a855f7', '#3b82f6'];
+  function spawnParticle() {
+    const p = document.createElement('div');
+    const size = 1.5 + Math.random() * 2.5;
+    const dur = 8 + Math.random() * 8;
+    const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+    p.className = 'ambient-particle';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.background = color;
+    p.style.animation = 'floatParticle ' + dur + 's linear forwards';
+    particleLayer.appendChild(p);
+    setTimeout(() => p.remove(), dur * 1000);
+  }
+  setInterval(spawnParticle, 1600);
+  for (let i = 0; i < 6; i++) setTimeout(spawnParticle, i * 400);
+
+  function spawnBubble() {
+    const b = document.createElement('div');
+    const size = 40 + Math.random() * 90;
+    const dur = 14 + Math.random() * 10;
+    const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+    b.className = 'glow-bubble';
+    b.style.left = Math.random() * 100 + 'vw';
+    b.style.width = size + 'px';
+    b.style.height = size + 'px';
+    b.style.background = `radial-gradient(circle, ${color}55 0%, transparent 70%)`;
+    b.style.animation = 'floatBubble ' + dur + 's ease-in-out forwards';
+    particleLayer.appendChild(b);
+    setTimeout(() => b.remove(), dur * 1000);
+  }
+  setInterval(spawnBubble, 4200);
+  for (let i = 0; i < 2; i++) setTimeout(spawnBubble, i * 1500);
+
+  // ============ ACCESSIBILITY WIDGET ============
+  const fab = document.getElementById('a11y-fab');
+  const panel = document.getElementById('a11y-panel');
+  const closeBtn = document.getElementById('a11y-close');
+  const body = document.body;
+
+  fab.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    fab.setAttribute('aria-expanded', isOpen);
+    if (isOpen) panel.focus();
+  });
+  closeBtn.addEventListener('click', () => { panel.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); fab.focus(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) { panel.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); fab.focus(); }
+  });
+
+  const featureMap = {
+    'contrast-bright': () => { body.classList.toggle('a11y-high-contrast'); body.classList.remove('a11y-dark-contrast', 'a11y-mono'); updateBtn('contrast-dark', false); updateBtn('mono', false); },
+    'contrast-dark': () => { body.classList.toggle('a11y-dark-contrast'); body.classList.remove('a11y-high-contrast', 'a11y-mono'); updateBtn('contrast-bright', false); updateBtn('mono', false); },
+    'mono': () => { body.classList.toggle('a11y-mono'); body.classList.remove('a11y-high-contrast', 'a11y-dark-contrast'); updateBtn('contrast-bright', false); updateBtn('contrast-dark', false); },
+    'saturation-high': () => { body.classList.toggle('a11y-saturation-high'); body.classList.remove('a11y-saturation-low'); updateBtn('saturation-low', false); },
+    'saturation-low': () => { body.classList.toggle('a11y-saturation-low'); body.classList.remove('a11y-saturation-high'); updateBtn('saturation-high', false); },
+    'readable-font': () => body.classList.toggle('a11y-readable-font'),
+    'highlight-links': () => body.classList.toggle('a11y-highlight-links'),
+    'stop-anim': () => body.classList.toggle('a11y-stop-anim'),
+    'big-cursor': () => { body.classList.toggle('a11y-big-cursor'); body.classList.remove('a11y-big-cursor-white'); updateBtn('cursor-white', false); },
+    'reading-guide': toggleReadingGuide,
+    'virtual-keyboard': toggleVirtualKeyboard,
+    'mute-media': () => { document.querySelectorAll('video, audio').forEach((m) => { m.muted = !m.muted; }); },
+    'hide-distractions': () => { charLeft && charLeft.classList.toggle('hidden'); charRight && charRight.classList.toggle('hidden'); },
+    'highlight-elements': () => body.classList.toggle('a11y-focus-visible'),
+    'zoom-content': () => body.classList.toggle('a11y-large-text'),
+    'big-titles': () => { body.classList.toggle('a11y-big-titles-active'); document.querySelectorAll('h1,h2,h3,h4').forEach((h) => h.style.fontSize = h.style.fontSize ? '' : '2em'); },
+    'focus-mode': () => body.classList.toggle('a11y-readable-font'),
+    'screen-reader': () => alert('לשימוש עם קורא מסך, אנא הפעל את NVDA, JAWS, או VoiceOver. האתר תומך ב-ARIA ומבנה סמנטי מלא.'),
+    'voice-nav': () => alert('פקודות קוליות עדיין לא זמינות באתר זה.'),
+    'smart-nav': () => alert('ניווט חכם פעיל - השתמש ב-Tab לניווט בין אלמנטים, Enter לאישור.'),
+    'regions': () => { const skip = document.getElementById('skip-link'); if (skip) skip.focus(); },
+    'keyboard-nav': () => { document.querySelectorAll('a,button').forEach((el) => { el.style.outline = el.style.outline ? '' : '2px solid #22d3ee'; el.style.outlineOffset = '3px'; }); },
+    'image-desc': () => {
+      let count = 0;
+      document.querySelectorAll('img').forEach((img) => {
+        let desc = img.alt && img.alt.trim() ? img.alt.trim() : '';
+        if (!desc) { const parentLink = img.closest('a[aria-label]'); if (parentLink) desc = parentLink.getAttribute('aria-label'); }
+        if (!desc) { const parentDiv = img.closest('[aria-label]'); if (parentDiv) desc = parentDiv.getAttribute('aria-label'); }
+        if (!desc) desc = 'תמונה דקורטיבית';
+        img.title = desc;
+        img.removeAttribute('aria-hidden');
+        img.dataset.tooltipAdded = '1';
+        count++;
+      });
+      const bgDescriptions = { 'char-right': 'תמונת רקע ימין — דמות עודד SVR', 'char-left': 'תמונת רקע שמאל — דולפין' };
+      Object.entries(bgDescriptions).forEach(([id, desc]) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.title = desc;
+          el.setAttribute('role', 'img');
+          el.setAttribute('aria-label', desc);
+          el.removeAttribute('aria-hidden');
+          el.style.pointerEvents = 'auto';
+          el.style.cursor = 'help';
+          count++;
+        }
+      });
+      alert('תיאורי תמונות הופעלו ל-' + count + ' תמונות (כולל תמונות רקע). רחף מעל תמונה לקריאת התיאור.');
+    },
+    'page-structure': () => {
+      const headings = Array.from(document.querySelectorAll('h1,h2,nav,footer')).map((el) => `${el.tagName}: ${el.textContent.replace(/\s+/g, ' ').substring(0, 40).trim()}`).join('\n');
+      alert('מבנה העמוד:\n\n' + headings);
+    },
+    'page-summary': () => alert('סיכום עמוד: דף אחד של OdedSVR - סטרימר ישראלי. גוללים מלמעלה למטה: קישורים רשמיים (Kick, YouTube, Instagram, Discord, Reddit ושיתופי פעולה), סרטוני יוטיוב אחרונים, מפרט וציוד ופקודות צ\'אט, מובילי תרומות, סטטיסטיקות קיק ופקודות WaterPark.'),
+    'dictionary': () => { const word = window.getSelection().toString().trim(); if (word) { window.open('https://he.wiktionary.org/wiki/' + encodeURIComponent(word), '_blank', 'noopener'); } else { alert('סמן מילה בטקסט ואז לחץ שוב על מילון.'); } },
+    'contrast-gauge': () => { document.documentElement.style.filter = document.documentElement.style.filter ? '' : 'contrast(1.4)'; },
+  };
+
+  function updateBtn(feature, state) {
+    const btn = document.querySelector(`[data-feature="${feature}"]`);
+    if (btn) { btn.classList.toggle('active', state); btn.setAttribute('aria-pressed', state); }
+  }
+
+  document.querySelectorAll('.a11y-btn[data-feature]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.feature;
+      if (featureMap[f]) featureMap[f]();
+      if (!['screen-reader', 'voice-nav', 'smart-nav', 'regions', 'keyboard-nav', 'image-desc', 'page-structure', 'page-summary', 'dictionary', 'mute-media'].includes(f)) {
+        btn.classList.toggle('active');
+        btn.setAttribute('aria-pressed', btn.classList.contains('active'));
+      }
+    });
+  });
+
+  function toggleReadingGuide() {
+    const guide = document.getElementById('reading-guide-bar');
+    const active = guide.style.display === 'block';
+    guide.style.display = active ? 'none' : 'block';
+    if (!active) document.addEventListener('mousemove', moveGuide);
+    else document.removeEventListener('mousemove', moveGuide);
+  }
+  function moveGuide(e) {
+    const g = document.getElementById('reading-guide-bar');
+    if (g) g.style.top = (e.clientY - 20) + 'px';
+  }
+  function toggleVirtualKeyboard() {
+    const vk = document.getElementById('vkeyboard');
+    vk.style.display = vk.style.display === 'block' ? 'none' : 'block';
+  }
+
+  document.querySelectorAll('.cursor-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cursor-btn').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const c = btn.dataset.cursor;
+      body.classList.remove('a11y-big-cursor', 'a11y-big-cursor-white');
+      if (c === 'black') body.classList.add('a11y-big-cursor');
+      if (c === 'white') body.classList.add('a11y-big-cursor-white');
+    });
+  });
+
+  document.querySelectorAll('.a11y-section-header').forEach((header) => {
+    header.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+        const toggle = header.querySelector('.a11y-section-toggle');
+        const sectionBody = header.nextElementSibling;
+        if (!sectionBody) return;
+        const isCollapsed = sectionBody.style.display === 'none';
+        sectionBody.style.display = isCollapsed ? '' : 'none';
+        toggle.textContent = isCollapsed ? '−' : '+';
+      }
+    });
+  });
+
+  const fontSlider = document.getElementById('font-size-slider');
+  const fontDisplay = document.getElementById('font-size-display');
+  fontSlider && fontSlider.addEventListener('input', () => {
+    document.documentElement.style.fontSize = fontSlider.value + '%';
+    fontDisplay.textContent = fontSlider.value + '%';
+  });
+  document.getElementById('letter-spacing-slider')?.addEventListener('input', (e) => {
+    document.body.classList.toggle('a11y-letter-spacing', e.target.value > 0);
+  });
+  document.getElementById('word-spacing-slider')?.addEventListener('input', (e) => {
+    document.body.classList.toggle('a11y-word-spacing', e.target.value > 0);
+  });
+  document.getElementById('line-height-slider')?.addEventListener('input', (e) => {
+    document.body.classList.toggle('a11y-line-height', e.target.value > 0);
+  });
+
+  document.querySelectorAll('.a11y-color-swatch[data-hue]').forEach((sw) => {
+    sw.addEventListener('click', () => {
+      document.querySelectorAll('.a11y-color-swatch').forEach((s) => s.classList.remove('active'));
+      sw.classList.add('active');
+      const hue = sw.dataset.hue || 0;
+      document.documentElement.style.filter = hue == 0 ? '' : `hue-rotate(${hue}deg)`;
+      const hueSlider = document.getElementById('hue-slider');
+      if (hueSlider) hueSlider.value = hue;
+    });
+  });
+  document.getElementById('reset-color-btn')?.addEventListener('click', () => {
+    document.documentElement.style.filter = '';
+    document.querySelectorAll('.a11y-color-swatch').forEach((s) => s.classList.remove('active'));
+    document.querySelector('.a11y-color-swatch[data-hue="0"]').classList.add('active');
+    const hueSlider = document.getElementById('hue-slider');
+    if (hueSlider) hueSlider.value = 0;
+  });
+  document.getElementById('hue-slider')?.addEventListener('input', (e) => {
+    document.documentElement.style.filter = `hue-rotate(${e.target.value}deg)`;
+    document.querySelectorAll('.a11y-color-swatch').forEach((s) => s.classList.remove('active'));
+  });
+  document.getElementById('reset-hue-btn')?.addEventListener('click', () => {
+    document.documentElement.style.filter = '';
+    document.getElementById('hue-slider').value = 0;
+    document.querySelectorAll('.a11y-color-swatch').forEach((s) => s.classList.remove('active'));
+    document.querySelector('.a11y-color-swatch[data-hue="0"]').classList.add('active');
+  });
+
+  document.getElementById('a11y-reset-all')?.addEventListener('click', () => {
+    ['a11y-high-contrast', 'a11y-dark-contrast', 'a11y-mono', 'a11y-saturation-high', 'a11y-saturation-low',
+      'a11y-readable-font', 'a11y-highlight-links', 'a11y-stop-anim', 'a11y-big-cursor', 'a11y-big-cursor-white',
+      'a11y-large-text', 'a11y-focus-visible', 'a11y-letter-spacing', 'a11y-word-spacing', 'a11y-line-height',
+      'a11y-big-titles-active'].forEach((c) => body.classList.remove(c));
+    charLeft && charLeft.classList.remove('hidden');
+    charRight && charRight.classList.remove('hidden');
+    document.documentElement.style.fontSize = '';
+    document.documentElement.style.filter = '';
+    document.getElementById('vkeyboard').style.display = 'none';
+    document.getElementById('reading-guide-bar').style.display = 'none';
+    document.removeEventListener('mousemove', moveGuide);
+    document.querySelectorAll('.a11y-btn').forEach((b) => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+    document.querySelectorAll('.cursor-btn').forEach((b) => b.classList.remove('active'));
+    document.querySelectorAll('.a11y-color-swatch').forEach((s) => s.classList.remove('active'));
+    const defaultSwatch = document.querySelector('.a11y-color-swatch[data-hue="0"]');
+    if (defaultSwatch) defaultSwatch.classList.add('active');
+    ['letter-spacing-slider', 'word-spacing-slider', 'line-height-slider', 'hue-slider'].forEach((id) => { const el = document.getElementById(id); if (el) el.value = 0; });
+    fontSlider && (fontSlider.value = 100);
+    fontDisplay && (fontDisplay.textContent = '100%');
+    document.querySelectorAll('h1,h2,h3,h4').forEach((h) => { h.style.fontSize = ''; });
+    window.speechSynthesis.cancel();
+    ttsActive = false; ttsPaused = false;
+    ttsBar.style.display = 'none';
+    hideWordHighlight();
+    if (typeof voiceNavActive !== 'undefined' && voiceNavActive && typeof stopVoiceNav === 'function') stopVoiceNav();
+  });
+
+  // ============ TTS - TEXT-TO-SPEECH ============
+  const ttsBar = document.getElementById('tts-bar');
+  const ttsPlayPause = document.getElementById('tts-play-pause');
+  const ttsStopBtn = document.getElementById('tts-stop');
+  const ttsSpeedSlider = document.getElementById('tts-speed');
+  const ttsSpeedLabel = document.getElementById('tts-speed-label');
+  const ttsVoiceSelect = document.getElementById('tts-voice-select');
+  const ttsProgressText = document.getElementById('tts-progress-text');
+  const ttsIconPause = document.getElementById('tts-icon-pause');
+  const ttsIconPlay = document.getElementById('tts-icon-play');
+  const ttsBtnLabel = document.getElementById('tts-btn-label');
+
+  let ttsUtterance = null;
+  let ttsPaused = false;
+  let ttsActive = false;
+  let ttsVoices = [];
+
+  function loadTTSVoices() {
+    if (!('speechSynthesis' in window)) return;
+    ttsVoices = window.speechSynthesis.getVoices();
+    ttsVoiceSelect.innerHTML = '';
+    const heVoices = ttsVoices.filter((v) => v.lang.startsWith('he') || v.lang.startsWith('iw'));
+    const otherVoices = ttsVoices.filter((v) => !v.lang.startsWith('he') && !v.lang.startsWith('iw'));
+    if (heVoices.length) {
+      const grp = document.createElement('optgroup');
+      grp.label = '🇮🇱 עברית';
+      heVoices.forEach((v) => {
+        const opt = document.createElement('option');
+        opt.value = ttsVoices.indexOf(v);
+        opt.textContent = v.name;
+        grp.appendChild(opt);
+      });
+      ttsVoiceSelect.appendChild(grp);
+    }
+    const grp2 = document.createElement('optgroup');
+    grp2.label = 'שפות אחרות';
+    otherVoices.slice(0, 20).forEach((v) => {
+      const opt = document.createElement('option');
+      opt.value = ttsVoices.indexOf(v);
+      opt.textContent = v.name + ' (' + v.lang + ')';
+      grp2.appendChild(opt);
+    });
+    ttsVoiceSelect.appendChild(grp2);
+  }
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = loadTTSVoices;
+    loadTTSVoices();
+  }
+
+  function prepareTTSContent() {
+    const titleEl = document.querySelector('#main-page-content h1');
+    const lines = [];
+    if (titleEl) lines.push(titleEl.textContent.trim());
+    document.querySelectorAll('#links-grid a[aria-label]').forEach((a) => {
+      const label = a.getAttribute('aria-label');
+      if (label) lines.push(label);
+    });
+    return lines.join('. ');
+  }
+
+  let ttsHighlightOverlay = null;
+  function showWordHighlight(word) {
+    if (!ttsHighlightOverlay) {
+      ttsHighlightOverlay = document.createElement('div');
+      ttsHighlightOverlay.style.cssText = 'position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:#22d3ee;color:white;padding:8px 24px;border-radius:30px;font-size:20px;font-weight:900;z-index:99993;pointer-events:none;letter-spacing:0.05em;transition:opacity 0.15s;box-shadow:0 4px 20px rgba(34,211,238,0.5);font-family:"Heebo",sans-serif;';
+      document.body.appendChild(ttsHighlightOverlay);
+    }
+    ttsHighlightOverlay.textContent = word;
+    ttsHighlightOverlay.style.opacity = '1';
+  }
+  function hideWordHighlight() {
+    if (ttsHighlightOverlay) ttsHighlightOverlay.style.opacity = '0';
+  }
+
+  function startTTS() {
+    window.speechSynthesis.cancel();
+    const text = prepareTTSContent();
+    if (!text) { alert('לא נמצא טקסט לקריאה בדף.'); return; }
+
+    const allVoices = window.speechSynthesis.getVoices();
+    let chosenVoice = null;
+    const voiceIdx = parseInt(ttsVoiceSelect.value);
+    if (!isNaN(voiceIdx) && ttsVoices[voiceIdx]) chosenVoice = ttsVoices[voiceIdx];
+    if (!chosenVoice) chosenVoice = allVoices.find((v) => v.lang.startsWith('he') || v.lang.startsWith('iw')) || null;
+    if (!chosenVoice && allVoices.length > 0) chosenVoice = allVoices[0];
+
+    ttsUtterance = new SpeechSynthesisUtterance(text);
+    if (chosenVoice) { ttsUtterance.voice = chosenVoice; ttsUtterance.lang = chosenVoice.lang; }
+    ttsUtterance.rate = parseFloat(ttsSpeedSlider.value) || 1;
+    ttsUtterance.volume = 1;
+
+    ttsUtterance.onboundary = (e) => {
+      if (e.name === 'word') {
+        const word = text.substring(e.charIndex, e.charIndex + e.charLength).trim();
+        if (word) {
+          showWordHighlight(word);
+          ttsProgressText.textContent = Math.round((e.charIndex / text.length) * 100) + '%';
+        }
+      }
+    };
+    ttsUtterance.onstart = () => {
+      ttsActive = true; ttsPaused = false;
+      ttsBar.style.display = 'block';
+      setTTSPausedUI(false);
+      startTTSKeepAlive();
+    };
+    ttsUtterance.onend = () => {
+      ttsActive = false; ttsPaused = false;
+      ttsBar.style.display = 'none';
+      hideWordHighlight();
+      ttsProgressText.textContent = '';
+      stopTTSKeepAlive();
+      const btn = document.querySelector('[data-feature="tts-read"]');
+      if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false'); }
+    };
+    ttsUtterance.onerror = (e) => {
+      console.error('TTS error:', e.error);
+      stopTTSKeepAlive();
+      ttsActive = false;
+      ttsBar.style.display = 'none';
+      hideWordHighlight();
+      if (e.error !== 'interrupted' && e.error !== 'canceled') {
+        alert('שגיאה בהקראה: ' + (e.error || 'לא ידועה') + '\nנסה לרענן את הדף ולנסות שוב.');
+      }
+    };
+    window.speechSynthesis.speak(ttsUtterance);
+  }
+
+  function setTTSPausedUI(paused) {
+    ttsIconPause.style.display = paused ? 'none' : '';
+    ttsIconPlay.style.display = paused ? '' : 'none';
+    ttsBtnLabel.textContent = paused ? 'המשך' : 'השהה';
+  }
+
+  let ttsKeepAlive = null;
+  function startTTSKeepAlive() {
+    stopTTSKeepAlive();
+    ttsKeepAlive = setInterval(() => {
+      if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }
+    }, 10000);
+  }
+  function stopTTSKeepAlive() {
+    if (ttsKeepAlive) { clearInterval(ttsKeepAlive); ttsKeepAlive = null; }
+  }
+
+  featureMap['tts-read'] = () => {
+    if (!('speechSynthesis' in window)) {
+      alert('הדפדפן שלך אינו תומך בהקראת טקסט.\nאנא השתמש ב-Google Chrome או Microsoft Edge.');
+      return;
+    }
+    if (ttsActive && !ttsPaused) {
+      window.speechSynthesis.cancel();
+      ttsActive = false;
+      ttsBar.style.display = 'none';
+      hideWordHighlight();
+      stopTTSKeepAlive();
+      return;
+    }
+    loadTTSVoices();
+    startTTS();
+  };
+
+  ttsPlayPause.addEventListener('click', () => {
+    if (!ttsActive) return;
+    if (ttsPaused) {
+      window.speechSynthesis.resume();
+      ttsPaused = false;
+      setTTSPausedUI(false);
+    } else {
+      window.speechSynthesis.pause();
+      ttsPaused = true;
+      setTTSPausedUI(true);
+      hideWordHighlight();
+    }
+  });
+  ttsStopBtn.addEventListener('click', () => {
+    window.speechSynthesis.cancel();
+    ttsActive = false; ttsPaused = false;
+    ttsBar.style.display = 'none';
+    hideWordHighlight();
+    stopTTSKeepAlive();
+    ttsProgressText.textContent = '';
+    const btn = document.querySelector('[data-feature="tts-read"]');
+    if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-pressed', 'false'); }
+  });
+  ttsSpeedSlider.addEventListener('input', () => {
+    const rate = parseFloat(ttsSpeedSlider.value);
+    ttsSpeedLabel.textContent = '×' + rate.toFixed(1).replace('.0', '');
+    if (ttsActive && ttsUtterance) { window.speechSynthesis.cancel(); setTimeout(startTTS, 100); }
+  });
+  ttsVoiceSelect.addEventListener('change', () => {
+    if (ttsActive) { window.speechSynthesis.cancel(); setTimeout(startTTS, 100); }
+  });
+
+  // כשההקראה פעילה, לחיצה על כרטיס מקריאה את התיאור שלו במקום לפתוח את הקישור
+  document.addEventListener('click', (e) => {
+    if (!ttsActive) return;
+    const card = e.target.closest('a[aria-label]');
+    if (card && card.closest('#links-grid')) {
+      e.preventDefault();
+      const label = card.getAttribute('aria-label');
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(label);
+      u.lang = 'he-IL';
+      u.rate = parseFloat(ttsSpeedSlider.value);
+      const voiceIdx = parseInt(ttsVoiceSelect.value);
+      if (ttsVoices[voiceIdx]) u.voice = ttsVoices[voiceIdx];
+      u.onboundary = (ev) => { if (ev.name === 'word') showWordHighlight(label.substring(ev.charIndex, ev.charIndex + ev.charLength)); };
+      u.onend = () => { hideWordHighlight(); };
+      window.speechSynthesis.speak(u);
+      showWordHighlight(label.substring(0, 15) + '...');
+    }
+  });
+
+  // ============ INFO: copy command text ============
+  function copyCmd(text, el) {
+    navigator.clipboard.writeText(text).then(() => {
+      el.classList.add('copy-success');
+      setTimeout(() => el.classList.remove('copy-success'), 1000);
+    });
+  }
+
+  // ============ KICK WORKER DATA (נטען פעם אחת ומשותף לסטטיסטיקות ולאימוג'ים) ============
+  const WORKER_URL = 'https://links.odedlink26.workers.dev';
+  let workerPromise = null;
+  function getWorkerData(force) {
+    if (force || !workerPromise) {
+      workerPromise = fetch(WORKER_URL)
+        .then((res) => { if (!res.ok) throw new Error('Failed to fetch data from Worker'); return res.json(); })
+        .catch((err) => { workerPromise = null; throw err; });
+    }
+    return workerPromise;
+  }
+
+  // ============ EMOTES & SUB BADGES ============
+  async function fetchEmotesData() {
+    const container = document.getElementById('emotesContainer');
+    const subContainer = document.getElementById('sub-emotes-container');
+    try {
+      const data = await getWorkerData();
+
+      let rawEmotes = data.kickChannel?.emotes || data.emotes || [];
+      let emotes = [];
+      if (Array.isArray(rawEmotes) && rawEmotes.length > 0) {
+        if (Array.isArray(rawEmotes[0].emotes)) {
+          const channelCategory = rawEmotes.find((cat) => cat.slug) || rawEmotes[0];
+          emotes = channelCategory.emotes || [];
+        } else {
+          emotes = rawEmotes;
+        }
+      }
+
+      if (!Array.isArray(emotes) || emotes.length === 0) {
+        if (container) container.innerHTML = '<p class="text-gray-400 col-span-full text-center">לא נמצאו אימוג\'ים של הערוץ.</p>';
+      } else if (container) {
+        container.innerHTML = emotes.map((emote) => {
+          const imageUrl = `https://files.kick.com/emotes/${encodeURIComponent(emote.id)}/fullsize`;
+          const emoteName = esc(emote.name || 'Emote');
+          return `
+            <div class="emote-mini" title="${emoteName}">
+              <img src="${imageUrl}" alt="${emoteName}" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/32x32/1e293b/64748b?text=?';" />
+            </div>`;
+        }).join('');
+      }
+
+      if (subContainer) {
+        const badges = data.kickChannel?.subscriber_badges || data.subscriber_badges || [];
+        if (Array.isArray(badges) && badges.length > 0) {
+          subContainer.innerHTML = badges.map((b) => {
+            let imgUrl = '';
+            if (b.badge_image) {
+              imgUrl = typeof b.badge_image === 'string' ? b.badge_image : (b.badge_image.src || b.badge_image.url || Object.values(b.badge_image)[0] || '');
+            }
+            if (!imgUrl) imgUrl = b.image_url || b.url || '';
+            const months = esc(b.months || 0);
+            return `
+              <div class="badge-mini" title="${months} Months">
+                <img src="${esc(imgUrl)}" alt="${months} Months" loading="lazy" onerror="this.style.opacity='0.2'">
+                <span>${months}M</span>
+              </div>`;
+          }).join('');
+        } else {
+          subContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו סאב באדג\'ים.</p>';
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching emotes via worker:', error);
+      if (container) container.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה בטעינת אימוג\'ים.</p>';
+      if (subContainer) subContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה בטעינת סאבים.</p>';
+    }
+  }
+
+  // ============ KICK STATS: Botrix + Kicklogz ============
+  async function fetchStatsAndLeaderboards(force) {
+    const botrixContainer = document.getElementById('botrix-leaderboard-container');
+    const kicklogzContainer = document.getElementById('kicklogz-active-container');
+    try {
+      const data = await getWorkerData(force);
+
+      const botrixData = data.botrix || [];
+      let users = [];
+      if (Array.isArray(botrixData)) users = botrixData;
+      else if (botrixData && botrixData.users) users = botrixData.users;
+      else if (botrixData && botrixData.data) users = botrixData.data;
+
+      if (users && users.length > 0) {
+        let tableHtml = '<table class="donators-table text-sm"><thead><tr><th>#</th><th>משתמש</th><th>ניקוד / זמן</th></tr></thead><tbody>';
+        users.slice(0, 10).forEach((user, index) => {
+          const username = esc(user.username || user.name || 'Unknown');
+          const points = esc(user.points || user.watchtime || user.amount || 0);
+          tableHtml += `<tr><td class="stat-rank">${index + 1}</td><td class="text-white font-bold">${username}</td><td class="stat-highlight">${points}</td></tr>`;
+        });
+        tableHtml += '</tbody></table>';
+        botrixContainer.innerHTML = tableHtml;
+      } else {
+        botrixContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו נתונים.</p>';
+      }
+
+      const kicklogzData = data.kicklogz || {};
+      const labels = kicklogzData.labels || [];
+      const values = kicklogzData.data || [];
+      if (labels.length > 0 && values.length > 0) {
+        let tableHtml = '<table class="donators-table text-sm"><thead><tr><th>#</th><th>משתמש</th><th>הודעות / פעילות</th></tr></thead><tbody>';
+        labels.slice(0, 10).forEach((username, index) => {
+          const val = values[index] !== undefined ? values[index] : 0;
+          tableHtml += `<tr><td class="stat-rank">${index + 1}</td><td class="text-white font-bold">${esc(username)}</td><td class="stat-highlight">${Number(val).toLocaleString('he-IL')}</td></tr>`;
+        });
+        tableHtml += '</tbody></table>';
+        kicklogzContainer.innerHTML = tableHtml;
+      } else {
+        kicklogzContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו נתונים.</p>';
+      }
+    } catch (error) {
+      console.error('Error fetching stats via worker:', error);
+      botrixContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה במשיכת הנתונים.</p>';
+      kicklogzContainer.innerHTML = '<p class="text-red-400/80 text-xs text-center">שגיאה במשיכת הנתונים.</p>';
+    }
+  }
+  let statsLoaded = false;
+  function loadStatsOnce() {
+    if (statsLoaded) return;
+    statsLoaded = true;
+    fetchStatsAndLeaderboards(true);
+    setInterval(() => fetchStatsAndLeaderboards(true), 300000);
+  }
+  let emotesLoaded = false;
+  function loadEmotesOnce() {
+    if (emotesLoaded) return;
+    emotesLoaded = true;
+    fetchEmotesData();
+  }
+
+  // ============ TOP DONATORS ============
+  async function fetchLeaderboardData() {
+    try {
+      const response = await fetch('./data.json?t=' + Date.now());
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const data = await response.json();
+
+      if (data && data.gifts_week && data.gifts_week_enabled) {
+        renderTable('weekly-gifters-table-container', data.gifts_week, 'weekly-username');
+      } else {
+        const c = document.getElementById('weekly-gifters-table-container');
+        if (c) c.innerHTML = '<p class="text-gray-400">Weekly data is currently disabled.</p>';
+      }
+      if (data && data.gifts && data.gifts_enabled) {
+        renderTable('alltime-gifters-table-container', data.gifts, 'alltime-username');
+      } else {
+        const c = document.getElementById('alltime-gifters-table-container');
+        if (c) c.innerHTML = '<p class="text-gray-400">All-time data is currently disabled.</p>';
+      }
+    } catch (error) {
+      console.error('Error fetching leaderboard data:', error);
+    }
+  }
+  function renderTable(containerId, users, usernameClass) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    if (!users || users.length === 0) { container.innerHTML = '<p class="text-gray-400">No data found.</p>'; return; }
+    let tableHtml = '<table class="donators-table"><thead><tr><th>#</th><th>שם משתמש</th><th>כמות</th></tr></thead><tbody>';
+    users.forEach((user, index) => {
+      tableHtml += `<tr><td>${index + 1}</td><td class="${usernameClass}">${esc(user.username)}</td><td>${esc(user.quantity || 0)}</td></tr>`;
+    });
+    tableHtml += '</tbody></table>';
+    container.innerHTML = tableHtml;
+  }
+  let leaderboardLoaded = false;
+  function loadLeaderboardsOnce() {
+    if (leaderboardLoaded) return;
+    leaderboardLoaded = true;
+    fetchLeaderboardData();
+    setInterval(fetchLeaderboardData, 300000);
+  }
+
+  // ============ YOUTUBE VIDEOS ============
+  const videoContainer = document.getElementById('video-container');
+  const YT_API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
+  const YT_CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
+  let videosLoaded = false;
+  async function fetchVideos() {
+    if (!videoContainer || videosLoaded) return;
+    videosLoaded = true;
+    const uploadsPlaylistId = YT_CHANNEL_ID.replace('UC', 'UU');
+    const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${YT_API_KEY}`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data.items && data.items.length > 0) {
+        videoContainer.innerHTML = data.items.map((item) => {
+          const videoId = encodeURIComponent(item.snippet.resourceId.videoId);
+          const title = esc(item.snippet.title);
+          const thumbnail = esc(item.snippet.thumbnails.high.url);
+          return `
+            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener" class="video-row rounded-xl" aria-label="${title} (נפתח בטאב חדש)">
+              <img src="${thumbnail}" alt="${title}" loading="lazy" class="w-32 h-20 object-cover rounded-lg ml-6">
+              <div class="flex-1 text-xl font-bold text-white hover:text-blue-400 transition-colors text-right">${title}</div>
+            </a>`;
+        }).join('');
+      } else {
+        videoContainer.innerHTML = '<p class="text-white/50 text-center">לא נמצאו סרטונים.</p>';
+      }
+    } catch (error) {
+      console.error('YouTube API Error:', error);
+      videoContainer.innerHTML = '<p class="text-red-400/50 text-center">שגיאה בחיבור ליוטיוב.</p>';
+    }
+  }
+
+  // ============ WATERPARK: copy command icons ============
+  const COPY_ICON_URL = 'https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/copypaste.png';
+  function copyCommandText(text, imgEl) {
+    const finish = () => {
+      imgEl.classList.add('copy-success');
+      showCopiedToast(imgEl);
+      setTimeout(() => imgEl.classList.remove('copy-success'), 700);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(finish).catch(() => fallbackCopy(text, finish));
+    } else {
+      fallbackCopy(text, finish);
+    }
+  }
+  function showCopiedToast(anchorEl) {
+    const rect = anchorEl.getBoundingClientRect();
+    const toast = document.createElement('div');
+    toast.textContent = 'הועתק בהצלחה!';
+    toast.style.cssText = `position:fixed;top:${rect.top - 34}px;left:${rect.left + rect.width / 2}px;transform:translateX(-50%);background:#16a34a;color:white;font-family:'Heebo',sans-serif;font-weight:800;font-size:12px;padding:5px 10px;border-radius:8px;white-space:nowrap;z-index:100000;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,0.35);opacity:0;transition:opacity 0.15s ease, transform 0.15s ease;`;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => { toast.style.opacity = '1'; toast.style.transform = 'translateX(-50%) translateY(-4px)'; });
+    setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 200); }, 1000);
+  }
+  function fallbackCopy(text, cb) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy'); } catch (err) {}
+    document.body.removeChild(ta);
+    cb();
+  }
+  function formatCommandForCopy(text) {
+    let t = text.trim();
+    if (t.endsWith('!')) t = t.slice(0, -1).trim();
+    return '!' + t;
+  }
+  function addCopyIcons() {
+    document.querySelectorAll('.cmd-code').forEach((el) => {
+      if (el.dataset.copyReady) return;
+      el.dataset.copyReady = '1';
+      const commandText = formatCommandForCopy(el.textContent.trim());
+      const img = document.createElement('img');
+      img.src = COPY_ICON_URL;
+      img.alt = 'העתק פקודה';
+      img.title = 'העתק: ' + commandText;
+      img.className = 'copy-btn cmd-copy-icon';
+      img.onerror = () => {
+        const fallback = document.createElement('span');
+        fallback.textContent = '📋';
+        fallback.className = 'copy-btn cmd-copy-icon';
+        fallback.style.fontSize = '15px';
+        fallback.style.lineHeight = '1';
+        fallback.title = img.title;
+        fallback.addEventListener('click', (e) => { e.stopPropagation(); copyCommandText(commandText, fallback); });
+        img.replaceWith(fallback);
+      };
+      img.addEventListener('click', (e) => { e.stopPropagation(); copyCommandText(commandText, img); });
+      el.appendChild(img);
+    });
+  }
+</script>
+</body>
+</html>
