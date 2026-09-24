@@ -66,7 +66,20 @@
       60% { transform: translateX(-50%) translateY(3px); }
     }
 
-    /* ======================== רקע בועות (מיובא מ-test.html) ======================== */
+    /* ======================== רקע אורות (מיובא מ-test.html) ======================== */
+    .tech-bg{
+      position:fixed;inset:0;z-index:-4;opacity:.20;pointer-events:none;
+      background-image:
+        linear-gradient(rgba(87,216,255,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(155,114,255,.045) 1px,transparent 1px);
+      background-size:52px 52px;
+      -webkit-mask-image:linear-gradient(to bottom,black,transparent 85%);
+      mask-image:linear-gradient(to bottom,black,transparent 85%)
+    }
+    .glow{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(90px);opacity:.18;pointer-events:none;z-index:-2}
+    .glow.one{top:5%;right:-150px;background:#9b72ff}
+    .glow.two{top:45%;left:-180px;background:#57d8ff}
+    .glow.three{bottom:-180px;right:25%;background:#557cff}
     .static-bubble { position: fixed; border: 2px solid rgba(147, 197, 253, 0.4); border-radius: 50%; background: rgba(147, 197, 253, 0.08); pointer-events: none; z-index: 1; }
 
     /* ======================== דמויות צדדיות ======================== */
@@ -91,10 +104,6 @@
     @media (max-width: 768px) { .mobile-char-glow { display: block; } }
     #spotlight { position: fixed; top: 0; left: 0; width: 450px; height: 450px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 2; display: none; }
 
-    .char-circuit { position: fixed; top: 50%; width: 1000px; height: 900px; transform: translateY(-50%); pointer-events: none; z-index: 0; opacity: 0.7; mix-blend-mode: screen; }
-    .char-circuit-left { left: -25%; }
-    .char-circuit-right { right: -25%; }
-    @media (max-width: 768px) { .char-circuit { display: none; } }
 
     /* ======================== נצנוצים ובועות ======================== */
     .ambient-particle { position: fixed; bottom: -10px; border-radius: 50%; pointer-events: none; z-index: 1; opacity: 0; }
@@ -371,50 +380,7 @@
   <div class="static-bubble" style="left:16%; bottom:8%; width:18px; height:18px; animation: floatBubble 9s ease-in-out infinite 1.5s;" aria-hidden="true"></div>
   <div class="static-bubble" style="left:6%; bottom:25%; width:14px; height:14px; animation: floatBubble 15s ease-in-out infinite 3s;" aria-hidden="true"></div>
 
-  <svg class="char-circuit char-circuit-right" viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <filter id="glowPurple" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="4" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-    <g fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" filter="url(#glowPurple)">
-      <path d="M650 100 H480 V220 H300 V150 H100"/>
-      <path d="M620 300 H440 V420 H550 V560"/>
-      <path d="M680 500 H520 V650 H380"/>
-      <path d="M300 500 H150 V700"/>
-      <path d="M600 720 H400 V800"/>
-    </g>
-    <g fill="#a855f7" filter="url(#glowPurple)">
-      <circle cx="480" cy="100" r="6"/><circle cx="300" cy="220" r="6"/>
-      <circle cx="440" cy="300" r="6"/><circle cx="550" cy="420" r="6"/>
-      <circle cx="520" cy="500" r="6"/><circle cx="380" cy="650" r="6"/>
-      <circle cx="150" cy="500" r="6"/><circle cx="400" cy="720" r="6"/>
-    </g>
-  </svg>
   <div id="char-right" aria-hidden="true"></div>
-
-  <svg class="char-circuit char-circuit-left" viewBox="0 0 700 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="4" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-    <g fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" filter="url(#glowCyan)">
-      <path d="M50 100 H220 V220 H400 V150 H600"/>
-      <path d="M80 300 H260 V420 H150 V560"/>
-      <path d="M20 500 H180 V650 H320"/>
-      <path d="M400 500 H550 V700"/>
-      <path d="M100 720 H300 V800"/>
-    </g>
-    <g fill="#22d3ee" filter="url(#glowCyan)">
-      <circle cx="220" cy="100" r="6"/><circle cx="400" cy="220" r="6"/>
-      <circle cx="260" cy="300" r="6"/><circle cx="150" cy="420" r="6"/>
-      <circle cx="180" cy="500" r="6"/><circle cx="320" cy="650" r="6"/>
-      <circle cx="550" cy="500" r="6"/><circle cx="300" cy="720" r="6"/>
-    </g>
-  </svg>
   <div id="char-left" aria-hidden="true"></div>
 
   <div id="mobile-glow-right" class="mobile-char-glow" aria-hidden="true"></div>
