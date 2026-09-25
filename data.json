@@ -84,6 +84,11 @@
       "quantity": 35
     },
     {
+      "user_id": 99952204,
+      "username": "beni_cohen",
+      "quantity": 25
+    },
+    {
       "user_id": 71841512,
       "username": "OfficialBenLavi",
       "quantity": 25
@@ -97,11 +102,6 @@
       "user_id": 9091427,
       "username": "kulamshmenim",
       "quantity": 15
-    },
-    {
-      "user_id": 111814881,
-      "username": "Doxy_12",
-      "quantity": 11
     }
   ],
   "gifts_week_enabled": true,
