@@ -56,7 +56,7 @@
     {
       "user_id": 23453771,
       "username": "eyal1l",
-      "quantity": 115
+      "quantity": 126
     },
     {
       "user_id": 100058101,
@@ -122,6 +122,11 @@
       "quantity": 147
     },
     {
+      "user_id": 23453771,
+      "username": "eyal1l",
+      "quantity": 126
+    },
+    {
       "user_id": 101140607,
       "username": "AllenBlyat",
       "quantity": 125
@@ -130,11 +135,6 @@
       "user_id": 88575794,
       "username": "Yishaias",
       "quantity": 123
-    },
-    {
-      "user_id": 23453771,
-      "username": "eyal1l",
-      "quantity": 115
     },
     {
       "user_id": 106428006,
