@@ -54,54 +54,9 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
-      "user_id": 23453771,
-      "username": "eyal1l",
-      "quantity": 138
-    },
-    {
-      "user_id": 100058101,
-      "username": "Laralan",
-      "quantity": 100
-    },
-    {
-      "user_id": 83913673,
-      "username": "Oliverremez",
-      "quantity": 83
-    },
-    {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 75
-    },
-    {
-      "user_id": 67453019,
-      "username": "natanelf",
-      "quantity": 60
-    },
-    {
-      "user_id": 8693372,
-      "username": "PsyQR",
-      "quantity": 45
-    },
-    {
       "user_id": 99952204,
       "username": "beni_cohen",
-      "quantity": 25
-    },
-    {
-      "user_id": 71841512,
-      "username": "OfficialBenLavi",
-      "quantity": 25
-    },
-    {
-      "user_id": 88575794,
-      "username": "Yishaias",
-      "quantity": 18
-    },
-    {
-      "user_id": 9091427,
-      "username": "kulamshmenim",
-      "quantity": 15
+      "quantity": 5
     }
   ],
   "gifts_week_enabled": true,
@@ -142,13 +97,13 @@
       "quantity": 102
     },
     {
-      "user_id": 79152945,
-      "username": "mrdavid465",
+      "user_id": 100058101,
+      "username": "Laralan",
       "quantity": 100
     },
     {
-      "user_id": 100058101,
-      "username": "Laralan",
+      "user_id": 79152945,
+      "username": "mrdavid465",
       "quantity": 100
     },
     {
