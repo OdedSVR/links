@@ -18,7 +18,7 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 1100
+      "quantity": 1120
     },
     {
       "user_id": 81432977,
@@ -48,19 +48,39 @@
     {
       "user_id": 2757848,
       "username": "thebigSheshMan",
-      "quantity": 398
+      "quantity": 403
     }
   ],
   "gifts_enabled": true,
   "gifts_week": [
+    {
+      "user_id": 67453019,
+      "username": "natanelf",
+      "quantity": 20
+    },
     {
       "user_id": 99952204,
       "username": "beni_cohen",
       "quantity": 6
     },
     {
+      "user_id": 2757848,
+      "username": "thebigSheshMan",
+      "quantity": 5
+    },
+    {
       "user_id": 78170040,
       "username": "elraz2005",
+      "quantity": 1
+    },
+    {
+      "user_id": 85533447,
+      "username": "jelly_frost",
+      "quantity": 1
+    },
+    {
+      "user_id": 128687379,
+      "username": "Girbuts23",
       "quantity": 1
     }
   ],
@@ -69,7 +89,7 @@
     {
       "user_id": 67453019,
       "username": "natanelf",
-      "quantity": 150
+      "quantity": 170
     },
     {
       "user_id": 89935315,
