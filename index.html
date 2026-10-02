@@ -770,6 +770,21 @@
     }
     ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #67e8f9, #c084fc); }
 
+        /* ==================== LEGAL MODALS (privacy / accessibility) ==================== */
+    .legal-modal { position: fixed; inset: 0; z-index: 99000; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(2, 6, 23, 0.75); backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.25s ease; }
+    .legal-modal.open { display: flex; }
+    .legal-modal.show { opacity: 1; }
+    .legal-modal-box { position: relative; width: 100%; max-width: 720px; max-height: 88vh; display: flex; flex-direction: column; background: rgba(15, 23, 42, 0.97); border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; box-shadow: 0 25px 60px rgba(0,0,0,0.6); transform: translateY(16px) scale(0.98); transition: transform 0.25s ease; direction: rtl; font-family: 'Heebo', sans-serif; }
+    .legal-modal.show .legal-modal-box { transform: none; }
+    .legal-modal-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); flex-shrink: 0; }
+    .legal-modal-header h2 { margin: 0; font-size: 22px; font-weight: 900; color: #fff; }
+    .legal-modal-header small { display: block; font-size: 10px; letter-spacing: 0.3em; font-weight: 700; color: #60a5fa; margin-top: 2px; }
+    .legal-modal-close { width: 38px; height: 38px; flex-shrink: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; }
+    .legal-modal-close:hover, .legal-modal-close:focus-visible { background: #e02020; border-color: #e02020; outline: none; }
+    .legal-modal-body { padding: 20px 24px 24px; overflow-y: auto; text-align: right; font-size: 14px; line-height: 1.7; color: #cbd5e1; }
+    .legal-modal-body > * + * { margin-top: 1.5rem; }
+    body.legal-modal-open { overflow: hidden; }
+
     /* ==================== ACCESSIBILITY WIDGET STYLES ==================== */
     #a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
     #a11y-fab { width: 52px; height: 52px; background: #22d3ee; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,0.4); transition: all 0.2s; }
@@ -1472,9 +1487,9 @@
    © 2026 Piker , OdedSVR. All rights reserved.
   </div>
   <div class="flex items-center justify-center gap-4 text-xs font-normal text-white/40">
-    <a href="privacy.html" class="hover:text-cyan-400 transition-colors duration-200 underline underline-offset-4 decoration-white/10 hover:decoration-cyan-400/40">Privacy Policy</a>
+    <a href="privacy.html" data-modal="modal-privacy" role="button" class="hover:text-cyan-400 transition-colors duration-200 underline underline-offset-4 decoration-white/10 hover:decoration-cyan-400/40">Privacy Policy</a>
     <span class="text-white/10">|</span>
-    <a href="accessibility.html" class="hover:text-cyan-400 transition-colors duration-200 underline underline-offset-4 decoration-white/10 hover:decoration-cyan-400/40">Accessibility Statement</a>
+    <a href="accessibility.html" data-modal="modal-accessibility" role="button" class="hover:text-cyan-400 transition-colors duration-200 underline underline-offset-4 decoration-white/10 hover:decoration-cyan-400/40">Accessibility Statement</a>
   </div>
 </footer>
 
@@ -2870,6 +2885,148 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   });
 });
+</script>
+<!-- ==================== LEGAL MODALS ==================== -->
+<div id="modal-privacy" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title" aria-hidden="true">
+  <div class="legal-modal-box">
+    <div class="legal-modal-header">
+      <div><h2 id="modal-privacy-title">מדיניות פרטיות</h2><small>PRIVACY POLICY</small></div>
+      <button type="button" class="legal-modal-close" data-close-modal aria-label="סגור חלון">&times;</button>
+    </div>
+    <div class="legal-modal-body">
+      <section>
+        <h2 class="text-xl font-black text-cyan-400 mb-2">1. כללי</h2>
+        <p>ברוכים הבאים לעמוד הקישורים הרשמי של OdedSVR. אנו מכבדים את הפרטיות שלכם ומחויבים להגן על המידע האישי שלכם. עמוד זה מספק מידע על האופן שבו האתר פועל ומציג תוכן.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-black text-cyan-400 mb-2">2. איסוף מידע ושירותי צד שלישי</h2>
+        <p>האתר עצמו אינו דורש הרשמה, אינו שומר מידע אישי מזהה ואינו מנהל מאגר נתונים עצמאי של משתמשים. עם זאת, האתר משתמש בשירותי צד שלישי (כמו GitHub Pages לאירוח, וכן הפניות לפלטפורמות כגון Kick, YouTube, Discord וטפסים חיצוניים) אשר עשויים לאסוף נתונים סטטיסטיים או להשתמש בעוגיות (Cookies) בהתאם למדיניות הפרטיות שלהם.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-black text-cyan-400 mb-2">3. קישורים חיצוניים ושותפויות</h2>
+        <p>האתר מכיל קישורים לאתרים חיצוניים.שותפויות עסקיות וקודים להנחה (כגון מחסני חשמל, ליברו ועוד) ברגע שאתם לוחצים על קישור ומעוברים לאתר חיצוני, שימושכם באתר החדש כפוף לתנאי השימוש ומדיניות הפרטיות של אותו האתר בלבד.</p>
+      </section>
+      
+      <section>
+        <h2 class="text-xl font-bold text-cyan-400 mb-2">4. הצגת נתוני תרומות ומובילי דעה (Leaderboards)</h2>
+        <p class="mb-3">
+          האתר מציג רשימות של תורמים מובילים ("Top Donators") ונתוני מתנות/תרומות על בסיס מידע פומבי ונגיש הזמין בפלטפורמת הסטרימינג Kick. הנתונים (הכוללים שמות משתמש פומביים וכמויות תרומה) נמשכים באופן אוטומטי באמצעות ממשק תכנות יישומים (API) ציבורי ואינם נשמרים במאגר מידע פרטי שלנו למטרות זיהוי אישי, מעקב או מסחר.
+        </p>
+        <p class="mb-3">
+          מאחר ושמות המשתמש והנתונים המוצגים מנוהלים במלואם על ידי פלטפורמת Kick ובאחריות המשתמשים שהגדירו את חשבונם כציבורי שם, אין לאתר זה או לבעליו שליטה על אופן הצגת המידע הראשוני, נכונותו או עדכונו.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-black text-cyan-400 mb-2">5. נגישות וטכנולוגיה</h2>
+        <p>באתר מוטמע רכיב נגישות מותאם אישית על מנת לאפשר חוויית גלישה נוחה ונגישה לכלל המשתמשים. רכיב זה פועל באופן מקומי בדפדפן שלכם ואינו משתף את העדפות הגלישה שלכם עם גורמים חיצוניים.</p>
+      </section>
+      
+      <section>
+        <h2 class="text-xl font-black text-cyan-400 mb-2">6. יצירת קשר</h2>
+        <p>לשאלות, בירורים או פניות בנושא האתר, ניתן ליצור קשר דרך ערוצי הדיסקורד הרשמיים או באימייל הכתוב למטה בעמודר.</p>
+      </section>
+            <section class="border-t border-white/5 pt-4">
+        <h2 class="text-xl font-black text-cyan-400 mb-2">פרטי רכז הנגישות</h2>
+        <p>לכל פנייה, דיווח על אי-נגישות או בקשה לעזרה, ניתן ליצור קשר ישיר:</p>
+        <div class="mt-2 bg-slate-900/40 p-4 rounded-lg border border-white/5 inline-block text-right">
+          <p class="font-bold text-white">רכז נגישות: <span class="font-normal text-slate-300">Piker_r / צוות OdedSVR</span></p>
+          <p class="font-bold text-white">ליצירת קשר: <span class="font-normal text-cyan-400 select-all">discord - amirlif</span></p>
+          <p class="font-bold text-white"><span class="font-normal text-cyan-400 select-all">email- odedlink26@gmail.com</span></p>
+        </div>
+      </section>
+
+      <div class="pt-4 border-t border-white/5 text-xs text-slate-500 text-center">
+        עודכן לאחרונה: יוני 2026
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-accessibility" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="modal-accessibility-title" aria-hidden="true">
+  <div class="legal-modal-box">
+    <div class="legal-modal-header">
+      <div><h2 id="modal-accessibility-title">הצהרת נגישות</h2><small>ACCESSIBILITY STATEMENT</small></div>
+      <button type="button" class="legal-modal-close" data-close-modal aria-label="סגור חלון">&times;</button>
+    </div>
+    <div class="legal-modal-body">
+      <section>
+        <h2 class="text-xl font-black text-cyan-400 mb-2">מבוא</h2>
+        <p>אנו ב-OdedSVR רואים חשיבות עליונה בהנגשת האתר לכלל האוכלוסייה, לרבות אנשים עם מוגבלויות, במטרה לאפשר חוויית גלישה נוחה ועצמאית ככל הניתן. האתר נבנה והותאם בהתאם להנחיות הנגישות לחנות האינטרנט ולתקן הישראלי (ת"י 5568) ברמת הנגישות הנדרשת.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-black text-cyan-400 mb-2">אמצעי הנגישות באתר</h2>
+        <p>באתר מוטמע תפריט נגישות ייחודי המאפשר התאמות אישיות של ממשק המשתמש. בין היתר, האתר תומך ב:</p>
+        <ul class="list-disc list-inside mt-2 space-y-1 pr-2 text-slate-400">
+          <li>ניווט מלא באמצעות המקלדת (Keyboard Navigation).</li>
+          <li>ניווט והקראה קולית מתקדמת (TTS / Voice Nav) לנוחות משתמשים עם לקויות ראייה או תנועה.</li>
+          <li>התאמה מלאה למסכים ורזולוציות שונות (רספונסיביות).</li>
+          <li>טקסט אלטרנטיבי (Alt text) לתמונות ולוגואים משמעותיים.</li>
+          <li>מבנה קוד סמנטי התומך בטכנולוגיות מסייעות כגון קוראי מסך.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-black text-cyan-400 mb-2">סייגים לנגישות ופניות</h2>
+        <p>למרות מאמצינו להנגיש את כלל חלקי האתר, ייתכן שחלקים מסוימים (כגון תכני וידאו המוטמעים מיוטיוב, או ווידג'טים חיצוניים של רשתות חברתיות) אינם נגישים בצורה מלאה, או שטרם נמצא עבורם הפתרון הטכנולוגי המתאים. אם נתקלתם בבעיה או בתקלה בנושא הנגישות, נשמח שתעדכנו אותנו כדי שנוכל לתקן ולשפר.</p>
+      </section>
+
+      <section class="border-t border-white/5 pt-4">
+        <h2 class="text-xl font-black text-cyan-400 mb-2">פרטי רכז הנגישות</h2>
+        <p>לכל פנייה, דיווח על אי-נגישות או בקשה לעזרה, ניתן ליצור קשר ישיר:</p>
+        <div class="mt-2 bg-slate-900/40 p-4 rounded-lg border border-white/5 inline-block text-right">
+          <p class="font-bold text-white">רכז נגישות: <span class="font-normal text-slate-300">Piker_r / צוות OdedSVR</span></p>
+          <p class="font-bold text-white">ליצירת קשר: <span class="font-normal text-cyan-400 select-all">discord - amirlif</span></p>
+          <p class="font-bold text-white">ליצירת קשר: <span class="font-normal text-cyan-400 select-all">email - odedlink26@gmail.com</span></p>
+        </div>
+      </section>
+
+      <div class="pt-4 border-t border-white/5 text-xs text-slate-500 text-center">
+        עודכן לאחרונה: יוני 2026
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var lastFocus = null;
+  function openModal(id) {
+    var m = document.getElementById(id);
+    if (!m) return;
+    lastFocus = document.activeElement;
+    m.classList.add('open');
+    m.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('legal-modal-open');
+    requestAnimationFrame(function () { m.classList.add('show'); });
+    var body = m.querySelector('.legal-modal-body'); if (body) body.scrollTop = 0;
+    var c = m.querySelector('.legal-modal-close'); if (c) c.focus();
+  }
+  function closeModal(m) {
+    if (!m) return;
+    m.classList.remove('show');
+    m.setAttribute('aria-hidden', 'true');
+    setTimeout(function () {
+      m.classList.remove('open');
+      if (!document.querySelector('.legal-modal.open')) document.body.classList.remove('legal-modal-open');
+    }, 250);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-modal]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); openModal(a.getAttribute('data-modal')); });
+  });
+  document.querySelectorAll('.legal-modal').forEach(function (m) {
+    m.addEventListener('click', function (e) {
+      if (e.target === m || e.target.closest('[data-close-modal]')) closeModal(m);
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal(document.querySelector('.legal-modal.open'));
+  });
+})();
 </script>
 </body>
 </html>
