@@ -810,6 +810,97 @@
     ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #67e8f9, #c084fc); }
 
         
+
+    /* ===== Clean / Professional Navigator ===== */
+    .main-nav {
+      width: min(100%, 850px);
+      margin: 0 auto 2.5rem;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      position: sticky;
+      top: 12px;
+      z-index: 9000;
+      direction: ltr;
+      background: rgba(15, 23, 42, .82);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.28);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .main-nav::-webkit-scrollbar { display: none; }
+
+    .main-nav-item {
+      flex: 1 0 auto;
+      min-height: 42px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(226,232,240,.68);
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .035em;
+      white-space: nowrap;
+      transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .main-nav-item span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .main-nav-item:hover {
+      color: #fff;
+      background: rgba(255,255,255,.055);
+      border-color: rgba(255,255,255,.08);
+    }
+
+    .main-nav-item.is-active {
+      color: #fff;
+      background: rgba(34,211,238,.12);
+      border-color: rgba(34,211,238,.22);
+      box-shadow: 0 0 14px rgba(34,211,238,.08);
+    }
+
+    .main-nav-item:focus-visible {
+      outline: 2px solid #22d3ee;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .main-nav {
+        width: calc(100% + 12px);
+        margin-left: -6px;
+        margin-right: -6px;
+        margin-bottom: 2rem;
+        justify-content: flex-start;
+        border-radius: 12px;
+        top: 8px;
+        padding: 5px;
+      }
+      .main-nav-item {
+        min-height: 40px;
+        padding: 0 13px;
+        font-size: 11px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .main-nav-item { transition: none; }
+    }
+
     .legal-modal { position: fixed; inset: 0; z-index: 99000; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(2, 6, 23, 0.75); backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.25s ease; }
     .legal-modal.open { display: flex; }
     .legal-modal.show { opacity: 1; }
@@ -1111,14 +1202,14 @@
     </div>
   </div>
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
-      <nav class="w-full max-w-3xl bg-slate-900/60 backdrop-blur-2xl border border-white/10 rounded-full p-1.5 mb-10 flex gap-1 shadow-2xl relative z-20 flex-wrap justify-center" aria-label="ניווט ראשי">
-  <a href="#home" data-page="home" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white text-center transition-all duration-200 rounded-full bg-white/10 hover:bg-white/15 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Home</a>
-  <a href="#YTvids" data-page="YTvids" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Videos</a>
-  <a href="#info" data-page="info" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Info</a>
-  <a href="#topdonators" data-page="topdonators" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Donators</a>
-  <a href="#stats" data-page="stats" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">Kick Stats & Info</a>
+      <nav class="main-nav" aria-label="ניווט ראשי">
+  <a href="#home" data-page="home" class="main-nav-item is-active"><span>Home</span></a>
+  <a href="#YTvids" data-page="YTvids" class="main-nav-item"><span>Videos</span></a>
+  <a href="#info" data-page="info" class="main-nav-item"><span>Info</span></a>
+  <a href="#topdonators" data-page="topdonators" class="main-nav-item"><span>Donators</span></a>
+  <a href="#stats" data-page="stats" class="main-nav-item"><span>Kick Stats &amp; Info</span></a>
 <!-- WATERPARK-PROTECTED: Keep this section. Remove ONLY if user explicitly asks to delete Waterpark. -->
-<!-- <a href="#waterpark" data-page="waterpark" class="flex-1 py-2 px-1 text-[10px] md:text-sm font-bold text-white/60 hover:text-cyan-400 text-center transition-all duration-200 rounded-full hover:bg-white/5 uppercase tracking-tight md:tracking-wider whitespace-nowrap">WaterPark</a> -->
+<!-- <a href="#waterpark" data-page="waterpark" class="main-nav-item"><span>WaterPark</span></a> -->
 </nav>
 
     <div class="text-center mb-10 relative z-10" id="page-header">
@@ -2893,6 +2984,7 @@ function loadEmotesOnce() {
         link.classList.toggle('text-white/60', !isActive);
         link.classList.toggle('hover:text-cyan-400', !isActive);
         link.classList.toggle('hover:bg-white/5', !isActive);
+        link.classList.toggle('is-active', isActive);
       });
 
       const meta = PAGE_META[pageName];
