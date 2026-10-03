@@ -709,27 +709,67 @@
       100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
     }
 
-    #splash-screen { 
-      position: fixed; 
-      inset: 0; 
-      background: #090d16; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      z-index: 99999; 
-      transition: opacity 0.22s ease-out; 
+    /* 3D logo intro */
+    #splash-screen {
+      position: fixed; inset: 0; overflow: hidden;
+      background: radial-gradient(circle at 50% 42%, #152544 0%, #090d16 48%, #050711 100%);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 99999; opacity: 1; perspective: 1100px;
+      transition: opacity .35s cubic-bezier(.16,1,.3,1);
+      isolation: isolate;
     }
-    .splash-logo { 
-      max-width: 120px; 
-      border-radius: 50%; 
-      animation: logoFade 1.2s infinite ease-in-out; 
-      box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+    #splash-screen::before, #splash-screen::after {
+      content: ""; position: absolute; width: min(72vw, 520px); aspect-ratio: 1;
+      border: 1px solid rgba(34,211,238,.28); border-radius: 50%;
+      box-shadow: 0 0 35px rgba(34,211,238,.12), inset 0 0 35px rgba(168,85,247,.10);
+      transform: rotateX(68deg) rotateZ(-18deg); animation: introOrbit 3s linear infinite;
+      pointer-events: none; z-index: -1;
     }
-    @keyframes logoFade { 
-      0%, 100% { opacity: 0.5; transform: scale(0.95); } 
-      50% { opacity: 1; transform: scale(1.05); } 
+    #splash-screen::after {
+      width: min(58vw, 410px); border-color: rgba(168,85,247,.42);
+      transform: rotateX(68deg) rotateZ(35deg); animation-duration: 4s; animation-direction: reverse;
     }
-    #splash-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    #splash-inner {
+      display: flex; flex-direction: column; align-items: center; gap: 22px;
+      transform-style: preserve-3d; animation: introStage .5s cubic-bezier(.16,1,.3,1) both;
+      padding: 24px; text-align: center;
+    }
+    .splash-logo-wrap {
+      position: relative; width: clamp(140px, 24vw, 205px); aspect-ratio: 1;
+      display: grid; place-items: center; transform-style: preserve-3d;
+      animation: logoFloat 1.8s ease-in-out infinite;
+    }
+    .splash-logo-wrap::before {
+      content: ""; position: absolute; inset: -13px; border-radius: 50%;
+      border: 2px solid transparent; border-top-color: #22d3ee; border-right-color: #a855f7;
+      filter: drop-shadow(0 0 10px rgba(34,211,238,.65)); animation: logoRing 1.4s linear infinite;
+    }
+    .splash-logo-wrap::after {
+      content: ""; position: absolute; inset: -27px; border-radius: 50%;
+      border: 1px solid rgba(168,85,247,.45); transform: rotateX(65deg) rotateZ(-20deg);
+      box-shadow: 0 0 24px rgba(168,85,247,.15); animation: logoRing 2.5s linear infinite reverse;
+    }
+    .splash-logo {
+      display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
+      box-shadow: 0 0 28px rgba(56,189,248,.3), 0 0 85px rgba(168,85,247,.22);
+      backface-visibility: hidden; animation: logoTurn 0.6s cubic-bezier(.45,.05,.55,.95) both;
+    }
+    .splash-brand {
+      margin: 2px 0 0; font-family: 'Heebo', sans-serif; font-size: clamp(22px, 5vw, 34px);
+      line-height: 1; font-weight: 900; letter-spacing: .16em; direction: ltr;
+      color: #fff; text-shadow: 0 0 12px rgba(34,211,238,.75), 0 0 32px rgba(168,85,247,.5);
+      animation: brandReveal .45s .1s both;
+    }
+    .splash-subtitle { margin: 0; color: #94a3b8; font-size: 10px; font-weight: 700; letter-spacing: .38em; direction: ltr; animation: brandReveal .45s .18s both; }
+    @keyframes introOrbit { to { transform: rotateX(68deg) rotateZ(342deg); } }
+    @keyframes logoRing { to { transform: rotate(360deg); } }
+    @keyframes logoFloat { 0%,100% { transform: translateY(0) rotateY(-7deg); } 50% { transform: translateY(-8px) rotateY(7deg); } }
+    @keyframes logoTurn { 0% { opacity: 0; transform: rotateY(95deg) rotateX(22deg) scale(.55); } 65% { opacity: 1; transform: rotateY(-12deg) rotateX(-5deg) scale(1.06); } 100% { opacity: 1; transform: rotateY(0) rotateX(0) scale(1); } }
+    @keyframes introStage { from { opacity: 0; transform: translateY(22px) rotateX(12deg) scale(.94); } to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); } }
+    @keyframes brandReveal { from { opacity: 0; transform: translateY(10px); letter-spacing: .35em; } to { opacity: 1; transform: translateY(0); letter-spacing: .16em; } }
+    @media (prefers-reduced-motion: reduce) {
+      #splash-screen::before, #splash-screen::after, #splash-inner, .splash-logo-wrap, .splash-logo, .splash-brand, .splash-subtitle { animation: none !important; }
+    }
     #splash-loader-track {
       width: 140px; height: 4px; border-radius: 4px;
       background: rgba(255,255,255,0.08); overflow: hidden;
@@ -984,9 +1024,13 @@
       <path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path>
     </svg>
   </button>
-  <div id="splash-screen">
+  <div id="splash-screen" role="status" aria-label="טעינת אתר OdedSVR">
     <div id="splash-inner">
-      <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="לוגו טעינה עודד סבר" class="splash-logo">
+      <div class="splash-logo-wrap">
+        <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="לוגו OdedSVR" class="splash-logo">
+      </div>
+      <div class="splash-brand">ODEDSVR</div>
+      <p class="splash-subtitle">OFFICIAL LINKS</p>
       <div id="splash-loader-track"><div id="splash-loader-fill"></div></div>
     </div>
   </div>
@@ -1724,8 +1768,10 @@ function scrollToBottom() {
       if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
     });
 
-    window.addEventListener('load', activateSite);
-    setTimeout(activateSite, 300);
+    // Keep the intro visible long enough for the 3D logo animation to play.
+    window.addEventListener('load', () => setTimeout(activateSite, 900), { once: true });
+    // Fallback for slow or unusual loading situations.
+    setTimeout(activateSite, 1500);
 
    function shareOdedLink() {
   const url = 'https://odedsvr.com/';
@@ -2864,7 +2910,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         <div class="mt-2 bg-slate-900/40 p-4 rounded-lg border border-white/5 inline-block text-right">
           <p class="font-bold text-white">רכז נגישות: <span class="font-normal text-slate-300">Piker_r / צוות OdedSVR</span></p>
           <p class="font-bold text-white">ליצירת קשר: <span class="font-normal text-cyan-400 select-all">discord - amirlif</span></p>
-          <p class="font-bold text-white"><span class="font-normal text-cyan-400 select-all">email- odedlink26@gmail.com</span></p>
+          <p class="font-bold text-white"><span class="font-normal text-cyan-400 select-all">email- <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3dcd7d6d7dfdaddd88185f3d4ded2dadf9dd0dcde">[email&#160;protected]</a></span></p>
         </div>
       </section>
 
@@ -2910,7 +2956,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         <div class="mt-2 bg-slate-900/40 p-4 rounded-lg border border-white/5 inline-block text-right">
           <p class="font-bold text-white">רכז נגישות: <span class="font-normal text-slate-300">Piker_r / צוות OdedSVR</span></p>
           <p class="font-bold text-white">ליצירת קשר: <span class="font-normal text-cyan-400 select-all">discord - amirlif</span></p>
-          <p class="font-bold text-white">ליצירת קשר: <span class="font-normal text-cyan-400 select-all">email - odedlink26@gmail.com</span></p>
+          <p class="font-bold text-white">ליצירת קשר: <span class="font-normal text-cyan-400 select-all">email - <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="452a212021292c2b2e7773052228242c296b262a28">[email&#160;protected]</a></span></p>
         </div>
       </section>
 
@@ -2921,7 +2967,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function () {
   var lastFocus = null;
   function openModal(id) {
@@ -2958,5 +3004,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 })();
 </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
