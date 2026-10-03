@@ -715,52 +715,52 @@
       background: radial-gradient(circle at 50% 42%, #152544 0%, #090d16 48%, #050711 100%);
       display: flex; justify-content: center; align-items: center;
       z-index: 99999; opacity: 1; perspective: 1100px;
-      transition: opacity .35s cubic-bezier(.16,1,.3,1);
+      transition: opacity .175s cubic-bezier(.16,1,.3,1);
       isolation: isolate;
     }
     #splash-screen::before, #splash-screen::after {
       content: ""; position: absolute; width: min(72vw, 520px); aspect-ratio: 1;
       border: 1px solid rgba(34,211,238,.28); border-radius: 50%;
       box-shadow: 0 0 35px rgba(34,211,238,.12), inset 0 0 35px rgba(168,85,247,.10);
-      transform: rotateX(68deg) rotateZ(-18deg); animation: introOrbit 3s linear infinite;
+      transform: rotateX(68deg) rotateZ(-18deg); animation: introOrbit 1.5s linear infinite;
       pointer-events: none; z-index: -1;
     }
     #splash-screen::after {
       width: min(58vw, 410px); border-color: rgba(168,85,247,.42);
-      transform: rotateX(68deg) rotateZ(35deg); animation-duration: 4s; animation-direction: reverse;
+      transform: rotateX(68deg) rotateZ(35deg); animation-duration: 2s; animation-direction: reverse;
     }
     #splash-inner {
       display: flex; flex-direction: column; align-items: center; gap: 22px;
-      transform-style: preserve-3d; animation: introStage .5s cubic-bezier(.16,1,.3,1) both;
+      transform-style: preserve-3d; animation: introStage .25s cubic-bezier(.16,1,.3,1) both;
       padding: 24px; text-align: center;
     }
     .splash-logo-wrap {
       position: relative; width: clamp(140px, 24vw, 205px); aspect-ratio: 1;
       display: grid; place-items: center; transform-style: preserve-3d;
-      animation: logoFloat 1.8s ease-in-out infinite;
+      animation: logoFloat .9s ease-in-out infinite;
     }
     .splash-logo-wrap::before {
       content: ""; position: absolute; inset: -13px; border-radius: 50%;
       border: 2px solid transparent; border-top-color: #22d3ee; border-right-color: #a855f7;
-      filter: drop-shadow(0 0 10px rgba(34,211,238,.65)); animation: logoRing 1.4s linear infinite;
+      filter: drop-shadow(0 0 10px rgba(34,211,238,.65)); animation: logoRing .7s linear infinite;
     }
     .splash-logo-wrap::after {
       content: ""; position: absolute; inset: -27px; border-radius: 50%;
       border: 1px solid rgba(168,85,247,.45); transform: rotateX(65deg) rotateZ(-20deg);
-      box-shadow: 0 0 24px rgba(168,85,247,.15); animation: logoRing 2.5s linear infinite reverse;
+      box-shadow: 0 0 24px rgba(168,85,247,.15); animation: logoRing 1.25s linear infinite reverse;
     }
     .splash-logo {
       display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 50%;
       box-shadow: 0 0 28px rgba(56,189,248,.3), 0 0 85px rgba(168,85,247,.22);
-      backface-visibility: hidden; animation: logoTurn 0.6s cubic-bezier(.45,.05,.55,.95) both;
+      backface-visibility: hidden; animation: logoTurn 0.3s cubic-bezier(.45,.05,.55,.95) both;
     }
     .splash-brand {
       margin: 2px 0 0; font-family: 'Heebo', sans-serif; font-size: clamp(22px, 5vw, 34px);
       line-height: 1; font-weight: 900; letter-spacing: .16em; direction: ltr;
       color: #fff; text-shadow: 0 0 12px rgba(34,211,238,.75), 0 0 32px rgba(168,85,247,.5);
-      animation: brandReveal .45s .1s both;
+      animation: brandReveal .225s .05s both;
     }
-    .splash-subtitle { margin: 0; color: #94a3b8; font-size: 10px; font-weight: 700; letter-spacing: .38em; direction: ltr; animation: brandReveal .45s .18s both; }
+    .splash-subtitle { margin: 0; color: #94a3b8; font-size: 10px; font-weight: 700; letter-spacing: .38em; direction: ltr; animation: brandReveal .225s .09s both; }
     @keyframes introOrbit { to { transform: rotateX(68deg) rotateZ(342deg); } }
     @keyframes logoRing { to { transform: rotate(360deg); } }
     @keyframes logoFloat { 0%,100% { transform: translateY(0) rotateY(-7deg); } 50% { transform: translateY(-8px) rotateY(7deg); } }
@@ -1823,9 +1823,9 @@ function scrollToBottom() {
     });
 
     // Keep the intro visible long enough for the 3D logo animation to play.
-    window.addEventListener('load', () => setTimeout(activateSite, 900), { once: true });
+    window.addEventListener('load', () => setTimeout(activateSite, 450), { once: true });
     // Fallback for slow or unusual loading situations.
-    setTimeout(activateSite, 1500);
+    setTimeout(activateSite, 750);
 
    function shareOdedLink() {
   const url = 'https://odedsvr.com/';
@@ -2550,15 +2550,62 @@ async function fetchEmotesData() {
         else if (botrixData && botrixData.data) users = botrixData.data;
 
         if (users && users.length > 0) {
-          let tableHtml = '<table class="donators-table text-sm"><thead><tr><th>#</th><th>משתמש</th><th>ניקוד / זמן</th></tr></thead><tbody>';
-          users.slice(0, 10).forEach((user, index) => {
+          // "המובילים בצפייה" = מיון אך ורק לפי זמן צפייה, לא לפי ניקוד.
+          // "המובילים בצפייה" = מיון לפי זמן צפייה והצגה בפורמט ימים/שעות/דקות.
+          const getRawWatchtime = (user) =>
+            user.watchtime ?? user.watchTime ?? user.watch_time ??
+            user.totalWatchtime ?? user.total_watchtime ?? 0;
+
+          const getWatchtimeMinutes = (user) => {
+            const value = getRawWatchtime(user);
+            if (typeof value === 'number') {
+              // ערך מספרי מ-Botrix מייצג דקות צפייה.
+              return Number.isFinite(value) ? value : 0;
+            }
+
+            const str = String(value).trim().toLowerCase().replace(/,/g, '');
+            if (!str) return 0;
+
+            // תומך בפורמטים כמו: "59d 23h 10min", "23h 10min", "10min".
+            const days = Number((str.match(/([0-9]+(?:\.[0-9]+)?)\s*d/) || [])[1] || 0);
+            const hours = Number((str.match(/([0-9]+(?:\.[0-9]+)?)\s*h/) || [])[1] || 0);
+            const minutes = Number((str.match(/([0-9]+(?:\.[0-9]+)?)\s*(?:min|m)(?!s)/) || [])[1] || 0);
+
+            if (days || hours || minutes) {
+              return days * 24 * 60 + hours * 60 + minutes;
+            }
+
+            const numeric = Number(str);
+            return Number.isFinite(numeric) ? numeric : 0;
+          };
+
+          const formatWatchtime = (user) => {
+            const raw = getRawWatchtime(user);
+            const totalMinutes = getWatchtimeMinutes(user);
+
+            // אם ה-API כבר מחזיר פורמט קריא, נשמור עליו.
+            if (typeof raw === 'string' && /\d+\s*d|\d+\s*h|\d+\s*(?:min|m)\b/i.test(raw)) {
+              return raw.trim();
+            }
+
+            const minutes = Math.max(0, Math.round(totalMinutes));
+            const days = Math.floor(minutes / 1440);
+            const hours = Math.floor((minutes % 1440) / 60);
+            const mins = minutes % 60;
+            return `${days}d ${hours}h ${mins}min`;
+          };
+
+          const sortedUsers = [...users].sort((a, b) => getWatchtimeMinutes(b) - getWatchtimeMinutes(a));
+
+          let tableHtml = '<table class="donators-table text-sm"><thead><tr><th>#</th><th>משתמש</th><th>זמן צפייה</th></tr></thead><tbody>';
+          sortedUsers.slice(0, 10).forEach((user, index) => {
             const username = user.username || user.name || 'Unknown';
-            const points = user.points || user.watchtime || user.amount || 0;
+            const watchtime = formatWatchtime(user);
             tableHtml += `
               <tr>
                 <td class="stat-rank">${index + 1}</td>
                 <td class="text-white font-bold">${escapeHtml(username)}</td>
-                <td class="stat-highlight">${escapeHtml(points)}</td>
+                <td class="stat-highlight">${escapeHtml(watchtime)}</td>
               </tr>
             `;
           });
