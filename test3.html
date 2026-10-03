@@ -1065,37 +1065,16 @@
 /* ===== MOBILE ADAPTATION ===== */
 @media (max-width: 768px) {
   html, body { overflow-x: hidden; }
-  .container, .content, .section, .hero, main {
-    max-width: 100%;
-  }
-  .hero {
-    min-height: auto;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  .hero img, .hero video {
-    max-width: 100%;
-    height: auto;
-  }
-  .grid, .cards, .links-grid, .stats-grid, .donators-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .card, .link-card, .stat-card, .donator-card {
-    width: 100%;
-    box-sizing: border-box;
-  }
-  button, a {
-    touch-action: manipulation;
-  }
+  .hero { padding-left: 16px; padding-right: 16px; }
+  .hero img, .hero video { max-width: 100%; height: auto; }
+  .grid, .cards, .links-grid, .stats-grid { grid-template-columns: 1fr !important; }
+  .card, .link-card, .stat-card { width: 100%; box-sizing: border-box; }
+  button, a { touch-action: manipulation; }
 }
-
 @media (max-width: 480px) {
   .hero { padding-top: 24px; padding-bottom: 24px; }
   h1 { font-size: clamp(2rem, 11vw, 3.2rem); }
   h2 { font-size: clamp(1.5rem, 8vw, 2.2rem); }
-  .card, .link-card, .stat-card, .donator-card {
-    padding: 14px;
-  }
 }
 </style>
 </head>
@@ -1345,6 +1324,94 @@
 </div>
 </div>
 </div>
+
+<!-- 3D TOP DONATORS PODIUM -->
+<div class="donators-podium-wrap" aria-label="Top Donators 3D Podium">
+  <div class="donators-podium-title">🏆 TOP DONATORS 🏆</div>
+  <div class="donators-podium-stage">
+    <div class="donator-podium-place second">
+      <div class="podium-medal">🥈</div>
+      <div class="podium-donor" id="podium-donor-2">#2</div>
+      <div class="podium-column">2</div>
+    </div>
+    <div class="donator-podium-place first">
+      <div class="podium-medal">👑</div>
+      <div class="podium-donor" id="podium-donor-1">#1</div>
+      <div class="podium-column">1</div>
+    </div>
+    <div class="donator-podium-place third">
+      <div class="podium-medal">🥉</div>
+      <div class="podium-donor" id="podium-donor-3">#3</div>
+      <div class="podium-column">3</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.donators-podium-wrap {
+  width: min(900px, calc(100% - 32px));
+  margin: 34px auto 0;
+  padding: 28px 18px 30px;
+  text-align: center;
+  box-sizing: border-box;
+  perspective: 900px;
+}
+.donators-podium-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  margin-bottom: 28px;
+}
+.donators-podium-stage {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  min-height: 260px;
+  transform-style: preserve-3d;
+}
+.donator-podium-place {
+  flex: 1;
+  max-width: 230px;
+  transform-style: preserve-3d;
+  transition: transform .25s ease;
+}
+.donator-podium-place:hover {
+  transform: translateY(-8px) rotateX(4deg) rotateY(-4deg);
+}
+.podium-medal { font-size: 2.4rem; margin-bottom: 7px; }
+.podium-donor {
+  min-height: 22px;
+  margin-bottom: 8px;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.podium-column {
+  display: grid;
+  place-items: center;
+  border-radius: 14px 14px 4px 4px;
+  min-height: 105px;
+  font-size: 2.8rem;
+  font-weight: 1000;
+  background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 18px 40px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.14);
+}
+.first { max-width: 250px; }
+.first .podium-column { min-height: 160px; }
+.second .podium-column { min-height: 125px; }
+.third .podium-column { min-height: 95px; }
+
+@media (max-width: 600px) {
+  .donators-podium-wrap { width: 100%; padding-left: 8px; padding-right: 8px; }
+  .donators-podium-stage { gap: 6px; min-height: 190px; }
+  .podium-medal { font-size: 1.7rem; }
+  .podium-donor { font-size: .72rem; }
+  .podium-column { min-height: 70px !important; font-size: 2rem; }
+}
+</style>
+
 </section>
 
     <section id="stats-section" class="page-section">
@@ -3115,100 +3182,5 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a44e8b454fe01575',t:'MTc5MTA1Nzc0MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-<!-- ===== DONATORS 3D PODIUM ===== -->
-<section class="donators-podium-section" aria-label="Top Donators">
-  <div class="donators-podium">
-    <div class="podium-title">🏆 TOP DONATORS</div>
-    <div class="podium-stage">
-      <div class="podium-place podium-second">
-        <div class="podium-avatar">🥈</div>
-        <div class="podium-name" data-donor-rank="2">Top Donator #2</div>
-        <div class="podium-block">2</div>
-      </div>
-      <div class="podium-place podium-first">
-        <div class="podium-avatar">👑</div>
-        <div class="podium-name" data-donor-rank="1">Top Donator #1</div>
-        <div class="podium-block">1</div>
-      </div>
-      <div class="podium-place podium-third">
-        <div class="podium-avatar">🥉</div>
-        <div class="podium-name" data-donor-rank="3">Top Donator #3</div>
-        <div class="podium-block">3</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-.donators-podium-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 50px 16px;
-  box-sizing: border-box;
-}
-.donators-podium {
-  width: min(900px, 100%);
-  text-align: center;
-  perspective: 900px;
-}
-.podium-title {
-  font-weight: 900;
-  letter-spacing: .08em;
-  margin-bottom: 34px;
-}
-.podium-stage {
-  display: flex;
-  align-items: end;
-  justify-content: center;
-  gap: 14px;
-  transform-style: preserve-3d;
-}
-.podium-place {
-  flex: 1;
-  max-width: 230px;
-  transform-style: preserve-3d;
-  transition: transform .25s ease;
-}
-.podium-place:hover {
-  transform: translateY(-8px) rotateX(5deg) rotateY(-4deg);
-}
-.podium-avatar {
-  font-size: 2.4rem;
-  margin-bottom: 8px;
-  filter: drop-shadow(0 8px 14px rgba(0,0,0,.25));
-}
-.podium-name {
-  min-height: 24px;
-  font-weight: 800;
-  margin-bottom: 8px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.podium-block {
-  display: grid;
-  place-items: center;
-  min-height: 110px;
-  border-radius: 16px 16px 4px 4px;
-  font-size: 3rem;
-  font-weight: 1000;
-  background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.04));
-  border: 1px solid rgba(255,255,255,.16);
-  box-shadow: 0 18px 40px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.15);
-}
-.podium-first { max-width: 250px; }
-.podium-first .podium-block { min-height: 160px; }
-.podium-second .podium-block { min-height: 125px; }
-.podium-third .podium-block { min-height: 95px; }
-
-@media (max-width: 600px) {
-  .podium-stage { gap: 7px; }
-  .podium-name { font-size: .75rem; }
-  .podium-avatar { font-size: 1.8rem; }
-  .podium-block { min-height: 75px !important; font-size: 2rem; }
-}
-</style>
-
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a44e8b454fe01575',t:'MTc5MTA1Nzc0MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
