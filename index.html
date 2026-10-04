@@ -393,6 +393,28 @@
       .link-card:active { transform: scale(0.98); }
     }
 
+    /* ===== Inner light wave hover — added without changing the existing card design ===== */
+    .link-card:not(.velocity-card):not(.power-card):not(.libero-card)::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(115deg, transparent 25%, rgba(255,255,255,.12) 48%, transparent 62%);
+      background-size: 220% 100%;
+      background-position: 140% 0;
+      opacity: 0;
+      transition: opacity .25s ease, background-position .7s ease;
+      mix-blend-mode: screen;
+    }
+
+    @media (hover:hover) and (pointer:fine) {
+      .link-card:not(.velocity-card):not(.power-card):not(.libero-card):hover::after {
+        opacity: .75;
+        background-position: -20% 0;
+      }
+    }
+
     .card-glow-bg {
       position: absolute;
       inset: -100%;
