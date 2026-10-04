@@ -1121,7 +1121,23 @@
     .cmd-code { font-family: 'Roboto Mono', monospace; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
     .cmd-desc { font-size: 0.85rem; color: #94a3b8; }
     .cmd-copy-icon { width: 18px; height: 18px; flex-shrink: 0; }
-\n\n.link-card { min-height: 112px; }\n.link-card:hover { transform: translateY(-4px); }\n.glow-streak { opacity: .28; }\n.glow-streak.wide { opacity: .10; }\n.ambient-particle { opacity: .65; }\n\n.live-now-card {\n  width: min(100%, 48rem);\n  margin: 0 auto 1.25rem;\n  padding: 1rem 1.15rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 1rem;\n  direction: rtl;\n  border: 1px solid rgba(239,68,68,.28);\n  border-radius: 18px;\n  background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(15,23,42,.78));\n  backdrop-filter: blur(18px);\n  box-shadow: 0 10px 35px rgba(0,0,0,.18), 0 0 25px rgba(239,68,68,.08);\n}\n.live-now-main { min-width: 0; }\n.live-now-indicator { display:flex; align-items:center; gap:7px; color:#f87171; font-size:11px; font-weight:900; letter-spacing:.18em; }\n.live-now-indicator span { width:8px; height:8px; border-radius:50%; background:#ef4444; box-shadow:0 0 12px rgba(239,68,68,.9); animation:pulseLive 1.5s infinite; }\n.live-now-title { margin-top:3px; color:#fff; font-size:1.1rem; font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }\n.live-now-meta { margin-top:2px; display:flex; gap:7px; color:#94a3b8; font-size:.8rem; }\n.live-now-button { flex-shrink:0; padding:.7rem 1rem; border-radius:12px; background:#ef4444; color:#fff; font-weight:900; font-size:.8rem; text-decoration:none; box-shadow:0 7px 18px rgba(239,68,68,.2); transition:transform .2s, background .2s; }\n.live-now-button:hover { transform:translateY(-2px); background:#dc2626; }\n@keyframes pulseLive { 50% { transform:scale(1.25); opacity:.65; } }\n\n/* ===================== Video rows (YouTube Videos) ===================== */
+\n\n.link-card { min-height: 112px; }\n.link-card:hover { transform: translateY(-4px); }\n.glow-streak { opacity: .28; }\n.glow-streak.wide { opacity: .10; }\n.ambient-particle { opacity: .65; }\n\n.live-now-card {\n  width: min(100%, 48rem);\n  margin: 0 auto 1.25rem;\n  padding: 1rem 1.15rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 1rem;\n  direction: rtl;\n  border: 1px solid rgba(239,68,68,.28);\n  border-radius: 18px;\n  background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(15,23,42,.78));\n  backdrop-filter: blur(18px);\n  box-shadow: 0 10px 35px rgba(0,0,0,.18), 0 0 25px rgba(239,68,68,.08);\n}\n.live-now-main { min-width: 0; }\n.live-now-indicator { display:flex; align-items:center; gap:7px; color:#f87171; font-size:11px; font-weight:900; letter-spacing:.18em; }\n.live-now-indicator span { width:8px; height:8px; border-radius:50%; background:#ef4444; box-shadow:0 0 12px rgba(239,68,68,.9); animation:pulseLive 1.5s infinite; }\n.live-now-title { margin-top:3px; color:#fff; font-size:1.1rem; font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }\n.live-now-meta { margin-top:2px; display:flex; gap:7px; color:#94a3b8; font-size:.8rem; }\n.live-now-button { flex-shrink:0; padding:.7rem 1rem; border-radius:12px; background:#ef4444; color:#fff; font-weight:900; font-size:.8rem; text-decoration:none; box-shadow:0 7px 18px rgba(239,68,68,.2); transition:transform .2s, background .2s; }\n.live-now-button:hover { transform:translateY(-2px); background:#dc2626; }\n@keyframes pulseLive { 50% { transform:scale(1.25); opacity:.65; } }\n\n
+/* ===== Inner hover wave — copied from the working card effect ===== */
+.link-card::after, .card::after, .video-row::after {
+  content: '';
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(115deg, transparent 25%, rgba(255,255,255,.12) 48%, transparent 62%);
+  background-size: 220% 100%; background-position: 140% 0;
+  opacity: 0; transition: opacity .25s ease, background-position .7s ease;
+  mix-blend-mode: screen;
+}
+@media (hover:hover) and (pointer:fine) {
+  .link-card:hover::after, .card:hover::after, .video-row:hover::after {
+    opacity: .75; background-position: -20% 0;
+  }
+}
+
+/* ===================== Video rows (YouTube Videos) ===================== */
     .video-row {
       display: flex; align-items: center; gap: 0; border-radius: 0.75rem;
       background: rgba(30, 41, 59, 0.6);
@@ -1139,129 +1155,6 @@
     }
 
     
-
-/* =========================================================
-   ODedsVR 3D EXPERIENCE UPGRADE
-   Adds depth without replacing existing features.
-   ========================================================= */
-html { perspective: 1400px; }
-body { transform-style: preserve-3d; }
-
-#odsvr-3d-scene {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
-  perspective: 1200px; transform-style: preserve-3d;
-}
-#odsvr-3d-scene .depth-orb {
-  position: absolute; border-radius: 50%; transform-style: preserve-3d;
-  border: 1px solid rgba(255,255,255,.12);
-  box-shadow: inset 0 0 30px rgba(255,255,255,.035), 0 0 50px rgba(34,211,238,.06);
-  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.10), rgba(34,211,238,.035) 30%, transparent 68%);
-  will-change: transform;
-}
-#odsvr-3d-scene .orb-a { width: 260px; height: 260px; left: 7%; top: 18%; }
-#odsvr-3d-scene .orb-b { width: 180px; height: 180px; right: 10%; top: 54%; border-color: rgba(168,85,247,.20); }
-#odsvr-3d-scene .orb-c { width: 95px; height: 95px; left: 43%; top: 68%; border-color: rgba(59,130,246,.20); }
-
-#odsvr-depth-grid {
-  position: absolute; left: -15%; right: -15%; bottom: -10%; height: 48%;
-  opacity: .22; transform: perspective(500px) rotateX(64deg) translateZ(-80px);
-  transform-origin: center bottom;
-  background-image: linear-gradient(rgba(34,211,238,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,.14) 1px, transparent 1px);
-  background-size: 54px 54px;
-  -webkit-mask-image: linear-gradient(to top, black, transparent 90%);
-  mask-image: linear-gradient(to top, black, transparent 90%);
-}
-
-.odsvr-particle-3d {
-  position: absolute; width: var(--size, 4px); height: var(--size, 4px);
-  border-radius: 50%; background: rgba(255,255,255,.75);
-  box-shadow: 0 0 10px rgba(34,211,238,.55);
-  opacity: var(--opacity, .5); transform-style: preserve-3d;
-  animation: odsvrParticleFloat var(--duration, 10s) ease-in-out infinite;
-  animation-delay: var(--delay, 0s); will-change: transform, opacity;
-}
-@keyframes odsvrParticleFloat {
-  0%,100% { transform: translate3d(0, 18px, var(--z, 0)) scale(.8); opacity: .05; }
-  20% { opacity: var(--opacity, .5); }
-  50% { transform: translate3d(var(--drift, 20px), -45vh, var(--z, 0)) scale(1.15); opacity: var(--opacity, .5); }
-  100% { transform: translate3d(calc(var(--drift, 20px) * -0.6), -95vh, var(--z, 0)) scale(.65); opacity: 0; }
-}
-
-.odsvr-water-bubble {
-  position: absolute; width: var(--size, 18px); height: var(--size, 18px); border-radius: 50%;
-  border: 1px solid rgba(125,211,252,.38);
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.32), rgba(56,189,248,.05) 35%, transparent 70%);
-  box-shadow: inset 0 0 10px rgba(125,211,252,.10), 0 0 12px rgba(34,211,238,.10);
-  animation: odsvrBubbleFloat var(--duration, 12s) ease-in infinite;
-  animation-delay: var(--delay, 0s); opacity: 0;
-}
-@keyframes odsvrBubbleFloat {
-  0% { transform: translate3d(0, 0, 0) scale(.7); opacity: 0; }
-  12% { opacity: .42; }
-  55% { transform: translate3d(var(--drift, 24px), -52vh, 80px) scale(1.05); opacity: .28; }
-  100% { transform: translate3d(calc(var(--drift, 24px) * -0.5), -108vh, 160px) scale(.85); opacity: 0; }
-}
-
-/* Real depth on existing cards */
-.link-card, .card, .video-row, .stats-panel {
-  transform-style: preserve-3d;
-  perspective: 900px;
-}
-.link-card::after, .card::after, .video-row::after {
-  content: '';
-  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background: linear-gradient(115deg, transparent 25%, rgba(255,255,255,.12) 48%, transparent 62%);
-  background-size: 220% 100%; background-position: 140% 0;
-  opacity: 0; transition: opacity .25s ease, background-position .7s ease;
-  mix-blend-mode: screen;
-}
-@media (hover:hover) and (pointer:fine) {
-  .link-card:hover::after, .card:hover::after, .video-row:hover::after {
-    opacity: .75; background-position: -20% 0;
-  }
-  .link-card:hover { box-shadow: 0 22px 55px -24px rgba(var(--glow-rgb,59,130,246),.58), 0 0 30px rgba(var(--glow-rgb,59,130,246),.16); }
-}
-.link-card > *, .card > *, .video-row > * { transform: translateZ(0); }
-.link-card:hover > *, .card:hover > *, .video-row:hover > * { transform: translateZ(8px); }
-
-#profile-link { display: inline-block; transform-style: preserve-3d; perspective: 800px; }
-#profile-image { will-change: transform; }
-
-/* 3D hero halo around the main profile area */
-.odsvr-hero-3d-ring {
-  position: absolute; width: 320px; height: 320px; border-radius: 50%;
-  border: 1px solid rgba(34,211,238,.18); transform: rotateX(68deg) rotateZ(-20deg);
-  box-shadow: 0 0 35px rgba(34,211,238,.08), inset 0 0 35px rgba(168,85,247,.06);
-  animation: odsvrHeroRing 10s linear infinite; pointer-events:none; z-index: 0;
-}
-.odsvr-hero-3d-ring.r2 { width: 240px; height: 240px; border-color: rgba(168,85,247,.22); animation-duration: 7s; animation-direction: reverse; }
-@keyframes odsvrHeroRing { to { transform: rotateX(68deg) rotateZ(340deg); } }
-
-/* Gentle 3D page transition overlay */
-#odsvr-page-transition {
-  position: fixed; inset: 0; z-index: 99997; pointer-events: none; opacity: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(34,211,238,.08), transparent 45%);
-  transform: scale(.96) translateZ(-120px); transform-origin: center;
-}
-body.odsvr-page-transition #odsvr-page-transition { animation: odsvrPageWarp .7s cubic-bezier(.16,1,.3,1) both; }
-@keyframes odsvrPageWarp {
-  0% { opacity: 0; transform: scale(.96) translateZ(-120px); }
-  30% { opacity: 1; transform: scale(1) translateZ(0); }
-  100% { opacity: 0; transform: scale(1.035) translateZ(90px); }
-}
-
-@media (max-width: 768px) {
-  #odsvr-depth-grid { height: 34%; opacity: .14; background-size: 42px 42px; }
-  #odsvr-3d-scene .orb-a { width: 160px; height: 160px; left: -30px; }
-  #odsvr-3d-scene .orb-b { width: 120px; height: 120px; right: -25px; }
-  .odsvr-hero-3d-ring { width: 220px; height: 220px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  #odsvr-3d-scene .depth-orb, .odsvr-particle-3d, .odsvr-water-bubble, .odsvr-hero-3d-ring { animation: none !important; }
-  #odsvr-page-transition { display:none !important; }
-  .link-card::after, .card::after, .video-row::after { transition: none !important; }
-}
-
 </style>
 
 <style>
@@ -1292,16 +1185,6 @@ body.odsvr-page-transition #odsvr-page-transition { animation: odsvrPageWarp .7s
 </style>
 </head>
 <body>
-
-<!-- ODedsVR 3D ambient scene -->
-<div id="odsvr-3d-scene" aria-hidden="true">
-  <div id="odsvr-depth-grid"></div>
-  <div class="depth-orb orb-a"></div><div class="depth-orb orb-b"></div><div class="depth-orb orb-c"></div>
-  <div class="odsvr-hero-3d-ring"></div><div class="odsvr-hero-3d-ring r2"></div>
-  <div id="odsvr-particles"></div><div id="odsvr-bubbles"></div>
-</div>
-<div id="odsvr-page-transition" aria-hidden="true"></div>
-
   <a href="#links-grid" id="skip-link">דלג לתוכן</a>
   <div class="tech-bg" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
@@ -3321,116 +3204,5 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a44e8b454fe01575',t:'MTc5MTA1Nzc0MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-<script>
-(function () {
-  'use strict';
-  if (window.__odsvr3DUpgradeLoaded) return;
-  window.__odsvr3DUpgradeLoaded = true;
-
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const scene = document.getElementById('odsvr-3d-scene');
-  const particles = document.getElementById('odsvr-particles');
-  const bubbles = document.getElementById('odsvr-bubbles');
-  const transition = document.getElementById('odsvr-page-transition');
-  if (!scene) return;
-
-  // Ambient 3D particles / bubbles. Kept intentionally lightweight.
-  if (!reduceMotion && particles && bubbles) {
-    const fragP = document.createDocumentFragment();
-    const fragB = document.createDocumentFragment();
-    const count = Math.min(34, Math.max(18, Math.floor(window.innerWidth / 42)));
-    for (let i = 0; i < count; i++) {
-      const el = document.createElement('span');
-      el.className = 'odsvr-particle-3d';
-      el.style.left = (Math.random() * 100) + '%';
-      el.style.bottom = (-5 - Math.random() * 10) + 'px';
-      el.style.setProperty('--size', (2 + Math.random() * 4).toFixed(1) + 'px');
-      el.style.setProperty('--opacity', (.22 + Math.random() * .5).toFixed(2));
-      el.style.setProperty('--duration', (8 + Math.random() * 9).toFixed(2) + 's');
-      el.style.setProperty('--delay', (-Math.random() * 14).toFixed(2) + 's');
-      el.style.setProperty('--drift', (-35 + Math.random() * 70).toFixed(1) + 'px');
-      fragP.appendChild(el);
-    }
-    for (let i = 0; i < 13; i++) {
-      const el = document.createElement('span');
-      el.className = 'odsvr-water-bubble';
-      el.style.left = (Math.random() * 100) + '%';
-      el.style.bottom = (-30 - Math.random() * 40) + 'px';
-      el.style.setProperty('--size', (8 + Math.random() * 24).toFixed(1) + 'px');
-      el.style.setProperty('--duration', (10 + Math.random() * 10).toFixed(2) + 's');
-      el.style.setProperty('--delay', (-Math.random() * 18).toFixed(2) + 's');
-      el.style.setProperty('--drift', (-45 + Math.random() * 90).toFixed(1) + 'px');
-      fragB.appendChild(el);
-    }
-    particles.appendChild(fragP); bubbles.appendChild(fragB);
-  }
-
-  let targetX = 0, targetY = 0, currentX = 0, currentY = 0, raf = 0;
-  const parallaxNodes = Array.from(scene.querySelectorAll('.depth-orb, .odsvr-hero-3d-ring'));
-  function animateScene() {
-    currentX += (targetX - currentX) * .055;
-    currentY += (targetY - currentY) * .055;
-    parallaxNodes.forEach((node, i) => {
-      const depth = (i % 3 + 1) * 0.7;
-      node.style.translate = (currentX * depth) + 'px ' + (currentY * depth) + 'px';
-    });
-    raf = requestAnimationFrame(animateScene);
-  }
-  if (!reduceMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
-    window.addEventListener('pointermove', function (e) {
-      targetX = (e.clientX / window.innerWidth - .5) * 22;
-      targetY = (e.clientY / window.innerHeight - .5) * 16;
-    }, {passive:true});
-    animateScene();
-  }
-
-  // Upgrade existing card tilt with depth + mouse-following light.
-  if (!reduceMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
-    document.querySelectorAll('.link-card, .card, .video-row').forEach(card => {
-      if (card.dataset.odsvr3dBound) return;
-      card.dataset.odsvr3dBound = '1';
-      card.addEventListener('pointermove', function (e) {
-        const r = card.getBoundingClientRect();
-        if (!r.width || !r.height) return;
-        const px = (e.clientX - r.left) / r.width - .5;
-        const py = (e.clientY - r.top) / r.height - .5;
-        const rx = Math.max(-7, Math.min(7, -py * 7));
-        const ry = Math.max(-7, Math.min(7, px * 7));
-        card.style.transform = `translateY(-5px) scale(1.012) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(10px)`;
-        card.style.setProperty('--shine-x', ((px + .5) * 100).toFixed(1) + '%');
-      }, {passive:true});
-      card.addEventListener('pointerleave', function () {
-        card.style.transform = '';
-      });
-    });
-  }
-
-  // Profile image has a softer, slower 3D motion than the cards.
-  const profile = document.getElementById('profile-image');
-  if (profile && !reduceMotion) {
-    profile.addEventListener('pointermove', function(e) {
-      const r = profile.getBoundingClientRect();
-      const px = (e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
-      profile.style.transform = `perspective(700px) rotateX(${-py*9}deg) rotateY(${px*11}deg) translateZ(10px) scale(1.045)`;
-    }, {passive:true});
-    profile.addEventListener('pointerleave', function(){ profile.style.transform=''; });
-  }
-
-  // Smooth 3D-feeling page transition without replacing the site's navigation logic.
-  document.querySelectorAll('nav [data-page]').forEach(btn => {
-    btn.addEventListener('click', function(){
-      if (reduceMotion || !transition) return;
-      document.body.classList.remove('odsvr-page-transition');
-      void document.body.offsetWidth;
-      document.body.classList.add('odsvr-page-transition');
-      window.setTimeout(() => document.body.classList.remove('odsvr-page-transition'), 760);
-    }, {capture:true});
-  });
-
-  window.addEventListener('beforeunload', function(){ if (raf) cancelAnimationFrame(raf); }, {once:true});
-})();
-</script>
-
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a44e8b454fe01575',t:'MTc5MTA1Nzc0MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
