@@ -52,18 +52,7 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [
-    {
-      "user_id": 66260675,
-      "username": "FrenzyFishy",
-      "quantity": 10
-    },
-    {
-      "user_id": 91822319,
-      "username": "arthurit0Z",
-      "quantity": 10
-    }
-  ],
+  "gifts_week": [],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
