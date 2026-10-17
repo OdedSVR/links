@@ -2846,45 +2846,51 @@ function loadEmotesOnce() {
         setInterval(fetchLeaderboardData, 300000);
       }
     }
-
     const videoContainer = document.getElementById('video-container');
-    const YT_API_KEY = 'AIzaSyBuIm8oqjwNoqoNDlq9SG9Iz6IlBBdZsqI';
-    const YT_CHANNEL_ID = 'UCufkmjBPLurietiKoj9cG3w';
-    let videosLoaded = false;
-    async function fetchVideos() {
-      if (!videoContainer) return;
-      const uploadsPlaylistId = YT_CHANNEL_ID.replace('UC', 'UU');
-      const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=${uploadsPlaylistId}&key=${YT_API_KEY}`;
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        if (data.items && data.items.length > 0) {
-          videoContainer.innerHTML = '';
-          data.items.forEach(item => {
-            const videoId = item.snippet.resourceId.videoId;
-            const title = item.snippet.title;
-            const thumbnail = item.snippet.thumbnails.high.url;
-            const videoRow = `
-              <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-row rounded-xl" aria-label="${title} (נפתח בטאב חדש)">
-                <img src="${thumbnail}" alt="${title}" class="w-32 h-20 object-cover rounded-lg ml-6">
-                <div class="flex-1 text-xl font-bold text-white hover:text-blue-400 transition-colors text-right">${title}</div>
-              </a>`;
-            videoContainer.innerHTML += videoRow;
-          });
-        } else {
-          videoContainer.innerHTML = '<p class="text-white/50 col-span-full text-center">לא נמצאו סרטונים.</p>';
-        }
-      } catch (error) {
-        console.error('YouTube API Error:', error);
-        videoContainer.innerHTML = '<p class="text-red-400/50 col-span-full text-center">שגיאה בחיבור ליוטיוב.</p>';
-      }
-    }
-    function loadVideosOnce() {
-      if (videosLoaded) return;
-      videosLoaded = true;
-      fetchVideos();
+let videosLoaded = false;
+
+async function fetchVideos() {
+  if (!videoContainer) return;
+  try {
+    const res = await fetch(WORKER_URL + '/youtube');
+    if (!res.ok) throw new Error(res.status);
+    const videos = await res.json();
+
+    if (!videos.length) {
+      videoContainer.innerHTML = '<p class="text-white/50 col-span-full text-center">לא נמצאו סרטונים.</p>';
+      return;
     }
 
+    videoContainer.replaceChildren(...videos.map(v => {
+      const a = document.createElement('a');
+      a.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(v.id);
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.className = 'video-row rounded-xl';
+      a.setAttribute('aria-label', v.title + ' (נפתח בטאב חדש)');
+
+      const img = document.createElement('img');
+      img.src = v.thumb;
+      img.alt = '';
+      img.className = 'w-32 h-20 object-cover rounded-lg ml-6';
+
+      const t = document.createElement('div');
+      t.className = 'flex-1 text-xl font-bold text-white hover:text-blue-400 transition-colors text-right';
+      t.textContent = v.title;
+
+      a.append(img, t);
+      return a;
+    }));
+  } catch (e) {
+    console.error(e);
+    videoContainer.innerHTML = '<p class="text-red-400/50 col-span-full text-center">שגיאה בחיבור ליוטיוב.</p>';
+  }
+}
+function loadVideosOnce() {
+  if (videosLoaded) return;
+  videosLoaded = true;
+  fetchVideos();
+}
     const COPY_ICON_URL = 'https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/copypaste.png';
 
     function copyCommandText(text, imgEl) {
@@ -3210,5 +3216,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a44e8b454fe01575',t:'MTc5MTA1Nzc0MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a44e8b454fe01575',t:'MTc5MTA1Nzc0MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c1bd9f1ce59a60',t:'MTc5MjI2NTY2Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
