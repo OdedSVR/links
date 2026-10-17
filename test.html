@@ -605,4 +605,161 @@
             <div><div class="cmd-row"><span class="text-white text-lg cmd-code">VISIT!</span></div><div class="cmd-desc">מכניס את הצופה לפארק</div></div>
             <div><div class="cmd-row"><span class="text-white text-lg cmd-code">s text!</span></div><div class="cmd-desc">מציג הודעה מעל הדמות של הצופה</div></div>
             <div><div class="cmd-row"><span class="text-white text-lg cmd-code">where!</span></div><div class="cmd-desc">מסמן את מיקום הדמות כדי שיהיה קל למצוא אותה</div></div>
-            <div><div class="cmd-row"><span class="text
+            <div><div class="cmd-row"><span class="text-white text-lg cmd-code">status!</span></div><div class="cmd-desc">מציג מה הדמות עושה כרגע</div></div>
+            <div><div class="cmd-row"><span class="text-white text-lg cmd-code">leave!</span></div><div class="cmd-desc">הדמות עוזבת את הפארק</div></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card rounded-xl">
+            <h2 class="text-xl font-black text-green-400 mb-4 border-b border-green-400/20 pb-2 font-mono section-title">🏄 פעילויות בפארק</h2>
+            <div class="space-y-3">
+              <div><div class="cmd-code text-white">slide!</div><div class="cmd-desc">הולך להתגלש במגלשה</div></div>
+              <div><div class="cmd-code text-white">swim!</div><div class="cmd-desc">הולך לשחות</div></div>
+              <div><div class="cmd-code text-white">dive!</div><div class="cmd-desc">הולך לקפוץ למים</div></div>
+              <div><div class="cmd-code text-white">relax!</div><div class="cmd-desc">הולך לנוח בכיסא בריכה</div></div>
+              <div><div class="cmd-code text-white">sauna!</div><div class="cmd-desc">הולך לסאונה</div></div>
+              <div><div class="cmd-code text-white">shower!</div><div class="cmd-desc">הולך להתקלח</div></div>
+              <div><div class="cmd-code text-white">sleep!</div><div class="cmd-desc">הולך לישון</div></div>
+              <div><div class="cmd-code text-white">random!</div><div class="cmd-desc">בוחר פעילות אקראית בפארק</div></div>
+            </div>
+          </div>
+          <div class="card rounded-xl">
+            <h2 class="text-xl font-black text-yellow-400 mb-4 border-b border-yellow-400/20 pb-2 font-mono section-title">🍔 אוכל וצרכים</h2>
+            <div class="space-y-3">
+              <div><div class="cmd-code text-white">eat!</div><div class="cmd-desc">הולך לקנות ולאכול</div></div>
+              <div><div class="cmd-code text-white">drink!</div><div class="cmd-desc">הולך לקנות משקה</div></div>
+              <div><div class="cmd-code text-white">poop!</div><div class="cmd-desc">עושה קקי במקום</div></div>
+              <div><div class="cmd-code text-white">pee!</div><div class="cmd-desc">עושה פיפי במקום</div></div>
+              <div><div class="cmd-code text-white">toilet!</div><div class="cmd-desc">הולך לשירותים</div></div>
+              <div><div class="cmd-code text-white">vomit!</div><div class="cmd-desc">מקיא</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- WATERPARK-SECTION-END -->
+
+    <!-- Footer -->
+    <footer class="mt-16 text-center flex flex-col items-center justify-center gap-3 relative z-10 select-none w-full site-footer">
+      <div class="text-[10px] text-white/25 font-normal max-w-md px-6 leading-relaxed" dir="rtl">הקישורים לליברו ומחסני חשמל הם שיתופי פעולה בין עודד לחברות אלו</div>
+      <div class="text-[10px] text-white/30 font-bold tracking-[0.2em] uppercase">© 2026 Piker , OdedSVR. All rights reserved.</div>
+      <div class="flex items-center justify-center gap-4 text-xs font-normal text-white/40">
+        <a href="privacy.html" data-modal="modal-privacy" role="button" class="hover:text-cyan-400 transition-colors duration-200 underline">Privacy Policy</a>
+        <span class="text-white/10">|</span>
+        <a href="accessibility.html" data-modal="modal-accessibility" role="button" class="hover:text-cyan-400 transition-colors duration-200 underline">Accessibility Statement</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Accessibility Panel -->
+  <div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
+    <button id="a11y-fab" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM128,56a16,16,0,1,0,16,16A16,16,0,0,0,128,56Zm40,56a8,8,0,0,1-8,8H136v40h16a8,8,0,0,1,0,16H104a8,8,0,0,1,0-16h16V120H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Z"/></svg>
+    </button>
+  </div>
+
+  <!-- Modals -->
+  <div id="modal-privacy" class="legal-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="legal-modal-box">
+      <div class="legal-modal-header">
+        <div><h2>מדיניות פרטיות</h2><small>PRIVACY POLICY</small></div>
+        <button type="button" class="legal-modal-close" data-close-modal>&times;</button>
+      </div>
+      <div class="legal-modal-body">
+        <p>ברוכים הבאים לעמוד הקישורים הרשמי של OdedSVR. אנו מכבדים את הפרטיות שלכם ומחויבים להגן עליה.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    // Scroll performance optimization using RequestAnimationFrame
+    let isScrolling = false;
+    window.addEventListener('scroll', () => {
+      if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+          const btn = document.getElementById('scroll-down-btn');
+          if (btn) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+              btn.style.opacity = '0'; btn.style.pointerEvents = 'none';
+            } else {
+              btn.style.opacity = '1'; btn.style.pointerEvents = 'auto';
+            }
+          }
+          isScrolling = false;
+        });
+        isScrolling = true;
+      }
+    });
+
+    // Mouse Move optimization via RequestAnimationFrame
+    let mouseX = 0, mouseY = 0;
+    let isMouseTicking = false;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      if (!isMouseTicking) {
+        window.requestAnimationFrame(() => {
+          const spotlight = document.getElementById('spotlight');
+          const charLeft = document.getElementById('char-left');
+          const charRight = document.getElementById('char-right');
+          if (spotlight) { spotlight.style.left = mouseX + 'px'; spotlight.style.top = mouseY + 'px'; }
+          const x = (window.innerWidth - mouseX * 2) / 100;
+          const y = (window.innerHeight - mouseY * 2) / 100;
+          if (charLeft) charLeft.style.transform = `translate(${x}px, ${y}px)`;
+          if (charRight) charRight.style.transform = `translate(${-x}px, ${-y}px)`;
+          isMouseTicking = false;
+        });
+        isMouseTicking = true;
+      }
+    });
+
+    // Page Switching Logic
+    const PAGE_META = {
+      home: { title: 'Oded SVR', subtitle: 'Official Links' },
+      info: { title: 'Oded SVR', subtitle: 'Specs & Commands' },
+      topdonators: { title: 'Oded SVR', subtitle: 'Top Donators' },
+      stats: { title: 'Oded SVR', subtitle: 'Kick Stats & Info' },
+      YTvids: { title: 'OdedSVR Live', subtitle: 'Recent YouTube Videos' },
+      waterpark: { title: 'Oded SVR', subtitle: 'WaterPark Simulator Commands' }
+    };
+
+    function switchPage(pageName) {
+      if (!PAGE_META[pageName]) return;
+      document.body.dataset.page = pageName;
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.toggle('active', section.id === pageName + '-section');
+      });
+      document.querySelectorAll('nav [data-page]').forEach(link => {
+        link.classList.toggle('is-active', link.dataset.page === pageName);
+      });
+      document.getElementById('page-title').textContent = PAGE_META[pageName].title;
+      document.getElementById('page-subtitle').textContent = PAGE_META[pageName].subtitle;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('nav [data-page]').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchPage(button.dataset.page);
+      });
+    });
+
+    // Intro Splash Loader Activation
+    window.addEventListener('load', () => {
+      const splash = document.getElementById('splash-screen');
+      const mainContent = document.getElementById('main-page-content');
+      setTimeout(() => {
+        if (splash) splash.style.opacity = '0';
+        setTimeout(() => {
+          if (splash) splash.style.display = 'none';
+          if (mainContent) mainContent.classList.add('visible');
+        }, 200);
+      }, 300);
+    });
+  </script>
+</body>
+</html>
