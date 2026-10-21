@@ -1143,7 +1143,6 @@
     .cmd-code { font-family: 'Roboto Mono', monospace; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
     .cmd-desc { font-size: 0.85rem; color: #94a3b8; }
     .cmd-copy-icon { width: 18px; height: 18px; flex-shrink: 0; }
-\n\n.link-card { min-height: 112px; }\n.link-card:hover { transform: translateY(-4px); }\n.glow-streak { opacity: .28; }\n.glow-streak.wide { opacity: .10; }\n.ambient-particle { opacity: .65; }\n\n.live-now-card {\n  width: min(100%, 48rem);\n  margin: 0 auto 1.25rem;\n  padding: 1rem 1.15rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 1rem;\n  direction: rtl;\n  border: 1px solid rgba(239,68,68,.28);\n  border-radius: 18px;\n  background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(15,23,42,.78));\n  backdrop-filter: blur(18px);\n  box-shadow: 0 10px 35px rgba(0,0,0,.18), 0 0 25px rgba(239,68,68,.08);\n}\n.live-now-main { min-width: 0; }\n.live-now-indicator { display:flex; align-items:center; gap:7px; color:#f87171; font-size:11px; font-weight:900; letter-spacing:.18em; }\n.live-now-indicator span { width:8px; height:8px; border-radius:50%; background:#ef4444; box-shadow:0 0 12px rgba(239,68,68,.9); animation:pulseLive 1.5s infinite; }\n.live-now-title { margin-top:3px; color:#fff; font-size:1.1rem; font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }\n.live-now-meta { margin-top:2px; display:flex; gap:7px; color:#94a3b8; font-size:.8rem; }\n.live-now-button { flex-shrink:0; padding:.7rem 1rem; border-radius:12px; background:#ef4444; color:#fff; font-weight:900; font-size:.8rem; text-decoration:none; box-shadow:0 7px 18px rgba(239,68,68,.2); transition:transform .2s, background .2s; }\n.live-now-button:hover { transform:translateY(-2px); background:#dc2626; }\n@keyframes pulseLive { 50% { transform:scale(1.25); opacity:.65; } }\n\n/* ===================== Video rows (YouTube Videos) ===================== */
     .video-row {
       display: flex; align-items: center; gap: 0; border-radius: 0.75rem;
       background: rgba(30, 41, 59, 0.6);
@@ -1160,7 +1159,32 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
-    
+    .live-now-card {
+  width: min(100%, 48rem);
+  margin: 0 auto 1.25rem;
+  padding: 1rem 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  direction: rtl;
+  border: 1px solid rgba(239,68,68,.28);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(15,23,42,.78));
+  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 35px rgba(0,0,0,.18), 0 0 25px rgba(239,68,68,.08);
+  position: relative;
+  z-index: 10;
+}
+.live-now-card[hidden] { display: none; }
+.live-now-main { min-width: 0; }
+.live-now-indicator { display:flex; align-items:center; gap:7px; color:#f87171; font-size:11px; font-weight:900; letter-spacing:.18em; }
+.live-now-indicator span { width:8px; height:8px; border-radius:50%; background:#ef4444; box-shadow:0 0 12px rgba(239,68,68,.9); animation:pulseLive 1.5s infinite; }
+.live-now-title { margin-top:3px; color:#fff; font-size:1.1rem; font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.live-now-meta { margin-top:2px; display:flex; gap:7px; color:#94a3b8; font-size:.8rem; }
+.live-now-button { flex-shrink:0; padding:.7rem 1rem; border-radius:12px; background:#ef4444; color:#fff; font-weight:900; font-size:.8rem; text-decoration:none; box-shadow:0 7px 18px rgba(239,68,68,.2); transition:transform .2s, background .2s; }
+.live-now-button:hover { transform:translateY(-2px); background:#dc2626; }
+@keyframes pulseLive { 50% { transform:scale(1.25); opacity:.65; } }
 </style>
 
 <style>
@@ -1264,6 +1288,14 @@
 </div>
 
     <section id="home-section" class="page-section active">
+      <div id="live-now-card" class="live-now-card" hidden>
+  <div class="live-now-main">
+    <div class="live-now-indicator"><span></span>LIVE NOW</div>
+    <div class="live-now-title" id="live-stream-title"></div>
+    <div class="live-now-meta"><span id="live-stream-category"></span><span>·</span><span id="live-stream-viewers"></span></div>
+  </div>
+  <a class="live-now-button" href="https://kick.com/odedsvr" target="_blank" rel="noopener noreferrer">צפה עכשיו</a>
+</div>
 <div class="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto relative z-10" dir="ltr" id="links-grid">
 <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-2" dir="rtl">
 <span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">שיתופי פעולה</span>
