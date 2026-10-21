@@ -13,7 +13,7 @@
     {
       "user_id": 89935315,
       "username": "eylon1",
-      "quantity": 1153
+      "quantity": 1183
     },
     {
       "user_id": 67453019,
@@ -43,7 +43,7 @@
     {
       "user_id": 36321413,
       "username": "absolute_alamo",
-      "quantity": 414
+      "quantity": 419
     },
     {
       "user_id": 2757848,
@@ -52,9 +52,60 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 30
+    },
+    {
+      "user_id": 36321413,
+      "username": "absolute_alamo",
+      "quantity": 5
+    },
+    {
+      "user_id": 67509399,
+      "username": "LR_B",
+      "quantity": 5
+    },
+    {
+      "user_id": 79131713,
+      "username": "Eliyahu20",
+      "quantity": 1
+    },
+    {
+      "user_id": 84731290,
+      "username": "valorage",
+      "quantity": 1
+    },
+    {
+      "user_id": 23453771,
+      "username": "eyal1l",
+      "quantity": 1
+    },
+    {
+      "user_id": 122733422,
+      "username": "justyinon",
+      "quantity": 1
+    },
+    {
+      "user_id": 32368261,
+      "username": "AActivee",
+      "quantity": 1
+    },
+    {
+      "user_id": 71841512,
+      "username": "OfficialBenLavi",
+      "quantity": 1
+    }
+  ],
   "gifts_week_enabled": true,
   "gifts_month": [
+    {
+      "user_id": 89935315,
+      "username": "eylon1",
+      "quantity": 31
+    },
     {
       "user_id": 102379880,
       "username": "MAOR_IL",
@@ -71,11 +122,6 @@
       "quantity": 15
     },
     {
-      "user_id": 121955980,
-      "username": "refaelsvr",
-      "quantity": 6
-    },
-    {
       "user_id": 76906863,
       "username": "liad_000",
       "quantity": 6
@@ -86,24 +132,24 @@
       "quantity": 6
     },
     {
+      "user_id": 121955980,
+      "username": "refaelsvr",
+      "quantity": 6
+    },
+    {
+      "user_id": 67509399,
+      "username": "LR_B",
+      "quantity": 5
+    },
+    {
+      "user_id": 36321413,
+      "username": "absolute_alamo",
+      "quantity": 5
+    },
+    {
       "user_id": 132430579,
       "username": "kazn0va",
       "quantity": 5
-    },
-    {
-      "user_id": 81330602,
-      "username": "HalfMoonW",
-      "quantity": 5
-    },
-    {
-      "user_id": 85533447,
-      "username": "jelly_frost",
-      "quantity": 2
-    },
-    {
-      "user_id": 77074347,
-      "username": "Aprilllx",
-      "quantity": 2
     }
   ],
   "gifts_month_enabled": true
