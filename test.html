@@ -1143,7 +1143,12 @@
     .cmd-code { font-family: 'Roboto Mono', monospace; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
     .cmd-desc { font-size: 0.85rem; color: #94a3b8; }
     .cmd-copy-icon { width: 18px; height: 18px; flex-shrink: 0; }
-    /* ===================== Video rows (YouTube Videos) ===================== */
+.link-card { min-height: 112px; }
+.link-card:hover { transform: translateY(-4px); }
+.glow-streak { opacity: .28; }
+.glow-streak.wide { opacity: .10; }
+.ambient-particle { opacity: .65; }
+
 .live-now-card {
   width: min(100%, 48rem);
   margin: 0 auto 1.25rem;
@@ -1171,13 +1176,23 @@
 .live-now-button:hover { transform:translateY(-2px); background:#dc2626; }
 @keyframes pulseLive { 50% { transform:scale(1.25); opacity:.65; } }
 
-button.libero-badge { cursor:pointer; font-family:inherit; transition:background .2s, transform .2s; }
-button.libero-badge:hover { background:rgba(168,85,247,.28); transform:scale(1.05); }
+/* ===================== Video rows (YouTube Videos) ===================== */
+    .video-row {
+      display: flex; align-items: center; gap: 0; border-radius: 0.75rem;
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0.75rem;
+      height: 100%;
+    }
+    .video-row:hover {
+      background: rgba(30, 41, 59, 0.85);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
 
-.skeleton { height:44px; border-radius:10px; margin:8px 0;
-  background:linear-gradient(90deg, rgba(255,255,255,.04) 25%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.04) 75%);
-  background-size:200% 100%; animation:shimmer 1.4s infinite; }
-@keyframes shimmer { to { background-position:-200% 0; } }
     
 </style>
 
@@ -1287,6 +1302,12 @@ button.libero-badge:hover { background:rgba(168,85,247,.28); transform:scale(1.0
     <div class="live-now-indicator"><span></span>LIVE NOW</div>
     <div class="live-now-title" id="live-stream-title"></div>
     <div class="live-now-meta"><span id="live-stream-category"></span><span>·</span><span id="live-stream-viewers"></span></div>
+    <a aria-label="🫣🤫 (נפתח בטאב חדש)" class="link-card md:col-span-2 block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" href="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/Subthon.jpg" style="--glow-rgb: 34, 211, 238;" target="_blank" rel="noopener noreferrer">
+<div class="card-glow-bg"></div>
+<div class="text-lg md:text-xl font-black text-cyan-300 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+<span>🫣🤫</span>
+</div>
+</a>
   </div>
   <a class="live-now-button" href="https://kick.com/odedsvr" target="_blank" rel="noopener noreferrer">צפה עכשיו</a>
 </div>
@@ -1312,7 +1333,8 @@ button.libero-badge:hover { background:rgba(168,85,247,.28); transform:scale(1.0
 </div>
 <div class="md:col-span-2 w-full link-card libero-card p-6 group" dir="rtl" style="--glow-rgb: 168, 85, 247;">
 <div class="card-glow-bg"></div>
-<button type="button" class="libero-badge" onclick="copyPromo('OSVR10', this)">קוד: OSVR10 · העתק 📋</button><div class="relative z-10">
+<span class="libero-badge">קוד: OSVR10</span>
+<div class="relative z-10">
 <div class="flex items-center justify-center gap-3 mb-4">
 <div class="libero-icon-wrap text-2xl">💎</div>
 <div class="text-center">
@@ -1488,7 +1510,7 @@ button.libero-badge:hover { background:rgba(168,85,247,.28); transform:scale(1.0
             </summary>
             <div class="stats-panel-content">
               <div id="kicklogz-active-container" class="overflow-x-auto">
-                <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+                <p class="text-sm text-gray-300 animate-pulse text-center">טוען נתונים...</p>
               </div>
             </div>
           </details>
@@ -2596,13 +2618,7 @@ for (let i = 0; i < 1; i++) {
         showWordHighlight(label.substring(0,15) + '...');
       }
     });
-function copyPromo(code, el) {
-  const original = el.textContent;
-  navigator.clipboard.writeText(code).then(() => {
-    el.textContent = 'הועתק ✓';
-    setTimeout(() => el.textContent = original, 1500);
-  }).catch(() => {});
-}
+
     function copyCmd(text, el) {
       navigator.clipboard.writeText(text).then(() => {
         el.classList.add('copy-success');
@@ -2765,7 +2781,7 @@ async function fetchEmotesData() {
             const watchtime = formatWatchtime(user);
             tableHtml += `
               <tr>
-                   <td class="stat-rank">${['🥇','🥈','🥉'][index] || index + 1}</td>
+                <td class="stat-rank">${index + 1}</td>
                 <td class="text-white font-bold">${escapeHtml(username)}</td>
                 <td class="stat-highlight">${escapeHtml(watchtime)}</td>
               </tr>
@@ -2788,7 +2804,7 @@ if (labels.length > 0 && values.length > 0) {
     const val = values[index] !== undefined ? values[index] : 0;
     tableHtml += `
       <tr>
-        <td class="stat-rank">${['🥇','🥈','🥉'][index] || index + 1}</td>
+        <td class="stat-rank">${index + 1}</td>
         <td class="text-white font-bold">${escapeHtml(username)}</td>
         <td class="stat-highlight">${val.toLocaleString('he-IL')}</td>
       </tr>
@@ -2859,7 +2875,7 @@ function loadEmotesOnce() {
       users.forEach((user, index) => {
         tableHtml += `
           <tr>
-            <td>${['🥇','🥈','🥉'][index] || index + 1}</td>
+            <td>${index + 1}</td>
             <td class="${usernameClass}">${escapeHtml(user.username)}</td>
             <td>${escapeHtml(user.quantity || 0)}</td>
           </tr>
