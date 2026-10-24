@@ -89,6 +89,11 @@
       "quantity": 10
     },
     {
+      "user_id": 80870837,
+      "username": "oshrisisam",
+      "quantity": 5
+    },
+    {
       "user_id": 116423212,
       "username": "megadodoking",
       "quantity": 5
@@ -97,11 +102,6 @@
       "user_id": 67509399,
       "username": "LR_B",
       "quantity": 5
-    },
-    {
-      "user_id": 3138930,
-      "username": "gerbi",
-      "quantity": 1
     }
   ],
   "gifts_week_enabled": true,
