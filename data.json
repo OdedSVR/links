@@ -54,6 +54,11 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
+      "user_id": 3901323,
+      "username": "devidtur",
+      "quantity": 5
+    },
+    {
       "user_id": 106175670,
       "username": "Nahum669",
       "quantity": 1
@@ -92,23 +97,23 @@
       "quantity": 16
     },
     {
-      "user_id": 91822319,
-      "username": "arthurit0Z",
-      "quantity": 15
-    },
-    {
       "user_id": 125072246,
       "username": "itzik_lee",
       "quantity": 15
     },
     {
-      "user_id": 102754372,
-      "username": "Mar_Alpha",
-      "quantity": 10
+      "user_id": 91822319,
+      "username": "arthurit0Z",
+      "quantity": 15
     },
     {
       "user_id": 36321413,
       "username": "absolute_alamo",
+      "quantity": 10
+    },
+    {
+      "user_id": 102754372,
+      "username": "Mar_Alpha",
       "quantity": 10
     }
   ],
