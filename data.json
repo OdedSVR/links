@@ -59,6 +59,11 @@
       "quantity": 5
     },
     {
+      "user_id": 102754372,
+      "username": "Mar_Alpha",
+      "quantity": 1
+    },
+    {
       "user_id": 106175670,
       "username": "Nahum669",
       "quantity": 1
@@ -107,13 +112,13 @@
       "quantity": 15
     },
     {
-      "user_id": 36321413,
-      "username": "absolute_alamo",
-      "quantity": 10
-    },
-    {
       "user_id": 102754372,
       "username": "Mar_Alpha",
+      "quantity": 11
+    },
+    {
+      "user_id": 36321413,
+      "username": "absolute_alamo",
       "quantity": 10
     }
   ],
