@@ -54,54 +54,9 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
-      "user_id": 89935315,
-      "username": "eylon1",
-      "quantity": 55
-    },
-    {
-      "user_id": 67453019,
-      "username": "natanelf",
-      "quantity": 40
-    },
-    {
-      "user_id": 32602400,
-      "username": "Thekoa1a",
-      "quantity": 35
-    },
-    {
-      "user_id": 100752060,
-      "username": "CatK1ll3r",
-      "quantity": 16
-    },
-    {
-      "user_id": 125072246,
-      "username": "itzik_lee",
-      "quantity": 15
-    },
-    {
-      "user_id": 102754372,
-      "username": "Mar_Alpha",
-      "quantity": 10
-    },
-    {
-      "user_id": 36321413,
-      "username": "absolute_alamo",
-      "quantity": 10
-    },
-    {
-      "user_id": 80870837,
-      "username": "oshrisisam",
-      "quantity": 5
-    },
-    {
-      "user_id": 116423212,
-      "username": "megadodoking",
-      "quantity": 5
-    },
-    {
-      "user_id": 67509399,
-      "username": "LR_B",
-      "quantity": 5
+      "user_id": 106175670,
+      "username": "Nahum669",
+      "quantity": 1
     }
   ],
   "gifts_week_enabled": true,
