@@ -54,18 +54,38 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
+      "user_id": 76353897,
+      "username": "Liad1010",
+      "quantity": 5
+    },
+    {
       "user_id": 3901323,
       "username": "devidtur",
       "quantity": 5
     },
     {
-      "user_id": 102754372,
-      "username": "Mar_Alpha",
-      "quantity": 1
+      "user_id": 103807498,
+      "username": "Macabitelaviv",
+      "quantity": 2
     },
     {
       "user_id": 106175670,
       "username": "Nahum669",
+      "quantity": 1
+    },
+    {
+      "user_id": 79721281,
+      "username": "nikasapoz",
+      "quantity": 1
+    },
+    {
+      "user_id": 76923448,
+      "username": "Jonetsu_YG",
+      "quantity": 1
+    },
+    {
+      "user_id": 102754372,
+      "username": "Mar_Alpha",
       "quantity": 1
     }
   ],
