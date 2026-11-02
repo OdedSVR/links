@@ -54,16 +54,66 @@
   "gifts_enabled": true,
   "gifts_week": [
     {
+      "user_id": 77249287,
+      "username": "Redeye1yt",
+      "quantity": 34
+    },
+    {
+      "user_id": 87740863,
+      "username": "Divine245",
+      "quantity": 20
+    },
+    {
+      "user_id": 103807498,
+      "username": "Macabitelaviv",
+      "quantity": 8
+    },
+    {
       "user_id": 71841512,
       "username": "OfficialBenLavi",
+      "quantity": 1
+    },
+    {
+      "user_id": 94458251,
+      "username": "razagever",
+      "quantity": 1
+    },
+    {
+      "user_id": 118517457,
+      "username": "silentY10",
       "quantity": 1
     }
   ],
   "gifts_week_enabled": true,
   "gifts_month": [
     {
+      "user_id": 77249287,
+      "username": "Redeye1yt",
+      "quantity": 34
+    },
+    {
+      "user_id": 87740863,
+      "username": "Divine245",
+      "quantity": 20
+    },
+    {
+      "user_id": 103807498,
+      "username": "Macabitelaviv",
+      "quantity": 8
+    },
+    {
       "user_id": 71841512,
       "username": "OfficialBenLavi",
+      "quantity": 1
+    },
+    {
+      "user_id": 94458251,
+      "username": "razagever",
+      "quantity": 1
+    },
+    {
+      "user_id": 118517457,
+      "username": "silentY10",
       "quantity": 1
     }
   ],
