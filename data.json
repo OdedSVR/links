@@ -52,8 +52,20 @@
     }
   ],
   "gifts_enabled": true,
-  "gifts_week": [],
+  "gifts_week": [
+    {
+      "user_id": 71841512,
+      "username": "OfficialBenLavi",
+      "quantity": 1
+    }
+  ],
   "gifts_week_enabled": true,
-  "gifts_month": [],
+  "gifts_month": [
+    {
+      "user_id": 71841512,
+      "username": "OfficialBenLavi",
+      "quantity": 1
+    }
+  ],
   "gifts_month_enabled": true
 }
