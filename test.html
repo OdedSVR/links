@@ -707,6 +707,63 @@
   letter-spacing: 0.1em;
   margin-top: 1px;
 }
+.luz-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  min-height: 96px;
+}
+.luz-card:hover {
+  border-color: rgba(34, 211, 238, 0.55);
+  box-shadow: 0 12px 34px -12px rgba(34, 211, 238, 0.45), 0 0 24px 0 rgba(34, 211, 238, 0.2);
+}
+.luz-spin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 320%;
+  aspect-ratio: 1;
+  background: conic-gradient(from 0deg,
+    transparent 0deg,
+    transparent 260deg,
+    #22d3ee 300deg,
+    #67e8f9 330deg,
+    #22d3ee 350deg,
+    transparent 360deg);
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: luzSpin 5s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+.luz-inner {
+  position: absolute;
+  inset: 2px;
+  border-radius: calc(1rem - 2px);
+  background: linear-gradient(160deg, rgb(10, 48, 66), rgb(15, 23, 42) 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes luzSpin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.luz-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.28), rgba(34, 211, 238, 0.04));
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 22px rgba(34, 211, 238, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.luz-icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
     .link-card:nth-child(2){animation-delay:.05s}
     .link-card:nth-child(3){animation-delay:.10s}
     .link-card:nth-child(4){animation-delay:.15s}
@@ -1316,10 +1373,16 @@
 <span class="text-[11px] font-black text-white/35 tracking-[0.25em] uppercase whitespace-nowrap">שיתופי פעולה</span>
 <span class="flex-1 h-px bg-white/10"></span>
 </div>
-  <a aria-label="LUZ X SVR (נפתח בטאב חדש)" class="link-card md:col-span-2 block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" href="https://luzstudios.store/password" style="--glow-rgb: 251, 191, 36;" target="_blank" rel="noopener noreferrer">
-<div class="card-glow-bg"></div>
-<div class="text-xl md:text-2xl font-black text-yellow-300 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
-<span>LUZ X SVR</span>
+<a aria-label="LUZ X SVR (נפתח בטאב חדש)" class="md:col-span-2 w-full link-card luz-card group flex items-center justify-center text-center h-[96px]" dir="rtl" href="https://luzstudios.store/password" style="--glow-rgb: 34, 211, 238;" target="_blank" rel="noopener noreferrer">
+<span class="luz-spin"></span>
+<span class="luz-inner"></span>
+<div class="relative z-10 flex items-center justify-center gap-3">
+<div class="luz-icon-wrap">
+<img alt="" aria-hidden="true" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/luz.png"/>
+</div>
+<div class="text-xl md:text-2xl font-black text-blue-300 group-hover:scale-105 transition-transform duration-200">
+<span>LÜZ X SVR</span>
+</div>
 </div>
 </a>
 <div class="md:col-span-2 w-full link-card power-card p-6 group" dir="rtl" style="--glow-rgb: 245, 158, 11;">
@@ -1357,16 +1420,22 @@
 </a>
 <div class="libero-section-label">מבצעי בשמים</div>
 <div class="grid grid-cols-2 gap-3">
-<a aria-label="בשמי Fomowa - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)" class="libero-btn" href="https://libero-il.co.il/?s=fomowa&amp;jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&amp;post_type=product&amp;jet_ajax_search_categories=0" target="_blank">
+<a aria-label="בשמי מרקיזה 1+1 OSVR (נפתח בטאב חדש)" class="libero-btn" href="https://libero-il.co.il/brands/%d7%9e%d7%a8%d7%a7%d7%99%d7%96%d7%94-%d7%93%d7%95%d7%91%d7%90%d7%99-marquisa-dubai/" target="_blank">
 <span style="font-size:20px;">🌸</span>
-<span class="libero-btn-name">Fomowa</span>
-<span class="libero-discount-tag">🎁 50% על השני</span>
+<span class="libero-btn-name">Marquisa</span>
+<span class="libero-discount-tag">🎁 1+1</span>
 <span class="libero-code-tag">קוד: OSVR</span>
 </a>
 <a aria-label="בשמי Emper - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)" class="libero-btn" href="https://libero-il.co.il/?s=emper&amp;jet_ajax_search_settings=%7B%22search_taxonomy%22%3A%22brands%22%2C%22search_in_taxonomy%22%3Atrue%2C%22search_in_taxonomy_source%22%3A%5B%22brands%22%5D%7D&amp;post_type=product&amp;jet_ajax_search_categories=0" target="_blank">
 <span style="font-size:20px;">🌺</span>
 <span class="libero-btn-name">Emper</span>
 <span class="libero-discount-tag">🎁 50% על השני</span>
+<span class="libero-code-tag">קוד: OSVR</span>
+</a>
+<a aria-label="בשמי Emper - 50 אחוז הנחה על הבושם השני עם קוד OSVR (נפתח בטאב חדש)" class="libero-btn" href="https://libero-il.co.il/brands/noya/" target="_blank">
+<span style="font-size:20px;">🏵️</span>
+<span class="libero-btn-name">נ</span>
+<span class="libero-discount-tag">🎁 מקבלים בושם עד 300 שח במתנה</span>
 <span class="libero-code-tag">קוד: OSVR</span>
 </a>
 </div>
@@ -1416,6 +1485,13 @@
 <div class="text-lg md:text-xl font-black text-pink-400 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
 <img alt="" aria-hidden="true" class="h-6 w-6 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/instlogo.png"/>
 <span>Instagram</span>
+</div>
+</a>
+  <a aria-label="ערוץ הקליפים של עודד ביוטיוב (נפתח בטאב חדש)" class="link-card md:col-span-2 block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" href="https://www.youtube.com/@OdedSVRLiveTwo" style="--glow-rgb: 239, 68, 68;" target="_blank" rel="noopener noreferrer">
+<div class="card-glow-bg"></div>
+<div class="text-lg md:text-xl font-black text-red-500 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
+<img alt="" aria-hidden="true" class="h-7 w-7 object-contain" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/YTLOGO.png"/>
+<span>Clips</span>
 </div>
 </a>
 </div>
