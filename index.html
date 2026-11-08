@@ -93,19 +93,6 @@ body:before {
     radial-gradient(circle at 50% 92%, rgba(85,124,255,.11), transparent 36%),
     linear-gradient(180deg, #080b16 0%, #0a1020 50%, #070b16 100%);
 }
-.noise {
-  position: fixed; inset: 0; z-index: -3; pointer-events: none; opacity: .04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.tech-bg {
-  position: fixed; inset: 0; z-index: -4; opacity: .20; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(87,216,255,.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(155,114,255,.045) 1px, transparent 1px);
-  background-size: 52px 52px;
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent 85%);
-  mask-image: linear-gradient(to bottom, black, transparent 85%);
-}
 .glow { position: fixed; width: 420px; height: 420px; border-radius: 50%; filter: blur(90px); opacity: .18; pointer-events: none; z-index: -2; }
 .glow.one { top: 5%; right: -150px; background: #9b72ff; }
 .glow.two { top: 45%; left: -180px; background: #57d8ff; }
@@ -121,28 +108,18 @@ body:before {
 
 /* ---------- Scroll-down button ---------- */
 #scroll-down-btn {
-  position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); z-index: 9999;
-  width: 50px; height: 50px;
+  position: fixed; bottom: 20px; right: 16px; z-index: 9999;
+  width: 46px; height: 46px;
   background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.2);
   backdrop-filter: blur(10px); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: white; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.4);
   transition: background .3s ease, border-color .3s ease, box-shadow .3s ease, opacity .3s ease, visibility .3s;
-  animation: bounceCentral 2s infinite;
 }
 #scroll-down-btn.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 #scroll-down-btn:hover { background: rgba(34,211,238,.2); border-color: #22d3ee; box-shadow: 0 0 15px rgba(34,211,238,.5); }
-@keyframes bounceCentral {
-  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-  40% { transform: translateX(-50%) translateY(6px); }
-  60% { transform: translateX(-50%) translateY(3px); }
-}
 
 /* ---------- Decorative layers ---------- */
-.static-bubble {
-  position: fixed; border: 2px solid rgba(147,197,253,.4); border-radius: 50%;
-  background: rgba(147,197,253,.08); pointer-events: none; z-index: 1;
-}
 #char-right, #char-left {
   position: fixed; top: 50%; width: 600px; height: 900px;
   background-size: contain; background-repeat: no-repeat; background-position: center;
@@ -183,25 +160,12 @@ body:before {
   #char-right, #char-left { display: none; }
   .mobile-char-glow { display: block; }
 }
-#spotlight {
-  position: fixed; top: 0; left: 0; width: 450px; height: 450px;
-  background: radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 70%);
-  border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%);
-  z-index: 2; display: none; will-change: transform;
-}
 .ambient-particle { position: fixed; bottom: -10px; border-radius: 50%; pointer-events: none; z-index: 1; opacity: 0; }
 @keyframes floatParticle {
   0% { transform: translateY(0) translateX(0); opacity: 0; }
   15% { opacity: .7; }
   70% { transform: translateY(-60vh) translateX(15px); opacity: .5; }
   100% { transform: translateY(-100vh) translateX(-10px); opacity: 0; }
-}
-.glow-bubble { position: fixed; bottom: -80px; border-radius: 50%; pointer-events: none; z-index: 1; opacity: 0; filter: blur(6px); }
-@keyframes floatBubble {
-  0% { transform: translateY(0) translateX(0) scale(.8); opacity: 0; }
-  12% { opacity: .35; }
-  55% { transform: translateY(-55vh) translateX(20px) scale(1.05); opacity: .25; }
-  100% { transform: translateY(-110vh) translateX(-15px) scale(.9); opacity: 0; }
 }
 
 /* ---------- Link cards ---------- */
@@ -653,14 +617,14 @@ body.a11y-focus-visible :focus { outline: 3px solid #22d3ee !important; outline-
 body.a11y-kbd-outline :is(a, button, summary, input, select) { outline: 2px solid #22d3ee; outline-offset: 3px; }
 body.a11y-focus-mode :is(.link-card, .card, .video-row, .stats-panel) { transition: opacity .2s; }
 body.a11y-focus-mode :is(.link-card, .card, .video-row):not(:hover):not(:focus-within) { opacity: .4; }
-body.a11y-calm :is(#char-left, #char-right, .mobile-char-glow, #particle-layer, .static-bubble, .glow, .tech-bg, .noise, #spotlight) { display: none !important; }
+body.a11y-calm :is(#char-left, #char-right, .mobile-char-glow, #particle-layer, .glow) { display: none !important; }
 /* כשמופעלת ניגודיות כהה (invert) מחזירים תמונות לצבען המקורי */
 html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-rotate(180deg); }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
-  #particle-layer, #spotlight { display: none !important; }
+  #particle-layer { display: none !important; }
 }
 
 /* ---------- Accessibility panel helpers ---------- */
@@ -674,25 +638,58 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
 #main-content:focus { outline: none; }
 
 .stats-accordion { width: 100%; }
+
+/* ============ Design pass 2 ============ */
+/* דמויות: לא מכסות תוכן במסכים בינוניים */
+@media (min-width: 769px) and (max-width: 1100px) {
+  #char-right, #char-left { width: 360px; height: 540px; opacity: .45; z-index: 0; }
+}
+/* ליברו: מבצעי הבשמים מתקפלים */
+.libero-deals > summary { list-style: none; cursor: pointer; user-select: none; }
+.libero-deals > summary::-webkit-details-marker { display: none; }
+.libero-deals > summary:focus-visible { outline: 3px solid #22d3ee; outline-offset: 3px; border-radius: 6px; }
+.libero-deals > summary::after { order: 1; }
+.libero-chev { order: 2; font-size: 18px; line-height: 1; color: #d8b4fe; transition: transform .25s ease; }
+.libero-deals[open] .libero-chev { transform: rotate(180deg); }
+/* טבלאות: מדליות והדגשת שלושת הראשונים */
+.rank-medal { font-size: 1.2em; line-height: 1; }
+.donators-table tr.rank-1 td { background: rgba(250, 204, 21, .09); }
+.donators-table tr.rank-2 td { background: rgba(203, 213, 225, .07); }
+.donators-table tr.rank-3 td { background: rgba(251, 146, 60, .08); }
+.donators-table tr.rank-1 td:nth-child(2) { color: #fde68a; font-weight: 900; }
+/* skeleton loaders */
+.skeleton { display: block; border-radius: 10px; background: linear-gradient(90deg, rgba(255,255,255,.05) 25%, rgba(255,255,255,.12) 50%, rgba(255,255,255,.05) 75%); background-size: 200% 100%; animation: skeletonShimmer 1.4s linear infinite; }
+.skeleton-list { display: flex; flex-direction: column; gap: 10px; padding-top: 6px; }
+.skeleton-list .skeleton { height: 36px; }
+.skeleton-chips { display: flex; flex-wrap: wrap; gap: 7px; padding-top: 16px; }
+.skeleton-chips .skeleton { width: 58px; height: 58px; }
+.skeleton-video { height: 104px; border-radius: .75rem; }
+@keyframes skeletonShimmer { to { background-position: -200% 0; } }
+
+/* ליברו: כפתור ברור לפתיחת המבצעים */
+.libero-deals { margin-top: 14px; }
+.libero-deals > summary.libero-deals-toggle { display: flex; align-items: center; justify-content: center; gap: 10px; padding: .85rem 1rem; border-radius: .85rem; background: linear-gradient(135deg, rgba(168,85,247,.30), rgba(240,171,252,.14)); border: 1px solid rgba(216,180,254,.55); color: #f3e8ff; font-weight: 900; font-size: 15px; box-shadow: 0 0 18px rgba(168,85,247,.25); transition: background .2s, box-shadow .2s, transform .2s; }
+.libero-deals > summary.libero-deals-toggle:hover { background: linear-gradient(135deg, rgba(168,85,247,.45), rgba(240,171,252,.22)); box-shadow: 0 0 24px rgba(168,85,247,.4); transform: translateY(-2px); }
+.libero-deals > summary.libero-deals-toggle::after { content: none; }
+.libero-toggle-text .when-open { display: none; }
+.libero-deals[open] .libero-toggle-text .when-open { display: inline; }
+.libero-deals[open] .libero-toggle-text .when-closed { display: none; }
+.libero-deals > summary.libero-deals-toggle .libero-chev { font-size: 20px; color: #f3e8ff; }
+@media (prefers-reduced-motion: no-preference) { .libero-deals:not([open]) > summary.libero-deals-toggle .libero-chev { animation: chevNudge 1.8s ease-in-out infinite; } }
+@keyframes chevNudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
   </style>
 </head>
 <body>
   <a href="#main-content" id="skip-link">דלג לתוכן</a>
 
   <!-- שכבות רקע דקורטיביות -->
-  <div class="tech-bg" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
   <div class="glow one" aria-hidden="true"></div>
   <div class="glow two" aria-hidden="true"></div>
   <div class="glow three" aria-hidden="true"></div>
-  <div class="static-bubble" style="left:10%; bottom:15%; width:30px; height:30px; animation: floatBubble 12s ease-in-out infinite;" aria-hidden="true"></div>
-  <div class="static-bubble" style="left:16%; bottom:8%; width:18px; height:18px; animation: floatBubble 9s ease-in-out infinite 1.5s;" aria-hidden="true"></div>
-  <div class="static-bubble" style="left:6%; bottom:25%; width:14px; height:14px; animation: floatBubble 15s ease-in-out infinite 3s;" aria-hidden="true"></div>
   <div id="char-right" aria-hidden="true"></div>
   <div id="char-left" aria-hidden="true"></div>
   <div id="mobile-glow-right" class="mobile-char-glow" aria-hidden="true"></div>
   <div id="mobile-glow-left" class="mobile-char-glow" aria-hidden="true"></div>
-  <div id="spotlight" aria-hidden="true"></div>
   <div id="particle-layer" aria-hidden="true"></div>
   <div id="reading-guide-bar" aria-hidden="true"></div>
 
@@ -715,11 +712,11 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
 
   <div id="main-page-content" class="flex flex-col items-center px-6 py-12">
     <nav class="main-nav" aria-label="ניווט ראשי">
-      <a href="#stats" data-page="stats" class="main-nav-item"><span>Kick Stats &amp; Info</span></a>
-      <a href="#topdonators" data-page="topdonators" class="main-nav-item"><span>Donators</span></a>
-      <a href="#info" data-page="info" class="main-nav-item"><span>Info</span></a>
-      <a href="#YTvids" data-page="YTvids" class="main-nav-item"><span>Videos</span></a>
       <a href="#home" data-page="home" class="main-nav-item is-active" aria-current="page"><span>Home</span></a>
+      <a href="#YTvids" data-page="YTvids" class="main-nav-item"><span>Videos</span></a>
+      <a href="#info" data-page="info" class="main-nav-item"><span>Info</span></a>
+      <a href="#topdonators" data-page="topdonators" class="main-nav-item"><span>Donators</span></a>
+      <a href="#stats" data-page="stats" class="main-nav-item"><span>Kick Stats &amp; Info</span></a>
 <!-- WATERPARK-PROTECTED: Keep this section. Remove ONLY if user explicitly asks to delete Waterpark. -->
 <!-- <a href="#waterpark" data-page="waterpark" class="main-nav-item"><span>WaterPark</span></a> -->
     </nav>
@@ -737,18 +734,18 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
       </a>
       <h1 class="hero-title text-4xl md:text-5xl font-black tracking-tight mt-4 mb-2" id="page-title">Oded SVR</h1>
       <div class="flex items-center justify-center gap-2">
-        <span class="hidden items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="live-badge" style="box-shadow:0 0 0 0 rgba(239,68,68,0.5); animation: liveBadgeGlow 2s ease-out infinite;">
+        <span class="hidden items-center gap-1.5 bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="live-badge" style="box-shadow:0 0 0 0 rgba(239,68,68,0.5); animation: liveBadgeGlow 2s ease-out infinite;">
           <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse inline-block"></span>
           LIVE NOW
         </span>
-        <span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/70 text-[11px] font-black tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="viewer-count-badge">
+        <span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/70 text-xs font-black tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="viewer-count-badge">
           <span aria-hidden="true">👁️</span> <span id="viewer-count-num">0</span>
         </span>
-        <span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/70 text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="offline-badge">
+        <span class="hidden items-center gap-1.5 bg-white/5 border border-white/10 text-white/70 text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full backdrop-blur-md" id="offline-badge">
           <span class="w-2 h-2 bg-white/40 rounded-full inline-block"></span>
           OFFLINE
         </span>
-        <span class="text-[11px] text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full" id="page-subtitle">Official Links</span>
+        <span class="text-xs text-cyan-400/80 font-extrabold tracking-[0.3em] uppercase bg-cyan-950/40 border border-cyan-500/20 px-3 py-1 rounded-full" id="page-subtitle">Official Links</span>
       </div>
     </header>
 
@@ -775,7 +772,7 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
         </a>
 
         <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-2" dir="rtl">
-          <span class="text-[11px] font-black text-white/60 tracking-[0.25em] uppercase whitespace-nowrap">שיתופי פעולה</span>
+          <span class="text-xs font-black text-white/60 tracking-[0.25em] uppercase whitespace-nowrap">שיתופי פעולה</span>
           <span class="flex-1 h-px bg-white/10"></span>
         </div>
 
@@ -819,15 +816,16 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
                   <span>ליברו</span>
                   <span aria-hidden="true">💎</span>
                 </div>
-                <div class="text-[11px] text-purple-300/80 font-bold tracking-widest uppercase mt-0.5">10% הנחה על כל האתר עם OSVR10</div>
+                <div class="text-xs text-purple-300/80 font-bold tracking-widest uppercase mt-0.5">10% הנחה על כל האתר עם OSVR10</div>
               </div>
             </div>
             <a aria-label="לאתר ליברו (נפתח בטאב חדש)" class="libero-btn main" href="https://libero-il.co.il/" target="_blank" rel="noopener noreferrer">
               <span style="font-size:18px;" aria-hidden="true">🛍️</span>
               <span class="libero-btn-name">לכל האתר</span>
             </a>
-            <div class="libero-section-label">מבצעי בשמים</div>
-            <div class="grid grid-cols-2 gap-3">
+            <details class="libero-deals">
+              <summary class="libero-deals-toggle"><span aria-hidden="true">🎁</span><span class="libero-toggle-text"><span class="when-closed">לחצו לצפייה במבצעי הבשמים (3)</span><span class="when-open">הסתר את מבצעי הבשמים</span></span><span class="libero-chev" aria-hidden="true">⌄</span></summary>
+            <div class="grid grid-cols-2 gap-3 mt-3">
               <a aria-label="בשמי מרקיזה 1+1 OSVR (נפתח בטאב חדש)" class="libero-btn" href="https://libero-il.co.il/brands/%d7%9e%d7%a8%d7%a7%d7%99%d7%96%d7%94-%d7%93%d7%95%d7%91%d7%90%d7%99-marquisa-dubai/" target="_blank" rel="noopener noreferrer">
                 <span style="font-size:20px;" aria-hidden="true">🌸</span>
                 <span class="libero-btn-name">Marquisa</span>
@@ -847,14 +845,14 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
                 <span class="libero-code-tag">קוד: OSVR</span>
               </a>
             </div>
+            </details>
           </div>
         </div>
 
         <div class="md:col-span-2 flex items-center gap-3 px-1 mb-1 mt-3" dir="rtl">
-          <span class="text-[11px] font-black text-white/60 tracking-[0.25em] uppercase whitespace-nowrap">עקבו אחרינו</span>
+          <span class="text-xs font-black text-white/60 tracking-[0.25em] uppercase whitespace-nowrap">עקבו אחרינו</span>
           <span class="flex-1 h-px bg-white/10"></span>
         </div>
-        
         <a aria-label="ערוץ הקליפים של עודד ביוטיוב (נפתח בטאב חדש)" class="link-card md:col-span-2 block p-5 text-center h-[96px] flex flex-col items-center justify-center w-full group" dir="rtl" href="https://www.youtube.com/@OdedSVRLiveTwo" style="--glow-rgb: 239, 68, 68; --i: 10;" target="_blank" rel="noopener noreferrer">
           <div class="card-glow-bg"></div>
           <div class="text-lg md:text-xl font-black text-red-500 flex items-center justify-center gap-3 group-hover:scale-105 transition-transform duration-200">
@@ -967,13 +965,13 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
         <div class="card rounded-xl">
           <h2 class="text-xl font-black text-orange-400 mb-4 border-b border-orange-400/20 pb-2"><span aria-hidden="true">🏆</span> Weekly Top Gifters <span aria-hidden="true">🏆</span></h2>
           <div id="weekly-gifters-table-container" aria-live="polite">
-            <p class="text-sm text-gray-300">Loading Weekly Top Gifters...</p>
+            <div class="skeleton-list" role="status"><span class="sr-only">טוען נתונים...</span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span></div>
           </div>
         </div>
         <div class="card rounded-xl">
           <h2 class="text-xl font-black text-cyan-400 mb-4 border-b border-cyan-400/20 pb-2"><span aria-hidden="true">👑</span> All-Time Top Gifters <span aria-hidden="true">👑</span></h2>
           <div id="alltime-gifters-table-container" aria-live="polite">
-            <p class="text-sm text-gray-300">Loading All-Time Top Gifters...</p>
+            <div class="skeleton-list" role="status"><span class="sr-only">טוען נתונים...</span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span></div>
           </div>
         </div>
       </div>
@@ -991,7 +989,7 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
             </summary>
             <div class="stats-panel-content">
               <div id="botrix-leaderboard-container" class="overflow-x-auto">
-                <p class="text-sm text-gray-300 animate-pulse text-center">טוען נתונים...</p>
+                <div class="skeleton-list" role="status"><span class="sr-only">טוען נתונים...</span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span></div>
               </div>
             </div>
           </details>
@@ -1003,7 +1001,7 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
             </summary>
             <div class="stats-panel-content">
               <div id="kicklogz-active-container" class="overflow-x-auto">
-                <p class="text-sm text-gray-300 animate-pulse text-center">טוען נתונים...</p>
+                <div class="skeleton-list" role="status"><span class="sr-only">טוען נתונים...</span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span></div>
               </div>
             </div>
           </details>
@@ -1015,7 +1013,7 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
             </summary>
             <div class="stats-panel-content">
               <div id="emotesContainer" class="emotes-compact">
-                <p class="text-sm text-gray-300 animate-pulse">טוען אימוג'ים -Kick...</p>
+                <div class="skeleton-chips" role="status"><span class="sr-only">טוען...</span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span></div>
               </div>
             </div>
           </details>
@@ -1027,7 +1025,7 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
             </summary>
             <div class="stats-panel-content">
               <div id="sub-emotes-container" class="badges-compact">
-                <p class="text-sm text-gray-300 animate-pulse">טוען נתוני סאבים...</p>
+                <div class="skeleton-chips" role="status"><span class="sr-only">טוען...</span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span><span class="skeleton"></span></div>
               </div>
             </div>
           </details>
@@ -1039,7 +1037,7 @@ html.a11y-dark :is(img, video, #char-right, #char-left) { filter: invert(1) hue-
     <!-- ========== YOUTUBE VIDEOS ========== -->
     <section id="YTvids-section" class="page-section">
       <div aria-label="רשימת סרטונים אחרונים" class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-1 gap-6" id="video-container" style="flex-grow: 1; display: grid; grid-template-rows: repeat(5, minmax(0, 1fr)); padding-bottom: 20px;">
-        <p class="text-white/60 animate-pulse col-span-full text-center">טוען סרטונים...</p>
+        <div class="skeleton skeleton-video col-span-full" role="status"><span class="sr-only">טוען סרטונים...</span></div><div class="skeleton skeleton-video col-span-full" aria-hidden="true"></div><div class="skeleton skeleton-video col-span-full" aria-hidden="true"></div><div class="skeleton skeleton-video col-span-full" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -1173,7 +1171,7 @@ WATERPARK-SECTION-END -->
 
     <footer class="mt-16 text-center flex flex-col items-center justify-center gap-3 relative z-10 select-none w-full site-footer">
       <div class="footer-note" dir="rtl">
-        * הקישורים לליברו ומחסני חשמל הם שיתופי פעולה בין עודד לחברות אלו
+        * הקישורים לליברו,לוז ומחסני חשמל הם שיתופי פעולה בין עודד לחברות אלו
       </div>
       <div class="footer-copy">
         © 2026 Piker , OdedSVR. All rights reserved.
@@ -1653,7 +1651,6 @@ document.addEventListener('click', (e) => {
 const mainContent = $('main-page-content');
 const splash = $('splash-screen');
 const splashFill = $('splash-loader-fill');
-const spotlight = $('spotlight');
 let siteActivated = false;
 
 function activateSite() {
@@ -1666,7 +1663,6 @@ function activateSite() {
       splash.style.display = 'none';
       splash.setAttribute('aria-hidden', 'true');
       mainContent.classList.add('visible');
-      if (spotlight && finePointerQuery.matches) spotlight.style.display = 'block';
     }, 100);
   } else {
     mainContent.classList.add('visible');
@@ -1685,44 +1681,6 @@ if (splashFill) {
 // משאירים את האינטרו מספיק זמן כדי שהאנימציה תתנגן, ויש fallback לטעינה איטית.
 window.addEventListener('load', () => setTimeout(activateSite, 450), { once: true });
 setTimeout(activateSite, 750);
-
-/* ---------- Spotlight (עוקב אחרי העכבר, מוגבל ל-rAF) ---------- */
-if (spotlight) {
-  let sx = 0, sy = 0, spotRaf = 0;
-  document.addEventListener('mousemove', (e) => {
-    sx = e.clientX; sy = e.clientY;
-    if (spotRaf) return;
-    spotRaf = requestAnimationFrame(() => {
-      spotRaf = 0;
-      spotlight.style.left = sx + 'px';
-      spotlight.style.top = sy + 'px';
-    });
-  }, { passive: true });
-}
-
-/* ---------- Tilt על כרטיסי הקישורים ---------- */
-function initCardTilt() {
-  if (!finePointerQuery.matches) return;
-  document.querySelectorAll('.link-card').forEach((card) => {
-    let raf = 0;
-    card.addEventListener('mousemove', (e) => {
-      if (raf || reduceMotionQuery.matches || body.classList.contains('a11y-stop-anim')) return;
-      const { clientX, clientY } = e;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        const r = card.getBoundingClientRect();
-        const px = (clientX - r.left) / r.width - 0.5;
-        const py = (clientY - r.top) / r.height - 0.5;
-        card.style.transform = `translateY(-4px) scale(1.015) rotateY(${px * 6}deg) rotateX(${-py * 6}deg)`;
-      });
-    });
-    card.addEventListener('mouseleave', () => {
-      cancelAnimationFrame(raf);
-      raf = 0;
-      card.style.transform = '';
-    });
-  });
-}
 
 /* ---------- Worker (נתונים מ-Kick / Botrix / YouTube) ---------- */
 const WORKER_URL = 'https://links.odedlink26.workers.dev';
@@ -1842,17 +1800,6 @@ function spawnParticle() {
   p.style.width = p.style.height = size + 'px';
   p.style.background = particleColors[Math.floor(Math.random() * particleColors.length)];
   spawnFloating(p, 8 + Math.random() * 8, 'floatParticle');
-}
-function spawnBubble() {
-  if (!particleLayer || !ambientAllowed()) return;
-  const b = document.createElement('div');
-  const size = 40 + Math.random() * 90;
-  const color = particleColors[Math.floor(Math.random() * particleColors.length)];
-  b.className = 'glow-bubble';
-  b.style.left = Math.random() * 100 + 'vw';
-  b.style.width = b.style.height = size + 'px';
-  b.style.background = `radial-gradient(circle, ${color}55 0%, transparent 70%)`;
-  spawnFloating(b, 14 + Math.random() * 10, 'floatBubble');
 }
 
 /* ==========================================================================
@@ -2474,6 +2421,9 @@ $('skip-link')?.addEventListener('click', (e) => {
 const ERR_HTML = '<p class="text-red-400/80 text-xs text-center">שגיאה בטעינת הנתונים. נסו לרענן את הדף מאוחר יותר.</p>';
 const EMPTY_HTML = '<p class="text-white/50 text-center">לא נמצאו נתונים.</p>';
 const isPage = (name) => () => body.dataset.page === name;
+const MEDALS = ['🥇', '🥈', '🥉'];
+const rankBadge = (i) => (i < 3 ? `<span class="rank-medal" role="img" aria-label="מקום ${i + 1}">${MEDALS[i]}</span>` : i + 1);
+const rowClass = (i) => (i < 3 ? ` class="rank-${i + 1}"` : '');
 
 async function fetchEmotesData() {
   const container = $('emotesContainer');
@@ -2574,8 +2524,8 @@ async function fetchStatsAndLeaderboards() {
     if (users.length > 0) {
       const sorted = [...users].sort((a, b) => getWatchtimeMinutes(b) - getWatchtimeMinutes(a));
       const rows = sorted.slice(0, 10).map((user, i) => `
-        <tr>
-          <td class="stat-rank">${i + 1}</td>
+        <tr${rowClass(i)}>
+          <td class="stat-rank">${rankBadge(i)}</td>
           <td class="text-white font-bold">${escapeHtml(user.username || user.name || 'Unknown')}</td>
           <td class="stat-highlight">${escapeHtml(formatWatchtime(user))}</td>
         </tr>`).join('');
@@ -2589,8 +2539,8 @@ async function fetchStatsAndLeaderboards() {
     const values = kicklogz.data || [];
     if (labels.length > 0 && values.length > 0) {
       const rows = labels.slice(0, 10).map((username, i) => `
-        <tr>
-          <td class="stat-rank">${i + 1}</td>
+        <tr${rowClass(i)}>
+          <td class="stat-rank">${rankBadge(i)}</td>
           <td class="text-white font-bold">${escapeHtml(username)}</td>
           <td class="stat-highlight">${Number(values[i] ?? 0).toLocaleString('he-IL')}</td>
         </tr>`).join('');
@@ -2625,8 +2575,8 @@ function renderTable(containerId, users, usernameClass) {
   if (!container) return;
   if (!users || users.length === 0) { container.innerHTML = '<p class="text-gray-400">No data found.</p>'; return; }
   const rows = users.map((user, i) => `
-    <tr>
-      <td>${i + 1}</td>
+    <tr${rowClass(i)}>
+      <td>${rankBadge(i)}</td>
       <td class="${usernameClass}">${escapeHtml(user.username)}</td>
       <td>${escapeHtml(user.quantity || 0)}</td>
     </tr>`).join('');
@@ -2685,9 +2635,9 @@ async function fetchVideos() {
       img.src = v.thumb;
       img.alt = '';
       img.loading = 'lazy';
-      img.width = 128;
-      img.height = 80;
-      img.className = 'w-32 h-20 object-cover rounded-lg ml-6';
+      img.width = 192;
+      img.height = 108;
+      img.className = 'w-28 h-16 md:w-48 md:h-28 object-cover rounded-lg ml-4 md:ml-6 shrink-0';
 
       const t = document.createElement('div');
       t.className = 'flex-1 text-xl font-bold text-white hover:text-blue-400 transition-colors text-right';
@@ -2829,7 +2779,6 @@ if (statsAccordion) {
 /* ==========================================================================
    Init
    ========================================================================== */
-initCardTilt();
 syncPageFromHash();
 queueScrollBtn();
 
@@ -2840,9 +2789,7 @@ document.addEventListener('visibilitychange', () => {
 });
 
 setInterval(spawnParticle, 2400);
-setInterval(spawnBubble, 6000);
 for (let i = 0; i < 3; i++) setTimeout(spawnParticle, i * 400);
-setTimeout(spawnBubble, 0);
   </script>
 </body>
 </html>
