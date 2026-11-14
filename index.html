@@ -302,6 +302,18 @@ body:before {
 }
 .luz-icon-wrap img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
 
+    /* ---------- Promo popup ---------- */
+.promo-modal { position: fixed; inset: 0; z-index: 99500; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(2,6,23,.8); backdrop-filter: blur(6px); opacity: 0; transition: opacity .3s ease; }
+.promo-modal.open { display: flex; }
+.promo-modal.show { opacity: 1; }
+.promo-box { position: relative; width: min(92vw, 460px); max-height: 90vh; border-radius: 18px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,.6), 0 0 40px rgba(34,211,238,.25); transform: scale(.94); transition: transform .3s cubic-bezier(.16,1,.3,1); }
+.promo-modal.show .promo-box { transform: none; }
+.promo-box a { display: block; }
+.promo-box img { display: block; width: 100%; height: auto; max-height: 90vh; object-fit: contain; }
+.promo-close { position: absolute; top: 10px; left: 10px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: rgba(2,6,23,.75); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+.promo-close:hover, .promo-close:focus-visible { background: #e02020; border-color: #e02020; outline: none; }
+.promo-timer { position: absolute; bottom: 0; right: 0; height: 5px; width: 100%; background: linear-gradient(90deg, #22d3ee, #a855f7); transform-origin: right; animation: promoTimer 10s linear forwards; }
+@keyframes promoTimer { to { transform: scaleX(0); } }
 /* ---------- Header / hero ---------- */
 .hero-title {
   background: linear-gradient(90deg, #22d3ee, #a855f7, #3b82f6, #22d3ee);
@@ -1464,7 +1476,16 @@ WATERPARK-SECTION-END -->
       <button type="button" class="vkey close" data-vk-close>סגור</button>
     </div>
   </div>
-
+  
+<div id="promo-modal" class="promo-modal" role="dialog" aria-modal="true" aria-label="שת״פ חדש - CardPull IL" aria-hidden="true">
+  <div class="promo-box">
+    <button type="button" id="promo-close" class="promo-close" aria-label="סגור פרסומת">&times;</button>
+    <a href="https://cardpull.store/" target="_blank" rel="noopener noreferrer" aria-label="מעבר לאתר CardPull IL (נפתח בטאב חדש)">
+      <img src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/NewSPNR.jpg" alt="שת״פ חדש! CardPull IL - קוד OSVR, cardpull.store" width="900" height="1200">
+    </a>
+    <div class="promo-timer" aria-hidden="true"></div>
+  </div>
+</div>
 <div id="modal-privacy" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="modal-privacy-title" aria-hidden="true">
   <div class="legal-modal-box">
     <div class="legal-modal-header">
@@ -1674,9 +1695,11 @@ function activateSite() {
       splash.style.display = 'none';
       splash.setAttribute('aria-hidden', 'true');
       mainContent.classList.add('visible');
+      setTimeout(showPromo, 400);
     }, 100);
   } else {
     mainContent.classList.add('visible');
+    setTimeout(showPromo, 400);
   }
 }
 
@@ -2786,7 +2809,35 @@ if (statsAccordion) {
     }
   });
 })();
+/* ---------- Promo popup (10 שניות או עד לחיצה על X) ---------- */
+const PROMO_MS = 10000;
+let promoShown = false;
+let promoTimeout = null;
+let promoLastFocus = null;
 
+function showPromo() {
+  const m = $('promo-modal');
+  if (promoShown || !m) return;
+  promoShown = true;
+  promoLastFocus = document.activeElement;
+  m.classList.add('open');
+  m.setAttribute('aria-hidden', 'false');
+  requestAnimationFrame(() => m.classList.add('show'));
+  $('promo-close')?.focus();
+  promoTimeout = setTimeout(closePromo, PROMO_MS);
+}
+function closePromo() {
+  const m = $('promo-modal');
+  if (!m || !m.classList.contains('open')) return;
+  clearTimeout(promoTimeout);
+  m.classList.remove('show');
+  m.setAttribute('aria-hidden', 'true');
+  setTimeout(() => m.classList.remove('open'), 300);
+  if (promoLastFocus && promoLastFocus.focus) promoLastFocus.focus();
+}
+$('promo-close')?.addEventListener('click', closePromo);
+$('promo-modal')?.addEventListener('click', (e) => { if (e.target === $('promo-modal')) closePromo(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePromo(); });
 /* ==========================================================================
    Init
    ========================================================================== */
