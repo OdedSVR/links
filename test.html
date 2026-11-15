@@ -796,12 +796,13 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open],body.a11y-calm .promo__
 #a11y-fab:focus-visible, #a11y-close:focus-visible, .a11y-btn:focus-visible, .cursor-btn:focus-visible, .a11y-section-toggle:focus-visible, .a11y-link-btn:focus-visible, #a11y-reset-all:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 #a11y-panel {
   position: fixed; bottom: 0; left: -420px; top: 0; width: 420px; max-width: 95vw;
-  height: 100dvh; max-height: 100vh;
   background: #0b1220; color: #e5e7eb; z-index: 99999;
   transition: left .35s cubic-bezier(.4,0,.2,1), visibility 0s linear .35s; visibility: hidden;
-  overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
-  box-shadow: 5px 0 30px rgba(0,0,0,.6); display: flex; flex-direction: column;
+  overflow-y: auto; overflow-x: hidden; box-shadow: 5px 0 30px rgba(0,0,0,.6); display: flex; flex-direction: column;
   border-right: 1px solid rgba(255,255,255,.08); scrollbar-color: #22d3ee #131c2f;
+  overscroll-behavior: contain; /* גלילה נשארת בתוך חלונית הנגישות */
+  -webkit-overflow-scrolling: touch; touch-action: pan-y; scrollbar-gutter: stable;
+  pointer-events: auto; isolation: isolate;
 }
 #a11y-panel.open { left: 0; visibility: visible; transition-delay: 0s; }
 #a11y-panel:focus { outline: none; }
@@ -906,54 +907,9 @@ html.a11y-dark :is(img, video, svg, .spin3__img, .coin3__face, canvas) { filter:
 #a11y-widget-container,#a11y-panel,#a11y-toast,#tts-bar,#tts-word-highlight,#vkeyboard,#reading-guide-bar{font-family:var(--f-ui)}
 html.a11y-dark .promo__link img{filter:none}
 
-
-/* ---------- Splash ---------- */
-#splash-screen {
-  position: fixed; inset: 0; overflow: hidden;
-  background: radial-gradient(circle at 50% 42%, #152544 0%, #090d16 48%, #050711 100%);
-  display: flex; justify-content: center; align-items: center;
-  z-index: 99999; opacity: 1; perspective: 1100px;
-  transition: opacity .175s cubic-bezier(.16,1,.3,1); isolation: isolate;
-}
-#splash-screen::before, #splash-screen::after {
-  content: ""; position: absolute; width: min(72vw, 520px); aspect-ratio: 1;
-  border: 1px solid rgba(34,211,238,.28); border-radius: 50%;
-  box-shadow: 0 0 35px rgba(34,211,238,.12), inset 0 0 35px rgba(168,85,247,.10);
-  transform: rotateX(68deg) rotateZ(-18deg); animation: introOrbit 1.5s linear infinite; pointer-events: none; z-index: -1;
-}
-#splash-screen::after { width: min(58vw, 410px); border-color: rgba(168,85,247,.42); transform: rotateX(68deg) rotateZ(35deg); animation-duration: 2s; animation-direction: reverse; }
-#splash-inner { display: flex; flex-direction: column; align-items: center; gap: 22px; transform-style: preserve-3d; animation: introStage .25s cubic-bezier(.16,1,.3,1) both; padding: 24px; text-align: center; }
-.splash-logo-wrap { position: relative; width: clamp(140px, 24vw, 205px); aspect-ratio: 1; display: grid; place-items: center; transform-style: preserve-3d; animation: logoFloat .9s ease-in-out infinite; }
-.splash-logo-wrap::before { content: ""; position: absolute; inset: -13px; border-radius: 50%; border: 2px solid transparent; border-top-color: #22d3ee; border-right-color: #a855f7; filter: drop-shadow(0 0 10px rgba(34,211,238,.65)); animation: logoRing .7s linear infinite; }
-.splash-logo-wrap::after { content: ""; position: absolute; inset: -27px; border-radius: 50%; border: 1px solid rgba(168,85,247,.45); transform: rotateX(65deg) rotateZ(-20deg); box-shadow: 0 0 24px rgba(168,85,247,.15); animation: logoRing 1.25s linear infinite reverse; }
-.splash-logo { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 50%; box-shadow: 0 0 28px rgba(56,189,248,.3), 0 0 85px rgba(168,85,247,.22); backface-visibility: hidden; animation: logoTurn .3s cubic-bezier(.45,.05,.55,.95) both; }
-.splash-brand { margin: 2px 0 0; font-size: clamp(22px, 5vw, 34px); line-height: 1; font-weight: 900; letter-spacing: .16em; direction: ltr; color: #fff; text-shadow: 0 0 12px rgba(34,211,238,.75), 0 0 32px rgba(168,85,247,.5); animation: brandReveal .225s .05s both; }
-.splash-subtitle { margin: 0; color: #94a3b8; font-size: 10px; font-weight: 700; letter-spacing: .38em; direction: ltr; animation: brandReveal .225s .09s both; }
-@keyframes introOrbit { to { transform: rotateX(68deg) rotateZ(342deg); } }
-@keyframes logoRing { to { transform: rotate(360deg); } }
-@keyframes logoFloat { 0%,100% { transform: translateY(0) rotateY(-7deg); } 50% { transform: translateY(-8px) rotateY(7deg); } }
-@keyframes logoTurn { 0% { opacity: 0; transform: rotateY(95deg) rotateX(22deg) scale(.55); } 65% { opacity: 1; transform: rotateY(-12deg) rotateX(-5deg) scale(1.06); } 100% { opacity: 1; transform: rotateY(0) rotateX(0) scale(1); } }
-@keyframes introStage { from { opacity: 0; transform: translateY(22px) rotateX(12deg) scale(.94); } to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); } }
-@keyframes brandReveal { from { opacity: 0; transform: translateY(10px); letter-spacing: .35em; } to { opacity: 1; transform: translateY(0); letter-spacing: .16em; } }
-#splash-loader-track { width: 140px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.08); overflow: hidden; }
-#splash-loader-fill { height: 100%; width: 0%; border-radius: 4px; background: linear-gradient(90deg, #22d3ee, #a855f7); transition: width .12s ease-out; }
-
-
-
 </style>
 </head>
 <body>
-<div id="splash-screen" role="status" aria-label="טעינת אתר OdedSVR">
-  <div id="splash-inner">
-    <div class="splash-logo-wrap">
-      <img src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" alt="לוגו OdedSVR" class="splash-logo">
-    </div>
-    <div class="splash-brand">ODEDSVR</div>
-    <p class="splash-subtitle">OFFICIAL LINKS</p>
-    <div id="splash-loader-track"><div id="splash-loader-fill"></div></div>
-  </div>
-</div>
-
 <!-- ============ illustration library (flat-shaded, outlined) ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
@@ -1481,7 +1437,7 @@ html.a11y-dark .promo__link img{filter:none}
       </svg>
     </button>
   </div>
-  <div id="a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" tabindex="-1" data-lenis-prevent data-lenis-prevent-wheel>
+  <div id="a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" tabindex="-1">
     <div id="a11y-panel-header">
       <button type="button" id="a11y-close" aria-label="סגור תפריט נגישות">
         <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
@@ -1807,7 +1763,7 @@ html.a11y-dark .promo__link img{filter:none}
      Keep this block. Remove ONLY if the user explicitly asks to delete Waterpark.
      Nav link, section, styles and copy-icon script below are not active in this design. -->
 <!-- WATERPARK-PROTECTED: Keep this entire section. Do NOT delete or clean up unless user explicitly asks to delete Waterpark. -->
-<!-- WATERPARK-SECTION-START
+<!-- WATERPARK-SECTION-START (INACTIVE HTML COMMENT — PRESERVE)
 <section id="waterpark-section" class="page-section">
 <div class="w-full max-w-4xl mx-auto space-y-6 relative z-10">
 <div class="card rounded-xl">
@@ -2297,6 +2253,23 @@ $('a11y-toast-close')?.addEventListener('click', () => { $('a11y-toast').hidden 
    ========================================================================== */
 const fab = $('a11y-fab');
 const panel = $('a11y-panel');
+/* Keep wheel/touch scrolling inside the accessibility panel. Lenis listens on
+   the page; stopping the bubbling wheel event prevents it from scrolling the site. */
+if (panel) {
+  panel.addEventListener('wheel', (event) => {
+    if (!panel.classList.contains('open')) return;
+    event.stopPropagation();
+    const canScroll = panel.scrollHeight > panel.clientHeight;
+    if (canScroll) {
+      const atTop = panel.scrollTop <= 0 && event.deltaY < 0;
+      const atBottom = panel.scrollTop + panel.clientHeight >= panel.scrollHeight - 1 && event.deltaY > 0;
+      if (atTop || atBottom) event.preventDefault();
+    }
+  }, { passive: false });
+  panel.addEventListener('touchmove', (event) => {
+    if (panel.classList.contains('open')) event.stopPropagation();
+  }, { passive: true });
+}
 const a11yState = { contrast: null, saturation: null, gauge: false, hue: 0 };
 
 function setPressed(feature, state) {
@@ -2358,15 +2331,12 @@ function setCursor(mode) {
 function openPanel() {
   panel.classList.add('open');
   fab.setAttribute('aria-expanded', 'true');
-  // Isolate the accessibility drawer from the page's Lenis wheel handler.
-  if (typeof lenis !== 'undefined' && lenis) lenis.stop();
   requestAnimationFrame(() => panel.focus());
 }
 function closePanel(returnFocus = true) {
   if (!panel.classList.contains('open')) return;
   panel.classList.remove('open');
   fab.setAttribute('aria-expanded', 'false');
-  if (typeof lenis !== 'undefined' && lenis) lenis.start();
   if (returnFocus) fab.focus();
 }
 fab.addEventListener('click', () => (panel.classList.contains('open') ? closePanel() : openPanel()));
@@ -2977,41 +2947,9 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
   d.addEventListener('click',e=>{if(e.target===d)close()});
   d.addEventListener('cancel',e=>{e.preventDefault();close()});
   d.addEventListener('close',()=>clearTimeout(tm));
-  /* The intro controls when the advertisement appears. */
+  /* show shortly after the page loads */
+  addEventListener('load',()=>setTimeout(window.showPromo,700));
 })();
 </script>
-
-<script>
-/* Splash intro from the supplied index file; the original promo opens immediately after it. */
-(function(){
-  const splash=document.getElementById('splash-screen');
-  const fill=document.getElementById('splash-loader-fill');
-  let activated=false;
-  function finishIntro(){
-    if(activated)return;
-    activated=true;
-    if(fill)fill.style.width='100%';
-    if(!splash){if(typeof window.showPromo==='function')window.showPromo();return;}
-    splash.style.opacity='0';
-    setTimeout(()=>{
-      splash.style.display='none';
-      splash.setAttribute('aria-hidden','true');
-      if(typeof window.showPromo==='function')window.showPromo();
-    },180);
-  }
-  if(fill){
-    let pct=0;
-    const ramp=setInterval(()=>{
-      if(activated){clearInterval(ramp);return;}
-      pct+=((90-pct)*.18)+1;
-      if(pct>92)pct=92;
-      fill.style.width=pct+'%';
-    },16);
-  }
-  window.addEventListener('load',()=>setTimeout(finishIntro,450),{once:true});
-  setTimeout(finishIntro,750);
-})();
-</script>
-
 </body>
 </html>
