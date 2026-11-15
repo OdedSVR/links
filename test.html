@@ -796,9 +796,11 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open],body.a11y-calm .promo__
 #a11y-fab:focus-visible, #a11y-close:focus-visible, .a11y-btn:focus-visible, .cursor-btn:focus-visible, .a11y-section-toggle:focus-visible, .a11y-link-btn:focus-visible, #a11y-reset-all:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 #a11y-panel {
   position: fixed; bottom: 0; left: -420px; top: 0; width: 420px; max-width: 95vw;
+  height: 100dvh; max-height: 100vh;
   background: #0b1220; color: #e5e7eb; z-index: 99999;
   transition: left .35s cubic-bezier(.4,0,.2,1), visibility 0s linear .35s; visibility: hidden;
-  overflow-y: auto; box-shadow: 5px 0 30px rgba(0,0,0,.6); display: flex; flex-direction: column;
+  overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+  box-shadow: 5px 0 30px rgba(0,0,0,.6); display: flex; flex-direction: column;
   border-right: 1px solid rgba(255,255,255,.08); scrollbar-color: #22d3ee #131c2f;
 }
 #a11y-panel.open { left: 0; visibility: visible; transition-delay: 0s; }
@@ -1479,7 +1481,7 @@ html.a11y-dark .promo__link img{filter:none}
       </svg>
     </button>
   </div>
-  <div id="a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" tabindex="-1">
+  <div id="a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" tabindex="-1" data-lenis-prevent data-lenis-prevent-wheel>
     <div id="a11y-panel-header">
       <button type="button" id="a11y-close" aria-label="סגור תפריט נגישות">
         <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
@@ -2356,12 +2358,15 @@ function setCursor(mode) {
 function openPanel() {
   panel.classList.add('open');
   fab.setAttribute('aria-expanded', 'true');
+  // Isolate the accessibility drawer from the page's Lenis wheel handler.
+  if (typeof lenis !== 'undefined' && lenis) lenis.stop();
   requestAnimationFrame(() => panel.focus());
 }
 function closePanel(returnFocus = true) {
   if (!panel.classList.contains('open')) return;
   panel.classList.remove('open');
   fab.setAttribute('aria-expanded', 'false');
+  if (typeof lenis !== 'undefined' && lenis) lenis.start();
   if (returnFocus) fab.focus();
 }
 fab.addEventListener('click', () => (panel.classList.contains('open') ? closePanel() : openPanel()));
