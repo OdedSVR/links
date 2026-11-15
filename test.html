@@ -612,6 +612,16 @@ html.scrolling :is(.orb,.pod2){animation-play-state:paused}
 .spw.is-past .lyr--far{transform:translateX(60px)}.spw.is-past .lyr--mid{transform:translateX(120px)}.spw.is-past .lyr--near{transform:translateX(220px)}
 
 
+/* Tiny mouse that runs away from Nuggets */
+.tiny-mouse{position:absolute;z-index:6;left:0;top:0;width:clamp(42px,5vw,62px);aspect-ratio:150/100;pointer-events:none;will-change:transform;opacity:0;transition:opacity .5s}
+.tiny-mouse.is-on{opacity:1}
+.tiny-mouse svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 2px 1px rgba(20,8,40,.2))}
+.tiny-mouse .mouse-tail{stroke-dasharray:4 2;animation:mouseTailWiggle .32s ease-in-out infinite alternate}
+.tiny-mouse svg{animation:mouseRun .22s ease-in-out infinite alternate}
+@keyframes mouseRun{from{translate:0 0}to{translate:0 -2px}}
+@keyframes mouseTailWiggle{from{transform:rotate(-8deg);transform-origin:30px 78px}to{transform:rotate(10deg);transform-origin:30px 78px}}
+@media(max-width:860px){.tiny-mouse{width:clamp(36px,8vw,48px)}}
+@media(prefers-reduced-motion:reduce){.tiny-mouse svg,.tiny-mouse .mouse-tail{animation:none!important}}
 /* Nuggets: compact cartoon snake with a travelling body wave and matching contact shadow */
 .nugz{position:absolute;z-index:5;left:0;top:0;width:clamp(205px,22vw,300px);aspect-ratio:660/360;pointer-events:none;will-change:transform;opacity:0;transition:opacity .8s}
 .nugz.is-on{opacity:1}
@@ -1048,6 +1058,23 @@ html.a11y-dark .promo__link img{filter:none}
 <div class="hero__copy" id="heroCopy">
 <span class="eyebrow hero-in">OFFICIAL · הבית של הקהילה</span>
 <h1 aria-label="Oded SVR" class="wordmark" id="heroTitle"><span aria-hidden="true" class="wl">Oded</span> <span aria-hidden="true" class="wl fill">SVR</span><span aria-hidden="true" class="wl dot">.</span></h1>
+<div class="tiny-mouse" id="tinyMouse" aria-hidden="true">
+  <svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
+    <path class="mouse-tail" d="M27 66 C8 72 12 91 29 89 C41 88 39 78 32 79"
+      fill="none" stroke="#e88b9b" stroke-width="4" stroke-linecap="round"/>
+    <path d="M47 39 Q30 17 43 12 Q58 9 65 34" fill="#d9c4bd" stroke="#49334b" stroke-width="4"/>
+    <path d="M83 34 Q94 9 108 18 Q119 28 99 45" fill="#d9c4bd" stroke="#49334b" stroke-width="4"/>
+    <ellipse cx="76" cy="61" rx="43" ry="28" fill="#d8c9c3" stroke="#49334b" stroke-width="5"/>
+    <ellipse cx="48" cy="32" rx="11" ry="12" fill="#ef9cab" stroke="#49334b" stroke-width="3"/>
+    <ellipse cx="100" cy="35" rx="11" ry="12" fill="#ef9cab" stroke="#49334b" stroke-width="3"/>
+    <ellipse cx="104" cy="56" rx="5" ry="6" fill="#24182d"/>
+    <circle cx="106" cy="54" r="1.8" fill="#fff"/>
+    <ellipse cx="119" cy="68" rx="9" ry="7" fill="#ef91a2" stroke="#49334b" stroke-width="3"/>
+    <path d="M123 68 l18 -5 M122 72 l20 4 M111 75 l16 13" stroke="#49334b" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M57 82 l-7 10 M86 84 l-3 10" stroke="#49334b" stroke-width="4" stroke-linecap="round"/>
+    <path d="M54 94 h-10 M83 94 h-10" stroke="#49334b" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+</div>
 <div class="nugz" id="nug" aria-hidden="true">
 <svg class="nugz__art" viewBox="0 0 660 360" xmlns="http://www.w3.org/2000/svg" role="presentation">
   <defs>
@@ -3146,51 +3173,94 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
 <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5b0ec320f8a363f',t:'MTc5NDc3MzY3MA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5b0ec320f8a363f',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
 
 <script>
-/* Nuggets zero-gravity motion: gentle wandering, smooth turns, and safe hero bounds */
+/* Nuggets wanders; a tiny mouse flees ahead of it */
 (function(){
   const el=document.getElementById('nug');
+  const mouse=document.getElementById('tinyMouse');
   const pin=document.querySelector('#top .scene__pin');
-  if(!el||!pin)return;
+  if(!el||!mouse||!pin)return;
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduce){el.classList.add('is-on');return;}
-  let W=0,H=0,w=0,h=0,x=0,y=0,vx=0,vy=0,angle=0,t=0,last=0,raf=0,visible=true;
+  let W=0,H=0,w=0,h=0,mw=0,mh=0,x=0,y=0,vx=0,vy=0,mx=0,my=0,mvx=0,mvy=0,t=0,last=0,raf=0,visible=true;
   const small=()=>W<700;
   function measure(){
-    W=pin.clientWidth;H=pin.clientHeight;w=el.offsetWidth;h=el.offsetHeight;
+    W=pin.clientWidth;H=pin.clientHeight;w=el.offsetWidth;h=el.offsetHeight;mw=mouse.offsetWidth;mh=mouse.offsetHeight;
     x=Math.min(Math.max(12,x||W*.28),Math.max(12,W-w-12));
     y=Math.min(Math.max(90,y||H*.24),Math.max(90,H-h-18));
+    mx=Math.min(Math.max(12,mx||x+w+65),Math.max(12,W-mw-12));
+    my=Math.min(Math.max(90,my||y+h*.52),Math.max(90,H-mh-18));
   }
   measure();window.addEventListener('resize',measure,{passive:true});
   let heading=0;
   const speed=()=>small()?17:24;
-  vx=speed();vy=0;
+  vx=speed();vy=0;mvx=speed()*1.2;mvy=0;
   const lerpAngle=(a,b,k)=>{const d=Math.atan2(Math.sin(b-a),Math.cos(b-a));return a+d*k;};
-  function place(){const face=Math.atan2(vy,vx)*180/Math.PI;el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) rotate(${face.toFixed(1)}deg)`;}
+  function place(){
+    const face=Math.atan2(vy,vx)*180/Math.PI;
+    const mouseFace=Math.atan2(mvy,mvx)*180/Math.PI;
+    el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) rotate(${face.toFixed(1)}deg)`;
+    mouse.style.transform=`translate3d(${mx.toFixed(1)}px,${my.toFixed(1)}px,0) rotate(${mouseFace.toFixed(1)}deg)`;
+  }
+  if(reduce){el.classList.add('is-on');mouse.classList.add('is-on');place();return;}
   function step(now){
     raf=0;if(!visible||document.hidden)return;
     const dt=last?Math.min(.05,(now-last)/1000):0;last=now;t+=dt;
-    // Brief right-facing intro so the speech bubble and 200 cape are readable.
-    if(t<1.6){heading=0;vx=speed();vy=0;place();raf=requestAnimationFrame(step);return;}
     const pad=small()?8:18;
     const minX=pad,maxX=Math.max(pad,W-w-pad),minY=small()?76:Math.max(90,H*.12),maxY=Math.max(minY,H-h-(small()?12:28));
-    let steerX=0,steerY=0,cx=x+w/2,cy=y+h/2;
-    if(x<minX+48)steerX+=(minX+48-x)/48;
-    if(x+w>maxX-48)steerX-=(x+w-(maxX-48))/48;
-    if(y<minY+42)steerY+=(minY+42-y)/42;
-    if(y+h>maxY-42)steerY-=(y+h-(maxY-42))/42;
-    heading+=(.10*Math.sin(t*.19)+.055*Math.sin(t*.083+1.4))*dt;
-    if(steerX||steerY)heading=lerpAngle(heading,Math.atan2(steerY,steerX),Math.min(1,dt*1.05));
-    const targetX=Math.cos(heading)*speed(),targetY=Math.sin(heading)*speed(),k=Math.min(1,dt*.42);
-    vx+=(targetX-vx)*k;vy+=(targetY-vy)*k;x+=vx*dt;y+=vy*dt;
+    const minMX=pad,maxMX=Math.max(pad,W-mw-pad),minMY=minY,maxMY=Math.max(minMY,H-mh-(small()?12:28));
+
+    // Start facing right and hold still briefly so the speech bubble and cape can be read.
+    if(t<1.6){heading=0;vx=speed();vy=0;}
+    else{
+      let steerX=0,steerY=0;
+      if(x<minX+48)steerX+=(minX+48-x)/48;
+      if(x+w>maxX-48)steerX-=(x+w-(maxX-48))/48;
+      if(y<minY+42)steerY+=(minY+42-y)/42;
+      if(y+h>maxY-42)steerY-=(y+h-(maxY-42))/42;
+      heading+=(.10*Math.sin(t*.19)+.055*Math.sin(t*.083+1.4))*dt;
+      if(steerX||steerY)heading=lerpAngle(heading,Math.atan2(steerY,steerX),Math.min(1,dt*1.05));
+      const tx=Math.cos(heading)*speed(),ty=Math.sin(heading)*speed(),k=Math.min(1,dt*.42);
+      vx+=(tx-vx)*k;vy+=(ty-vy)*k;x+=vx*dt;y+=vy*dt;
+    }
     x=Math.max(minX,Math.min(maxX,x));y=Math.max(minY,Math.min(maxY,y));
+
+    // Estimate Nuggets' head position. The mouse accelerates away when he gets close.
+    const hx=x+w*.77,hy=y+h*.48;
+    let dx=mx+mw/2-hx,dy=my+mh/2-hy;
+    let dist=Math.max(1,Math.hypot(dx,dy));
+    const flee=dist<250;
+    let targetMX,targetMY;
+    if(flee){
+      const urgency=Math.max(0,1-dist/250);
+      targetMX=(dx/dist)*(small()?65:88)*(0.7+urgency*1.4);
+      targetMY=(dy/dist)*(small()?65:88)*(0.7+urgency*1.4);
+      // Add a sideways zig-zag so it looks like a mouse darting away.
+      targetMX+=-dy/dist*Math.sin(t*8)*18;
+      targetMY+= dx/dist*Math.sin(t*8)*18;
+    }else{
+      targetMX=Math.cos(t*.65+1.2)*(small()?25:34);
+      targetMY=Math.sin(t*.9)*(small()?22:30);
+    }
+    const mk=Math.min(1,dt*(flee?2.7:1.25));
+    mvx+=(targetMX-mvx)*mk;mvy+=(targetMY-mvy)*mk;
+    mx+=mvx*dt;my+=mvy*dt;
+    if(mx<minMX){mx=minMX;mvx=Math.abs(mvx);}
+    if(mx>maxMX){mx=maxMX;mvx=-Math.abs(mvx);}
+    if(my<minMY){my=minMY;mvy=Math.abs(mvy);}
+    if(my>maxMY){my=maxMY;mvy=-Math.abs(mvy);}
     place();raf=requestAnimationFrame(step);
   }
   function wake(){last=0;if(!raf&&visible)raf=requestAnimationFrame(step);}
-  const io=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting&&!document.hidden;if(visible)wake();else if(raf){cancelAnimationFrame(raf);raf=0;}},{threshold:0});
+  const io=new IntersectionObserver(entries=>{
+    visible=entries[0].isIntersecting&&!document.hidden;
+    if(visible)wake();else if(raf){cancelAnimationFrame(raf);raf=0;}
+  },{threshold:0});
   io.observe(pin);
-  document.addEventListener('visibilitychange',()=>{visible=!document.hidden&&pin.getBoundingClientRect().bottom>0&&pin.getBoundingClientRect().top<innerHeight;if(visible)wake();else if(raf){cancelAnimationFrame(raf);raf=0;}});
-  place();setTimeout(()=>{el.classList.add('is-on');wake();},650);
-})();
-</script>
+  document.addEventListener('visibilitychange',()=>{
+    visible=!document.hidden&&pin.getBoundingClientRect().bottom>0&&pin.getBoundingClientRect().top<innerHeight;
+    if(visible)wake();else if(raf){cancelAnimationFrame(raf);raf=0;}
+  });
+  place();
+  setTimeout(()=>{el.classList.add('is-on');mouse.classList.add('is-on');wake();},650);
+})();</script>
 </body>
 </html>
