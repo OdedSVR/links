@@ -2125,8 +2125,9 @@ setInterval(()=>{if(LIVE&&!document.hidden)tickUp()},30000);
 /* tab title + favicon reflect live state */
 const BASE_TITLE=document.title;
 function setTab(live){document.title=(live?'🔴 LIVE · ':'')+BASE_TITLE;
-  const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#3fd2ff'/><stop offset='1' stop-color='#a06bff'/></linearGradient></defs><circle cx='32' cy='32' r='30' fill='url(#g)'/><text x='32' y='43' font-family='Arial' font-weight='900' font-size='30' text-anchor='middle' fill='#05080f'>O</text>${live?"<circle cx='52' cy='12' r='11' fill='#ff2d55' stroke='#05080f' stroke-width='3'/>":''}</svg>`;
-  let l=$('link[rel="icon"]');if(!l){l=document.createElement('link');l.rel='icon';document.head.appendChild(l)}l.href='data:image/svg+xml,'+encodeURIComponent(svg)}
+  /* the logo/favicon is ALWAYS ODEDLL.png — never swapped, live or offline */
+  const LOGO='https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true';
+  document.querySelectorAll('link[rel~="icon"],link[rel="apple-touch-icon"]').forEach(l=>{if(l.getAttribute('href')!==LOGO)l.setAttribute('href',LOGO)})}
 /* worker: watch-time, chat top, and live as a fallback */
 function applyWorker(w){
   if(!w||typeof w!=='object')return;
