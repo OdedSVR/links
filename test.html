@@ -744,6 +744,8 @@ html.scrolling .foot2__pod{animation-play-state:paused}
 .cpart{position:relative;display:grid;place-items:center;width:100%;height:100%}
 .cpart__frame{position:relative;width:min(88%,430px);padding:14px;border-radius:30px;background:linear-gradient(145deg,#1b1a4a,#0b0b2a);box-shadow:0 0 0 2.5px var(--ink),0 12px 0 var(--ink),0 0 46px rgba(74,222,128,.45),inset 0 0 0 1.5px rgba(255,214,102,.55)}
 .cpart__frame img{display:block;width:100%;height:auto;max-height:100%;object-fit:contain;border-radius:18px}
+.cpart__frame{width:min(92%,500px);padding:10px;background:linear-gradient(145deg,#163b43,#0b292d);box-shadow:0 0 0 2.5px var(--ink),0 12px 0 var(--ink),0 0 54px rgba(166,255,166,.48),inset 0 0 0 1.5px rgba(255,255,255,.42)}
+.cp-artwork{display:block;width:100%;height:auto;border-radius:20px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.22))}
 .spw__art>.cpart{animation:float 6s ease-in-out infinite alternate}
 .cpart__chip{position:absolute;z-index:2;top:-16px;right:-14px;padding:7px 13px;border-radius:12px;background:var(--gold);color:var(--ink);font-weight:900;font-size:15px;letter-spacing:.02em;box-shadow:0 0 0 2px var(--ink),0 4px 0 var(--ink);transform:rotate(6deg)}
 .spw--cp .spw__name{direction:ltr;text-align:right}
@@ -971,7 +973,7 @@ html.a11y-dark .promo__link img{filter:none}
 <div class="subbar" id="subbar" role="note"><b id="subLbl">הסאבתון מתחיל ב-19.11</b><span class="pill" id="subDays"></span></div>
 <header class="nav" id="nav">
 <nav aria-label="ניווט ראשי" class="nav__bar wrap">
-<a aria-label="OdedSVR — לראש הדף" class="brand" href="#top"><img alt="OdedSVR" height="34" src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" width="34"/><span class="t">OdedSVR <b>Live</b></span></a>
+<a aria-label="OdedSVR — פתיחת ערוץ Kick" class="brand" href="https://kick.com/odedsvr" rel="noopener" target="_blank"><img alt="OdedSVR" height="34" src="https://raw.githubusercontent.com/OdedSVR/images/main/ODEDLL.png?raw=true" width="34"/><span class="t">OdedSVR</span></a>
 <ul class="nav__links" id="navLinks">
 <li><a href="#collabs">שיתופי פעולה</a></li>
 <li><a href="#links">לינקים</a></li>
@@ -1200,12 +1202,57 @@ html.a11y-dark .promo__link img{filter:none}
 </g>
 </svg>
 <div class="spw__art">
-<span class="ptag" style="--x:24%;--y:4%;--l:38px">CardPull IL</span>
-<span class="ptag" style="--x:78%;--y:14%;--l:34px">קוד: OSVR</span>
-<div class="cpart">
+<div class="cpart" role="img" aria-label="שלושה קלפי אספנות מקוריים עם יצורי פנטזיה צבעוניים">
 <div class="cpart__frame">
-<span aria-hidden="true" class="cpart__chip">1 ל-7 🎁</span>
-<img alt="הלוגו של CardPull IL" decoding="async" loading="lazy" src="https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/CardPull%20IL.png"/>
+<svg class="cp-artwork" viewBox="0 0 620 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+  <linearGradient id="cpBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102d35"/><stop offset=".55" stop-color="#176b51"/><stop offset="1" stop-color="#a5ef9b"/></linearGradient>
+  <linearGradient id="cpGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff2a8"/><stop offset=".48" stop-color="#f6bd4b"/><stop offset="1" stop-color="#fff4c2"/></linearGradient>
+  <linearGradient id="cpBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9af5ff"/><stop offset=".5" stop-color="#4289e8"/><stop offset="1" stop-color="#292d79"/></linearGradient>
+  <linearGradient id="cpPink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffc3ef"/><stop offset=".55" stop-color="#a65de0"/><stop offset="1" stop-color="#542b9c"/></linearGradient>
+  <filter id="cpShadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="12" stdDeviation="9" flood-color="#061b19" flood-opacity=".55"/></filter>
+  <pattern id="cpSpark" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M21 4v10M16 9h10" stroke="#eaffc8" stroke-width="2" stroke-linecap="round" opacity=".55"/></pattern>
+</defs>
+<rect width="620" height="430" rx="28" fill="url(#cpBg)"/>
+<rect width="620" height="430" rx="28" fill="url(#cpSpark)" opacity=".6"/>
+<circle cx="310" cy="190" r="150" fill="#c8ff9d" opacity=".12"/>
+<g filter="url(#cpShadow)" stroke="#132b39" stroke-width="7" stroke-linejoin="round">
+  <g transform="translate(70 64) rotate(-13 112 150)">
+    <rect width="210" height="300" rx="22" fill="url(#cpBlue)"/>
+    <rect x="12" y="12" width="186" height="276" rx="15" fill="none" stroke="#d9fbff" stroke-width="3" opacity=".9"/>
+    <path d="M18 72Q105 18 192 72V235Q105 285 18 235Z" fill="#173d76" opacity=".55" stroke="none"/>
+    <path d="M44 205Q24 165 62 132L83 91L108 126L142 101L168 150Q192 201 151 229Q97 257 44 205Z" fill="#72d8e8"/>
+    <path d="M81 132L72 86L111 113L145 83L143 139" fill="#b5f8f0"/>
+    <path d="M84 177Q96 163 108 177M132 177Q144 163 156 177" fill="none" stroke="#173d76" stroke-width="8" stroke-linecap="round"/>
+    <path d="M106 202Q124 216 143 199" fill="none" stroke="#173d76" stroke-width="7" stroke-linecap="round"/>
+    <path d="M29 35H181" stroke="#d9fbff" stroke-width="4" opacity=".8"/>
+    <circle cx="35" cy="35" r="7" fill="#fff"/>
+  </g>
+  <g transform="translate(218 30) rotate(4 112 150)">
+    <rect width="210" height="300" rx="22" fill="url(#cpGold)"/>
+    <rect x="12" y="12" width="186" height="276" rx="15" fill="none" stroke="#fff8d7" stroke-width="3"/>
+    <path d="M18 72Q105 18 192 72V235Q105 285 18 235Z" fill="#e88a32" opacity=".3" stroke="none"/>
+    <path d="M50 208Q24 166 62 135L78 100L109 124L144 95L171 154Q187 211 145 232Q92 255 50 208Z" fill="#f17b42"/>
+    <path d="M78 133L72 86L111 115L146 82L143 139" fill="#ffe39a"/>
+    <path d="M87 177Q98 164 110 177M132 177Q144 164 156 177" fill="none" stroke="#773c31" stroke-width="8" stroke-linecap="round"/>
+    <path d="M104 204Q124 214 145 199" fill="none" stroke="#773c31" stroke-width="7" stroke-linecap="round"/>
+    <path d="M29 35H181" stroke="#fff8d7" stroke-width="4"/>
+    <circle cx="35" cy="35" r="7" fill="#fff"/>
+  </g>
+  <g transform="translate(382 75) rotate(14 100 140)">
+    <rect width="190" height="280" rx="22" fill="url(#cpPink)"/>
+    <rect x="11" y="11" width="168" height="258" rx="15" fill="none" stroke="#ffe5ff" stroke-width="3"/>
+    <path d="M17 68Q95 18 173 68V217Q95 267 17 217Z" fill="#4d287d" opacity=".45" stroke="none"/>
+    <path d="M43 192Q20 157 57 126L78 87L103 120L133 91L158 145Q177 193 138 216Q88 239 43 192Z" fill="#d58af0"/>
+    <path d="M78 126L72 82L106 108L137 79L135 132" fill="#ffe0ff"/>
+    <path d="M76 165Q88 153 100 165M121 165Q133 153 145 165" fill="none" stroke="#542b79" stroke-width="7" stroke-linecap="round"/>
+    <path d="M98 190Q115 202 133 188" fill="none" stroke="#542b79" stroke-width="6" stroke-linecap="round"/>
+    <path d="M27 32H163" stroke="#ffe5ff" stroke-width="4"/>
+    <circle cx="33" cy="32" r="6" fill="#fff"/>
+  </g>
+</g>
+<g fill="#f5ffd4"><path d="M310 22l7 18 18 7-18 7-7 18-7-18-18-7 18-7z"/><path d="M550 325l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/><path d="M70 315l4 11 11 4-11 4-4 11-4-11-11-4 11-4z"/></g>
+</svg>
 </div>
 </div>
 <span aria-hidden="true" class="spw__shadow"></span>
