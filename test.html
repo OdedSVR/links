@@ -120,8 +120,8 @@ body:has(.subbar) .nav:not(.is-scrolled){top:48px}
 /* =========================================================
    HERO — pinned space scene (scroll drives the camera)
    ========================================================= */
-.scene{position:relative;height:210vh}
-.scene__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;isolation:isolate}
+.scene{position:relative}
+.scene__pin{position:relative;height:100vh;height:100svh;overflow:hidden;isolation:isolate}
 .scene__sky{position:absolute;inset:-10%;z-index:-3;background:radial-gradient(60% 55% at 50% 52%,#7b3fd0 0%,#5a28a8 35%,#3a1777 62%,#220d46 100%)}
 .stars{position:absolute;inset:0;z-index:-2;width:100%;height:100%}
 .ast{position:absolute;left:var(--x);top:var(--y);width:var(--s);aspect-ratio:1;margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);will-change:transform;z-index:var(--zi,1)}
@@ -149,9 +149,6 @@ body:has(.subbar) .nav:not(.is-scrolled){top:48px}
 .side-text--l{left:max(4vw,var(--gutter));text-align:left}
 .side-text em{font-style:normal;color:var(--kick)}
 .warp{position:absolute;inset:0;z-index:6;background:var(--lav);opacity:0;pointer-events:none}
-.scroll-cue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:5;font-size:13px;font-weight:600;color:var(--lav-l);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.85}
-.scroll-cue i{width:22px;height:34px;border-radius:12px;box-shadow:inset 0 0 0 2px var(--lav-l);position:relative}
-.scroll-cue i::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:7px;margin-left:-2px;border-radius:2px;background:var(--kick);animation:cue 1.6s var(--ease) infinite}
 @keyframes cue{to{transform:translateY(10px);opacity:0}}
 
 /* twinkles */
@@ -439,24 +436,6 @@ section{scroll-margin-top:90px}
 .totop{position:fixed;bottom:20px;left:20px;z-index:90;width:50px;height:50px;border-radius:14px;color:var(--ink);background:var(--lav);box-shadow:inset 0 0 0 2px var(--ink),0 4px 0 var(--ink);display:grid;place-items:center;opacity:0;transform:translateY(10px) scale(.9);pointer-events:none;transition:opacity var(--t-mid) var(--ease),transform var(--t-mid) var(--spring)}
 .totop.is-on{opacity:1;transform:none;pointer-events:auto}
 .totop svg{width:18px;height:18px}
-.a11y-btn{position:fixed;bottom:20px;right:20px;z-index:150;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--kick);color:var(--kick-ink);box-shadow:inset 0 0 0 2px var(--ink),0 4px 0 var(--ink);transition:transform var(--t-mid) var(--spring)}
-.a11y-btn:hover{transform:scale(1.06)}
-.a11y-btn svg{width:26px;height:26px}
-.a11y{position:fixed;bottom:86px;right:20px;z-index:151;width:min(340px,calc(100vw - 40px));max-height:calc(100vh - 120px);overflow:auto;padding:18px;border-radius:22px;background:var(--space);box-shadow:0 0 0 2px var(--ink),0 0 0 4px rgba(239,220,255,.18),0 30px 60px -20px rgba(0,0,0,.85);opacity:0;visibility:hidden;transform:translateY(10px) scale(.98);transform-origin:bottom right;transition:opacity var(--t-mid) var(--ease),transform var(--t-mid) var(--ease),visibility 0s var(--t-mid)}
-.a11y.is-open{opacity:1;visibility:visible;transform:none;transition:opacity var(--t-mid) var(--ease),transform var(--t-mid) var(--ease)}
-.a11y h2{margin:0 0 4px;font-size:18px;font-weight:800}
-.a11y p{margin:0 0 14px;font-size:13px;color:var(--t2)}
-.a11y__size{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px;border-radius:14px;background:var(--space-2);margin-bottom:10px}
-.a11y__size span{font-size:14px;font-weight:700;padding-inline:6px}
-.a11y__size button{width:40px;height:40px;border-radius:10px;background:var(--lav);color:var(--ink);font-weight:800;font-size:18px}
-.a11y__size output{min-width:46px;text-align:center;font-weight:800;font-variant-numeric:tabular-nums}
-.a11y__grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.a11y__opt{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-height:72px;padding:12px;border-radius:14px;background:var(--space-2);box-shadow:inset 0 0 0 1.5px rgba(239,220,255,.12);text-align:right;font-size:14px;font-weight:700}
-.a11y__opt svg{width:20px;height:20px;color:var(--kick)}
-.a11y__opt[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--kick);background:rgba(83,252,24,.1)}
-.a11y__foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px}
-.a11y__foot a{font-size:13px;color:var(--t2);text-decoration:underline;text-underline-offset:3px}
-.a11y__reset{height:38px;padding:0 16px;border-radius:10px;background:var(--lav);color:var(--ink);font-size:14px;font-weight:800}
 .doc{width:min(720px,94vw);max-height:86vh;padding:0;border:0;border-radius:24px;background:var(--space);color:var(--t1);overflow:hidden;box-shadow:0 0 0 2px var(--ink),0 0 0 5px var(--lav)}
 .doc[open]{display:flex;flex-direction:column}
 .doc::backdrop{background:rgba(13,4,32,.8)}
@@ -534,8 +513,7 @@ html.lite .ast>svg,html.lite .deco svg{animation:none}
   .specs li{grid-template-columns:96px 1fr}
   .cmd{flex-wrap:wrap}
   .tab{padding:0 11px;font-size:13px}
-  .a11y-btn{bottom:16px;right:16px;width:50px;height:50px}.a11y{right:16px;bottom:76px}.totop{bottom:16px;left:16px}
-  .scroll-cue{display:none}
+  .totop{bottom:16px;left:16px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
@@ -590,42 +568,6 @@ html.scrolling :is(.orb,.pod2){animation-play-state:paused}
 .frame .sec__head .sec__intro{color:#efe6ff}
 .frame--night .links{margin-top:10px}
 
-/* =========================================================
-   INTRO — asteroid field splash, "לחץ עליי" → warp into the site
-   ========================================================= */
-html.intro-on,html.intro-on body{overflow:hidden!important}
-.intro{position:fixed;inset:0;z-index:500;overflow:hidden;isolation:isolate;color:#fff;cursor:default}
-.intro[hidden]{display:none}
-.intro__bg{position:absolute;inset:0;background:radial-gradient(60% 55% at 58% 58%,#6b34b4 0%,rgba(107,52,180,0) 70%),radial-gradient(70% 80% at 85% 20%,#7a3fc4 0%,rgba(122,63,196,0) 60%),linear-gradient(115deg,#1f0742 0%,#3a1470 40%,#5a2696 75%,#6f34ad 100%)}
-.intro::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;background-image:var(--grain,none);background-size:180px 180px;opacity:.7}
-.intro__ground{position:absolute;left:0;right:0;bottom:0;width:100%;height:100%;z-index:1;pointer-events:none}
-.intro__field{position:absolute;inset:0;z-index:2;pointer-events:none}
-.irk{position:absolute;width:var(--s);aspect-ratio:1;will-change:transform}
-.irk>svg{width:100%;height:100%;overflow:visible;transform:rotate(var(--r));animation:irk 14s ease-in-out infinite alternate}
-.irk:nth-child(3n)>svg{animation-duration:18s;animation-direction:alternate-reverse}
-.irk:nth-child(4n)>svg{animation-duration:11s}
-@keyframes irk{to{translate:0 -14px;rotate:6deg}}
-.intro__pod{position:absolute;z-index:3;left:50%;top:27%;width:min(20vw,30vh,250px);aspect-ratio:1;transform:translate(-50%,-50%);will-change:transform}
-.intro__pod svg{width:100%;height:100%;display:block;overflow:visible;animation:podb 6s ease-in-out infinite alternate}
-.intro__copy{position:absolute;z-index:4;left:0;right:0;top:calc(27% + min(10vw,15vh,125px) + 4vh);display:flex;flex-direction:column;align-items:center;gap:clamp(22px,3vw,36px);padding:0 var(--gutter);text-align:center}
-.intro__copy::before{content:"";position:absolute;z-index:-1;left:50%;top:40%;width:min(1100px,96vw);height:150%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(26,8,52,.6),rgba(26,8,52,0));pointer-events:none}
-.intro__h{margin:0;display:flex;flex-direction:column;font-weight:800;font-size:clamp(38px,6.2vw,100px);line-height:1.02;letter-spacing:-.035em;text-shadow:0 4px 0 var(--ink),0 10px 40px rgba(20,4,40,.5)}
-.intro__h span:last-child{color:var(--cyan-l)}
-.intro__go{display:inline-flex;align-items:center;gap:16px;height:62px;padding:0 8px 0 26px;border-radius:16px;background:var(--ink);color:#fff;font-weight:800;font-size:19px;box-shadow:0 0 0 1.5px rgba(239,220,255,.28),0 18px 40px -14px rgba(0,0,0,.8);transition:transform .35s var(--spring),box-shadow .3s}
-.intro__go:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 0 2px var(--kick),0 0 34px rgba(83,252,24,.35),0 18px 40px -14px rgba(0,0,0,.8)}
-.intro__go:active{transform:scale(.97)}
-.intro__go:focus-visible{outline:3px solid var(--kick);outline-offset:4px}
-.intro__arr{display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:#fff;color:var(--ink);transition:transform .35s var(--spring)}
-.intro__go:hover .intro__arr{transform:translateX(-4px);background:var(--kick)}
-.intro__arr svg{width:22px;height:22px}
-.intro__flash{position:absolute;inset:0;z-index:7;background:radial-gradient(circle at 50% 40%,#fff 0%,#efdcff 35%,#c9a2ff 100%);opacity:0;pointer-events:none}
-@media (max-width:700px){
-  .intro__pod{top:24%;width:min(40vw,26vh)}
-  .intro__copy{top:calc(24% + min(20vw,13vh) + 4vh)}
-  .intro__h{font-size:clamp(34px,10vw,52px)}
-  .intro__go{height:58px;font-size:18px}
-}
-@media (prefers-reduced-motion:reduce){.irk>svg,.intro__pod svg{animation:none}}
 
 /* hero: pod sits above the title — never behind it */
 .scene{--podS:min(22vw,32vh,290px);--podY:29vh}
@@ -640,18 +582,12 @@ html.intro-on,html.intro-on body{overflow:hidden!important}
   .hero__copy{justify-content:flex-start;padding:calc(var(--podY) + var(--podS)/2 + 3vh) var(--gutter) 210px}
 }
 #heroTitle:focus{outline:none}
-.intro__h b{font-weight:inherit;white-space:nowrap;display:inline-block}
-.intro{--ipS:min(24vw,36vh,310px);--ipY:42%}
-.intro__pod{top:var(--ipY);width:var(--ipS)}
-.intro__copy{top:calc(var(--ipY) + var(--ipS)/2 + 4vh)}
-.intro__copy::before{display:none}
-@media (max-width:700px){.intro{--ipS:min(52vw,32vh);--ipY:41%}.intro__pod{top:var(--ipY);width:var(--ipS)}.intro__copy{top:calc(var(--ipY) + var(--ipS)/2 + 4vh)}}
 
 /* =========================================================
-   SPONSOR TOUR — full-screen worlds, wheel steps between them
+   SPONSOR TOUR — full-screen worlds
    ========================================================= */
-.tour{position:relative;height:calc(var(--n) * 100vh);height:calc(var(--n) * 100svh);background:#1a0b33}
-.tour__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;isolation:isolate}
+.tour{position:relative;height:100vh;height:100svh;background:#1a0b33}
+.tour__pin{position:relative;height:100vh;height:100svh;overflow:hidden;isolation:isolate}
 .spw{position:absolute;inset:0;overflow:hidden;visibility:hidden;clip-path:inset(0 0 0 100%);transition:clip-path 1s cubic-bezier(.7,0,.2,1),visibility 0s 1s}
 .spw.is-on{visibility:visible;clip-path:inset(0 0 0 0);transition:clip-path 1s cubic-bezier(.7,0,.2,1);z-index:2}
 .spw.is-past{clip-path:inset(0 100% 0 0)}
@@ -716,8 +652,6 @@ html.intro-on,html.intro-on body{overflow:hidden!important}
 .tdot span{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--ink);color:#fff;opacity:0;transition:opacity .25s;pointer-events:none}
 .tdot:hover span,.tdot:focus-visible span,.tdot[aria-current="true"] span{opacity:1}
 .tdot:focus-visible{outline:3px solid var(--kick);outline-offset:3px}
-.tour__hint{position:absolute;z-index:6;bottom:clamp(26px,4.4vh,44px);left:6vw;margin:0;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#fff;padding:6px 12px 6px 10px;border-radius:999px;background:rgba(26,11,51,.7);transition:opacity .4s}
-.tour.is-last .tour__hint{opacity:0}
 .mouse{width:16px;height:24px;border-radius:9px;border:2px solid #fff;position:relative}
 .mouse::after{content:"";position:absolute;left:50%;top:4px;width:2px;height:6px;margin-left:-1px;border-radius:2px;background:var(--kick);animation:wheel 1.6s ease-in-out infinite}
 @keyframes wheel{0%{transform:translateY(0);opacity:1}70%{transform:translateY(7px);opacity:0}100%{opacity:0}}
@@ -738,7 +672,7 @@ html.hero-off .tour .mouse::after{animation-play-state:running}
   .spw .deals{margin-bottom:12px}
   .spw__panel .btn{height:48px}
   .tour__top{top:84px;right:14px}
-  .tour__hint,.tour__disc{display:none}
+  .tour__disc{display:none}
   .tour__prog>b{width:26px}
 }
 @media (prefers-reduced-motion:reduce){.spw,.spw.is-on{transition:none}.spw__art>*,.spw__shadow{animation:none}}
@@ -841,8 +775,135 @@ html.scrolling .foot2__pod{animation-play-state:paused}
 .promo__bar{position:absolute;z-index:3;left:0;right:0;bottom:0;height:6px;background:rgba(13,4,32,.55)}
 .promo__bar i{display:block;height:100%;width:100%;background:var(--kick);transform-origin:right;animation:promoBar 10s linear forwards}
 @keyframes promoBar{to{transform:scaleX(0)}}
-html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
+html.a11y-calm .promo__bar i,html.a11y-calm .promo[open],body.a11y-calm .promo__bar i,body.a11y-stop-anim .promo__bar i{animation:none}
 @media (prefers-reduced-motion:reduce){.promo[open],.promo::backdrop,.promo__bar i{animation:none}}
+
+/* ---------- carousel arrows ---------- */
+.tnav{position:absolute;z-index:7;top:50%;width:54px;height:54px;margin-top:-27px;border-radius:50%;display:grid;place-items:center;background:var(--kick);color:var(--kick-ink);box-shadow:0 0 0 2px var(--ink),0 5px 0 var(--ink),0 14px 26px -8px rgba(0,0,0,.55);transition:transform .25s var(--spring),background-color .2s}
+.tnav svg{width:26px;height:26px}
+.tnav:hover{transform:scale(1.1);background:#fff}
+.tnav:active{transform:translateY(3px) scale(.98)}
+.tnav:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.tnav--prev{right:max(.8vw,8px)}.tnav--next{left:max(.8vw,8px)}
+@media (max-width:1100px){.tnav{width:44px;height:44px;margin-top:-22px}.tnav svg{width:22px;height:22px}}
+@media (max-width:860px){.tnav{top:calc(clamp(120px,15svh,150px) + 17svh)}.tnav--prev{right:8px}.tnav--next{left:8px}}
+/* ============================================================
+   Accessibility widget
+   ============================================================ */
+#a11y-widget-container { position: fixed; bottom: 80px; left: 0; z-index: 99998; direction: rtl; }
+#a11y-fab { width: 52px; height: 52px; background: #22d3ee; color: white; border: none; border-radius: 0 10px 10px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 3px 3px 15px rgba(0,0,0,.4); transition: all .2s; }
+#a11y-fab:hover { background: #0891b2; width: 58px; }
+#a11y-fab:focus-visible, #a11y-close:focus-visible, .a11y-btn:focus-visible, .cursor-btn:focus-visible, .a11y-section-toggle:focus-visible, .a11y-link-btn:focus-visible, #a11y-reset-all:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+#a11y-panel {
+  position: fixed; bottom: 0; left: -420px; top: 0; width: 420px; max-width: 95vw;
+  background: #0b1220; color: #e5e7eb; z-index: 99999;
+  transition: left .35s cubic-bezier(.4,0,.2,1), visibility 0s linear .35s; visibility: hidden;
+  overflow-y: auto; box-shadow: 5px 0 30px rgba(0,0,0,.6); display: flex; flex-direction: column;
+  border-right: 1px solid rgba(255,255,255,.08); scrollbar-color: #22d3ee #131c2f;
+}
+#a11y-panel.open { left: 0; visibility: visible; transition-delay: 0s; }
+#a11y-panel:focus { outline: none; }
+#a11y-panel-header { background: #131c2f; color: white; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2; flex-shrink: 0; border-bottom: 1px solid rgba(34,211,238,.35); }
+#a11y-panel-header h2 { font-size: 17px; font-weight: 900; margin: 0; direction: rtl; }
+#a11y-close { background: none; border: none; color: white; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; }
+#a11y-close:hover { background: rgba(255,255,255,.12); }
+.a11y-section { padding: 14px 16px 8px; }
+.a11y-section-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 6px 0; }
+.a11y-section-header h3 { font-size: 14px; font-weight: 800; color: #e5e7eb; margin: 0; direction: rtl; }
+.a11y-section-toggle { width: 24px; height: 24px; background: #22d3ee; color: #04121a; border: none; border-radius: 50%; font-size: 16px; font-weight: 900; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.a11y-section-body[hidden] { display: none; }
+.a11y-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.a11y-row { display: flex; gap: 6px; margin-top: 6px; }
+.a11y-btn {
+  background: #131c2f; border: 1.5px solid rgba(255,255,255,.12); border-radius: 10px; padding: 12px 6px 8px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer;
+  font-size: 12px; color: #cbd5e1; font-weight: 700; text-align: center; transition: all .15s;
+  font-family: 'Heebo', sans-serif; line-height: 1.3; min-height: 80px; justify-content: center;
+}
+.a11y-btn svg { width: 32px; height: 32px; flex-shrink: 0; }
+.a11y-btn.sm { flex: 1; min-height: 60px; }
+.a11y-btn.sm svg { width: 24px; height: 24px; }
+.a11y-btn:hover { border-color: #22d3ee; color: #67e8f9; background: rgba(34,211,238,.1); }
+.a11y-btn.active { border-color: #22d3ee; background: rgba(34,211,238,.18); color: #67e8f9; box-shadow: 0 0 0 2px rgba(34,211,238,.25); }
+.a11y-divider { height: 1px; background: rgba(255,255,255,.08); margin: 4px 16px; }
+.a11y-color-section { padding: 10px 0 14px; direction: rtl; }
+.a11y-color-label { font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 6px; display: block; }
+.a11y-color-swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,.2); cursor: pointer; transition: transform .1s; padding: 0; }
+.a11y-color-swatch:hover { transform: scale(1.2); border-color: #e5e7eb; }
+.a11y-color-swatch.active { border-color: #22d3ee; transform: scale(1.2); }
+.color-preset-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.a11y-link-btn { font-size: 12px; color: #22d3ee; background: none; cursor: pointer; font-weight: 700; padding: 4px 8px; border: 1px solid #22d3ee; border-radius: 6px; }
+.hue-track { height: 12px; border-radius: 6px; margin-top: 4px; background: linear-gradient(to left, hsl(0,80%,55%), hsl(45,80%,55%), hsl(90,80%,55%), hsl(135,80%,55%), hsl(180,80%,55%), hsl(225,80%,55%), hsl(270,80%,55%), hsl(315,80%,55%), hsl(360,80%,55%)); }
+.a11y-slider-row { display: flex; align-items: center; gap: 10px; direction: rtl; padding: 8px 0; }
+.a11y-slider-row input[type=range] { flex: 1; accent-color: #22d3ee; }
+.a11y-slider-label { font-size: 12px; font-weight: 700; color: #94a3b8; white-space: nowrap; }
+.cursor-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.cursor-btn { padding: 6px 14px; border: 2px solid rgba(255,255,255,.15); border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 700; background: #131c2f; color: #cbd5e1; transition: all .15s; font-family: 'Heebo', sans-serif; }
+.cursor-btn:hover { border-color: #22d3ee; }
+.cursor-btn.active { border-color: #22d3ee; background: rgba(34,211,238,.18); color: #67e8f9; }
+#a11y-reset-all { width: 100%; margin: 14px 0 6px; padding: 10px; background: rgba(34,211,238,.12); border: 1.5px solid rgba(34,211,238,.5); border-radius: 10px; color: #67e8f9; font-weight: 900; font-size: 13px; cursor: pointer; font-family: 'Heebo', sans-serif; direction: rtl; }
+#a11y-reset-all:hover { background: rgba(34,211,238,.22); }
+
+#a11y-toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); max-width: min(92vw, 520px); background: #0f172a; border: 1px solid #22d3ee; color: #e5e7eb; padding: 12px 16px; border-radius: 12px; z-index: 100001; white-space: pre-line; font-size: 14px; line-height: 1.6; direction: rtl; display: flex; gap: 12px; align-items: flex-start; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+#a11y-toast[hidden] { display: none; }
+#a11y-toast button { background: none; border: 0; color: #67e8f9; font-size: 18px; cursor: pointer; line-height: 1; }
+
+#reading-guide-bar { position: fixed; top: 0; left: 0; right: 0; height: 40px; background: rgba(0,0,0,.3); pointer-events: none; z-index: 99990; display: none; border-top: 2px solid #22d3ee; border-bottom: 2px solid #22d3ee; }
+
+#vkeyboard { position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; border-top: 2px solid #22d3ee; z-index: 99995; display: none; padding: 12px; }
+.vkey-row { display: flex; justify-content: center; gap: 4px; margin-bottom: 4px; }
+.vkey { background: #334155; color: white; border: 1px solid #475569; border-radius: 6px; padding: 8px 12px; font-size: 14px; cursor: pointer; min-width: 36px; text-align: center; font-family: 'Heebo', sans-serif; }
+.vkey:hover, .vkey:focus-visible { background: #22d3ee; color: #04121a; outline: none; }
+.vkey.wide { min-width: 120px; }
+.vkey.close { background: #22d3ee; color: #04121a; font-weight: 900; }
+
+#tts-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; border-top: 2px solid #22d3ee; z-index: 99994; padding: 10px 16px; direction: rtl; }
+.tts-inner { max-width: 700px; margin: 0 auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.tts-btn { border: none; border-radius: 8px; padding: 8px 14px; font-size: 13px; font-weight: 900; cursor: pointer; font-family: 'Heebo', sans-serif; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.tts-btn.primary { background: #22d3ee; color: #04121a; }
+.tts-btn.secondary { background: #334155; color: white; font-weight: 700; }
+.tts-group { display: flex; align-items: center; gap: 6px; }
+.tts-group.grow { flex: 1; min-width: 140px; }
+.tts-group label { color: #94a3b8; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.tts-group input[type=range] { flex: 1; accent-color: #22d3ee; }
+.tts-group select { background: #334155; color: white; border: 1px solid #475569; border-radius: 6px; padding: 4px 8px; font-size: 12px; font-family: 'Heebo', sans-serif; max-width: 140px; }
+#tts-speed-label { color: white; font-size: 12px; font-weight: 700; min-width: 28px; }
+#tts-progress-text { color: #94a3b8; font-size: 11px; font-weight: 700; white-space: nowrap; }
+#tts-word-highlight { position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%); background: #22d3ee; color: #04121a; padding: 8px 24px; border-radius: 30px; font-size: 20px; font-weight: 900; z-index: 99993; pointer-events: none; letter-spacing: .05em; transition: opacity .15s; box-shadow: 0 4px 20px rgba(34,211,238,.5); opacity: 0; }
+
+/* ---------- Accessibility modes (מופעלים על body / html) ---------- */
+body.a11y-stop-anim *, body.a11y-stop-anim *::before, body.a11y-stop-anim *::after { animation: none !important; transition: none !important; }
+body.a11y-large-text { zoom: 1.2; }
+body.a11y-large-text h1 { font-size: 3rem !important; }
+body.a11y-big-titles :is(h1, h2, h3, h4) { font-size: 1.5em !important; }
+body.a11y-highlight-links a { background: yellow !important; color: #000 !important; padding: 0 2px !important; outline: 2px solid orange !important; }
+body.a11y-readable-font * { font-family: Arial, sans-serif !important; letter-spacing: .05em !important; }
+body.a11y-big-cursor * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 0 L8 24 L14 18 L20 32 L23 31 L17 17 L26 17 Z' fill='black' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 8 0, auto !important; }
+body.a11y-big-cursor-white * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 0 L8 24 L14 18 L20 32 L23 31 L17 17 L26 17 Z' fill='white' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E") 8 0, auto !important; }
+body.a11y-letter-spacing * { letter-spacing: var(--a11y-ls, 0) !important; }
+body.a11y-word-spacing * { word-spacing: var(--a11y-ws, 0) !important; }
+body.a11y-line-height * { line-height: var(--a11y-lh, 1.5) !important; }
+body.a11y-focus-visible :focus { outline: 3px solid #22d3ee !important; outline-offset: 3px !important; }
+body.a11y-kbd-outline :is(a, button, summary, input, select) { outline: 2px solid #22d3ee; outline-offset: 3px; }
+body.a11y-focus-mode :is(.link, .card, .vid, .code, .row, .cmd) { transition: opacity .2s; }
+body.a11y-focus-mode :is(.link, .card, .vid, .code, .row, .cmd):not(:hover):not(:focus-within) { opacity: .4; }
+body.a11y-calm :is(.ast, .stars, .deco, .led, .sky-stars, .orb, .noise) { display: none !important; }
+body.a11y-calm *, body.a11y-calm *::before, body.a11y-calm *::after { animation: none !important; transition: none !important; }
+body.a11y-calm .reveal { opacity: 1 !important; transform: none !important; }
+/* כשמופעלת ניגודיות כהה (invert) מחזירים תמונות לצבען המקורי */
+html.a11y-dark :is(img, video, svg, .spin3__img, .coin3__face, canvas) { filter: invert(1) hue-rotate(180deg); }
+
+/* ---------- Accessibility panel helpers ---------- */
+.a11y-section [hidden] { display: none !important; }
+#hue-slider { width: 100%; accent-color: #22d3ee; margin-top: 10px; }
+.a11y-hint { font-size: 12px; font-weight: 700; color: #94a3b8; display: block; margin: 10px 0 8px; }
+.a11y-btn.wide { width: 100%; flex-direction: row; gap: 12px; padding: 10px 14px; min-height: 52px; margin-top: 10px; }
+.a11y-link-btn.with-icon { display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; border: 0; padding: 0; }
+.a11y-color-swatch { background-clip: padding-box; }
+.a11y-btn{box-sizing:border-box}
+#a11y-widget-container,#a11y-panel,#a11y-toast,#tts-bar,#tts-word-highlight,#vkeyboard,#reading-guide-bar{font-family:var(--f-ui)}
+html.a11y-dark .promo__link img{filter:none}
+
 </style>
 </head>
 <body>
@@ -901,28 +962,6 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
   </defs>
 </svg>
 
-<!-- ============ INTRO / splash ============ -->
-<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="מסך כניסה לאתר של ODEDSVR">
-  <div class="intro__bg" aria-hidden="true"></div>
-  <svg class="intro__ground" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <path d="M-60 900 L-60 700 Q120 640 360 690 Q520 720 600 780 Q660 840 640 900Z" fill="#7c3fd0" stroke="#1a0b33" stroke-width="2.5"/>
-    <path d="M-60 900 L-60 752 Q120 704 330 742 Q470 770 540 830 L560 900Z" fill="#4a1a8f"/>
-    <path d="M40 700 q60 -14 120 -6 M220 698 q50 4 90 14 M420 726 q40 14 70 34" fill="none" stroke="#c79bff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
-    <path d="M-60 790 Q140 750 300 780 Q420 800 470 860" fill="none" stroke="#1a0b33" stroke-width="2" opacity=".5"/>
-    <path d="M1500 900 L1500 640 L1420 600 L1340 660 L1300 760 L1240 900Z" fill="#5a26a8" stroke="#1a0b33" stroke-width="2.5" stroke-linejoin="round"/>
-    <path d="M1420 600 L1400 690 L1340 660 M1400 690 L1360 900" fill="none" stroke="#1a0b33" stroke-width="1.8" opacity=".5"/>
-  </svg>
-  <div class="intro__field" id="introField" aria-hidden="true">
-    <span class="irk" data-z="0.35" style="left:-8%;top:22%;--s:clamp(180px,24vw,420px);--r:-12deg"><svg viewBox="0 0 100 100"><use href="#rk2" style="--rb:#8a4be3;--rl:#b98af7;--rd:#5f2bb0"/></svg></span><span class="irk" data-z="0.6" style="left:7%;top:30%;--s:clamp(70px,8vw,140px);--r:18deg"><svg viewBox="0 0 100 100"><use href="#rk1" style="--rb:#a066f0;--rl:#d2a8ff;--rd:#7038c8"/></svg></span><span class="irk" data-z="0.8" style="left:4%;top:47%;--s:clamp(40px,4vw,70px);--r:0deg"><svg viewBox="0 0 100 100"><use href="#rk3" style="--rb:#8a4be3;--rl:#b98af7;--rd:#5f2bb0"/></svg></span><span class="irk" data-z="0.9" style="left:15%;top:6%;--s:clamp(30px,2.6vw,46px);--r:10deg"><svg viewBox="0 0 100 100"><use href="#rk1" style="--rb:#33135e;--rl:#4b2580;--rd:#1d0a3d"/></svg></span><span class="irk" data-z="0.55" style="left:39%;top:20%;--s:clamp(70px,7vw,120px);--r:-8deg"><svg viewBox="0 0 100 100"><use href="#rk2" style="--rb:#8a4be3;--rl:#b98af7;--rd:#5f2bb0"/></svg></span><span class="irk" data-z="0.85" style="left:35%;top:23%;--s:clamp(26px,2.4vw,40px);--r:0deg"><svg viewBox="0 0 100 100"><use href="#rk3" style="--rb:#a066f0;--rl:#d2a8ff;--rd:#7038c8"/></svg></span><span class="irk" data-z="0.3" style="left:53%;top:-6%;--s:clamp(130px,13vw,230px);--r:0deg"><svg viewBox="0 0 100 100"><use href="#rk1" style="--rb:#2a0f4f;--rl:#43206f;--rd:#170733"/></svg></span><span class="irk" data-z="0.3" style="left:80%;top:-8%;--s:clamp(140px,15vw,260px);--r:20deg"><svg viewBox="0 0 100 100"><use href="#rk2" style="--rb:#2a0f4f;--rl:#43206f;--rd:#170733"/></svg></span><span class="irk" data-z="0.5" style="left:89%;top:20%;--s:clamp(70px,7vw,120px);--r:-10deg"><svg viewBox="0 0 100 100"><use href="#rk1" style="--rb:#33135e;--rl:#4b2580;--rd:#1d0a3d"/></svg></span><span class="irk" data-z="0.9" style="left:82%;top:47%;--s:clamp(26px,2.6vw,44px);--r:0deg"><svg viewBox="0 0 100 100"><use href="#rk3" style="--rb:#a066f0;--rl:#d2a8ff;--rd:#7038c8"/></svg></span><span class="irk" data-z="0.45" style="left:68%;top:64%;--s:clamp(110px,11vw,190px);--r:0deg"><svg viewBox="0 0 100 100"><use href="#rk1" style="--rb:#2a0f4f;--rl:#43206f;--rd:#170733"/></svg></span><span class="irk" data-z="0.8" style="left:61%;top:82%;--s:clamp(40px,4vw,66px);--r:0deg"><svg viewBox="0 0 100 100"><use href="#rk3" style="--rb:#8a4be3;--rl:#b98af7;--rd:#5f2bb0"/></svg></span><span class="irk" data-z="0.4" style="left:27%;top:74%;--s:clamp(130px,12vw,220px);--r:-6deg"><svg viewBox="0 0 100 100"><use href="#rk2" style="--rb:#2a0f4f;--rl:#43206f;--rd:#170733"/></svg></span><span class="irk" data-z="0.25" style="left:86%;top:58%;--s:clamp(220px,26vw,460px);--r:8deg"><svg viewBox="0 0 100 100"><use href="#rk3" style="--rb:#8a4be3;--rl:#b98af7;--rd:#5f2bb0"/></svg></span><span class="irk" data-z="0.95" style="left:52%;top:58%;--s:clamp(24px,2vw,36px);--r:0deg"><svg viewBox="0 0 100 100"><use href="#rk1" style="--rb:#33135e;--rl:#4b2580;--rd:#1d0a3d"/></svg></span><span class="irk" data-z="0.7" style="left:31%;top:12%;--s:clamp(40px,4vw,70px);--r:0deg"><svg viewBox="0 0 100 100"><use href="#shard" style="--cb:#e48bff;--cl:#f6c7ff"/></svg></span><span class="irk" data-z="0.75" style="left:71%;top:23%;--s:clamp(34px,3vw,54px);--r:90deg"><svg viewBox="0 0 100 100"><use href="#shard" style="--cb:#a8ff80;--cl:#d6ffbf"/></svg></span><span class="irk" data-z="0.65" style="left:83%;top:63%;--s:clamp(50px,5vw,90px);--r:-75deg"><svg viewBox="0 0 100 100"><use href="#shard" style="--cb:#d6aefc;--cl:#f3e3ff"/></svg></span><span class="irk" data-z="0.8" style="left:29%;top:57%;--s:clamp(30px,3vw,52px);--r:-40deg"><svg viewBox="0 0 100 100"><use href="#shard" style="--cb:#d6aefc;--cl:#f3e3ff"/></svg></span><span class="irk" data-z="0.5" style="left:13%;top:74%;--s:clamp(110px,10vw,180px);--r:0deg"><svg viewBox="0 0 100 100"><use href="#cry" style="--cb:#a8ff80;--cl:#d6ffbf;--cd:#7ee04f"/></svg></span>
-  </div>
-  <div class="intro__pod" id="introPod" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#pod2"/></svg></div>
-  <div class="intro__copy" id="introCopy">
-    <button class="intro__go" id="introGo" type="button">לחץ עליי<span class="intro__arr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span></button>
-  </div>
-  <div class="intro__flash" id="introFlash" aria-hidden="true"></div>
-</div>
-
-
 <a class="skip" href="#main">דילוג לתוכן</a>
 <div class="progress" aria-hidden="true"></div>
 
@@ -957,8 +996,6 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
       <span class="ast neb" style="--x:78%;--y:58%;--s:clamp(240px,26vw,400px);--d:22s;--zi:0" data-z=".25"><svg><use href="#neb" style="--nb:#7340d2"/></svg></span>
       <span class="ast" style="--x:9%;--y:18%;--s:clamp(170px,20vw,320px);--d:18s;--r0:-10deg;--rr:4deg" data-z="1.05"><svg viewBox="0 0 200 140"><use href="#planet" style="--pb:#3fd2ff;--pl:#a6ecff;--pd:#1fa7c9;--pr:#efdcff"/></svg></span>
       <span class="ast" style="--x:93%;--y:44%;--s:70px;--d:12s;--r0:0deg;--rr:8deg" data-z=".55"><svg><use href="#moon"/></svg></span>
-      <span class="ast" style="--x:62%;--y:16%;--s:clamp(70px,7vw,110px);--d:10s;--r0:-14deg;--rr:16deg" data-z=".7"><svg viewBox="0 0 140 70"><use href="#sat"/></svg></span>
-      <span class="ast" style="--x:27%;--y:72%;--s:clamp(80px,7.5vw,120px);--d:7s;--r0:-6deg;--rr:10deg" data-z=".85"><svg viewBox="0 0 120 80"><use href="#ufo"/></svg></span>
       <span class="ast" style="--x:20%;--y:16%;--s:46px;--d:9s;--r0:20deg;--rr:30deg" data-z=".5"><svg><use href="#rk1" style="--rb:#2c1352;--rl:#3f1c72;--rd:#1c0b38"/></svg></span>
       <span class="ast" style="--x:34%;--y:24%;--s:96px;--d:12s;--r0:-10deg;--rr:14deg" data-z=".7"><svg><use href="#rk2" style="--rb:#7b3fd6;--rl:#a879f0;--rd:#5a28a8"/></svg></span>
       <span class="ast" style="--x:44%;--y:13%;--s:clamp(110px,12vw,190px);--d:15s;--r0:6deg" data-z=".9"><svg><use href="#rk1" style="--rb:#2c1352;--rl:#3f1c72;--rd:#1c0b38"/></svg></span>
@@ -1034,7 +1071,6 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
       <button class="notify" type="button" id="notifyBtn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span>תודיעו לי כשעודד עולה</span></button>
     </div>
 
-    <div class="scroll-cue" id="cue" aria-hidden="true"><i></i>גללו להמראה</div>
     <div class="warp" id="warp" aria-hidden="true"></div>
   </div>
 </section>
@@ -1239,7 +1275,8 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
       <button type="button" class="tdot" aria-current="false" aria-label="ליברו"><i></i><span>ליברו</span></button><b aria-hidden="true"></b>
       <button type="button" class="tdot" aria-current="false" aria-label="CardPull IL"><i></i><span>CardPull IL</span></button>
     </div>
-    <p class="tour__hint" aria-hidden="true"><span class="mouse"></span>גללו לשותף הבא</p>
+    <button type="button" class="tnav tnav--prev" id="tPrev" aria-label="השותף הקודם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <button type="button" class="tnav tnav--next" id="tNext" aria-label="השותף הבא"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
     <p class="tour__disc">* הקישורים לליברו, LÜZ, מחסני חשמל ו-CardPull IL הם שיתופי פעולה בין עודד לחברות אלו.</p>
   </div>
 </section>
@@ -1370,8 +1407,6 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
     <path d="M1100 900 L1130 820 L1260 800 L1440 812 L1440 900Z" fill="#1f8f6e" stroke="#1a0b33" stroke-width="2.5" stroke-linejoin="round"/>
     <path d="M0 900 L0 830 L140 810 L260 850 L300 900Z" fill="#167358" stroke="#1a0b33" stroke-width="2.5" stroke-linejoin="round"/>
   </svg>
-  <div class="beam" aria-hidden="true"></div>
-  <div class="pod2" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#pod2"/></svg></div>
   <div class="wrap">
     <header class="sec__head">
       <span class="kicker reveal">Setup</span>
@@ -1406,7 +1441,6 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
         <path d="M1350 414 l10 -26 l10 26 l-10 12z" fill="#f2b3f6"/>
       </g>
     </svg>
-    <div class="foot2__pod" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#pod2"/></svg></div>
     <div class="wrap foot2__in">
       <span class="foot2__kicker">Thanks for watching</span>
       <h2 class="foot2__h" id="thanks">נתראה <em>בלייב.</em></h2>
@@ -1424,21 +1458,277 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
   </div>
 </footer>
 <button class="totop" id="totop" aria-label="חזרה לראש הדף"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
-<button class="a11y-btn" id="a11yBtn" type="button" aria-label="אפשרויות נגישות" aria-expanded="false" aria-controls="a11yPanel"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="4.2" r="2.2"/><path d="M4 7.6c2.6.8 5.3 1.2 8 1.2s5.4-.4 8-1.2l.6 1.9c-2 .6-4 1-6.1 1.2v3.1l2.2 7.4-1.9.6L12.6 15h-1.2l-2.2 6.8-1.9-.6 2.2-7.4v-3.1c-2.1-.2-4.1-.6-6.1-1.2z"/></svg></button>
-<div class="a11y" id="a11yPanel" role="dialog" aria-modal="false" aria-labelledby="a11yT" hidden>
-  <h2 id="a11yT">נגישות</h2>
-  <p>ההגדרות נשמרות בדפדפן שלך.</p>
-  <div class="a11y__size"><span>גודל טקסט</span><div style="display:flex;align-items:center;gap:6px"><button type="button" data-z="-1" aria-label="הקטנת טקסט">−</button><output id="a11yZ" aria-live="polite">100%</output><button type="button" data-z="1" aria-label="הגדלת טקסט">+</button></div></div>
-  <div class="a11y__grid">
-    <button class="a11y__opt" type="button" data-a="contrast" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>ניגודיות גבוהה</button>
-    <button class="a11y__opt" type="button" data-a="calm" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>עצירת אנימציות</button>
-    <button class="a11y__opt" type="button" data-a="links" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg>הדגשת קישורים</button>
-    <button class="a11y__opt" type="button" data-a="font" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4M6 20 11 4h2l5 16M16 20h4M8.5 14h7"/></svg>ריווח קריא</button>
-    <button class="a11y__opt" type="button" data-a="cursor" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 8-6 1.6L10 19z"/></svg>סמן גדול</button>
-    <button class="a11y__opt" type="button" data-a="gray" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/></svg>גווני אפור</button>
+<div id="a11y-widget-container" role="region" aria-label="תפריט נגישות">
+    <button type="button" id="a11y-fab" aria-label="פתח תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 256 256" aria-hidden="true">
+        <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM128,56a16,16,0,1,0,16,16A16,16,0,0,0,128,56Zm40,56a8,8,0,0,1-8,8H136v40h16a8,8,0,0,1,0,16H104a8,8,0,0,1,0-16h16V120H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Z"/>
+      </svg>
+    </button>
   </div>
-  <div class="a11y__foot"><a href="#accessibility" data-doc="accessibility">הצהרת נגישות</a><button class="a11y__reset" type="button" id="a11yReset">איפוס</button></div>
-</div>
+  <div id="a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" tabindex="-1">
+    <div id="a11y-panel-header">
+      <button type="button" id="a11y-close" aria-label="סגור תפריט נגישות">
+        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
+      </button>
+      <h2>תפריט נגישות</h2>
+    </div>
+
+    <div class="a11y-section">
+      <div class="a11y-section-header">
+        <button type="button" class="a11y-section-toggle">−</button>
+        <h3>התאמות ניווט</h3>
+      </div>
+      <div id="nav-section-body" class="a11y-grid">
+        <button type="button" class="a11y-btn" data-feature="keyboard-nav" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><rect x="24" y="56" width="208" height="144" rx="16" fill="none" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="72" y1="152" x2="184" y2="152" fill="none" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="72" y1="112" x2="72" y2="112" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/><line x1="128" y1="112" x2="128" y2="112" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/><line x1="184" y1="112" x2="184" y2="112" stroke="#22d3ee" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>
+          ניווט מקלדת
+        </button>
+        <button type="button" class="a11y-btn" data-feature="regions" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><rect x="24" y="24" width="208" height="208" rx="8" stroke="#22d3ee" stroke-width="16" fill="none"/><line x1="24" y1="88" x2="232" y2="88" stroke="#22d3ee" stroke-width="14"/><line x1="24" y1="168" x2="232" y2="168" stroke="#22d3ee" stroke-width="14"/><line x1="128" y1="88" x2="128" y2="168" stroke="#22d3ee" stroke-width="14"/></svg>
+          ניווט אזורים
+        </button>
+        <button type="button" class="a11y-btn" data-feature="voice-nav" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M128,176a48.05,48.05,0,0,0,48-48V80a48,48,0,0,0-96,0v48A48.05,48.05,0,0,0,128,176ZM96,80a32,32,0,0,1,64,0v48a32,32,0,0,1-64,0Zm40,143.6V200a8,8,0,0,0-16,0v23.6A80.11,80.11,0,0,1,48,144a8,8,0,0,0-16,0,96.11,96.11,0,0,0,88,95.6V240a8,8,0,0,0,16,0v-.4A96.11,96.11,0,0,0,224,144a8,8,0,0,0-16,0A80.11,80.11,0,0,1,136,223.6Z"/></svg>
+          פקודות קוליות
+        </button>
+      </div>
+    </div>
+
+    <div class="a11y-divider"></div>
+
+    <div class="a11y-section">
+      <div class="a11y-section-header">
+        <button type="button" class="a11y-section-toggle">−</button>
+        <h3>התאמות ניגודיות</h3>
+      </div>
+      <div id="contrast-section-body" class="a11y-grid">
+        <button type="button" class="a11y-btn" data-feature="contrast-bright" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm8,24a64,64,0,1,0,64,64A64.07,64.07,0,0,0,128,64ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM40,128a8,8,0,0,0-8-8H8a8,8,0,0,0,0,16H32A8,8,0,0,0,40,128Zm88,88a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,216Zm112-96H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg>
+          ניגודיות בהירה
+        </button>
+        <button type="button" class="a11y-btn" data-feature="contrast-dark" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,240a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23Z"/></svg>
+          ניגודיות כהה
+        </button>
+        <button type="button" class="a11y-btn" data-feature="mono" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><circle cx="128" cy="128" r="96" stroke="#22d3ee" stroke-width="16" fill="none"/><path d="M128 32 Q128 128 128 224" stroke="#22d3ee" stroke-width="16" fill="#22d3ee"/></svg>
+          מונוכרום
+        </button>
+        <button type="button" class="a11y-btn" data-feature="contrast-gauge" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z" fill="#22d3ee"/><path d="M128 128 L80 80" stroke="#22d3ee" stroke-width="14" stroke-linecap="round"/></svg>
+          מד ניגודיות
+        </button>
+        <button type="button" class="a11y-btn" data-feature="saturation-high" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,16a88,88,0,0,1,85.48,108H42.52A88.09,88.09,0,0,1,128,40Z" fill="#22d3ee"/></svg>
+          רוויה גבוהה
+        </button>
+        <button type="button" class="a11y-btn" data-feature="saturation-low" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><circle cx="128" cy="128" r="96" stroke="#ccc" stroke-width="16" fill="none"/><path d="M80 176 Q128 80 176 176" stroke="#ccc" stroke-width="14" stroke-linecap="round" fill="none"/></svg>
+          רוויה נמוכה
+        </button>
+      </div>
+
+      <div class="a11y-color-section">
+        <span class="a11y-color-label">התאמת צבעים — שינוי גוון האתר</span>
+        <div class="color-preset-row">
+          <button type="button" class="a11y-color-swatch active" style="background:#22d3ee" data-hue="0" title="ברירת מחדל" aria-label="ברירת מחדל" aria-pressed="true"></button>
+          <button type="button" class="a11y-color-swatch" style="background:linear-gradient(135deg,#f59e0b,#ef4444)" data-hue="330" title="חם" aria-label="חם" aria-pressed="false"></button>
+          <button type="button" class="a11y-color-swatch" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)" data-hue="200" title="קר" aria-label="קר" aria-pressed="false"></button>
+          <button type="button" class="a11y-color-swatch" style="background:linear-gradient(135deg,#22c55e,#10b981)" data-hue="120" title="ירוק" aria-label="ירוק" aria-pressed="false"></button>
+          <button type="button" class="a11y-color-swatch" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)" data-hue="270" title="סגול" aria-label="סגול" aria-pressed="false"></button>
+          <button type="button" class="a11y-link-btn" id="reset-color-btn">איפוס</button>
+        </div>
+        <div>
+          <input type="range" min="0" max="360" value="0" id="hue-slider" aria-label="גוון הצבעים">
+          <div class="hue-track" aria-hidden="true"></div>
+          <button type="button" class="a11y-link-btn with-icon" id="reset-hue-btn">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#22d3ee" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.07A88,88,0,0,0,128,40a88.4,88.4,0,0,0-36.07,7.65l-35.77-35.77A8,8,0,0,0,44.84,23.2L23.2,44.84a8,8,0,0,0,0,11.32L216.69,229.66a8,8,0,0,0,11.32-11.32ZM128,56a72,72,0,0,1,55.68,26.55L58.55,183.68A71.51,71.51,0,0,1,56,164,72.08,72.08,0,0,1,128,56Z"/></svg>
+            איפוס צבעים
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="a11y-divider"></div>
+
+    <div class="a11y-section">
+      <div class="a11y-section-header">
+        <button type="button" class="a11y-section-toggle">−</button>
+        <h3>הגדלת הטקסט והקטנת הגופן</h3>
+      </div>
+      <div id="font-section-body">
+        <div class="a11y-slider-row">
+          <span class="a11y-slider-label">גודל גופן</span>
+          <input type="range" min="80" max="160" value="100" id="font-size-slider" aria-label="גודל גופן">
+          <span class="a11y-slider-label" id="font-size-display">100%</span>
+        </div>
+        <div class="a11y-slider-row">
+          <span class="a11y-slider-label">ריווח אותיות</span>
+          <input type="range" min="0" max="10" value="0" id="letter-spacing-slider" aria-label="ריווח אותיות">
+        </div>
+        <div class="a11y-slider-row">
+          <span class="a11y-slider-label">ריווח בין מילים</span>
+          <input type="range" min="0" max="20" value="0" id="word-spacing-slider" aria-label="ריווח בין מילים">
+        </div>
+        <div class="a11y-slider-row">
+          <span class="a11y-slider-label">ריווח בין שורות</span>
+          <input type="range" min="0" max="20" value="0" id="line-height-slider" aria-label="ריווח בין שורות">
+        </div>
+        <div class="a11y-row">
+          <button type="button" class="a11y-btn sm" data-feature="readable-font" aria-pressed="false">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M216,56H40A16,16,0,0,0,24,72V184a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,152H80V104H64a8,8,0,0,1,0-16h48a8,8,0,0,1,0,16H96Zm80,0H144a8,8,0,0,1-6.4-3.2l-24-32,6.4-4.8L144,140.67V104a8,8,0,0,1,16,0v48Z"/></svg>
+            גופן קריאה
+          </button>
+          <button type="button" class="a11y-btn sm" data-feature="highlight-links" aria-pressed="false">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M137.54,186.36a8,8,0,0,1,0,11.31l-9.94,10A56,56,0,0,1,48.38,128.4L72.5,104.28A56,56,0,0,1,149,102.08a8,8,0,1,1-10.63,11.93,40,40,0,0,0-54.61,1.57L59.7,139.7a40,40,0,0,0,56.58,56.58l9.94-9.94A8,8,0,0,1,137.54,186.36Zm70.08-138a56.08,56.08,0,0,0-79.22,0l-9.94,9.95a8,8,0,0,0,11.32,11.31l9.94-9.94a40,40,0,0,1,56.58,56.58L172.18,140.4A40,40,0,0,1,117.57,142a8,8,0,1,0-10.63,11.92,56,56,0,0,0,76.48-2.19l24.12-24.12A56.08,56.08,0,0,0,207.62,48.38Z"/></svg>
+            הדגשת קישורים
+          </button>
+          <button type="button" class="a11y-btn sm" data-feature="image-desc" aria-pressed="false">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194l-36-36,20-20,38,38V200Z"/></svg>
+            תיאור לתמונות
+          </button>
+        </div>
+        <div class="a11y-row">
+          <button type="button" class="a11y-btn sm" data-feature="big-titles" aria-pressed="false">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M208,56H48A16,16,0,0,0,32,72V184a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V72A16,16,0,0,0,208,56ZM48,72H208V184H48ZM88,152H72V104H56a8,8,0,0,1,0-16H104a8,8,0,0,1,0,16H88Zm120,0H192V128H168v24H152V96h16v16h24V96h16Z"/></svg>
+            הגדלת כותרות
+          </button>
+          <button type="button" class="a11y-btn sm" data-feature="page-structure" aria-pressed="false">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,176H48V48H208V208ZM80,96a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H88A8,8,0,0,1,80,96Zm0,40a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H88A8,8,0,0,1,80,136Zm0,40a8,8,0,0,1,8-8H136a8,8,0,0,1,0,16H88A8,8,0,0,1,80,176Z"/></svg>
+            מבנה עמוד
+          </button>
+          <button type="button" class="a11y-btn sm" data-feature="zoom-content" aria-pressed="false">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.07a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.31ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Zm104,0a8,8,0,0,1-8,8H120v16a8,8,0,0,1-16,0V120H88a8,8,0,0,1,0-16h16V88a8,8,0,0,1,16,0v16h16A8,8,0,0,1,144,112Z"/></svg>
+            הגדלת תצוגה
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="a11y-divider"></div>
+
+    <div class="a11y-section">
+      <div class="a11y-section-header">
+        <button type="button" class="a11y-section-toggle">−</button>
+        <h3>סמן העכבר</h3>
+      </div>
+      <div id="cursor-section-body">
+        <span class="a11y-hint">הגדל סמן העכבר ושינוי צבע</span>
+        <div class="cursor-row">
+          <button type="button" class="cursor-btn" data-cursor="default">ברירת מחדל</button>
+          <button type="button" class="cursor-btn" data-cursor="black">שחור</button>
+          <button type="button" class="cursor-btn" data-cursor="white">לבן</button>
+        </div>
+        <div>
+          <button type="button" class="a11y-btn wide" data-feature="big-cursor" aria-pressed="false">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#22d3ee" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145l-26.51,65.79A12,12,0,0,1,90.28,218a12.27,12.27,0,0,1-4.37-.82,12,12,0,0,1-7-15.47L128,48,177.07,169.07l31.42-31.42a12,12,0,0,1,17,17Z"/></svg>
+            הגדלת סמן מחוון
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="a11y-divider"></div>
+
+    <div class="a11y-section">
+      <div class="a11y-section-header">
+        <button type="button" class="a11y-section-toggle">−</button>
+        <h3>כלים נוספים</h3>
+      </div>
+      <div id="tools-section-body" class="a11y-grid">
+        <button type="button" class="a11y-btn" data-feature="focus-mode" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M200,52H56A4,4,0,0,0,52,56V200a4,4,0,0,0,4,4H200a4,4,0,0,0,4-4V56A4,4,0,0,0,200,52ZM128,152a24,24,0,1,1,24-24A24,24,0,0,1,128,152Z"/></svg>
+          מיקוד קריאה
+        </button>
+        <button type="button" class="a11y-btn" data-feature="reading-guide" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><rect x="24" y="96" width="208" height="64" rx="8" stroke="#22d3ee" stroke-width="14" fill="none"/><line x1="24" y1="128" x2="232" y2="128" stroke="#22d3ee" stroke-width="8"/></svg>
+          מדריך קריאה
+        </button>
+        <button type="button" class="a11y-btn" data-feature="mute-media" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.85V91.15l56-43.51Zm70-80L201.66,115.3a8,8,0,0,1-11.32-11.32L204.69,90,190.34,75.65A8,8,0,0,1,201.66,64.35L216,78.69l14.34-14.34a8,8,0,0,1,11.32,11.32L227.31,90l14.35,14.34A8,8,0,0,1,214,115.3Z"/></svg>
+          השתק מדיה
+        </button>
+        <button type="button" class="a11y-btn" data-feature="page-summary" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></svg>
+          סיכום עמוד
+        </button>
+        <button type="button" class="a11y-btn" data-feature="virtual-keyboard" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 256 256"><rect x="16" y="72" width="224" height="144" rx="16" stroke="#22d3ee" stroke-width="14" fill="none"/><line x1="56" y1="128" x2="56" y2="128" stroke="#22d3ee" stroke-width="20" stroke-linecap="round"/><line x1="96" y1="128" x2="96" y2="128" stroke="#22d3ee" stroke-width="20" stroke-linecap="round"/><line x1="136" y1="128" x2="136" y2="128" stroke="#22d3ee" stroke-width="20" stroke-linecap="round"/><line x1="176" y1="128" x2="176" y2="128" stroke="#22d3ee" stroke-width="20" stroke-linecap="round"/><line x1="76" y1="168" x2="180" y2="168" stroke="#22d3ee" stroke-width="14" stroke-linecap="round"/></svg>
+          מקלדת וירטואלית
+        </button>
+        <button type="button" class="a11y-btn" data-feature="dictionary" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M231.65,194.53,198.29,62.27a16,16,0,0,0-19.29-11.53L152,57.24V48a16,16,0,0,0-16-16H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16h80a16,16,0,0,0,16-16v-17.48l43.07-10.28A16,16,0,0,0,231.65,194.53ZM136,208H56V48h80V208Z"/></svg>
+          מילון
+        </button>
+        <button type="button" class="a11y-btn" data-feature="tts-read" aria-pressed="false" id="tts-main-btn">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.85V91.15l56-43.51Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58Zm27.14-9.22a72,72,0,0,1,0,71.52,8,8,0,1,1-13.85-8,56,56,0,0,0,0-55.52,8,8,0,1,1,13.85-8Z"/></svg>
+          הקראת טקסט
+        </button>
+        <button type="button" class="a11y-btn" data-feature="stop-anim" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-16-104v48a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm48,0v48a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Z"/></svg>
+          עצירת אנימציות
+        </button>
+        <button type="button" class="a11y-btn" data-feature="hide-distractions" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M228.92,49.69a8,8,0,0,0-6.86-1.45L160.93,63.52,99.58,32.84a8,8,0,0,0-6.37-.39L29.14,53.71A8,8,0,0,0,24,61.22V200a8,8,0,0,0,9.94,7.76l61.13-15.28,61.35,30.68A8.15,8.15,0,0,0,160,224a8,8,0,0,0,2.06-.27l64.86-16.23A8,8,0,0,0,232,200V56A8,8,0,0,0,228.92,49.69ZM104,55.74l48,24V200.26l-48-24ZM40,69.45l48-17.94V187.45L40,202.42ZM216,186.55l-48,12V63.45l48-11.88Z"/></svg>
+          הסתרה הסחות דעת
+        </button>
+        <button type="button" class="a11y-btn" data-feature="highlight-elements" aria-pressed="false">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#22d3ee" viewBox="0 0 256 256"><path d="M237.66,86.34l-60-60a8,8,0,0,0-11.32,0L36.69,155.31a16,16,0,0,0,0,22.63L78.06,219.31A16,16,0,0,0,89.37,224H216a8,8,0,0,0,0-16H159.32l78.34-78.34A8,8,0,0,0,237.66,86.34ZM82.06,208,40.69,166.63l96-96L178.63,112ZM192,128l-9.37-9.37,9.37-9.38Z"/></svg>
+          הדגשת אלמנטים
+        </button>
+      </div>
+
+      <button type="button" id="a11y-reset-all">
+        ← איפוס כל הגדרות הנגישות
+      </button>
+    </div>
+  </div>
+
+  <div id="a11y-toast" role="status" aria-live="polite" hidden>
+    <span id="a11y-toast-text"></span>
+    <button type="button" id="a11y-toast-close" aria-label="סגור הודעה">×</button>
+  </div>
+
+  <div id="tts-bar" role="region" aria-label="שליטה בהקראה">
+    <div class="tts-inner">
+      <button type="button" id="tts-play-pause" class="tts-btn primary" aria-label="השהה או המשך הקראה">
+        <svg id="tts-icon-pause" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M200,32H160a16,16,0,0,0-16,16V208a16,16,0,0,0,16,16h40a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm0,176H160V48h40ZM96,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V48A16,16,0,0,0,96,32Zm0,176H56V48H96Z"/></svg>
+        <svg id="tts-icon-play" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256" style="display:none;" aria-hidden="true" focusable="false"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.12,16.12,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27Z"/></svg>
+        <span id="tts-btn-label">השהה</span>
+      </button>
+      <button type="button" id="tts-stop" class="tts-btn secondary" aria-label="סיום הקראה"><span aria-hidden="true">⏹</span> עצור</button>
+      <div class="tts-group grow">
+        <label for="tts-speed">מהירות:</label>
+        <input type="range" id="tts-speed" min="0.5" max="2" step="0.1" value="1">
+        <span id="tts-speed-label">×1</span>
+      </div>
+      <div class="tts-group">
+        <label for="tts-voice-select">קול:</label>
+        <select id="tts-voice-select"></select>
+      </div>
+      <div id="tts-progress-text" aria-hidden="true"></div>
+    </div>
+  </div>
+  <div id="tts-word-highlight" aria-hidden="true"></div>
+
+  <div id="vkeyboard" role="complementary" aria-label="מקלדת וירטואלית">
+    <div class="vkey-row">
+      <button type="button" class="vkey" data-key="ק">ק</button><button type="button" class="vkey" data-key="ר">ר</button><button type="button" class="vkey" data-key="א">א</button><button type="button" class="vkey" data-key="ט">ט</button><button type="button" class="vkey" data-key="ו">ו</button><button type="button" class="vkey" data-key="ן">ן</button><button type="button" class="vkey" data-key="ם">ם</button><button type="button" class="vkey" data-key="פ">פ</button><button type="button" class="vkey" data-key="Backspace" aria-label="מחק">⌫</button>
+    </div>
+    <div class="vkey-row">
+      <button type="button" class="vkey" data-key="ש">ש</button><button type="button" class="vkey" data-key="ד">ד</button><button type="button" class="vkey" data-key="ג">ג</button><button type="button" class="vkey" data-key="כ">כ</button><button type="button" class="vkey" data-key="ע">ע</button><button type="button" class="vkey" data-key="י">י</button><button type="button" class="vkey" data-key="ח">ח</button><button type="button" class="vkey" data-key="ל">ל</button><button type="button" class="vkey" data-key="ך">ך</button><button type="button" class="vkey" data-key="ף">ף</button>
+    </div>
+    <div class="vkey-row">
+      <button type="button" class="vkey" data-key="ז">ז</button><button type="button" class="vkey" data-key="ס">ס</button><button type="button" class="vkey" data-key="ב">ב</button><button type="button" class="vkey" data-key="ה">ה</button><button type="button" class="vkey" data-key="נ">נ</button><button type="button" class="vkey" data-key="מ">מ</button><button type="button" class="vkey" data-key="צ">צ</button><button type="button" class="vkey" data-key="ת">ת</button><button type="button" class="vkey" data-key="ץ">ץ</button>
+    </div>
+    <div class="vkey-row">
+      <button type="button" class="vkey wide" data-key=" ">רווח</button>
+      <button type="button" class="vkey" data-key="Enter" aria-label="אנטר">↵</button>
+      <button type="button" class="vkey close" data-vk-close>סגור</button>
+    </div>
+  </div>
+  <div id="reading-guide-bar" aria-hidden="true"></div>
+
 <dialog class="doc" id="doc-accessibility" aria-labelledby="docA">
   <div class="doc__head"><h2 id="docA">הצהרת נגישות</h2><button type="button" class="doc__x" data-close aria-label="סגירה">✕</button></div>
   <div class="doc__body">
@@ -1450,7 +1740,7 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
       <li>ניגודיות צבעים מספקת וטקסט שאפשר להגדיל עד 200% בלי לאבד תוכן.</li>
       <li>כיבוד הגדרת „הפחתת תנועה” של מערכת ההפעלה.</li>
       <li>המודלים התלת־ממדיים ניתנים לסיבוב גם בחיצי המקלדת, ויש להם תיאור טקסטואלי.</li>
-      <li>תפריט נגישות (הכפתור העגול בפינת המסך): הגדלת טקסט, ניגודיות גבוהה, עצירת אנימציות, הדגשת קישורים, ריווח קריא, סמן גדול וגווני אפור. ההגדרות נשמרות בדפדפן שלך בלבד.</li>
+      <li>תפריט נגישות (הכפתור בצד המסך): התאמות ניווט ומקלדת, ניגודיות וצבעים, גודל טקסט וריווחים, סמן עכבר גדול, מדריך קריאה, מקלדת וירטואלית, הקראת התוכן בקול, ניווט בפקודות קוליות, עצירת אנימציות והדגשת קישורים. ההגדרות פועלות בדפדפן שלך בלבד ומתאפסות ברענון הדף.</li>
     </ul>
     <h3>מגבלות ידועות</h3>
     <p>חלק מהתוכן מגיע ממקורות חיצוניים (Kick ו-YouTube), ואין לנו שליטה מלאה על הנגישות שלהם. אם נתקלת בבעיה, נשמח לשמוע ולתקן.</p>
@@ -1470,7 +1760,7 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
       <li>אנחנו לא מוכרים ולא מעבירים מידע לאף אחד.</li>
     </ul>
     <h3>מה נשמר אצלך בלבד</h3>
-    <p>הגדרות הנגישות שבחרת נשמרות בזיכרון המקומי של הדפדפן (<bdi>localStorage</bdi>) כדי שלא תצטרך לבחור אותן שוב. המידע לא נשלח אלינו, ואפשר למחוק אותו בכפתור „איפוס” בתפריט הנגישות או בניקוי נתוני האתר בדפדפן.</p>
+    <p>האתר לא שומר אצלך כלום. הגדרות תפריט הנגישות חיות רק בעמוד הפתוח ומתאפסות ברענון, ואפשר לאפס אותן גם בכפתור „איפוס” בתפריט.</p>
     <h3>שירותים חיצוניים</h3>
     <p>כדי להציג מידע עדכני, הדפדפן שלך פונה לשירותים הבאים. כמו בכל גלישה, הם יכולים לראות את כתובת ה-IP שלך ואת סוג הדפדפן:</p>
     <ul>
@@ -1482,6 +1772,8 @@ html.a11y-calm .promo__bar i,html.a11y-calm .promo[open]{animation:none}
       <li><b>cdnjs ו-jsDelivr</b> — ספריות קוד לתלת־ממד ולגלילה חלקה, נעולות בחתימה (<bdi>SRI</bdi>) כך שאי אפשר להחליף אותן בקוד אחר.</li>
     </ul>
     <p>הפניות לשירותים האלה נשלחות בלי עוגיות ובלי כתובת העמוד המלאה. לחיצה על קישור (Kick, YouTube, ספונסרים וכו׳) מעבירה אותך לאתר אחר עם מדיניות פרטיות משלו.</p>
+    <h3>הקראה ופקודות קוליות</h3>
+    <p>הקראת התוכן והניווט הקולי בתפריט הנגישות פועלים דרך שירותי הדיבור של הדפדפן שלך. בחלק מהדפדפנים (כמו Chrome) זיהוי הקול מתבצע בשרתי הספק של הדפדפן, ורק אחרי שאישרת גישה למיקרופון. האתר עצמו לא מקליט ולא שומר שום דבר.</p>
     <h3>התראות</h3>
     <p>אם ביקשת „תודיעו לי כשעודד עולה”, הדפדפן ישאל אותך לאישור. ההתראה פועלת רק כל עוד הדף פתוח, ואפשר לבטל אותה בכל רגע.</p>
     <h3>יצירת קשר</h3>
@@ -1672,7 +1964,7 @@ function addCopyIcons() {
    ========================================================= */
 const DATA = {
   channel: "odedsvr",
-  subathon: "2026-11-19T17:00:00+02:00",
+  subathon: "2026-11-19T16:00:00+02:00",
   links: [
     { key:"kick", name:"Kick", handle:"kick.com/odedsvr", url:"https://kick.com/odedsvr", color:"#53fc18", main:true, sub:"לשידורים החיים" },
     { key:"youtube", name:"YouTube", handle:"@OdedSVRLive", url:"https://www.youtube.com/@OdedSVRLive", color:"#ff4d4d" },
@@ -1963,25 +2255,554 @@ addEventListener('scroll',()=>{if(!H_.classList.contains('scrolling'))H_.classLi
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
 totop.addEventListener('click',()=>{if(lenis)lenis.scrollTo(0,{duration:1.4});else scrollTo({top:0,behavior:RM?'auto':'smooth'})});
 
-/* accessibility panel */
+/* ---------- accessibility widget (same menu as the previous version of the site) ---------- */
 (function(){
-  const H=document.documentElement,btn=$('#a11yBtn'),pan=$('#a11yPanel'),zo=$('#a11yZ');
-  const KEYS=['contrast','calm','links','font','cursor','gray'];
-  let st={z:0,on:[]};try{const v=JSON.parse(localStorage.getItem('osvr-a11y')||'{}');if(v&&typeof v==='object'){st.z=clamp(Math.round(+v.z)||0,-1,4);st.on=Array.isArray(v.on)?v.on.filter(k=>KEYS.includes(k)):[]}}catch(e){}
-  const save=()=>{try{localStorage.setItem('osvr-a11y',JSON.stringify(st))}catch(e){}};
-  function apply(){
-    ['contrast','calm','links','font','cursor','gray'].forEach(k=>H.classList.toggle('a11y-'+k,st.on.includes(k)));
-    $$('.a11y__opt').forEach(b=>b.setAttribute('aria-pressed',st.on.includes(b.dataset.a)));
-    const z=1+st.z*.1;document.body.style.zoom=st.z?z:'';zo.textContent=Math.round(z*100)+'%';
+'use strict';
+const $ = (id) => document.getElementById(id);
+const root = document.documentElement;
+const body = document.body;
+const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const smoothBehavior = () => (reduceMotionQuery.matches ? 'auto' : 'smooth');
+const goSec = (h) => { if (typeof goTo === 'function') goTo(h); else document.querySelector(h)?.scrollIntoView({ behavior: smoothBehavior() }); };
+let toastTimer = null;
+function showToast(message, ms = 7000) {
+  const toast = $('a11y-toast');
+  const text = $('a11y-toast-text');
+  if (!toast || !text) return;
+  text.textContent = message;
+  toast.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.hidden = true; }, ms);
+}
+$('a11y-toast-close')?.addEventListener('click', () => { $('a11y-toast').hidden = true; });
+
+/* ==========================================================================
+   Accessibility widget
+   ========================================================================== */
+const fab = $('a11y-fab');
+const panel = $('a11y-panel');
+const a11yState = { contrast: null, saturation: null, gauge: false, hue: 0 };
+
+function setPressed(feature, state) {
+  const btn = document.querySelector(`.a11y-btn[data-feature="${feature}"]`);
+  if (!btn) return;
+  btn.classList.toggle('active', !!state);
+  btn.setAttribute('aria-pressed', String(!!state));
+}
+
+/* כל הפילטרים יושבים על <html> (ולא על body): filter על body שובר position:fixed של הילדים. */
+function applyFilters() {
+  const f = [];
+  if (a11yState.contrast === 'bright') f.push('contrast(150%) brightness(1.1)');
+  if (a11yState.contrast === 'dark') f.push('invert(1) hue-rotate(180deg)');
+  if (a11yState.contrast === 'mono') f.push('grayscale(1)');
+  if (a11yState.saturation === 'high') f.push('saturate(2.5)');
+  if (a11yState.saturation === 'low') f.push('saturate(0.3)');
+  if (a11yState.gauge) f.push('contrast(1.4)');
+  if (a11yState.hue) f.push(`hue-rotate(${a11yState.hue}deg)`);
+  root.style.filter = f.join(' ');
+  root.classList.toggle('a11y-dark', a11yState.contrast === 'dark');
+}
+
+function setContrast(mode) {
+  a11yState.contrast = a11yState.contrast === mode ? null : mode;
+  applyFilters();
+  setPressed('contrast-bright', a11yState.contrast === 'bright');
+  setPressed('contrast-dark', a11yState.contrast === 'dark');
+  setPressed('mono', a11yState.contrast === 'mono');
+  return a11yState.contrast === mode;
+}
+function setSaturation(mode) {
+  a11yState.saturation = a11yState.saturation === mode ? null : mode;
+  applyFilters();
+  setPressed('saturation-high', a11yState.saturation === 'high');
+  setPressed('saturation-low', a11yState.saturation === 'low');
+  return a11yState.saturation === mode;
+}
+function setHue(deg) {
+  a11yState.hue = Number(deg) || 0;
+  applyFilters();
+  const slider = $('hue-slider');
+  if (slider) slider.value = a11yState.hue;
+  document.querySelectorAll('.a11y-color-swatch').forEach((s) => {
+    const on = Number(s.dataset.hue) === a11yState.hue;
+    s.classList.toggle('active', on);
+    s.setAttribute('aria-pressed', String(on));
+  });
+}
+
+function setCursor(mode) {
+  body.classList.toggle('a11y-big-cursor', mode === 'black');
+  body.classList.toggle('a11y-big-cursor-white', mode === 'white');
+  document.querySelectorAll('.cursor-btn').forEach((b) => b.classList.toggle('active', b.dataset.cursor === mode));
+  setPressed('big-cursor', mode === 'black');
+}
+
+/* ---- פתיחה / סגירה / focus trap ---- */
+function openPanel() {
+  panel.classList.add('open');
+  fab.setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(() => panel.focus());
+}
+function closePanel(returnFocus = true) {
+  if (!panel.classList.contains('open')) return;
+  panel.classList.remove('open');
+  fab.setAttribute('aria-expanded', 'false');
+  if (returnFocus) fab.focus();
+}
+fab.addEventListener('click', () => (panel.classList.contains('open') ? closePanel() : openPanel()));
+$('a11y-close').addEventListener('click', () => closePanel());
+panel.addEventListener('keydown', (e) => {
+  if (e.key !== 'Tab') return;
+  const focusable = [...panel.querySelectorAll('button, input, select, [tabindex]:not([tabindex="-1"])')]
+    .filter((el) => !el.disabled && el.offsetParent !== null);
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && (document.activeElement === first || document.activeElement === panel)) {
+    e.preventDefault(); last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault(); first.focus();
   }
-  const open=o=>{pan.hidden=false;requestAnimationFrame(()=>pan.classList.toggle('is-open',o));btn.setAttribute('aria-expanded',o);if(o)$('.a11y__size button',pan).focus();else setTimeout(()=>{if(!pan.classList.contains('is-open'))pan.hidden=true},260)};
-  btn.addEventListener('click',()=>open(!pan.classList.contains('is-open')));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&pan.classList.contains('is-open')){open(false);btn.focus()}});
-  document.addEventListener('pointerdown',e=>{if(pan.classList.contains('is-open')&&!pan.contains(e.target)&&!btn.contains(e.target))open(false)});
-  $$('.a11y__opt').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.a;st.on=st.on.includes(k)?st.on.filter(x=>x!==k):[...st.on,k];apply();save()}));
-  $$('[data-z]').forEach(b=>b.addEventListener('click',()=>{st.z=clamp(st.z+ +b.dataset.z,-1,4);apply();save()}));
-  $('#a11yReset').addEventListener('click',()=>{st={z:0,on:[]};apply();save()});
-  apply();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
+
+/* ---- כיווץ/הרחבת מקטעים ---- */
+document.querySelectorAll('.a11y-section-header').forEach((header) => {
+  const toggle = header.querySelector('.a11y-section-toggle');
+  const title = header.querySelector('h3');
+  const section = header.parentElement;
+  if (!toggle) return;
+  toggle.setAttribute('aria-expanded', 'true');
+  if (title) toggle.setAttribute('aria-label', `${title.textContent.trim()} - כווץ או הרחב`);
+  const flip = () => {
+    const collapse = toggle.getAttribute('aria-expanded') === 'true';
+    [...section.children].filter((c) => c !== header).forEach((c) => { c.hidden = collapse; });
+    toggle.setAttribute('aria-expanded', String(!collapse));
+    toggle.textContent = collapse ? '+' : '−';
+  };
+  toggle.addEventListener('click', (e) => { e.stopPropagation(); flip(); });
+  header.addEventListener('click', (e) => { if (e.target === header || e.target === title) flip(); });
+});
+
+/* ---- Features ---- */
+const toggleClass = (cls) => body.classList.toggle(cls);
+let mediaMuted = false;
+
+const featureMap = {
+  'keyboard-nav': () => toggleClass('a11y-kbd-outline'),
+  'regions': () => { closePanel(false); document.querySelector('.skip')?.focus(); },
+  'voice-nav': () => toggleVoiceNav(),
+  'contrast-bright': () => setContrast('bright'),
+  'contrast-dark': () => setContrast('dark'),
+  'mono': () => setContrast('mono'),
+  'contrast-gauge': () => { a11yState.gauge = !a11yState.gauge; applyFilters(); return a11yState.gauge; },
+  'saturation-high': () => setSaturation('high'),
+  'saturation-low': () => setSaturation('low'),
+  'readable-font': () => toggleClass('a11y-readable-font'),
+  'highlight-links': () => toggleClass('a11y-highlight-links'),
+  'stop-anim': () => toggleClass('a11y-stop-anim'),
+  'big-cursor': () => { const on = !body.classList.contains('a11y-big-cursor'); setCursor(on ? 'black' : 'default'); return on; },
+  'reading-guide': () => toggleReadingGuide(),
+  'virtual-keyboard': () => toggleVirtualKeyboard(),
+  'mute-media': () => {
+    mediaMuted = !mediaMuted;
+    document.querySelectorAll('video, audio').forEach((m) => { m.muted = mediaMuted; });
+    return mediaMuted;
+  },
+  'hide-distractions': () => toggleClass('a11y-calm'),
+  'highlight-elements': () => toggleClass('a11y-focus-visible'),
+  'zoom-content': () => toggleClass('a11y-large-text'),
+  'big-titles': () => toggleClass('a11y-big-titles'),
+  'focus-mode': () => toggleClass('a11y-focus-mode'),
+  'image-desc': () => {
+    let count = 0;
+    document.querySelectorAll('img[alt]').forEach((img) => {
+      const alt = img.alt.trim();
+      if (alt) { img.title = alt; count++; }
+    });
+    showToast(`תיאורי תמונות הופעלו ל-${count} תמונות. רחף מעל תמונה לקריאת התיאור.`);
+  },
+  'page-structure': () => {
+    const lines = [...document.querySelectorAll('h1, h2, h3, nav, main, footer')]
+      .filter((el) => el.offsetParent !== null || el === document.querySelector('main'))
+      .map((el) => `${el.tagName}: ${el.textContent.replace(/\s+/g, ' ').substring(0, 40).trim()}`);
+    showToast('מבנה העמוד:\n' + lines.join('\n'), 12000);
+  },
+  'page-summary': () => showToast('סיכום עמוד: האתר הרשמי של OdedSVR - סטרימר ישראלי ב-Kick. הדף מכיל שיתופי פעולה וקודי הנחה (LÜZ, מחסני חשמל, ליברו ו-CardPull IL), קישורים לרשתות החברתיות, סרטונים אחרונים מיוטיוב, לידרבורד גיפטרים וצפייה, וההגדרות והפקודות של הערוץ.'),
+  'dictionary': () => {
+    const word = window.getSelection().toString().trim();
+    if (word) window.open('https://he.wiktionary.org/wiki/' + encodeURIComponent(word), '_blank', 'noopener,noreferrer');
+    else showToast('סמן מילה בטקסט ואז לחץ שוב על מילון.');
+  },
+  'tts-read': () => toggleTTS(),
+};
+
+document.querySelectorAll('.a11y-btn[data-feature]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const handler = featureMap[btn.dataset.feature];
+    if (!handler) return;
+    const result = handler();
+    if (typeof result === 'boolean') setPressed(btn.dataset.feature, result);
+  });
+});
+
+document.querySelectorAll('.cursor-btn').forEach((btn) => {
+  btn.addEventListener('click', () => setCursor(btn.dataset.cursor));
+});
+
+/* ---- Sliders ---- */
+function bindSlider(id, handler) {
+  $(id)?.addEventListener('input', (e) => handler(Number(e.target.value)));
+}
+bindSlider('font-size-slider', (v) => {
+  body.style.zoom = v === 100 ? '' : String(v / 100);
+  const label = $('font-size-display');
+  if (label) label.textContent = v + '%';
+});
+bindSlider('letter-spacing-slider', (v) => {
+  body.style.setProperty('--a11y-ls', (v * 0.02) + 'em');
+  body.classList.toggle('a11y-letter-spacing', v > 0);
+});
+bindSlider('word-spacing-slider', (v) => {
+  body.style.setProperty('--a11y-ws', (v * 0.0125) + 'em');
+  body.classList.toggle('a11y-word-spacing', v > 0);
+});
+bindSlider('line-height-slider', (v) => {
+  body.style.setProperty('--a11y-lh', String(1.5 + v * 0.05));
+  body.classList.toggle('a11y-line-height', v > 0);
+});
+
+/* ---- צבעים ---- */
+document.querySelectorAll('.a11y-color-swatch[data-hue]').forEach((sw) => {
+  sw.addEventListener('click', () => setHue(sw.dataset.hue));
+});
+$('hue-slider')?.addEventListener('input', (e) => {
+  a11yState.hue = Number(e.target.value) || 0;
+  applyFilters();
+  document.querySelectorAll('.a11y-color-swatch').forEach((s) => {
+    const on = Number(s.dataset.hue) === a11yState.hue;
+    s.classList.toggle('active', on);
+    s.setAttribute('aria-pressed', String(on));
+  });
+});
+$('reset-color-btn')?.addEventListener('click', () => setHue(0));
+$('reset-hue-btn')?.addEventListener('click', () => setHue(0));
+
+/* ---- Reading guide ---- */
+let guideRaf = 0;
+function moveGuide(e) {
+  if (guideRaf) return;
+  const y = e.clientY;
+  guideRaf = requestAnimationFrame(() => {
+    guideRaf = 0;
+    const g = $('reading-guide-bar');
+    if (g) g.style.top = (y - 20) + 'px';
+  });
+}
+function toggleReadingGuide() {
+  const guide = $('reading-guide-bar');
+  const on = guide.style.display !== 'block';
+  guide.style.display = on ? 'block' : 'none';
+  if (on) document.addEventListener('mousemove', moveGuide, { passive: true });
+  else document.removeEventListener('mousemove', moveGuide);
+  return on;
+}
+
+/* ---- Virtual keyboard (מקליד לשדה הטקסט שהיה בפוקוס) ---- */
+const vkeyboard = $('vkeyboard');
+let lastEditable = null;
+document.addEventListener('focusin', (e) => {
+  const t = e.target;
+  if (t.matches && t.matches('input:not([type=range]):not([type=checkbox]):not([type=radio]), textarea, [contenteditable="true"]')) lastEditable = t;
+});
+function toggleVirtualKeyboard(force) {
+  const on = typeof force === 'boolean' ? force : vkeyboard.style.display !== 'block';
+  vkeyboard.style.display = on ? 'block' : 'none';
+  setPressed('virtual-keyboard', on);
+  return on;
+}
+function typeKey(key) {
+  const el = lastEditable;
+  if (!el || !document.contains(el)) { showToast('בחר קודם שדה טקסט כדי להקליד בו.'); return; }
+  el.focus();
+  if (el.isContentEditable) {
+    if (key === 'Backspace') document.execCommand('delete');
+    else document.execCommand('insertText', false, key === 'Enter' ? '\n' : key);
+    return;
+  }
+  const start = el.selectionStart ?? el.value.length;
+  const end = el.selectionEnd ?? el.value.length;
+  if (key === 'Backspace') {
+    if (start !== end) el.setRangeText('', start, end, 'end');
+    else if (start > 0) el.setRangeText('', start - 1, start, 'end');
+  } else if (key === 'Enter' && el.tagName !== 'TEXTAREA') {
+    el.form?.requestSubmit?.();
+    return;
+  } else {
+    el.setRangeText(key === 'Enter' ? '\n' : key, start, end, 'end');
+  }
+  el.dispatchEvent(new Event('input', { bubbles: true }));
+}
+vkeyboard.addEventListener('mousedown', (e) => e.preventDefault()); // לא גונבים פוקוס מהשדה
+vkeyboard.addEventListener('click', (e) => {
+  const key = e.target.closest('[data-key]');
+  if (key) { typeKey(key.dataset.key); return; }
+  if (e.target.closest('[data-vk-close]')) toggleVirtualKeyboard(false);
+});
+
+/* ---- Voice navigation (Web Speech API, עברית) ---- */
+let voiceRec = null;
+let voiceNavActive = false;
+const VOICE_COMMANDS = [
+  [/(דף הבית|הבית|בית|ראש)/, () => goSec('#top')],
+  [/(מידע|אינפו|פקודות|סטאפ)/, () => goSec('#info')],
+  [/(תורמים|תרומות|מתנות|לידרבורד|גיפטרים)/, () => goSec('#leaderboard')],
+  [/(סרטונים|וידאו|יוטיוב)/, () => goSec('#videos')],
+  [/(שיתופי פעולה|שותפים|קודים|הנחה)/, () => goSec('#collabs')],
+  [/(לינקים|רשתות|קישורים)/, () => goSec('#links')],
+  [/(למטה)/, () => window.scrollBy({ top: window.innerHeight * 0.8, behavior: smoothBehavior() })],
+  [/(למעלה)/, () => window.scrollBy({ top: -window.innerHeight * 0.8, behavior: smoothBehavior() })],
+  [/(עצור|סיום|הפסק)/, () => stopVoiceNav()],
+];
+function toggleVoiceNav() {
+  if (voiceNavActive) { stopVoiceNav(); return false; }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { showToast('הדפדפן שלך אינו תומך בפקודות קוליות. מומלץ להשתמש ב-Google Chrome או Microsoft Edge.'); return false; }
+  voiceRec = new SR();
+  voiceRec.lang = 'he-IL';
+  voiceRec.continuous = true;
+  voiceRec.interimResults = false;
+  voiceRec.onresult = (event) => {
+    const last = event.results[event.results.length - 1];
+    const heard = (last[0]?.transcript || '').trim();
+    const match = VOICE_COMMANDS.find(([re]) => re.test(heard));
+    if (match) match[1]();
+  };
+  voiceRec.onerror = (e) => {
+    if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+      showToast('אין הרשאה למיקרופון. אפשר גישה למיקרופון בהגדרות הדפדפן.');
+      stopVoiceNav();
+    }
+  };
+  voiceRec.onend = () => { if (voiceNavActive) { try { voiceRec.start(); } catch (e) { /* already started */ } } };
+  try {
+    voiceRec.start();
+    voiceNavActive = true;
+    showToast('פקודות קוליות פעילות. אפשר לומר: "דף הבית", "שיתופי פעולה", "לינקים", "סרטונים", "לידרבורד", "מידע", "למטה", "למעלה", "עצור".');
+    return true;
+  } catch (e) {
+    voiceNavActive = false;
+    return false;
+  }
+}
+function stopVoiceNav() {
+  voiceNavActive = false;
+  if (voiceRec) { try { voiceRec.stop(); } catch (e) { /* ignore */ } voiceRec = null; }
+  setPressed('voice-nav', false);
+}
+
+/* ---- Text-to-speech ---- */
+const ttsSupported = 'speechSynthesis' in window;
+const ttsBar = $('tts-bar');
+const ttsSpeedSlider = $('tts-speed');
+const ttsSpeedLabel = $('tts-speed-label');
+const ttsVoiceSelect = $('tts-voice-select');
+const ttsProgressText = $('tts-progress-text');
+const ttsWordBox = $('tts-word-highlight');
+const tts = { utterance: null, paused: false, active: false, voices: [], keepAlive: null };
+
+function showWord(word) { if (ttsWordBox) { ttsWordBox.textContent = word; ttsWordBox.style.opacity = '1'; } }
+function hideWord() { if (ttsWordBox) ttsWordBox.style.opacity = '0'; }
+
+function loadTTSVoices() {
+  if (!ttsSupported) return;
+  tts.voices = window.speechSynthesis.getVoices();
+  ttsVoiceSelect.innerHTML = '';
+  const isHe = (v) => v.lang.startsWith('he') || v.lang.startsWith('iw');
+  const addGroup = (label, voices, withLang) => {
+    if (!voices.length) return;
+    const grp = document.createElement('optgroup');
+    grp.label = label;
+    voices.forEach((v) => {
+      const opt = document.createElement('option');
+      opt.value = tts.voices.indexOf(v);
+      opt.textContent = withLang ? `${v.name} (${v.lang})` : v.name;
+      grp.appendChild(opt);
+    });
+    ttsVoiceSelect.appendChild(grp);
+  };
+  addGroup('🇮🇱 עברית', tts.voices.filter(isHe), false);
+  addGroup('שפות אחרות', tts.voices.filter((v) => !isHe(v)).slice(0, 20), true);
+}
+if (ttsSupported) {
+  window.speechSynthesis.onvoiceschanged = loadTTSVoices;
+  loadTTSVoices();
+}
+
+function prepareTTSText() {
+  const lines = ['OdedSVR, האתר הרשמי של עודד סבר.'];
+  document.querySelectorAll('.spw').forEach((w) => {
+    const name = w.querySelector('.spw__name')?.textContent.replace(/\s+/g, ' ').trim();
+    const text = [...w.querySelectorAll('.spw__text, .cpperks li, .lcode__what')].map((n) => n.textContent.replace(/\s+/g, ' ').trim()).filter(Boolean).join('. ');
+    const codes = [...w.querySelectorAll('.lcode__v')].map((n) => n.textContent.trim()).join(', ');
+    if (name) lines.push('שיתוף פעולה: ' + name + (text ? '. ' + text : '') + (codes ? '. קוד הנחה: ' + codes : ''));
+  });
+  document.querySelectorAll('.sec__head h2').forEach((h) => lines.push(h.textContent.replace(/\s+/g, ' ').trim()));
+  return lines.join('. ');
+}
+
+function setTTSPausedUI(paused) {
+  $('tts-icon-pause').style.display = paused ? 'none' : '';
+  $('tts-icon-play').style.display = paused ? '' : 'none';
+  $('tts-btn-label').textContent = paused ? 'המשך' : 'השהה';
+}
+function stopTTSKeepAlive() { if (tts.keepAlive) { clearInterval(tts.keepAlive); tts.keepAlive = null; } }
+function startTTSKeepAlive() {
+  stopTTSKeepAlive();
+  // עוקף באג של Chrome שעוצר הקראות ארוכות
+  tts.keepAlive = setInterval(() => {
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+      window.speechSynthesis.pause();
+      window.speechSynthesis.resume();
+    }
+  }, 10000);
+}
+function resetTTSState() {
+  tts.active = false;
+  tts.paused = false;
+  ttsBar.style.display = 'none';
+  hideWord();
+  ttsProgressText.textContent = '';
+  stopTTSKeepAlive();
+  setPressed('tts-read', false);
+}
+function stopTTS() {
+  if (ttsSupported) window.speechSynthesis.cancel();
+  resetTTSState();
+}
+
+function startTTS() {
+  window.speechSynthesis.cancel();
+  const text = prepareTTSText();
+  if (!text) { showToast('לא נמצא טקסט לקריאה בדף.'); return; }
+
+  const all = window.speechSynthesis.getVoices();
+  const idx = parseInt(ttsVoiceSelect.value, 10);
+  const voice = (!isNaN(idx) && tts.voices[idx]) ||
+    all.find((v) => v.lang.startsWith('he') || v.lang.startsWith('iw')) || all[0] || null;
+
+  const u = new SpeechSynthesisUtterance(text);
+  if (voice) { u.voice = voice; u.lang = voice.lang; }
+  u.rate = parseFloat(ttsSpeedSlider.value) || 1;
+  u.volume = 1;
+  u.onboundary = (e) => {
+    if (e.name !== 'word') return;
+    const word = text.substring(e.charIndex, e.charIndex + e.charLength).trim();
+    if (!word) return;
+    showWord(word);
+    ttsProgressText.textContent = Math.round((e.charIndex / text.length) * 100) + '%';
+  };
+  u.onstart = () => {
+    tts.active = true;
+    tts.paused = false;
+    ttsBar.style.display = 'block';
+    setTTSPausedUI(false);
+    setPressed('tts-read', true);
+    startTTSKeepAlive();
+  };
+  u.onend = resetTTSState;
+  u.onerror = (e) => {
+    resetTTSState();
+    if (e.error !== 'interrupted' && e.error !== 'canceled') {
+      showToast('שגיאה בהקראה: ' + (e.error || 'לא ידועה') + '\nנסה לרענן את הדף ולנסות שוב.');
+    }
+  };
+  tts.utterance = u;
+  window.speechSynthesis.speak(u);
+}
+
+function toggleTTS() {
+  if (!ttsSupported) { showToast('הדפדפן שלך אינו תומך בהקראת טקסט.\nאנא השתמש ב-Google Chrome או Microsoft Edge.'); return; }
+  if (tts.active && !tts.paused) { stopTTS(); return; }
+  loadTTSVoices();
+  startTTS();
+}
+
+$('tts-play-pause').addEventListener('click', () => {
+  if (!tts.active) return;
+  if (tts.paused) {
+    window.speechSynthesis.resume();
+    tts.paused = false;
+    setTTSPausedUI(false);
+  } else {
+    window.speechSynthesis.pause();
+    tts.paused = true;
+    setTTSPausedUI(true);
+    hideWord();
+  }
+});
+$('tts-stop').addEventListener('click', stopTTS);
+ttsSpeedSlider.addEventListener('input', () => {
+  const rate = parseFloat(ttsSpeedSlider.value);
+  ttsSpeedLabel.textContent = '×' + rate.toFixed(1).replace('.0', '');
+  if (tts.active) { window.speechSynthesis.cancel(); setTimeout(startTTS, 100); }
+});
+ttsVoiceSelect.addEventListener('change', () => {
+  if (tts.active) { window.speechSynthesis.cancel(); setTimeout(startTTS, 100); }
+});
+
+// בזמן הקראה: לחיצה על כרטיס מקריאה את התיאור שלו במקום לפתוח את הקישור
+document.addEventListener('click', (e) => {
+  if (!tts.active) return;
+  const card = e.target.closest('a[aria-label]');
+  if (!card) return;
+  e.preventDefault();
+  const label = card.getAttribute('aria-label');
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(label);
+  u.lang = 'he-IL';
+  u.rate = parseFloat(ttsSpeedSlider.value) || 1;
+  const voice = tts.voices[parseInt(ttsVoiceSelect.value, 10)];
+  if (voice) u.voice = voice;
+  u.onboundary = (ev) => { if (ev.name === 'word') showWord(label.substring(ev.charIndex, ev.charIndex + ev.charLength)); };
+  u.onend = hideWord;
+  window.speechSynthesis.speak(u);
+  showWord(label.substring(0, 15) + '...');
+});
+
+/* ---- איפוס כל הגדרות הנגישות ---- */
+$('a11y-reset-all').addEventListener('click', () => {
+  [
+    'a11y-readable-font', 'a11y-highlight-links', 'a11y-stop-anim', 'a11y-big-cursor', 'a11y-big-cursor-white',
+    'a11y-large-text', 'a11y-focus-visible', 'a11y-letter-spacing', 'a11y-word-spacing', 'a11y-line-height',
+    'a11y-big-titles', 'a11y-kbd-outline', 'a11y-focus-mode', 'a11y-calm',
+  ].forEach((c) => body.classList.remove(c));
+  ['--a11y-ls', '--a11y-ws', '--a11y-lh'].forEach((v) => body.style.removeProperty(v));
+
+  a11yState.contrast = null; a11yState.saturation = null; a11yState.gauge = false; a11yState.hue = 0;
+  applyFilters();
+  body.style.zoom = '';
+
+  toggleVirtualKeyboard(false);
+  const guide = $('reading-guide-bar');
+  if (guide) guide.style.display = 'none';
+  document.removeEventListener('mousemove', moveGuide);
+  stopVoiceNav();
+  stopTTS();
+
+  mediaMuted = false;
+  document.querySelectorAll('video, audio').forEach((m) => { m.muted = false; });
+
+  document.querySelectorAll('.a11y-btn').forEach((b) => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+  document.querySelectorAll('.cursor-btn').forEach((b) => b.classList.remove('active'));
+  setHue(0);
+  const defaults = { 'letter-spacing-slider': 0, 'word-spacing-slider': 0, 'line-height-slider': 0, 'font-size-slider': 100 };
+  Object.entries(defaults).forEach(([id, v]) => { const el = $(id); if (el) el.value = v; });
+  const label = $('font-size-display');
+  if (label) label.textContent = '100%';
+  showToast('כל הגדרות הנגישות אופסו.', 3000);
+});
 })();
 /* size each LED layer to its card's diagonal */
 (function(){const set=()=>$$('.link,.show').forEach(el=>{const w=el.offsetWidth,h=el.offsetHeight;el.style.setProperty('--dg',Math.ceil(Math.hypot(w,h))+4+'px')});set();let t;addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(set,150)},{passive:true})})();
@@ -2039,46 +2860,6 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
   for(let i=0;i<12;i++){const x=r()*W,y=r()*H;h+=`<path class="tw" style="animation-delay:${(-r()*3).toFixed(2)}s" d="M${x} ${y-6}L${x+1.6} ${y-1.6}L${x+6} ${y}L${x+1.6} ${y+1.6}L${x} ${y+6}L${x-1.6} ${y+1.6}L${x-6} ${y}L${x-1.6} ${y-1.6}Z" fill="#efdcff"/>`}
   s.innerHTML=h})();
 
-/* intro splash: asteroid field → "לחץ עליי" → warp into the hero */
-(function(){const it=$('#intro');if(!it)return;
-  const root=document.documentElement;
-  if(location.hash&&location.hash.length>1&&$(location.hash)){it.remove();return}
-  window.__introHold=[];root.classList.add('intro-on');scrollTo(0,0);
-  const go=$('#introGo'),rocks=$$('.irk',it),pod=$('#introPod'),copy=$('#introCopy'),flash=$('#introFlash');
-  const stop=e=>{e.preventDefault();e.stopPropagation()};
-  it.addEventListener('wheel',stop,{passive:false});it.addEventListener('touchmove',stop,{passive:false});
-  const keys=e=>{if(e.key==='Tab'){e.preventDefault();go.focus()}else if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key)&&e.target!==go){e.preventDefault()}};
-  document.addEventListener('keydown',keys,true);
-  requestAnimationFrame(()=>go.focus({preventScroll:true}));
-  /* entrance + gentle pointer parallax */
-  if(!RM){const E='cubic-bezier(.22,1,.36,1)';
-    rocks.forEach((r,i)=>r.animate([{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'none'}],{duration:1200,delay:i*35,easing:E,fill:'backwards'}));
-    pod.animate([{opacity:0,transform:'translate(-50%,-30%) scale(.7)'},{opacity:1,transform:'translate(-50%,-50%)'}],{duration:1300,delay:200,easing:'cubic-bezier(.34,1.3,.64,1)',fill:'backwards'});
-    $$('.intro__go',it).forEach((el,i)=>el.animate([{opacity:0,transform:'translate3d(0,24px,0)'},{opacity:1,transform:'none'}],{duration:900,delay:420+i*140,easing:E,fill:'backwards'}));
-    let px=0,py=0,tx=0,ty=0,raf=0;const loop=()=>{px+=(tx-px)*.08;py+=(ty-py)*.08;rocks.forEach(r=>{const z=+r.dataset.z;r.style.translate=`${(px*z*-26).toFixed(1)}px ${(py*z*-20).toFixed(1)}px`});
-      raf=(Math.abs(tx-px)+Math.abs(ty-py)>.002)?requestAnimationFrame(loop):0};
-    it.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5;if(!raf)raf=requestAnimationFrame(loop)});}
-  let gone=false;
-  function finish(){it.remove();root.classList.remove('intro-on');document.removeEventListener('keydown',keys,true);
-    const hold=window.__introHold||[];window.__introHold=null;hold.forEach(f=>f());
-    if(typeof lenis!=='undefined'&&lenis&&lenis.resize)lenis.resize();window.dispatchEvent(new Event('resize'));
-    const t=$('#heroTitle');if(t){t.tabIndex=-1;t.focus({preventScroll:true})}
-    if(window.showPromo)setTimeout(window.showPromo,500)}
-  go.addEventListener('click',()=>{if(gone)return;gone=true;go.disabled=true;
-    if(RM){it.animate([{opacity:1},{opacity:0}],{duration:350,fill:'forwards'}).onfinish=finish;return}
-    const W=innerWidth,H=innerHeight,IN='cubic-bezier(.55,0,.8,.2)';
-    copy.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translate3d(0,-30px,0) scale(.94)'}],{duration:450,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'});
-    rocks.forEach(r=>{const b=r.getBoundingClientRect(),z=+r.dataset.z,dx=b.left+b.width/2-W/2,dy=b.top+b.height/2-H*.45,k=1.4+z*1.8;
-      r.animate([{transform:'none',opacity:1},{transform:`translate3d(${(dx*k).toFixed(0)}px,${(dy*k).toFixed(0)}px,0) scale(${(1+z*2.8).toFixed(2)})`,opacity:.9}],{duration:1150+(1-z)*250,easing:IN,fill:'forwards'})});
-    $('.intro__ground',it).animate([{transform:'none'},{transform:'translate3d(-8%,22%,0) scale(1.5)'}],{duration:1200,easing:IN,fill:'forwards'});
-    pod.animate([{transform:'translate(-50%,-50%) scale(1)'},{transform:'translate(-50%,-50%) translate3d(0,-14px,0) scale(.92)',offset:.22},{transform:`translate(-50%,-50%) translate3d(0,${(H*.18).toFixed(0)}px,0) scale(9)`}],{duration:1300,easing:'cubic-bezier(.6,0,.85,.25)',fill:'forwards'});
-    $('.intro__bg',it).animate([{filter:'brightness(1)'},{filter:'brightness(1.5)'}],{duration:1200,easing:IN,fill:'forwards'});
-    flash.animate([{opacity:0},{opacity:0,offset:.55},{opacity:1}],{duration:1250,easing:'cubic-bezier(.5,0,.9,.6)',fill:'forwards'}).onfinish=()=>{
-      $$('.intro__field,.intro__ground,.intro__pod,.intro__copy,.intro__bg',it).forEach(el=>el.style.visibility='hidden');it.style.background='transparent';
-      const hold=window.__introHold||[];window.__introHold=null;hold.forEach(f=>f());
-      flash.animate([{opacity:1},{opacity:0}],{duration:750,easing:'cubic-bezier(.22,1,.36,1)',fill:'forwards'}).onfinish=finish};
-  });
-})();
 
 /* hero entrance: letters rise, the field drifts in */
 (function(){
@@ -2090,35 +2871,12 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
   $$('#field .ast').forEach((a,i)=>a.firstElementChild.animate([{opacity:0,scale:.6},{opacity:1,scale:1}],{duration:1100,delay:80+i*40,easing:E,fill:'backwards'}));
   const pod=$('#pod .ship__bob');pod&&pod.animate([{opacity:0,scale:.7},{opacity:1,scale:1}],{duration:1200,delay:250,easing:'cubic-bezier(.34,1.3,.64,1)',fill:'backwards'});
 }
-  if(window.__introHold)window.__introHold.push(run);else run();
+  run();
 })();
 
-/* the flight: scroll moves the camera through the field, into the pod, into the cockpit */
-(function(){
-  const sc=$('#top');if(!sc)return;
-  const asts=$$('#field .ast').map(el=>{const cs=el.style;return {el,x:parseFloat(cs.getPropertyValue('--x')),y:parseFloat(cs.getPropertyValue('--y')),z:+el.dataset.z||1}});
-  const pod=$('#pod'),rings=$('#rings'),copy=$('#heroCopy'),warp=$('#warp'),live=$('#livecard'),cue=$('#cue');
-  const ss=(a,b,x)=>{const t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t)};
-  const lerp=(a,b,t)=>a+(b-a)*t;
-  let top0=0,span=1,W=innerWidth,H=innerHeight,raf=0,lastP=-1,on=true;
-  const measure=()=>{const r=sc.getBoundingClientRect();top0=r.top+scrollY;span=Math.max(1,sc.offsetHeight-innerHeight);W=innerWidth;H=innerHeight;lastP=-1;tick()};
-  function frame(){raf=0;const p=clamp((scrollY-top0)/span,0,1);if(Math.abs(p-lastP)<.0005)return;lastP=p;
-    const fly=Math.pow(p,1.35),fade=1-ss(.78,.92,p);
-    for(const a of asts){const k=a.z*fly;const dx=(a.x-50)/50*W*.62*k,dy=(a.y-50)/50*H*.62*k,s=1+k*1.9;
-      a.el.style.transform=`translate3d(${dx.toFixed(1)}px,${dy.toFixed(1)}px,0) scale(${s.toFixed(3)})`;a.el.style.opacity=fade.toFixed(3)}
-    const s1=lerp(.6,1,ss(.06,.36,p)),s2=1+Math.pow(ss(.5,.92,p),2.2)*8;
-    pod.style.transform=`translate3d(0,${(lerp(-H*.03,0,ss(.06,.36,p))+H*.21*ss(.48,.9,p)).toFixed(1)}px,0) scale(${(s1*s2).toFixed(3)})`;
-    const c=ss(.04,.22,p);copy.style.opacity=(1-c).toFixed(3);copy.style.transform=`translate3d(0,${(-90*c).toFixed(1)}px,0) scale(${(1-.08*c).toFixed(3)})`;copy.style.visibility=c>.99?'hidden':'visible';
-    const lc=ss(.02,.16,p);live.style.opacity=(1-lc).toFixed(3);live.style.visibility=lc>.99?'hidden':'visible';
-    cue.style.opacity=(1-ss(0,.05,p)).toFixed(3);
-    const ro=ss(.16,.32,p)*(1-ss(.5,.62,p));rings.style.opacity=ro.toFixed(3);rings.style.transform=`scale(${(lerp(.55,1,ss(.14,.38,p))*(1+ss(.5,.72,p)*.9)).toFixed(3)})`;
-    warp.style.opacity=ss(.84,.97,p).toFixed(3);
-  }
-  const tick=()=>{if(on&&!raf)raf=requestAnimationFrame(frame)};
-  addEventListener('scroll',tick,{passive:true});addEventListener('resize',measure,{passive:true});
-  new ResizeObserver(measure).observe(document.body);
-  new IntersectionObserver(es=>{on=es[0].isIntersecting;document.documentElement.classList.toggle('hero-off',!on);if(on)tick()}).observe(sc);
-  measure();
+/* hero is static now — only pause its animations while it is off screen */
+(function(){const sc=$('#top');if(!sc)return;
+  new IntersectionObserver(es=>document.documentElement.classList.toggle('hero-off',!es[0].isIntersecting)).observe(sc);
 })();
 
 /* pointer parallax on the field (desktop only, transform on a wrapper) */
@@ -2127,13 +2885,12 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
 })();
 
 /* =========================================================
-   SPONSOR TOUR — pinned full-screen worlds; one wheel notch = one sponsor
+   SPONSOR TOUR — full-screen worlds; ← / → arrows (and dots, keys, swipe) step between them
    ========================================================= */
 (function(){
   const T=$('#collabs');if(!T||!T.classList.contains('tour'))return;
   const ws=$$('.spw',T),n=ws.length,dots=$$('.tdot',T);
-  let cur=-1,top0=0,range=1,lockT=0;
-  const measure=()=>{top0=T.getBoundingClientRect().top+scrollY;range=Math.max(1,T.offsetHeight-innerHeight)};
+  let cur=-1;
   function set(i){if(i===cur)return;const old=cur;cur=i;
     ws.forEach((w,k)=>{const on=k===i;
       if(k===old&&!on){w.classList.add('is-leaving');setTimeout(()=>w.classList.remove('is-leaving'),1050)}
@@ -2141,29 +2898,22 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
       w.setAttribute('aria-hidden',String(!on));w.inert=!on});
     dots.forEach((d,k)=>d.setAttribute('aria-current',String(k===i)));
     T.classList.toggle('is-last',i===n-1);wake()}
-  const prog=()=>(scrollY-top0)/range;
-  function onScroll(){set(Math.max(0,Math.min(n-1,Math.round(prog()*(n-1)))))}
-  function goI(i){i=Math.max(0,Math.min(n-1,i));const y=top0+range*i/(n-1);
-    if(typeof lenis!=='undefined'&&lenis)lenis.scrollTo(y,{duration:1.05,lock:true,force:true});else scrollTo({top:y,behavior:RM?'auto':'smooth'});set(i)}
-  addEventListener('scroll',onScroll,{passive:true});
-  addEventListener('resize',()=>{measure();onScroll()});
-  addEventListener('load',()=>{measure();onScroll()});
-  if(window.ResizeObserver)new ResizeObserver(()=>{measure()}).observe(document.body);
-  /* wheel: while the tour is pinned, each gesture moves exactly one sponsor */
-  addEventListener('wheel',e=>{if(e.ctrlKey||document.documentElement.classList.contains('intro-on'))return;
-    const r=T.getBoundingClientRect();if(r.top>4||r.bottom<innerHeight-4)return;
-    if(Math.abs(e.deltaY)<Math.abs(e.deltaX)||Math.abs(e.deltaY)<2)return;
-    const now=performance.now(),dir=e.deltaY>0?1:-1,t=cur+dir;
-    if(t<0||t>n-1){if(now<lockT){e.preventDefault();e.stopPropagation()}return}
-    e.preventDefault();e.stopPropagation();
-    if(now<lockT){lockT=Math.max(lockT,now+260);return}
-    lockT=now+1100;goI(t)},{capture:true,passive:false});
-  dots.forEach((d,k)=>d.addEventListener('click',()=>{measure();goI(k)}));
+  const goI=i=>set((i+n)%n);
+  $('#tPrev',T).addEventListener('click',()=>goI(cur-1));
+  $('#tNext',T).addEventListener('click',()=>goI(cur+1));
+  /* arrow keys also work anywhere while the carousel is on screen (RTL: ← next, → previous) */
+  document.addEventListener('keydown',e=>{if(!vis||e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey)return;
+    if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+    if(e.target.closest&&e.target.closest('input,textarea,select,[contenteditable],[role=tablist],.spin3,.coin3'))return;
+    if(document.querySelector('dialog[open],#a11y-panel.open'))return;
+    const r=T.getBoundingClientRect();if(r.bottom<innerHeight*.35||r.top>innerHeight*.65)return;
+    e.preventDefault();goI(cur+(e.key==='ArrowLeft'?1:-1))});
+  dots.forEach((d,k)=>d.addEventListener('click',()=>{goI(k)}));
   T.addEventListener('keydown',e=>{if(e.target.closest('.spin3,.coin3'))return;
-    if(e.key==='ArrowLeft'){e.preventDefault();measure();goI(cur+1)}if(e.key==='ArrowRight'){e.preventDefault();measure();goI(cur-1)}});
+    if(e.key==='ArrowLeft'){e.preventDefault();goI(cur+1)}if(e.key==='ArrowRight'){e.preventDefault();goI(cur-1)}});
   /* touch: a horizontal swipe also steps (RTL: swipe left → next) */
   let sx=null,sy=0;T.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'||e.target.closest('.spin3,.coin3,a,button'))return;sx=e.clientX;sy=e.clientY},{passive:true});
-  T.addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3){measure();goI(cur+(dx<0?1:-1))}},{passive:true});
+  T.addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3){goI(cur+(dx<0?1:-1))}},{passive:true});
 
   /* shirt — 16 hand-drawn frames, stepped like cel animation */
   const sp=$('#shirt'),si=$('.spin3__img',sp),N=16;let f=0,acc=0,drag=null;
@@ -2182,7 +2932,7 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
   /* one loop, only while the tour is on screen */
   let raf=0,last=0,vis=false,idleT=99,idleC=99;
   function loop(t){raf=0;if(!vis||document.hidden)return;const dt=last?Math.min(64,t-last):16;last=t;
-    const calm=RM||document.documentElement.classList.contains('a11y-calm');
+    const calm=RM||document.documentElement.classList.contains('a11y-calm')||document.body.classList.contains('a11y-calm')||document.body.classList.contains('a11y-stop-anim');
     if(cur===0&&!drag&&!calm){idleT+=dt;if(idleT>1600){acc+=dt;if(acc>=(f===0?1500:230)){acc=0;setF(f-1)}}}
     if(cur===1){idleC+=dt;if(!cdrag){vel*=.92;ry+=vel;if(!calm&&idleC>900)ry+=dt*.045;rx+=(6-rx)*.04}
       cb.style.transform=`rotateY(${ry.toFixed(2)}deg) rotateX(${rx.toFixed(2)}deg)`}
@@ -2190,12 +2940,12 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
   function wake(){last=0;if(!raf&&vis)raf=requestAnimationFrame(loop)}
   new IntersectionObserver(es=>{vis=es[0].isIntersecting;wake()},{rootMargin:'100px'}).observe(T);
   document.addEventListener('visibilitychange',wake);
-  measure();set(0);
+  set(0);
 })();
 
 
 
-/* ---------- promo popup: opens after the intro, closes after 10s or on ✕ ---------- */
+/* ---------- promo popup: opens on load, closes after 10s or on ✕ ---------- */
 (function(){const d=$('#promo');if(!d||typeof d.showModal!=='function')return;
   let shown=false,tm=0;
   function close(){clearTimeout(tm);if(!d.open)return;
@@ -2208,8 +2958,8 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
   d.addEventListener('click',e=>{if(e.target===d)close()});
   d.addEventListener('cancel',e=>{e.preventDefault();close()});
   d.addEventListener('close',()=>clearTimeout(tm));
-  /* no intro (deep link) → show shortly after load */
-  addEventListener('load',()=>{if(!document.documentElement.classList.contains('intro-on'))setTimeout(window.showPromo,700)});
+  /* show shortly after the page loads */
+  addEventListener('load',()=>setTimeout(window.showPromo,700));
 })();
 </script>
 </body>
