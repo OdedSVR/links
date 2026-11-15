@@ -3173,93 +3173,150 @@ $('#shareBtn').addEventListener('click',async()=>{const url='https://odedsvr.com
 <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5b0ec320f8a363f',t:'MTc5NDc3MzY3MA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5b0ec320f8a363f',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"8827f027f23d4b4cba2ee38161c14540","r":1,"spa":2}' crossorigin="anonymous"></script>
 
 <script>
-/* Nuggets wanders; a tiny mouse flees ahead of it */
+/* Shared chase route: mouse leads, Nuggets follows the exact trail with a delay */
 (function(){
   const el=document.getElementById('nug');
   const mouse=document.getElementById('tinyMouse');
   const pin=document.querySelector('#top .scene__pin');
   if(!el||!mouse||!pin)return;
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W=0,H=0,w=0,h=0,mw=0,mh=0,x=0,y=0,vx=0,vy=0,mx=0,my=0,mvx=0,mvy=0,t=0,last=0,raf=0,visible=true;
+  let W=0,H=0,w=0,h=0,mw=0,mh=0;
+  let x=0,y=0,mx=0,my=0,mouseVx=0,mouseVy=0,mouseHeading=0;
+  let t=0,last=0,raf=0,visible=true;
+  let trail=[];
   const small=()=>W<700;
+  const mouseSpeed=()=>small()?43:59;
+  const chaseDelay=()=>small()?1.45:1.75;
+
   function measure(){
-    W=pin.clientWidth;H=pin.clientHeight;w=el.offsetWidth;h=el.offsetHeight;mw=mouse.offsetWidth;mh=mouse.offsetHeight;
-    x=Math.min(Math.max(12,x||W*.28),Math.max(12,W-w-12));
+    W=pin.clientWidth;H=pin.clientHeight;
+    w=el.offsetWidth;h=el.offsetHeight;mw=mouse.offsetWidth;mh=mouse.offsetHeight;
+    x=Math.min(Math.max(12,x||W*.25),Math.max(12,W-w-12));
     y=Math.min(Math.max(90,y||H*.24),Math.max(90,H-h-18));
-    mx=Math.min(Math.max(12,mx||x+w+65),Math.max(12,W-mw-12));
-    my=Math.min(Math.max(90,my||y+h*.52),Math.max(90,H-mh-18));
+    mx=Math.min(Math.max(12,mx||x+w*.77+110),Math.max(12,W-mw-12));
+    my=Math.min(Math.max(90,my||y+h*.48),Math.max(90,H-mh-18));
   }
-  measure();window.addEventListener('resize',measure,{passive:true});
-  let heading=0;
-  const speed=()=>small()?17:24;
-  vx=speed();vy=0;mvx=speed()*1.2;mvy=0;
-  const lerpAngle=(a,b,k)=>{const d=Math.atan2(Math.sin(b-a),Math.cos(b-a));return a+d*k;};
-  function place(){
-    const face=Math.atan2(vy,vx)*180/Math.PI;
-    const mouseFace=Math.atan2(mvy,mvx)*180/Math.PI;
-    el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) rotate(${face.toFixed(1)}deg)`;
-    mouse.style.transform=`translate3d(${mx.toFixed(1)}px,${my.toFixed(1)}px,0) rotate(${mouseFace.toFixed(1)}deg)`;
+  measure();
+  window.addEventListener('resize',()=>{
+    measure();
+    trail=[];
+  },{passive:true});
+
+  mouseHeading=0;
+  mouseVx=mouseSpeed();mouseVy=0;
+
+  function place(snakeAngle){
+    const mouseAngle=Math.atan2(mouseVy,mouseVx)*180/Math.PI;
+    el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) rotate(${snakeAngle.toFixed(1)}deg)`;
+    mouse.style.transform=`translate3d(${mx.toFixed(1)}px,${my.toFixed(1)}px,0) rotate(${mouseAngle.toFixed(1)}deg)`;
   }
-  if(reduce){el.classList.add('is-on');mouse.classList.add('is-on');place();return;}
+  if(reduce){
+    el.classList.add('is-on');mouse.classList.add('is-on');
+    place(0);return;
+  }
+
+  function sampleTrail(targetTime){
+    if(!trail.length)return {x:mx+mw/2,y:my+mh/2,angle:0};
+    let a=trail[0],b=trail[trail.length-1];
+    for(let i=1;i<trail.length;i++){
+      if(trail[i].t>=targetTime){a=trail[i-1];b=trail[i];break;}
+    }
+    const span=Math.max(.001,b.t-a.t);
+    const k=Math.max(0,Math.min(1,(targetTime-a.t)/span));
+    return {
+      x:a.x+(b.x-a.x)*k,
+      y:a.y+(b.y-a.y)*k,
+      angle:Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI
+    };
+  }
+
   function step(now){
-    raf=0;if(!visible||document.hidden)return;
-    const dt=last?Math.min(.05,(now-last)/1000):0;last=now;t+=dt;
+    raf=0;
+    if(!visible||document.hidden)return;
+    const dt=last?Math.min(.04,(now-last)/1000):0;
+    last=now;t+=dt;
+
     const pad=small()?8:18;
-    const minX=pad,maxX=Math.max(pad,W-w-pad),minY=small()?76:Math.max(90,H*.12),maxY=Math.max(minY,H-h-(small()?12:28));
-    const minMX=pad,maxMX=Math.max(pad,W-mw-pad),minMY=minY,maxMY=Math.max(minMY,H-mh-(small()?12:28));
+    const minX=pad,maxX=Math.max(pad,W-mw-pad);
+    const minY=small()?76:Math.max(90,H*.12),maxY=Math.max(minY,H-mh-(small()?12:28));
 
-    // Start facing right and hold still briefly so the speech bubble and cape can be read.
-    if(t<1.6){heading=0;vx=speed();vy=0;}
-    else{
-      let steerX=0,steerY=0;
-      if(x<minX+48)steerX+=(minX+48-x)/48;
-      if(x+w>maxX-48)steerX-=(x+w-(maxX-48))/48;
-      if(y<minY+42)steerY+=(minY+42-y)/42;
-      if(y+h>maxY-42)steerY-=(y+h-(maxY-42))/42;
-      heading+=(.10*Math.sin(t*.19)+.055*Math.sin(t*.083+1.4))*dt;
-      if(steerX||steerY)heading=lerpAngle(heading,Math.atan2(steerY,steerX),Math.min(1,dt*1.05));
-      const tx=Math.cos(heading)*speed(),ty=Math.sin(heading)*speed(),k=Math.min(1,dt*.42);
-      vx+=(tx-vx)*k;vy+=(ty-vy)*k;x+=vx*dt;y+=vy*dt;
-    }
-    x=Math.max(minX,Math.min(maxX,x));y=Math.max(minY,Math.min(maxY,y));
+    // Mouse chooses a smooth wandering route and turns before reaching the edges.
+    let steerX=0,steerY=0;
+    if(mx<minX+70)steerX+=(minX+70-mx)/70;
+    if(mx>maxX-70)steerX-=(mx-(maxX-70))/70;
+    if(my<minY+60)steerY+=(minY+60-my)/60;
+    if(my>maxY-60)steerY-=(my-(maxY-60))/60;
 
-    // Estimate Nuggets' head position. The mouse accelerates away when he gets close.
-    const hx=x+w*.77,hy=y+h*.48;
-    let dx=mx+mw/2-hx,dy=my+mh/2-hy;
-    let dist=Math.max(1,Math.hypot(dx,dy));
-    const flee=dist<250;
-    let targetMX,targetMY;
-    if(flee){
-      const urgency=Math.max(0,1-dist/250);
-      targetMX=(dx/dist)*(small()?65:88)*(0.7+urgency*1.4);
-      targetMY=(dy/dist)*(small()?65:88)*(0.7+urgency*1.4);
-      // Add a sideways zig-zag so it looks like a mouse darting away.
-      targetMX+=-dy/dist*Math.sin(t*8)*18;
-      targetMY+= dx/dist*Math.sin(t*8)*18;
+    // Start facing right so both the speech bubble and cape are readable.
+    if(t<1.6){
+      mouseHeading=0;
+      mouseVx=mouseSpeed();mouseVy=0;
     }else{
-      targetMX=Math.cos(t*.65+1.2)*(small()?25:34);
-      targetMY=Math.sin(t*.9)*(small()?22:30);
+      mouseHeading+=(.23*Math.sin(t*.43)+.12*Math.sin(t*.19+1.1))*dt;
+      if(steerX||steerY){
+        const desired=Math.atan2(steerY,steerX);
+        const d=Math.atan2(Math.sin(desired-mouseHeading),Math.cos(desired-mouseHeading));
+        mouseHeading+=d*Math.min(1,dt*1.25);
+      }
+      const targetVx=Math.cos(mouseHeading)*mouseSpeed();
+      const targetVy=Math.sin(mouseHeading)*mouseSpeed();
+      const k=Math.min(1,dt*1.4);
+      mouseVx+=(targetVx-mouseVx)*k;
+      mouseVy+=(targetVy-mouseVy)*k;
     }
-    const mk=Math.min(1,dt*(flee?2.7:1.25));
-    mvx+=(targetMX-mvx)*mk;mvy+=(targetMY-mvy)*mk;
-    mx+=mvx*dt;my+=mvy*dt;
-    if(mx<minMX){mx=minMX;mvx=Math.abs(mvx);}
-    if(mx>maxMX){mx=maxMX;mvx=-Math.abs(mvx);}
-    if(my<minMY){my=minMY;mvy=Math.abs(mvy);}
-    if(my>maxMY){my=maxMY;mvy=-Math.abs(mvy);}
-    place();raf=requestAnimationFrame(step);
+    mx+=mouseVx*dt;my+=mouseVy*dt;
+    if(mx<minX){mx=minX;mouseVx=Math.abs(mouseVx);mouseHeading=0;}
+    if(mx>maxX){mx=maxX;mouseVx=-Math.abs(mouseVx);mouseHeading=Math.PI;}
+    if(my<minY){my=minY;mouseVy=Math.abs(mouseVy);mouseHeading=Math.abs(mouseHeading);}
+    if(my>maxY){my=maxY;mouseVy=-Math.abs(mouseVy);mouseHeading=-Math.abs(mouseHeading);}
+
+    // Record the mouse's actual route. Nuggets targets a point on that same
+    // route from a moment earlier, rather than independently steering around.
+    const mouseCenter={x:mx+mw/2,y:my+mh/2};
+    trail.push({t,x:mouseCenter.x,y:mouseCenter.y});
+    const delay=chaseDelay();
+    while(trail.length>2&&trail[1].t<t-delay-1)trail.shift();
+
+    // Fill the initial trail backwards so the snake begins behind the mouse.
+    if(trail.length===1){
+      for(let i=4;i>=1;i--){
+        trail.unshift({t:t-i*.12,x:mouseCenter.x-mouseSpeed()*i*.12,y:mouseCenter.y});
+      }
+    }
+
+    const target=sampleTrail(t-delay);
+    const targetX=target.x-w*.77;
+    const targetY=target.y-h*.48;
+    const followK=Math.min(1,dt*2.2);
+    const oldX=x,oldY=y;
+    x+=(targetX-x)*followK;
+    y+=(targetY-y)*followK;
+
+    // Orient Nuggets along the direction of its own followed trail.
+    let snakeAngle=target.angle;
+    if(Math.hypot(x-oldX,y-oldY)>0.01){
+      snakeAngle=Math.atan2(y-oldY,x-oldX)*180/Math.PI;
+    }
+    x=Math.max(pad,Math.min(W-w-pad,x));
+    y=Math.max(minY,Math.min(H-h-(small()?12:28),y));
+
+    place(snakeAngle);
+    raf=requestAnimationFrame(step);
   }
+
   function wake(){last=0;if(!raf&&visible)raf=requestAnimationFrame(step);}
   const io=new IntersectionObserver(entries=>{
     visible=entries[0].isIntersecting&&!document.hidden;
-    if(visible)wake();else if(raf){cancelAnimationFrame(raf);raf=0;}
+    if(visible)wake();
+    else if(raf){cancelAnimationFrame(raf);raf=0;}
   },{threshold:0});
   io.observe(pin);
   document.addEventListener('visibilitychange',()=>{
     visible=!document.hidden&&pin.getBoundingClientRect().bottom>0&&pin.getBoundingClientRect().top<innerHeight;
-    if(visible)wake();else if(raf){cancelAnimationFrame(raf);raf=0;}
+    if(visible)wake();
+    else if(raf){cancelAnimationFrame(raf);raf=0;}
   });
-  place();
+  place(0);
   setTimeout(()=>{el.classList.add('is-on');mouse.classList.add('is-on');wake();},650);
 })();</script>
 </body>
