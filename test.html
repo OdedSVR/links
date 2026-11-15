@@ -162,7 +162,7 @@ body:has(.subbar) .nav:not(.is-scrolled){top:48px}
 .rocket .flame{animation:flame .18s steps(2) infinite alternate}
 @keyframes flame{to{transform:scaleY(.8);transform-origin:50% 0}}
 /* live console card in the hero */
-.livecard{position:absolute;z-index:5;bottom:clamp(18px,4vh,40px);right:max(3vw,var(--gutter));width:min(300px,86vw);padding:12px;border-radius:20px;background:var(--ink);box-shadow:0 0 0 1.5px rgba(239,220,255,.22),0 20px 40px -18px rgba(0,0,0,.8);will-change:transform,opacity}
+.livecard{position:absolute;z-index:5;bottom:clamp(18px,4vh,40px);right:calc(max(3vw,var(--gutter)) + 70px);width:min(300px,86vw);padding:12px;border-radius:20px;background:var(--ink);box-shadow:0 0 0 1.5px rgba(239,220,255,.22),0 20px 40px -18px rgba(0,0,0,.8);will-change:transform,opacity}
 .livecard__top{display:flex;align-items:center;gap:12px}
 .livecard__top img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 2px var(--lav)}
 .is-live-mode .livecard__top img{box-shadow:0 0 0 2px var(--live)}
@@ -440,6 +440,10 @@ section{scroll-margin-top:90px}
 .totop{position:fixed;bottom:20px;left:20px;z-index:90;width:50px;height:50px;border-radius:14px;color:var(--ink);background:var(--lav);box-shadow:inset 0 0 0 2px var(--ink),0 4px 0 var(--ink);display:grid;place-items:center;opacity:0;transform:translateY(10px) scale(.9);pointer-events:none;transition:opacity var(--t-mid) var(--ease),transform var(--t-mid) var(--spring)}
 .totop.is-on{opacity:1;transform:none;pointer-events:auto}
 .totop svg{width:18px;height:18px}
+.nextsec{position:fixed;bottom:20px;right:20px;z-index:90;width:50px;height:50px;border-radius:14px;color:var(--ink);background:var(--lav);box-shadow:inset 0 0 0 2px var(--ink),0 4px 0 var(--ink);display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(10px) scale(.9);pointer-events:none;transition:opacity var(--t-mid) var(--ease),transform var(--t-mid) var(--spring),bottom var(--t-mid) var(--ease),visibility 0s var(--t-mid)}
+.nextsec.is-on{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity var(--t-mid) var(--ease),transform var(--t-mid) var(--spring),bottom var(--t-mid) var(--ease)}
+.nextsec svg{width:18px;height:18px}
+@media(max-width:720px){.nextsec{right:16px;bottom:16px}}
 .doc{width:min(720px,94vw);height:min(86vh,900px);max-height:86vh;padding:0;border:0;border-radius:24px;background:var(--space);color:var(--t1);overflow:hidden;overscroll-behavior:contain;box-shadow:0 0 0 2px var(--ink),0 0 0 5px var(--lav)}
 .doc[open]{display:flex;flex-direction:column;min-height:0}
 .doc::backdrop{background:rgba(13,4,32,.8)}
@@ -510,7 +514,7 @@ html.lite .ast>svg,html.lite .deco svg{animation:none}
   .hero__copy{justify-content:flex-start;padding:17vh var(--gutter) 0}
   .side-text{width:84vw;left:8vw!important;right:auto!important;text-align:center!important;font-size:26px}
   .side-text--r{top:15%}.side-text--l{top:30%}
-  .livecard{right:50%;transform:translateX(50%);bottom:14px}
+  .livecard{right:78px;left:auto;transform:none;width:min(300px,calc(100vw - 96px));bottom:16px}
   .hero__copy{padding-bottom:210px}
   .perfumes{grid-template-columns:1fr}
   .world .perf3{display:none}
@@ -1451,6 +1455,7 @@ html.a11y-dark .promo__link img{filter:none}
 </div>
 </div>
 </footer>
+<button aria-label="לעמוד הבא" class="nextsec" id="nextsec" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"></path></svg></button>
 <button aria-label="חזרה לראש הדף" class="totop" id="totop"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
 <div aria-label="תפריט נגישות" id="a11y-widget-container" role="region">
 <button aria-controls="a11y-panel" aria-expanded="false" aria-label="פתח תפריט נגישות" id="a11y-fab" type="button">
@@ -2272,6 +2277,31 @@ let scrollT=0;const H_=document.documentElement;
 addEventListener('scroll',()=>{if(!H_.classList.contains('scrolling'))H_.classList.add('scrolling');clearTimeout(scrollT);scrollT=setTimeout(()=>H_.classList.remove('scrolling'),160)},{passive:true});
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
 totop.addEventListener('click',()=>{if(lenis)lenis.scrollTo(0,{duration:1.4});else scrollTo({top:0,behavior:RM?'auto':'smooth'})});
+
+/* ---------- next-page arrow: jumps to the next section down (links → videos → ...) ---------- */
+(function(){
+  const btn=document.getElementById('nextsec'); if(!btn) return;
+  const pages=()=>[...document.querySelectorAll('main section[id], footer.foot2')];
+  const THRESH=120; // a section whose top is already within 120px of the viewport top counts as "current"
+  const nextTarget=()=>pages().find(el=>el.getBoundingClientRect().top>THRESH)||null;
+  let busy=false,tk=false;
+  function update(){
+    tk=false;
+    const nt=nextTarget(), atEnd=scrollY>=document.documentElement.scrollHeight-innerHeight-6;
+    const show=!!nt&&!atEnd;
+    btn.classList.toggle('is-on',show);
+    btn.tabIndex=show?0:-1;
+  }
+  const req=()=>{if(!tk){tk=true;requestAnimationFrame(update)}};
+  addEventListener('scroll',req,{passive:true});addEventListener('resize',req,{passive:true});
+  new ResizeObserver(req).observe(document.body);
+  btn.addEventListener('click',()=>{
+    const nt=nextTarget(); if(!nt) return;
+    if(lenis) lenis.scrollTo(nt,{offset:-80,duration:1.2});
+    else nt.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});
+  });
+  update();
+})();
 
 /* ---------- accessibility widget (same menu as the previous version of the site) ---------- */
 (function(){
