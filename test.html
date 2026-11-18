@@ -487,6 +487,42 @@ section{scroll-margin-top:90px}
 .doc__body a{color:var(--kick);text-decoration:underline;text-underline-offset:3px}
 .doc__body b{color:#fff}
 .doc__date{margin-top:20px;font-size:13px;color:var(--t3)}
+.section-title { display: flex; align-items: center; gap: 10px; }
+.cmd-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.cmd-code { font-family: 'Roboto Mono', monospace; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+.cmd-desc { font-size: .85rem; color: #94a3b8; }
+.cmd-copy-icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+const COPY_ICON_URL = 'https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/copypaste.png';
+
+function formatCommandForCopy(text) {
+  let t = text.trim();
+  if (t.endsWith('!')) t = t.slice(0, -1).trim();
+  return '!' + t;
+}
+function addCopyIcons() {
+  document.querySelectorAll('.cmd-code').forEach((el) => {
+    if (el.dataset.copyReady) return;
+    el.dataset.copyReady = '1';
+    const commandText = formatCommandForCopy(el.textContent);
+    const img = document.createElement('img');
+    img.src = COPY_ICON_URL;
+    img.alt = 'העתק פקודה';
+    img.title = 'העתק: ' + commandText;
+    img.className = 'copy-btn cmd-copy-icon';
+    img.addEventListener('click', (e) => { e.stopPropagation(); copyText(commandText, img); });
+    img.onerror = () => {
+      const fallback = document.createElement('span');
+      fallback.textContent = '📋';
+      fallback.className = 'copy-btn cmd-copy-icon';
+      fallback.style.cssText = 'font-size:15px;line-height:1;';
+      fallback.title = img.title;
+      fallback.addEventListener('click', (e) => { e.stopPropagation(); copyText(commandText, fallback); });
+      img.replaceWith(fallback);
+    };
+    el.appendChild(img);
+  });
+}
 
 /* accessibility modes */
 html.a11y-contrast{--t2:#fff;--t3:#f0f0f0;--card:#000;--space:#000;--space-2:#111;--lav:#ffe14d;--lav-l:#ffe14d;--kick:#ffe14d}
@@ -2103,46 +2139,7 @@ html.a11y-dark .promo__link img{filter:none}
 </div>
 </div>
     </section>
-/* ---------- WATERPARK-PROTECTED: command styles (do not delete) ---------- */
-.section-title { display: flex; align-items: center; gap: 10px; }
-.cmd-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.cmd-code { font-family: 'Roboto Mono', monospace; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
-.cmd-desc { font-size: .85rem; color: #94a3b8; }
-.cmd-copy-icon { width: 18px; height: 18px; flex-shrink: 0; }
-/* ---------- /WATERPARK-PROTECTED ---------- */
 
-/* ---------- WATERPARK-PROTECTED: copy icons for waterpark commands ---------- */
-const COPY_ICON_URL = 'https://raw.githubusercontent.com/OdedSVR/images/refs/heads/main/copypaste.png';
-
-function formatCommandForCopy(text) {
-  let t = text.trim();
-  if (t.endsWith('!')) t = t.slice(0, -1).trim();
-  return '!' + t;
-}
-function addCopyIcons() {
-  document.querySelectorAll('.cmd-code').forEach((el) => {
-    if (el.dataset.copyReady) return;
-    el.dataset.copyReady = '1';
-    const commandText = formatCommandForCopy(el.textContent);
-    const img = document.createElement('img');
-    img.src = COPY_ICON_URL;
-    img.alt = 'העתק פקודה';
-    img.title = 'העתק: ' + commandText;
-    img.className = 'copy-btn cmd-copy-icon';
-    img.addEventListener('click', (e) => { e.stopPropagation(); copyText(commandText, img); });
-    img.onerror = () => {
-      const fallback = document.createElement('span');
-      fallback.textContent = '📋';
-      fallback.className = 'copy-btn cmd-copy-icon';
-      fallback.style.cssText = 'font-size:15px;line-height:1;';
-      fallback.title = img.title;
-      fallback.addEventListener('click', (e) => { e.stopPropagation(); copyText(commandText, fallback); });
-      img.replaceWith(fallback);
-    };
-    el.appendChild(img);
-  });
-}
-/* ---------- /WATERPARK-PROTECTED ---------- */
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* =========================================================
