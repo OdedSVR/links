@@ -1038,6 +1038,140 @@ html.a11y-dark .promo__link img{filter:none}
 .subathon-guide__app-button{position:relative;z-index:1;flex-shrink:0;padding:14px 22px!important;border:2px solid #160b2d!important;background:#b995ff!important;color:#17092e!important;font-size:16px!important;font-weight:900!important;box-shadow:0 5px 0 #160b2d,0 0 24px rgba(169,121,255,.28)!important}
 .subathon-guide__app-button:hover{transform:translateY(-3px);filter:brightness(1.08)}
 @media(max-width:700px){.subathon-guide__app-link{align-items:stretch;flex-direction:column;min-height:unset;padding:22px}.subathon-guide__app-button{width:100%;justify-content:center;text-align:center}}
+
+
+/* =========================================================
+   SUBATHON — cinematic cosmic environment + GTA VI feature
+   Added as a focused visual layer; existing content and behavior stay intact.
+   ========================================================= */
+.subathon-guide{
+  position:relative!important;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 72% 54% at 50% 8%,rgba(125,66,226,.48),transparent 72%),
+    radial-gradient(ellipse 44% 46% at 8% 66%,rgba(35,113,207,.22),transparent 72%),
+    radial-gradient(ellipse 48% 42% at 94% 72%,rgba(181,75,218,.2),transparent 70%),
+    linear-gradient(180deg,#10072a 0%,#170b39 42%,#0b0821 100%)!important;
+}
+.subathon-guide::before{
+  content:"";
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  opacity:.82;
+  background:
+    radial-gradient(1.5px 1.5px at 8% 14%,#fff 98%,transparent),
+    radial-gradient(1px 1px at 17% 37%,#d9c8ff 98%,transparent),
+    radial-gradient(2px 2px at 28% 12%,#fff 98%,transparent),
+    radial-gradient(1px 1px at 39% 27%,#b8eaff 98%,transparent),
+    radial-gradient(1.5px 1.5px at 51% 9%,#fff 98%,transparent),
+    radial-gradient(1px 1px at 63% 32%,#e4d5ff 98%,transparent),
+    radial-gradient(2px 2px at 76% 15%,#fff 98%,transparent),
+    radial-gradient(1px 1px at 89% 38%,#c7b5ff 98%,transparent),
+    radial-gradient(1px 1px at 94% 10%,#fff 98%,transparent),
+    radial-gradient(ellipse at 50% 100%,rgba(82,48,160,.34),transparent 55%),
+    repeating-linear-gradient(115deg,transparent 0 78px,rgba(190,160,255,.025) 79px 80px);
+  background-size:100% 100%;
+  box-shadow:inset 0 110px 120px rgba(5,2,18,.2),inset 0 -100px 130px rgba(5,2,18,.45);
+}
+.subathon-guide::after{
+  content:"";
+  position:absolute;z-index:-1;pointer-events:none;
+  left:-12%;right:-12%;bottom:-190px;height:390px;
+  border-radius:50% 50% 0 0;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(170,126,255,.22),transparent 55%),
+    repeating-linear-gradient(90deg,transparent 0 54px,rgba(166,128,255,.07) 55px 56px),
+    linear-gradient(180deg,rgba(64,39,133,.18),rgba(8,5,25,.9));
+  border-top:1px solid rgba(194,160,255,.2);
+  transform:perspective(500px) rotateX(12deg);
+}
+.subathon-guide>.wrap{position:relative;z-index:1}
+.subathon-guide .sec__head{position:relative}
+.subathon-guide .sec__head::after{
+  content:"";display:block;width:min(340px,55vw);height:2px;margin:22px auto 0;
+  background:linear-gradient(90deg,transparent,#a879ff,#54d8ff,transparent);
+  box-shadow:0 0 18px rgba(145,100,255,.45);
+}
+.subathon-guide__card{
+  background:linear-gradient(145deg,rgba(44,25,87,.86),rgba(10,7,31,.94))!important;
+  border:1px solid rgba(186,155,255,.28)!important;
+  box-shadow:0 0 0 2px rgba(7,3,22,.72),0 9px 0 rgba(7,3,22,.72),0 18px 38px rgba(0,0,0,.22),inset 0 0 0 1px rgba(239,220,255,.1)!important;
+}
+.subathon-guide__card:hover{
+  box-shadow:0 0 0 2px rgba(7,3,22,.72),0 12px 0 rgba(7,3,22,.72),0 0 32px rgba(151,95,255,.28)!important;
+}
+.subathon-guide__video{background:#08051a!important}
+
+/* GTA VI link: custom night-drive / Vice City inspired panel */
+.subathon-guide__app-link{
+  min-height:230px!important;
+  margin-top:26px!important;
+  padding:clamp(24px,4vw,42px)!important;
+  border:1px solid rgba(255,139,180,.48)!important;
+  border-radius:30px!important;
+  background:
+    radial-gradient(ellipse at 78% 12%,rgba(255,117,159,.28),transparent 34%),
+    radial-gradient(ellipse at 88% 90%,rgba(51,186,230,.2),transparent 40%),
+    linear-gradient(112deg,rgba(35,12,68,.98) 0%,rgba(18,9,43,.96) 52%,rgba(10,12,37,.98) 100%)!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.34),inset 0 0 0 1px rgba(255,220,235,.1),0 0 34px rgba(255,91,151,.09)!important;
+}
+.subathon-guide__app-link::before{
+  content:"GTA VI";
+  position:absolute;z-index:0;left:clamp(8px,3vw,38px);top:50%;
+  transform:translateY(-54%) rotate(-8deg);
+  font-family:Impact,"Arial Black",sans-serif;
+  font-size:clamp(76px,15vw,190px);font-weight:1000;line-height:.8;
+  letter-spacing:-.075em;white-space:nowrap;
+  color:rgba(255,185,208,.085);
+  -webkit-text-stroke:1px rgba(255,187,211,.18);
+  text-shadow:0 12px 34px rgba(255,83,148,.12);
+  pointer-events:none;
+}
+.subathon-guide__app-link::after{
+  content:"";
+  position:absolute;z-index:0;inset:0;pointer-events:none;border-radius:inherit;
+  background:
+    linear-gradient(180deg,transparent 66%,rgba(4,7,25,.5)),
+    repeating-linear-gradient(90deg,transparent 0 52px,rgba(180,190,255,.035) 53px 54px),
+    radial-gradient(ellipse at 78% 105%,rgba(255,98,145,.2),transparent 46%);
+  opacity:.9;
+}
+.subathon-guide__app-copy{max-width:690px!important}
+.subathon-guide__app-badge{
+  color:#ffb3d0!important;
+  text-shadow:0 0 16px rgba(255,110,161,.4);
+}
+.subathon-guide__app-badge::before{
+  background:#ff83b2!important;
+  box-shadow:0 0 12px rgba(255,111,166,.8)!important;
+}
+.subathon-guide__app-copy h3{
+  font-size:clamp(24px,3vw,38px)!important;
+  text-shadow:0 3px 22px rgba(255,89,147,.24);
+}
+.subathon-guide__app-copy p{max-width:54ch}
+.subathon-guide__app-button{
+  border:2px solid #170a30!important;
+  border-radius:15px!important;
+  background:linear-gradient(135deg,#ffd0df,#ff8eb7 58%,#ff6e9f)!important;
+  color:#210a30!important;
+  box-shadow:0 6px 0 #170a30,0 0 28px rgba(255,105,158,.32)!important;
+  transition:transform 240ms cubic-bezier(.34,1.4,.64,1),filter 160ms ease,box-shadow 240ms ease!important;
+}
+.subathon-guide__app-button:hover{
+  transform:translateY(-4px)!important;filter:brightness(1.08);
+  box-shadow:0 9px 0 #170a30,0 0 36px rgba(255,105,158,.46)!important;
+}
+@media(max-width:700px){
+  .subathon-guide{background-position:center top!important}
+  .subathon-guide__app-link{min-height:unset!important;padding:24px!important}
+  .subathon-guide__app-link::before{font-size:clamp(76px,27vw,130px);left:8px;opacity:.8}
+  .subathon-guide__app-button{width:100%;justify-content:center;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .subathon-guide__app-button{transition:none!important}
+}
+
 </style>
 </head>
 <body>
