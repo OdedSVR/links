@@ -398,7 +398,7 @@ section{scroll-margin-top:90px}
 
 
 /* ---------- Subathon guide page ---------- */
-.subathon-guide{position:relative;overflow:hidden;isolation:isolate;background:#071305 url("monopoly-kick-background.png") center/cover no-repeat}
+.subathon-guide{position:relative;overflow:hidden;isolation:isolate;background:#071305 none}
 .subathon-guide::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(3,9,3,.72),rgba(4,14,5,.78) 42%,rgba(2,8,3,.9)),radial-gradient(ellipse at 50% 35%,rgba(83,252,24,.13),transparent 65%)}
 .subathon-guide .wrap{position:relative;z-index:1}
 .subathon-guide__card{backdrop-filter:blur(10px);background:linear-gradient(145deg,rgba(30,10,58,.82),rgba(12,5,27,.88))}
@@ -1007,7 +1007,7 @@ html.a11y-dark .promo__link img{filter:none}
 
 
 /* MONOPOLY GAME FEATURE — Kick themed board */
-.subathon-guide__game-link{position:relative;isolation:isolate;overflow:hidden;min-height:245px;padding:clamp(24px,4vw,42px);border:1px solid rgba(83,252,24,.55);border-radius:28px;background:#071609 url("monopoly-kick-background.png") center/cover no-repeat;box-shadow:0 14px 38px rgba(0,0,0,.38),inset 0 0 0 1px rgba(211,255,173,.12);}
+.subathon-guide__game-link{position:relative;isolation:isolate;overflow:hidden;min-height:245px;padding:clamp(24px,4vw,42px);border:1px solid rgba(83,252,24,.55);border-radius:28px;background:#071609 none;box-shadow:0 14px 38px rgba(0,0,0,.38),inset 0 0 0 1px rgba(211,255,173,.12);}
 .subathon-guide__game-link::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(2,10,3,.92),rgba(3,12,4,.74) 44%,rgba(4,15,4,.38));}
 .subathon-guide__kick-mark{position:absolute;z-index:0;left:clamp(8px,4vw,54px);top:50%;transform:translateY(-50%) rotate(-17deg);font-family:Arial Black,Impact,sans-serif;font-size:clamp(92px,18vw,250px);font-weight:1000;font-style:italic;letter-spacing:-.1em;line-height:1;color:#53fc18;opacity:.22;text-shadow:0 0 20px rgba(83,252,24,.32),4px 5px 0 rgba(0,0,0,.5);pointer-events:none;white-space:nowrap}
 .subathon-guide__game-copy,.subathon-guide__game-button{position:relative;z-index:2}
@@ -1027,7 +1027,7 @@ html.a11y-dark .promo__link img{filter:none}
 .subathon-guide__card{background:linear-gradient(145deg,rgba(44,19,83,.88),rgba(10,6,30,.94))!important;border:1px solid rgba(174,133,255,.25)!important;box-shadow:0 0 0 2px rgba(7,3,22,.8),0 7px 0 rgba(7,3,22,.8),inset 0 0 0 1px rgba(239,220,255,.1)!important}
 .subathon-guide__card:hover{box-shadow:0 0 0 2px rgba(7,3,22,.8),0 10px 0 rgba(7,3,22,.8),0 0 26px rgba(151,95,255,.22)!important}
 .subathon-guide__video{background:#0d0420!important;box-shadow:0 0 0 2px rgba(7,3,22,.85),0 0 0 5px rgba(168,124,255,.18)!important}
-.subathon-guide__game-link{border-color:rgba(83,252,24,.55)!important;background:#071609 url("monopoly-kick-background.png") center/cover no-repeat!important}
+.subathon-guide__game-link{border-color:rgba(83,252,24,.55)!important;background:#071609 none!important}
 
 .subathon-guide__app-link{position:relative;isolation:isolate;overflow:hidden;min-height:190px;margin-top:22px;padding:clamp(22px,3.5vw,34px);display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid rgba(174,133,255,.48);border-radius:28px;background:radial-gradient(ellipse at 85% 50%,rgba(137,83,255,.24),transparent 45%),linear-gradient(110deg,rgba(35,14,70,.94),rgba(9,5,29,.96));box-shadow:0 14px 38px rgba(0,0,0,.3),inset 0 0 0 1px rgba(239,220,255,.08)}
 .subathon-guide__app-copy{position:relative;z-index:1;max-width:700px}
@@ -1170,6 +1170,258 @@ html.a11y-dark .promo__link img{filter:none}
 }
 @media(prefers-reduced-motion:reduce){
   .subathon-guide__app-button{transition:none!important}
+}
+
+
+/* =========================================================
+   SUBATHON POLISH — MONOPOLY title panel + richer full-section atmosphere
+   Keeps all existing content, links, media and interactions intact.
+   ========================================================= */
+.subathon-guide{
+  background:
+    radial-gradient(ellipse 68% 42% at 50% 0%,rgba(139,91,255,.38),transparent 72%),
+    radial-gradient(ellipse 38% 34% at 5% 58%,rgba(48,133,255,.22),transparent 72%),
+    radial-gradient(ellipse 42% 38% at 96% 64%,rgba(193,88,255,.2),transparent 72%),
+    radial-gradient(ellipse 80% 35% at 50% 100%,rgba(62,42,151,.3),transparent 75%),
+    linear-gradient(180deg,#10072a 0%,#1a0d3d 38%,#100a2b 72%,#09051d 100%)!important;
+}
+.subathon-guide::before{
+  opacity:.92;
+  background:
+    radial-gradient(1.5px 1.5px at 8% 14%,#fff 98%,transparent),
+    radial-gradient(1px 1px at 17% 37%,#d9c8ff 98%,transparent),
+    radial-gradient(2px 2px at 28% 12%,#fff 98%,transparent),
+    radial-gradient(1px 1px at 39% 27%,#b8eaff 98%,transparent),
+    radial-gradient(1.5px 1.5px at 51% 9%,#fff 98%,transparent),
+    radial-gradient(1px 1px at 63% 32%,#e4d5ff 98%,transparent),
+    radial-gradient(2px 2px at 76% 15%,#fff 98%,transparent),
+    radial-gradient(1px 1px at 89% 38%,#c7b5ff 98%,transparent),
+    radial-gradient(1px 1px at 94% 10%,#fff 98%,transparent),
+    radial-gradient(ellipse at 50% 100%,rgba(112,77,218,.32),transparent 55%),
+    repeating-linear-gradient(115deg,transparent 0 78px,rgba(190,160,255,.035) 79px 80px),
+    linear-gradient(180deg,rgba(9,4,28,.12),rgba(8,4,25,.24));
+}
+.subathon-guide__game-link{
+  isolation:isolate;
+  overflow:hidden;
+  border-color:rgba(176,144,255,.48)!important;
+  background:
+    radial-gradient(ellipse at 78% 12%,rgba(116,83,255,.28),transparent 38%),
+    radial-gradient(ellipse at 10% 100%,rgba(62,210,255,.16),transparent 45%),
+    linear-gradient(112deg,rgba(32,13,72,.98),rgba(13,8,42,.97) 58%,rgba(9,8,34,.98))!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.34),inset 0 0 0 1px rgba(220,205,255,.1),0 0 34px rgba(130,91,255,.12)!important;
+}
+.subathon-guide__game-link::before{
+  background:
+    linear-gradient(90deg,rgba(5,4,24,.76),rgba(7,5,29,.56) 48%,rgba(5,4,24,.3)),
+    repeating-linear-gradient(90deg,transparent 0 52px,rgba(180,190,255,.035) 53px 54px),
+    radial-gradient(ellipse at 78% 105%,rgba(104,82,255,.22),transparent 48%)!important;
+}
+.subathon-guide__game-link::after{
+  content:"MONOPOLY";
+  position:absolute;z-index:0;left:clamp(8px,3vw,38px);top:50%;
+  transform:translateY(-54%) rotate(-8deg);
+  font-family:Impact,"Arial Black",sans-serif;
+  font-size:clamp(66px,13.2vw,174px);font-weight:1000;line-height:.8;
+  letter-spacing:-.065em;white-space:nowrap;
+  color:rgba(207,190,255,.075);
+  -webkit-text-stroke:1px rgba(198,177,255,.2);
+  text-shadow:0 12px 34px rgba(118,85,255,.16);
+  pointer-events:none;
+}
+.subathon-guide__game-copy,.subathon-guide__game-button{position:relative;z-index:2}
+.subathon-guide__game-copy h3{
+  text-shadow:0 3px 22px rgba(127,91,255,.24)!important;
+}
+.subathon-guide__game-copy p{color:rgba(235,226,255,.88)!important}
+@media(max-width:700px){
+  .subathon-guide__game-link::after{
+    left:8px;font-size:clamp(62px,22vw,118px);opacity:.9;
+  }
+}
+
+
+
+/* =========================================================
+   SUBATHON GUIDE — complete visual redesign
+   Keep all original media, copy, links and interactions.
+   ========================================================= */
+.subathon-guide{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  padding-block:clamp(76px,9vw,124px)!important;
+  background:
+    radial-gradient(ellipse 70% 42% at 50% 0%,rgba(128,76,255,.30),transparent 72%),
+    radial-gradient(ellipse 42% 50% at 0% 58%,rgba(47,183,255,.13),transparent 72%),
+    radial-gradient(ellipse 42% 48% at 100% 82%,rgba(193,75,255,.16),transparent 72%),
+    linear-gradient(155deg,#08091d 0%,#100b2b 46%,#08091b 100%)!important;
+}
+.subathon-guide::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  opacity:1!important;
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),
+    radial-gradient(ellipse at 50% 50%,transparent 20%,rgba(2,3,14,.38) 100%)!important;
+  background-size:54px 54px,54px 54px,auto!important;
+}
+.subathon-guide::after{
+  content:"";position:absolute;z-index:0;pointer-events:none;
+  width:min(70vw,900px);height:2px;left:50%;top:0;transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(173,135,255,.85),rgba(87,211,255,.7),transparent);
+  box-shadow:0 0 28px rgba(146,104,255,.65);
+}
+.subathon-guide .wrap{position:relative!important;z-index:1!important}
+.subathon-guide .sec__head{
+  max-width:850px;margin-inline:auto!important;margin-bottom:clamp(34px,5vw,58px)!important;
+  text-align:center!important;
+}
+.subathon-guide .kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 15px;border:1px solid rgba(180,151,255,.34);
+  border-radius:999px;background:rgba(115,79,207,.14);
+  color:#c9b7ff;letter-spacing:.18em;
+  box-shadow:0 0 30px rgba(126,87,255,.12);
+}
+.subathon-guide .kicker::before,.subathon-guide .kicker::after{
+  content:"";width:5px;height:5px;border-radius:50%;background:#77dfff;
+  box-shadow:0 0 12px #77dfff;
+}
+.subathon-guide .h2{
+  margin-top:20px!important;
+  text-shadow:0 8px 40px rgba(141,94,255,.24);
+}
+.subathon-guide .h2 em{
+  color:#c3a5ff!important;
+  text-shadow:0 0 28px rgba(157,116,255,.35);
+}
+.subathon-guide .sec__intro{
+  max-width:620px;margin:14px auto 0!important;
+  color:#c4c1dc!important;font-size:clamp(15px,1.5vw,18px)!important;
+}
+.subathon-guide__grid{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:clamp(18px,2.7vw,32px)!important;margin-top:0!important;
+}
+.subathon-guide__card{
+  padding:clamp(12px,1.5vw,18px)!important;
+  border:1px solid rgba(185,160,255,.26)!important;
+  border-radius:28px!important;
+  background:linear-gradient(145deg,rgba(33,25,72,.92),rgba(12,13,39,.96))!important;
+  box-shadow:0 22px 55px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.08)!important;
+  backdrop-filter:blur(16px);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s!important;
+}
+.subathon-guide__card:hover{
+  transform:translateY(-8px)!important;
+  border-color:rgba(177,145,255,.62)!important;
+  box-shadow:0 30px 65px rgba(0,0,0,.38),0 0 34px rgba(139,98,255,.18)!important;
+}
+.subathon-guide__video{
+  aspect-ratio:16/9!important;border-radius:19px!important;
+  background:#070817!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.11),0 12px 30px rgba(0,0,0,.28)!important;
+}
+.subathon-guide__card h3{
+  margin:17px 9px 6px!important;font-size:clamp(21px,2.3vw,29px)!important;
+  letter-spacing:-.025em;
+}
+.subathon-guide__card p{
+  margin:0 9px 10px!important;color:#c2bfdc!important;
+  font-size:15px!important;line-height:1.7!important;
+}
+.subathon-guide__badge{
+  margin:14px 9px 0!important;color:#a9dfff!important;
+  font-size:11px!important;letter-spacing:.16em!important;
+}
+.subathon-guide__badge::before{
+  background:#8d7bff!important;box-shadow:0 0 12px rgba(141,123,255,.8)!important;
+}
+.subathon-guide__game-link{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  min-height:230px!important;margin-top:clamp(22px,3vw,34px)!important;
+  padding:clamp(25px,4vw,44px)!important;
+  border:1px solid rgba(164,133,255,.45)!important;border-radius:30px!important;
+  background:
+    radial-gradient(ellipse at 85% 15%,rgba(146,100,255,.24),transparent 45%),
+    linear-gradient(110deg,rgba(35,23,81,.98),rgba(12,13,39,.98))!important;
+  box-shadow:0 24px 60px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.1)!important;
+}
+.subathon-guide__game-link::before{
+  content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;
+  background:
+    linear-gradient(90deg,rgba(8,8,28,.15),rgba(8,8,28,.04)),
+    repeating-linear-gradient(135deg,transparent 0 18px,rgba(255,255,255,.018) 18px 19px)!important;
+}
+.subathon-guide__game-link::after{
+  content:"MONOPOLY"!important;position:absolute!important;z-index:0!important;
+  left:clamp(10px,3vw,40px)!important;top:50%!important;
+  transform:translateY(-54%) rotate(-8deg)!important;
+  font-family:Impact,"Arial Black",sans-serif!important;
+  font-size:clamp(65px,12.5vw,158px)!important;font-weight:1000!important;
+  line-height:.8!important;letter-spacing:-.065em!important;white-space:nowrap!important;
+  color:rgba(206,190,255,.075)!important;
+  -webkit-text-stroke:1px rgba(198,174,255,.12)!important;
+  pointer-events:none!important;
+}
+.subathon-guide__game-copy,.subathon-guide__game-button{
+  position:relative!important;z-index:2!important;
+}
+.subathon-guide__game-copy h3{
+  margin:8px 0 7px!important;font-size:clamp(23px,2.6vw,34px)!important;
+  text-shadow:0 4px 24px rgba(0,0,0,.28);
+}
+.subathon-guide__game-copy p{
+  max-width:620px!important;color:#cbc5e7!important;line-height:1.7!important;
+}
+.subathon-guide__game-link .subathon-guide__badge{color:#c7b1ff!important}
+.subathon-guide__game-link .subathon-guide__badge::before{
+  background:#b69aff!important;box-shadow:0 0 12px rgba(182,154,255,.8)!important;
+}
+.subathon-guide__game-button{
+  border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:15px!important;
+  background:linear-gradient(120deg,#a88aff,#6e83ff)!important;
+  color:#fff!important;padding:15px 24px!important;
+  box-shadow:0 10px 30px rgba(113,102,255,.3)!important;
+  transition:transform .25s,box-shadow .25s!important;
+}
+.subathon-guide__game-button:hover{
+  transform:translateY(-3px)!important;box-shadow:0 15px 36px rgba(113,102,255,.42)!important;
+}
+.subathon-guide__app-link{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  min-height:220px!important;margin-top:clamp(22px,3vw,34px)!important;
+  border-radius:30px!important;padding:clamp(25px,4vw,42px)!important;
+  border:1px solid rgba(255,147,190,.36)!important;
+  background:
+    radial-gradient(ellipse at 82% 10%,rgba(255,112,167,.25),transparent 44%),
+    linear-gradient(115deg,#21143f 0%,#15132f 55%,#11132c 100%)!important;
+  box-shadow:0 22px 55px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+.subathon-guide__app-link::before{opacity:.9!important}
+.subathon-guide__app-copy,.subathon-guide__app-button{position:relative!important;z-index:2!important}
+@media(max-width:700px){
+  .subathon-guide{padding-block:64px!important}
+  .subathon-guide__grid{grid-template-columns:1fr!important;gap:18px!important}
+  .subathon-guide__game-link,.subathon-guide__app-link{
+    align-items:stretch!important;flex-direction:column!important;gap:18px!important;
+    min-height:unset!important;
+  }
+  .subathon-guide__game-button,.subathon-guide__app-button{
+    width:100%!important;justify-content:center!important;text-align:center!important;
+  }
+  .subathon-guide__game-link::after{
+    left:8px!important;font-size:clamp(54px,17vw,105px)!important;opacity:.8;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .subathon-guide__card,.subathon-guide__game-button{transition:none!important}
 }
 
 </style>
@@ -1685,7 +1937,6 @@ html.a11y-dark .promo__link img{filter:none}
 </article>
 </div>
 <div class="subathon-guide__game-link reveal">
-<div class="subathon-guide__kick-mark" aria-hidden="true">KICK</div>
 <div class="subathon-guide__game-copy"><span class="subathon-guide__badge">PLAY NOW</span><h3>משחק המונופול של הסאבתון</h3><p>כל הפרטים והכניסה למשחק נמצאים כאן — לחצו כדי לפתוח את המונופול.</p></div>
 <a class="btn btn--light subathon-guide__game-button" href="https://odedsvrmonopoly.app/" target="_blank" rel="noopener noreferrer" aria-label="פתיחת משחק המונופול של הסאבתון בחלון חדש">כניסה למונופול <span aria-hidden="true">↗</span></a>
 </div>
