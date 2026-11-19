@@ -1028,6 +1028,16 @@ html.a11y-dark .promo__link img{filter:none}
 .subathon-guide__card:hover{box-shadow:0 0 0 2px rgba(7,3,22,.8),0 10px 0 rgba(7,3,22,.8),0 0 26px rgba(151,95,255,.22)!important}
 .subathon-guide__video{background:#0d0420!important;box-shadow:0 0 0 2px rgba(7,3,22,.85),0 0 0 5px rgba(168,124,255,.18)!important}
 .subathon-guide__game-link{border-color:rgba(83,252,24,.55)!important;background:#071609 url("monopoly-kick-background.png") center/cover no-repeat!important}
+
+.subathon-guide__app-link{position:relative;isolation:isolate;overflow:hidden;min-height:190px;margin-top:22px;padding:clamp(22px,3.5vw,34px);display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid rgba(174,133,255,.48);border-radius:28px;background:radial-gradient(ellipse at 85% 50%,rgba(137,83,255,.24),transparent 45%),linear-gradient(110deg,rgba(35,14,70,.94),rgba(9,5,29,.96));box-shadow:0 14px 38px rgba(0,0,0,.3),inset 0 0 0 1px rgba(239,220,255,.08)}
+.subathon-guide__app-copy{position:relative;z-index:1;max-width:700px}
+.subathon-guide__app-copy h3{margin:9px 0 6px;color:#f5edff;font-size:clamp(21px,2.4vw,30px);font-weight:900}
+.subathon-guide__app-copy p{margin:0;color:rgba(235,224,255,.86)}
+.subathon-guide__app-badge{display:inline-flex;align-items:center;gap:7px;color:#c6a5ff;font-size:12px;font-weight:900;letter-spacing:.1em}
+.subathon-guide__app-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#a979ff;box-shadow:0 0 10px rgba(169,121,255,.7)}
+.subathon-guide__app-button{position:relative;z-index:1;flex-shrink:0;padding:14px 22px!important;border:2px solid #160b2d!important;background:#b995ff!important;color:#17092e!important;font-size:16px!important;font-weight:900!important;box-shadow:0 5px 0 #160b2d,0 0 24px rgba(169,121,255,.28)!important}
+.subathon-guide__app-button:hover{transform:translateY(-3px);filter:brightness(1.08)}
+@media(max-width:700px){.subathon-guide__app-link{align-items:stretch;flex-direction:column;min-height:unset;padding:22px}.subathon-guide__app-button{width:100%;justify-content:center;text-align:center}}
 </style>
 </head>
 <body>
@@ -1544,6 +1554,10 @@ html.a11y-dark .promo__link img{filter:none}
 <div class="subathon-guide__kick-mark" aria-hidden="true">KICK</div>
 <div class="subathon-guide__game-copy"><span class="subathon-guide__badge">PLAY NOW</span><h3>משחק המונופול של הסאבתון</h3><p>כל הפרטים והכניסה למשחק נמצאים כאן — לחצו כדי לפתוח את המונופול.</p></div>
 <a class="btn btn--light subathon-guide__game-button" href="https://odedsvrmonopoly.app/" target="_blank" rel="noopener noreferrer" aria-label="פתיחת משחק המונופול של הסאבתון בחלון חדש">כניסה למונופול <span aria-hidden="true">↗</span></a>
+</div>
+<div class="subathon-guide__app-link reveal">
+<div class="subathon-guide__app-copy"><span class="subathon-guide__app-badge">GTA VI APP</span><h3>אפליקציית מעקב ל-GTA VI!</h3><p>כל העדכונים והמעקב אחר GTA VI במקום אחד — פתחו את האפליקציה והישארו מעודכנים.</p></div>
+<a class="btn subathon-guide__app-button" href="https://svrproduction.github.io/GTA6-Subathon/#phone" target="_blank" rel="noopener noreferrer" aria-label="פתיחת אפליקציית המעקב ל-GTA VI בחלון חדש">פתיחת האפליקציה <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 </section>
