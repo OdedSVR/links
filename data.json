@@ -8,7 +8,7 @@
     {
       "user_id": 79152945,
       "username": "mrdavid465",
-      "quantity": 1649
+      "quantity": 1654
     },
     {
       "user_id": 89935315,
@@ -59,14 +59,14 @@
       "quantity": 279
     },
     {
+      "user_id": 79717253,
+      "username": "OmriMizrahi",
+      "quantity": 83
+    },
+    {
       "user_id": 89935315,
       "username": "eylon1",
       "quantity": 82
-    },
-    {
-      "user_id": 79717253,
-      "username": "OmriMizrahi",
-      "quantity": 80
     },
     {
       "user_id": 76334394,
@@ -84,24 +84,24 @@
       "quantity": 36
     },
     {
+      "user_id": 8402653,
+      "username": "Survivor5",
+      "quantity": 25
+    },
+    {
+      "user_id": 79152945,
+      "username": "mrdavid465",
+      "quantity": 24
+    },
+    {
       "user_id": 66830662,
       "username": "SukunaV01",
       "quantity": 22
     },
     {
-      "user_id": 18063762,
-      "username": "danielchubeda1",
-      "quantity": 20
-    },
-    {
-      "user_id": 45945278,
-      "username": "69NoName",
-      "quantity": 20
-    },
-    {
-      "user_id": 81909786,
-      "username": "BobiBoten",
-      "quantity": 20
+      "user_id": 103807498,
+      "username": "Macabitelaviv",
+      "quantity": 21
     }
   ],
   "gifts_week_enabled": true,
@@ -114,7 +114,7 @@
     {
       "user_id": 79717253,
       "username": "OmriMizrahi",
-      "quantity": 85
+      "quantity": 88
     },
     {
       "user_id": 89935315,
@@ -127,14 +127,14 @@
       "quantity": 70
     },
     {
+      "user_id": 103807498,
+      "username": "Macabitelaviv",
+      "quantity": 48
+    },
+    {
       "user_id": 76334394,
       "username": "PostB",
       "quantity": 47
-    },
-    {
-      "user_id": 103807498,
-      "username": "Macabitelaviv",
-      "quantity": 43
     },
     {
       "user_id": 103671748,
@@ -152,8 +152,8 @@
       "quantity": 35
     },
     {
-      "user_id": 77249287,
-      "username": "Redeye1yt",
+      "user_id": 79152945,
+      "username": "mrdavid465",
       "quantity": 34
     }
   ],
