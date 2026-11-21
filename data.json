@@ -89,19 +89,19 @@
       "quantity": 22
     },
     {
-      "user_id": 45945278,
-      "username": "69NoName",
-      "quantity": 20
-    },
-    {
       "user_id": 18063762,
       "username": "danielchubeda1",
       "quantity": 20
     },
     {
-      "user_id": 79152945,
-      "username": "mrdavid465",
-      "quantity": 19
+      "user_id": 45945278,
+      "username": "69NoName",
+      "quantity": 20
+    },
+    {
+      "user_id": 81909786,
+      "username": "BobiBoten",
+      "quantity": 20
     }
   ],
   "gifts_week_enabled": true,
