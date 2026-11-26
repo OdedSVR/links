@@ -69,13 +69,13 @@
       "quantity": 57
     },
     {
-      "user_id": 79717253,
-      "username": "OmriMizrahi",
-      "quantity": 38
-    },
-    {
       "user_id": 87924517,
       "username": "HopToniX",
+      "quantity": 52
+    },
+    {
+      "user_id": 79717253,
+      "username": "OmriMizrahi",
       "quantity": 38
     },
     {
@@ -147,14 +147,14 @@
       "quantity": 70
     },
     {
+      "user_id": 87924517,
+      "username": "HopToniX",
+      "quantity": 52
+    },
+    {
       "user_id": 103671748,
       "username": "jaimito2004m",
       "quantity": 48
-    },
-    {
-      "user_id": 76334394,
-      "username": "PostB",
-      "quantity": 47
     }
   ],
   "gifts_month_enabled": true
