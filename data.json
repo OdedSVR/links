@@ -74,6 +74,11 @@
       "quantity": 65
     },
     {
+      "user_id": 3470527,
+      "username": "NADAV453",
+      "quantity": 61
+    },
+    {
       "user_id": 87924517,
       "username": "HopToniX",
       "quantity": 52
@@ -81,16 +86,11 @@
     {
       "user_id": 79717253,
       "username": "OmriMizrahi",
-      "quantity": 38
+      "quantity": 44
     },
     {
       "user_id": 103807498,
       "username": "Macabitelaviv",
-      "quantity": 31
-    },
-    {
-      "user_id": 3470527,
-      "username": "NADAV453",
       "quantity": 31
     },
     {
@@ -114,7 +114,7 @@
     {
       "user_id": 79717253,
       "username": "OmriMizrahi",
-      "quantity": 126
+      "quantity": 132
     },
     {
       "user_id": 79989936,
@@ -147,14 +147,14 @@
       "quantity": 80
     },
     {
+      "user_id": 3470527,
+      "username": "NADAV453",
+      "quantity": 72
+    },
+    {
       "user_id": 67453019,
       "username": "natanelf",
       "quantity": 70
-    },
-    {
-      "user_id": 87924517,
-      "username": "HopToniX",
-      "quantity": 52
     }
   ],
   "gifts_month_enabled": true
